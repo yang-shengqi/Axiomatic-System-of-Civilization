@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>低级文明的完整路径图 · 杨晟琦文明公理系统</title>
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f1210;
+            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+            color: #d0d6c8;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #171c18;
+            padding: 50px 55px;
+            border-radius: 24px;
+            border: 1px solid #2a322a;
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* ===== 顶部导航 ===== */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 16px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2a322a;
+            font-size: 14px;
+        }
+
+        .top-nav .back {
+            color: #7a8a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+
+        .top-nav .back:hover {
+            color: #aaba8a;
+            border-bottom-color: #aaba8a;
+        }
+
+        .top-nav .badge {
+            color: #5a6a4e;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 封面 ===== */
+        .cover {
+            text-align: center;
+            padding: 30px 0 40px 0;
+            border-bottom: 2px solid #2a322a;
+            margin-bottom: 40px;
+        }
+
+        .cover .label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #7a8a6e;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .cover h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #e2ead4;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .cover .meta {
+            font-size: 15px;
+            color: #6a7a5e;
+            border-top: 1px solid #2a322a;
+            padding-top: 16px;
+            display: inline-block;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .cover .meta strong {
+            color: #aaba8a;
+            font-weight: 500;
+        }
+
+        .cover .meta .orcid {
+            color: #7a8a6e;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 52px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2a322a;
+            color: #e2ead4;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: #d4dec4;
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: #c6ceba;
+            line-height: 1.9;
+        }
+
+        .highlight-box {
+            background: #1e241e;
+            border-left: 4px solid #8aaa6a;
+            padding: 16px 22px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box strong {
+            color: #bace9a;
+        }
+
+        /* ===== 九式路径图 ===== */
+        .path-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 6px 10px;
+            background: #1e241e;
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin: 16px 0 24px 0;
+            border: 1px solid #2a322a;
+        }
+
+        .path-flow .step {
+            background: #171c18;
+            padding: 8px 18px;
+            border-radius: 30px;
+            border: 1px solid #3a4638;
+            font-size: 15px;
+            color: #c6ceba;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .path-flow .step .num {
+            display: block;
+            font-size: 11px;
+            color: #7a8a6e;
+            font-weight: 400;
+            margin-bottom: 1px;
+        }
+
+        .path-flow .step.highlight {
+            border-color: #8aaa6a;
+            color: #e2ead4;
+        }
+
+        .path-flow .arrow {
+            color: #5a6a4e;
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        /* ===== 步骤详解卡片 ===== */
+        .step-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0 20px 0;
+        }
+
+        .step-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-card .step-num {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .step-card .step-name {
+            font-weight: 700;
+            font-size: 18px;
+            color: #e2ead4;
+            margin-bottom: 4px;
+        }
+
+        .step-card .step-risk {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        /* ===== 关键路径 ===== */
+        .critical-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0 16px 0;
+        }
+
+        .critical-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            border-top: 3px solid #b89a4a;
+        }
+
+        .critical-card .critical-num {
+            font-weight: 700;
+            color: #bace9a;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .critical-card .critical-text {
+            font-size: 14px;
+            color: #c6ceba;
+            line-height: 1.8;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 2px solid #2a322a;
+            font-size: 14px;
+            color: #5a6a4e;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .footer .doi {
+            color: #7a8a6e;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+            .cover h1 {
+                font-size: 28px;
+            }
+            .step-grid {
+                grid-template-columns: 1fr;
+            }
+            .critical-list {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            .path-flow .step {
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+            .path-flow .arrow {
+                font-size: 16px;
+            }
+            .top-nav {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 6px;
+            }
+            .container {
+                padding: 16px 10px;
+            }
+            .cover h1 {
+                font-size: 22px;
+            }
+            .path-flow {
+                padding: 12px 14px;
+                gap: 4px 8px;
+            }
+            .path-flow .step {
+                font-size: 12px;
+                padding: 4px 10px;
+            }
+            .path-flow .arrow {
+                font-size: 14px;
+            }
+            .step-card {
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== 顶部导航 ===== -->
+    <div class="top-nav">
+        <a href="index.html" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 诊断模型</span>
+    </div>
+
+    <!-- ===== 封面 ===== -->
+    <div class="cover">
+        <div class="label">✦ 诊断模型 · 九式路径 ✦</div>
+        <h1>低级文明的完整路径图</h1>
+        <div class="meta">
+            <strong>杨晟琦</strong> 记录 · 2026年7月22日
+            <span class="orcid">ORCID: 0009-0008-3755-8960</span>
+        </div>
+    </div>
+
+    <!-- ===== 九式路径图 ===== -->
+    <h2>真实路径</h2>
+
+    <div class="path-flow">
+        <span class="step highlight"><span class="num">①</span>结构性不公</span>
+        <span class="arrow">→</span>
+        <span class="step"><span class="num">②</span>结构性锁死</span>
+        <span class="arrow">→</span>
+        <span class="step"><span class="num">③</span>结构性错位</span>
+        <span class="arrow">→</span>
+        <span class="step"><span class="num">④</span>结构性矛盾</span>
+        <span class="arrow">→</span>
+        <span class="step"><span class="num">⑤</span>结构性收缩</span>
+        <span class="arrow">→</span>
+        <span class="step"><span class="num">⑥</span>结构性失聪</span>
+        <span class="arrow">→</span>
+        <span class="step"><span class="num">⑦</span>结构性逃逸</span>
+        <span class="arrow">→</span>
+        <span class="step"><span class="num">⑧</span>结构性空心</span>
+        <span class="arrow">→</span>
+        <span class="step highlight"><span class="num">⑨</span>结构性死亡</span>
+    </div>
+
+    <!-- ===== 路径详解 ===== -->
+    <h2>路径详解</h2>
+
+    <div class="step-grid">
+
+        <div class="step-card">
+            <span class="step-num">第一步</span>
+            <div class="step-name">结构性不公</div>
+            <div class="step-risk">制造了社会层面的爆发风险。</div>
+        </div>
+
+        <div class="step-card">
+            <span class="step-num">第二步</span>
+            <div class="step-name">结构性锁死</div>
+            <div class="step-risk">制造了系统脆化的硬着陆风险。</div>
+        </div>
+
+        <div class="step-card">
+            <span class="step-num">第三步</span>
+            <div class="step-name">结构性错位</div>
+            <div class="step-risk">制造了认知偏离现实的决策风险。</div>
+        </div>
+
+        <div class="step-card">
+            <span class="step-num">第四步</span>
+            <div class="step-name">结构性矛盾</div>
+            <div class="step-risk">制造了个体理性与系统理性之间的对冲风险。</div>
+        </div>
+
+        <div class="step-card">
+            <span class="step-num">第五步</span>
+            <div class="step-name">结构性收缩</div>
+            <div class="step-risk">制造了内部压力无处释放的失控风险。</div>
+        </div>
+
+        <div class="step-card">
+            <span class="step-num">第六步</span>
+            <div class="step-name">结构性失聪</div>
+            <div class="step-risk">制造了问题积累到临界点才被发现的失效风险。</div>
+        </div>
+
+        <div class="step-card">
+            <span class="step-num">第七步</span>
+            <div class="step-name">结构性逃逸</div>
+            <div class="step-risk">制造了系统加速空心化的自我消耗风险。</div>
+        </div>
+
+        <div class="step-card">
+            <span class="step-num">第八步</span>
+            <div class="step-name">结构性空心</div>
+            <div class="step-risk">制造了壳在运行而实质已无的全面崩盘风险。</div>
+        </div>
+
+        <div class="step-card">
+            <span class="step-num">第九步</span>
+            <div class="step-name">结构性死亡</div>
+            <div class="step-risk">本身就是最终风险。</div>
+        </div>
+
+    </div>
+
+    <!-- ===== 关键路径 ===== -->
+    <h2>关键路径</h2>
+
+    <div class="critical-list">
+
+        <div class="critical-card">
+            <div class="critical-num">关键路径一</div>
+            <div class="critical-text">
+                旧结构的合法性建立在"控制能带来安全"的预设上。但控制本身就会制造脆弱性：越控制，系统对外部变化的适应能力越弱。<br><br>
+                这是链条中<strong>"结构性收缩 → 结构性失聪"</strong>之间的核心连接。
+            </div>
+        </div>
+
+        <div class="critical-card">
+            <div class="critical-num">关键路径二</div>
+            <div class="critical-text">
+                旧结构将"风险"等同于"外部威胁"。从而忽略了内部的结构性矛盾（如不公、错位、空心）才是最大的风险来源。
+            </div>
+        </div>
+
+        <div class="critical-card">
+            <div class="critical-num">关键路径三</div>
+            <div class="critical-text">
+                旧结构用"封锁"来应对风险时，恰恰加速了风险的累积。封锁出口导致能量无法释放、反馈无法进入，最终将系统推向更大的风险敞口。
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== 页脚 ===== -->
+    <div class="footer">
+        低级文明的完整路径图 · 杨晟琦文明公理系统 · 诊断模型
+        <div class="doi">记录于 2026年7月22日</div>
+        <div class="doi" style="margin-top:2px;">体系入口：https://yang-shengqi.github.io/global-human-sovereign-fund/</div>
+        <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
+            所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析 · 杨晟琦文明公理系统</title>
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f1210;
+            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+            color: #d0d6c8;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #171c18;
+            padding: 50px 55px;
+            border-radius: 24px;
+            border: 1px solid #2a322a;
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* ===== 顶部导航 ===== */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 16px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2a322a;
+            font-size: 14px;
+        }
+
+        .top-nav .back {
+            color: #7a8a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+
+        .top-nav .back:hover {
+            color: #aaba8a;
+            border-bottom-color: #aaba8a;
+        }
+
+        .top-nav .badge {
+            color: #5a6a4e;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 封面 ===== */
+        .cover {
+            text-align: center;
+            padding: 30px 0 40px 0;
+            border-bottom: 2px solid #2a322a;
+            margin-bottom: 40px;
+        }
+
+        .cover .label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #7a8a6e;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .cover h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #e2ead4;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .cover .meta {
+            font-size: 15px;
+            color: #6a7a5e;
+            border-top: 1px solid #2a322a;
+            padding-top: 16px;
+            display: inline-block;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .cover .meta strong {
+            color: #aaba8a;
+            font-weight: 500;
+        }
+
+        .cover .meta .orcid {
+            color: #7a8a6e;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 52px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2a322a;
+            color: #e2ead4;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: #d4dec4;
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: #c6ceba;
+            line-height: 1.9;
+        }
+
+        .highlight-box {
+            background: #1e241e;
+            border-left: 4px solid #8aaa6a;
+            padding: 16px 22px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box strong {
+            color: #bace9a;
+        }
+
+        /* ===== 核心对立卡片 ===== */
+        .duel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 16px 0 20px 0;
+        }
+
+        .duel-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 20px 24px 18px;
+            border: 1px solid #2a322a;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+        }
+
+        .duel-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .duel-card .duel-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 2px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .duel-card .duel-label.justice {
+            background: #2a322a;
+            color: #aaba8a;
+        }
+
+        .duel-card .duel-label.interest {
+            background: #2a322a;
+            color: #bace9a;
+        }
+
+        .duel-card .duel-title {
+            font-weight: 700;
+            font-size: 20px;
+            color: #e2ead4;
+            margin-bottom: 6px;
+        }
+
+        .duel-card .duel-desc {
+            font-size: 15px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        .duel-card .duel-weapon {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #2a322a;
+            font-size: 14px;
+            color: #7a8a6e;
+        }
+
+        .duel-card .duel-weapon strong {
+            color: #d4dec4;
+        }
+
+        /* ===== 分析框 ===== */
+        .analysis-box {
+            background: #1a201a;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 16px 0;
+            border: 1px solid #2a322a;
+            text-align: center;
+        }
+
+        .analysis-box .label {
+            font-size: 13px;
+            color: #7a8a6e;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .analysis-box .content {
+            font-size: 17px;
+            color: #d4dec4;
+            margin-top: 6px;
+        }
+
+        .analysis-box .content strong {
+            color: #bace9a;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 2px solid #2a322a;
+            font-size: 14px;
+            color: #5a6a4e;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .footer .doi {
+            color: #7a8a6e;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+            .cover h1 {
+                font-size: 26px;
+            }
+            .duel-grid {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            .top-nav {
+                font-size: 13px;
+            }
+            .analysis-box .content {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 6px;
+            }
+            .container {
+                padding: 16px 10px;
+            }
+            .cover h1 {
+                font-size: 20px;
+            }
+            .duel-card {
+                padding: 16px 18px;
+            }
+            .duel-card .duel-title {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== 顶部导航 ===== -->
+    <div class="top-nav">
+        <a href="index.html" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 诊断模型</span>
+    </div>
+
+    <!-- ===== 封面 ===== -->
+    <div class="cover">
+        <div class="label">✦ 诊断模型 · 张力分析 ✦</div>
+        <h1>正义、利益与规则的错位：<br>系统自我维护与外部纠偏的张力分析</h1>
+        <div class="meta">
+            <strong>杨晟琦</strong> 推演 · 2026年
+            <span class="orcid">ORCID: 0009-0008-3755-8960</span>
+        </div>
+    </div>
+
+    <!-- ===== 社会基石 ===== -->
+    <h2>社会基石</h2>
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p><strong>文明以自由为根基，自由以规则为边界，规则以公平、公正、公开为准绳。</strong></p>
+    </div>
+
+    <!-- ===== 当下情况 ===== -->
+    <h2>当下情况</h2>
+    <div class="duel-grid">
+
+        <div class="duel-card">
+            <span class="duel-label justice">底层百姓</span>
+            <div class="duel-title">正义</div>
+            <div class="duel-desc">
+                正义成为了底层百姓最后的压舱石。他们依靠基于生存经验的"公平直觉"来感知世界，朴素而直接。
+            </div>
+            <div class="duel-weapon">🛡️ 武器：<strong>直觉报警</strong></div>
+        </div>
+
+        <div class="duel-card">
+            <span class="duel-label interest">得利者</span>
+            <div class="duel-title">利益</div>
+            <div class="duel-desc">
+                利益成为了得利者的压舱石。他们拥有资源理解规则、利用规则、乃至塑造规则，在规则博弈中天然占据优势。
+            </div>
+            <div class="duel-weapon">⚔️ 武器：<strong>规则免责</strong></div>
+        </div>
+
+    </div>
+
+    <!-- ===== 最终结果 ===== -->
+    <h2>最终结果</h2>
+    <div class="analysis-box" style="border-color: #b89a4a;">
+        <div class="label">⚡ 碰撞</div>
+        <div class="content">
+            <strong>当两块石头碰撞时，底层百姓用直觉报警，而得利者用规则免责。</strong>
+        </div>
+    </div>
+
+    <!-- ===== 体感胜于一切庞大叙事 ===== -->
+    <h2>体感胜于一切庞大叙事</h2>
+    <div class="highlight-box" style="border-left-color: #7a8a6e;">
+        <p>任何体系，无论其宣称的目标多么崇高，最终的合法性都落在每一个具体个体所承受的实际体验上。</p>
+    </div>
+
+    <!-- ===== 系统的自我维护惯性 ===== -->
+    <h2>系统的自我维护惯性</h2>
+    <div class="highlight-box" style="border-left-color: #b89a4a;">
+        <p><strong>凡是权力高度集中且缺乏有效外部制衡的系统，其"自我纠偏"的驱动力必然弱于"自我维护"的惯性。</strong></p>
+    </div>
+    <p style="color:#7a8a6e; font-style:italic;">这不是道德判断，而是系统论的基本常识。需要外力（比如危机、舆论、或内部的代际更替）来打破平衡。</p>
+
+    <!-- ===== 外力能否真正改变平衡 ===== -->
+    <h2>外力能否真正改变平衡？</h2>
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p><strong>取决于它是否转化为制度内生的纠偏机制，而非仅仅是一次可以被消化的事件。</strong></p>
+    </div>
+
+    <p style="color:#7a8a6e; font-style:italic; text-align:center; font-size:15px; margin-top:8px;">
+        这引出了下一篇《系统"非死锁"的条件分析》的核心问题。
+    </p>
+
+    <!-- ===== 页脚 ===== -->
+    <div class="footer">
+        正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析 · 杨晟琦文明公理系统 · 诊断模型
+        <div class="doi">体系入口：https://yang-shengqi.github.io/global-human-sovereign-fund/</div>
+        <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
+            所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

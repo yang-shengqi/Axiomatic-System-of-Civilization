@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>改变底层逻辑的方法论（非归因，可操作） · 杨晟琦文明公理系统</title>
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f1210;
+            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+            color: #d0d6c8;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #171c18;
+            padding: 50px 55px;
+            border-radius: 24px;
+            border: 1px solid #2a322a;
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* ===== 顶部导航 ===== */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 16px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2a322a;
+            font-size: 14px;
+        }
+
+        .top-nav .back {
+            color: #7a8a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+
+        .top-nav .back:hover {
+            color: #aaba8a;
+            border-bottom-color: #aaba8a;
+        }
+
+        .top-nav .badge {
+            color: #5a6a4e;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 封面 ===== */
+        .cover {
+            text-align: center;
+            padding: 30px 0 40px 0;
+            border-bottom: 2px solid #2a322a;
+            margin-bottom: 40px;
+        }
+
+        .cover .label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #7a8a6e;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .cover h1 {
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #e2ead4;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .cover .sub {
+            font-size: 18px;
+            font-weight: 300;
+            color: #aaba8a;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .cover .meta {
+            font-size: 15px;
+            color: #6a7a5e;
+            border-top: 1px solid #2a322a;
+            padding-top: 16px;
+            display: inline-block;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .cover .meta strong {
+            color: #aaba8a;
+            font-weight: 500;
+        }
+
+        .cover .meta .orcid {
+            color: #7a8a6e;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 52px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2a322a;
+            color: #e2ead4;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: #d4dec4;
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: #c6ceba;
+            line-height: 1.9;
+        }
+
+        .highlight-box {
+            background: #1e241e;
+            border-left: 4px solid #8aaa6a;
+            padding: 16px 22px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box strong {
+            color: #bace9a;
+        }
+
+        /* ===== 七条方法论卡片 ===== */
+        .method-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 16px 0 20px 0;
+        }
+
+        .method-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 20px 22px 18px;
+            border: 1px solid #2a322a;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+            border-top: 3px solid #7a8a6e;
+        }
+
+        .method-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .method-card .method-num {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 14px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .method-card .method-name {
+            font-weight: 700;
+            font-size: 18px;
+            color: #e2ead4;
+            margin-bottom: 8px;
+        }
+
+        .method-card .method-section {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+            margin-bottom: 4px;
+        }
+
+        .method-card .method-section strong {
+            color: #bace9a;
+        }
+
+        .method-card .method-section .label {
+            color: #7a8a6e;
+            font-weight: 400;
+        }
+
+        .method-card .method-essence {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #2a322a;
+            font-size: 14px;
+            color: #aaba8a;
+            font-weight: 500;
+        }
+
+        .method-card.one {
+            border-top-color: #b85a3a;
+        }
+        .method-card.two {
+            border-top-color: #b89a4a;
+        }
+        .method-card.three {
+            border-top-color: #8aaa6a;
+        }
+        .method-card.four {
+            border-top-color: #7a8a6e;
+        }
+        .method-card.five {
+            border-top-color: #6a8a7a;
+        }
+        .method-card.six {
+            border-top-color: #5a8a8a;
+        }
+        .method-card.seven {
+            border-top-color: #bace9a;
+        }
+
+        /* ===== 对照表 ===== */
+        .correspondence-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
+        }
+
+        .correspondence-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            text-align: center;
+        }
+
+        .correspondence-card .corr-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: #e2ead4;
+            margin-bottom: 4px;
+        }
+
+        .correspondence-card .corr-role {
+            font-size: 13px;
+            color: #7a8a6e;
+            margin-bottom: 8px;
+        }
+
+        .correspondence-card .corr-methods {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        .correspondence-card .corr-methods .highlight {
+            color: #bace9a;
+        }
+
+        .correspondence-card.foundation {
+            border-top: 3px solid #8aaa6a;
+        }
+        .correspondence-card.society {
+            border-top: 3px solid #b89a4a;
+        }
+        .correspondence-card.governance {
+            border-top: 3px solid #b85a3a;
+        }
+
+        /* ===== 独立性说明 ===== */
+        .independence-box {
+            background: #1a201a;
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid #2a322a;
+            margin: 16px 0;
+            text-align: center;
+        }
+
+        .independence-box .list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            margin-top: 8px;
+        }
+
+        .independence-box .list .item {
+            font-size: 15px;
+            color: #b6c0aa;
+        }
+
+        .independence-box .list .item strong {
+            color: #bace9a;
+        }
+
+        /* ===== 使用说明 ===== */
+        .usage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0 16px 0;
+        }
+
+        .usage-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 16px 18px;
+            border: 1px solid #2a322a;
+            text-align: center;
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        .usage-card .icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 2px solid #2a322a;
+            font-size: 14px;
+            color: #5a6a4e;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .footer .doi {
+            color: #7a8a6e;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+            .cover h1 {
+                font-size: 28px;
+            }
+            .method-grid {
+                grid-template-columns: 1fr;
+            }
+            .correspondence-grid {
+                grid-template-columns: 1fr;
+            }
+            .usage-grid {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            .top-nav {
+                font-size: 13px;
+            }
+            .independence-box .list {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 6px;
+            }
+            .container {
+                padding: 16px 10px;
+            }
+            .cover h1 {
+                font-size: 22px;
+            }
+            .cover .sub {
+                font-size: 15px;
+            }
+            .method-card {
+                padding: 16px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== 顶部导航 ===== -->
+    <div class="top-nav">
+        <a href="index.html" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 操作手册</span>
+    </div>
+
+    <!-- ===== 封面 ===== -->
+    <div class="cover">
+        <div class="label">✦ 操作手册 · 执行路径 ✦</div>
+        <h1>改变底层逻辑的方法论</h1>
+        <div class="sub">（非归因，可操作）</div>
+        <div class="meta">
+            <strong>杨晟琦</strong> 发布 · 2026年7月11日
+            <span class="orcid">ORCID: 0009-0008-3755-8960</span>
+        </div>
+    </div>
+
+    <!-- ===== 文档定位 ===== -->
+    <h2>文档定位</h2>
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p><strong>三大基石定义了“什么是一个好系统的底层逻辑”。本方法论定义了“如何从现有逻辑，翻转到底层逻辑”。</strong></p>
+    </div>
+    <p>它不是对三大基石的补充，而是它的操作手册。</p>
+
+    <!-- ===== 核心原则 ===== -->
+    <h2>核心原则</h2>
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p><strong>系统的强度不在于它能多紧地控制，而在于它能多深地信任。</strong>当系统把“控制”让位于“信任”时，所有被锁死的人都会从“潜在的破坏者”转变为“自发建设者”。这不是道德呼吁，这是系统在资源有限、人心无限的世界里，唯一可持续的生存策略。</p>
+    </div>
+
+    <!-- ===== 方法论：七条操作路径 ===== -->
+    <h2>方法论：七条操作路径</h2>
+
+    <div class="method-grid">
+
+        <!-- 第一条 -->
+        <div class="method-card one">
+            <span class="method-num">第一条</span>
+            <div class="method-name">重定义系统的唯一目的</div>
+            <div class="method-section">
+                <span class="label">操作内容：</span>将系统的存在理由从“维持自身稳定”改为“保障每一个具体的人安全地释放其潜能”。
+            </div>
+            <div class="method-section">
+                <span class="label">执行方式：</span>检验每一条政策、每一份法律、每一项行政指令时，只问一句：<strong>这扩大了人的安全感与行动余地，还是缩小了？</strong>
+            </div>
+            <div class="method-essence">
+                实质：用一个问题替代一切复杂的合规审查。凡是缩小安全感与行动余地的，不通过。
+            </div>
+        </div>
+
+        <!-- 第二条 -->
+        <div class="method-card two">
+            <span class="method-num">第二条</span>
+            <div class="method-name">权力的动态授权</div>
+            <div class="method-section">
+                <span class="label">操作内容：</span>权力来源于被统治者的动态同意，而非上级任命或历史惯性。
+            </div>
+            <div class="method-section">
+                <span class="label">执行方式：</span>建立可验证的反馈回路：基层个体的“不安全感”必须能直接触发系统响应，且响应流程公开可追溯。
+            </div>
+            <div class="method-essence">
+                实质：权力是一次一次被确认的，而不是一次授予终身有效的。
+            </div>
+        </div>
+
+        <!-- 第三条 -->
+        <div class="method-card three">
+            <span class="method-num">第三条</span>
+            <div class="method-name">责任归属逆转</div>
+            <div class="method-section">
+                <span class="label">操作内容：</span>所有系统性失误——拖延、误判、信息不对称——的代价，由系统自身承担，绝不转嫁给个体。
+            </div>
+            <div class="method-section">
+                <span class="label">执行方式：</span>设立独立的“系统责任准备金”，资金源于系统运行预算，用于赔偿因系统缺陷造成的个体损失。
+            </div>
+            <div class="method-essence">
+                实质：系统为自己的缺陷付费。没有代价的系统，没有改进的动力。
+            </div>
+        </div>
+
+        <!-- 第四条 -->
+        <div class="method-card four">
+            <span class="method-num">第四条</span>
+            <div class="method-name">裁判权与执行权永久物理隔离</div>
+            <div class="method-section">
+                <span class="label">操作内容：</span>裁判只做逻辑拟合，执行只按判决书操作。
+            </div>
+            <div class="method-section">
+                <span class="label">执行方式：</span><strong>判决书未生成前，任何人的人身与基本财产不得被触碰。</strong>判决书本身必须可公开验证且可逆。
+            </div>
+            <div class="method-essence">
+                实质：判决前的触碰即越界。不可逆的判决即不合法。
+            </div>
+        </div>
+
+        <!-- 第五条 -->
+        <div class="method-card five">
+            <span class="method-num">第五条</span>
+            <div class="method-name">将“信任”作为系统的核心指标</div>
+            <div class="method-section">
+                <span class="label">操作内容：</span>定期匿名测量社会信任水平（如“安全感指数”），并将其作为系统运行考核的最优先级指标。
+            </div>
+            <div class="method-section">
+                <span class="label">执行方式：</span>当信任指数连续下降时，自动触发系统自查与修正流程，而非加大管控。
+            </div>
+            <div class="method-essence">
+                实质：信任下降是系统故障的信号，而不是需要压制的“不稳定因素”。
+            </div>
+        </div>
+
+        <!-- 第六条 -->
+        <div class="method-card six">
+            <span class="method-num">第六条</span>
+            <div class="method-name">释放被锁死的大多数</div>
+            <div class="method-section">
+                <span class="label">操作内容：</span>结构性地移除普通人进入创新、交易、流动的壁垒——简化法律、缩短程序、提供失败安全垫。
+            </div>
+            <div class="method-section">
+                <span class="label">执行方式：</span>承认自发的协作比自上而下的设计更具韧性和创造力。
+            </div>
+            <div class="method-essence">
+                实质：系统不需要“设计一切”，只需要“不堵住一切”。
+            </div>
+        </div>
+
+        <!-- 第七条 -->
+        <div class="method-card seven" style="grid-column: 1 / -1;">
+            <span class="method-num">第七条</span>
+            <div class="method-name">制度化的“代际纠偏”</div>
+            <div class="method-section">
+                <span class="label">操作内容：</span>每代人都有权重审视并修订底层规则，防止系统僵化为教条。
+            </div>
+            <div class="method-section">
+                <span class="label">执行方式：</span>将“可修订性”作为系统的永久属性，而非一次性的革命成果。
+            </div>
+            <div class="method-essence">
+                实质：系统是活的。活的系统允许被它的使用者修改。
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== 方法论与三大基石的对照关系 ===== -->
+    <h2>方法论与三大基石的对照关系</h2>
+
+    <div class="correspondence-grid">
+
+        <div class="correspondence-card foundation">
+            <div class="corr-title">文明基石</div>
+            <div class="corr-role">定方向</div>
+            <div class="corr-methods">
+                <span class="highlight">第一条</span>：重定义系统的唯一目的
+            </div>
+        </div>
+
+        <div class="correspondence-card society">
+            <div class="corr-title">社会基石</div>
+            <div class="corr-role">诊断</div>
+            <div class="corr-methods">
+                <span class="highlight">第二条</span>：权力的动态授权<br>
+                <span class="highlight">第五条</span>：将“信任”作为系统的核心指标
+            </div>
+        </div>
+
+        <div class="correspondence-card governance">
+            <div class="corr-title">治理基石</div>
+            <div class="corr-role">处方</div>
+            <div class="corr-methods">
+                <span class="highlight">第三条</span>：责任归属逆转<br>
+                <span class="highlight">第四条</span>：裁判权与执行权永久物理隔离<br>
+                <span class="highlight">第六条</span>：释放被锁死的大多数<br>
+                <span class="highlight">第七条</span>：制度化的“代际纠偏”
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== 独立性与自治性说明 ===== -->
+    <h2>独立性与自治性说明</h2>
+
+    <div class="independence-box">
+        <p style="font-size:17px; color:#d4dec4;"><strong>本方法论不依赖任何外部条件，包括：</strong></p>
+        <div class="list">
+            <span class="item">❌ 不需要“有一个好领导”</span>
+            <span class="item">❌ 不需要“有足够资源”</span>
+            <span class="item">❌ 不需要“时机成熟”</span>
+        </div>
+        <p style="margin-top:12px; font-size:16px; color:#bace9a;">
+            <strong>它只依赖一个动作：把第一条当作新的默认值。</strong>
+        </p>
+        <p style="font-size:14px; color:#7a8a6e; margin-top:6px;">
+            一旦第一条被采纳，后续六条将自动获得操作空间。一旦前六条被部分落地，第七条将确保它们不会被下一代锁死。
+        </p>
+    </div>
+
+    <!-- ===== 使用说明 ===== -->
+    <h2>使用说明</h2>
+
+    <div class="usage-grid">
+        <div class="usage-card">
+            <div class="icon">📋</div>
+            <strong>独立取用</strong><br>
+            作为任何系统的自检清单
+        </div>
+        <div class="usage-card">
+            <div class="icon">📚</div>
+            <strong>与三大基石并置</strong><br>
+            作为“底层逻辑重写”的完整手册
+        </div>
+        <div class="usage-card">
+            <div class="icon">🔧</div>
+            <strong>可被引用、扩展、修正或本地化适配</strong>
+        </div>
+    </div>
+
+    <div style="text-align:center; color:#5a6a4e; font-size:15px; margin-top:16px; font-style:italic;">
+        封存于此。需要时，可随时取用。
+    </div>
+
+    <!-- ===== 页脚 ===== -->
+    <div class="footer">
+        改变底层逻辑的方法论（非归因，可操作） · 杨晟琦文明公理系统 · 操作手册
+        <div class="doi">发布于 2026年7月11日</div>
+        <div class="doi" style="margin-top:2px;">体系入口：https://yang-shengqi.github.io/global-human-sovereign-fund/</div>
+        <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
+            所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球人类主权基金 · 杨晟琦文明公理系统</title>
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f1210;
+            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+            color: #d0d6c8;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #171c18;
+            padding: 50px 55px;
+            border-radius: 24px;
+            border: 1px solid #2a322a;
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* ===== 顶部导航条 ===== */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 16px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2a322a;
+            font-size: 14px;
+        }
+
+        .top-nav .back {
+            color: #7a8a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+
+        .top-nav .back:hover {
+            color: #aaba8a;
+            border-bottom-color: #aaba8a;
+        }
+
+        .top-nav .badge {
+            color: #5a6a4e;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 封面 ===== */
+        .cover {
+            text-align: center;
+            padding: 30px 0 40px 0;
+            border-bottom: 2px solid #2a322a;
+            margin-bottom: 40px;
+        }
+
+        .cover .label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #7a8a6e;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .cover h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #e2ead4;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .cover .sub {
+            font-size: 20px;
+            font-weight: 300;
+            color: #aaba8a;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .cover .meta {
+            font-size: 15px;
+            color: #6a7a5e;
+            border-top: 1px solid #2a322a;
+            padding-top: 16px;
+            display: inline-block;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .cover .meta strong {
+            color: #aaba8a;
+            font-weight: 500;
+        }
+
+        .cover .meta .orcid {
+            color: #7a8a6e;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 52px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2a322a;
+            color: #e2ead4;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: #d4dec4;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: #aaba8a;
+        }
+
+        h5 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 18px;
+            margin-bottom: 6px;
+            color: #bace9a;
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: #c6ceba;
+            line-height: 1.9;
+        }
+
+        .highlight-box {
+            background: #1e241e;
+            border-left: 4px solid #8aaa6a;
+            padding: 16px 22px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box strong {
+            color: #bace9a;
+        }
+
+        .highlight-box .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+            display: block;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+            font-weight: 400;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .en-inline {
+            font-size: 0.85em;
+            color: #7a8a6e;
+            font-weight: 400;
+        }
+
+        /* ===== 表格 ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0 20px 0;
+            border-radius: 12px;
+            border: 1px solid #2a322a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #171c18;
+            min-width: 600px;
+        }
+
+        th {
+            background: #1e241e;
+            color: #aaba8a;
+            font-weight: 600;
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 2px solid #2a322a;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #242c22;
+            color: #c6ceba;
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            padding: 0 12px;
+            border-radius: 20px;
+        }
+
+        /* ===== 卡片网格 ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 16px 0 20px 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 14px;
+            margin: 16px 0 20px 0;
+        }
+
+        .card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 16px 20px 14px;
+            border: 1px solid #2a322a;
+        }
+
+        .card .label {
+            font-size: 13px;
+            color: #7a8a6e;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .card .title {
+            font-weight: 700;
+            font-size: 17px;
+            color: #e2ead4;
+            margin-bottom: 4px;
+        }
+
+        .card .desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        .card .desc .en {
+            font-size: 0.8em;
+            color: #7a8a6e;
+            margin-top: 2px;
+        }
+
+        /* ===== 十一道防火墙 ===== */
+        .firewall-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 12px 0 16px 0;
+        }
+
+        .firewall-item {
+            background: #1e241e;
+            border-radius: 10px;
+            padding: 12px 16px;
+            border-left: 3px solid #8aaa6a;
+            font-size: 14px;
+            color: #c6ceba;
+        }
+
+        .firewall-item strong {
+            color: #bace9a;
+        }
+
+        .firewall-item .en {
+            font-size: 0.75em;
+            color: #7a8a6e;
+            margin-top: 2px;
+        }
+
+        /* ===== 账户类型网格 ===== */
+        .account-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 12px 0 16px 0;
+        }
+
+        .account-card {
+            background: #1e241e;
+            border-radius: 10px;
+            padding: 14px 16px;
+            border: 1px solid #2a322a;
+            text-align: center;
+        }
+
+        .account-card .name {
+            font-weight: 700;
+            color: #e2ead4;
+            font-size: 15px;
+        }
+
+        .account-card .detail {
+            font-size: 13px;
+            color: #b6c0aa;
+        }
+
+        .account-card .badge {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 11px;
+            padding: 0 10px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 2px solid #2a322a;
+            font-size: 14px;
+            color: #5a6a4e;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .footer .doi {
+            color: #7a8a6e;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+            .cover h1 {
+                font-size: 28px;
+            }
+            .cover .sub {
+                font-size: 16px;
+            }
+            .grid-2,
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .firewall-list {
+                grid-template-columns: 1fr;
+            }
+            .account-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            table {
+                font-size: 12px;
+                min-width: 400px;
+            }
+            th,
+            td {
+                padding: 6px 10px;
+            }
+            .top-nav {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 6px;
+            }
+            .container {
+                padding: 16px 10px;
+            }
+            .cover h1 {
+                font-size: 22px;
+            }
+            .account-grid {
+                grid-template-columns: 1fr;
+            }
+            .table-wrap table {
+                font-size: 11px;
+                min-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== 顶部导航 ===== -->
+    <div class="top-nav">
+        <a href="https://yang-shengqi.github.io/global-human-sovereign-fund/" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 药方</span>
+    </div>
+
+    <!-- ===== 封面 ===== -->
+    <div class="cover">
+        <div class="label">✦ 药方 · 制度设计 ✦</div>
+        <h1>全球人类主权基金</h1>
+        <div class="sub">重构中国与全球利益格局的制度构想</div>
+        <div class="meta">
+            <strong>杨晟琦</strong> 构思 · 2026年
+            <span class="orcid">ORCID: 0009-0008-3755-8960    |    DOI: 10.5281/zenodo.20117265</span>
+        </div>
+    </div>
+
+    <!-- ===== 引言 ===== -->
+    <h2>引言：为什么要讨论这个方案？</h2>
+    <p>人类社会运行数千年来，始终被一个周期性的困局所缠绕：财富的积累必然导致财富的集中，财富的集中必然引发权力的垄断，权力的垄断必然固化为分配的不公，分配的不公必然积累阶层的仇恨，仇恨的爆发必然摧毁已有的秩序。旧秩序崩塌之后，新的秩序在废墟上建立，然后开始新一轮的循环。</p>
+    <p>这个循环贯穿了人类有文字记载的全部历史。它不问意识形态，不问文化传统，不问地理疆域。它只问一件事：<strong>公共财富的归属权，究竟属于谁？</strong></p>
+    <p>迄今为止，人类对这个问题的回答只有两种：要么属于"神授"的君主，要么属于"抽象"的人民——而后者在操作层面最终也总是异化为前者：名义上的全民所有，实质上的少数人控制。</p>
+    <div class="highlight-box">
+        <p><strong>本方案试图给出第三种回答：公共财富不属于任何人，它只能被归还给所有人。</strong></p>
+        <span class="en">This proposal offers a third answer: public wealth belongs to no one; it can only be returned to everyone.</span>
+    </div>
+    <p>而归还的方式，不是一次性的分配，不是平均主义的削平，不是暴力革命的剥夺，而是一套不可逆的制度设计——让财富在法律上、物理上、治理上，彻底脱离任何个人、家族、政党或行政机构的控制，成为全体国民与生俱来、不可剥夺的法定权益。</p>
+
+    <h4>四个根本需求</h4>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">安全感</div>
+            <div class="desc">生存底线是否被制度保障，而非依赖于任何人的恩赐或市场的波动。</div>
+        </div>
+        <div class="card">
+            <div class="label">获得感</div>
+            <div class="desc">劳动和创造的成果，是否真正属于自己，而非被无形的分配机制所剥夺。</div>
+        </div>
+        <div class="card">
+            <div class="label">幸福感</div>
+            <div class="desc">在生存和安全之上，是否还有余裕去追求值得追求的生活。</div>
+        </div>
+        <div class="card">
+            <div class="label">参与感</div>
+            <div class="desc">是否作为共同体的正式成员而被承认，而非被排斥在公共财富的受益圈之外。</div>
+        </div>
+    </div>
+    <div class="highlight-box">
+        <p>本国的穷人，地球的穷人——他们不是这个方案的修辞对象，不是慈善的客体，不是选票的筹码。他们就是这个方案的主人。</p>
+        <span class="en">The poor of this country, the poor of the Earth—they are not rhetorical objects of this plan. They are the masters of this plan.</span>
+    </div>
+    <p style="font-weight:600; color:#bace9a; font-size:18px; text-align:center; margin-top:16px;">让地球上最后一个村庄里最贫穷的那个孩子，从他出生的那一刻起，就和这个星球上最富有的人一样，拥有一份谁也不可夺走的生存保障。</p>
+
+    <!-- ===== 愿景 ===== -->
+    <h2>愿景</h2>
+    <p>如果有一天，人类回望此刻，会发现那些纠缠了我们数千年的噩梦——战争、贫穷、疾病——并非不可战胜的天命。</p>
+    <p><strong>战争</strong>，源于争夺。当每一个人的生存不再仰赖任何人的恩赐，当抢夺无法再获得任何多余的保障，武器的逻辑便会从根部枯竭。</p>
+    <p><strong>贫穷</strong>，源于匮乏。当公共财富被归还给它的创造者，当每一个生命从出生起便拥有一份不可剥夺的生存基础，"匮乏"便被揭露为一个谎言。</p>
+    <p><strong>疾病</strong>——那最顽固的生物本能之痛——依然需要医学去攻克。但至少，人类将不再因为贫穷而失去救治的机会，不再因为生存的压力而透支身体，不再因为绝望而放弃希望。</p>
+    <div class="highlight-box">
+        <p>这三个古老的敌人，不会在欢呼声中退场。它们只会在某一天，被后人平静地写进历史课本——作为人类曾经活在稀缺与恐惧中的证据，而非永久的宿命。</p>
+        <span class="en">These three ancient enemies will not retreat amid cheers. They will only, one day, be calmly written into history textbooks by future generations—as evidence that humanity once lived in scarcity and fear, not as a permanent destiny.</span>
+    </div>
+
+    <!-- ===== 起源语境 ===== -->
+    <h2>起源语境：一个本土的剖面</h2>
+    <p>本方案的理论起点，是中国——一个具有庞大国有资本存量、深厚行政垄断传统、以及剧烈财富分化张力的经济体。</p>
+    <p>在中国的现实中，国民财富的积累与分配呈现出一种深刻的悖论：一方面，国家拥有全球最大规模的经营性国有资产，以及烟草、石油、电信、金融等垄断行业每年产生的巨额超额利润。另一方面，反映财富占有差距的财富基尼系数长期处于高位——根据瑞信《全球财富报告》等权威数据，该系数常年维持在0.6-0.7以上，而通常认为0.4即为高度不平等警戒线。最富有的前10%人群掌握了约68%的社会财富，而底层50%的人口所拥有的财富总和往往不足全社会总财富的5%。</p>
+    <div class="highlight-box">
+        <p><strong>这并非中国独有的问题。</strong>世界上任何存在大规模行政垄断和国有资本的国家，都面临同样的结构性困境：当公共财富的归属权与私人权力高度重叠时，"公有制"便在操作层面异化为"官有制"，而全体国民作为终极所有者的权益，始终缺少一个制度化的实现通道。</p>
+        <span class="en">This is not a problem unique to China. Any country with large-scale administrative monopolies and state-owned capital faces the same structural dilemma.</span>
+    </div>
+    <p>正是在对这一问题的追问中，本方案的核心逻辑得以浮现：如果存在一个制度安排，能够将垄断行业所产生的、在道德归属上本就属于全体国民的超额利润，以独立立法、完整剥离、物理隔绝、永恒锁定的方式注入一个超越行政控制的基金，那么困扰中国及其他类似国家的财富分配死结，便有可能在源头上被解开。</p>
+    <p>中国因此成为本方案最早的思想实验室。但这些设计一旦完成，便发现它们同样适用于任何存在类似权力结构的国家。本方案从这个本土剖面出发，却最终指向了超越任何一个国家边界的人类共同命题。</p>
+
+    <!-- ===== 六重断裂 ===== -->
+    <h2>问题的起点：六重断裂</h2>
+
+    <h4>断裂一：所有制与获得感之间的断裂</h4>
+    <p>中国拥有全球规模最大的垄断性国有资产——中国烟草年税利超1.6万亿元，石油、电力、电信等行业的垄断利润同样巨大。这些财富本质上来源于全民所有的资源和市场垄断特权，理应属于全体国民。然而，在现行体制下，这些巨额利润大多直接进入国家财政，用于年度预算支出。普通民众对此缺乏直观感受，"国有资产全民所有"更多停留在概念层面。</p>
+
+    <h4>断裂二：体制内与体制外的断裂</h4>
+    <p>公务员有年金、有稳定预期、有体制庇护。私企员工、灵活就业者、失业人员没有。社会面临"未富先老"的养老焦虑、体制内外福利鸿沟引发的公平焦虑。这不是基尼系数问题。这是"你和我不在一个系统里"的深层撕裂。</p>
+
+    <h4>断裂三：中国与世界的信任断裂</h4>
+    <p>"脱钩"成为全球叙事。外部世界不相信中国的资本可以自由进出、不受任意干预。中国也不完全信任外部规则。双方在猜疑中空转。</p>
+
+    <h4>断裂四：时间维度的断裂——决策短视</h4>
+    <p>任何体制下的领导层，都有"短期政绩偏好"——五年、十年已经算长期，三十年？那是下几任的事。这不是道德问题，是激励结构问题。</p>
+
+    <h4>断裂五：代际断裂——年轻人不买了</h4>
+    <p>年轻人看到"养老金缺口""延迟退休""35岁危机"，理性计算后得出一个结论——"我活不到领钱那天，或者领的钱根本不值钱。"4000多万断缴，不是因为他们笨，是因为他们太理性了。</p>
+
+    <h4>断裂六：人性短视的普遍性</h4>
+    <p>这不是中国的问题。这是全人类的问题。所有人——基金经理、官员、普通百姓——都有"现时偏好"：眼前的利益比未来的利益更重。这是进化写进大脑的代码。</p>
+
+    <div class="highlight-box">
+        <p><strong>三重断裂 + 两个时间维度断裂 + 一个人性底层断裂 = 制度设计必须面对的完整问题集。</strong></p>
+        <span class="en">Three institutional ruptures + two time-dimensional ruptures + one fundamental human rupture = the complete set of problems that institutional design must address.</span>
+    </div>
+
+    <!-- ===== 第一章 ===== -->
+    <h2>第一章 · 总纲</h2>
+
+    <h3>1.1 核心洞见：财富本不稀缺</h3>
+    <p>人类社会一切冲突的底层假设，是"生存资源天然稀缺，所以必须争夺"。但这个假设本身需要被审视。</p>
+    <p>一个现代国家积累的公共财富——包括但不限于土地增值收益、自然资源租金、货币发行盈余、国有企业利润、行政垄断行业的超额回报——其总量早已远超保障全体国民基本生存所需的水平。</p>
+    <div class="highlight-box">
+        <p><strong>真正的匮乏不是总量不足，而是这些公共财富的归属权，在制度设计之初就被极少数人所垄断。</strong></p>
+        <span class="en">The real scarcity is not a lack of total volume, but the monopolization of ownership of this public wealth by a very few individuals at the very inception of institutional design.</span>
+    </div>
+    <p>本方案的核心洞见是：如果在源头将这部分本应属于全体国民的公共财富，通过不可逆的制度设计归还给所有人，稀缺的幻象就会从根上消解。当每个人的基本生存不再依赖于对某个雇主、某个机构、某个恩主的依附，人类社会最底层的"争抢"动机就会被系统性削弱。</p>
+    <p style="font-style:italic; color:#aaba8a;">这不是一个关于"如何让社会更公平"的方案，这是一个关于"如何让文明跳出死循环"的方案。</p>
+
+    <h3>1.2 方案定义</h3>
+    <p>人类财富基金，其最终形态为地球人类基本生存底线信托。</p>
+    <p>它不属于任何国家、任何机构、任何特定群体。它只属于每一个具体的、不可替代的、享有平等受益权的生命体。当一个刚出生的婴儿，无论他出生在战乱之地还是繁华都市，都拥有一个完全平等、不可剥夺的账户时，这个制度才真正超越了国家、民族、意识形态，实现了对"人类"这个概念最彻底的回归。</p>
+    <p>在操作层面，它是一个以各国行政垄断行业超额利润及公共积累为初始资本来源、以单独立法为法律保障、以完整剥离和物理隔绝为治理原则、以初始资金永恒锁定为安全底线、以全球多元资产配置为增值手段、以开放分级账户体系为受益结构、全体受益账户均按出资比例获取收益的永久性制度安排。</p>
+
+    <h3>1.3 方案的根本属性</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">本方案不是</div>
+            <div class="desc">✖ 国有企业改革方案<br>✖ 社会福利制度的扩展或补充<br>✖ 全民基本收入（UBI）的变体<br>✖ 国家主权基金的改良<br>✖ 任何形式的税收再分配</div>
+        </div>
+        <div class="card">
+            <div class="label">本方案是</div>
+            <div class="desc">✔ 一次公共财富所有权的源头归还<br>✔ 一套不可逆的法律制度设计<br>✔ 一个独立于任何政府、政党、家族之外的第四维治理架构</div>
+        </div>
+    </div>
+
+    <!-- ===== 第二章 ===== -->
+    <h2>第二章 · 制度引擎</h2>
+
+    <h3>2.1 为什么必须是垄断行业利润？</h3>
+    <p>本方案选择的唯一创始资金来源，是国家行政垄断行业的超额利润。这一选择不是出于方便，而是出于道德和法律上的唯一正确性。</p>
+    <div class="highlight-box">
+        <p><strong>垄断利润不属于经营它的机构。</strong></p>
+        <span class="en">Monopolistic profits do not belong to the institutions that operate them.</span>
+    </div>
+    <p>一个行业之所以能产生远超市场竞争水平的超额利润，决定性因素不是它的经营能力，而是国家以全体国民的名义赋予它的排他性权力。全体国民默许了自己的消费选择权被限制，默许了公共资源被特定机构独占——这一系列"默许"，构成了垄断利润的真正来源。</p>
+    <p style="font-weight:600; color:#bace9a;">将垄断利润注入全民基金，不是征收，不是国有化，不是财富再分配。它是归还——归还一笔被长期代持却从未真正交还的公共财富。</p>
+
+    <h3>2.2 规模效应：大到无法忽视</h3>
+    <p>一笔"小钱"的全民分红，在政治上是福利，在经济上是补充，在心理上是恩赐。它无法改变社会契约，无法建立利益共同体，无法阻止争夺的惯性。</p>
+    <p>但垄断行业利润的规模，天然地解决了这个问题。以中国为例，2020年代烟草、石油、电力、通信等主要垄断行业年利润总额约占GDP的5%-8%。将这些利润的相当比例一次性完整剥离并注入基金，所产生的初始资本池，将是一个任何政治力量都无法忽视的数字。</p>
+
+    <h3>2.3 启动机制与资金性质的隐含意义</h3>
+    <p>方案本身不描述启动者。不定义他的身份，不规定他的来源，不预设他的动机。</p>
+    <div class="highlight-box">
+        <p>但资金注入这一行为的本质，是制度设计者必须在逻辑层面清楚认知的：将垄断行业利润注入基金这一行为，不是慷慨的施舍，不是高尚的捐赠，不是前瞻性的投资。它是承认一个被长期掩盖的事实——<strong>这些财富从来不是启动者的。</strong></p>
+        <span class="en">This wealth never belonged to the launcher. It was held in proxy, for a long time, and now is finally being returned to its true owners.</span>
+    </div>
+
+    <!-- ===== 第三章 ===== -->
+    <h2>第三章 · 制度核心</h2>
+
+    <h3>3.1 单独立法</h3>
+    <p>基金必须以宪法性法律的地位设立。其法律位阶高于所有普通法律。修改门槛极高——例如立法机构三分之二以上多数通过，并附带全民公决的最终确认。任何行政首脑，均无权以行政命令的方式修改、冻结或废除基金基本法的任何条款。</p>
+    <div class="highlight-box">
+        <p><strong>宪法性法律的修改门槛之高，足以让任何想要动摇基金独立性的人或集团，必须发动一场全面的宪政危机才可能得逞。这个成本，本身就是最强有力的防御机制。</strong></p>
+        <span class="en">The amendment threshold of constitutional law is extremely high—any attempt at tampering would require triggering a full-scale constitutional crisis.</span>
+    </div>
+
+    <h4>3.1.1 十一条不可逾越的限制</h4>
+    <div class="grid-3">
+        <div class="card">
+            <div class="label">第一条</div>
+            <div class="title">分级锁定，不可提前提取本金</div>
+            <div class="desc">个人级账户锁定至60周岁；机构级账户锁定建议≥20年；国家级账户可自选锁定比例。</div>
+        </div>
+        <div class="card">
+            <div class="label">第二条</div>
+            <div class="title">不可修改核心条款</div>
+            <div class="desc">初始资金类型的永续锁定、受益人资格的不可剥夺性、治理的独立性——三项永不可改。</div>
+        </div>
+        <div class="card">
+            <div class="label">第三条</div>
+            <div class="title">不可单方退出</div>
+            <div class="desc">注入行为不可逆，退出只能通过章程规定的程序，不得以退出为威胁干预治理。</div>
+        </div>
+        <div class="card">
+            <div class="label">第四条</div>
+            <div class="title">不可干预投资</div>
+            <div class="desc">任何国家、机构或个人，不得以任何形式干预基金的投资决策。</div>
+        </div>
+        <div class="card">
+            <div class="label">第五条</div>
+            <div class="title">不可截留分配</div>
+            <div class="desc">分红分配不经过任何行政中间环节，直达受益人个人数字账户。</div>
+        </div>
+        <div class="card">
+            <div class="label">第六条</div>
+            <div class="title">不可剥夺受益权</div>
+            <div class="desc">受益权不得因政治立场、宗教信仰、国籍变更、刑事犯罪而被剥夺。</div>
+        </div>
+        <div class="card">
+            <div class="label">第七条</div>
+            <div class="title">不可转让受益权</div>
+            <div class="desc">任何层级的受益权不得在二级市场转让、抵押、质押或交易。</div>
+        </div>
+        <div class="card">
+            <div class="label">第八条</div>
+            <div class="title">不可胁迫流转</div>
+            <div class="desc">任何通过胁迫、欺诈影响受益人安排的行为，一经查实，受益权终止。</div>
+        </div>
+        <div class="card">
+            <div class="label">第九条</div>
+            <div class="title">不可豁免制裁合规</div>
+            <div class="desc">遵守联合国安理会制裁决议，但不接受任何单边制裁作为冻结依据。</div>
+        </div>
+        <div class="card">
+            <div class="label">第十条</div>
+            <div class="title">不可关闭通道</div>
+            <div class="desc">无论多少个国家消亡，分配系统继续运行。个人账户自动转为流民账户。</div>
+        </div>
+        <div class="card">
+            <div class="label">第十一条</div>
+            <div class="title">不可解散（除非全民公决）</div>
+            <div class="desc">解散必须经过全民公决以绝对多数票通过，剩余资产按同等比例分配给全体受益人。</div>
+        </div>
+    </div>
+
+    <h3>3.2 法律铁索：锁死三条底线</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">底线一</div>
+            <div class="title">立法禁止任何政府机关以任何形式抽离基金本金与收益</div>
+            <div class="desc">从成立之日起，即从法律上与政府财政彻底切割。任何突破行为均属违宪。</div>
+        </div>
+        <div class="card">
+            <div class="label">底线二</div>
+            <div class="title">立法保障每一个公民的跟投权、查询权与赎回权</div>
+            <div class="desc">运营信息对全体国民完全公开、实时可查。账户所有权、收益分配权、退休后赎回权均受法律严格保护。</div>
+        </div>
+        <div class="card" style="grid-column:1/-1;">
+            <div class="label">底线三</div>
+            <div class="title">立法保障境内外投资者税负绝对平等</div>
+            <div class="desc">无差别适用于中国内地居民、香港居民及全球所有合规境外投资者。免税是这笔资产的天然属性。</div>
+        </div>
+    </div>
+
+    <h3>3.3 完整剥离：三重剥离</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">第一重</div>
+            <div class="title">财产权的完整剥离</div>
+            <div class="desc">资产所有权在法律上完全转移至基金法人名下。原所有者不再保留任何追索权、受益权、抵押权。</div>
+        </div>
+        <div class="card">
+            <div class="label">第二重</div>
+            <div class="title">人事权的完整剥离</div>
+            <div class="desc">董事会成员不得由在职或离任的公职人员担任或提名。由完全独立的提名委员会负责选。</div>
+        </div>
+        <div class="card" style="grid-column:1/-1;">
+            <div class="label">第三重</div>
+            <div class="title">受益权的完整剥离并固化</div>
+            <div class="desc">受益人的范围和按出资比例获取收益的规则，必须写入基金基本法的正文。任何受益人不得因政治立场、宗教信仰、刑事犯罪而被剥夺受益权。</div>
+        </div>
+    </div>
+
+    <h3>3.4 物理隔绝：三层次隔离</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">第一层</div>
+            <div class="title">资本与母体的物理隔绝</div>
+            <div class="desc">法定注册地选在国际金融中心，资产由全球顶级独立托管银行分散托管。创始国政府无冻结权、查询权、划拨权。</div>
+        </div>
+        <div class="card">
+            <div class="label">第二层</div>
+            <div class="title">治理与权力的物理隔绝</div>
+            <div class="desc">基金不受创始国任何机构或个人的指令约束。信息披露的唯一对象是受益人和注册地的法定监管机构。</div>
+        </div>
+        <div class="card" style="grid-column:1/-1;">
+            <div class="label">第三层</div>
+            <div class="title">分配与身份的物理隔绝</div>
+            <div class="desc">受益权分配不经过任何行政中间环节。分红自动到账，不经由任何政府部门审批、拨付或代发。受益资格与政治态度完全无关。</div>
+        </div>
+    </div>
+
+    <h3>3.5 三条原则的协同效应</h3>
+    <div class="highlight-box">
+        <p><strong>单独立法 + 完整剥离 + 物理隔绝 = 一道三道锁的门</strong></p>
+        <span class="en">Independent legislation + Complete divestiture + Physical isolation = a door with three locks.</span>
+        <p style="margin-top:6px;">单独立法：让攻击基金的合法性代价极高——需要修宪级力量。<br>完整剥离：让攻击基金的接口不存在——没有后门，没有代持。<br>物理隔绝：让攻击基金的物理手段失效——资产在国外，法律在国外，治理在国外。</p>
+        <p style="margin-top:6px; font-weight:600; color:#bace9a;">三道锁全部被突破的前提是：国内政治力量、国际法律体系、全球金融秩序同时崩塌。这个级别的灾难，已经不是本方案需要防范的范畴。</p>
+    </div>
+
+    <h3>3.6 制度基石：香港的三重不可替代性</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">货币双轨</div>
+            <div class="title">CNY与CNH的防火墙</div>
+            <div class="desc">香港离岸人民币（CNH）完全自由兑换，不受内地外汇管理局的直接干预。基金进行全球资产配置，必须依托资金可以自由进出的港口，香港是唯一的选择。</div>
+        </div>
+        <div class="card">
+            <div class="label">法制双轨</div>
+            <div class="title">普通法与国际信任</div>
+            <div class="desc">香港是中国唯一实行普通法的司法管辖区。判例法传统、司法独立、财产权神圣不可侵犯，与全球主要金融中心共享同一套法律语言。</div>
+        </div>
+        <div class="card" style="grid-column:1/-1;">
+            <div class="label">战略双轨</div>
+            <div class="title">国家的前哨与文明的保险单</div>
+            <div class="desc">香港不仅是金融中心，更是中国嵌入全球体系最深的一枚棋子。在极端的地缘政治冲突或封锁威胁下，一个与全球深度捆绑、拥有不可替代金融价值的香港，就是整个中国的"文明保险单"。</div>
+        </div>
+    </div>
+
+    <!-- ===== 第四章 ===== -->
+    <h2>第四章 · 运行逻辑</h2>
+
+    <h3>4.1 启动期的操作程序</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">第一步</div>
+            <div class="title">立法准备</div>
+            <div class="desc">独立委员会起草基金基本法草案，国际法律审查，全球公开征求意见。</div>
+        </div>
+        <div class="card">
+            <div class="label">第二步</div>
+            <div class="title">资产确认与剥离</div>
+            <div class="desc">独立国际审计机构全面审计，资产评估报告和所有权转移方案，资产转移至基金法人名下。</div>
+        </div>
+        <div class="card">
+            <div class="label">第三步</div>
+            <div class="title">治理结构搭建</div>
+            <div class="desc">独立遴选委员会组建，全球招聘董事会成员和核心管理团队，基金经理人、托管银行全部就位。</div>
+        </div>
+        <div class="card">
+            <div class="label">第四步</div>
+            <div class="title">受益人系统建立</div>
+            <div class="desc">国民数字身份系统与基金分配系统对接，首批受益人名单登记，分红发放机制测试完成。</div>
+        </div>
+        <div class="card" style="grid-column:1/-1;">
+            <div class="label">第五步</div>
+            <div class="title">正式运行与启动分红</div>
+            <div class="desc">基金基本法生效，基金法人正式成立，资产注入托管账户，正式公告全体国民，宣布首次分红日期和金额。</div>
+        </div>
+    </div>
+
+    <h3>4.2 持续运行期的治理结构</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">最高权力机构</div>
+            <div class="title">受益人大会</div>
+            <div class="desc">全体受益人以一定比例或形式参与重大事项表决（基金章程修改、解散、监察人任免）。</div>
+        </div>
+        <div class="card">
+            <div class="label">决策机构</div>
+            <div class="title">董事会/理事会</div>
+            <div class="desc">由全球招聘的独立专业人士组成，负责战略资产配置、风险管理框架、核心管理层任免。</div>
+        </div>
+        <div class="card">
+            <div class="label">执行机构</div>
+            <div class="title">基金管理公司</div>
+            <div class="desc">可由基金全资设立，也可委托全球顶级外部资产管理人，负责日常投资执行。</div>
+        </div>
+        <div class="card">
+            <div class="label">监督机构</div>
+            <div class="title">独立监察人</div>
+            <div class="desc">由退休国际法官、全球顶级审计机构、国际组织代表组成，每年独立审计，报告向全体受益人公开。</div>
+        </div>
+        <div class="card" style="grid-column:1/-1;">
+            <div class="label">分配系统</div>
+            <div class="title">自动执行层</div>
+            <div class="desc">基于区块链或同等安全级别的数字账本，分红算法嵌入系统，不受人为干预，按出资比例自动计算并执行发放。</div>
+        </div>
+    </div>
+
+    <h3>4.3 分级账户体系</h3>
+
+    <h4>账户类型总览</h4>
+    <div class="account-grid">
+        <div class="account-card">
+            <div class="name">国民基金类型</div>
+            <div class="detail">全体国民共有 · 永久锁定</div>
+            <div class="badge">全民基本生存底线保障</div>
+        </div>
+        <div class="account-card">
+            <div class="name">国家级投资账户</div>
+            <div class="detail">国家财政 · 锁定期≥10年</div>
+            <div class="badge">主权投资、平准基金</div>
+        </div>
+        <div class="account-card">
+            <div class="name">社保账户</div>
+            <div class="detail">社保体系 · 永久锁定</div>
+            <div class="badge">养老、医疗等社保支出</div>
+        </div>
+        <div class="account-card">
+            <div class="name">机构账户</div>
+            <div class="detail">合规机构 · 锁定期≥5年</div>
+            <div class="badge">企业/机构长期投资</div>
+        </div>
+        <div class="account-card">
+            <div class="name">个人账户</div>
+            <div class="detail">个人 · 锁定至60周岁</div>
+            <div class="badge">个人养老储备</div>
+        </div>
+        <div class="account-card">
+            <div class="name">家族账户</div>
+            <div class="detail">家族共同体 · 可永久</div>
+            <div class="badge">家族互助、教育、传承</div>
+        </div>
+        <div class="account-card">
+            <div class="name">地方政府账户</div>
+            <div class="detail">地方政府 · 锁定期≥5年</div>
+            <div class="badge">地方公共支出</div>
+        </div>
+        <div class="account-card">
+            <div class="name">慈善账户</div>
+            <div class="detail">慈善组织 · 锁定期≥10年</div>
+            <div class="badge">公益事业</div>
+        </div>
+        <div class="account-card">
+            <div class="name">国际组织账户</div>
+            <div class="detail">国际组织 · 可配置</div>
+            <div class="badge">全球公共品融资</div>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <p><strong>核心原则：按出资比例分配</strong> —— 所有账户层级的收益分配，统一按各自注入资本在总资本中的比例执行。规则写入基金章程，由算法自动计算、自动发放，任何人无自由裁量权。</p>
+        <span class="en">Core principle: Distribution in proportion to contributed capital. Automatically calculated and distributed by algorithms, with no human discretionary power.</span>
+    </div>
+
+    <h4>个人账户：分红与本金的时间规则</h4>
+    <p>每一位国民自出生之日起，即在基金中拥有一个个人账户。该账户自设立之日起，每年按其所对应资本比例获取的分红，自动发放至受益人数字账户。分红不受任何年龄限制，出生即领，终身享有。</p>
+    <p>本金在受益人年满60周岁前处于锁定状态。60岁后可自主决定继续留存、分批提取或依遗嘱安排。</p>
+
+    <h4>十年递延领取规则</h4>
+    <ul style="color:#c6ceba; padding-left:20px; margin-bottom:14px;">
+        <li>即时领取：年度分红的70%，按季度或月度直接发放，用于日常生存保障</li>
+        <li>递延领取：年度分红的30%，进入"递延账户"，继续投资增值，满10年后方可提取</li>
+        <li>受益人年满60周岁后，可申请提前支取全部递延账户余额；确诊绝症时也可申请提前支取</li>
+    </ul>
+
+    <h3>4.4 投资原则</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">全球配置</div>
+            <div class="desc">资产类别和地域高度分散，不以任何单一国家或地区为投资重心。</div>
+        </div>
+        <div class="card">
+            <div class="label">多元分散</div>
+            <div class="desc">涵盖公开市场股票、固定收益、私募股权、基础设施、不动产、自然资源、对冲基金等全部主要资产类别。</div>
+        </div>
+        <div class="card">
+            <div class="label">长期主义</div>
+            <div class="desc">以跨代际的时间维度进行资产配置，不受短期市场波动干扰。</div>
+        </div>
+        <div class="card">
+            <div class="label">非政治化</div>
+            <div class="desc">投资决策的唯一准则是经风险调整后的长期回报最大化，不服务于任何外交政策、地缘战略或意识形态。</div>
+        </div>
+        <div class="card">
+            <div class="label">可持续性</div>
+            <div class="desc">在投资决策中纳入环境、社会和治理（ESG）因素。</div>
+        </div>
+        <div class="card">
+            <div class="label">流动性管理</div>
+            <div class="desc">保持年度分红需求所必需的流动性储备，其余资产按长期策略配置。</div>
+        </div>
+    </div>
+
+    <h4>操盘手的限制</h4>
+    <ul style="color:#c6ceba; padding-left:20px; margin-bottom:14px;">
+        <li><strong>薪酬递延机制：</strong>年度奖金的50%以上以基金份额形式递延支付，递延期限不低于5年</li>
+        <li><strong>个人跟投义务：</strong>必须将其个人可投资资产的10%-20%以相同条件注入基金</li>
+        <li><strong>禁止对冲：</strong>操盘手及其直系亲属不得对基金的持仓进行任何形式的对冲交易</li>
+        <li><strong>离职静默期：</strong>离职后2年内不得加入直接竞争的资产管理机构</li>
+        <li><strong>终身追责条款：</strong>若存在欺诈、内幕交易等行为，基金有权终身追索其全部薪酬及投资收益</li>
+    </ul>
+
+    <h4>一篮子货币权重的科学锚定</h4>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">第一锚</div>
+            <div class="title">BIS有效汇率指数篮子</div>
+            <div class="desc">采用"双重加权法"：双边贸易权重 + 第三方市场竞争权重。BIS权重构成本基金货币篮子的核心标杆。</div>
+        </div>
+        <div class="card">
+            <div class="label">第二锚</div>
+            <div class="title">IMF的SDR货币篮子</div>
+            <div class="desc">基于出口标准和可自由使用标准。SDR权重是基金资产安全港属性的直接参考。</div>
+        </div>
+        <div class="card">
+            <div class="label">第三锚</div>
+            <div class="title">CLS和SWIFT的市场交易权重</div>
+            <div class="desc">外汇交易结算数据和全球支付货币份额数据，反映了市场"用脚投票"的结果。</div>
+        </div>
+        <div class="card">
+            <div class="label">第四锚</div>
+            <div class="title">经济与地缘复合指标</div>
+            <div class="desc">包括GDP全球占比、全球大宗商品计价权、全球储备货币份额等。</div>
+        </div>
+    </div>
+
+    <h3>4.5 分级锁定与全球金融稳定</h3>
+    <div class="highlight-box">
+        <p>传统主权基金的脆弱性在于：其资本可能被母国政府以政策目的为由突击提取。本基金通过分级锁定制，从根本上消除了这一风险。</p>
+        <span class="en">The ultimate effect of this design is: the global market can fully trust that this fund will never become a "sudden seller."</span>
+        <p style="margin-top:6px;">国民基金类型：永久锁定<br>国家级投资账户：自设锁定期（≥10年），期满后分批提取<br>机构级账户：锁定期（≥20年），期满后分批解锁<br>个人级账户：锁定至60周岁</p>
+    </div>
+
+    <h3>4.6 十一道防火墙</h3>
+    <div class="firewall-list">
+        <div class="firewall-item"><strong>第一道</strong> 矩阵式独立账户体系，物理级隔离所有风险<br><span class="en">Matrix independent account system, physically isolating all risks</span></div>
+        <div class="firewall-item"><strong>第二道</strong> 每组强制对冲配置——任何账户组必须配置对冲头寸，强制实现风险中性</div>
+        <div class="firewall-item"><strong>第三道</strong> 业绩达标十年递延发放——操盘手奖金50%以上递延5年</div>
+        <div class="firewall-item"><strong>第四道</strong> 一篮子货币比例配比——锚定BIS、IMF、CLS/SWIFT权重</div>
+        <div class="firewall-item"><strong>第五道</strong> 大类资产比例配比——全球股票60%-70%、债券20%-30%、现金1%-5%、对冲工具5%-10%</div>
+        <div class="firewall-item"><strong>第六道</strong> 法定费率上限——总管理费率依法锁定在年化1%以内</div>
+        <div class="firewall-item"><strong>第七道</strong> 单一国家市场权重约束——任一国家持仓不得超过基金净值的20%</div>
+        <div class="firewall-item"><strong>第八道</strong> 投资标的硬性约束——债券评级不低于A级；股票满足高股息/高成长/高流通三选一</div>
+        <div class="firewall-item"><strong>第九道</strong> 保留5%天赋仓位——每个账户组可单列不超过5%用于投资高潜力标的</div>
+        <div class="firewall-item"><strong>第十道</strong> 对冲账户与股票账户强制分离——物理隔离、法律独立</div>
+        <div class="firewall-item" style="grid-column:1/-1;"><strong>第十一道</strong> 黄金与比特币等零息资产配置约束——仅限在对冲账户和商品账户内配置，合计≤2%</div>
+    </div>
+
+    <!-- ===== 第五章 ===== -->
+    <h2>第五章 · 反脆弱性</h2>
+
+    <h3>5.0 捆绑逻辑：本方案的核心动力机制</h3>
+    <div class="highlight-box">
+        <p>本基金不是通过"道德感召"或"国际协议"来推动制度扩散。它的扩散动力来自于一个更基础的机制：<strong>利益捆绑</strong>。</p>
+        <span class="en">This fund does not rely on "moral appeal" or "international agreements" to drive its diffusion. Its driving force comes from a more fundamental mechanism: interest bundling.</span>
+        <p style="margin-top:6px;">当一国国民开始领取不可剥夺的年度分红后，他们的个人利益便与基金的永续存在深度绑定。任何试图破坏基金的力量，都将面对一个由数亿"个人利益守护者"组成的无形防线。</p>
+    </div>
+
+    <h3>5.2 全人类尺度的推演</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">第一阶段</div>
+            <div class="title">单点启动</div>
+            <div class="desc">第一个启动国成为全球样本。</div>
+        </div>
+        <div class="card">
+            <div class="label">第二阶段</div>
+            <div class="title">无法忽视的存在</div>
+            <div class="desc">运行五年、十年后，数据会说话。</div>
+        </div>
+        <div class="card">
+            <div class="label">第三阶段</div>
+            <div class="title">扩散的动力学</div>
+            <div class="desc">第二波启动国出现，阻力比第一国小得多。</div>
+        </div>
+        <div class="card">
+            <div class="label">第四阶段</div>
+            <div class="title">全球公共物品的诞生</div>
+            <div class="desc">主权永续基金成为新的全球资产类别。</div>
+        </div>
+    </div>
+
+    <h4>全球捆绑七步走</h4>
+    <ol style="color:#c6ceba; padding-left:20px; margin-bottom:14px;">
+        <li><strong>投资世界，购买和平</strong>——中国的利益不再是地图上的疆域，而是全球资产网络</li>
+        <li><strong>时间越长，复利越厚，地位越稳</strong>——三十年后，基金大而不倒</li>
+        <li><strong>大而不倒之时，便是举国同庆之日</strong>——全世界都在为中国人的养老账户打工</li>
+        <li><strong>向世界开放，规则相同</strong>——任何境外个人均可自愿开设账户，锁仓至退休</li>
+        <li><strong>线下确权，双城引流</strong>——仅限香港和内地线下办理，拉动在地旅游经济</li>
+        <li><strong>免税账户，全球避风港</strong>——香港成为全球唯一合法的完全免税退休资产储存地</li>
+        <li><strong>永续传承，家族资产</strong>——账户永续，资产代代相传</li>
+    </ol>
+
+    <h3>5.3 终极护盾</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">第一重</div>
+            <div class="title">养老金利益的直接捆绑</div>
+            <div class="desc">推动基金，就是动我的养老钱。</div>
+        </div>
+        <div class="card">
+            <div class="label">第二重</div>
+            <div class="title">全球资本网络的相互锁定</div>
+            <div class="desc">推动基金，就是引爆自家市场。</div>
+        </div>
+        <div class="card">
+            <div class="label">第三重</div>
+            <div class="title">人类共同体意识的底层共鸣</div>
+            <div class="desc">推动基金，就是摧毁"普通人也能积累"的文明希望。</div>
+        </div>
+        <div class="card">
+            <div class="label">第四重</div>
+            <div class="title">对当政者的终极闭环</div>
+            <div class="desc">放弃控制权，获得的是任何未来政府都无法摧毁的制度遗产。</div>
+        </div>
+    </div>
+
+    <h3>5.4-5.11 多重免疫机制</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">对内部篡改</div>
+            <div class="desc">高修改门槛（绝对多数+公决）、不可修改条款、法律屏障、物理不可达、信息透明、利益绑定</div>
+        </div>
+        <div class="card">
+            <div class="label">对暴力夺取</div>
+            <div class="desc">士兵不会跟随（家属也领取分红）、财富无法掠夺（资产在地球另一端）、合法性无法建立</div>
+        </div>
+        <div class="card">
+            <div class="label">对外部政治干预</div>
+            <div class="desc">法律属地保护、资产分散不可追溯、受益人分散</div>
+        </div>
+        <div class="card">
+            <div class="label">对外部资本渗透</div>
+            <div class="desc">治理绝缘溢价、独立性作为核心品牌、触碰即熔断</div>
+        </div>
+        <div class="card">
+            <div class="label">对时间侵蚀</div>
+            <div class="desc">不可修改条款固化骨架、全球受托人网络、受益人的永恒警觉</div>
+        </div>
+        <div class="card">
+            <div class="label">对主权消亡</div>
+            <div class="desc">制度不灭、个人账户自动转为流民账户、通道不灭</div>
+        </div>
+        <div class="card" style="grid-column:1/-1;">
+            <div class="label">对司法管辖冲突</div>
+            <div class="desc">个人级账户：受益权与财产权分离；机构级账户：受益权与法人风险隔离；国家级账户：主权豁免原则（联合国制裁除外）</div>
+        </div>
+    </div>
+
+    <h3>5.11 制度的善意后门</h3>
+    <div class="highlight-box">
+        <p>本方案的全部设计，都指向一个不可回避的前提：制度的启动，需要一个决定。方案本身不描述做出这个决定的人。但制度在设计中，留有一个不言自明的入口——<strong>一个善意的后门</strong>。</p>
+        <span class="en">The entire design of this plan points to an unavoidable premise: the launch of the institution requires a decision. The plan itself does not describe the person who makes this decision. But the institution, in its design, leaves a self-evident entry point—a good faith backdoor.</span>
+        <p style="margin-top:6px;">任何掌控着足以启动初始资金规模的人或群体，如果从根本上明白了这笔财富不属于自己这一事实，并决定用不可逆的方式将其归还，本方案的整套制度设计，就是为他准备的。</p>
+    </div>
+
+    <!-- ===== 第六章 ===== -->
+    <h2>第六章 · 历史坐标中的位置</h2>
+
+    <h3>6.1 与既有制度的比较</h3>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>制度模式</th>
+                    <th>资本来源</th>
+                    <th>所有权归属</th>
+                    <th>治理模式</th>
+                    <th>核心缺陷</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>传统公有制</strong></td>
+                    <td>全民（名义）</td>
+                    <td>实际归行政机构</td>
+                    <td>官僚控制</td>
+                    <td>公有沦为官有</td>
+                </tr>
+                <tr>
+                    <td><strong>北欧福利国家</strong></td>
+                    <td>高税收</td>
+                    <td>国家议会主导</td>
+                    <td>议会主导</td>
+                    <td>人口老龄化下财政不可持续</td>
+                </tr>
+                <tr>
+                    <td><strong>资源型主权基金</strong></td>
+                    <td>单一资源收入</td>
+                    <td>国家政府主导</td>
+                    <td>政府主导</td>
+                    <td>最终受益人模糊</td>
+                </tr>
+                <tr>
+                    <td><strong>淡马锡模式</strong></td>
+                    <td>国企资产</td>
+                    <td>国家独资</td>
+                    <td>强依赖特定环境</td>
+                    <td>无法彻底切割政治影响</td>
+                </tr>
+                <tr>
+                    <td><strong>阿拉斯加永久基金</strong></td>
+                    <td>石油收入</td>
+                    <td>州政府</td>
+                    <td>州政府监督</td>
+                    <td>规模不足以改变社会契约</td>
+                </tr>
+                <tr>
+                    <td><strong>UBI提案</strong></td>
+                    <td>征税/印钞</td>
+                    <td>无独立资产</td>
+                    <td>政府预算</td>
+                    <td>钱从哪来无解</td>
+                </tr>
+                <tr style="border-top:2px solid #8aaa6a;">
+                    <td style="color:#bace9a; font-weight:700;">本方案</td>
+                    <td style="color:#bace9a;">垄断行业利润</td>
+                    <td style="color:#bace9a;">独立法人，全体受益人按出资比例共有</td>
+                    <td style="color:#bace9a;">单独立法+完整剥离+物理隔绝+永恒锁定</td>
+                    <td style="color:#bace9a;">需要第一个启动决定</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>6.2 本方案在人类制度史上的独特性</h3>
+    <div class="highlight-box">
+        <p>人类历史上所有关于公共财富分配的方案，可以分为两类：一类是"从下往上要"（革命、罢工、征税），一类是"从上往下给"（福利、慈善、公益）。</p>
+        <span class="en">All plans in human history concerning the distribution of public wealth can be divided into two categories: "demanding from below" and "giving from above."</span>
+        <p style="margin-top:6px;"><strong>本方案不属于这两类中的任何一类。</strong></p>
+        <p>它不是"从下往上要"，因为它的启动不需要任何人的斗争。<br>它不是"从上往下给"，因为启动人不是在给予，而是在承认一个早已存在的事实——这笔财富不是他的。</p>
+        <p style="margin-top:6px; font-weight:600; color:#bace9a;">在人类制度史上，本方案所做的事情是罕见的：它在一个绝对权力的框架内，设计了一套绝对权力的自我否定机制。</p>
+    </div>
+
+    <h3>6.3 启动的无条件性</h3>
+    <p>本方案的启动条件被精简到了最低限度：不需要革命，不需要修宪，不需要议会批准，不需要任何形式的共识。需要的只是一个决定。</p>
+
+    <h3>6.4 五大战略核弹头</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">核弹头一</div>
+            <div class="title">人民币权重的真实抬升</div>
+            <div class="desc">当全球数亿人为了投资这支基金而需要人民币时，人民币不是被"推"出去的，是被"拉"出去的。</div>
+        </div>
+        <div class="card">
+            <div class="label">核弹头二</div>
+            <div class="title">百姓复利的真正含义</div>
+            <div class="desc">普通人获得与主权财富基金同等的复利获取权。一个外卖骑手每月存200块，三十年后可能超过一个从不投资的中产。</div>
+        </div>
+        <div class="card">
+            <div class="label">核弹头三</div>
+            <div class="title">领导层的长期主义</div>
+            <div class="desc">当基金成为数亿国民的养老金底仓，任何短视行为都将导致数亿人账户的直接缩水。制度让领导层的利益与全民的长期利益绑定。</div>
+        </div>
+        <div class="card">
+            <div class="label">核弹头四</div>
+            <div class="title">全球人才吸引</div>
+            <div class="desc">用14亿人的账户作为吸引全球人才的最强广告。不是"优惠政策"，是"生活方式证明"。</div>
+        </div>
+        <div class="card" style="grid-column:1/-1;">
+            <div class="label">核弹头五</div>
+            <div class="title">触碰禁忌</div>
+            <div class="desc">你不需要争论"国有资产属不属于人民"——你直接把它放进人民账户。你不需要争论"政府该不该管钱"——你用法律锁死政府抽离的权利。这不是绕开禁忌，这是把禁忌变成设计的一部分。</div>
+        </div>
+    </div>
+
+    <!-- ===== 第七章 ===== -->
+    <h2>第七章 · 底层认可与文明重构</h2>
+
+    <h3>7.1 底层认可：四个层次的文明重构</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">第一层</div>
+            <div class="title">对自己的认可</div>
+            <div class="desc">当一个失业五年的人，打开手机，看到自己的账户——不是"救济金"，不是"低保"，而是自己作为全民资产所有者的分红——他不是被施舍。他是被承认。</div>
+        </div>
+        <div class="card">
+            <div class="label">第二层</div>
+            <div class="title">对制度的认可</div>
+            <div class="desc">当他发现这个基金不是"政府说了算"，而是受法律铁索锁定、受物理隔绝保护、规则自动执行——他从"我不信"变成了"我信"。</div>
+        </div>
+        <div class="card">
+            <div class="label">第三层</div>
+            <div class="title">对彼此的认可</div>
+            <div class="desc">当体制内的公务员和体制外的外卖员，收到同一笔分红、拥有同一类账户——"我们不是两种人"这个事实，不再需要被宣讲。</div>
+        </div>
+        <div class="card">
+            <div class="label">第四层</div>
+            <div class="title">对文明的认可</div>
+            <div class="desc">当全球数亿人——不同国籍、不同种族、不同信仰——他们的养老钱、他们的传家资产，都托付给一套源于中国的制度设计——"中国"不再是一个地理概念，而是一套让普通人也能积累、也能传承、也能相信未来的规则体系。</div>
+        </div>
+    </div>
+
+    <h3>7.2 领导层为什么应支持：六个"无本万利"</h3>
+    <ul style="color:#c6ceba; padding-left:20px; margin-bottom:14px;">
+        <li>不需要政府花钱：只需要一次游戏规则的改变</li>
+        <li>不需要额外征税：基金收益来自全球资产增值</li>
+        <li>不需要担心失控：十一道防火墙+法律铁索，规则比人可靠</li>
+        <li>不需要担心脱钩：全球数亿人的养老钱与中国捆绑</li>
+        <li>不需要担心民心：每个人都有自己的账户，获得感应生成</li>
+        <li>不需要担心接班人：制度锁死后门，未来的任何人都动不了这笔钱</li>
+    </ul>
+
+    <h3>7.3 与现有制度的衔接与过渡</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">与社保体系</div>
+            <div class="desc">第一支柱（基本养老保险）：保持不变，作为保底<br>第二支柱（企业年金/职业年金）：保持不变<br>第三支柱（个人养老金）：跟投账户可作为升级选项<br>第四支柱（全民分红）：新增，人人有份</div>
+        </div>
+        <div class="card">
+            <div class="label">与财政体系</div>
+            <div class="desc">垄断央企利润不再全部进入财政预算，改为按法定比例注入基金。财政失去垄断红利后，倒逼政府精打细算、透明支出。</div>
+        </div>
+    </div>
+
+    <h4>实施步骤建议</h4>
+    <ol style="color:#c6ceba; padding-left:20px; margin-bottom:14px;">
+        <li><strong>立法先行：</strong>全国人大通过基金法</li>
+        <li><strong>香港注册：</strong>基金在香港注册</li>
+        <li><strong>试点注入：</strong>先以中国烟草一家央企开始</li>
+        <li><strong>分步扩围：</strong>逐步纳入石油、电力、电信等行业</li>
+        <li><strong>全球开放：</strong>向境外投资者开放</li>
+    </ol>
+
+    <h3>7.4 对常见质疑的预设回应</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">质疑</div>
+            <div class="title">"政府不会放弃对这笔钱的控制"</div>
+            <div class="desc">法律铁索不是为了"放弃控制"，而是为了"锁定承诺"。一个不可动摇的承诺，比可变的"控制"更有价值。</div>
+        </div>
+        <div class="card">
+            <div class="label">质疑</div>
+            <div class="title">"香港普通法与中国主权冲突"</div>
+            <div class="desc">恰恰相反。依托香港普通法是为了获得全球信任。法律铁索确保了基金不可侵犯，香港的司法独立是这种不可侵犯性的保障。</div>
+        </div>
+        <div class="card">
+            <div class="label">质疑</div>
+            <div class="title">"境外资本会操纵基金"</div>
+            <div class="desc">基金的投资决策由规则驱动（十一道防火墙），而非操盘手判断。境外投资者的身份不影响规则执行。</div>
+        </div>
+        <div class="card">
+            <div class="label">质疑</div>
+            <div class="title">"这太理想主义了"</div>
+            <div class="desc">挪威主权基金已经运行了近三十年。本方案只是把它的逻辑，结合中国的国有资产和香港的法律优势，做了一个系统化的升级。</div>
+        </div>
+    </div>
+
+    <!-- ===== 第八章 ===== -->
+    <h2>第八章 · 文明的母体与终极召唤</h2>
+
+    <h3>8.1 富兰克林的召唤</h3>
+    <div class="highlight-box">
+        <p>推动方案的那个人——当基金运行一百年、两百年后——他的名字将被刻在每一个账户的扉页上，被全球数亿人每天查看净值时念及。</p>
+        <span class="en">That person who pushes the plan—when the fund has operated for one hundred or two hundred years—their name will be engraved on the title page of every account, mentioned daily by hundreds of millions of people around the world as they check their net worth.</span>
+        <p style="margin-top:6px; font-weight:600; color:#bace9a;">这就是永生的唯一方式：不靠石碑，不靠陵墓，不靠神话。靠的是：让未来每一个活着的普通人，都在你的制度里，找到了属于自己的希望。</p>
+    </div>
+
+    <h3>8.2 文明的母体</h3>
+    <p>当基金运行数十年，积累起数十万亿美元的资产规模，并赢得全人类的共同守护时，它将不再只是一支养老基金。它将演化为人类文明各种核心公共品的最终融资者、标准制定者和守护者。</p>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">低碳与环保</div>
+            <div class="title">全球最大的"绿色央行"</div>
+            <div class="desc">基金将成为全球碳市场最大的做市商和长期投资者。宣布自2050年起逐步剔除不符合碳中和路径的企业。</div>
+        </div>
+        <div class="card">
+            <div class="label">农业与粮食安全</div>
+            <div class="title">永不枯竭的"地球粮仓"</div>
+            <div class="desc">投资耐旱作物、垂直农场、实验室培育蛋白，使粮食生产不再受制于气候和地缘。</div>
+        </div>
+        <div class="card">
+            <div class="label">科技与探索</div>
+            <div class="title">人类终极前沿的"无限合伙人"</div>
+            <div class="desc">基金可以等待五十年、一百年。成为可控核聚变、量子计算、深空探测等超长周期领域最大的资金来源。</div>
+        </div>
+        <div class="card">
+            <div class="label">医疗与生命</div>
+            <div class="title">攻克疾病的终极保障</div>
+            <div class="desc">为罕见病、被忽视的热带病提供永续资金。持有核心药物专利并以成本价向全人类开放授权。</div>
+        </div>
+        <div class="card" style="grid-column:1/-1;">
+            <div class="label">生命与长寿</div>
+            <div class="title">对抗死亡，人类被重新定义</div>
+            <div class="desc">成为衰老生物学、再生医学、基因编辑治疗最大的资助者。当人类普遍活到一百二十岁且保持健康时，"退休"和"工作"的定义将被重写。</div>
+        </div>
+    </div>
+
+    <h3>8.3 不完美的完美</h3>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">第一个裂缝</div>
+            <div class="title">终极紧急响应机制中的人为干预接口</div>
+            <div class="desc">在基金面临前所未有的黑天鹅事件时，需要一群人而非一行代码来做出判断。只留下一个"接口规范"。</div>
+        </div>
+        <div class="card">
+            <div class="label">第二个裂缝</div>
+            <div class="title">核心参数的一次性复审窗口</div>
+            <div class="desc">自基金成立第一百年的那一年，自动开启一个为期12个月的"百年复审窗口"。全球公民可以通过一个极度困难的共识机制，对核心参数进行一次修订。</div>
+        </div>
+    </div>
+    <div class="highlight-box">
+        <p><strong>故意留下漏洞，是因为我们相信后人。</strong></p>
+        <span class="en">Intentionally leaving these loopholes is because we trust future generations.</span>
+    </div>
+
+    <!-- ===== 第九章 ===== -->
+    <h2>第九章 · 结论</h2>
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p>人类社会几千年来最大的悲剧，不是贫穷，不是战争，不是权力的滥用。</p>
+        <p style="font-size:22px; font-weight:700; color:#e2ead4; margin-top:6px;">最大的悲剧，是那些被少数人占有的公共财富，明明可以被归还，却从未被归还。</p>
+        <span class="en">The greatest tragedy in thousands of years of human society is that the public wealth monopolized by the few, which could have been returned, has never been returned.</span>
+    </div>
+    <p>这不是因为技术不可行，不是因为制度不允许，不是因为人性本恶。而是因为那个掌控着公共财富的人，从未从根本上明白——这笔财富不是他的。</p>
+    <p>本方案的全部意义，在于为一个可能到来的"明白"时刻，准备一个完整、自治、不可逆的制度容器。</p>
+
+    <div style="background:#1a201a; border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid #2a322a;">
+        <p style="font-size:17px; color:#e2ead4; font-weight:500; margin-bottom:4px;">在这个容器里：</p>
+        <p style="color:#bace9a; margin-bottom:4px;">• 垄断行业利润——这笔天然属于全民的财富——被永恒锁定</p>
+        <p style="color:#bace9a; margin-bottom:4px;">• 地球上每一个生命——从出生起便成为不可剥夺的受益人</p>
+        <p style="color:#bace9a; margin-bottom:4px;">• 全球资本市场——为全体受益人的生存底线工作</p>
+        <p style="color:#bace9a;">• 权力和财富——被法律和物理的屏障永久性隔开</p>
+    </div>
+
+    <p style="font-weight:600; color:#bace9a; font-size:20px; text-align:center; margin-top:20px;">让地球上最后一个村庄里最贫穷的那个孩子，从他出生的那一刻起，就和这个星球上最富有的人一样，拥有一份谁也不可夺走的生存保障。</p>
+
+    <!-- ===== 附录 ===== -->
+    <h2>附录</h2>
+
+    <h4>附录一：方案的技术要件清单</h4>
+    <div class="grid-2">
+        <div class="card">
+            <div class="label">立法要件</div>
+            <div class="desc">宪法性基本法一部、基金章程一份、注册地法律适配确认书、国际法律审查意见书</div>
+        </div>
+        <div class="card">
+            <div class="label">资产要件</div>
+            <div class="desc">资产评估报告、所有权转移法律文件、全球独立托管协议、初始资金永续锁定法律架构文件</div>
+        </div>
+        <div class="card">
+            <div class="label">治理要件</div>
+            <div class="desc">独立遴选委员会组建方案、董事会章程及成员任命文件、基金管理人委任或设立方案、信息披露和审计标准文件</div>
+        </div>
+        <div class="card">
+            <div class="label">分配要件</div>
+            <div class="desc">国民数字身份系统与基金分配系统对接方案、分红规则算法和自动执行机制、受益人权利保护法律文件</div>
+        </div>
+        <div class="card" style="grid-column:1/-1;">
+            <div class="label">国际要件</div>
+            <div class="desc">基金注册地法律意见书、国际仲裁条款、投资者保护协定适用确认书</div>
+        </div>
+    </div>
+
+    <h4>附录二：数据来源与时效性说明</h4>
+    <p>本方案正文中引用的所有宏观数据，均基于写作时（2020年代）公开可查的国际权威数据源：瑞信/瑞银《全球财富报告》、世界不平等数据库（WID）、世界银行、国际货币基金组织（IMF）、国家金融与发展实验室（NIFD）、国际清算银行（BIS）、国家统计局、国家烟草专卖局。</p>
+    <p>本方案不绑定任何特定年份的数据。在实际启动时，应以独立国际审计机构依据当时最新数据出具的评估报告为准。方案的正确性不依赖于数据的绝对值，而依赖于"存在巨额被垄断的公共财富"这一结构性事实。</p>
+
+    <h4>附录三：资金类型与锁定规则速查表</h4>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>资金类型</th>
+                    <th>锁定规则</th>
+                    <th>收益归属</th>
+                    <th>本金可否提取</th>
+                    <th>移民影响</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>国民基金类型</strong></td><td>永久锁定</td><td>全体国民</td><td>不可提取</td><td>高锁定→高吸引力</td></tr>
+                <tr><td><strong>国家级投资账户</strong></td><td>自设锁定期（≥10年）</td><td>国家财政</td><td>锁定期满后可提取</td><td>低锁定→需公开理由</td></tr>
+                <tr><td><strong>社保账户</strong></td><td>永久锁定</td><td>社保基金</td><td>不可提取</td><td>—</td></tr>
+                <tr><td><strong>机构账户</strong></td><td>可配置（建议≥5年）</td><td>机构本身</td><td>锁定期满后可分批解锁</td><td>—</td></tr>
+                <tr><td><strong>个人账户</strong></td><td>可配置（至多至60周岁）</td><td>个人</td><td>60岁后可提取</td><td>—</td></tr>
+                <tr><td><strong>家族账户</strong></td><td>可配置（可选永久）</td><td>家族内部</td><td>不可提取（可传承）</td><td>—</td></tr>
+                <tr><td><strong>地方政府账户</strong></td><td>可配置（≥5年）</td><td>地方政府</td><td>锁定期满后可提取</td><td>—</td></tr>
+                <tr><td><strong>慈善账户</strong></td><td>可配置（建议≥10年）</td><td>慈善组织</td><td>不可提取</td><td>—</td></tr>
+                <tr><td><strong>国际组织账户</strong></td><td>可配置</td><td>国际组织</td><td>锁定期满后可提取</td><td>—</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== 页脚 ===== -->
+    <div class="footer">
+        全球人类主权基金 · 杨晟琦文明公理系统 · 药方
+        <div class="doi">永久存档：Zenodo DOI: 10.5281/zenodo.20117265</div>
+        <div class="doi" style="margin-top:2px;">体系入口：https://yang-shengqi.github.io/global-human-sovereign-fund/</div>
+        <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
+            所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

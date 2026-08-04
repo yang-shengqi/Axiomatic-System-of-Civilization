@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>确定性社会系统形成的必要条件与阻碍因素 · 杨晟琦文明公理系统</title>
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f1210;
+            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+            color: #d0d6c8;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #171c18;
+            padding: 50px 55px;
+            border-radius: 24px;
+            border: 1px solid #2a322a;
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* ===== 顶部导航 ===== */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 16px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2a322a;
+            font-size: 14px;
+        }
+
+        .top-nav .back {
+            color: #7a8a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+
+        .top-nav .back:hover {
+            color: #aaba8a;
+            border-bottom-color: #aaba8a;
+        }
+
+        .top-nav .badge {
+            color: #5a6a4e;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 封面 ===== */
+        .cover {
+            text-align: center;
+            padding: 30px 0 40px 0;
+            border-bottom: 2px solid #2a322a;
+            margin-bottom: 40px;
+        }
+
+        .cover .label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #7a8a6e;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .cover h1 {
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #e2ead4;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .cover .meta {
+            font-size: 15px;
+            color: #6a7a5e;
+            border-top: 1px solid #2a322a;
+            padding-top: 16px;
+            display: inline-block;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .cover .meta strong {
+            color: #aaba8a;
+            font-weight: 500;
+        }
+
+        .cover .meta .orcid {
+            color: #7a8a6e;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 52px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2a322a;
+            color: #e2ead4;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: #d4dec4;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: #aaba8a;
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: #c6ceba;
+            line-height: 1.9;
+        }
+
+        .highlight-box {
+            background: #1e241e;
+            border-left: 4px solid #8aaa6a;
+            padding: 16px 22px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box strong {
+            color: #bace9a;
+        }
+
+        /* ===== 条件卡片 ===== */
+        .condition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
+        }
+
+        .condition-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            border-top: 3px solid #8aaa6a;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+        }
+
+        .condition-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .condition-card .cond-num {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .condition-card .cond-title {
+            font-weight: 700;
+            font-size: 17px;
+            color: #e2ead4;
+            margin-bottom: 6px;
+        }
+
+        .condition-card .cond-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        .condition-card .cond-note {
+            font-size: 13px;
+            color: #7a8a6e;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #2a322a;
+        }
+
+        /* ===== 阻碍因素卡片 ===== */
+        .obstacle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
+        }
+
+        .obstacle-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            border-top: 3px solid #b89a4a;
+        }
+
+        .obstacle-card .obs-num {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .obstacle-card .obs-title {
+            font-weight: 700;
+            font-size: 17px;
+            color: #e2ead4;
+            margin-bottom: 6px;
+        }
+
+        .obstacle-card .obs-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        /* ===== WJP验证 ===== */
+        .wjp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 16px 0 16px 0;
+        }
+
+        .wjp-item {
+            background: #1e241e;
+            border-radius: 10px;
+            padding: 12px 14px;
+            border: 1px solid #2a322a;
+            text-align: center;
+            font-size: 15px;
+            color: #c6ceba;
+        }
+
+        .wjp-item .flag {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .wjp-item .name {
+            font-weight: 500;
+            color: #e2ead4;
+        }
+
+        /* ===== 验证结论 ===== */
+        .validation-result {
+            background: #1a201a;
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid #2a322a;
+            text-align: center;
+            margin: 12px 0 16px 0;
+        }
+
+        .validation-result .verdict {
+            font-size: 20px;
+            font-weight: 700;
+            color: #bace9a;
+        }
+
+        .validation-result .detail {
+            font-size: 15px;
+            color: #c6ceba;
+            margin-top: 6px;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 2px solid #2a322a;
+            font-size: 14px;
+            color: #5a6a4e;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .footer .doi {
+            color: #7a8a6e;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+            .cover h1 {
+                font-size: 28px;
+            }
+            .condition-grid {
+                grid-template-columns: 1fr;
+            }
+            .obstacle-grid {
+                grid-template-columns: 1fr;
+            }
+            .wjp-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            .top-nav {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 6px;
+            }
+            .container {
+                padding: 16px 10px;
+            }
+            .cover h1 {
+                font-size: 22px;
+            }
+            .wjp-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .wjp-item {
+                padding: 8px 10px;
+                font-size: 13px;
+            }
+            .condition-card {
+                padding: 14px 16px;
+            }
+            .obstacle-card {
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== 顶部导航 ===== -->
+    <div class="top-nav">
+        <a href="index.html" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 诊断模型</span>
+    </div>
+
+    <!-- ===== 封面 ===== -->
+    <div class="cover">
+        <div class="label">✦ 诊断模型 · 实证验证 ✦</div>
+        <h1>确定性社会系统形成的必要条件与阻碍因素</h1>
+        <div class="meta">
+            <strong>杨晟琦</strong> 推演 · 2026年
+            <span class="orcid">ORCID: 0009-0008-3755-8960</span>
+        </div>
+    </div>
+
+    <!-- ===== 核心问题 ===== -->
+    <h2>核心问题</h2>
+    <div class="highlight-box">
+        <p><strong>一个规则高度确定、社会普遍具有安全感的系统，其形成的必要条件与结构性阻碍是什么？</strong></p>
+    </div>
+
+    <!-- ===== 三大必要条件 ===== -->
+    <h2>一、三大必要条件</h2>
+    <p style="color:#7a8a6e; font-size:15px; margin-top:-6px;">须同时满足，互为前提。</p>
+
+    <div class="condition-grid">
+
+        <div class="condition-card">
+            <span class="cond-num">必要条件一</span>
+            <div class="cond-title">规则的不可协商性成为普遍预期</div>
+            <div class="cond-desc">
+                执行层面长期、无例外地按规则行事，形成"找规则"无效的集体记忆，任何破例都会重置积累进程。
+            </div>
+            <div class="cond-note">规则面前无例外</div>
+        </div>
+
+        <div class="condition-card">
+            <span class="cond-num">必要条件二</span>
+            <div class="cond-title">社会信任存量跨越临界点，形成正向循环</div>
+            <div class="cond-desc">
+                系统须单方面撤除部分监控／审批，主动承担被辜负的风险，以释放信任信号；正向累积需代际时间，且依赖不被大面积滥用。
+            </div>
+            <div class="cond-note">信任需要系统先迈出一步</div>
+        </div>
+
+        <div class="condition-card">
+            <span class="cond-num">必要条件三</span>
+            <div class="cond-title">个体安全感从私人网络转向公共系统</div>
+            <div class="cond-desc">
+                养老、医疗、司法、教育等公共系统输出必须足够稳定可靠，使个体无需依赖私人关系作为兜底，且该可靠性需持续数十年证明。
+            </div>
+            <div class="cond-note">公共系统必须比私人关系更可靠</div>
+        </div>
+
+    </div>
+
+    <!-- ===== 两大阻碍因素 ===== -->
+    <h2>二、两大阻碍因素</h2>
+    <p style="color:#7a8a6e; font-size:15px; margin-top:-6px;">锁住上述条件的实现。</p>
+
+    <div class="obstacle-grid">
+
+        <div class="obstacle-card">
+            <span class="obs-num">阻碍因素一</span>
+            <div class="obs-title">超大规模治理复杂度</div>
+            <div class="obs-desc">
+                人口与地理差异导致海量例外情境，基层必须赋予裁量权，从而在事实上破坏规则的不可协商性。
+            </div>
+        </div>
+
+        <div class="obstacle-card">
+            <span class="obs-num">阻碍因素二</span>
+            <div class="obs-title">博弈文化的历史惯性</div>
+            <div class="obs-desc">
+                长期关系型资源分配机制塑造了"找规则不如找人"的理性策略，当前激励机制仍强化博弈有效性，而非规则有效性。
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== 实证验证 ===== -->
+    <h2>三、实证验证</h2>
+    <p style="color:#7a8a6e; font-size:15px; margin-top:-6px;">WJP法治指数前十国家</p>
+
+    <div class="wjp-grid">
+        <div class="wjp-item"><span class="flag">🇩🇰</span><span class="name">丹麦</span></div>
+        <div class="wjp-item"><span class="flag">🇳🇴</span><span class="name">挪威</span></div>
+        <div class="wjp-item"><span class="flag">🇫🇮</span><span class="name">芬兰</span></div>
+        <div class="wjp-item"><span class="flag">🇸🇪</span><span class="name">瑞典</span></div>
+        <div class="wjp-item"><span class="flag">🇳🇿</span><span class="name">新西兰</span></div>
+        <div class="wjp-item"><span class="flag">🇱🇺</span><span class="name">卢森堡</span></div>
+        <div class="wjp-item"><span class="flag">🇩🇪</span><span class="name">德国</span></div>
+        <div class="wjp-item"><span class="flag">🇳🇱</span><span class="name">荷兰</span></div>
+        <div class="wjp-item"><span class="flag">🇮🇸</span><span class="name">冰岛</span></div>
+        <div class="wjp-item"><span class="flag">🇦🇹</span><span class="name">奥地利</span></div>
+    </div>
+
+    <div class="validation-result">
+        <div class="verdict">✅ 该框架与事实完全一致</div>
+        <div class="detail">
+            前十国家同时满足三个必要条件，且不存在两个阻碍因素。<br>
+            （均为中小规模国家，且无博弈文化惯性）
+        </div>
+    </div>
+
+    <!-- ===== 核心结论 ===== -->
+    <h2>四、核心结论</h2>
+
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p><strong>三个必要条件相互锁死，形成闭环，任一条件缺失则整体难以成立。两个阻碍因素从物理规模和历史惯性两个维度锁住该闭环。</strong></p>
+    </div>
+
+    <p style="font-style:italic; color:#7a8a6e; text-align:center; font-size:16px; margin-top:12px;">
+        本文不提供时间预测，只列出条件与矛盾，等待变量变化。
+    </p>
+
+    <!-- ===== 页脚 ===== -->
+    <div class="footer">
+        确定性社会系统形成的必要条件与阻碍因素 · 杨晟琦文明公理系统 · 诊断模型
+        <div class="doi">体系入口：https://yang-shengqi.github.io/global-human-sovereign-fund/</div>
+        <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
+            所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

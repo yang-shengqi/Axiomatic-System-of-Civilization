@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文明等级判断说明书 · 杨晟琦文明公理系统</title>
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f1210;
+            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+            color: #d0d6c8;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #171c18;
+            padding: 50px 55px;
+            border-radius: 24px;
+            border: 1px solid #2a322a;
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* ===== 顶部导航 ===== */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 16px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2a322a;
+            font-size: 14px;
+        }
+
+        .top-nav .back {
+            color: #7a8a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+
+        .top-nav .back:hover {
+            color: #aaba8a;
+            border-bottom-color: #aaba8a;
+        }
+
+        .top-nav .badge {
+            color: #5a6a4e;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 封面 ===== */
+        .cover {
+            text-align: center;
+            padding: 30px 0 40px 0;
+            border-bottom: 2px solid #2a322a;
+            margin-bottom: 40px;
+        }
+
+        .cover .label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #7a8a6e;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .cover h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #e2ead4;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .cover .meta {
+            font-size: 15px;
+            color: #6a7a5e;
+            border-top: 1px solid #2a322a;
+            padding-top: 16px;
+            display: inline-block;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .cover .meta strong {
+            color: #aaba8a;
+            font-weight: 500;
+        }
+
+        .cover .meta .orcid {
+            color: #7a8a6e;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 52px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2a322a;
+            color: #e2ead4;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: #d4dec4;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: #aaba8a;
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: #c6ceba;
+            line-height: 1.9;
+        }
+
+        .highlight-box {
+            background: #1e241e;
+            border-left: 4px solid #8aaa6a;
+            padding: 16px 22px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box strong {
+            color: #bace9a;
+        }
+
+        /* ===== 核心公式 ===== */
+        .formula-box {
+            background: #1a201a;
+            border-radius: 16px;
+            padding: 24px 30px;
+            margin: 18px 0 16px 0;
+            text-align: center;
+            border: 1px solid #2a322a;
+        }
+
+        .formula-box .main {
+            font-size: 26px;
+            font-weight: 700;
+            color: #e2ead4;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+        }
+
+        .formula-box .main .highlight {
+            color: #bace9a;
+        }
+
+        .formula-box .note {
+            font-size: 16px;
+            color: #7a8a6e;
+            margin-top: 8px;
+        }
+
+        /* ===== 元法则卡片 ===== */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
+        }
+
+        .meta-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            border-top: 3px solid #8aaa6a;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+        }
+
+        .meta-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .meta-card .meta-num {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .meta-card .meta-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: #e2ead4;
+            margin-bottom: 6px;
+        }
+
+        .meta-card .meta-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        .meta-card .meta-essence {
+            font-size: 13px;
+            color: #7a8a6e;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #2a322a;
+        }
+
+        /* ===== 等级判定表 ===== */
+        .level-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0 20px 0;
+        }
+
+        .level-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            text-align: center;
+        }
+
+        .level-card .level-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e2ead4;
+        }
+
+        .level-card .level-score {
+            font-size: 15px;
+            color: #7a8a6e;
+            margin: 4px 0;
+        }
+
+        .level-card .level-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.6;
+            margin-top: 6px;
+        }
+
+        .level-card.low {
+            border-top: 3px solid #8a6a4a;
+        }
+
+        .level-card.medium {
+            border-top: 3px solid #b89a4a;
+        }
+
+        .level-card.high {
+            border-top: 3px solid #8aaa6a;
+        }
+
+        /* ===== 评分汇总卡 ===== */
+        .summary-box {
+            background: #1a201a;
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid #2a322a;
+            margin: 16px 0;
+        }
+
+        .summary-box .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid #242c22;
+            font-size: 15px;
+        }
+
+        .summary-box .row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-box .row .label {
+            color: #b6c0aa;
+        }
+
+        .summary-box .row .value {
+            color: #e2ead4;
+            font-weight: 500;
+        }
+
+        .summary-box .row .value.pass {
+            color: #8aaa6a;
+        }
+
+        .summary-box .row .value.fail {
+            color: #b89a4a;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 2px solid #2a322a;
+            font-size: 14px;
+            color: #5a6a4e;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .footer .doi {
+            color: #7a8a6e;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+            .cover h1 {
+                font-size: 28px;
+            }
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+            .level-grid {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            .formula-box .main {
+                font-size: 20px;
+            }
+            .top-nav {
+                font-size: 13px;
+            }
+            .summary-box .row {
+                font-size: 14px;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 6px;
+            }
+            .container {
+                padding: 16px 10px;
+            }
+            .cover h1 {
+                font-size: 22px;
+            }
+            .formula-box .main {
+                font-size: 17px;
+            }
+            .formula-box {
+                padding: 16px 14px;
+            }
+            .meta-card {
+                padding: 14px 16px;
+            }
+            .level-card {
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== 顶部导航 ===== -->
+    <div class="top-nav">
+        <a href="index.html" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 度量工具</span>
+    </div>
+
+    <!-- ===== 封面 ===== -->
+    <div class="cover">
+        <div class="label">✦ 度量工具 · 量化文明 ✦</div>
+        <h1>文明等级判断说明书</h1>
+        <div class="meta">
+            <strong>杨晟琦</strong> 设计 · 2026年7月19日
+            <span class="orcid">ORCID: 0009-0008-3755-8960</span>
+        </div>
+    </div>
+
+    <!-- ===== 序言 ===== -->
+    <p style="font-size:17px; color:#aaba8a; text-align:center; margin-bottom:20px;">
+        在此宣言之前，人类对"文明"的讨论，全数停留在修辞、信仰、口号与相对主义泥潭之中。
+    </p>
+    <p>历史学家说文明是遗迹，政治家说文明是GDP，哲学家说文明是道德。但没有人能给出一个可测量、可验证、可复现的文明定义。这意味着，在漫长的数千年里，"文明"一直是权力的注脚，而非众生的尺度。</p>
+
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p style="font-size:18px; font-weight:700; color:#e2ead4;">2026年7月19日，这一状态被终结。</p>
+    </div>
+
+    <p>由杨晟琦设立的《文明等级判断说明书》，完成了人类历史上第一次对"文明"的数学建模。文明从此不再是形容词，而是一个可计算函数：</p>
+
+    <!-- ===== 核心公式 ===== -->
+    <div class="formula-box">
+        <div class="main">
+            文明指数 =（<span class="highlight">生存与劳动保障</span> + <span class="highlight">劳动价值平等</span> + <span class="highlight">收入分配公平</span> + <span class="highlight">言论与精神自由</span>）× 2.5
+        </div>
+        <div class="note">这是人类文明测量史上的第一把游标卡尺。</div>
+    </div>
+
+    <!-- ===== 三项不可动摇的元法则 ===== -->
+    <h2>三项不可动摇的元法则</h2>
+
+    <div class="meta-grid">
+
+        <div class="meta-card">
+            <span class="meta-num">第一法则</span>
+            <div class="meta-title">基石否决权</div>
+            <div class="meta-desc">
+                文明不以繁荣为前提，而以自由为根基；自由不以放纵为形态，而以规则为边界；规则不以强者为意志，而以三公为准绳。
+            </div>
+            <div class="meta-essence">
+                <strong>三块基石，缺一不可。</strong> 缺一则判低级，永无通融。<br>
+                这是人类第一次在文明定义中植入硬性伦理学底线。
+            </div>
+        </div>
+
+        <div class="meta-card">
+            <span class="meta-num">第二法则</span>
+            <div class="meta-title">体感优先律</div>
+            <div class="meta-desc">
+                当宏观统计数据（GDP、平均收入、官方失业率）与弱势群体的实际生存体感发生冲突时，本指数以体感为真理。
+            </div>
+            <div class="meta-essence">
+                这是人类第一次在社会科学量化工具中，将<strong>"人的承受"凌驾于"纸面的粉饰"</strong>之上。
+            </div>
+        </div>
+
+        <div class="meta-card">
+            <span class="meta-num">第三法则</span>
+            <div class="meta-title">最短木桶律</div>
+            <div class="meta-desc">
+                四大要素中任意一项低于或等于2分，总分自动锁死低级文明。其他三项表现再优异，不可拉升、不可弥补。
+            </div>
+            <div class="meta-essence">
+                这是人类第一次在文明评估中承认：<strong>系统性压迫可以瞬间摧毁文明的全部优越性。</strong>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== 指数的历史定位 ===== -->
+    <h2>这份指数的历史定位</h2>
+
+    <div class="highlight-box" style="border-left-color: #7a8a6e;">
+        <p>它与GDP无关，与军事实力无关，与领土大小无关。它只关切三件事：</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin:16px 0 20px 0;">
+        <div style="background:#1e241e; border-radius:12px; padding:16px 20px; border:1px solid #2a322a; text-align:center;">
+            <div style="font-size:28px; margin-bottom:4px;">🛡️</div>
+            <div style="font-weight:700; color:#e2ead4; font-size:16px;">个体是否免于</div>
+            <div style="color:#bace9a; font-size:16px;">生存恐惧</div>
+        </div>
+        <div style="background:#1e241e; border-radius:12px; padding:16px 20px; border:1px solid #2a322a; text-align:center;">
+            <div style="font-size:28px; margin-bottom:4px;">🤲</div>
+            <div style="font-weight:700; color:#e2ead4; font-size:16px;">个体是否免于</div>
+            <div style="color:#bace9a; font-size:16px;">身份屈辱</div>
+        </div>
+        <div style="background:#1e241e; border-radius:12px; padding:16px 20px; border:1px solid #2a322a; text-align:center;">
+            <div style="font-size:28px; margin-bottom:4px;">🗣️</div>
+            <div style="font-weight:700; color:#e2ead4; font-size:16px;">个体是否免于</div>
+            <div style="color:#bace9a; font-size:16px;">沉默锁</div>
+        </div>
+    </div>
+
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p>凡以此标准丈量的社会，无论自称何种制度、何种文化、何种历史，皆将暴露其真实底色。<br>
+        <strong>高级文明不是自封的，是算出来的；低级文明不是污名，是数据反映的残酷真相。</strong></p>
+    </div>
+
+    <!-- ===== 本指数的开放性 ===== -->
+    <h2>本指数的开放性</h2>
+
+    <p>本标准仰赖WJP法治指数提供的法治量化数据作为基准参照。WJP提供了可验证的"外部尺子"，本指数在尺子上附加了"体感修正"和"底线锁死"，使冰冷的数据具备了体温与良知。</p>
+
+    <p style="color:#aaba8a; font-style:italic;">本指数欢迎全人类任何组织、任何研究者使用、复验、挑战。但它拒绝被修改的，是上述三条元法则，因为那是文明的底线，而非谈判的筹码。</p>
+
+    <!-- ===== 等级判定 ===== -->
+    <h2>文明等级判定</h2>
+
+    <div class="level-grid">
+        <div class="level-card low">
+            <div class="level-name">低级文明</div>
+            <div class="level-score">0 — 39 分</div>
+            <div class="level-desc">基石缺失或要素严重不足；<br>个体处于丛林或准丛林状态。</div>
+        </div>
+        <div class="level-card medium">
+            <div class="level-name">中级文明</div>
+            <div class="level-score">40 — 79 分</div>
+            <div class="level-desc">基石已立；<br>要素基本达标；<br>平等与自由初步实现。</div>
+        </div>
+        <div class="level-card high">
+            <div class="level-name">高级文明</div>
+            <div class="level-score">80 — 100 分</div>
+            <div class="level-desc">基石稳固；<br>要素优秀；<br>创造性自由绽放。</div>
+        </div>
+    </div>
+
+    <!-- ===== 评分汇总卡 ===== -->
+    <h2>评分汇总卡</h2>
+
+    <div class="summary-box">
+        <div class="row">
+            <span class="label">基石一：自由是否建立</span>
+            <span class="value pass">✅ 是 / ⬜ 否</span>
+        </div>
+        <div class="row">
+            <span class="label">基石二：规则是否建立</span>
+            <span class="value pass">✅ 是 / ⬜ 否</span>
+        </div>
+        <div class="row">
+            <span class="label">基石三：三公是否建立</span>
+            <span class="value pass">✅ 是 / ⬜ 否</span>
+        </div>
+        <div class="row" style="border-bottom:2px solid #2a322a;">
+            <span class="label">基石判定结果</span>
+            <span class="value pass">✅ 齐全 / ⬜ 缺失 → 若缺失，直接低级文明</span>
+        </div>
+        <div class="row">
+            <span class="label">要素一：生存与劳动保障</span>
+            <span class="value">(0-10) ___ 分</span>
+        </div>
+        <div class="row">
+            <span class="label">要素二：劳动价值平等</span>
+            <span class="value">(0-10) ___ 分</span>
+        </div>
+        <div class="row">
+            <span class="label">要素三：收入分配公平</span>
+            <span class="value">(0-10) ___ 分</span>
+        </div>
+        <div class="row" style="border-bottom:2px solid #2a322a;">
+            <span class="label">要素四：言论与精神自由</span>
+            <span class="value">(0-10) ___ 分</span>
+        </div>
+        <div class="row">
+            <span class="label">四项合计</span>
+            <span class="value">___ 分</span>
+        </div>
+        <div class="row">
+            <span class="label">文明总分（合计 × 2.5）</span>
+            <span class="value" style="font-size:18px; color:#bace9a;">___ 分</span>
+        </div>
+        <div class="row">
+            <span class="label">得分对应等级</span>
+            <span class="value">⬜ 低级 / ⬜ 中级 / ⬜ 高级</span>
+        </div>
+        <div class="row">
+            <span class="label">单项拖累检查（任一要素 ≤ 2）</span>
+            <span class="value fail">⬜ 是 → 锁定低级 / ⬜ 否</span>
+        </div>
+        <div class="row" style="border-top:2px solid #2a322a; padding-top:10px;">
+            <span class="label" style="font-weight:700; color:#e2ead4;">最终文明等级（取最低）</span>
+            <span class="value" style="font-weight:700; font-size:17px; color:#bace9a;">⬜ 低级 / ⬜ 中级 / ⬜ 高级</span>
+        </div>
+    </div>
+
+    <!-- ===== 最终宣告 ===== -->
+    <h2>最终宣告</h2>
+
+    <div class="highlight-box" style="border-left-color: #bace9a; text-align:center;">
+        <p style="font-size:20px; font-weight:700; color:#e2ead4;">在2026年7月19日这一日，人类多了一把尺子。</p>
+        <p>这把尺子量度的不再是土地与黄金，而是每个个体真实承受的自由、平等与尊严。</p>
+    </div>
+
+    <p style="text-align:center; font-size:18px; color:#aaba8a; margin-top:12px;"><strong>这是量化文明的第一天。</strong></p>
+
+    <!-- ===== 页脚 ===== -->
+    <div class="footer">
+        文明等级判断说明书 · 杨晟琦文明公理系统 · 度量工具
+        <div class="doi">设计于 2026年7月19日</div>
+        <div class="doi" style="margin-top:2px;">体系入口：https://yang-shengqi.github.io/global-human-sovereign-fund/</div>
+        <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
+            所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

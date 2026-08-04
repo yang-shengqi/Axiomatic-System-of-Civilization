@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制 · 杨晟琦文明公理系统</title>
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f1210;
+            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+            color: #d0d6c8;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #171c18;
+            padding: 50px 55px;
+            border-radius: 24px;
+            border: 1px solid #2a322a;
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* ===== 顶部导航 ===== */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 16px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2a322a;
+            font-size: 14px;
+        }
+
+        .top-nav .back {
+            color: #7a8a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+
+        .top-nav .back:hover {
+            color: #aaba8a;
+            border-bottom-color: #aaba8a;
+        }
+
+        .top-nav .badge {
+            color: #5a6a4e;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 封面 ===== */
+        .cover {
+            text-align: center;
+            padding: 30px 0 40px 0;
+            border-bottom: 2px solid #2a322a;
+            margin-bottom: 40px;
+        }
+
+        .cover .label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #7a8a6e;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .cover h1 {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #e2ead4;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .cover .meta {
+            font-size: 15px;
+            color: #6a7a5e;
+            border-top: 1px solid #2a322a;
+            padding-top: 16px;
+            display: inline-block;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .cover .meta strong {
+            color: #aaba8a;
+            font-weight: 500;
+        }
+
+        .cover .meta .orcid {
+            color: #7a8a6e;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 52px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2a322a;
+            color: #e2ead4;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: #d4dec4;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: #aaba8a;
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: #c6ceba;
+            line-height: 1.9;
+        }
+
+        .highlight-box {
+            background: #1e241e;
+            border-left: 4px solid #8aaa6a;
+            padding: 16px 22px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box strong {
+            color: #bace9a;
+        }
+
+        /* ===== 冲击类型卡片 ===== */
+        .shock-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
+        }
+
+        .shock-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+            border-top: 3px solid #7a8a6e;
+        }
+
+        .shock-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .shock-card .shock-type {
+            font-weight: 700;
+            font-size: 18px;
+            color: #e2ead4;
+            margin-bottom: 4px;
+        }
+
+        .shock-card .shock-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        .shock-card .shock-note {
+            font-size: 13px;
+            color: #7a8a6e;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #2a322a;
+        }
+
+        .shock-card.crisis {
+            border-top-color: #b85a3a;
+        }
+
+        .shock-card.public {
+            border-top-color: #b89a4a;
+        }
+
+        .shock-card.generational {
+            border-top-color: #8aaa6a;
+        }
+
+        /* ===== 转化条件 ===== */
+        .condition-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
+        }
+
+        .condition-item {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+        }
+
+        .condition-item .cond-label {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .condition-item .cond-title {
+            font-weight: 700;
+            font-size: 17px;
+            color: #e2ead4;
+            margin-bottom: 4px;
+        }
+
+        .condition-item .cond-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        /* ===== 变量卡片 ===== */
+        .variable-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
+        }
+
+        .variable-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            border-left: 3px solid #8aaa6a;
+        }
+
+        .variable-card .var-num {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .variable-card .var-title {
+            font-weight: 700;
+            font-size: 17px;
+            color: #e2ead4;
+            margin-bottom: 4px;
+        }
+
+        .variable-card .var-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        /* ===== 核心判断 ===== */
+        .core-judgment {
+            background: #1a201a;
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid #2a322a;
+            text-align: center;
+            margin: 12px 0 16px 0;
+        }
+
+        .core-judgment .text {
+            font-size: 18px;
+            color: #d4dec4;
+            line-height: 1.8;
+        }
+
+        .core-judgment .text strong {
+            color: #bace9a;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 2px solid #2a322a;
+            font-size: 14px;
+            color: #5a6a4e;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .footer .doi {
+            color: #7a8a6e;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+            .cover h1 {
+                font-size: 24px;
+            }
+            .shock-grid {
+                grid-template-columns: 1fr;
+            }
+            .condition-list {
+                grid-template-columns: 1fr;
+            }
+            .variable-grid {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            .top-nav {
+                font-size: 13px;
+            }
+            .core-judgment .text {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 6px;
+            }
+            .container {
+                padding: 16px 10px;
+            }
+            .cover h1 {
+                font-size: 20px;
+            }
+            .shock-card {
+                padding: 14px 16px;
+            }
+            .condition-item {
+                padding: 14px 16px;
+            }
+            .variable-card {
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== 顶部导航 ===== -->
+    <div class="top-nav">
+        <a href="index.html" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 过程监测</span>
+    </div>
+
+    <!-- ===== 封面 ===== -->
+    <div class="cover">
+        <div class="label">✦ 过程监测 · 条件分析 ✦</div>
+        <h1>系统“非死锁”的条件分析：<br>外部纠偏如何可能转化为制度内生的纠偏机制</h1>
+        <div class="meta">
+            <strong>杨晟琦</strong> 推演 · 2026年
+            <span class="orcid">ORCID: 0009-0008-3755-8960</span>
+        </div>
+    </div>
+
+    <!-- ===== 一、外部冲击的类型与效果边界 ===== -->
+    <h2>一、外部冲击的类型与效果边界</h2>
+
+    <div class="shock-grid">
+
+        <div class="shock-card crisis">
+            <div class="shock-type">危机型冲击</div>
+            <div class="shock-desc">
+                经济崩溃、公共安全事件<br>
+                短期震动大，但易被系统消化为“应急修复”而非“结构性改变”。
+            </div>
+            <div class="shock-note">特征：短期震动大 · 易被吸收</div>
+        </div>
+
+        <div class="shock-card public">
+            <div class="shock-type">舆论型冲击</div>
+            <div class="shock-desc">
+                公共讨论、信息扩散<br>
+                能形成压力，但受限于信息通道的可控性，易消散。
+            </div>
+            <div class="shock-note">特征：形成压力 · 易消散</div>
+        </div>
+
+        <div class="shock-card generational">
+            <div class="shock-type">代际型冲击</div>
+            <div class="shock-desc">
+                价值观更替、新生代进入体系<br>
+                缓慢但深层，可能改变“博弈文化”的激励机制，但需要数十年沉淀。
+            </div>
+            <div class="shock-note">特征：缓慢但深层 · 需数十年</div>
+        </div>
+
+    </div>
+
+    <div class="core-judgment">
+        <div class="text">
+            <strong>核心判断：</strong>外部冲击要触发结构改变，必须满足两个条件之一——<br>
+            要么冲击强度超过系统吸纳阈值，要么冲击重复频率打破系统遗忘周期。
+        </div>
+    </div>
+
+    <!-- ===== 二、从“事件”到“机制”的转化条件 ===== -->
+    <h2>二、从“事件”到“机制”的转化条件</h2>
+
+    <div class="condition-list">
+
+        <div class="condition-item">
+            <span class="cond-label">转化条件一</span>
+            <div class="cond-title">成本感知的触发</div>
+            <div class="cond-desc">
+                外部压力能否转化为制度内生的纠偏机制，取决于它是否触发了系统的“成本感知”：即<strong>继续旧轨道的代价 > 转向新轨道的成本</strong>。
+            </div>
+        </div>
+
+        <div class="condition-item">
+            <span class="cond-label">转化条件二</span>
+            <div class="cond-title">破例的程序化</div>
+            <div class="cond-desc">
+                破例若只是个案，则无意义；破例若逐步沉淀为修正规则的程序先例，则可能成为纠偏的种子。<br>
+                <span style="color:#7a8a6e; font-size:13px;">关键观察：破例的“例外性”是否被程序化。</span>
+            </div>
+        </div>
+
+        <div class="condition-item" style="grid-column: 1 / -1;">
+            <span class="cond-label">转化条件三</span>
+            <div class="cond-title">直觉报警的制度化</div>
+            <div class="cond-desc">
+                底层“直觉报警”是否具备制度化反馈通道——若报警只能依赖个人运气（遇到好官员、舆情发酵），则系统仍是“随机正义”；若报警能稳定转化为规则层面的核查与修正，则纠偏开始内生。
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== 三、“等待变量变化”中的变量清单 ===== -->
+    <h2>三、“等待变量变化”中的变量清单</h2>
+    <p style="color:#7a8a6e; font-size:15px; margin-top:-6px;">可观察、不预测</p>
+
+    <div class="variable-grid">
+
+        <div class="variable-card">
+            <span class="var-num">变量一</span>
+            <div class="var-title">裁量权空间的代际变化</div>
+            <div class="var-desc">
+                基层执行者的行为模式是否在代际更替中出现“规则偏好”高于“关系偏好”。
+            </div>
+        </div>
+
+        <div class="variable-card">
+            <span class="var-num">变量二</span>
+            <div class="var-title">公共系统安全感的实际分布变化</div>
+            <div class="var-desc">
+                养老、医疗、司法等领域的“私人网络依赖度”是否在代际间自然衰减。
+            </div>
+        </div>
+
+        <div class="variable-card">
+            <span class="var-num">变量三</span>
+            <div class="var-title">社会信任的局部先导实验</div>
+            <div class="var-desc">
+                某些地区、某些领域是否出现“系统单边撤除监控”且未被滥用的自发现象。
+            </div>
+        </div>
+
+        <div class="variable-card">
+            <span class="var-num">变量四</span>
+            <div class="var-title">利益结构的再分配压力</div>
+            <div class="var-desc">
+                当“得利者”内部也因规则免责而产生摩擦时，系统自我维护的惯性是否出现裂缝。
+            </div>
+        </div>
+
+    </div>
+
+    <div class="highlight-box" style="border-left-color: #7a8a6e; text-align:center;">
+        <p style="font-size:16px; color:#aaba8a;"><strong>观察这些变量，不是为了预测，而是为了在它们发生变化时，能够第一时间识别并抓住制度转型的窗口。</strong></p>
+    </div>
+
+    <!-- ===== 页脚 ===== -->
+    <div class="footer">
+        系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制 · 杨晟琦文明公理系统 · 过程监测
+        <div class="doi">体系入口：https://yang-shengqi.github.io/global-human-sovereign-fund/</div>
+        <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
+            所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

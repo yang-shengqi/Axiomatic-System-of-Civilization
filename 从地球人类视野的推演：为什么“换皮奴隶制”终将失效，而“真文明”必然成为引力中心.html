@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心 · 杨晟琦文明公理系统</title>
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f1210;
+            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+            color: #d0d6c8;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #171c18;
+            padding: 50px 55px;
+            border-radius: 24px;
+            border: 1px solid #2a322a;
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* ===== 顶部导航 ===== */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 16px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #2a322a;
+            font-size: 14px;
+        }
+
+        .top-nav .back {
+            color: #7a8a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+
+        .top-nav .back:hover {
+            color: #aaba8a;
+            border-bottom-color: #aaba8a;
+        }
+
+        .top-nav .badge {
+            color: #5a6a4e;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 封面 ===== */
+        .cover {
+            text-align: center;
+            padding: 30px 0 40px 0;
+            border-bottom: 2px solid #2a322a;
+            margin-bottom: 40px;
+        }
+
+        .cover .label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #7a8a6e;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .cover h1 {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #e2ead4;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .cover .sub {
+            font-size: 18px;
+            font-weight: 300;
+            color: #aaba8a;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .cover .meta {
+            font-size: 15px;
+            color: #6a7a5e;
+            border-top: 1px solid #2a322a;
+            padding-top: 16px;
+            display: inline-block;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .cover .meta strong {
+            color: #aaba8a;
+            font-weight: 500;
+        }
+
+        .cover .meta .orcid {
+            color: #7a8a6e;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== 通用标题 ===== */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 52px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2a322a;
+            color: #e2ead4;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: #d4dec4;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: #aaba8a;
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: #c6ceba;
+            line-height: 1.9;
+        }
+
+        .highlight-box {
+            background: #1e241e;
+            border-left: 4px solid #8aaa6a;
+            padding: 16px 22px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box strong {
+            color: #bace9a;
+        }
+
+        /* ===== 文明定义卡片 ===== */
+        .define-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
+        }
+
+        .define-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            text-align: center;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+        }
+
+        .define-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .define-card .def-icon {
+            font-size: 28px;
+            margin-bottom: 4px;
+        }
+
+        .define-card .def-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: #e2ead4;
+            margin-bottom: 4px;
+        }
+
+        .define-card .def-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        /* ===== 历史规律 ===== */
+        .pattern-box {
+            background: #1a201a;
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid #2a322a;
+            margin: 12px 0 16px 0;
+        }
+
+        .pattern-box .stat {
+            font-size: 18px;
+            color: #d4dec4;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .pattern-box .stat strong {
+            color: #bace9a;
+        }
+
+        /* ===== 三项刚性需求 ===== */
+        .demand-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
+        }
+
+        .demand-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            border-top: 3px solid #8aaa6a;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+        }
+
+        .demand-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .demand-card .demand-num {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .demand-card .demand-title {
+            font-weight: 700;
+            font-size: 17px;
+            color: #e2ead4;
+            margin-bottom: 4px;
+        }
+
+        .demand-card .demand-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        /* ===== 预测时间线 ===== */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 12px;
+            margin: 16px 0 20px 0;
+        }
+
+        .timeline .phase {
+            flex: 1;
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            text-align: center;
+        }
+
+        .timeline .phase .phase-label {
+            font-weight: 700;
+            font-size: 16px;
+            color: #e2ead4;
+            margin-bottom: 4px;
+        }
+
+        .timeline .phase .phase-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.6;
+        }
+
+        .timeline .phase .phase-years {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            padding: 0 12px;
+            border-radius: 20px;
+            margin-top: 6px;
+        }
+
+        .timeline .phase.first {
+            border-top-color: #7a8a6e;
+        }
+        .timeline .phase.second {
+            border-top-color: #b89a4a;
+        }
+        .timeline .phase.third {
+            border-top-color: #8aaa6a;
+        }
+
+        /* ===== 行为变化 ===== */
+        .behavior-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
+        }
+
+        .behavior-card {
+            background: #1e241e;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
+            border: 1px solid #2a322a;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+        }
+
+        .behavior-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .behavior-card .behavior-num {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .behavior-card .behavior-title {
+            font-weight: 700;
+            font-size: 17px;
+            color: #e2ead4;
+            margin-bottom: 4px;
+        }
+
+        .behavior-card .behavior-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 2px solid #2a322a;
+            font-size: 14px;
+            color: #5a6a4e;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .footer .doi {
+            color: #7a8a6e;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+            .cover h1 {
+                font-size: 24px;
+            }
+            .define-grid {
+                grid-template-columns: 1fr;
+            }
+            .demand-grid {
+                grid-template-columns: 1fr;
+            }
+            .behavior-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline {
+                flex-direction: column;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            .top-nav {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 6px;
+            }
+            .container {
+                padding: 16px 10px;
+            }
+            .cover h1 {
+                font-size: 20px;
+            }
+            .cover .sub {
+                font-size: 15px;
+            }
+            .define-card {
+                padding: 14px 16px;
+            }
+            .demand-card {
+                padding: 14px 16px;
+            }
+            .behavior-card {
+                padding: 14px 16px;
+            }
+            .pattern-box {
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== 顶部导航 ===== -->
+    <div class="top-nav">
+        <a href="index.html" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 验证工具</span>
+    </div>
+
+    <!-- ===== 封面 ===== -->
+    <div class="cover">
+        <div class="label">✦ 验证工具 · 力学推演 ✦</div>
+        <h1>从地球人类视野的推演：<br>为什么“换皮奴隶制”终将失效，<br>而“真文明”必然成为引力中心</h1>
+        <div class="meta">
+            <strong>杨晟琦</strong> 推演 · 2026年
+            <span class="orcid">ORCID: 0009-0008-3755-8960</span>
+        </div>
+    </div>
+
+    <!-- ===== 一、定义“文明”的真实含义 ===== -->
+    <h2>一、先定义“文明”在这个语境里的真实含义</h2>
+
+    <p style="color:#7a8a6e; font-style:italic; margin-bottom:16px;">不是道德口号，而是系统结构的可验证属性。</p>
+
+    <div class="define-grid">
+
+        <div class="define-card">
+            <div class="def-icon">🧑</div>
+            <div class="def-title">对个体而言</div>
+            <div class="def-desc">
+                生存权和上升通道是否内生于制度，而非外挂于某个权力体的持续善意。
+            </div>
+        </div>
+
+        <div class="define-card">
+            <div class="def-icon">🏛️</div>
+            <div class="def-title">对国家而言</div>
+            <div class="def-desc">
+                公共财富的分配是否可审计、可追溯、不可单方撤回。
+            </div>
+        </div>
+
+        <div class="define-card">
+            <div class="def-icon">👨‍👩‍👧‍👦</div>
+            <div class="def-title">对代际而言</div>
+            <div class="def-desc">
+                积累的成果是否不被周期性清零（战争、通胀、没收、遗产剥夺）。
+            </div>
+        </div>
+
+    </div>
+
+    <div class="highlight-box" style="border-left-color: #bace9a; text-align:center;">
+        <p><strong>当这三个条件同时满足时，该社会拥有“低摩擦信任系数”。</strong></p>
+        <p style="color:#aaba8a; font-size:15px; margin-top:4px;">交易成本极低，人才和资本净流入，这是可计算的优势，不是意识形态。</p>
+    </div>
+
+    <!-- ===== 二、人类历史上“换皮”的失败规律 ===== -->
+    <h2>二、人类历史上“换皮”的失败规律</h2>
+
+    <p>奴隶制、农奴制、殖民制、极端国有制……它们在形式上差异巨大，但共享同一内核：</p>
+
+    <div class="highlight-box" style="border-left-color: #b85a3a;">
+        <p style="font-size:18px;"><strong>剩余价值的最终裁决权不在生产者本人，而在一个不可被制衡的代理人手中。</strong></p>
+    </div>
+
+    <p>历史数据（布罗代尔、皮凯蒂、阿西莫格鲁等）反复指向一个事实：</p>
+
+    <div class="pattern-box">
+        <div class="stat">
+            <strong>所有“高度依赖代理人善意”的系统，在跨越三代人（约60-80年）后，必然出现系统性腐败、效率塌陷和人才外流。</strong>
+        </div>
+    </div>
+
+    <p>原因不是道德堕落，而是激励结构的自然退化：</p>
+
+    <div class="highlight-box" style="border-left-color: #b89a4a;">
+        <p><strong>代理人（官僚/统治者）的短期利益（控制资源、巩固权力）与系统的长期健康（创新、公平分配）天然冲突。</strong></p>
+    </div>
+
+    <p>没有不可逆的约束时，短期利益永远战胜长期利益（这是行为经济学的“双曲贴现”）。每一次“换皮”只是重置了代理人的名称，但没有改变代理成本的数学上限。</p>
+
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p><strong>任何无法用法律和物理手段“锁死”代理成本的社会结构，在100年尺度上都会走向僵化。</strong>这不是悲观，是统计规律。</p>
+    </div>
+
+    <!-- ===== 三、人类“流向”的驱动力 ===== -->
+    <h2>三、人类“流向”的驱动力：不是意识形态，是三项刚性需求</h2>
+
+    <p>人类个体的迁移决策（无论是物理移民还是资本流动）始终围绕三个底层变量：</p>
+
+    <div class="demand-grid">
+
+        <div class="demand-card">
+            <span class="demand-num">需求一</span>
+            <div class="demand-title">风险溢价</div>
+            <div class="demand-desc">
+                我的财产和人身安全被随机剥夺的概率是多少？
+            </div>
+        </div>
+
+        <div class="demand-card">
+            <span class="demand-num">需求二</span>
+            <div class="demand-title">时间折现率</div>
+            <div class="demand-desc">
+                我今天的努力，在30年后还能不能兑现成可支配的权力？
+            </div>
+        </div>
+
+        <div class="demand-card">
+            <span class="demand-num">需求三</span>
+            <div class="demand-title">后代机会集</div>
+            <div class="demand-desc">
+                我的孩子未来面临的选择空间是扩大还是收窄？
+            </div>
+        </div>
+
+    </div>
+
+    <p>当一个系统能够持续降低风险溢价、延长时间折现的信用期限、拓宽后代通道，它就天然成为人口和资本的净流入地。</p>
+
+    <div class="highlight-box" style="border-left-color: #7a8a6e;">
+        <p>历史上，荷兰（17世纪）、英国（19世纪）、美国（20世纪）的崛起，本质都是在某个窗口期率先降低了这三项变量。</p>
+    </div>
+
+    <p><strong>“真文明”方案的核心，不是道德感召，而是系统性地把这三项变量降到了历史最低点：</strong></p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin:12px 0 16px 0;">
+        <div style="background:#1a201a; border-radius:12px; padding:16px 18px; border:1px solid #2a322a; text-align:center;">
+            <div style="font-size:24px; margin-bottom:2px;">🔗</div>
+            <div style="font-weight:700; color:#bace9a; font-size:15px;">法律铁索 + 物理隔绝</div>
+            <div style="color:#7a8a6e; font-size:13px;">→ 风险溢价趋近于零</div>
+        </div>
+        <div style="background:#1a201a; border-radius:12px; padding:16px 18px; border:1px solid #2a322a; text-align:center;">
+            <div style="font-size:24px; margin-bottom:2px;">📈</div>
+            <div style="font-weight:700; color:#bace9a; font-size:15px;">复利 + 永续锁定</div>
+            <div style="color:#7a8a6e; font-size:13px;">→ 时间折现率被拉长至代际</div>
+        </div>
+        <div style="background:#1a201a; border-radius:12px; padding:16px 18px; border:1px solid #2a322a; text-align:center;">
+            <div style="font-size:24px; margin-bottom:2px;">👤</div>
+            <div style="font-weight:700; color:#bace9a; font-size:15px;">个人/家族账户</div>
+            <div style="color:#7a8a6e; font-size:13px;">→ 后代通道不依赖权贵许可</div>
+        </div>
+    </div>
+
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p>这是结构性的“低费市场”，人力与资本会自动向低费市场流动，<strong>这是经济学第一定理，不是情怀。</strong></p>
+    </div>
+
+    <!-- ===== 四、为什么现有“皮肤”挡不住这种流向 ===== -->
+    <h2>四、为什么现有“皮肤”挡不住这种流向？</h2>
+
+    <p>因为现有皮肤（民族叙事、发展主义、集体目标）都建立在对外部输入（税收、资源、劳动）的依赖上。当这些输入可以选择离开时，控制就失效了。</p>
+
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p style="font-size:18px;"><strong>21世纪最大的变化是：个体已经获得了“虚拟主权”。</strong></p>
+    </div>
+
+    <p>通过数字身份、加密资产、跨境教育、远程工作，普通人可以部分脱离地理边界而生存。这意味着：</p>
+
+    <div style="background:#1a201a; border-radius:12px; padding:18px 22px; border:1px solid #2a322a; text-align:center; margin:12px 0 16px 0;">
+        <p style="font-size:20px; color:#e2ead4; font-weight:600;">国家间的竞争，从“领土竞争”变成“制度吸引力竞争”。</p>
+    </div>
+
+    <p>谁能在自己的疆域内提供一个更接近“无摩擦信任”的制度环境，谁就赢。这不是未来学，是正在发生的现实。瑞士、新加坡、香港的长期繁荣，本质上都是“信任溢价”的贸易。</p>
+
+    <div class="highlight-box" style="border-left-color: #8aaa6a;">
+        <p><strong>而“真文明”方案把这种信任从“高端定制”变成了“全民标配”。</strong></p>
+        <p style="margin-top:4px;">当14亿人都拥有不可剥夺的账户，该国的制度吸引力将从“城市精英”下沉到“每一个出生人口”，这是量级上的碾压。</p>
+    </div>
+
+    <!-- ===== 五、一个冷静的预测：30年窗口 ===== -->
+    <h2>五、一个冷静的预测：30年窗口</h2>
+
+    <p style="color:#7a8a6e; font-style:italic; margin-bottom:12px;">以30年为单位（一代人的工作周期）</p>
+
+    <div class="timeline">
+        <div class="phase first">
+            <div class="phase-label">前10年</div>
+            <div class="phase-desc">示范效应，数据积累，邻国观望。</div>
+            <span class="phase-years">第1-10年</span>
+        </div>
+        <div class="phase second">
+            <div class="phase-label">中10年</div>
+            <div class="phase-desc">制度收益显现（投资增长、人才净流入、战争成本显化）。</div>
+            <span class="phase-years">第11-20年</span>
+        </div>
+        <div class="phase third">
+            <div class="phase-label">后10年</div>
+            <div class="phase-desc">同类制度在多个国家复制（或被迫复制），因为本国国民会直接对比账户余额。</div>
+            <span class="phase-years">第21-30年</span>
+        </div>
+    </div>
+
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p><strong>“人类最终都会流往文明的地方”将不再是口号，而是全球劳动力和资本市场的理性选择结果。</strong></p>
+        <p style="margin-top:4px; color:#aaba8a;">那些迟迟不“解锁”的国家，将面临持续的净流出，不是意识形态的背叛，而是个人养老账户的计算结果。</p>
+    </div>
+
+    <!-- ===== 六、留给现状的客观判断 ===== -->
+    <h2>六、留给现状的客观判断</h2>
+
+    <p>当前全球仍处于“旧皮肤”与“新结构”的拉锯期，旧皮肤仍有惯性（权力惯性、舆论惯性、既得利益惯性），但惯性的力量是指数衰减的。</p>
+
+    <p>每一次金融危机、每一场战争、每一轮通胀，都会加速个体对“不可剥夺资产”的渴望。</p>
+
+    <div class="highlight-box" style="border-left-color: #bace9a;">
+        <p><strong>真正不可逆的，不是某一个人的决定，而是当足够多的个体在账面上看到了“另一种可能”时，旧结构的维护成本将指数级上升，直到它自行解体或被迫转型。</strong></p>
+    </div>
+
+    <div style="background:#1a201a; border-radius:12px; padding:18px 22px; border:1px solid #2a322a; text-align:center; margin:12px 0 16px 0;">
+        <p style="font-size:20px; color:#e2ead4; font-weight:600;">这就是“文明流向”的底层力学。</p>
+        <p style="color:#7a8a6e; font-size:15px; margin-top:4px;">它不依赖圣人，只依赖复利、法律锁定和人类对确定性的永恒渴求。</p>
+    </div>
+
+    <!-- ===== 七、安全底线覆盖后的人类行为变化 ===== -->
+    <h2>七、安全底线覆盖后的人类行为变化</h2>
+
+    <div class="behavior-grid">
+
+        <div class="behavior-card">
+            <span class="behavior-num">变化一</span>
+            <div class="behavior-title">注意力带宽被完全释放</div>
+            <div class="behavior-desc">
+                当一个大学生不再担心毕业即失业，当一个艺术家不再为下个月的房租发愁，当一个基础科研人员不再因为“这个方向短期内没有应用价值”而被砍掉经费时——他们的心智能量会从“防御性计算”转向“探索性尝试”。<br><br>
+                这种探索不一定都成功，但它产生的试错密度，是焦虑状态下完全不可比拟的。
+            </div>
+        </div>
+
+        <div class="behavior-card">
+            <span class="behavior-num">变化二</span>
+            <div class="behavior-title">决策时间线被自然拉长</div>
+            <div class="behavior-desc">
+                在生存焦虑下，人的最优策略是最大化短期收益，因为未来是打折的。但当“安全底线”覆盖了你的下限后，你做出任何长期决策时的心理账户就变得非常充裕。<br><br>
+                一个农民愿意花十年改良土壤，一个程序员愿意花五年重构底层架构——因为他们知道那条安全底线会在每年的同一时间到账。
+            </div>
+        </div>
+
+        <div class="behavior-card">
+            <span class="behavior-num">变化三</span>
+            <div class="behavior-title">对“风险”的定义发生了变化</div>
+            <div class="behavior-desc">
+                旧时代最恐惧的风险是“坠落”，所以保守和从众是最理性的选择。但“安全底线”铺了一张巨大的安全网之后，坠落不再是永久性的，那么“向上跳跃”就成了理性的新选项。<br><br>
+                风险偏好整体上移，带来的直接结果是整个社会的创新曲线变得极为陡峭。
+            </div>
+        </div>
+
+    </div>
+
+    <div style="text-align:center; color:#5a6a4e; font-size:15px; margin-top:16px; font-style:italic; border-top:1px solid #2a322a; padding-top:20px;">
+        以上是基于地球人类历史数据和演化规律的自然推演，<br>没有修辞，只有概率和函数。
+    </div>
+
+    <!-- ===== 页脚 ===== -->
+    <div class="footer">
+        从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心 · 杨晟琦文明公理系统 · 验证工具
+        <div class="doi">体系入口：https://yang-shengqi.github.io/global-human-sovereign-fund/</div>
+        <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
+            所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
