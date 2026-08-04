@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>三大基石：一种文明系统的底层重构框架 · 杨晟琦文明公理系统</title>
+    <title>确定性社会系统形成的必要条件与阻碍因素 · 杨晟琦文明公理系统</title>
     <style>
         /* ===== 全局重置 ===== */
         * {
@@ -76,20 +76,12 @@
         }
 
         .cover h1 {
-            font-size: 36px;
+            font-size: 34px;
             font-weight: 700;
             letter-spacing: 1px;
             color: #e2ead4;
             line-height: 1.3;
             margin-bottom: 12px;
-        }
-
-        .cover .sub {
-            font-size: 18px;
-            font-weight: 300;
-            color: #aaba8a;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
         }
 
         .cover .meta {
@@ -165,207 +157,151 @@
             color: #bace9a;
         }
 
-        .highlight-box .en {
-            font-size: 0.85em;
-            color: #7a8a6e;
-            display: block;
-            margin-top: 4px;
-            font-weight: 400;
+        /* ===== 条件卡片 ===== */
+        .condition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            margin: 16px 0 20px 0;
         }
 
-        .en {
-            font-size: 0.85em;
-            color: #7a8a6e;
-            font-weight: 400;
-            display: block;
-            margin-top: 2px;
-        }
-
-        .en-inline {
-            font-size: 0.85em;
-            color: #7a8a6e;
-            font-weight: 400;
-        }
-
-        /* ===== 基石卡片 ===== */
-        .cornerstone-block {
+        .condition-card {
             background: #1e241e;
-            border-radius: 14px;
-            padding: 24px 28px;
-            margin: 20px 0 24px 0;
+            border-radius: 12px;
+            padding: 18px 20px 16px;
             border: 1px solid #2a322a;
+            border-top: 3px solid #8aaa6a;
+            transition: transform 0.1s ease, box-shadow 0.2s;
         }
 
-        .cornerstone-block .number {
+        .condition-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .condition-card .cond-num {
             display: inline-block;
             background: #2a322a;
             color: #aaba8a;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            padding: 0 14px;
+            padding: 0 12px;
             border-radius: 20px;
             letter-spacing: 0.5px;
             margin-bottom: 6px;
         }
 
-        .cornerstone-block .title {
-            font-size: 24px;
+        .condition-card .cond-title {
             font-weight: 700;
+            font-size: 17px;
             color: #e2ead4;
             margin-bottom: 6px;
         }
 
-        .cornerstone-block .subtitle {
-            font-size: 18px;
-            font-weight: 500;
-            color: #bace9a;
-            margin-bottom: 12px;
+        .condition-card .cond-desc {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.7;
         }
 
-        .cornerstone-block .content {
-            font-size: 15px;
-            color: #c6ceba;
-            line-height: 1.9;
-        }
-
-        .cornerstone-block .content .en {
-            font-size: 0.8em;
+        .condition-card .cond-note {
+            font-size: 13px;
             color: #7a8a6e;
-            margin-top: 2px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #2a322a;
         }
 
-        .cornerstone-block .essence {
-            background: #161a16;
-            border-radius: 10px;
-            padding: 12px 18px;
-            margin-top: 12px;
-            border-left: 3px solid #8aaa6a;
-            font-weight: 500;
-            color: #d4dec4;
-        }
-
-        .cornerstone-block .essence .en {
-            font-size: 0.8em;
-            color: #7a8a6e;
-            font-weight: 400;
-            margin-top: 2px;
-        }
-
-        /* ===== 逻辑关系卡片 ===== */
-        .logic-grid {
+        /* ===== 阻碍因素卡片 ===== */
+        .obstacle-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 18px;
             margin: 16px 0 20px 0;
         }
 
-        .logic-card {
+        .obstacle-card {
             background: #1e241e;
             border-radius: 12px;
             padding: 18px 20px 16px;
             border: 1px solid #2a322a;
-            text-align: center;
+            border-top: 3px solid #b89a4a;
         }
 
-        .logic-card .role {
-            font-size: 14px;
-            color: #7a8a6e;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 500;
-            margin-bottom: 4px;
+        .obstacle-card .obs-num {
+            display: inline-block;
+            background: #2a322a;
+            color: #aaba8a;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
         }
 
-        .logic-card .name {
+        .obstacle-card .obs-title {
             font-weight: 700;
-            font-size: 20px;
+            font-size: 17px;
             color: #e2ead4;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
-        .logic-card .func {
+        .obstacle-card .obs-desc {
             font-size: 14px;
             color: #b6c0aa;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        .logic-card .func .en {
-            font-size: 0.75em;
-            color: #7a8a6e;
-            margin-top: 2px;
-        }
-
-        /* ===== 逻辑链 ===== */
-        .chain {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 8px 16px;
-            background: #1e241e;
-            padding: 16px 20px;
-            border-radius: 12px;
-            margin: 16px 0 20px 0;
-            border: 1px solid #2a322a;
-        }
-
-        .chain .node {
-            background: #171c18;
-            padding: 6px 16px;
-            border-radius: 30px;
-            border: 1px solid #3a4638;
-            font-size: 15px;
-            color: #aaba8a;
-            font-weight: 500;
-        }
-
-        .chain .arrow {
-            color: #5a6a4e;
-            font-size: 18px;
-            font-weight: 300;
-        }
-
-        .chain .node .en {
-            font-size: 0.7em;
-            color: #7a8a6e;
-            font-weight: 400;
-            display: block;
-            margin-top: 1px;
-        }
-
-        /* ===== 三句话 ===== */
-        .three-voices {
+        /* ===== WJP验证 ===== */
+        .wjp-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 18px;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 16px 0 16px 0;
+        }
+
+        .wjp-item {
+            background: #1e241e;
+            border-radius: 10px;
+            padding: 12px 14px;
+            border: 1px solid #2a322a;
+            text-align: center;
+            font-size: 15px;
+            color: #c6ceba;
+        }
+
+        .wjp-item .flag {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .wjp-item .name {
+            font-weight: 500;
+            color: #e2ead4;
+        }
+
+        /* ===== 验证结论 ===== */
+        .validation-result {
+            background: #1a201a;
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid #2a322a;
+            text-align: center;
             margin: 12px 0 16px 0;
         }
 
-        .voice-card {
-            background: #161a16;
-            border-radius: 12px;
-            padding: 16px 20px;
-            border: 1px solid #2a322a;
-            text-align: center;
-        }
-
-        .voice-card .speaker {
+        .validation-result .verdict {
+            font-size: 20px;
             font-weight: 700;
-            color: #aaba8a;
-            font-size: 14px;
-            letter-spacing: 1px;
+            color: #bace9a;
         }
 
-        .voice-card .line {
-            font-size: 16px;
-            color: #d4dec4;
-            margin-top: 4px;
-        }
-
-        .voice-card .line .en {
-            font-size: 0.75em;
-            color: #7a8a6e;
-            margin-top: 2px;
+        .validation-result .detail {
+            font-size: 15px;
+            color: #c6ceba;
+            margin-top: 6px;
         }
 
         /* ===== 页脚 ===== */
@@ -385,6 +321,19 @@
             margin-top: 4px;
         }
 
+        /* ===== 修改1：新增页脚链接样式，与顶部一致 ===== */
+        .footer .doi a {
+            color: #7a8a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+
+        .footer .doi a:hover {
+            color: #aaba8a;
+            border-bottom-color: #aaba8a;
+            border-bottom-style: solid;
+        }
+
         /* ===== 响应式 ===== */
         @media (max-width: 768px) {
             .container {
@@ -393,33 +342,20 @@
             .cover h1 {
                 font-size: 28px;
             }
-            .cover .sub {
-                font-size: 16px;
-            }
-            .logic-grid {
+            .condition-grid {
                 grid-template-columns: 1fr;
             }
-            .three-voices {
+            .obstacle-grid {
                 grid-template-columns: 1fr;
+            }
+            .wjp-grid {
+                grid-template-columns: 1fr 1fr 1fr;
             }
             h2 {
                 font-size: 22px;
             }
-            .cornerstone-block .title {
-                font-size: 20px;
-            }
-            .cornerstone-block .subtitle {
-                font-size: 16px;
-            }
             .top-nav {
                 font-size: 13px;
-            }
-            .chain .node {
-                font-size: 13px;
-                padding: 4px 12px;
-            }
-            .chain .arrow {
-                font-size: 15px;
             }
         }
 
@@ -433,14 +369,18 @@
             .cover h1 {
                 font-size: 22px;
             }
-            .cover .sub {
-                font-size: 14px;
+            .wjp-grid {
+                grid-template-columns: 1fr 1fr;
             }
-            .cornerstone-block {
-                padding: 16px 18px;
+            .wjp-item {
+                padding: 8px 10px;
+                font-size: 13px;
             }
-            .cornerstone-block .title {
-                font-size: 18px;
+            .condition-card {
+                padding: 14px 16px;
+            }
+            .obstacle-card {
+                padding: 14px 16px;
             }
         }
     </style>
@@ -451,183 +391,127 @@
 
     <!-- ===== 顶部导航 ===== -->
     <div class="top-nav">
-        <a href="index.html" class="back">← 返回体系总入口</a>
-        <span class="badge">杨晟琦文明公理系统 · 元框架</span>
+        <!-- ===== 修改2：顶部链接改为新仓库地址 ===== -->
+        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 诊断模型</span>
     </div>
 
     <!-- ===== 封面 ===== -->
     <div class="cover">
-        <div class="label">✦ 元框架 · 底层逻辑 ✦</div>
-        <h1>三大基石：一种文明系统的底层重构框架</h1>
-        <div class="sub">Three Cornerstones: A Foundational Reconfiguration Framework for Civilizational Systems</div>
+        <div class="label">✦ 诊断模型 · 实证验证 ✦</div>
+        <h1>确定性社会系统形成的必要条件与阻碍因素</h1>
         <div class="meta">
-            <strong>杨晟琦</strong> 构思 · 2026年
+            <strong>杨晟琦</strong> 推演 · 2026年
             <span class="orcid">ORCID: 0009-0008-3755-8960</span>
         </div>
     </div>
 
-    <!-- ===== 文档说明 ===== -->
-    <h2>文档说明</h2>
+    <!-- ===== 核心问题 ===== -->
+    <h2>核心问题</h2>
     <div class="highlight-box">
-        <p>本框架源自对文明运行逻辑的长期推演与校准。它不试图描述任何现存星球的实然状态，而是提供一套<strong>自洽的、可检验的应然逻辑体系</strong>——任何系统均可以此对照自身，并自主决定是否采纳。</p>
-        <span class="en">This framework stems from long‑term deduction and calibration of the operational logic of civilizations. It does not attempt to describe the actual state of any existing polity, but rather provides a self‑consistent and testable normative logical system—any system may compare itself against this framework and autonomously decide whether to adopt it.</span>
+        <p><strong>一个规则高度确定、社会普遍具有安全感的系统，其形成的必要条件与结构性阻碍是什么？</strong></p>
     </div>
+
+    <!-- ===== 三大必要条件 ===== -->
+    <h2>一、三大必要条件</h2>
+    <p style="color:#7a8a6e; font-size:15px; margin-top:-6px;">须同时满足，互为前提。</p>
+
+    <div class="condition-grid">
+
+        <div class="condition-card">
+            <span class="cond-num">必要条件一</span>
+            <div class="cond-title">规则的不可协商性成为普遍预期</div>
+            <div class="cond-desc">
+                执行层面长期、无例外地按规则行事，形成"找规则"无效的集体记忆，任何破例都会重置积累进程。
+            </div>
+            <div class="cond-note">规则面前无例外</div>
+        </div>
+
+        <div class="condition-card">
+            <span class="cond-num">必要条件二</span>
+            <div class="cond-title">社会信任存量跨越临界点，形成正向循环</div>
+            <div class="cond-desc">
+                系统须单方面撤除部分监控／审批，主动承担被辜负的风险，以释放信任信号；正向累积需代际时间，且依赖不被大面积滥用。
+            </div>
+            <div class="cond-note">信任需要系统先迈出一步</div>
+        </div>
+
+        <div class="condition-card">
+            <span class="cond-num">必要条件三</span>
+            <div class="cond-title">个体安全感从私人网络转向公共系统</div>
+            <div class="cond-desc">
+                养老、医疗、司法、教育等公共系统输出必须足够稳定可靠，使个体无需依赖私人关系作为兜底，且该可靠性需持续数十年证明。
+            </div>
+            <div class="cond-note">公共系统必须比私人关系更可靠</div>
+        </div>
+
+    </div>
+
+    <!-- ===== 两大阻碍因素 ===== -->
+    <h2>二、两大阻碍因素</h2>
+    <p style="color:#7a8a6e; font-size:15px; margin-top:-6px;">锁住上述条件的实现。</p>
+
+    <div class="obstacle-grid">
+
+        <div class="obstacle-card">
+            <span class="obs-num">阻碍因素一</span>
+            <div class="obs-title">超大规模治理复杂度</div>
+            <div class="obs-desc">
+                人口与地理差异导致海量例外情境，基层必须赋予裁量权，从而在事实上破坏规则的不可协商性。
+            </div>
+        </div>
+
+        <div class="obstacle-card">
+            <span class="obs-num">阻碍因素二</span>
+            <div class="obs-title">博弈文化的历史惯性</div>
+            <div class="obs-desc">
+                长期关系型资源分配机制塑造了"找规则不如找人"的理性策略，当前激励机制仍强化博弈有效性，而非规则有效性。
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== 实证验证 ===== -->
+    <h2>三、实证验证</h2>
+    <p style="color:#7a8a6e; font-size:15px; margin-top:-6px;">WJP法治指数前十国家</p>
+
+    <div class="wjp-grid">
+        <div class="wjp-item"><span class="flag">🇩🇰</span><span class="name">丹麦</span></div>
+        <div class="wjp-item"><span class="flag">🇳🇴</span><span class="name">挪威</span></div>
+        <div class="wjp-item"><span class="flag">🇫🇮</span><span class="name">芬兰</span></div>
+        <div class="wjp-item"><span class="flag">🇸🇪</span><span class="name">瑞典</span></div>
+        <div class="wjp-item"><span class="flag">🇳🇿</span><span class="name">新西兰</span></div>
+        <div class="wjp-item"><span class="flag">🇱🇺</span><span class="name">卢森堡</span></div>
+        <div class="wjp-item"><span class="flag">🇩🇪</span><span class="name">德国</span></div>
+        <div class="wjp-item"><span class="flag">🇳🇱</span><span class="name">荷兰</span></div>
+        <div class="wjp-item"><span class="flag">🇮🇸</span><span class="name">冰岛</span></div>
+        <div class="wjp-item"><span class="flag">🇦🇹</span><span class="name">奥地利</span></div>
+    </div>
+
+    <div class="validation-result">
+        <div class="verdict">✅ 该框架与事实完全一致</div>
+        <div class="detail">
+            前十国家同时满足三个必要条件，且不存在两个阻碍因素。<br>
+            （均为中小规模国家，且无博弈文化惯性）
+        </div>
+    </div>
+
+    <!-- ===== 核心结论 ===== -->
+    <h2>四、核心结论</h2>
+
     <div class="highlight-box" style="border-left-color: #bace9a;">
-        <p><strong>本框架的核心判断是：一个系统的健康程度，取决于它是否始终以"具体的人"作为主体与目的，而非将自身存续置于人之上。</strong></p>
-        <span class="en">The core judgment of this framework is: the health of a system depends on whether it consistently treats "concrete individuals" as the subject and purpose, rather than placing its own survival above people.</span>
+        <p><strong>三个必要条件相互锁死，形成闭环，任一条件缺失则整体难以成立。两个阻碍因素从物理规模和历史惯性两个维度锁住该闭环。</strong></p>
     </div>
 
-    <!-- ===== 第一大基石 ===== -->
-    <div class="cornerstone-block">
-        <span class="number">第一大基石</span>
-        <div class="title">文明的基石</div>
-        <div class="subtitle">自由是文明的前提，规则是自由的边界，而规则的唯一合法性，来自公平、公正、公开。</div>
-        <div class="content">
-            <p><strong>内容展开：</strong></p>
-            <p>• 自由不是系统的"赐予"，而是系统的"默认值"。文明不以秩序为起点，而以个体可以选择、可以行动、可以追求自己定义的生活为起点。<br>
-            <span class="en">Freedom is not a "grant" from the system, but the system's "default value." Civilization does not begin with order; it begins with individuals who can choose, can act, and can pursue lives defined by themselves.</span></p>
-            <p>• 自由不等于无序。规则是自由的边界，但这个边界只能由公平、公正、公开的规则来划定。<br>
-            <span class="en">Freedom does not mean disorder. Rules are the boundaries of freedom, but those boundaries can only be drawn by rules that are fair, just, and open.</span></p>
-            <p>• <strong>公平</strong>：规则适用不因人而异，权重对等，不受身份、资源、位置影响。<br>
-            <span class="en">Fairness: rules apply uniformly, with equal weight, unaffected by identity, resources, or position.</span></p>
-            <p>• <strong>公正</strong>：规则执行不偏不倚，程序本身具备不被利益扭曲的结构设计。<br>
-            <span class="en">Justice: rules are enforced impartially, and the procedures themselves are structurally designed to resist distortion by interests.</span></p>
-            <p>• <strong>公开</strong>：规则的制定、执行、解释全程可追溯、可查询、可争议。没有公开，公平与公正无从验证。<br>
-            <span class="en">Openness: the formulation, enforcement, and interpretation of rules are fully traceable, queryable, and contestable. Without openness, fairness and justice cannot be verified.</span></p>
-            <div class="essence">
-                <strong>实质：</strong>只有经得起所有人审视的规则，才有资格约束所有人的自由。
-                <span class="en">Essence: Only rules that withstand the scrutiny of all are qualified to constrain the freedom of all.</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== 第二大基石 ===== -->
-    <div class="cornerstone-block">
-        <span class="number">第二大基石</span>
-        <div class="title">社会的基石</div>
-        <div class="subtitle">正义是底层百姓唯一的压舱石，利益是得利者唯一的压舱石。当两者碰撞时，底层只能依靠直觉报警，而得利者懂得用规则免责。</div>
-        <div class="content">
-            <p><strong>内容展开：</strong></p>
-            <p>• 底层百姓没有资源精通复杂的规则，没有时间走冗长的程序，没有能力博弈法律解释。他们唯一拥有的，是基于生存经验的"公平直觉"——朴素，但往往比任何程序更早触达真相。<br>
-            <span class="en">Ordinary people lack the resources to master complex rules, the time to follow lengthy procedures, and the ability to engage in legal interpretation games. Their only asset is a "fairness intuition" rooted in lived survival experience—simple, yet often arriving at the truth earlier than any procedure.</span></p>
-            <p>• 得利者相反：他们拥有资源理解规则、利用规则、乃至塑造规则。在规则博弈中，他们天然占据优势。<br>
-            <span class="en">The advantaged, by contrast, possess the resources to understand rules, exploit rules, and even shape rules. In rule‑based contests, they naturally hold the upper hand.</span></p>
-            <p>• 当"直觉"与"规则"冲突时，如果系统默认"谁懂规则谁有理"，社会就不再是公平的竞技场，而是规则的拍卖行。<br>
-            <span class="en">When "intuition" conflicts with "rules," and if the system defaults to "whoever knows the rules is right," society ceases to be a fair arena and becomes an auction house for rules.</span></p>
-            <p>• 系统必须默认"直觉"是合法的输入信号，而非需要被规则压制的不稳定因素。<br>
-            <span class="en">The system must default to treating "intuition" as a legitimate input signal, rather than as an instability to be suppressed by rules.</span></p>
-            <div class="essence">
-                <strong>实质：</strong>系统须永远保持一种警觉——当直觉与规则冲突时，先倾听直觉背后的信号，而非用"程序合规"宣判直觉无效。
-                <span class="en">Essence: The system must always remain vigilant—when intuition conflicts with rules, it should first listen to the signals behind intuition, rather than invalidating intuition by declaring "procedural compliance."</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== 第三大基石 ===== -->
-    <div class="cornerstone-block">
-        <span class="number">第三大基石</span>
-        <div class="title">治理的基石</div>
-        <div class="subtitle">三个硬条件，一条不可退。</div>
-        <div class="content">
-            <p><strong>一、判决书未出，任何公民和财产受完全保护，不可被提前处置。</strong><br>
-            <span class="en">Before a verdict is rendered, every citizen and their property are fully protected and may not be pre‑disposed.</span></p>
-            <p><strong>二、司法系统的拖延、错误、不可追溯——所有系统性代价，由系统自身承担，不转嫁给个体。</strong><br>
-            <span class="en">Delays, errors, and non‑traceability in the judicial system—all systemic costs shall be borne by the system itself and not shifted onto individuals.</span></p>
-            <p><strong>三、任何个体的"不公感知"，皆为合法的系统输入信号，系统必须响应，不得以任何程序借口拒绝受理或压制表达。</strong><br>
-            <span class="en">Any individual's "perception of injustice" is a legitimate input signal to the system. The system must respond and may not refuse to accept it or suppress the expression under any procedural pretext.</span></p>
-            <p><strong>内容展开：</strong></p>
-            <p>• 第一句，砍断"以调查之名剥夺个体"的路径。执行权只能暂停争议标的物，不能触碰个体本身；调查可调用信息副本，不可触碰本体权益；任何"提前处置"在判决前均属非法。<br>
-            <span class="en">The first clause cuts off the path of "depriving individuals under the guise of investigation." Enforcement power may only freeze the subject matter in dispute, not touch the individual themselves; investigations may use copies of information but not encroach upon substantive rights; any "pre‑disposal" before a verdict is illegal.</span></p>
-            <p>• 第二句，砍断"系统犯错而个体买单"的转嫁链条。系统慢，系统赔；系统错，系统补；系统追溯不到真相，系统承担"不可追溯"的成本。须设立"系统滞纳金"与"终局熔断"机制。<br>
-            <span class="en">The second clause breaks the chain of "the system errs, the individual pays." If the system is slow, it compensates; if it errs, it remedies; if it cannot trace the truth, it bears the cost of "non‑traceability." Mechanisms of "system penalty charges" and "final circuit breaker" must be established.</span></p>
-            <p>• 第三句，砍断"程序可被合法用于拒绝倾听"的逃避空间。每一个体的不公感知，无论其是否精通法律、是否熟悉程序，都具有同等的系统响应优先级。系统不得以"程序不合规"为由拒绝受理。<br>
-            <span class="en">The third clause eliminates the escape space where "procedures can be legitimately used to refuse listening." Every individual's perception of injustice, regardless of their legal expertise or procedural familiarity, carries equal priority for system response. The system may not reject it on grounds of "procedural non‑compliance."</span></p>
-            <div class="essence">
-                <strong>实质：</strong>权力可以被行使，但必须在每一个普通人的注视下行使。
-                <span class="en">Essence: Power may be exercised, but only under the watchful eyes of every ordinary person.</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== 三大基石的逻辑关系 ===== -->
-    <h2>三大基石的逻辑关系</h2>
-    <div class="logic-grid">
-        <div class="logic-card">
-            <div class="role">定方向</div>
-            <div class="name">文明基石</div>
-            <div class="func">规定"好系统"的评判标准<br>
-            <span class="en">Defines the criteria for a "good system"</span></div>
-        </div>
-        <div class="logic-card">
-            <div class="role">诊断</div>
-            <div class="name">社会基石</div>
-            <div class="func">揭示"坏系统"的核心矛盾<br>
-            <span class="en">Reveals the core contradictions of a "bad system"</span></div>
-        </div>
-        <div class="logic-card">
-            <div class="role">处方</div>
-            <div class="name">治理基石</div>
-            <div class="func">给出"从坏到好"的硬性操作方案<br>
-            <span class="en">Provides hard operational measures for moving "from bad to good"</span></div>
-        </div>
-    </div>
-
-    <div class="chain">
-        <span class="node">方向<br><span class="en">Direction</span></span>
-        <span class="arrow">→</span>
-        <span class="node">诊断<br><span class="en">Diagnosis</span></span>
-        <span class="arrow">→</span>
-        <span class="node">方案<br><span class="en">Prescription</span></span>
-    </div>
-
-    <div class="three-voices">
-        <div class="voice-card">
-            <div class="speaker">文明的基石说</div>
-            <div class="line">"往这里走。"<br>
-            <span class="en">"Go this way."</span></div>
-        </div>
-        <div class="voice-card">
-            <div class="speaker">社会的基石说</div>
-            <div class="line">"为什么走不动。"<br>
-            <span class="en">"Why can't we move?"</span></div>
-        </div>
-        <div class="voice-card">
-            <div class="speaker">治理的基石说</div>
-            <div class="line">"怎么把卡住的东西搬开。"<br>
-            <span class="en">"How to remove what is stuck."</span></div>
-        </div>
-    </div>
-
-    <!-- ===== 框架的完整自洽性说明 ===== -->
-    <h2>框架的完整自洽性说明</h2>
-    <div class="highlight-box">
-        <p>本框架不依赖任何外部条件（如"有一个好领导"、"有足够资源"、"时机成熟"）。它只依赖一个前提：<strong>系统愿意被对照检验。</strong></p>
-        <span class="en">This framework does not depend on any external conditions (such as "having a good leader," "having sufficient resources," or "the right timing"). It relies on only one premise: the system is willing to be tested against this benchmark.</span>
-    </div>
-    <div class="highlight-box" style="border-left-color: #b89a4a;">
-        <p>如果任一基石被选择性采纳、被名义上接纳而实际架空、或在"紧急状态"下被暂停，则整个框架的效力归零——因为三大基石是<strong>全有或全无</strong>的底层逻辑重写，而非可逐条优化的政策建议。</p>
-        <span class="en">If any one cornerstone is selectively adopted, nominally accepted but practically nullified, or suspended under "emergency states," the entire framework's effectiveness becomes zero—because the three cornerstones are an all‑or‑nothing rewrite of underlying logic, not a set of policy suggestions that can be optimized item by item.</span>
-    </div>
-
-    <!-- ===== 后记 ===== -->
-    <h2>后记</h2>
-    <div class="highlight-box" style="border-left-color: #7a8a6e;">
-        <p>本框架的最终校准，源于对"底层信任如何在系统运作中被持续消耗"的长期观察与反复推演。它不带有对任何特定星系的预判或归因，但它承认：当一个系统长期把"维持自身存续"置于"保障具体个体安全感"之上时，它将不可避免地走向信任塌缩。</p>
-        <span class="en">The final calibration of this framework stems from long‑term observation and repeated deduction of "how grassroots trust is continuously eroded in the operation of systems." It does not carry any presupposition or attribution about any specific polity, but it acknowledges that when a system persistently places "sustaining its own survival" above "ensuring the sense of security of concrete individuals," it will inevitably move toward trust collapse.</span>
-    </div>
-    <div style="background:#1a201a; border-radius:12px; padding:20px 24px; margin:16px 0; border:1px solid #2a322a; text-align:center;">
-        <p style="font-size:20px; color:#e2ead4; font-weight:600;">把"系统优先"的结构，翻转成"人优先"的结构。</p>
-        <span class="en" style="font-size:0.85em; color:#7a8a6e; display:block; margin-top:4px;">To invert the structure of "system‑first" into a structure of "people‑first."</span>
-    </div>
-    <div style="text-align:center; color:#5a6a4e; font-size:14px; margin-top:12px;">
-        封装完成。文档可独立取用、引用、扩展或修正。<br>
-        <span class="en" style="font-size:0.85em; color:#7a8a6e; display:block; margin-top:2px;">Encapsulation complete. This document may be independently used, cited, expanded, or revised.</span>
-    </div>
+    <p style="font-style:italic; color:#7a8a6e; text-align:center; font-size:16px; margin-top:12px;">
+        本文不提供时间预测，只列出条件与矛盾，等待变量变化。
+    </p>
 
     <!-- ===== 页脚 ===== -->
     <div class="footer">
-        三大基石：一种文明系统的底层重构框架 · 杨晟琦文明公理系统 · 元框架
-        <div class="doi">体系入口：https://yang-shengqi.github.io/global-human-sovereign-fund/</div>
+        确定性社会系统形成的必要条件与阻碍因素 · 杨晟琦文明公理系统 · 诊断模型
+        <!-- ===== 修改3：页脚链接改为新仓库地址，并变为可点击链接 ===== -->
+        <div class="doi">体系入口：<a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/" target="_blank">https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/</a></div>
         <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
             所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
         </div>
