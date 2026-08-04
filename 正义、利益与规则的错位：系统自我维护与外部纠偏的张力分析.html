@@ -259,6 +259,19 @@
             margin-top: 4px;
         }
 
+        /* ===== 修改1：新增页脚链接样式，与顶部一致 ===== */
+        .footer .doi a {
+            color: #7a8a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+
+        .footer .doi a:hover {
+            color: #aaba8a;
+            border-bottom-color: #aaba8a;
+            border-bottom-style: solid;
+        }
+
         /* ===== 响应式 ===== */
         @media (max-width: 768px) {
             .container {
@@ -306,7 +319,8 @@
 
     <!-- ===== 顶部导航 ===== -->
     <div class="top-nav">
-        <a href="index.html" class="back">← 返回体系总入口</a>
+        <!-- ===== 修改2：顶部链接改为新仓库地址 ===== -->
+        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/" class="back">← 返回体系总入口</a>
         <span class="badge">杨晟琦文明公理系统 · 诊断模型</span>
     </div>
 
@@ -385,7 +399,8 @@
     <!-- ===== 页脚 ===== -->
     <div class="footer">
         正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析 · 杨晟琦文明公理系统 · 诊断模型
-        <div class="doi">体系入口：https://yang-shengqi.github.io/global-human-sovereign-fund/</div>
+        <!-- ===== 修改3：页脚链接改为新仓库地址，并变为可点击链接 ===== -->
+        <div class="doi">体系入口：<a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/" target="_blank">https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/</a></div>
         <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
             所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
         </div>
