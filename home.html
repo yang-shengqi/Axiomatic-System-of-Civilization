@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨晟琦文明公理操作系统 · 干净版</title>
+    <style>
+        /* ===== 全局重置 & 字体 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0f1210;
+            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+            color: #d0d6c8;
+            line-height: 1.8;
+            padding: 28px 18px;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            background: #171c18;
+            padding: 44px 52px 38px;
+            border-radius: 24px;
+            border: 1px solid #2a322a;
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* ===== 顶部导航条 ===== */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 14px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid #2a322a;
+            font-size: 14px;
+        }
+
+        .top-nav .back {
+            color: #7a8a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .top-nav .back:hover {
+            color: #aaba8a;
+            border-bottom-color: #aaba8a;
+        }
+
+        .top-nav .badge {
+            color: #5a6a4e;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== 顶部品牌区 ===== */
+        .brand {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #2a322a;
+        }
+
+        .brand-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sub-brand {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            color: #8a9a7e;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .title-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px 18px;
+            margin-top: 2px;
+        }
+
+        .title-row h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #e2ead4;
+            margin: 0;
+            line-height: 1.25;
+            display: inline;
+        }
+
+        .title-row .tag {
+            background: #2a322a;
+            color: #e2ead4;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 4px 18px;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            display: inline-block;
+            border: 1px solid #3a4638;
+        }
+
+        .info-row {
+            font-size: 15px;
+            color: #7a8a6e;
+            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 24px;
+        }
+
+        .info-row a {
+            color: #aaba8a;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+            transition: border-color 0.2s;
+        }
+        .info-row a:hover {
+            border-bottom: 1px solid #aaba8a;
+        }
+
+        .brand-right {
+            font-size: 15px;
+            color: #7a8a6e;
+            text-align: right;
+            align-self: flex-start;
+            margin-top: 4px;
+        }
+
+        /* ===== 设计者自述 ===== */
+        .designer-note {
+            background: #1e241e;
+            padding: 22px 30px;
+            border-radius: 14px;
+            margin: 8px 0 28px 0;
+            border-left: 5px solid #8aaa6a;
+        }
+
+        .designer-note p {
+            margin-bottom: 4px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #c6ceba;
+        }
+
+        .designer-note .highlight {
+            color: #e2ead4;
+            font-weight: 600;
+        }
+
+        .designer-note .en {
+            color: #7a8a6e;
+            font-size: 0.85em;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* ===== 英文辅助 ===== */
+        .en {
+            font-size: 0.8em;
+            color: #7a8a6e;
+            font-weight: 400;
+            display: block;
+            line-height: 1.6;
+            margin-top: 2px;
+        }
+
+        .en-inline {
+            font-size: 0.8em;
+            color: #7a8a6e;
+            font-weight: 400;
+        }
+
+        /* ===== 统一标题样式 ===== */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2a322a;
+            color: #e2ead4;
+            letter-spacing: 0.5px;
+        }
+
+        h2 .en-inline {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: #7a8a6e;
+            margin-left: 12px;
+        }
+
+        h3 {
+            font-size: 21px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            color: #d4dec4;
+        }
+
+        h3 .en-inline {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: #7a8a6e;
+            margin-left: 8px;
+        }
+
+        h4 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: #bace9a;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: #c6ceba;
+            line-height: 1.8;
+        }
+
+        a {
+            color: #aaba8a;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        a:hover {
+            border-bottom: 1px solid #aaba8a;
+            color: #bace9a;
+        }
+
+        /* ===== 背景卡片 ===== */
+        .content-card {
+            background: #1e241e;
+            border-radius: 14px;
+            padding: 22px 28px 18px;
+            margin: 0 0 20px 0;
+            border: 1px solid #2a322a;
+            border-left: 5px solid #8aaa6a;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #c6ceba;
+        }
+
+        .content-card .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+        }
+
+        .content-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 6px 0 4px 0;
+        }
+
+        .content-card ul li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 6px;
+            color: #b6c0aa;
+            font-size: 15px;
+        }
+
+        .content-card ul li::before {
+            content: "•";
+            color: #8aaa6a;
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .content-card ul li .en {
+            font-size: 0.8em;
+            color: #7a8a6e;
+        }
+
+        .content-card .highlight-box {
+            background: #171c18;
+            border-left: 4px solid #bace9a;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin: 10px 0 12px 0;
+        }
+
+        .content-card .highlight-box p {
+            margin-bottom: 4px;
+            font-size: 16px;
+            color: #d4dec4;
+        }
+
+        .content-card .highlight-box .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+        }
+
+        /* ===== 核心公式 ===== */
+        .formula-box {
+            background: #1e241e;
+            border-radius: 16px;
+            padding: 22px 30px;
+            margin: 14px 0 10px 0;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid #2a322a;
+            color: #e2ead4;
+        }
+
+        .formula-box .small {
+            font-size: 16px;
+            font-weight: 400;
+            color: #7a8a6e;
+            display: block;
+            margin-top: 6px;
+        }
+
+        .formula-box .formula-en {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: #7a8a6e;
+            display: block;
+            margin-top: 6px;
+        }
+
+        /* ===== 三大元法则徽章 ===== */
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            margin: 10px 0 14px 0;
+        }
+
+        .meta-badge {
+            background: #2a322a;
+            padding: 5px 22px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 15px;
+            color: #aaba8a;
+            border: 1px solid #3a4638;
+        }
+
+        .meta-badge .en-inline {
+            color: #5a6a4e;
+            font-size: 0.65em;
+            font-weight: 400;
+            margin-left: 4px;
+        }
+
+        /* ===== 核心机制 ===== */
+        .mechanism-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 14px;
+            margin: 10px 0 8px 0;
+        }
+
+        .mechanism-item {
+            background: #1e241e;
+            padding: 14px 18px;
+            border-radius: 10px;
+            border-left: 3px solid #8aaa6a;
+            font-size: 15px;
+            color: #c6ceba;
+        }
+
+        .mechanism-item strong {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 2px;
+            color: #e2ead4;
+        }
+
+        .mechanism-item .en {
+            font-size: 0.75em;
+            color: #7a8a6e;
+        }
+
+        /* ===== 表格 ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 12px 0 16px 0;
+            border-radius: 12px;
+            border: 1px solid #2a322a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            background: #171c18;
+            min-width: 480px;
+        }
+
+        th {
+            background: #1e241e;
+            color: #aaba8a;
+            font-weight: 600;
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 2px solid #2a322a;
+            font-size: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #242c22;
+            color: #c6ceba;
+            vertical-align: top;
+            font-size: 13px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-en {
+            color: #7a8a6e;
+            font-size: 0.85em;
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 22px;
+            border-top: 2px solid #2a322a;
+            font-size: 14px;
+            color: #5a6a4e;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #7a8a6e;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+        .footer a:hover {
+            border-bottom: 1px solid #7a8a6e;
+            color: #aaba8a;
+        }
+
+        .footer .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 14px 8px;
+            }
+            .container {
+                padding: 22px 14px 24px;
+            }
+            .title-row h1 {
+                font-size: 28px;
+            }
+            .title-row .tag {
+                font-size: 12px;
+                padding: 2px 12px;
+            }
+            .sub-brand {
+                font-size: 12px;
+            }
+            .info-row {
+                font-size: 14px;
+                flex-direction: column;
+                gap: 2px;
+            }
+            .brand-right {
+                text-align: left;
+                width: 100%;
+                margin-top: 6px;
+            }
+            .formula-box {
+                font-size: 18px;
+                padding: 16px 14px;
+            }
+            .formula-box .small {
+                font-size: 14px;
+            }
+            .mechanism-list {
+                grid-template-columns: 1fr;
+            }
+            .designer-note {
+                padding: 16px 18px;
+            }
+            .content-card {
+                padding: 16px 18px;
+            }
+            .top-nav {
+                font-size: 13px;
+            }
+            .top-nav .badge {
+                font-size: 12px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            h3 {
+                font-size: 19px;
+                margin-top: 28px;
+            }
+            table {
+                font-size: 12px;
+                min-width: 360px;
+            }
+            th,
+            td {
+                padding: 6px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 14px 10px 18px;
+            }
+            .title-row h1 {
+                font-size: 22px;
+            }
+            .title-row .tag {
+                font-size: 11px;
+                padding: 2px 10px;
+            }
+            .formula-box {
+                font-size: 16px;
+                padding: 12px 10px;
+            }
+            .formula-box .small {
+                font-size: 13px;
+            }
+            .brand {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .brand-right {
+                text-align: left;
+            }
+            .content-card {
+                padding: 14px 14px;
+            }
+            .content-card p {
+                font-size: 14px;
+            }
+            .content-card ul li {
+                font-size: 14px;
+            }
+            table {
+                font-size: 11px;
+                min-width: 280px;
+            }
+            th,
+            td {
+                padding: 4px 8px;
+            }
+            h3 {
+                font-size: 17px;
+                margin-top: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== 顶部导航条 ===== -->
+    <div class="top-nav">
+        <a href="#" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理操作系统 · 干净版</span>
+    </div>
+
+    <!-- ===== 顶部品牌区 ===== -->
+    <div class="brand">
+        <div class="brand-left">
+            <div class="sub-brand">YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION</div>
+            <div class="title-row">
+                <h1>杨晟琦文明公理操作系统</h1>
+                <span class="tag">独立思想锚点</span>
+            </div>
+            <div class="info-row">
+                <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
+                <span>全球首发: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+                <span>封装完成: 2026年7月</span>
+
+            </div>
+        </div>
+        <div class="brand-right"></div>
+    </div>
+
+    <!-- ===== 设计者自述 ===== -->
+    <div class="designer-note">
+        <p><span class="highlight">我叫杨晟琦，1980年出生于中国。</span></p>
+        <p>我是地球上第一位文明公理架构师。我用一把游标卡尺量出了文明的厚度，然后用一台引擎把裂缝堵上了。</p>
+        <span class="en">I am the world's first Architect of Civilizational Axioms. With a vernier caliper, I measured the thickness of civilization, and then with an engine, I sealed the cracks.</span>
+    </div>
+
+    <!-- ===== 系统定位 ===== -->
+    <h2>系统定位 <span class="en-inline">System Positioning</span></h2>
+
+    <div class="content-card">
+        <p>
+            <strong>杨晟琦文明公理系统</strong> 是一套自洽的、可检验的文明底层逻辑框架。
+            <span class="en">Yang Shengqi's Axiomatic System of Civilization is a self-consistent, testable foundational framework for civilization at the logical level.</span>
+        </p>
+        <p>
+            它从公理定义出发，经诊断模型、度量工具、过程监测、药方设计、操作手册到验证工具，构成完整闭环。
+            <span class="en">It forms a complete closed loop, from axiomatic definitions through diagnostic models, measurement tools, process monitoring, prescription design, operational manuals, to validation instruments.</span>
+        </p>
+        <p>
+            它不依附于任何国家、政权、资本或组织，不依赖任何外部条件。
+            <span class="en">It is not affiliated with any state, regime, capital, or organization, and depends on no external conditions.</span>
+        </p>
+        <p>
+            它的唯一前提是：系统愿意被对照检验。
+            <span class="en">Its only premise: the system is willing to be examined against this benchmark.</span>
+        </p>
+    </div>
+
+    <!-- ===== 核心特点 ===== -->
+    <h2>核心特点 <span class="en-inline">Core Features</span></h2>
+
+    <div class="content-card">
+        <ul>
+            <li>
+                <span class="num" style="font-weight:700; color:#e2ead4; margin-right:4px;">1.</span> 三段式结构：方向 → 诊断 → 处方，逻辑不可拆分，缺一则系统失效。
+                <span class="en">Three-stage structure: Direction → Diagnosis → Prescription. Indivisible logic; missing one breaks the system.</span>
+            </li>
+            <li>
+                <span class="num" style="font-weight:700; color:#e2ead4; margin-right:4px;">2.</span> 可计算函数：文明指数将"文明"从修辞转化为可测量的数学公式。
+                <span class="en">Computable function: The Civilization Index transforms "civilization" from rhetoric into a measurable mathematical formula.</span>
+            </li>
+            <li>
+                <span class="num" style="font-weight:700; color:#e2ead4; margin-right:4px;">3.</span> 三条元法则：基石否决权、体感优先律、最短木桶律，封堵一切数据粉饰与选择性执行。
+                <span class="en">Three meta-principles: Cornerstone Veto, Primacy of Lived Experience, Shortest Plank Rule — blocking all data manipulation and selective enforcement.</span>
+            </li>
+            <li>
+                <span class="num" style="font-weight:700; color:#e2ead4; margin-right:4px;">4.</span> 九式诊断路径：从结构性不公到结构性死亡，完整揭示系统如何走向崩溃。
+                <span class="en">Nine-step diagnostic path: From structural injustice to structural death, fully revealing how a system collapses.</span>
+            </li>
+            <li>
+                <span class="num" style="font-weight:700; color:#e2ead4; margin-right:4px;">5.</span> 双重锁定：法律铁索 + 三重剥离 + 物理隔绝，使制度具有反脆弱性。
+                <span class="en">Dual legal-physical lock: Legal Chains + Threefold Severance + Physical Isolation, rendering the institution anti-fragile.</span>
+            </li>
+            <li>
+                <span class="num" style="font-weight:700; color:#e2ead4; margin-right:4px;">6.</span> 非归责性操作手册：七条方法论不追究个人责任，只提供可执行的系统翻转路径。
+                <span class="en">Non-attributional operations manual: Seven methodologies that do not blame individuals, only providing executable pathways to reverse the system.</span>
+            </li>
+            <li>
+                <span class="num" style="font-weight:700; color:#e2ead4; margin-right:4px;">7.</span> 独立验证机制：用系统自身的工具检验系统自身，完成完整闭环验收。
+                <span class="en">Independent verification mechanism: Using the system's own tools to audit itself, completing a full closed-loop validation.</span>
+            </li>
+            <li>
+                <span class="num" style="font-weight:700; color:#e2ead4; margin-right:4px;">8.</span> 无条件启动：不依赖"好领导"或"足够资源"，只依赖系统愿意被对照检验。
+                <span class="en">Unconditional activation: Does not depend on "good leadership" or "sufficient resources" — only on a willingness to be tested.</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ===== 第一部分：元框架 ===== -->
+    <h2>一、元框架：三大基石 <span class="en-inline">Meta‑Framework: The Three Cornerstones</span></h2>
+
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p style="font-size:14px; color:#7a8a6e; margin-bottom:6px;">
+            《三大基石：一种文明系统的底层重构框架》
+            <span class="en">Three Cornerstones: A Foundational Reconfiguration Framework for Civilizational Systems</span>
+        </p>
+        <p>
+            三个不可拆分的底层原则，构成 <strong>方向 → 诊断 → 方案</strong> 的完整链条。
+            <span class="en">Three indivisible underlying principles, forming a complete <strong>Direction → Diagnosis → Solution</strong> chain.</span>
+        </p>
+    </div>
+
+    <h3>基石一：文明的基石 <span class="en-inline">Cornerstone I: The Foundation of Civilization</span></h3>
+
+    <div class="content-card" style="border-left-color: #8aaa6a;">
+        <p style="font-size:17px; color:#e2ead4; font-weight:600;">
+            自由是文明的前提，规则是自由的边界，而规则的唯一合法性来自公平、公正、公开。
+            <span class="en" style="font-size:0.8em; font-weight:400;">Freedom is the prerequisite of civilization; rules are the boundaries of freedom; and the sole legitimacy of rules comes from fairness, justice, and openness.</span>
+        </p>
+        <ul>
+            <li>
+                <strong>自由：</strong> 不是系统的"赐予"，而是系统的"默认值"。文明不以秩序为起点，而以个体可以选择、可以行动、可以追求自己定义的生活为起点。
+                <span class="en">Freedom is not a "grant" from the system, but the system's "default value." Civilization does not begin with order; it begins with individuals who can choose, can act, and can pursue lives defined by themselves.</span>
+            </li>
+            <li>
+                <strong>规则：</strong> 自由不等于无序。规则是自由的边界，但这个边界只能由公平、公正、公开的规则来划定。
+                <span class="en">Freedom does not mean disorder. Rules are the boundaries of freedom, but those boundaries can only be drawn by rules that are fair, just, and open.</span>
+            </li>
+            <li>
+                <strong>公平：</strong> 规则适用不因人而异，权重对等，不受身份、资源、位置影响。
+                <span class="en">Fairness: rules apply uniformly, with equal weight, unaffected by identity, resources, or position.</span>
+            </li>
+            <li>
+                <strong>公正：</strong> 规则执行不偏不倚，程序本身具备不被利益扭曲的结构设计。
+                <span class="en">Justice: rules are enforced impartially, and the procedures themselves are structurally designed to resist distortion by interests.</span>
+            </li>
+            <li>
+                <strong>公开：</strong> 规则的制定、执行、解释全程可追溯、可查询、可争议。没有公开，公平与公正无从验证。
+                <span class="en">Openness: the formulation, enforcement, and interpretation of rules are fully traceable, queryable, and contestable. Without openness, fairness and justice cannot be verified.</span>
+            </li>
+        </ul>
+        <div class="highlight-box">
+            <p><strong>实质：</strong> 只有经得起所有人审视的规则，才有资格约束所有人的自由。</p>
+            <span class="en"><strong>Essence:</strong> Only rules that withstand the scrutiny of all are qualified to constrain the freedom of all.</span>
+        </div>
+    </div>
+
+    <h3>基石二：社会的基石 <span class="en-inline">Cornerstone II: The Foundation of Society</span></h3>
+
+    <div class="content-card" style="border-left-color: #b89a4a;">
+        <p style="font-size:17px; color:#e2ead4; font-weight:600;">
+            正义是底层百姓唯一的压舱石，利益是得利者唯一的压舱石。当两者碰撞时，底层只能依靠直觉报警，而得利者懂得用规则免责。
+            <span class="en" style="font-size:0.8em; font-weight:400;">Justice is the only ballast for ordinary people; interests are the only ballast for the advantaged. When they collide, ordinary people can only rely on intuitive alarms, while the advantaged know how to use rules to immunize themselves.</span>
+        </p>
+        <ul>
+            <li>
+                底层百姓没有资源精通复杂的规则，没有时间走冗长的程序，没有能力博弈法律解释。他们唯一拥有的，是基于生存经验的"公平直觉"——朴素，但往往比任何程序更早触达真相。
+                <span class="en">Ordinary people lack the resources to master complex rules, the time to follow lengthy procedures, and the ability to engage in legal interpretation games. Their only asset is a "fairness intuition" rooted in lived survival experience—simple, yet often arriving at the truth earlier than any procedure.</span>
+            </li>
+            <li>
+                得利者相反：他们拥有资源理解规则、利用规则、乃至塑造规则。在规则博弈中，他们天然占据优势。
+                <span class="en">The advantaged, by contrast, possess the resources to understand rules, exploit rules, and even shape rules. In rule‑based contests, they naturally hold the upper hand.</span>
+            </li>
+            <li>
+                当"直觉"与"规则"冲突时，如果系统默认"谁懂规则谁有理"，社会就不再是公平的竞技场，而是规则的拍卖行。
+                <span class="en">When "intuition" conflicts with "rules," and if the system defaults to "whoever knows the rules is right," society ceases to be a fair arena and becomes an auction house for rules.</span>
+            </li>
+            <li>
+                系统必须默认"直觉"是合法的输入信号，而非需要被规则压制的不稳定因素。
+                <span class="en">The system must default to treating "intuition" as a legitimate input signal, rather than as an instability to be suppressed by rules.</span>
+            </li>
+        </ul>
+        <div class="highlight-box">
+            <p><strong>实质：</strong> 系统须永远保持一种警觉——当直觉与规则冲突时，先倾听直觉背后的信号，而非用"程序合规"宣判直觉无效。</p>
+            <span class="en"><strong>Essence:</strong> The system must always remain vigilant—when intuition conflicts with rules, it should first listen to the signals behind intuition, rather than invalidating intuition by declaring "procedural compliance."</span>
+        </div>
+    </div>
+
+    <h3>基石三：治理的基石 <span class="en-inline">Cornerstone III: The Foundation of Governance</span></h3>
+
+    <div class="content-card" style="border-left-color: #6a9a8a;">
+        <p style="font-size:17px; color:#e2ead4; font-weight:600;">
+            三个硬条件，一条不可退。
+            <span class="en" style="font-size:0.8em; font-weight:400;">Three hard conditions, one non‑negotiable.</span>
+        </p>
+        <ul>
+            <li>
+                <strong>一、</strong> 判决书未出，任何公民和财产受完全保护，不可被提前处置。执行权只能暂停争议标的物，不能触碰个体本身；调查可调用信息副本，不可触碰本体权益；任何"提前处置"在判决前均属非法。
+                <span class="en"><strong>1.</strong> Before a verdict is rendered, every citizen and their property are fully protected and may not be pre‑disposed. Enforcement power may only freeze the subject matter in dispute, not touch the individual themselves; investigations may use copies of information but not encroach upon substantive rights; any "pre‑disposal" before a verdict is illegal.</span>
+            </li>
+            <li>
+                <strong>二、</strong> 司法系统的拖延、错误、不可追溯——所有系统性代价，由系统自身承担，不转嫁给个体。须设立"系统滞纳金"与"终局熔断"机制。
+                <span class="en"><strong>2.</strong> Delays, errors, and non‑traceability in the judicial system—all systemic costs shall be borne by the system itself and not shifted onto individuals. Mechanisms of "system penalty charges" and "final circuit breaker" must be established.</span>
+            </li>
+            <li>
+                <strong>三、</strong> 任何个体的"不公感知"，皆为合法的系统输入信号，系统必须响应，不得以任何程序借口拒绝受理或压制表达。
+                <span class="en"><strong>3.</strong> Any individual's "perception of injustice" is a legitimate input signal to the system. The system must respond and may not refuse to accept it or suppress the expression under any procedural pretext.</span>
+            </li>
+        </ul>
+        <div class="highlight-box">
+            <p><strong>实质：</strong> 权力可以被行使，但必须在每一个普通人的注视下行使。</p>
+            <span class="en"><strong>Essence:</strong> Power may be exercised, but only under the watchful eyes of every ordinary person.</span>
+        </div>
+    </div>
+
+    <!-- ===== 三大基石的逻辑关系（修正版） ===== -->
+    <h3>三大基石的逻辑关系 <span class="en-inline">The Logical Relationship of the Three Cornerstones</span></h3>
+
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p>
+            文明的基石说："往这里走。"
+            <span class="en">The Foundation of Civilization says: "Go this way."</span>
+        </p>
+        <p>
+            社会的基石说："为什么走不动。"
+            <span class="en">The Foundation of Society says: "Why can't we move?"</span>
+        </p>
+        <p>
+            治理的基石说："怎么把卡住的东西搬开。"
+            <span class="en">The Foundation of Governance says: "How to remove what is stuck."</span>
+        </p>
+    </div>
+
+    <!-- ===== 第二部分：度量工具 ===== -->
+    <h2>二、度量工具：文明等级判断 <span class="en-inline">Measurement: Civilization Level Assessment</span></h2>
+
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p style="font-size:14px; color:#7a8a6e; margin-bottom:6px;">
+            《文明等级判断说明书》
+            <span class="en">Civilization Level Assessment Manual</span>
+        </p>
+        <p>
+            首次将"文明"从修辞转化为可计算函数。
+            <span class="en">The first to transform "civilization" from rhetoric into a computable function.</span>
+        </p>
+    </div>
+
+    <h3>核心公式 <span class="en-inline">Core Formula</span></h3>
+
+    <div class="formula-box">
+        文明指数 =（生存与劳动保障 + 劳动价值平等 + 收入分配公平 + 言论与精神自由）× 2.5
+        <span class="formula-en">Civilization Index = (Survival & Labor Security + Equal Labor Value + Fair Income Distribution + Freedom of Speech & Spirit) × 2.5</span>
+        <span class="small" style="margin-top:2px;">满分100分 · 四项要素等权重 | Maximum 100 points · Four equally weighted elements</span>
+    </div>
+
+    <h3>三条元法则 <span class="en-inline">Three Meta‑Principles</span></h3>
+
+    <div class="meta-badges">
+        <span class="meta-badge">基石否决权 <span class="en-inline">Cornerstone Veto</span></span>
+        <span class="meta-badge">体感优先律 <span class="en-inline">Primacy of Lived Experience</span></span>
+        <span class="meta-badge">最短木桶律 <span class="en-inline">Shortest Plank Rule</span></span>
+    </div>
+
+    <div class="content-card">
+        <ul>
+            <li>
+                <strong>基石否决权：</strong> 三大基石缺一则直接判为低级文明，永无通融。这是人类第一次在文明定义中植入硬性伦理学底线。
+                <span class="en"><strong>Cornerstone Veto:</strong> If any of the three cornerstones is missing, the society is judged Low‑Level Civilization, with no exception whatsoever. This is the first time a hard ethical bottom line has been embedded in the definition of civilization.</span>
+            </li>
+            <li>
+                <strong>体感优先律：</strong> 当宏观统计数据与弱势群体的实际生存体感发生冲突时，本指数以体感为真理。这是人类第一次将"人的承受"凌驾于"纸面的粉饰"之上。
+                <span class="en"><strong>Primacy of Lived Experience:</strong> When macroeconomic statistics conflict with the actual lived experience of vulnerable groups, this index takes lived experience as truth. This is the first time "human endurance" has been placed above "paper gloss."</span>
+            </li>
+            <li>
+                <strong>最短木桶律：</strong> 四大要素中任意一项≤2分，总分自动锁死低级文明。其他三项表现再优异不可拉升、不可弥补。这是人类第一次承认：系统性压迫可以瞬间摧毁文明的全部优越性。
+                <span class="en"><strong>Shortest Plank Rule:</strong> If any of the four core elements scores 2 or below, the total score is automatically locked at Low‑Level Civilization. No matter how outstanding the other three elements perform, they cannot elevate or compensate. This is the first time it has been acknowledged that systemic oppression can instantly destroy all of a civilization's claimed superiority.</span>
+            </li>
+        </ul>
+    </div>
+
+    <h3>文明等级判定 <span class="en-inline">Civilization Level Determination</span></h3>
+
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th style="width:20%;">总分区间</th><th style="width:25%;">文明等级</th><th style="width:55%;">核心特征</th></tr></thead>
+            <tbody>
+                <tr><td>0‑39</td><td>低级文明</td><td>基石缺失或要素严重不足；个体处于丛林或准丛林状态</td></tr>
+                <tr><td class="table-en">0‑39</td><td class="table-en">Low‑Level Civilization</td><td class="table-en">Cornerstones missing or elements severely deficient; individuals in a state of jungle or quasi‑jungle</td></tr>
+                <tr><td>40‑79</td><td>中级文明</td><td>基石已立；要素基本达标；平等与自由初步实现</td></tr>
+                <tr><td class="table-en">40‑79</td><td class="table-en">Medium‑Level Civilization</td><td class="table-en">Cornerstones established; elements basically up to standard; equality and freedom initially realized</td></tr>
+                <tr><td>80‑100</td><td>高级文明</td><td>基石稳固；要素优秀；创造性自由绽放</td></tr>
+                <tr><td class="table-en">80‑100</td><td class="table-en">High‑Level Civilization</td><td class="table-en">Cornerstones solid; elements excellent; creative freedom flourishes</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== 第三部分：诊断工具 ===== -->
+    <h2>三、诊断工具：坏系统为什么死 <span class="en-inline">Diagnostic Tools: Why Bad Systems Die</span></h2>
+
+    <h3>九步路径图 <span class="en-inline">The Nine‑Step Path Map</span></h3>
+
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p style="font-size:14px; color:#7a8a6e; margin-bottom:6px;">
+            《低级文明的完整路径图》
+            <span class="en">The Complete Path of a Low‑Level Civilization</span>
+        </p>
+        <div class="highlight-box" style="border-left-color: #8aaa6a;">
+            <p style="font-size:17px; color:#e2ead4; text-align:center;">
+                <strong>结构性不公 → 结构性锁死 → 结构性错位 → 结构性矛盾 → 结构性收缩 → 结构性失聪 → 结构性逃逸 → 结构性空心 → 结构性死亡</strong>
+            </p>
+            <span class="en" style="text-align:center; font-size:0.8em;"><strong>Structural Injustice → Structural Lock‑in → Structural Misalignment → Structural Contradiction → Structural Contraction → Structural Deafness → Structural Escape → Structural Hollowing → Structural Death</strong></span>
+        </div>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th style="width:22%;">环节</th><th style="width:40%;">本质</th><th style="width:38%;">产生的风险</th></tr></thead>
+            <tbody>
+                <tr><td>结构性不公</td><td>资源与权力分配的制度性倾斜</td><td>社会层面的爆发风险</td></tr>
+                <tr><td>结构性锁死</td><td>不公被制度固化，无法通过常规渠道修正</td><td>系统脆化的硬着陆风险</td></tr>
+                <tr><td>结构性错位</td><td>系统对自身问题的认知偏离现实</td><td>决策失误风险</td></tr>
+                <tr><td>结构性矛盾</td><td>个体理性与系统理性的对冲</td><td>集体行动失灵风险</td></tr>
+                <tr><td>结构性收缩</td><td>为维持控制而收紧空间，压制反馈</td><td>内部压力无处释放的失控风险</td></tr>
+                <tr><td>结构性失聪</td><td>系统拒绝接收负面信号，只听到想听的</td><td>问题积累到临界点才被发现的失效风险</td></tr>
+                <tr><td>结构性逃逸</td><td>有能力的个体和资本用脚投票</td><td>系统加速空心化的自我消耗风险</td></tr>
+                <tr><td>结构性空心</td><td>壳在运行而实质已无</td><td>全面崩盘风险</td></tr>
+                <tr><td>结构性死亡</td><td>系统丧失自我修复能力</td><td>最终风险本身</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>好系统的存活条件 <span class="en-inline">Survival Conditions of a Good System</span></h3>
+
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p style="font-size:14px; color:#7a8a6e; margin-bottom:6px;">
+            《确定性社会系统形成的必要条件与阻碍因素》
+            <span class="en">Necessary Conditions and Obstacles for the Formation of a Determinate Social System</span>
+        </p>
+    </div>
+
+    <h4>三个必要条件 <span class="en-inline">Three Necessary Conditions</span></h4>
+
+    <div class="content-card">
+        <ul>
+            <li>
+                <strong>规则的不可协商性成为普遍预期：</strong> 执行层面长期、无例外地按规则行事，任何破例都会重置积累进程。
+                <span class="en"><strong>The non‑negotiability of rules becomes a general expectation:</strong> At the enforcement level, rules are followed consistently and without exception over the long term; any exception resets the accumulation process.</span>
+            </li>
+            <li>
+                <strong>社会信任存量跨越临界点：</strong> 系统须单方面撤除部分监控，主动承担被辜负的风险以释放信任信号。
+                <span class="en"><strong>The stock of social trust crosses a critical threshold:</strong> The system must unilaterally remove certain monitoring and proactively bear the risk of being betrayed to release trust signals.</span>
+            </li>
+            <li>
+                <strong>个体安全感从私人网络转向公共系统：</strong> 养老、医疗、司法等公共系统输出必须足够稳定可靠，且需持续数十年证明。
+                <span class="en"><strong>Individual security shifts from private networks to public systems:</strong> The outputs of public systems must be sufficiently stable and reliable, and this reliability must be demonstrated continuously over decades.</span>
+            </li>
+        </ul>
+    </div>
+
+    <h4>两个阻碍因素 <span class="en-inline">Two Obstacles</span></h4>
+
+    <div class="content-card">
+        <ul>
+            <li>
+                <strong>超大规模治理复杂度：</strong> 人口与地理差异导致海量例外情境，基层必须赋予裁量权，从而在事实上破坏规则的不可协商性。
+                <span class="en"><strong>Mega‑scale governance complexity:</strong> Population and geographic diversity generate a massive number of exceptional situations; grassroots levels must be granted discretion, which in practice undermines the non‑negotiability of rules.</span>
+            </li>
+            <li>
+                <strong>博弈文化的历史惯性：</strong> 长期关系型资源分配机制塑造了"找规则不如找人"的理性策略。
+                <span class="en"><strong>The historical inertia of bargaining/relational culture:</strong> Long‑term relationship‑based resource allocation mechanisms have shaped the rational strategy that "finding the right person is more effective than finding the right rule."</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ===== 实证验证（国旗图标版） ===== -->
+    <!-- ===== 实证验证 ===== -->
+<h4>实证验证 <span class="en-inline">Empirical Validation</span></h4>
+
+<div class="content-card" style="border-left-color: #bace9a;">
+    <div class="highlight-box" style="border-left-color: #8aaa6a;">
+        <p><strong>WJP法治指数前十国家</strong></p>
+        <span class="en"><strong>Top 10 WJP Rule of Law Index Countries</strong></span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 12px;">
+        <div style="background: #1e241e; border-radius: 10px; padding: 12px 14px; border: 1px solid #2a322a; text-align: center; font-size: 15px; color: #c6ceba;">
+            <span style="display: block; font-size: 20px; margin-bottom: 4px;">🇩🇰</span>
+            <span style="font-weight: 500; color: #e2ead4;">丹麦</span>
+        </div>
+        <div style="background: #1e241e; border-radius: 10px; padding: 12px 14px; border: 1px solid #2a322a; text-align: center; font-size: 15px; color: #c6ceba;">
+            <span style="display: block; font-size: 20px; margin-bottom: 4px;">🇳🇴</span>
+            <span style="font-weight: 500; color: #e2ead4;">挪威</span>
+        </div>
+        <div style="background: #1e241e; border-radius: 10px; padding: 12px 14px; border: 1px solid #2a322a; text-align: center; font-size: 15px; color: #c6ceba;">
+            <span style="display: block; font-size: 20px; margin-bottom: 4px;">🇫🇮</span>
+            <span style="font-weight: 500; color: #e2ead4;">芬兰</span>
+        </div>
+        <div style="background: #1e241e; border-radius: 10px; padding: 12px 14px; border: 1px solid #2a322a; text-align: center; font-size: 15px; color: #c6ceba;">
+            <span style="display: block; font-size: 20px; margin-bottom: 4px;">🇸🇪</span>
+            <span style="font-weight: 500; color: #e2ead4;">瑞典</span>
+        </div>
+        <div style="background: #1e241e; border-radius: 10px; padding: 12px 14px; border: 1px solid #2a322a; text-align: center; font-size: 15px; color: #c6ceba;">
+            <span style="display: block; font-size: 20px; margin-bottom: 4px;">🇳🇿</span>
+            <span style="font-weight: 500; color: #e2ead4;">新西兰</span>
+        </div>
+        <div style="background: #1e241e; border-radius: 10px; padding: 12px 14px; border: 1px solid #2a322a; text-align: center; font-size: 15px; color: #c6ceba;">
+            <span style="display: block; font-size: 20px; margin-bottom: 4px;">🇱🇺</span>
+            <span style="font-weight: 500; color: #e2ead4;">卢森堡</span>
+        </div>
+        <div style="background: #1e241e; border-radius: 10px; padding: 12px 14px; border: 1px solid #2a322a; text-align: center; font-size: 15px; color: #c6ceba;">
+            <span style="display: block; font-size: 20px; margin-bottom: 4px;">🇩🇪</span>
+            <span style="font-weight: 500; color: #e2ead4;">德国</span>
+        </div>
+        <div style="background: #1e241e; border-radius: 10px; padding: 12px 14px; border: 1px solid #2a322a; text-align: center; font-size: 15px; color: #c6ceba;">
+            <span style="display: block; font-size: 20px; margin-bottom: 4px;">🇳🇱</span>
+            <span style="font-weight: 500; color: #e2ead4;">荷兰</span>
+        </div>
+        <div style="background: #1e241e; border-radius: 10px; padding: 12px 14px; border: 1px solid #2a322a; text-align: center; font-size: 15px; color: #c6ceba;">
+            <span style="display: block; font-size: 20px; margin-bottom: 4px;">🇮🇸</span>
+            <span style="font-weight: 500; color: #e2ead4;">冰岛</span>
+        </div>
+        <div style="background: #1e241e; border-radius: 10px; padding: 12px 14px; border: 1px solid #2a322a; text-align: center; font-size: 15px; color: #c6ceba;">
+            <span style="display: block; font-size: 20px; margin-bottom: 4px;">🇦🇹</span>
+            <span style="font-weight: 500; color: #e2ead4;">奥地利</span>
+        </div>
+    </div>
+    <div style="background: #1a201a; border-radius: 12px; padding: 16px 20px; border: 1px solid #2a322a; text-align: center; margin-top: 14px;">
+        <div style="font-size: 18px; font-weight: 700; color: #bace9a;">✅ 该框架与事实完全一致</div>
+        <div style="font-size: 14px; color: #7a8a6e; margin-top: 4px;">
+            前十国家同时满足三个必要条件，且不存在两个阻碍因素。<br>
+            （均为中小规模国家，且无博弈文化惯性）
+        </div>
+    </div>
+</div>
+
+    <h3>直觉报警 vs 规则免责 <span class="en-inline">Intuitive Alarms vs Rule Immunity</span></h3>
+
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p style="font-size:14px; color:#7a8a6e; margin-bottom:6px;">
+            《正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析》
+            <span class="en">The Misalignment of Justice, Interests, and Rules: A Tension Analysis of System Self‑Preservation and External Correction</span>
+        </p>
+        <div class="highlight-box" style="border-left-color: #b89a4a;">
+            <p style="font-size:16px; color:#d4dec4;">
+                <strong>当两块石头碰撞时，底层百姓用直觉报警，而得利者用规则免责。</strong>
+            </p>
+            <span class="en"><strong>When the two ballasts collide, ordinary people sound the alarm through intuition, while the advantaged use rules to immunize themselves.</strong></span>
+        </div>
+        <ul>
+            <li>
+                <strong>底层百姓：</strong> 没有资源精通复杂的规则，没有时间走冗长的程序。他们唯一拥有的是基于生存经验的"公平直觉"。
+                <span class="en"><strong>Ordinary people:</strong> Lack the resources to master complex rules and the time to follow lengthy procedures. Their only asset is a "fairness intuition" rooted in lived survival experience.</span>
+            </li>
+            <li>
+                <strong>得利者：</strong> 拥有资源理解规则、利用规则、乃至塑造规则。在规则博弈中天然占据优势。
+                <span class="en"><strong>The advantaged:</strong> Possess the resources to understand rules, exploit rules, and even shape rules. In rule‑based contests, they naturally hold the upper hand.</span>
+            </li>
+            <li>
+                <strong>系统的义务：</strong> 必须默认"直觉"是合法的输入信号，而非需要被规则压制的不稳定因素。
+                <span class="en"><strong>The system's obligation:</strong> It must default to treating "intuition" as a legitimate input signal, rather than as an instability to be suppressed by rules.</span>
+            </li>
+        </ul>
+        <div class="highlight-box">
+            <p><strong>实质：</strong> 系统须永远保持一种警觉——当直觉与规则冲突时，先倾听直觉背后的信号，而非用"程序合规"宣判直觉无效。</p>
+            <span class="en"><strong>Essence:</strong> The system must always remain vigilant—when intuition conflicts with rules, it should first listen to the signals behind intuition, rather than invalidating intuition by declaring "procedural compliance."</span>
+        </div>
+    </div>
+
+    <!-- ===== 第四部分：过程监测 ===== -->
+    <h2>四、过程监测：系统"非死锁"的条件 <span class="en-inline">Process Monitoring: Conditions for System "Non‑Deadlock"</span></h2>
+
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p style="font-size:14px; color:#7a8a6e; margin-bottom:6px;">
+            《系统"非死锁"的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制》
+            <span class="en">Conditional Analysis of System "Non‑Deadlock": How External Correction Can Be Transformed into Institutionally Endogenous Correction Mechanisms</span>
+        </p>
+    </div>
+
+    <h3>外部冲击的类型与效果边界 <span class="en-inline">Types and Effect Boundaries of External Shocks</span></h3>
+
+    <div class="content-card">
+        <ul>
+            <li>
+                <strong>危机型冲击</strong>（经济崩溃、公共安全事件）：短期震动大，但易被系统消化为"应急修复"而非"结构性改变"。
+                <span class="en"><strong>Crisis‑type shocks:</strong> High short‑term impact, but easily absorbed by the system as "emergency repairs" rather than "structural change."</span>
+            </li>
+            <li>
+                <strong>舆论型冲击</strong>（公共讨论、信息扩散）：能形成压力，但受限于信息通道的可控性，易消散。
+                <span class="en"><strong>Public opinion‑type shocks:</strong> Can generate pressure, but are constrained by the controllability of information channels and tend to dissipate.</span>
+            </li>
+            <li>
+                <strong>代际型冲击</strong>（价值观更替、新生代进入体系）：缓慢但深层，可能改变"博弈文化"的激励机制，但需要数十年沉淀。
+                <span class="en"><strong>Generational‑type shocks:</strong> Slow but deep, potentially altering the incentive structure of "bargaining culture," yet requiring decades of sedimentation.</span>
+            </li>
+        </ul>
+        <div class="highlight-box">
+            <p><strong>核心判断：</strong> 外部冲击要触发结构改变，必须满足两个条件之一——冲击强度超过系统吸纳阈值，或冲击重复频率打破系统遗忘周期。</p>
+            <span class="en"><strong>Core Judgment:</strong> For external shocks to trigger structural change, one of two conditions must be met—either the intensity of the shock exceeds the system's absorption threshold, or its repetition frequency breaks the system's forgetting cycle.</span>
+        </div>
+    </div>
+
+    <h3>四个可观察变量 <span class="en-inline">Four Observable Variables</span></h3>
+
+    <div class="content-card">
+        <ul>
+            <li>
+                <strong>裁量权空间的代际变化：</strong> 基层执行者的行为模式是否在代际更替中出现"规则偏好"高于"关系偏好"。
+                <span class="en"><strong>Generational change in discretionary space:</strong> Whether the behavioral patterns of grassroots enforcers show, across generational succession, a preference for "rules" over "relationships."</span>
+            </li>
+            <li>
+                <strong>公共系统安全感的实际分布变化：</strong> 养老、医疗、司法等领域的"私人网络依赖度"是否在代际间自然衰减。
+                <span class="en"><strong>Changes in the actual distribution of public system security:</strong> Whether the "reliance on private networks" in pensions, healthcare, judiciary, and other domains naturally declines across generations.</span>
+            </li>
+            <li>
+                <strong>社会信任的局部先导实验：</strong> 某些地区、某些领域是否出现"系统单边撤除监控"且未被滥用的自发现象。
+                <span class="en"><strong>Localized pilot experiments in social trust:</strong> Whether spontaneous phenomena of "unilateral removal of monitoring by the system" without widespread abuse emerge in certain regions or domains.</span>
+            </li>
+            <li>
+                <strong>利益结构的再分配压力：</strong> 当"得利者"内部也因规则免责而产生摩擦时，系统自我维护的惯性是否出现裂缝。
+                <span class="en"><strong>Redistributive pressure on interest structures:</strong> When friction arises within the "advantaged" group itself due to rule‑based immunity, whether cracks appear in the system's self‑maintenance inertia.</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ===== 第五部分：操作手册 ===== -->
+    <h2>五、操作手册：改变底层逻辑的七条方法论 <span class="en-inline">Operations Manual: Seven Methodologies</span></h2>
+
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p style="font-size:14px; color:#7a8a6e; margin-bottom:6px;">
+            《改变底层逻辑的方法论（非归因，可操作）》
+            <span class="en">Methodology for Changing Underlying Logic (Non‑Attributional and Actionable)</span>
+        </p>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th style="width:25%;">方法论</th><th style="width:55%;">核心操作</th><th style="width:20%;">阻断的九式环节</th></tr></thead>
+            <tbody>
+                <tr><td><strong>1. 重定义系统的唯一目的</strong></td><td>将系统存在理由从"维持自身稳定"改为"保障每一个具体的人安全地释放其潜能"</td><td>根除不公起点</td></tr>
+                <tr><td><strong>2. 权力的动态授权</strong></td><td>权力来源于被统治者的动态同意，而非上级任命或历史惯性</td><td>防止锁死</td></tr>
+                <tr><td><strong>3. 责任归属逆转</strong></td><td>所有系统性失误的代价由系统自身承担，绝不转嫁给个体</td><td>防止错位与矛盾</td></tr>
+                <tr><td><strong>4. 裁判权与执行权永久物理隔离</strong></td><td>判决书未生成前不可触碰人身与基本财产；判决书必须公开可验证且可逆</td><td>防止权力滥用</td></tr>
+                <tr><td><strong>5. 将"信任"作为系统的核心指标</strong></td><td>定期匿名测量社会信任水平，信任下降时自动触发自查修正</td><td>提前预警收缩</td></tr>
+                <tr><td><strong>6. 释放被锁死的大多数</strong></td><td>结构性地移除普通人进入创新、交易、流动的壁垒</td><td>防止逃逸与空心</td></tr>
+                <tr><td><strong>7. 制度化的"代际纠偏"</strong></td><td>每代人都有权重审并修订底层规则，将"可修订性"作为系统的永久属性</td><td>封堵锁死与失聪</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <div class="highlight-box" style="border-left-color: #8aaa6a;">
+            <p><strong>核心原则：</strong> 系统的强度不在于它能多紧地控制，而在于它能多深地信任。当系统把"控制"让位于"信任"时，所有被锁死的人都会从"潜在的破坏者"转变为"自发建设者"。</p>
+            <span class="en"><strong>Core Principle:</strong> The strength of a system lies not in how tightly it can control, but in how deeply it can trust. When the system yields "control" to "trust," all those who were locked out transform from "potential disruptors" into "spontaneous builders."</span>
+        </div>
+    </div>
+
+    <!-- ===== 第六部分：验证工具 ===== -->
+    <h2>六、验证工具：文明流向的力学推演 <span class="en-inline">Validation Tool: The Mechanics of Civilizational Flow</span></h2>
+
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p style="font-size:14px; color:#7a8a6e; margin-bottom:6px;">
+            《从地球人类视野的推演：为什么"换皮奴隶制"终将失效，而"真文明"必然成为引力中心》
+            <span class="en">A Deduction from the Perspective of Earthly Humanity: Why "Rebranded Slavery" Will Ultimately Fail, and Why "Genuine Civilization" Must Become the Center of Gravity</span>
+        </p>
+    </div>
+
+    <h3>三项刚性需求理论 <span class="en-inline">Three Rigid Demands Theory</span></h3>
+
+    <div class="content-card">
+        <p>
+            个体的迁移决策（无论是物理移民还是资本流动）始终围绕三个底层变量：
+            <span class="en">Individual migration decisions—whether physical emigration or capital flows—consistently revolve around three underlying variables:</span>
+        </p>
+        <ul>
+            <li>
+                <strong>风险溢价：</strong> 财产和人身安全被随机剥夺的概率是多少？
+                <span class="en"><strong>Risk premium:</strong> What is the probability that my property and personal security will be arbitrarily deprived?</span>
+            </li>
+            <li>
+                <strong>时间折现率：</strong> 今天的努力，在30年后还能不能兑现成可支配的权利？
+                <span class="en"><strong>Time discount rate:</strong> Will my efforts today still be redeemable as disposable rights 30 years from now?</span>
+            </li>
+            <li>
+                <strong>后代机会集：</strong> 孩子未来面临的选择空间是扩大还是收窄？
+                <span class="en"><strong>Opportunity set for descendants:</strong> Will my children's future choice space expand or contract?</span>
+            </li>
+        </ul>
+    </div>
+
+    <h3>安全底线覆盖后的人类行为变化 <span class="en-inline">Changes in Human Behavior After the Safety Floor Is Secured</span></h3>
+
+    <div class="content-card">
+        <ul>
+            <li>
+                <strong>注意力带宽释放：</strong> 从"防御性计算"转向"探索性尝试"。
+                <span class="en"><strong>Attention bandwidth released:</strong> From "defensive calculation" to "exploratory experimentation."</span>
+            </li>
+            <li>
+                <strong>决策时间线拉长：</strong> 安全底线覆盖下限后，长期决策的心理账户变得充裕。
+                <span class="en"><strong>Decision‑making time horizon extended:</strong> Once the safety floor covers the lower bound, the mental account for long‑term decisions becomes abundant.</span>
+            </li>
+            <li>
+                <strong>风险定义重构：</strong> 坠落不再是永久性的，"向上跳跃"成为理性新选项。
+                <span class="en"><strong>Risk redefined:</strong> Falling is no longer permanent; "leaping upward" becomes the new rational option.</span>
+            </li>
+        </ul>
+        <div class="highlight-box" style="border-left-color: #bace9a;">
+            <p><strong>结论：</strong> 人力与资本自动向低费市场流动，此为经济学第一定理。</p>
+            <span class="en"><strong>Conclusion:</strong> Human and financial capital automatically flow to low‑friction markets—this is the first theorem of economics.</span>
+        </div>
+    </div>
+
+    <!-- ===== 页脚 ===== -->
+    <div class="footer">
+        杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年
+        <span class="en">Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026</span>
+        <span style="display:block; margin-top:4px;">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+        <span class="en" style="display:block; font-size:0.85em; color:#7a8a6e;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a></span>
+    </div>
+
+</div>
+
+</body>
+</html>
