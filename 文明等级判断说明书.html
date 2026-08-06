@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文明等级判断说明书 · 杨晟琦文明公理系统</title>
     <style>
-        /* ===== 全局重置 ===== */
+        /* ===== 全局重置 & 字体 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -17,27 +17,27 @@
             font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
             color: #d0d6c8;
             line-height: 1.8;
-            padding: 30px 20px;
+            padding: 28px 18px;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: 0 auto;
             background: #171c18;
-            padding: 50px 55px;
+            padding: 44px 52px 38px;
             border-radius: 24px;
             border: 1px solid #2a322a;
             box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
         }
 
-        /* ===== 顶部导航 ===== */
+        /* ===== 顶部导航条 ===== */
         .top-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            padding-bottom: 16px;
-            margin-bottom: 30px;
+            padding-bottom: 14px;
+            margin-bottom: 22px;
             border-bottom: 1px solid #2a322a;
             font-size: 14px;
         }
@@ -46,8 +46,8 @@
             color: #7a8a6e;
             text-decoration: none;
             border-bottom: 1px dotted #4a5a3e;
+            transition: color 0.2s, border-color 0.2s;
         }
-
         .top-nav .back:hover {
             color: #aaba8a;
             border-bottom-color: #aaba8a;
@@ -59,353 +59,499 @@
             letter-spacing: 1px;
         }
 
-        /* ===== 封面 ===== */
-        .cover {
-            text-align: center;
-            padding: 30px 0 40px 0;
+        /* ===== 顶部品牌区 ===== */
+        .brand {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
             border-bottom: 2px solid #2a322a;
-            margin-bottom: 40px;
         }
 
-        .cover .label {
+        .brand-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sub-brand {
             font-size: 14px;
-            letter-spacing: 4px;
-            color: #7a8a6e;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            color: #8a9a7e;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 2px;
         }
 
-        .cover h1 {
-            font-size: 36px;
+        .title-row {
+            display: block;
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
+        .title-row h1 {
+            font-size: 28px;
             font-weight: 700;
-            letter-spacing: 1px;
-            color: #e2ead4;
-            line-height: 1.3;
-            margin-bottom: 12px;
-        }
-
-        .cover .meta {
-            font-size: 15px;
-            color: #6a7a5e;
-            border-top: 1px solid #2a322a;
-            padding-top: 16px;
-            display: inline-block;
-            padding-left: 30px;
-            padding-right: 30px;
-        }
-
-        .cover .meta strong {
-            color: #aaba8a;
-            font-weight: 500;
-        }
-
-        .cover .meta .orcid {
-            color: #7a8a6e;
-            font-size: 13px;
             letter-spacing: 0.5px;
+            color: #e2ead4;
+            display: inline;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .title-row .tag {
+            background: #2a322a;
+            color: #e2ead4;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 2px 16px;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            border: 1px solid #3a4638;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            line-height: 1.6;
+        }
+
+        .info-row {
+            font-size: 15px;
+            color: #7a8a6e;
+            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 24px;
+        }
+
+        .info-row a {
+            color: #aaba8a;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+            transition: border-color 0.2s;
+        }
+        .info-row a:hover {
+            border-bottom: 1px solid #aaba8a;
+        }
+
+        .brand-right {
+            font-size: 15px;
+            color: #7a8a6e;
+            text-align: right;
+            align-self: flex-start;
+            margin-top: 4px;
+        }
+
+        /* ===== 英文辅助 ===== */
+        .en {
+            font-size: 0.8em;
+            color: #7a8a6e;
+            font-weight: 400;
+            display: block;
+            line-height: 1.6;
+            margin-top: 2px;
+        }
+
+        .en-inline {
+            font-size: 0.8em;
+            color: #7a8a6e;
+            font-weight: 400;
+        }
+
+        /* ===== 标题样式 ===== */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2a322a;
+            color: #e2ead4;
+            letter-spacing: 0.5px;
+        }
+
+        h2 .en-inline {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: #7a8a6e;
+            margin-left: 12px;
+        }
+
+        /* ===== 次级标题（独立于卡片框外） ===== */
+        h3 {
+            font-size: 21px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2a322a;
+            color: #d4dec4;
+        }
+
+        h3 .en-inline {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: #7a8a6e;
+            margin-left: 8px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: #c6ceba;
+            line-height: 1.8;
+        }
+
+        a {
+            color: #aaba8a;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        a:hover {
+            border-bottom: 1px solid #aaba8a;
+            color: #bace9a;
+        }
+
+        /* ===== 普通内容卡片 ===== */
+        .content-card {
+            background: #1e241e;
+            border-radius: 14px;
+            padding: 22px 28px 18px;
+            margin: 0 0 20px 0;
+            border: 1px solid #2a322a;
+            border-left: 5px solid #8aaa6a;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #c6ceba;
+        }
+
+        .content-card .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+        }
+
+        .content-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 6px 0 4px 0;
+        }
+
+        .content-card ul li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 6px;
+            color: #b6c0aa;
+            font-size: 15px;
+        }
+
+        .content-card ul li::before {
+            content: "•";
+            color: #8aaa6a;
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .content-card ul li .en {
+            font-size: 0.8em;
+            color: #7a8a6e;
+        }
+
+        .content-card .highlight-box {
+            background: #171c18;
+            border-left: 4px solid #bace9a;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin: 10px 0 12px 0;
+        }
+
+        .content-card .highlight-box p {
+            margin-bottom: 4px;
+            font-size: 16px;
+            color: #d4dec4;
+        }
+
+        .content-card .highlight-box .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+        }
+
+        /* ===== 公式高亮框 ===== */
+        .formula-box {
+            background: #1e241e;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 12px 0 16px 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid #2a322a;
+            color: #e2ead4;
+        }
+
+        .formula-box .small {
+            font-size: 15px;
+            font-weight: 400;
+            color: #7a8a6e;
             display: block;
             margin-top: 4px;
         }
 
-        /* ===== 通用标题 ===== */
-        h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-top: 52px;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #2a322a;
-            color: #e2ead4;
-            letter-spacing: 1px;
-        }
-
-        h3 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-top: 36px;
-            margin-bottom: 12px;
-            color: #d4dec4;
-        }
-
-        h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 24px;
-            margin-bottom: 8px;
-            color: #aaba8a;
-        }
-
-        p {
-            margin-bottom: 14px;
-            color: #c6ceba;
-            line-height: 1.9;
-        }
-
-        .highlight-box {
-            background: #1e241e;
-            border-left: 4px solid #8aaa6a;
-            padding: 16px 22px;
-            border-radius: 8px;
-            margin: 16px 0;
-        }
-
-        .highlight-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .highlight-box strong {
-            color: #bace9a;
-        }
-
-        /* ===== 核心公式 ===== */
-        .formula-box {
-            background: #1a201a;
-            border-radius: 16px;
-            padding: 24px 30px;
-            margin: 18px 0 16px 0;
-            text-align: center;
+        /* ===== 表格 ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 12px 0 16px 0;
+            border-radius: 12px;
             border: 1px solid #2a322a;
         }
 
-        .formula-box .main {
-            font-size: 26px;
-            font-weight: 700;
-            color: #e2ead4;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #171c18;
+            min-width: 480px;
+        }
+
+        th {
+            background: #1e241e;
+            color: #aaba8a;
+            font-weight: 600;
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 2px solid #2a322a;
+            font-size: 13px;
             letter-spacing: 0.5px;
-            line-height: 1.5;
         }
 
-        .formula-box .main .highlight {
-            color: #bace9a;
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #242c22;
+            color: #c6ceba;
+            vertical-align: top;
+            font-size: 14px;
         }
 
-        .formula-box .note {
-            font-size: 16px;
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-en {
             color: #7a8a6e;
-            margin-top: 8px;
+            font-size: 0.85em;
         }
 
         /* ===== 元法则卡片 ===== */
         .meta-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 18px;
-            margin: 16px 0 20px 0;
+            gap: 16px;
+            margin: 12px 0 16px 0;
         }
 
         .meta-card {
             background: #1e241e;
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 18px 20px 16px;
             border: 1px solid #2a322a;
-            border-top: 3px solid #8aaa6a;
-            transition: transform 0.1s ease, box-shadow 0.2s;
+            border-top: 4px solid #8aaa6a;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
         }
 
         .meta-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-        }
-
-        .meta-card .meta-num {
-            display: inline-block;
-            background: #2a322a;
-            color: #aaba8a;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 0 12px;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .meta-card .meta-title {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 17px;
             color: #e2ead4;
-            margin-bottom: 6px;
+            margin-bottom: 2px;
         }
 
-        .meta-card .meta-desc {
+        .meta-card .meta-title .en-inline {
+            font-size: 0.65em;
+            font-weight: 400;
+            color: #7a8a6e;
+            display: block;
+            margin-top: 1px;
+        }
+
+        .meta-card .meta-body {
             font-size: 14px;
             color: #b6c0aa;
             line-height: 1.7;
-        }
-
-        .meta-card .meta-essence {
-            font-size: 13px;
-            color: #7a8a6e;
             margin-top: 8px;
             padding-top: 8px;
             border-top: 1px dashed #2a322a;
         }
 
-        /* ===== 等级判定表 ===== */
-        .level-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 16px;
-            margin: 16px 0 20px 0;
-        }
-
-        .level-card {
-            background: #1e241e;
-            border-radius: 12px;
-            padding: 18px 20px 16px;
-            border: 1px solid #2a322a;
-            text-align: center;
-        }
-
-        .level-card .level-name {
-            font-size: 22px;
-            font-weight: 700;
-            color: #e2ead4;
-        }
-
-        .level-card .level-score {
-            font-size: 15px;
+        .meta-card .meta-body .en {
+            font-size: 0.8em;
             color: #7a8a6e;
-            margin: 4px 0;
         }
 
-        .level-card .level-desc {
-            font-size: 14px;
-            color: #b6c0aa;
-            line-height: 1.6;
-            margin-top: 6px;
-        }
-
-        .level-card.low {
-            border-top: 3px solid #8a6a4a;
-        }
-
-        .level-card.medium {
-            border-top: 3px solid #b89a4a;
-        }
-
-        .level-card.high {
-            border-top: 3px solid #8aaa6a;
-        }
-
-        /* ===== 评分汇总卡 ===== */
-        .summary-box {
-            background: #1a201a;
-            border-radius: 12px;
-            padding: 20px 24px;
-            border: 1px solid #2a322a;
-            margin: 16px 0;
-        }
-
-        .summary-box .row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 0;
-            border-bottom: 1px solid #242c22;
-            font-size: 15px;
-        }
-
-        .summary-box .row:last-child {
-            border-bottom: none;
-        }
-
-        .summary-box .row .label {
-            color: #b6c0aa;
-        }
-
-        .summary-box .row .value {
-            color: #e2ead4;
-            font-weight: 500;
-        }
-
-        .summary-box .row .value.pass {
-            color: #8aaa6a;
-        }
-
-        .summary-box .row .value.fail {
-            color: #b89a4a;
-        }
+        .meta-card:nth-child(1) { border-top-color: #8aaa6a; }
+        .meta-card:nth-child(2) { border-top-color: #b89a4a; }
+        .meta-card:nth-child(3) { border-top-color: #6a9a8a; }
 
         /* ===== 页脚 ===== */
         .footer {
             margin-top: 48px;
-            padding-top: 20px;
+            padding-top: 22px;
             border-top: 2px solid #2a322a;
             font-size: 14px;
             color: #5a6a4e;
             text-align: center;
-            letter-spacing: 1px;
         }
 
-        .footer .doi {
+        .footer a {
             color: #7a8a6e;
-            font-size: 13px;
-            margin-top: 4px;
-        }
-
-        /* ===== 修改1：新增页脚链接样式，与顶部一致 ===== */
-        .footer .doi a {
-            color: #7a8a6e;
-            text-decoration: none;
             border-bottom: 1px dotted #4a5a3e;
         }
-
-        .footer .doi a:hover {
+        .footer a:hover {
+            border-bottom: 1px solid #7a8a6e;
             color: #aaba8a;
-            border-bottom-color: #aaba8a;
-            border-bottom-style: solid;
+        }
+
+        .footer .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+            display: block;
+            margin-top: 2px;
         }
 
         /* ===== 响应式 ===== */
         @media (max-width: 768px) {
-            .container {
-                padding: 24px 16px;
+            body {
+                padding: 14px 8px;
             }
-            .cover h1 {
-                font-size: 28px;
+            .container {
+                padding: 22px 14px 24px;
+            }
+            .title-row h1 {
+                font-size: 24px;
+            }
+            .title-row .tag {
+                font-size: 12px;
+                padding: 2px 12px;
+                margin-left: 8px;
+            }
+            .sub-brand {
+                font-size: 12px;
+            }
+            .info-row {
+                font-size: 14px;
+                flex-direction: column;
+                gap: 2px;
+            }
+            .brand-right {
+                text-align: left;
+                width: 100%;
+                margin-top: 6px;
             }
             .meta-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
             }
-            .level-grid {
-                grid-template-columns: 1fr;
-            }
-            h2 {
-                font-size: 22px;
-            }
-            .formula-box .main {
-                font-size: 20px;
+            .content-card {
+                padding: 16px 18px;
             }
             .top-nav {
                 font-size: 13px;
             }
-            .summary-box .row {
-                font-size: 14px;
-                flex-wrap: wrap;
+            .top-nav .badge {
+                font-size: 12px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            h3 {
+                font-size: 19px;
+                margin-top: 32px;
+            }
+            .formula-box {
+                font-size: 17px;
+                padding: 14px 16px;
+            }
+            .formula-box .small {
+                font-size: 13px;
+            }
+            table {
+                font-size: 12px;
+                min-width: 360px;
+            }
+            th,
+            td {
+                padding: 6px 10px;
             }
         }
 
         @media (max-width: 480px) {
-            body {
-                padding: 12px 6px;
-            }
             .container {
-                padding: 16px 10px;
+                padding: 14px 10px 18px;
             }
-            .cover h1 {
-                font-size: 22px;
+            .title-row h1 {
+                font-size: 20px;
             }
-            .formula-box .main {
-                font-size: 17px;
+            .title-row .tag {
+                font-size: 11px;
+                padding: 2px 10px;
+                margin-left: 6px;
             }
-            .formula-box {
-                padding: 16px 14px;
+            .brand {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .brand-right {
+                text-align: left;
             }
             .meta-card {
                 padding: 14px 16px;
             }
-            .level-card {
-                padding: 14px 16px;
+            .meta-card .meta-title {
+                font-size: 15px;
+            }
+            .content-card {
+                padding: 14px 14px;
+            }
+            .content-card p {
+                font-size: 14px;
+            }
+            .content-card ul li {
+                font-size: 14px;
+            }
+            .formula-box {
+                font-size: 15px;
+                padding: 12px 12px;
+            }
+            .formula-box .small {
+                font-size: 12px;
+            }
+            table {
+                font-size: 11px;
+                min-width: 280px;
+            }
+            th,
+            td {
+                padding: 4px 8px;
+            }
+            h3 {
+                font-size: 17px;
+                margin-top: 28px;
             }
         }
     </style>
@@ -414,219 +560,536 @@
 
 <div class="container">
 
-    <!-- ===== 顶部导航 ===== -->
+    <!-- ===== 顶部导航条 ===== -->
     <div class="top-nav">
-        <!-- ===== 修改2：顶部链接改为新仓库地址 ===== -->
-        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/" class="back">← 返回体系总入口</a>
-        <span class="badge">杨晟琦文明公理系统 · 度量工具</span>
+        <a href="./index.html" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 独立思想锚点</span>
     </div>
 
-    <!-- ===== 封面 ===== -->
-    <div class="cover">
-        <div class="label">✦ 度量工具 · 量化文明 ✦</div>
-        <h1>文明等级判断说明书</h1>
-        <div class="meta">
-            <strong>杨晟琦</strong> 设计 · 2026年7月19日
-            <span class="orcid">ORCID: 0009-0008-3755-8960</span>
+    <!-- ===== 顶部品牌区 ===== -->
+    <div class="brand">
+        <div class="brand-left">
+            <div class="sub-brand">Civilization Level Assessment Manual</div>
+            <div class="title-row">
+                <h1>文明等级判断说明书</h1>
+                <span class="tag">量化文明</span>
+            </div>
+            <div class="info-row">
+                <span>文章首发：<a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+                <span>First published on: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+            </div>
         </div>
+        <div class="brand-right"></div>
     </div>
 
-    <!-- ===== 序言 ===== -->
-    <p style="font-size:17px; color:#aaba8a; text-align:center; margin-bottom:20px;">
-        在此宣言之前，人类对"文明"的讨论，全数停留在修辞、信仰、口号与相对主义泥潭之中。
-    </p>
-    <p>历史学家说文明是遗迹，政治家说文明是GDP，哲学家说文明是道德。但没有人能给出一个可测量、可验证、可复现的文明定义。这意味着，在漫长的数千年里，"文明"一直是权力的注脚，而非众生的尺度。</p>
-
-    <div class="highlight-box" style="border-left-color: #bace9a;">
-        <p style="font-size:18px; font-weight:700; color:#e2ead4;">2026年7月19日，这一状态被终结。</p>
+    <!-- ===== 开篇宣言 ===== -->
+    <div class="content-card">
+        <p>
+            在此宣言之前，人类对"文明"的讨论，全数停留在修辞、信仰、口号与相对主义泥潭之中。
+            <span class="en">Prior to this declaration, all human discourse on "civilization" remained mired in rhetoric, faith, slogans, and relativism.</span>
+        </p>
+        <p>
+            历史学家说文明是遗迹，政治家说文明是GDP，哲学家说文明是道德。
+            <span class="en">Historians said civilization was ruins; politicians said it was GDP; philosophers said it was morality.</span>
+        </p>
+        <p>
+            但没有人能给出一个可测量、可验证、可复现的文明定义。
+            <span class="en">But no one could provide a measurable, verifiable, and replicable definition of civilization.</span>
+        </p>
+        <p>
+            这意味着，在漫长的数千年里，"文明"一直是权力的注脚，而非众生的尺度。
+            <span class="en">This meant that for thousands of years, "civilization" had always been a footnote to power, never a yardstick for all people.</span>
+        </p>
     </div>
 
-    <p>由杨晟琦设立的《文明等级判断说明书》，完成了人类历史上第一次对"文明"的数学建模。文明从此不再是形容词，而是一个可计算函数：</p>
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p style="font-size:18px; font-weight:600; color:#e2ead4;">
+            <strong>2026年7月19日，这一状态被终结。</strong>
+            <span class="en" style="font-size:0.8em;"><strong>On July 19, 2026, this state was ended.</strong></span>
+        </p>
+        <p>
+            由杨晟琦设立的《文明等级判断说明书》，完成了人类历史上第一次对"文明"的数学建模。文明从此不再是形容词，而是一个可计算函数：
+            <span class="en">The <em>Civilization Level Assessment Manual</em>, established by Yang Shengqi, completed the first mathematical modeling of "civilization" in human history. Civilization is no longer an adjective, but a computable function:</span>
+        </p>
+    </div>
 
     <!-- ===== 核心公式 ===== -->
     <div class="formula-box">
-        <div class="main">
-            文明指数 =（<span class="highlight">生存与劳动保障</span> + <span class="highlight">劳动价值平等</span> + <span class="highlight">收入分配公平</span> + <span class="highlight">言论与精神自由</span>）× 2.5
-        </div>
-        <div class="note">这是人类文明测量史上的第一把游标卡尺。</div>
+        文明指数 =（生存与劳动保障 + 劳动价值平等 + 收入分配公平 + 言论与精神自由）× 2.5
+        <span class="small">Civilization Index = (Survival & Labor Security + Equal Labor Value + Fair Income Distribution + Freedom of Speech & Spirit) × 2.5</span>
     </div>
 
-    <!-- ===== 三项不可动摇的元法则 ===== -->
-    <h2>三项不可动摇的元法则</h2>
+    <div class="content-card">
+        <p>
+            这是人类文明测量史上的第一把游标卡尺。
+            <span class="en">This is the first vernier caliper in the history of human civilization measurement.</span>
+        </p>
+    </div>
+
+    <!-- ===== 三项元法则 ===== -->
+    <h3>三项不可动摇的元法则 <span class="en-inline">Three Unshakable Meta‑Principles</span></h3>
 
     <div class="meta-grid">
-
         <div class="meta-card">
-            <span class="meta-num">第一法则</span>
-            <div class="meta-title">基石否决权</div>
-            <div class="meta-desc">
-                文明不以繁荣为前提，而以自由为根基；自由不以放纵为形态，而以规则为边界；规则不以强者为意志，而以三公为准绳。
+            <div class="meta-title">
+                第一法则：基石否决权
+                <span class="en-inline">Principle One: Cornerstone Veto</span>
             </div>
-            <div class="meta-essence">
-                <strong>三块基石，缺一不可。</strong> 缺一则判低级，永无通融。<br>
-                这是人类第一次在文明定义中植入硬性伦理学底线。
+            <div class="meta-body">
+                文明不以繁荣为前提，而以自由为根基；自由不以放纵为形态，而以规则为边界；规则不以强者为意志，而以三公为准绳。三块基石，缺一不可。缺一则判低级，永无通融。
+                <span class="en">Civilization is not premised on prosperity, but rooted in freedom; freedom does not take the form of indulgence, but is bounded by rules; rules are not dictated by the will of the powerful, but are guided by the Three Principles—fairness, justice, and openness. Not one of the three cornerstones can be missing. If any is absent, the society is judged as Low‑Level Civilization, with no exception whatsoever.</span>
             </div>
         </div>
-
         <div class="meta-card">
-            <span class="meta-num">第二法则</span>
-            <div class="meta-title">体感优先律</div>
-            <div class="meta-desc">
+            <div class="meta-title">
+                第二法则：体感优先律
+                <span class="en-inline">Principle Two: Primacy of Lived Experience</span>
+            </div>
+            <div class="meta-body">
                 当宏观统计数据（GDP、平均收入、官方失业率）与弱势群体的实际生存体感发生冲突时，本指数以体感为真理。
-            </div>
-            <div class="meta-essence">
-                这是人类第一次在社会科学量化工具中，将<strong>"人的承受"凌驾于"纸面的粉饰"</strong>之上。
+                <span class="en">When macroeconomic statistics (GDP, average income, official unemployment rate) conflict with the actual lived experience of vulnerable groups, this index takes lived experience as truth.</span>
             </div>
         </div>
-
         <div class="meta-card">
-            <span class="meta-num">第三法则</span>
-            <div class="meta-title">最短木桶律</div>
-            <div class="meta-desc">
+            <div class="meta-title">
+                第三法则：最短木桶律
+                <span class="en-inline">Principle Three: Shortest Plank Rule</span>
+            </div>
+            <div class="meta-body">
                 四大要素中任意一项低于或等于2分，总分自动锁死低级文明。其他三项表现再优异，不可拉升、不可弥补。
-            </div>
-            <div class="meta-essence">
-                这是人类第一次在文明评估中承认：<strong>系统性压迫可以瞬间摧毁文明的全部优越性。</strong>
+                <span class="en">If any of the four core elements scores 2 or below, the total score is automatically locked at Low‑Level Civilization. No matter how outstanding the other three elements perform, they cannot elevate or compensate.</span>
             </div>
         </div>
-
     </div>
 
-    <!-- ===== 指数的历史定位 ===== -->
-    <h2>这份指数的历史定位</h2>
+    <!-- ===== 历史定位 ===== -->
+    <h3>这份指数的历史定位 <span class="en-inline">The Historical Positioning of This Index</span></h3>
 
-    <div class="highlight-box" style="border-left-color: #7a8a6e;">
-        <p>它与GDP无关，与军事实力无关，与领土大小无关。它只关切三件事：</p>
+    <div class="content-card">
+        <p>
+            它与GDP无关，与军事实力无关，与领土大小无关。它只关切三件事：
+            <span class="en">It has nothing to do with GDP, military power, or territorial size. It concerns only three things:</span>
+        </p>
+        <!-- 修改部分：去掉了“一、二、三”和“1. 2. 3.”编号 -->
+        <ul>
+            <li>
+                <strong>个体是否免于生存恐惧；</strong>
+                <span class="en"><strong>Whether individuals are free from existential fear;</strong></span>
+            </li>
+            <li>
+                <strong>个体是否免于身份屈辱；</strong>
+                <span class="en"><strong>Whether individuals are free from identity humiliation;</strong></span>
+            </li>
+            <li>
+                <strong>个体是否免于沉默锁。</strong>
+                <span class="en"><strong>Whether individuals are free from the lock of silence.</strong></span>
+            </li>
+        </ul>
+        <p>
+            凡以此标准丈量的社会，无论自诩何种制度、何种文化、何种历史，皆将暴露其真实底色。高级文明不是自封的，是算出来的；低级文明不是污名，是数据反映的残酷真相。
+            <span class="en">Any society measured by this standard—regardless of its claimed system, culture, or history—will have its true colors exposed. High‑Level Civilization is not self‑proclaimed; it is calculated. Low‑Level Civilization is not a stigma; it is the harsh truth reflected by data.</span>
+        </p>
     </div>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin:16px 0 20px 0;">
-        <div style="background:#1e241e; border-radius:12px; padding:16px 20px; border:1px solid #2a322a; text-align:center;">
-            <div style="font-size:28px; margin-bottom:4px;">🛡️</div>
-            <div style="font-weight:700; color:#e2ead4; font-size:16px;">个体是否免于</div>
-            <div style="color:#bace9a; font-size:16px;">生存恐惧</div>
-        </div>
-        <div style="background:#1e241e; border-radius:12px; padding:16px 20px; border:1px solid #2a322a; text-align:center;">
-            <div style="font-size:28px; margin-bottom:4px;">🤲</div>
-            <div style="font-weight:700; color:#e2ead4; font-size:16px;">个体是否免于</div>
-            <div style="color:#bace9a; font-size:16px;">身份屈辱</div>
-        </div>
-        <div style="background:#1e241e; border-radius:12px; padding:16px 20px; border:1px solid #2a322a; text-align:center;">
-            <div style="font-size:28px; margin-bottom:4px;">🗣️</div>
-            <div style="font-weight:700; color:#e2ead4; font-size:16px;">个体是否免于</div>
-            <div style="color:#bace9a; font-size:16px;">沉默锁</div>
-        </div>
-    </div>
+    <!-- ===== 开放性 ===== -->
+    <h3>本指数的开放性 <span class="en-inline">The Openness of This Index</span></h3>
 
-    <div class="highlight-box" style="border-left-color: #bace9a;">
-        <p>凡以此标准丈量的社会，无论自称何种制度、何种文化、何种历史，皆将暴露其真实底色。<br>
-        <strong>高级文明不是自封的，是算出来的；低级文明不是污名，是数据反映的残酷真相。</strong></p>
-    </div>
-
-    <!-- ===== 本指数的开放性 ===== -->
-    <h2>本指数的开放性</h2>
-
-    <p>本标准仰赖WJP法治指数提供的法治量化数据作为基准参照。WJP提供了可验证的"外部尺子"，本指数在尺子上附加了"体感修正"和"底线锁死"，使冰冷的数据具备了体温与良知。</p>
-
-    <p style="color:#aaba8a; font-style:italic;">本指数欢迎全人类任何组织、任何研究者使用、复验、挑战。但它拒绝被修改的，是上述三条元法则，因为那是文明的底线，而非谈判的筹码。</p>
-
-    <!-- ===== 等级判定 ===== -->
-    <h2>文明等级判定</h2>
-
-    <div class="level-grid">
-        <div class="level-card low">
-            <div class="level-name">低级文明</div>
-            <div class="level-score">0 — 39 分</div>
-            <div class="level-desc">基石缺失或要素严重不足；<br>个体处于丛林或准丛林状态。</div>
-        </div>
-        <div class="level-card medium">
-            <div class="level-name">中级文明</div>
-            <div class="level-score">40 — 79 分</div>
-            <div class="level-desc">基石已立；<br>要素基本达标；<br>平等与自由初步实现。</div>
-        </div>
-        <div class="level-card high">
-            <div class="level-name">高级文明</div>
-            <div class="level-score">80 — 100 分</div>
-            <div class="level-desc">基石稳固；<br>要素优秀；<br>创造性自由绽放。</div>
-        </div>
-    </div>
-
-    <!-- ===== 评分汇总卡 ===== -->
-    <h2>评分汇总卡</h2>
-
-    <div class="summary-box">
-        <div class="row">
-            <span class="label">基石一：自由是否建立</span>
-            <span class="value pass">✅ 是 / ⬜ 否</span>
-        </div>
-        <div class="row">
-            <span class="label">基石二：规则是否建立</span>
-            <span class="value pass">✅ 是 / ⬜ 否</span>
-        </div>
-        <div class="row">
-            <span class="label">基石三：三公是否建立</span>
-            <span class="value pass">✅ 是 / ⬜ 否</span>
-        </div>
-        <div class="row" style="border-bottom:2px solid #2a322a;">
-            <span class="label">基石判定结果</span>
-            <span class="value pass">✅ 齐全 / ⬜ 缺失 → 若缺失，直接低级文明</span>
-        </div>
-        <div class="row">
-            <span class="label">要素一：生存与劳动保障</span>
-            <span class="value">(0-10) ___ 分</span>
-        </div>
-        <div class="row">
-            <span class="label">要素二：劳动价值平等</span>
-            <span class="value">(0-10) ___ 分</span>
-        </div>
-        <div class="row">
-            <span class="label">要素三：收入分配公平</span>
-            <span class="value">(0-10) ___ 分</span>
-        </div>
-        <div class="row" style="border-bottom:2px solid #2a322a;">
-            <span class="label">要素四：言论与精神自由</span>
-            <span class="value">(0-10) ___ 分</span>
-        </div>
-        <div class="row">
-            <span class="label">四项合计</span>
-            <span class="value">___ 分</span>
-        </div>
-        <div class="row">
-            <span class="label">文明总分（合计 × 2.5）</span>
-            <span class="value" style="font-size:18px; color:#bace9a;">___ 分</span>
-        </div>
-        <div class="row">
-            <span class="label">得分对应等级</span>
-            <span class="value">⬜ 低级 / ⬜ 中级 / ⬜ 高级</span>
-        </div>
-        <div class="row">
-            <span class="label">单项拖累检查（任一要素 ≤ 2）</span>
-            <span class="value fail">⬜ 是 → 锁定低级 / ⬜ 否</span>
-        </div>
-        <div class="row" style="border-top:2px solid #2a322a; padding-top:10px;">
-            <span class="label" style="font-weight:700; color:#e2ead4;">最终文明等级（取最低）</span>
-            <span class="value" style="font-weight:700; font-size:17px; color:#bace9a;">⬜ 低级 / ⬜ 中级 / ⬜ 高级</span>
-        </div>
+    <div class="content-card">
+        <p>
+            本标准仰赖WJP法治指数提供的法治量化数据作为基准参照。
+            <span class="en">This standard relies on the rule‑of‑law quantitative data provided by the WJP Rule of Law Index as its benchmark reference.</span>
+        </p>
+        <p>
+            WJP提供了可验证的"外部尺子"，本指数在尺子之上附加了"体感修正"和"底线锁死"，使冰冷的数据具备了体温与良知。
+            <span class="en">The WJP provides a verifiable "external ruler." This index adds "lived‑experience correction" and "bottom‑line lock" on top of that ruler, endowing cold data with warmth and conscience.</span>
+        </p>
+        <p>
+            本指数欢迎全人类任何组织、任何研究者使用、复验、挑战。
+            <span class="en">This index welcomes any organization or researcher in all of humanity to use, replicate, and challenge it.</span>
+        </p>
+        <p>
+            但它拒绝被修改的，是上述三条元法则，因为那是文明的底线，而非谈判的筹码。
+            <span class="en">But what it refuses to have modified are the above three meta‑principles—because they are the bottom line of civilization, not bargaining chips.</span>
+        </p>
     </div>
 
     <!-- ===== 最终宣告 ===== -->
-    <h2>最终宣告</h2>
+    <h3>最终宣告 <span class="en-inline">Final Declaration</span></h3>
 
-    <div class="highlight-box" style="border-left-color: #bace9a; text-align:center;">
-        <p style="font-size:20px; font-weight:700; color:#e2ead4;">在2026年7月19日这一日，人类多了一把尺子。</p>
-        <p>这把尺子量度的不再是土地与黄金，而是每个个体真实承受的自由、平等与尊严。</p>
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p>
+            在2026年7月19日这一日，人类多了一把尺子。
+            <span class="en">On this day, July 19, 2026, humanity gained one more ruler.</span>
+        </p>
+        <p>
+            这把尺子量度的不再是土地与黄金，而是每个个体真实承受的自由、平等与尊严。
+            <span class="en">This ruler no longer measures land and gold, but the freedom, equality, and dignity that every individual truly endures.</span>
+        </p>
+        <p style="font-size:18px; font-weight:600; color:#e2ead4;">
+            <strong>这是量化文明的第一天。</strong>
+            <span class="en" style="font-size:0.8em;"><strong>This is the first day of quantified civilization.</strong></span>
+        </p>
+        <p style="font-size:14px; color:#7a8a6e; margin-top:10px; padding-top:10px; border-top:1px dashed #2a322a;">
+            版本：1.1（完善版） · 时间：2026年7月19日 · 设计人：杨晟琦<br>
+            制定依据：三块基石 + 四大要素 + WJP八因素 · 适用范围：所有人类社会形态
+            <span class="en" style="font-size:0.8em;">Version: 1.1 (Refined Edition) · Date: July 19, 2026 · Designer: Yang Shengqi<br> Based on: Three Cornerstones + Four Core Elements + WJP Eight Factors · Scope of Application: All forms of human society</span>
+        </p>
     </div>
 
-    <p style="text-align:center; font-size:18px; color:#aaba8a; margin-top:12px;"><strong>这是量化文明的第一天。</strong></p>
+    <!-- ===== 前言 ===== -->
+    <h3>前言 <span class="en-inline">Preface</span></h3>
+
+    <div class="content-card">
+        <p>本标准基于以下基本认知：<span class="en">This standard is based on the following fundamental understandings:</span></p>
+        <ul>
+            <li>
+                文明不是声称的，是可测量的
+                <span class="en">Civilization is not what is claimed; it is measurable.</span>
+            </li>
+            <li>
+                文明不是宏大的叙事，是每一个个体实际承受的体验
+                <span class="en">Civilization is not grand narrative; it is the actual experience borne by every individual.</span>
+            </li>
+            <li>
+                文明不是旗帜和口号，是生存、平等、公平、自由的集合
+                <span class="en">Civilization is not flags and slogans; it is the convergence of survival, equality, fairness, and freedom.</span>
+            </li>
+        </ul>
+        <p>
+            本标准以三块基石为根本前提，以四大要素为核心内容，以WJP法治指数八因素为客观数据参照，通过量化评分，将文明划分为低级、中级、高级三个等级。
+            <span class="en">This standard takes the Three Cornerstones as its fundamental premise, the Four Core Elements as its core content, and the WJP Rule of Law Index Eight Factors as its objective data reference. Through quantitative scoring, it classifies civilizations into three levels: Low, Medium, and High.</span>
+        </p>
+    </div>
+
+    <!-- ===== 第一部分：三块基石 ===== -->
+    <h3>第一部分：三块基石（前提条件）<span class="en-inline">Part I: The Three Cornerstones (Prerequisite Conditions)</span></h3>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>基石编号</th><th>基石内容</th><th>含义</th></tr>
+                <tr>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">Cornerstone No.</th>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">Cornerstone Content</th>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>基石一</td><td>文明以自由为根基</td><td>个体拥有自主选择的权利，不被工具化</td></tr>
+                <tr><td class="table-en">Cornerstone I</td><td class="table-en">Civilization is rooted in freedom</td><td class="table-en">Individuals possess the right to autonomous choice and are not instrumentalized</td></tr>
+                <tr><td>基石二</td><td>自由以规则为边界</td><td>自由的行使以法律和制度为界，避免无序与暴力</td></tr>
+                <tr><td class="table-en">Cornerstone II</td><td class="table-en">Freedom is bounded by rules</td><td class="table-en">The exercise of freedom is delimited by law and institutions, preventing disorder and violence</td></tr>
+                <tr><td>基石三</td><td>规则以公平、公正、公开为准绳</td><td>规则面前人人平等，制定透明，执行无偏</td></tr>
+                <tr><td class="table-en">Cornerstone III</td><td class="table-en">Rules are guided by fairness, justice, and openness</td><td class="table-en">All are equal before rules; formulation is transparent; enforcement is impartial</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content-card">
+        <p><strong>判定规则：</strong> 三块基石中任何一块未建立，该社会直接判为低级文明，不再进入后续评分。
+        <span class="en"><strong>Judgment Rule:</strong> If any one of the Three Cornerstones is not established, the society is directly judged as Low‑Level Civilization and does not proceed to subsequent scoring.</span></p>
+    </div>
+
+    <!-- ===== 第二部分：四大要素 ===== -->
+    <h3>第二部分：四大要素（核心评分项）<span class="en-inline">Part II: The Four Core Elements (Core Scoring Items)</span></h3>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>要素编号</th><th>要素名称</th><th>定义</th></tr>
+                <tr>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">Element No.</th>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">Element Name</th>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">Definition</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>要素一</td><td>生存与劳动保障</td><td>个体是否免于饥饿、疾病、失业性绝境；劳动权利是否受法律与实际保护</td></tr>
+                <tr><td class="table-en">Element I</td><td class="table-en">Survival & Labor Security</td><td class="table-en">Whether individuals are free from hunger, disease, and unemployment‑induced destitution; whether labor rights are protected by law and in practice</td></tr>
+                <tr><td>要素二</td><td>劳动价值平等</td><td>职业是否有贵贱之分；个体是否因出身、性别、种姓等先天因素而遭受职业限制</td></tr>
+                <tr><td class="table-en">Element II</td><td class="table-en">Equal Labor Value</td><td class="table-en">Whether occupations are ranked as noble or base; whether individuals face occupational restrictions due to birth, gender, caste, or other innate factors</td></tr>
+                <tr><td>要素三</td><td>收入分配公平</td><td>贫富差距是否可控；底层是否享有基本尊严；劳动所得是否被权力或资本截留</td></tr>
+                <tr><td class="table-en">Element III</td><td class="table-en">Fair Income Distribution</td><td class="table-en">Whether the wealth gap is controllable; whether the bottom tier enjoys basic dignity; whether labor income is intercepted by power or capital</td></tr>
+                <tr><td>要素四</td><td>言论与精神自由</td><td>批评权是否受法律保护；艺术、学术、媒体是否拥有独立探索的空间</td></tr>
+                <tr><td class="table-en">Element IV</td><td class="table-en">Freedom of Speech & Spirit</td><td class="table-en">Whether the right to criticize is legally protected; whether art, academia, and media have space for independent exploration</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== 第三部分：WJP八因素 ===== -->
+    <h3>第三部分：WJP八因素（客观数据参照）<span class="en-inline">Part III: The WJP Eight Factors (Objective Data Reference)</span></h3>
+
+    <div class="content-card">
+        <p>
+            WJP（世界正义工程）法治指数提供全球公认的法治量化数据，得分范围 0~1。
+            <span class="en">The WJP (World Justice Project) Rule of Law Index provides globally recognized quantitative rule‑of‑law data, with scores ranging from 0 to 1.</span>
+        </p>
+    </div>
+
+    <h3 style="font-size:18px; margin-top:20px; border-bottom:1px solid #2a322a; padding-bottom:6px;">3.1 WJP八因素与四大要素的对应关系 <span class="en-inline">3.1 Correspondence Between the WJP Eight Factors and the Four Core Elements</span></h3>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>WJP编号</th><th>WJP因素名称</th><th>对应你的要素</th></tr>
+                <tr>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">WJP No.</th>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">WJP Factor Name</th>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">Corresponding Element</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>F1</td><td>约束政府权力</td><td>一（对应基石一：自由）</td></tr>
+                <tr><td class="table-en">F1</td><td class="table-en">Constraints on Government Powers</td><td class="table-en">I (Corresponds to Cornerstone I: Freedom)</td></tr>
+                <tr><td>F2</td><td>消除腐败</td><td>要素三：收入分配公平</td></tr>
+                <tr><td class="table-en">F2</td><td class="table-en">Absence of Corruption</td><td class="table-en">Element III: Fair Income Distribution</td></tr>
+                <tr><td>F3</td><td>开放政府</td><td>要素四：言论与精神自由</td></tr>
+                <tr><td class="table-en">F3</td><td class="table-en">Open Government</td><td class="table-en">Element IV: Freedom of Speech & Spirit</td></tr>
+                <tr><td>F4</td><td>基本权利</td><td>要素二：劳动价值平等</td></tr>
+                <tr><td class="table-en">F4</td><td class="table-en">Fundamental Rights</td><td class="table-en">Element II: Equal Labor Value</td></tr>
+                <tr><td>F5</td><td>秩序与安全</td><td>要素一：生存与劳动保障</td></tr>
+                <tr><td class="table-en">F5</td><td class="table-en">Order & Security</td><td class="table-en">Element I: Survival & Labor Security</td></tr>
+                <tr><td>F6</td><td>监管执法</td><td>要素一：生存与劳动保障</td></tr>
+                <tr><td class="table-en">F6</td><td class="table-en">Regulatory Enforcement</td><td class="table-en">Element I: Survival & Labor Security</td></tr>
+                <tr><td>F7</td><td>民事司法</td><td>一（对应基石二：规则）</td></tr>
+                <tr><td class="table-en">F7</td><td class="table-en">Civil Justice</td><td class="table-en">I (Corresponds to Cornerstone II: Rules)</td></tr>
+                <tr><td>F8</td><td>刑事司法</td><td>一（对应基石二：规则）</td></tr>
+                <tr><td class="table-en">F8</td><td class="table-en">Criminal Justice</td><td class="table-en">I (Corresponds to Cornerstone II: Rules)</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 style="font-size:18px; margin-top:20px; border-bottom:1px solid #2a322a; padding-bottom:6px;">3.2 操作规则 <span class="en-inline">3.2 Operational Rules</span></h3>
+
+    <div class="content-card">
+        <p>
+            将对应WJP因素得分 × 10，作为该要素的基准分。
+            <span class="en">Multiply the corresponding WJP factor score by 10 to obtain the baseline score for that element.</span>
+        </p>
+        <p>
+            评分者在基准分基础上，根据该社会实际执行情况（如弱势群体实际体感、区域差异、执行偏差），进行 ±2 分的调整。调整须在评分备注中注明理由。若无调整，则基准分即为该要素得分。
+            <span class="en">On the basis of the baseline score, the scorer may make adjustments of ±2 points according to the actual implementation conditions of the society (e.g., actual lived experience of vulnerable groups, regional disparities, enforcement deviations). Adjustments must be justified in the scoring remarks. If no adjustment is made, the baseline score is the element score.</span>
+        </p>
+        <div class="highlight-box">
+            <p><strong>示例：</strong></p>
+            <p>某国WJP的F5（秩序与安全）= 0.68，F6（监管执法）= 0.52<br>
+            要素一基准分 = (0.68 + 0.52) / 2 × 10 = 6.0<br>
+            评分者根据该国弱势群体实际体感（如非正规经济从业者无社保），将得分调整为5.0，备注中注明依据。<br>
+            若评分者认为WJP数据与实际体感一致，则保持6.0，无需调整。</p>
+            <span class="en"><strong>Example:</strong><br>
+            Country A's WJP F5 (Order & Security) = 0.68, F6 (Regulatory Enforcement) = 0.52<br>
+            Element I baseline score = (0.68 + 0.52) / 2 × 10 = 6.0<br>
+            The scorer, based on the actual lived experience of vulnerable groups in that country (e.g., informal economy workers without social security), adjusts the score to 5.0, with justification noted in the remarks.<br>
+            If the scorer believes the WJP data is consistent with actual lived experience, the score remains 6.0 without adjustment.</span>
+        </div>
+    </div>
+
+    <!-- ===== 第四部分：量化评分标尺 ===== -->
+    <h3>第四部分：四大要素量化评分标尺 <span class="en-inline">Part IV: Quantitative Scoring Scale for the Four Core Elements</span></h3>
+
+    <div class="content-card">
+        <p>每要素独立评分，最小单位0.5分，范围 0~10 分。
+        <span class="en">Each element is scored independently, with a minimum unit of 0.5 points, ranging from 0 to 10.</span></p>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th style="width:8%;">分值</th><th style="width:23%;">生存与劳动保障</th><th style="width:23%;">劳动价值平等</th><th style="width:23%;">收入分配公平</th><th style="width:23%;">言论与精神自由</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>0‑2</strong></td><td>无劳动立法；无任何形式社会保障；失业后无任何救济渠道</td><td>法定等级制（种姓/贵族/奴隶）仍在运行；人格权不平等</td><td>极少数人掌握绝大部分财富；底层长期赤贫</td><td>一切批评被定罪；思想犯罪化；艺术与学术完全服务于宣传</td></tr>
+                <tr><td><strong>3‑4</strong></td><td>有劳动立法但无有效执行；社保覆盖率&lt;30%；保障水平低于当地最低生活标准</td><td>法律上废除等级，但实际职业壁垒森严；上升通道被特定群体垄断</td><td>基尼系数&gt;0.45；贫富差距持续扩大；底层无上升通道</td><td>允许技术性讨论；政治与社会批评被严酷压制；自我审查普遍</td></tr>
+                <tr><td><strong>5‑6</strong></td><td>社保覆盖率≥50%但保障水平仅够维持基本生存；失业救济存在但金额不足以保证基本营养</td><td>同工同酬有法律规定；但高权力/高收入职业仍被特定出身者垄断</td><td>基尼系数0.35‑0.45；有二次分配机制但效果有限</td><td>言论有法律保障但实际受行政压力、媒体管控或暴力威胁</td></tr>
+                <tr><td><strong>7‑8</strong></td><td>全民医保基本实现；失业救济有效覆盖；劳动法被严格执行；工伤有充分赔偿</td><td>职业选择基本不受出身限制；收入差距在合理范围；劳动者受普遍尊重</td><td>基尼系数0.25‑0.35；中产占多数；底层享有基本物质尊严</td><td>批评权有法律保障且实际有效；媒体能独立报道；学术有自由空间</td></tr>
+                <tr><td><strong>9‑10</strong></td><td>保障体系完备；无任何个体因非自愿原因陷入生存危机；劳动权利神圣不可侵犯</td><td>劳动彻底去等级化；职业完全基于个人兴趣与能力；所有人格权绝对平等</td><td>基尼系数&lt;0.25；财富分配机制确保全社会成员共享发展成果</td><td>言论与精神自由完全实现；艺术、学术、媒体独立探索成为常态</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== 第五部分：评分公式 ===== -->
+    <h3>第五部分：评分公式 <span class="en-inline">Part V: Scoring Formula</span></h3>
+
+    <div class="content-card">
+        <div class="formula-box" style="margin:0; font-size:18px;">
+            <strong>文明总分 = （要素一得分 + 要素二得分 + 要素三得分 + 要素四得分）× 2.5</strong>
+            <span class="small"><strong>Civilization Total Score = (Element I Score + Element II Score + Element III Score + Element IV Score) × 2.5</strong></span>
+            <span class="small" style="margin-top:2px;">满分：100分。四项要素等权重，各占25分。<br>Maximum score: 100 points. All four elements are equally weighted, each accounting for 25 points.</span>
+        </div>
+    </div>
+
+    <!-- ===== 第六部分：文明等级判定 ===== -->
+    <h3>第六部分：文明等级判定 <span class="en-inline">Part VI: Civilization Level Determination</span></h3>
+
+    <h3 style="font-size:18px; margin-top:20px; border-bottom:1px solid #2a322a; padding-bottom:6px;">6.1 等级对照表 <span class="en-inline">6.1 Level Reference Table</span></h3>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>总分区间</th><th>文明等级</th><th>核心特征</th></tr>
+                <tr>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">Total Score Range</th>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">Civilization Level</th>
+                    <th style="font-weight:400; color:#7a8a6e; border-bottom:1px solid #2a322a;">Core Characteristics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>0‑39</td><td>低级文明</td><td>基石缺失或要素严重不足；个体处于丛林或准丛林状态</td></tr>
+                <tr><td class="table-en">0‑39</td><td class="table-en">Low‑Level Civilization</td><td class="table-en">Cornerstones missing or elements severely deficient; individuals in a state of jungle or quasi‑jungle</td></tr>
+                <tr><td>40‑79</td><td>中级文明</td><td>基石已立；要素基本达标；平等与自由初步实现</td></tr>
+                <tr><td class="table-en">40‑79</td><td class="table-en">Medium‑Level Civilization</td><td class="table-en">Cornerstones established; elements basically up to standard; equality and freedom initially realized</td></tr>
+                <tr><td>80‑100</td><td>高级文明</td><td>基石稳固；要素优秀；创造性自由绽放</td></tr>
+                <tr><td class="table-en">80‑100</td><td class="table-en">High‑Level Civilization</td><td class="table-en">Cornerstones solid; elements excellent; creative freedom flourishes</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 style="font-size:18px; margin-top:20px; border-bottom:1px solid #2a322a; padding-bottom:6px;">6.2 极端情况判定规则 <span class="en-inline">6.2 Extreme Case Judgment Rules</span></h3>
+
+    <div class="content-card">
+        <p><strong>规则一：单项拖累规则</strong><br>
+        若四大要素中任意一项 ≤ 2 分，则总分锁定为不超过39分，自动归入低级文明。其他三项得分再高，不可拉升总等级。
+        <span class="en"><strong>Rule 1: Single‑Item Drag Rule</strong><br>
+        If any of the four core elements scores ≤ 2 points, the total score is locked at no more than 39 points, automatically placing it in Low‑Level Civilization. No matter how high the other three elements score, they cannot elevate the overall level.</span></p>
+        <p><strong>原理：</strong> 文明的等级由最短板决定。一项要素崩溃，即整体失效。
+        <span class="en"><strong>Rationale:</strong> The level of a civilization is determined by its shortest plank. The collapse of any single element constitutes total systemic failure.</span></p>
+    </div>
+
+    <div class="content-card" style="border-left-color: #b89a4a;">
+        <p><strong>规则二：体感修正规则</strong><br>
+        若WJP数据或官方统计数据，与独立调查报告（如国际劳工组织、无国界记者组织、世界银行实地调查等）之间存在显著矛盾，评分以弱势群体实际体感为准。
+        <span class="en"><strong>Rule 2: Lived‑Experience Correction Rule</strong><br>
+        If WJP data or official statistics significantly contradict independent investigation reports (e.g., from the ILO, Reporters Without Borders, World Bank field surveys, etc.), the score shall prioritize the actual lived experience of vulnerable groups.</span></p>
+        <p>评分者在评分备注中须注明：</p>
+        <ul>
+            <li>数据来源的差异 <span class="en">The discrepancies between data sources</span></li>
+            <li>以体感为准的依据 <span class="en">The rationale for prioritizing lived experience</span></li>
+            <li>调整后的得分 <span class="en">The adjusted score</span></li>
+        </ul>
+    </div>
+
+    <div class="content-card" style="border-left-color: #6a9a8a;">
+        <p><strong>规则三：动态复评规则</strong><br>
+        评分有效期为WJP数据发布年度。次年WJP更新后，应使用新数据重新评估，不得沿用旧分。
+        <span class="en"><strong>Rule 3: Dynamic Re‑evaluation Rule</strong><br>
+        The validity of the score is limited to the year of the WJP data release. After the WJP updates its data the following year, the assessment must be re‑conducted using the new data; previous scores may not be carried over.</span></p>
+    </div>
+
+    <h3 style="font-size:18px; margin-top:20px; border-bottom:1px solid #2a322a; padding-bottom:6px;">6.3 最终等级决定流程 <span class="en-inline">6.3 Final Level Determination Process</span></h3>
+
+    <div class="content-card">
+        <ol style="padding-left:24px; color:#b6c0aa; font-size:15px; line-height:2;">
+            <li><strong>第一步：</strong> 检查三块基石是否全部建立。若有缺失 → 直接判为低级文明，不再计算分数。<br>
+                <span class="en"><strong>Step 1:</strong> Check whether all Three Cornerstones are established. If any are missing → directly judge as Low‑Level Civilization; do not calculate scores.</span></li>
+            <li><strong>第二步：</strong> 按公式计算文明总分。<br>
+                <span class="en"><strong>Step 2:</strong> Calculate the Civilization Total Score according to the formula.</span></li>
+            <li><strong>第三步：</strong> 检查是否触发"单项拖累规则"（任一要素 ≤ 2）→ 若触发，锁定为低级文明。<br>
+                <span class="en"><strong>Step 3:</strong> Check whether the Single‑Item Drag Rule is triggered (any element ≤ 2) → if triggered, lock as Low‑Level Civilization.</span></li>
+            <li><strong>第四步：</strong> 根据总分查表，得出得分对应等级。<br>
+                <span class="en"><strong>Step 4:</strong> Look up the total score in the reference table to obtain the score‑corresponding level.</span></li>
+            <li><strong>第五步：</strong> 取"得分对应等级"与"基石/极端情况判定等级"中的<strong>较低者</strong>，作为最终等级。<br>
+                <span class="en"><strong>Step 5:</strong> Take the <strong>lower</strong> of the "score‑corresponding level" and the "cornerstone/extreme‑case determined level" as the final level.</span></li>
+        </ol>
+    </div>
+
+    <!-- ===== 第七部分：评分汇总卡 ===== -->
+    <h3>第七部分：评分汇总卡 <span class="en-inline">Part VII: Scoring Summary Card</span></h3>
+
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th style="width:50%;">检查项目</th><th style="width:50%;">选项/得分</th></tr></thead>
+            <tbody>
+                <tr><td>基石一：自由是否建立</td><td>□ 是 □ 否</td></tr>
+                <tr><td class="table-en">Cornerstone I: Is freedom established?</td><td class="table-en">□ Yes □ No</td></tr>
+                <tr><td>基石二：规则是否建立</td><td>□ 是 □ 否</td></tr>
+                <tr><td class="table-en">Cornerstone II: Are rules established?</td><td class="table-en">□ Yes □ No</td></tr>
+                <tr><td>基石三：三公是否建立</td><td>□ 是 □ 否</td></tr>
+                <tr><td class="table-en">Cornerstone III: Are the Three Principles established?</td><td class="table-en">□ Yes □ No</td></tr>
+                <tr><td>基石判定结果</td><td>□ 齐全 □ 缺失 → 若缺失，直接低级文明</td></tr>
+                <tr><td class="table-en">Cornerstone Judgment Result</td><td class="table-en">□ Complete □ Missing → If missing, directly Low‑Level</td></tr>
+                <tr><td>要素一：生存与劳动保障</td><td>(0‑10)</td></tr>
+                <tr><td class="table-en">Element I: Survival & Labor Security</td><td class="table-en">(0‑10)</td></tr>
+                <tr><td>要素二：劳动价值平等</td><td>(0‑10)</td></tr>
+                <tr><td class="table-en">Element II: Equal Labor Value</td><td class="table-en">(0‑10)</td></tr>
+                <tr><td>要素三：收入分配公平</td><td>(0‑10)</td></tr>
+                <tr><td class="table-en">Element III: Fair Income Distribution</td><td class="table-en">(0‑10)</td></tr>
+                <tr><td>要素四：言论与精神自由</td><td>(0‑10)</td></tr>
+                <tr><td class="table-en">Element IV: Freedom of Speech & Spirit</td><td class="table-en">(0‑10)</td></tr>
+                <tr><td>四项合计</td><td>---</td></tr>
+                <tr><td class="table-en">Four‑Element Total</td><td class="table-en">---</td></tr>
+                <tr><td><strong>文明总分（合计×2.5）</strong></td><td><strong>(0‑100)</strong></td></tr>
+                <tr><td class="table-en"><strong>Civilization Total Score (Subtotal × 2.5)</strong></td><td class="table-en"><strong>(0‑100)</strong></td></tr>
+                <tr><td>得分对应等级</td><td>□ 低级（0‑39） □ 中级（40‑79） □ 高级（80‑100）</td></tr>
+                <tr><td class="table-en">Score‑Corresponding Level</td><td class="table-en">□ Low (0‑39) □ Medium (40‑79) □ High (80‑100)</td></tr>
+                <tr><td>单项拖累检查（任一要素≤2）</td><td>□ 是 □ 否 → 若是，锁定低级</td></tr>
+                <tr><td class="table-en">Single‑Item Drag Check (Any element ≤ 2)</td><td class="table-en">□ Yes □ No → If Yes, lock as Low</td></tr>
+                <tr><td><strong>最终文明等级（取最低）</strong></td><td><strong>□ 低级 □ 中级 □ 高级</strong></td></tr>
+                <tr><td class="table-en"><strong>Final Civilization Level (Take the lowest)</strong></td><td class="table-en"><strong>□ Low □ Medium □ High</strong></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== 第八部分：WJP数据记录表 ===== -->
+    <h3>第八部分：WJP数据记录表 <span class="en-inline">Part VIII: WJP Data Recording Table</span></h3>
+
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th style="width:40%;">WJP因素</th><th style="width:30%;">得分 (0‑1)</th><th style="width:30%;">来源年份</th></tr></thead>
+            <tbody>
+                <tr><td>F1 约束政府权力</td><td></td><td></td></tr>
+                <tr><td class="table-en">F1 Constraints on Government Powers</td><td class="table-en"></td><td class="table-en"></td></tr>
+                <tr><td>F2 消除腐败</td><td></td><td></td></tr>
+                <tr><td class="table-en">F2 Absence of Corruption</td><td class="table-en"></td><td class="table-en"></td></tr>
+                <tr><td>F3 开放政府</td><td></td><td></td></tr>
+                <tr><td class="table-en">F3 Open Government</td><td class="table-en"></td><td class="table-en"></td></tr>
+                <tr><td>F4 基本权利</td><td></td><td></td></tr>
+                <tr><td class="table-en">F4 Fundamental Rights</td><td class="table-en"></td><td class="table-en"></td></tr>
+                <tr><td>F5 秩序与安全</td><td></td><td></td></tr>
+                <tr><td class="table-en">F5 Order & Security</td><td class="table-en"></td><td class="table-en"></td></tr>
+                <tr><td>F6 监管执法</td><td></td><td></td></tr>
+                <tr><td class="table-en">F6 Regulatory Enforcement</td><td class="table-en"></td><td class="table-en"></td></tr>
+                <tr><td>F7 民事司法</td><td></td><td></td></tr>
+                <tr><td class="table-en">F7 Civil Justice</td><td class="table-en"></td><td class="table-en"></td></tr>
+                <tr><td>F8 刑事司法</td><td></td><td></td></tr>
+                <tr><td class="table-en">F8 Criminal Justice</td><td class="table-en"></td><td class="table-en"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== 第九部分：使用说明 ===== -->
+    <h3>第九部分：使用说明 <span class="en-inline">Part IX: Instructions for Use</span></h3>
+
+    <div class="content-card">
+        <ol style="padding-left:24px; color:#b6c0aa; font-size:15px; line-height:2.2;">
+            <li><strong>评分依据：</strong> 各要素评分应基于可验证的事实（法律条文、执行数据、国际报告、学术研究、亲历者实证），而非宣传或主观臆断。<br>
+                <span class="en"><strong>Basis for Scoring:</strong> Each element score should be based on verifiable facts (legal provisions, enforcement data, international reports, academic research, testimonies of firsthand witnesses), not propaganda or subjective speculation.</span></li>
+            <li><strong>体感优先原则：</strong> 当宏观统计数据与弱势群体的实际体验存在显著矛盾时，评分应向弱势群体体感倾斜（参见第六部分规则二）。<br>
+                <span class="en"><strong>Primacy of Lived Experience:</strong> When macroeconomic statistics significantly contradict the actual experience of vulnerable groups, the score should favor the lived experience of vulnerable groups (see Part VI, Rule 2).</span></li>
+            <li><strong>WJP数据使用：</strong> WJP得分作为要素评分的基准分，评分者在此基础上进行 ±2 的调整（参见第三部分操作规则）。<br>
+                <span class="en"><strong>Use of WJP Data:</strong> WJP scores serve as the baseline for element scoring, upon which the scorer may make adjustments of ±2 points (see Part III Operational Rules).</span></li>
+            <li><strong>动态更新：</strong> 文明等级不是一成不变的，建议随WJP年度更新定期重新评估。<br>
+                <span class="en"><strong>Dynamic Updates:</strong> Civilization levels are not static. Regular re‑assessment is recommended upon each annual WJP update.</span></li>
+            <li><strong>适用范围：</strong> 本标准适用于对人类社会的任何组织形态进行文明程度分析，不预设任何制度优越性。<br>
+                <span class="en"><strong>Scope of Application:</strong> This standard applies to the analysis of civilization levels in any form of human social organization, and presumes no inherent superiority of any system.</span></li>
+        </ol>
+    </div>
+
+    <!-- ===== 第十部分：评论区 ===== -->
+    <h3>第十部分：评论区 <span class="en-inline">Part X: Comments Section</span></h3>
+
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p>
+            文化没有消失，是因为科技的进步，存储的方式多样化了，不代表它就是文明。种子没有消失，是因为人类的文明，是核心底层逻辑要素，不代表它能被掠夺。
+            <span class="en">Culture has not disappeared because of technological progress; the diversification of storage methods does not mean it is civilization. Seeds have not disappeared because of human civilization—they are core underlying logical elements, not something that can be plundered.</span>
+        </p>
+    </div>
 
     <!-- ===== 页脚 ===== -->
     <div class="footer">
-        文明等级判断说明书 · 杨晟琦文明公理系统 · 度量工具
-        <div class="doi">设计于 2026年7月19日</div>
-        <!-- ===== 修改3：页脚链接改为新仓库地址，并变为可点击链接 ===== -->
-        <div class="doi" style="margin-top:2px;">体系入口：<a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/" target="_blank">https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/</a></div>
-        <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
-            所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
-        </div>
+        杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年
+        <span class="en">Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026</span>
+        <span style="display:block; margin-top:4px;">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+        <span class="en" style="display:block; font-size:0.85em; color:#7a8a6e;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a></span>
     </div>
 
 </div>
