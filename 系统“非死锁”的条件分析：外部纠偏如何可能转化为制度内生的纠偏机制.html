@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>系统"非死锁"的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制 · 杨晟琦文明公理系统</title>
+    <title>系统“非死锁”的条件分析 · 杨晟琦文明公理系统</title>
     <style>
-        /* ===== 全局重置 ===== */
+        /* ===== 全局重置 & 字体 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -17,27 +17,27 @@
             font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
             color: #d0d6c8;
             line-height: 1.8;
-            padding: 30px 20px;
+            padding: 28px 18px;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: 0 auto;
             background: #171c18;
-            padding: 50px 55px;
+            padding: 44px 52px 38px;
             border-radius: 24px;
             border: 1px solid #2a322a;
             box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
         }
 
-        /* ===== 顶部导航 ===== */
+        /* ===== 顶部导航条 ===== */
         .top-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            padding-bottom: 16px;
-            margin-bottom: 30px;
+            padding-bottom: 14px;
+            margin-bottom: 22px;
             border-bottom: 1px solid #2a322a;
             font-size: 14px;
         }
@@ -46,8 +46,8 @@
             color: #7a8a6e;
             text-decoration: none;
             border-bottom: 1px dotted #4a5a3e;
+            transition: color 0.2s, border-color 0.2s;
         }
-
         .top-nav .back:hover {
             color: #aaba8a;
             border-bottom-color: #aaba8a;
@@ -59,336 +59,338 @@
             letter-spacing: 1px;
         }
 
-        /* ===== 封面 ===== */
-        .cover {
-            text-align: center;
-            padding: 30px 0 40px 0;
+        /* ===== 顶部品牌区 ===== */
+        .brand {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
             border-bottom: 2px solid #2a322a;
-            margin-bottom: 40px;
         }
 
-        .cover .label {
+        .brand-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sub-brand {
             font-size: 14px;
-            letter-spacing: 4px;
-            color: #7a8a6e;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            color: #8a9a7e;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 2px;
         }
 
-        .cover h1 {
-            font-size: 30px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #e2ead4;
-            line-height: 1.4;
-            margin-bottom: 12px;
-        }
-
-        .cover .meta {
-            font-size: 15px;
-            color: #6a7a5e;
-            border-top: 1px solid #2a322a;
-            padding-top: 16px;
-            display: inline-block;
-            padding-left: 30px;
-            padding-right: 30px;
-        }
-
-        .cover .meta strong {
-            color: #aaba8a;
-            font-weight: 500;
-        }
-
-        .cover .meta .orcid {
-            color: #7a8a6e;
-            font-size: 13px;
-            letter-spacing: 0.5px;
+        .title-row {
             display: block;
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
+        .title-row h1 {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #e2ead4;
+            display: inline;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .title-row .tag {
+            background: #2a322a;
+            color: #e2ead4;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 2px 16px;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            border: 1px solid #3a4638;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            line-height: 1.6;
+        }
+
+        .info-row {
+            font-size: 15px;
+            color: #7a8a6e;
+            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 24px;
+        }
+
+        .info-row a {
+            color: #aaba8a;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+            transition: border-color 0.2s;
+        }
+        .info-row a:hover {
+            border-bottom: 1px solid #aaba8a;
+        }
+
+        .brand-right {
+            font-size: 15px;
+            color: #7a8a6e;
+            text-align: right;
+            align-self: flex-start;
             margin-top: 4px;
         }
 
-        /* ===== 通用标题 ===== */
+        /* ===== 英文辅助 ===== */
+        .en {
+            font-size: 0.8em;
+            color: #7a8a6e;
+            font-weight: 400;
+            display: block;
+            line-height: 1.6;
+            margin-top: 2px;
+        }
+
+        .en-inline {
+            font-size: 0.8em;
+            color: #7a8a6e;
+            font-weight: 400;
+        }
+
+        /* ===== 标题样式 ===== */
         h2 {
             font-size: 28px;
             font-weight: 700;
-            margin-top: 52px;
+            margin-top: 48px;
             margin-bottom: 16px;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
             border-bottom: 2px solid #2a322a;
             color: #e2ead4;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
+        h2 .en-inline {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: #7a8a6e;
+            margin-left: 12px;
+        }
+
+        /* ===== 次级标题（独立于卡片框外） ===== */
         h3 {
-            font-size: 22px;
+            font-size: 21px;
             font-weight: 600;
-            margin-top: 36px;
-            margin-bottom: 12px;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2a322a;
             color: #d4dec4;
         }
 
-        h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 24px;
-            margin-bottom: 8px;
-            color: #aaba8a;
+        h3 .en-inline {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: #7a8a6e;
+            margin-left: 8px;
         }
 
         p {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             color: #c6ceba;
-            line-height: 1.9;
-        }
-
-        .highlight-box {
-            background: #1e241e;
-            border-left: 4px solid #8aaa6a;
-            padding: 16px 22px;
-            border-radius: 8px;
-            margin: 16px 0;
-        }
-
-        .highlight-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .highlight-box strong {
-            color: #bace9a;
-        }
-
-        /* ===== 冲击类型卡片 ===== */
-        .shock-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 18px;
-            margin: 16px 0 20px 0;
-        }
-
-        .shock-card {
-            background: #1e241e;
-            border-radius: 12px;
-            padding: 18px 20px 16px;
-            border: 1px solid #2a322a;
-            transition: transform 0.1s ease, box-shadow 0.2s;
-            border-top: 3px solid #7a8a6e;
-        }
-
-        .shock-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-        }
-
-        .shock-card .shock-type {
-            font-weight: 700;
-            font-size: 18px;
-            color: #e2ead4;
-            margin-bottom: 4px;
-        }
-
-        .shock-card .shock-desc {
-            font-size: 14px;
-            color: #b6c0aa;
-            line-height: 1.7;
-        }
-
-        .shock-card .shock-note {
-            font-size: 13px;
-            color: #7a8a6e;
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 1px dashed #2a322a;
-        }
-
-        .shock-card.crisis {
-            border-top-color: #b85a3a;
-        }
-
-        .shock-card.public {
-            border-top-color: #b89a4a;
-        }
-
-        .shock-card.generational {
-            border-top-color: #8aaa6a;
-        }
-
-        /* ===== 转化条件 ===== */
-        .condition-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin: 16px 0 20px 0;
-        }
-
-        .condition-item {
-            background: #1e241e;
-            border-radius: 12px;
-            padding: 18px 20px 16px;
-            border: 1px solid #2a322a;
-        }
-
-        .condition-item .cond-label {
-            display: inline-block;
-            background: #2a322a;
-            color: #aaba8a;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 0 12px;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
-
-        .condition-item .cond-title {
-            font-weight: 700;
-            font-size: 17px;
-            color: #e2ead4;
-            margin-bottom: 4px;
-        }
-
-        .condition-item .cond-desc {
-            font-size: 14px;
-            color: #b6c0aa;
-            line-height: 1.7;
-        }
-
-        /* ===== 变量卡片 ===== */
-        .variable-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin: 16px 0 20px 0;
-        }
-
-        .variable-card {
-            background: #1e241e;
-            border-radius: 12px;
-            padding: 18px 20px 16px;
-            border: 1px solid #2a322a;
-            border-left: 3px solid #8aaa6a;
-        }
-
-        .variable-card .var-num {
-            display: inline-block;
-            background: #2a322a;
-            color: #aaba8a;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 0 12px;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
-
-        .variable-card .var-title {
-            font-weight: 700;
-            font-size: 17px;
-            color: #e2ead4;
-            margin-bottom: 4px;
-        }
-
-        .variable-card .var-desc {
-            font-size: 14px;
-            color: #b6c0aa;
-            line-height: 1.7;
-        }
-
-        /* ===== 核心判断 ===== */
-        .core-judgment {
-            background: #1a201a;
-            border-radius: 12px;
-            padding: 20px 24px;
-            border: 1px solid #2a322a;
-            text-align: center;
-            margin: 12px 0 16px 0;
-        }
-
-        .core-judgment .text {
-            font-size: 18px;
-            color: #d4dec4;
             line-height: 1.8;
         }
 
-        .core-judgment .text strong {
+        a {
+            color: #aaba8a;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        a:hover {
+            border-bottom: 1px solid #aaba8a;
             color: #bace9a;
+        }
+
+        /* ===== 普通内容卡片 ===== */
+        .content-card {
+            background: #1e241e;
+            border-radius: 14px;
+            padding: 22px 28px 18px;
+            margin: 0 0 20px 0;
+            border: 1px solid #2a322a;
+            border-left: 5px solid #8aaa6a;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #c6ceba;
+        }
+
+        .content-card .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+        }
+
+        .content-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 6px 0 4px 0;
+        }
+
+        .content-card ul li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+            color: #b6c0aa;
+            font-size: 15px;
+        }
+
+        .content-card ul li::before {
+            content: "•";
+            color: #8aaa6a;
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .content-card ul li .en {
+            font-size: 0.8em;
+            color: #7a8a6e;
+        }
+
+        .content-card .highlight-box {
+            background: #171c18;
+            border-left: 4px solid #bace9a;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin: 10px 0 12px 0;
+        }
+
+        .content-card .highlight-box p {
+            margin-bottom: 4px;
+            font-size: 16px;
+            color: #d4dec4;
+        }
+
+        .content-card .highlight-box .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
         }
 
         /* ===== 页脚 ===== */
         .footer {
             margin-top: 48px;
-            padding-top: 20px;
+            padding-top: 22px;
             border-top: 2px solid #2a322a;
             font-size: 14px;
             color: #5a6a4e;
             text-align: center;
-            letter-spacing: 1px;
         }
 
-        .footer .doi {
+        .footer a {
             color: #7a8a6e;
-            font-size: 13px;
-            margin-top: 4px;
-        }
-
-        /* ===== 修改1：新增页脚链接样式，与顶部一致 ===== */
-        .footer .doi a {
-            color: #7a8a6e;
-            text-decoration: none;
             border-bottom: 1px dotted #4a5a3e;
         }
-
-        .footer .doi a:hover {
+        .footer a:hover {
+            border-bottom: 1px solid #7a8a6e;
             color: #aaba8a;
-            border-bottom-color: #aaba8a;
-            border-bottom-style: solid;
+        }
+
+        .footer .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+            display: block;
+            margin-top: 2px;
         }
 
         /* ===== 响应式 ===== */
         @media (max-width: 768px) {
+            body {
+                padding: 14px 8px;
+            }
             .container {
-                padding: 24px 16px;
+                padding: 22px 14px 24px;
             }
-            .cover h1 {
-                font-size: 24px;
-            }
-            .shock-grid {
-                grid-template-columns: 1fr;
-            }
-            .condition-list {
-                grid-template-columns: 1fr;
-            }
-            .variable-grid {
-                grid-template-columns: 1fr;
-            }
-            h2 {
+            .title-row h1 {
                 font-size: 22px;
+            }
+            .title-row .tag {
+                font-size: 12px;
+                padding: 2px 12px;
+                margin-left: 8px;
+            }
+            .sub-brand {
+                font-size: 12px;
+            }
+            .info-row {
+                font-size: 14px;
+                flex-direction: column;
+                gap: 2px;
+            }
+            .brand-right {
+                text-align: left;
+                width: 100%;
+                margin-top: 6px;
+            }
+            .content-card {
+                padding: 16px 18px;
             }
             .top-nav {
                 font-size: 13px;
             }
-            .core-judgment .text {
-                font-size: 16px;
+            .top-nav .badge {
+                font-size: 12px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            h3 {
+                font-size: 19px;
+                margin-top: 32px;
             }
         }
 
         @media (max-width: 480px) {
-            body {
-                padding: 12px 6px;
-            }
             .container {
-                padding: 16px 10px;
+                padding: 14px 10px 18px;
             }
-            .cover h1 {
-                font-size: 20px;
+            .title-row h1 {
+                font-size: 19px;
             }
-            .shock-card {
-                padding: 14px 16px;
+            .title-row .tag {
+                font-size: 11px;
+                padding: 2px 10px;
+                margin-left: 6px;
             }
-            .condition-item {
-                padding: 14px 16px;
+            .brand {
+                flex-direction: column;
+                gap: 6px;
             }
-            .variable-card {
-                padding: 14px 16px;
+            .brand-right {
+                text-align: left;
+            }
+            .content-card {
+                padding: 14px 14px;
+            }
+            .content-card p {
+                font-size: 14px;
+            }
+            .content-card ul li {
+                font-size: 14px;
+            }
+            h3 {
+                font-size: 17px;
+                margin-top: 28px;
             }
         }
     </style>
@@ -397,148 +399,106 @@
 
 <div class="container">
 
-    <!-- ===== 顶部导航 ===== -->
+    <!-- ===== 顶部导航条 ===== -->
     <div class="top-nav">
-        <!-- ===== 修改2：顶部链接改为新仓库地址 ===== -->
-        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/" class="back">← 返回体系总入口</a>
-        <span class="badge">杨晟琦文明公理系统 · 过程监测</span>
+        <a href="./index.html" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 独立思想锚点</span>
     </div>
 
-    <!-- ===== 封面 ===== -->
-    <div class="cover">
-        <div class="label">✦ 过程监测 · 条件分析 ✦</div>
-        <h1>系统"非死锁"的条件分析：<br>外部纠偏如何可能转化为制度内生的纠偏机制</h1>
-        <div class="meta">
-            <strong>杨晟琦</strong> 推演 · 2026年
-            <span class="orcid">ORCID: 0009-0008-3755-8960</span>
+    <!-- ===== 顶部品牌区 ===== -->
+    <div class="brand">
+        <div class="brand-left">
+            <div class="sub-brand">Conditional Analysis of System "Non‑Deadlock"</div>
+            <div class="title-row">
+                <h1>系统"非死锁"的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制</h1>
+                <span class="tag">条件分析</span>
+            </div>
+            <div class="info-row">
+                <span>文章首发：<a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+                <span>First published on: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+            </div>
         </div>
+        <div class="brand-right"></div>
     </div>
 
-    <!-- ===== 一、外部冲击的类型与效果边界 ===== -->
-    <h2>一、外部冲击的类型与效果边界</h2>
+    <!-- ===== 第一部分 ===== -->
+    <h3>一、外部冲击的类型与效果边界 <span class="en-inline">I. Types and Effect Boundaries of External Shocks</span></h3>
 
-    <div class="shock-grid">
+    <div class="content-card">
+        <ul>
+            <li>
+                <strong>危机型冲击</strong>（经济崩溃、公共安全事件）：短期震动大，但易被系统消化为"应急修复"而非"结构性改变"。
+                <span class="en"><strong>Crisis‑type shocks</strong> (economic collapse, public security incidents): high short‑term impact, but easily absorbed by the system as "emergency repairs" rather than "structural change."</span>
+            </li>
+            <li>
+                <strong>舆论型冲击</strong>（公共讨论、信息扩散）：能形成压力，但受限于信息通道的可控性，易消散。
+                <span class="en"><strong>Public opinion‑type shocks</strong> (public discourse, information diffusion): can generate pressure, but are constrained by the controllability of information channels and tend to dissipate.</span>
+            </li>
+            <li>
+                <strong>代际型冲击</strong>（价值观更替、新生代进入体系）：缓慢但深层，可能改变"博弈文化"的激励机制，但需要数十年沉淀。
+                <span class="en"><strong>Generational‑type shocks</strong> (value shifts, new generations entering the system): slow but deep, potentially altering the incentive structure of "bargaining culture," yet requiring decades of sedimentation.</span>
+            </li>
+        </ul>
 
-        <div class="shock-card crisis">
-            <div class="shock-type">危机型冲击</div>
-            <div class="shock-desc">
-                经济崩溃、公共安全事件<br>
-                短期震动大，但易被系统消化为"应急修复"而非"结构性改变"。
-            </div>
-            <div class="shock-note">特征：短期震动大 · 易被吸收</div>
-        </div>
-
-        <div class="shock-card public">
-            <div class="shock-type">舆论型冲击</div>
-            <div class="shock-desc">
-                公共讨论、信息扩散<br>
-                能形成压力，但受限于信息通道的可控性，易消散。
-            </div>
-            <div class="shock-note">特征：形成压力 · 易消散</div>
-        </div>
-
-        <div class="shock-card generational">
-            <div class="shock-type">代际型冲击</div>
-            <div class="shock-desc">
-                价值观更替、新生代进入体系<br>
-                缓慢但深层，可能改变"博弈文化"的激励机制，但需要数十年沉淀。
-            </div>
-            <div class="shock-note">特征：缓慢但深层 · 需数十年</div>
-        </div>
-
-    </div>
-
-    <div class="core-judgment">
-        <div class="text">
-            <strong>核心判断：</strong>外部冲击要触发结构改变，必须满足两个条件之一——<br>
-            要么冲击强度超过系统吸纳阈值，要么冲击重复频率打破系统遗忘周期。
+        <div class="highlight-box">
+            <p><strong>核心判断：</strong> 外部冲击要触发结构改变，必须满足两个条件之一——要么冲击强度超过系统吸纳阈值，要么冲击重复频率打破系统遗忘周期。</p>
+            <span class="en"><strong>Core judgment:</strong> For external shocks to trigger structural change, one of two conditions must be met—either the intensity of the shock exceeds the system's absorption threshold, or its repetition frequency breaks the system's forgetting cycle.</span>
         </div>
     </div>
 
-    <!-- ===== 二、从"事件"到"机制"的转化条件 ===== -->
-    <h2>二、从"事件"到"机制"的转化条件</h2>
+    <!-- ===== 第二部分 ===== -->
+    <h3>二、从"事件"到"机制"的转化条件 <span class="en-inline">II. Transformation Conditions from "Event" to "Mechanism"</span></h3>
 
-    <div class="condition-list">
+    <div class="content-card">
+        <p>
+            外部压力能否转化为制度内生的纠偏机制，取决于它是否触发了系统的"成本感知"：即继续旧轨道的代价 > 转向新轨道的成本。
+            <span class="en">Whether external pressure can be transformed into institutionally endogenous correction mechanisms depends on whether it triggers the system's "cost perception": that is, the cost of continuing on the old track outweighs the cost of shifting to a new track.</span>
+        </p>
 
-        <div class="condition-item">
-            <span class="cond-label">转化条件一</span>
-            <div class="cond-title">成本感知的触发</div>
-            <div class="cond-desc">
-                外部压力能否转化为制度内生的纠偏机制，取决于它是否触发了系统的"成本感知"：即<strong>继续旧轨道的代价 > 转向新轨道的成本</strong>。
-            </div>
-        </div>
-
-        <div class="condition-item">
-            <span class="cond-label">转化条件二</span>
-            <div class="cond-title">破例的程序化</div>
-            <div class="cond-desc">
-                破例若只是个案，则无意义；破例若逐步沉淀为修正规则的程序先例，则可能成为纠偏的种子。<br>
-                <span style="color:#7a8a6e; font-size:13px;">关键观察：破例的"例外性"是否被程序化。</span>
-            </div>
-        </div>
-
-        <div class="condition-item" style="grid-column: 1 / -1;">
-            <span class="cond-label">转化条件三</span>
-            <div class="cond-title">直觉报警的制度化</div>
-            <div class="cond-desc">
-                底层"直觉报警"是否具备制度化反馈通道——若报警只能依赖个人运气（遇到好官员、舆情发酵），则系统仍是"随机正义"；若报警能稳定转化为规则层面的核查与修正，则纠偏开始内生。
-            </div>
-        </div>
-
+        <ul>
+            <li>
+                <strong>关键观察指标一：</strong> 破例的"例外性"是否被程序化——破例若只是个案，则无意义；破例若逐步沉淀为修正规则的程序先例，则可能成为纠偏的种子。
+                <span class="en"><strong>Key observation indicator 1:</strong> Whether the "exceptionality" of exceptions is proceduralized—if exceptions remain isolated cases, they are meaningless; if exceptions gradually sediment into procedural precedents that revise rules, they may become seeds of correction.</span>
+            </li>
+            <li>
+                <strong>关键观察指标二：</strong> 底层"直觉报警"是否具备制度化反馈通道——若报警只能依赖个人运气（遇到好官员、舆情发酵），则系统仍是"随机正义"；若报警能稳定转化为规则层面的核查与修正，则纠偏开始内生。
+                <span class="en"><strong>Key observation indicator 2:</strong> Whether grassroots "intuitive alarms" have institutionalized feedback channels—if alarms rely solely on personal luck (encountering a good official, public sentiment fermenting), the system remains one of "random justice"; if alarms can be stably transformed into rule‑level review and correction, correction begins to become endogenous.</span>
+            </li>
+        </ul>
     </div>
 
-    <!-- ===== 三、"等待变量变化"中的变量清单 ===== -->
-    <h2>三、"等待变量变化"中的变量清单</h2>
-    <p style="color:#7a8a6e; font-size:15px; margin-top:-6px;">可观察、不预测</p>
+    <!-- ===== 第三部分 ===== -->
+    <h3>三、"等待变量变化"中的变量清单 <span class="en-inline">III. Variable List for "Waiting for Variables to Change"</span></h3>
 
-    <div class="variable-grid">
+    <div class="content-card" style="border-left-color: #bace9a;">
+        <p style="font-size:14px; color:#7a8a6e; margin-bottom:10px;">可观察，不预测 · Observable, Not Predictive</p>
 
-        <div class="variable-card">
-            <span class="var-num">变量一</span>
-            <div class="var-title">裁量权空间的代际变化</div>
-            <div class="var-desc">
-                基层执行者的行为模式是否在代际更替中出现"规则偏好"高于"关系偏好"。
-            </div>
-        </div>
-
-        <div class="variable-card">
-            <span class="var-num">变量二</span>
-            <div class="var-title">公共系统安全感的实际分布变化</div>
-            <div class="var-desc">
-                养老、医疗、司法等领域的"私人网络依赖度"是否在代际间自然衰减。
-            </div>
-        </div>
-
-        <div class="variable-card">
-            <span class="var-num">变量三</span>
-            <div class="var-title">社会信任的局部先导实验</div>
-            <div class="var-desc">
-                某些地区、某些领域是否出现"系统单边撤除监控"且未被滥用的自发现象。
-            </div>
-        </div>
-
-        <div class="variable-card">
-            <span class="var-num">变量四</span>
-            <div class="var-title">利益结构的再分配压力</div>
-            <div class="var-desc">
-                当"得利者"内部也因规则免责而产生摩擦时，系统自我维护的惯性是否出现裂缝。
-            </div>
-        </div>
-
-    </div>
-
-    <div class="highlight-box" style="border-left-color: #7a8a6e; text-align:center;">
-        <p style="font-size:16px; color:#aaba8a;"><strong>观察这些变量，不是为了预测，而是为了在它们发生变化时，能够第一时间识别并抓住制度转型的窗口。</strong></p>
+        <ul>
+            <li>
+                <strong>变量1：</strong> 裁量权空间的代际变化——基层执行者的行为模式是否在代际更替中出现"规则偏好"高于"关系偏好"。
+                <span class="en"><strong>Variable 1:</strong> Generational change in discretionary space—whether the behavioral patterns of grassroots enforcers show, across generational succession, a preference for "rules" over "relationships."</span>
+            </li>
+            <li>
+                <strong>变量2：</strong> 公共系统安全感的实际分布变化——养老、医疗、司法等领域的"私人网络依赖度"是否在代际间自然衰减。
+                <span class="en"><strong>Variable 2:</strong> Changes in the actual distribution of public system security—whether the "reliance on private networks" in pensions, healthcare, judiciary, and other domains naturally declines across generations.</span>
+            </li>
+            <li>
+                <strong>变量3：</strong> 社会信任的局部先导实验——某些地区、某些领域是否出现"系统单边撤除监控"且未被滥用的自发现象。
+                <span class="en"><strong>Variable 3:</strong> Localized pilot experiments in social trust—whether spontaneous phenomena of "unilateral removal of monitoring by the system" without widespread abuse emerge in certain regions or domains.</span>
+            </li>
+            <li>
+                <strong>变量4：</strong> 利益结构的再分配压力——当"得利者"内部也因规则免责而产生摩擦时，系统自我维护的惯性是否出现裂缝。
+                <span class="en"><strong>Variable 4:</strong> Redistributive pressure on interest structures—when friction arises within the "advantaged" group itself due to rule‑based immunity, whether cracks appear in the system's self‑maintenance inertia.</span>
+            </li>
+        </ul>
     </div>
 
     <!-- ===== 页脚 ===== -->
     <div class="footer">
-        系统"非死锁"的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制 · 杨晟琦文明公理系统 · 过程监测
-        <!-- ===== 修改3：页脚链接改为新仓库地址，并变为可点击链接 ===== -->
-        <div class="doi">体系入口：<a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/" target="_blank">https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/</a></div>
-        <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
-            所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
-        </div>
+        杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年
+        <span class="en">Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026</span>
+        <span style="display:block; margin-top:4px;">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+        <span class="en" style="display:block; font-size:0.85em; color:#7a8a6e;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a></span>
     </div>
 
 </div>
