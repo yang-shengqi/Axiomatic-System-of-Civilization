@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>确定性社会系统形成的必要条件与阻碍因素 · 杨晟琦文明公理系统</title>
     <style>
-        /* ===== 全局重置 ===== */
+        /* ===== 全局重置 & 字体 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -17,27 +17,27 @@
             font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
             color: #d0d6c8;
             line-height: 1.8;
-            padding: 30px 20px;
+            padding: 28px 18px;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: 0 auto;
             background: #171c18;
-            padding: 50px 55px;
+            padding: 44px 52px 38px;
             border-radius: 24px;
             border: 1px solid #2a322a;
             box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
         }
 
-        /* ===== 顶部导航 ===== */
+        /* ===== 顶部导航条 ===== */
         .top-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            padding-bottom: 16px;
-            margin-bottom: 30px;
+            padding-bottom: 14px;
+            margin-bottom: 22px;
             border-bottom: 1px solid #2a322a;
             font-size: 14px;
         }
@@ -46,8 +46,8 @@
             color: #7a8a6e;
             text-decoration: none;
             border-bottom: 1px dotted #4a5a3e;
+            transition: color 0.2s, border-color 0.2s;
         }
-
         .top-nav .back:hover {
             color: #aaba8a;
             border-bottom-color: #aaba8a;
@@ -59,124 +59,221 @@
             letter-spacing: 1px;
         }
 
-        /* ===== 封面 ===== */
-        .cover {
-            text-align: center;
-            padding: 30px 0 40px 0;
+        /* ===== 顶部品牌区 ===== */
+        .brand {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
             border-bottom: 2px solid #2a322a;
-            margin-bottom: 40px;
         }
 
-        .cover .label {
+        .brand-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sub-brand {
             font-size: 14px;
-            letter-spacing: 4px;
-            color: #7a8a6e;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            color: #8a9a7e;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 2px;
         }
 
-        .cover h1 {
-            font-size: 34px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #e2ead4;
-            line-height: 1.3;
-            margin-bottom: 12px;
-        }
-
-        .cover .meta {
-            font-size: 15px;
-            color: #6a7a5e;
-            border-top: 1px solid #2a322a;
-            padding-top: 16px;
-            display: inline-block;
-            padding-left: 30px;
-            padding-right: 30px;
-        }
-
-        .cover .meta strong {
-            color: #aaba8a;
-            font-weight: 500;
-        }
-
-        .cover .meta .orcid {
-            color: #7a8a6e;
-            font-size: 13px;
-            letter-spacing: 0.5px;
+        .title-row {
             display: block;
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
+        .title-row h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #e2ead4;
+            display: inline;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .title-row .tag {
+            background: #2a322a;
+            color: #e2ead4;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 2px 16px;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            border: 1px solid #3a4638;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            line-height: 1.6;
+        }
+
+        .info-row {
+            font-size: 15px;
+            color: #7a8a6e;
+            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 24px;
+        }
+
+        .info-row a {
+            color: #aaba8a;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+            transition: border-color 0.2s;
+        }
+        .info-row a:hover {
+            border-bottom: 1px solid #aaba8a;
+        }
+
+        .brand-right {
+            font-size: 15px;
+            color: #7a8a6e;
+            text-align: right;
+            align-self: flex-start;
             margin-top: 4px;
         }
 
-        /* ===== 通用标题 ===== */
+        /* ===== 英文辅助 ===== */
+        .en {
+            font-size: 0.8em;
+            color: #7a8a6e;
+            font-weight: 400;
+            display: block;
+            line-height: 1.6;
+            margin-top: 2px;
+        }
+
+        .en-inline {
+            font-size: 0.8em;
+            color: #7a8a6e;
+            font-weight: 400;
+        }
+
+        /* ===== 统一的一级标题样式 ===== */
         h2 {
             font-size: 28px;
             font-weight: 700;
-            margin-top: 52px;
+            margin-top: 48px;
             margin-bottom: 16px;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
             border-bottom: 2px solid #2a322a;
             color: #e2ead4;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
+        h2 .en-inline {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: #7a8a6e;
+            margin-left: 12px;
+        }
+
+        /* ===== 二级标题 ===== */
         h3 {
-            font-size: 22px;
+            font-size: 21px;
             font-weight: 600;
-            margin-top: 36px;
-            margin-bottom: 12px;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2a322a;
             color: #d4dec4;
         }
 
-        h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 24px;
-            margin-bottom: 8px;
-            color: #aaba8a;
+        h3 .en-inline {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: #7a8a6e;
+            margin-left: 8px;
         }
 
         p {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             color: #c6ceba;
-            line-height: 1.9;
+            line-height: 1.8;
         }
 
-        .highlight-box {
-            background: #1e241e;
-            border-left: 4px solid #8aaa6a;
-            padding: 16px 22px;
-            border-radius: 8px;
-            margin: 16px 0;
+        a {
+            color: #aaba8a;
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+            transition: border-color 0.15s, color 0.15s;
         }
-
-        .highlight-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .highlight-box strong {
+        a:hover {
+            border-bottom: 1px solid #aaba8a;
             color: #bace9a;
         }
 
-        /* ===== 条件卡片 ===== */
+        /* ===== 核心问题卡片 ===== */
+        .core-question-card {
+            background: #1e241e;
+            border-radius: 14px;
+            padding: 22px 28px 18px;
+            margin: 0 0 20px 0;
+            border: 1px solid #2a322a;
+            border-left: 5px solid #8aaa6a;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .core-question-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .core-question-card .q-label {
+            font-weight: 600;
+            font-size: 17px;
+            color: #d4dec4;
+            margin-bottom: 6px;
+        }
+
+        .core-question-card .q-label .en-inline {
+            font-size: 0.7em;
+            font-weight: 400;
+            color: #7a8a6e;
+        }
+
+        .core-question-card p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #c6ceba;
+        }
+
+        .core-question-card .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+        }
+
+        /* ===== 条件/阻碍卡片网格 ===== */
         .condition-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 18px;
-            margin: 16px 0 20px 0;
+            margin: 16px 0 10px 0;
         }
 
         .condition-card {
             background: #1e241e;
-            border-radius: 12px;
-            padding: 18px 20px 16px;
+            border-radius: 14px;
+            padding: 18px 22px 16px;
             border: 1px solid #2a322a;
-            border-top: 3px solid #8aaa6a;
-            transition: transform 0.1s ease, box-shadow 0.2s;
+            border-top: 4px solid #8aaa6a;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
         }
 
         .condition-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .condition-card .cond-num {
@@ -185,8 +282,8 @@
             color: #aaba8a;
             font-size: 12px;
             font-weight: 600;
-            padding: 0 12px;
-            border-radius: 20px;
+            padding: 0 14px;
+            border-radius: 30px;
             letter-spacing: 0.5px;
             margin-bottom: 6px;
         }
@@ -195,192 +292,277 @@
             font-weight: 700;
             font-size: 17px;
             color: #e2ead4;
-            margin-bottom: 6px;
+            margin-bottom: 2px;
         }
 
-        .condition-card .cond-desc {
-            font-size: 14px;
-            color: #b6c0aa;
-            line-height: 1.7;
-        }
-
-        .condition-card .cond-note {
-            font-size: 13px;
+        .condition-card .cond-title .en-inline {
+            font-size: 0.65em;
+            font-weight: 400;
             color: #7a8a6e;
-            margin-top: 8px;
-            padding-top: 8px;
+            display: block;
+            margin-top: 1px;
+        }
+
+        .condition-card .cond-body {
+            margin-top: 10px;
+            padding-top: 10px;
             border-top: 1px dashed #2a322a;
         }
 
-        /* ===== 阻碍因素卡片 ===== */
-        .obstacle-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin: 16px 0 20px 0;
-        }
-
-        .obstacle-card {
-            background: #1e241e;
-            border-radius: 12px;
-            padding: 18px 20px 16px;
-            border: 1px solid #2a322a;
-            border-top: 3px solid #b89a4a;
-        }
-
-        .obstacle-card .obs-num {
-            display: inline-block;
-            background: #2a322a;
-            color: #aaba8a;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 0 12px;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
-
-        .obstacle-card .obs-title {
-            font-weight: 700;
-            font-size: 17px;
-            color: #e2ead4;
-            margin-bottom: 6px;
-        }
-
-        .obstacle-card .obs-desc {
+        .condition-card .cond-body p {
             font-size: 14px;
             color: #b6c0aa;
             line-height: 1.7;
-        }
-
-        /* ===== WJP验证 ===== */
-        .wjp-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            gap: 12px;
-            margin: 16px 0 16px 0;
-        }
-
-        .wjp-item {
-            background: #1e241e;
-            border-radius: 10px;
-            padding: 12px 14px;
-            border: 1px solid #2a322a;
-            text-align: center;
-            font-size: 15px;
-            color: #c6ceba;
-        }
-
-        .wjp-item .flag {
-            display: block;
-            font-size: 20px;
             margin-bottom: 4px;
         }
 
-        .wjp-item .name {
-            font-weight: 500;
-            color: #e2ead4;
+        .condition-card .cond-body .en {
+            font-size: 0.8em;
+            color: #7a8a6e;
         }
 
-        /* ===== 验证结论 ===== */
-        .validation-result {
-            background: #1a201a;
-            border-radius: 12px;
-            padding: 20px 24px;
+        /* 不同色条：必要条件 */
+        .condition-card:nth-child(1) { border-top-color: #8aaa6a; }
+        .condition-card:nth-child(2) { border-top-color: #b89a4a; }
+        .condition-card:nth-child(3) { border-top-color: #6a9a8a; }
+        /* 阻碍因素 */
+        .condition-card:nth-child(4) { border-top-color: #8a6a8a; }
+        .condition-card:nth-child(5) { border-top-color: #9a8a6a; }
+
+        /* ===== 实证验证卡片 ===== */
+        .validation-card {
+            background: #1e241e;
+            border-radius: 14px;
+            padding: 22px 28px 18px;
+            margin: 0 0 20px 0;
             border: 1px solid #2a322a;
-            text-align: center;
-            margin: 12px 0 16px 0;
+            border-left: 5px solid #bace9a;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
         }
 
-        .validation-result .verdict {
-            font-size: 20px;
-            font-weight: 700;
-            color: #bace9a;
+        .validation-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .validation-result .detail {
+        .validation-card .v-label {
+            font-weight: 600;
+            font-size: 17px;
+            color: #d4dec4;
+            margin-bottom: 6px;
+        }
+
+        .validation-card .v-label .en-inline {
+            font-size: 0.7em;
+            font-weight: 400;
+            color: #7a8a6e;
+        }
+
+        .validation-card p {
             font-size: 15px;
+            line-height: 1.8;
             color: #c6ceba;
-            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+
+        .validation-card .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+        }
+
+        .validation-card .highlight {
+            color: #bace9a;
+            font-weight: 600;
+        }
+
+        .country-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            margin: 8px 0 4px 0;
+        }
+
+        .country-tag {
+            background: #2a322a;
+            color: #aaba8a;
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            border: 1px solid #3a4638;
+        }
+
+        /* ===== 核心结论卡片 ===== */
+        .conclusion-card {
+            background: #1e241e;
+            border-radius: 14px;
+            padding: 22px 28px 18px;
+            margin: 0 0 0 0;
+            border: 1px solid #2a322a;
+            border-left: 5px solid #8aaa6a;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .conclusion-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .conclusion-card .c-label {
+            font-weight: 600;
+            font-size: 17px;
+            color: #d4dec4;
+            margin-bottom: 6px;
+        }
+
+        .conclusion-card .c-label .en-inline {
+            font-size: 0.7em;
+            font-weight: 400;
+            color: #7a8a6e;
+        }
+
+        .conclusion-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #c6ceba;
+            margin-bottom: 6px;
+        }
+
+        .conclusion-card .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
         }
 
         /* ===== 页脚 ===== */
         .footer {
             margin-top: 48px;
-            padding-top: 20px;
+            padding-top: 22px;
             border-top: 2px solid #2a322a;
             font-size: 14px;
             color: #5a6a4e;
             text-align: center;
-            letter-spacing: 1px;
         }
 
-        .footer .doi {
+        .footer a {
             color: #7a8a6e;
-            font-size: 13px;
-            margin-top: 4px;
-        }
-
-        /* ===== 修改1：新增页脚链接样式，与顶部一致 ===== */
-        .footer .doi a {
-            color: #7a8a6e;
-            text-decoration: none;
             border-bottom: 1px dotted #4a5a3e;
         }
-
-        .footer .doi a:hover {
+        .footer a:hover {
+            border-bottom: 1px solid #7a8a6e;
             color: #aaba8a;
-            border-bottom-color: #aaba8a;
-            border-bottom-style: solid;
+        }
+
+        .footer .en {
+            font-size: 0.85em;
+            color: #7a8a6e;
+            display: block;
+            margin-top: 2px;
         }
 
         /* ===== 响应式 ===== */
         @media (max-width: 768px) {
-            .container {
-                padding: 24px 16px;
+            body {
+                padding: 14px 8px;
             }
-            .cover h1 {
-                font-size: 28px;
+            .container {
+                padding: 22px 14px 24px;
+            }
+            .title-row h1 {
+                font-size: 24px;
+            }
+            .title-row .tag {
+                font-size: 12px;
+                padding: 2px 12px;
+                margin-left: 8px;
+            }
+            .sub-brand {
+                font-size: 12px;
+            }
+            .info-row {
+                font-size: 14px;
+                flex-direction: column;
+                gap: 2px;
+            }
+            .brand-right {
+                text-align: left;
+                width: 100%;
+                margin-top: 6px;
             }
             .condition-grid {
                 grid-template-columns: 1fr;
+                gap: 14px;
             }
-            .obstacle-grid {
-                grid-template-columns: 1fr;
+            .core-question-card,
+            .validation-card,
+            .conclusion-card {
+                padding: 16px 18px;
             }
-            .wjp-grid {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
-            h2 {
-                font-size: 22px;
+            .core-question-card p {
+                font-size: 15px;
             }
             .top-nav {
                 font-size: 13px;
             }
+            .top-nav .badge {
+                font-size: 12px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            h3 {
+                font-size: 19px;
+                margin-top: 32px;
+            }
+            .country-tag {
+                font-size: 12px;
+                padding: 1px 12px;
+            }
         }
 
         @media (max-width: 480px) {
-            body {
-                padding: 12px 6px;
-            }
             .container {
-                padding: 16px 10px;
+                padding: 14px 10px 18px;
             }
-            .cover h1 {
-                font-size: 22px;
+            .title-row h1 {
+                font-size: 20px;
             }
-            .wjp-grid {
-                grid-template-columns: 1fr 1fr;
+            .title-row .tag {
+                font-size: 11px;
+                padding: 2px 10px;
+                margin-left: 6px;
             }
-            .wjp-item {
-                padding: 8px 10px;
-                font-size: 13px;
+            .brand {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .brand-right {
+                text-align: left;
             }
             .condition-card {
                 padding: 14px 16px;
             }
-            .obstacle-card {
-                padding: 14px 16px;
+            .condition-card .cond-title {
+                font-size: 15px;
+            }
+            .condition-card .cond-body p {
+                font-size: 14px;
+            }
+            .core-question-card p,
+            .validation-card p,
+            .conclusion-card p {
+                font-size: 14px;
+            }
+            .core-question-card,
+            .validation-card,
+            .conclusion-card {
+                padding: 14px 14px;
+            }
+            .country-tag {
+                font-size: 11px;
+                padding: 1px 10px;
+            }
+            h3 {
+                font-size: 17px;
+                margin-top: 28px;
             }
         }
     </style>
@@ -389,132 +571,171 @@
 
 <div class="container">
 
-    <!-- ===== 顶部导航 ===== -->
+    <!-- ===== 顶部导航条 ===== -->
     <div class="top-nav">
-        <!-- ===== 修改2：顶部链接改为新仓库地址 ===== -->
-        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/" class="back">← 返回体系总入口</a>
-        <span class="badge">杨晟琦文明公理系统 · 诊断模型</span>
+        <a href="./index.html" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统 · 独立思想锚点</span>
     </div>
 
-    <!-- ===== 封面 ===== -->
-    <div class="cover">
-        <div class="label">✦ 诊断模型 · 实证验证 ✦</div>
-        <h1>确定性社会系统形成的必要条件与阻碍因素</h1>
-        <div class="meta">
-            <strong>杨晟琦</strong> 推演 · 2026年
-            <span class="orcid">ORCID: 0009-0008-3755-8960</span>
+    <!-- ===== 顶部品牌区 ===== -->
+    <div class="brand">
+        <div class="brand-left">
+            <div class="sub-brand">Necessary Conditions and Structural Obstacles for the Formation of a Determinate Social System</div>
+            <div class="title-row">
+                <h1>确定性社会系统形成的必要条件与阻碍因素</h1>
+                <span class="tag">条件分析</span>
+            </div>
+            <div class="info-row">
+                <span>文章首发：<a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+                <span>First published on: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+            </div>
         </div>
+        <div class="brand-right"></div>
     </div>
 
     <!-- ===== 核心问题 ===== -->
-    <h2>核心问题</h2>
-    <div class="highlight-box">
-        <p><strong>一个规则高度确定、社会普遍具有安全感的系统，其形成的必要条件与结构性阻碍是什么？</strong></p>
+    <div class="core-question-card">
+        <div class="q-label">核心问题 <span class="en-inline">Core Question</span></div>
+        <p>
+            一个规则高度确定、社会普遍具有安全感的系统，其形成的必要条件与结构性阻碍是什么？
+            <span class="en">What are the necessary conditions and structural obstacles for the formation of a system in which rules are highly determinate and society universally possesses a sense of security?</span>
+        </p>
     </div>
 
-    <!-- ===== 三大必要条件 ===== -->
-    <h2>一、三大必要条件</h2>
-    <p style="color:#7a8a6e; font-size:15px; margin-top:-6px;">须同时满足，互为前提。</p>
+    <!-- ===== 一、三大必要条件 ===== -->
+    <h3>一、三大必要条件 <span class="en-inline">I. Three Necessary Conditions</span></h3>
+    <p style="font-size:14px; color:#7a8a6e; margin-top:-8px; margin-bottom:12px;">须同时满足，互为前提 · Must be satisfied simultaneously and mutually premised</p>
 
     <div class="condition-grid">
 
+        <!-- 条件1 -->
         <div class="condition-card">
-            <span class="cond-num">必要条件一</span>
-            <div class="cond-title">规则的不可协商性成为普遍预期</div>
-            <div class="cond-desc">
-                执行层面长期、无例外地按规则行事，形成"找规则"无效的集体记忆，任何破例都会重置积累进程。
+            <span class="cond-num">必要条件 01</span>
+            <div class="cond-title">
+                规则的不可协商性成为普遍预期
+                <span class="en-inline">The non‑negotiability of rules becomes a general expectation</span>
             </div>
-            <div class="cond-note">规则面前无例外</div>
+            <div class="cond-body">
+                <p>
+                    执行层面长期、无例外地按规则行事，形成"找规则无效"的集体记忆，任何破例都会重置积累进程。
+                    <span class="en">At the enforcement level, rules are followed consistently and without exception over the long term, forming a collective memory that "appealing to rules is futile." Any exception resets the accumulation process.</span>
+                </p>
+            </div>
         </div>
 
+        <!-- 条件2 -->
         <div class="condition-card">
-            <span class="cond-num">必要条件二</span>
-            <div class="cond-title">社会信任存量跨越临界点，形成正向循环</div>
-            <div class="cond-desc">
-                系统须单方面撤除部分监控／审批，主动承担被辜负的风险，以释放信任信号；正向累积需代际时间，且依赖不被大面积滥用。
+            <span class="cond-num">必要条件 02</span>
+            <div class="cond-title">
+                社会信任存量跨越临界点，形成正向循环
+                <span class="en-inline">The stock of social trust crosses a critical threshold, forming a virtuous cycle</span>
             </div>
-            <div class="cond-note">信任需要系统先迈出一步</div>
+            <div class="cond-body">
+                <p>
+                    系统须单方面撤除部分监控/审批，主动承担被辜负的风险，以释放信任信号；正向累积需代际时间，且依赖不被大面积滥用。
+                    <span class="en">The system must unilaterally remove certain monitoring/approval mechanisms and proactively bear the risk of being betrayed in order to release trust signals. Positive accumulation requires intergenerational time and depends on not being widely abused.</span>
+                </p>
+            </div>
         </div>
 
+        <!-- 条件3 -->
         <div class="condition-card">
-            <span class="cond-num">必要条件三</span>
-            <div class="cond-title">个体安全感从私人网络转向公共系统</div>
-            <div class="cond-desc">
-                养老、医疗、司法、教育等公共系统输出必须足够稳定可靠，使个体无需依赖私人关系作为兜底，且该可靠性需持续数十年证明。
+            <span class="cond-num">必要条件 03</span>
+            <div class="cond-title">
+                个体安全感从私人网络转向公共系统
+                <span class="en-inline">Individual security shifts from private networks to public systems</span>
             </div>
-            <div class="cond-note">公共系统必须比私人关系更可靠</div>
-        </div>
-
-    </div>
-
-    <!-- ===== 两大阻碍因素 ===== -->
-    <h2>二、两大阻碍因素</h2>
-    <p style="color:#7a8a6e; font-size:15px; margin-top:-6px;">锁住上述条件的实现。</p>
-
-    <div class="obstacle-grid">
-
-        <div class="obstacle-card">
-            <span class="obs-num">阻碍因素一</span>
-            <div class="obs-title">超大规模治理复杂度</div>
-            <div class="obs-desc">
-                人口与地理差异导致海量例外情境，基层必须赋予裁量权，从而在事实上破坏规则的不可协商性。
-            </div>
-        </div>
-
-        <div class="obstacle-card">
-            <span class="obs-num">阻碍因素二</span>
-            <div class="obs-title">博弈文化的历史惯性</div>
-            <div class="obs-desc">
-                长期关系型资源分配机制塑造了"找规则不如找人"的理性策略，当前激励机制仍强化博弈有效性，而非规则有效性。
+            <div class="cond-body">
+                <p>
+                    养老、医疗、司法、教育等公共系统输出必须足够稳定可靠，使个体无需依赖私人关系作为兜底，且该可靠性需持续数十年证明。
+                    <span class="en">The outputs of public systems—pensions, healthcare, judiciary, education—must be sufficiently stable and reliable such that individuals need not rely on personal relationships as a fallback. This reliability must be demonstrated continuously over decades.</span>
+                </p>
             </div>
         </div>
 
     </div>
 
-    <!-- ===== 实证验证 ===== -->
-    <h2>三、实证验证</h2>
-    <p style="color:#7a8a6e; font-size:15px; margin-top:-6px;">WJP法治指数前十国家</p>
+    <!-- ===== 二、两大阻碍因素 ===== -->
+    <h3>二、两大阻碍因素 <span class="en-inline">II. Two Obstacles</span></h3>
+    <p style="font-size:14px; color:#7a8a6e; margin-top:-8px; margin-bottom:12px;">锁住上述条件的实现 · Locking the realization of the above conditions</p>
 
-    <div class="wjp-grid">
-        <div class="wjp-item"><span class="flag">🇩🇰</span><span class="name">丹麦</span></div>
-        <div class="wjp-item"><span class="flag">🇳🇴</span><span class="name">挪威</span></div>
-        <div class="wjp-item"><span class="flag">🇫🇮</span><span class="name">芬兰</span></div>
-        <div class="wjp-item"><span class="flag">🇸🇪</span><span class="name">瑞典</span></div>
-        <div class="wjp-item"><span class="flag">🇳🇿</span><span class="name">新西兰</span></div>
-        <div class="wjp-item"><span class="flag">🇱🇺</span><span class="name">卢森堡</span></div>
-        <div class="wjp-item"><span class="flag">🇩🇪</span><span class="name">德国</span></div>
-        <div class="wjp-item"><span class="flag">🇳🇱</span><span class="name">荷兰</span></div>
-        <div class="wjp-item"><span class="flag">🇮🇸</span><span class="name">冰岛</span></div>
-        <div class="wjp-item"><span class="flag">🇦🇹</span><span class="name">奥地利</span></div>
-    </div>
+    <div class="condition-grid">
 
-    <div class="validation-result">
-        <div class="verdict">✅ 该框架与事实完全一致</div>
-        <div class="detail">
-            前十国家同时满足三个必要条件，且不存在两个阻碍因素。<br>
-            （均为中小规模国家，且无博弈文化惯性）
+        <!-- 阻碍1 -->
+        <div class="condition-card">
+            <span class="cond-num">阻碍因素 01</span>
+            <div class="cond-title">
+                超大规模治理复杂度
+                <span class="en-inline">Mega‑scale governance complexity</span>
+            </div>
+            <div class="cond-body">
+                <p>
+                    人口与地理差异导致海量例外情境，基层必须赋予裁量权，从而在事实上破坏规则的不可协商性。
+                    <span class="en">Population and geographic diversity generate a massive number of exceptional situations. Grassroots levels must be granted discretion, which in practice undermines the non‑negotiability of rules.</span>
+                </p>
+            </div>
         </div>
+
+        <!-- 阻碍2 -->
+        <div class="condition-card">
+            <span class="cond-num">阻碍因素 02</span>
+            <div class="cond-title">
+                博弈文化的历史惯性
+                <span class="en-inline">The historical inertia of bargaining/relational culture</span>
+            </div>
+            <div class="cond-body">
+                <p>
+                    长期关系型资源分配机制塑造了"找规则不如找人"的理性策略，当前激励机制仍强化博弈有效性，而非规则有效性。
+                    <span class="en">Long‑term relationship‑based resource allocation mechanisms have shaped the rational strategy that "finding the right person is more effective than finding the right rule." Current incentive structures still reinforce the effectiveness of bargaining, rather than the effectiveness of rules.</span>
+                </p>
+            </div>
+        </div>
+
     </div>
 
-    <!-- ===== 核心结论 ===== -->
-    <h2>四、核心结论</h2>
+    <!-- ===== 三、实证验证 ===== -->
+    <h3>三、实证验证 <span class="en-inline">III. Empirical Validation</span></h3>
 
-    <div class="highlight-box" style="border-left-color: #bace9a;">
-        <p><strong>三个必要条件相互锁死，形成闭环，任一条件缺失则整体难以成立。两个阻碍因素从物理规模和历史惯性两个维度锁住该闭环。</strong></p>
+    <div class="validation-card">
+        <div class="v-label">验证结果 <span class="en-inline">Validation result</span></div>
+        <p><span class="highlight">该框架与事实完全一致。</span></p>
+        <p>
+            前十国家（丹麦、挪威、芬兰、瑞典、新西兰、卢森堡、德国、荷兰、冰岛、奥地利）同时满足三个必要条件，且不存在两个阻碍因素（均为中小规模国家，且无博弈文化惯性）。
+            <span class="en">The top ten countries—Denmark, Norway, Finland, Sweden, New Zealand, Luxembourg, Germany, the Netherlands, Iceland, and Austria—simultaneously satisfy all three necessary conditions and exhibit neither of the two obstacles (they are all small‑to‑medium‑sized states with no relational‑bargaining cultural inertia).</span>
+        </p>
+        <div class="country-tags">
+            <span class="country-tag">🇩🇰 丹麦</span>
+            <span class="country-tag">🇳🇴 挪威</span>
+            <span class="country-tag">🇫🇮 芬兰</span>
+            <span class="country-tag">🇸🇪 瑞典</span>
+            <span class="country-tag">🇳🇿 新西兰</span>
+            <span class="country-tag">🇱🇺 卢森堡</span>
+            <span class="country-tag">🇩🇪 德国</span>
+            <span class="country-tag">🇳🇱 荷兰</span>
+            <span class="country-tag">🇮🇸 冰岛</span>
+            <span class="country-tag">🇦🇹 奥地利</span>
+        </div>
+        <p style="margin-top:10px; font-size:14px; color:#7a8a6e;">
+            WJP法治指数前十国家 · WJP Rule of Law Index Top 10
+        </p>
     </div>
 
-    <p style="font-style:italic; color:#7a8a6e; text-align:center; font-size:16px; margin-top:12px;">
-        本文不提供时间预测，只列出条件与矛盾，等待变量变化。
-    </p>
+    <!-- ===== 四、核心结论 ===== -->
+    <h3>四、核心结论 <span class="en-inline">IV. Core Conclusion</span></h3>
+
+    <div class="conclusion-card">
+        <p>
+            三个必要条件相互锁死，形成闭环，任一条件缺失则整体难以成立。两个阻碍因素从物理规模和历史惯性两个维度锁住该闭环。本文不提供时间预测，只列出条件与矛盾，等待变量变化。
+            <span class="en">The three necessary conditions lock each other in place, forming a closed loop. The absence of any single condition makes the whole system difficult to establish. The two obstacles lock this closed loop from the two dimensions of physical scale and historical inertia. This paper does not provide temporal predictions; it only lists the conditions and contradictions, awaiting changes in the variables.</span>
+        </p>
+    </div>
 
     <!-- ===== 页脚 ===== -->
     <div class="footer">
-        确定性社会系统形成的必要条件与阻碍因素 · 杨晟琦文明公理系统 · 诊断模型
-        <!-- ===== 修改3：页脚链接改为新仓库地址，并变为可点击链接 ===== -->
-        <div class="doi">体系入口：<a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/" target="_blank">https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/</a></div>
-        <div style="margin-top:12px; font-size:13px; color:#5a6a4e;">
-            所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a> 协议发布
-        </div>
+        杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年
+        <span class="en">Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026</span>
+        <span style="display:block; margin-top:4px;">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+        <span class="en" style="display:block; font-size:0.85em; color:#7a8a6e;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a></span>
     </div>
 
 </div>
