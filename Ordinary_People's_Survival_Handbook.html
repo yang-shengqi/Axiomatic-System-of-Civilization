@@ -1,0 +1,2552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>普通人生存手册 · 九叔的视野 · 杨晟琦文明公理系统独立思想锚点</title>
+    <style>
+        /* ============================================================
+           设计系统 V6.0 · 呼吸感 · 结构清晰 · 纯文字版
+           ============================================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #060906;
+            --bg-primary: #0a0f0a;
+            --bg-secondary: #0f160f;
+            --bg-card: #141c14;
+            --bg-card-hover: #1b261b;
+            --bg-sidebar: #0b110b;
+            --bg-elevated: #1a261a;
+            --border-subtle: #1d2a1d;
+            --border-medium: #2a3a2a;
+            --border-strong: #3a503a;
+            --border-glow: rgba(138, 170, 106, 0.15);
+            --text-primary: #eaf0e2;
+            --text-secondary: #bccab0;
+            --text-muted: #6a7e5e;
+            --text-dim: #3a4e3a;
+            --text-ghost: #1f2e1f;
+            --text-soft: #8da080;
+            --accent: #8aaa6a;
+            --accent-light: #c8deaa;
+            --accent-glow: rgba(138, 170, 106, 0.10);
+            --accent-border: #8aaa6a;
+            --accent-strong: #6a8a4a;
+            --accent-muted: #4a6040;
+            --gold: #c4a84a;
+            --gold-light: #e8d06a;
+            --gold-glow: rgba(196, 168, 74, 0.08);
+            --red: #b84a4a;
+            --red-light: #da7a7a;
+            --red-glow: rgba(184, 74, 74, 0.08);
+            --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.35);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.45);
+            --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.55);
+            --shadow-glow: 0 0 32px rgba(138, 170, 106, 0.04);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 14px;
+            --radius-xl: 18px;
+            --font: "Inter", -apple-system, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+            --font-mono: "SF Mono", "Menlo", monospace;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+            --duration: 0.4s;
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 28px;
+            --space-xl: 40px;
+            --space-xxl: 56px;
+        }
+
+        [data-theme="yellow"] {
+            --accent: #c4a84a;
+            --accent-light: #e8d06a;
+            --accent-glow: rgba(196, 168, 74, 0.10);
+            --accent-border: #c4a84a;
+            --accent-strong: #a0883a;
+            --accent-muted: #6a5a2a;
+            --gold: #c4a84a;
+            --gold-light: #e8d06a;
+            --border-glow: rgba(196, 168, 74, 0.12);
+        }
+        [data-theme="red"] {
+            --accent: #b84a4a;
+            --accent-light: #da7a7a;
+            --accent-glow: rgba(184, 74, 74, 0.10);
+            --accent-border: #b84a4a;
+            --accent-strong: #9a3a3a;
+            --accent-muted: #6a2a2a;
+            --gold: #b84a4a;
+            --gold-light: #da7a7a;
+            --border-glow: rgba(184, 74, 74, 0.12);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            line-height: 1.9;
+            display: flex;
+            transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+            font-size: 16px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-medium);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border-strong);
+        }
+
+        /* ===== 侧边栏 ===== */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 290px;
+            height: 100vh;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-subtle);
+            padding: 28px 18px 30px 18px;
+            overflow-y: auto;
+            z-index: 100;
+            transition: transform 0.45s var(--ease), background var(--duration) var(--ease), border-color var(--duration) var(--ease);
+        }
+        .sidebar::-webkit-scrollbar {
+            width: 2px;
+        }
+
+        .sidebar .logo {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--accent-light);
+            letter-spacing: 1.2px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 18px;
+            transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+        }
+        .sidebar .logo span {
+            color: var(--text-muted);
+            font-weight: 300;
+            font-size: 10px;
+            display: block;
+            letter-spacing: 0.6px;
+            margin-top: 3px;
+        }
+
+        .sidebar .toc {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar .toc .vol {
+            margin-bottom: 2px;
+        }
+        .sidebar .toc .vol>a {
+            display: block;
+            padding: 6px 14px;
+            color: var(--accent-light);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.25s var(--ease);
+            border-left: 2px solid transparent;
+            cursor: pointer;
+            letter-spacing: 0.2px;
+        }
+        .sidebar .toc .vol>a:hover {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border-left-color: var(--accent);
+        }
+        .sidebar .toc .vol>a.active {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border-left-color: var(--accent-light);
+        }
+
+        .sidebar .toc .vol .sub {
+            list-style: none;
+            padding-left: 4px;
+            margin-top: 2px;
+            margin-bottom: 3px;
+        }
+        .sidebar .toc .vol .sub li a {
+            display: block;
+            padding: 3px 8px 3px 26px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 12px;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s var(--ease);
+            border-left: 2px solid transparent;
+            cursor: pointer;
+            position: relative;
+        }
+        .sidebar .toc .vol .sub li a:hover {
+            color: var(--accent-light);
+            background: var(--bg-card);
+            border-left-color: var(--border-medium);
+        }
+        .sidebar .toc .vol .sub li a.active {
+            color: var(--text-primary);
+            border-left-color: var(--accent);
+            background: var(--bg-card);
+        }
+        .sidebar .toc .vol .sub li a.active::before {
+            content: "◆";
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 5px;
+            color: var(--accent);
+        }
+
+        .sidebar .footer-tip {
+            margin-top: 22px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-dim);
+            font-size: 10px;
+            letter-spacing: 0.4px;
+            transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+        }
+
+        /* ===== 主内容 ===== */
+        .main {
+            margin-left: 290px;
+            padding: 44px 56px 56px 56px;
+            max-width: 1180px;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* ===== 移动端导航 ===== */
+        .mobile-nav {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 18px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease);
+            backdrop-filter: blur(12px);
+            background: rgba(10, 15, 10, 0.92);
+        }
+        .mobile-nav .menu-btn {
+            background: none;
+            border: 1px solid var(--border-medium);
+            color: var(--accent-light);
+            padding: 0 14px;
+            border-radius: var(--radius-sm);
+            font-size: 20px;
+            cursor: pointer;
+            line-height: 1.6;
+            transition: all 0.25s var(--ease);
+        }
+        .mobile-nav .menu-btn:hover {
+            border-color: var(--accent);
+            background: var(--bg-card);
+        }
+        .mobile-nav .title {
+            color: var(--accent-light);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.4px;
+        }
+
+        /* ===== 顶部品牌区 ===== */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--border-subtle);
+            font-size: 12.5px;
+            transition: border-color var(--duration) var(--ease);
+        }
+        .top-nav .back {
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--border-medium);
+            transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .top-nav .back:hover {
+            color: var(--accent-light);
+            border-bottom-color: var(--accent-light);
+        }
+        .top-nav .badge {
+            color: var(--text-muted);
+            font-size: 11px;
+            letter-spacing: 0.6px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            padding: 18px 24px 18px 24px;
+            background: var(--bg-elevated);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            transition: all var(--duration) var(--ease);
+        }
+        .brand-left {
+            flex: 1;
+        }
+        .sub-brand {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+        .title-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            margin-top: 2px;
+        }
+        .title-row h1 {
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.15;
+            display: inline;
+            transition: color var(--duration) var(--ease);
+        }
+        .title-row .tag {
+            background: var(--bg-card);
+            color: var(--accent-light);
+            font-size: 12.5px;
+            font-weight: 500;
+            padding: 3px 16px;
+            border-radius: 30px;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+            display: inline-block;
+            border: 1px solid var(--border-medium);
+            transition: all var(--duration) var(--ease);
+        }
+
+        .info-row {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 28px;
+            padding: 8px 0 4px 0;
+            border-top: 1px dashed var(--border-subtle);
+        }
+        .info-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .info-row a {
+            color: var(--accent-light);
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dotted var(--accent-muted);
+            transition: all 0.25s ease;
+            padding: 0 2px;
+        }
+        .info-row a:hover {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-light);
+            background: var(--bg-card);
+            border-radius: 2px;
+        }
+
+        .brand-right {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: right;
+            padding-left: 16px;
+            border-left: 1px solid var(--border-subtle);
+            align-self: flex-start;
+            margin-top: 2px;
+        }
+
+        /* ===== 设计者自述 ===== */
+        .designer-note {
+            background: var(--bg-card);
+            padding: 22px 30px;
+            border-radius: var(--radius-md);
+            margin: 6px 0 24px 0;
+            border-left: 5px solid var(--accent-border);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--duration) var(--ease);
+        }
+        .designer-note p {
+            margin-bottom: 2px;
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--text-secondary);
+        }
+        .designer-note .highlight {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .designer-note .en {
+            color: var(--text-muted);
+            font-size: 0.82em;
+            display: block;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* ===== 章节引导块 ===== */
+        .section-guide {
+            background: var(--bg-card);
+            padding: 18px 26px;
+            border-radius: var(--radius-md);
+            margin: 6px 0 20px 0;
+            border-left: 5px solid var(--accent-border);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--duration) var(--ease);
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+        .section-guide .core {
+            font-weight: 700;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+            font-size: 16px;
+        }
+        .section-guide .core strong {
+            color: var(--accent-light);
+        }
+        .section-guide .expo {
+            display: block;
+            margin-bottom: 2px;
+            color: var(--text-secondary);
+        }
+        .section-guide .en-block {
+            display: block;
+            font-size: 0.82em;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        /* ===== 章节 ===== */
+        .chapter {
+            margin-bottom: 52px;
+            padding-bottom: 36px;
+            border-bottom: 2px solid var(--border-subtle);
+            scroll-margin-top: 20px;
+            transition: border-color var(--duration) var(--ease);
+        }
+        .chapter:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .chapter .chapter-num {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: color var(--duration) var(--ease);
+            margin-bottom: 2px;
+        }
+        .chapter h1 {
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+            letter-spacing: 0.3px;
+            transition: color var(--duration) var(--ease);
+            line-height: 1.15;
+        }
+        .chapter .subtitle {
+            font-size: 17px;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 8px;
+            transition: color var(--duration) var(--ease);
+            letter-spacing: 0.2px;
+        }
+        .chapter .author-line {
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+            letter-spacing: 0.1px;
+        }
+
+        /* ===== H2 ===== */
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-subtle);
+            color: var(--text-primary);
+            letter-spacing: 0.2px;
+            scroll-margin-top: 20px;
+            transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px 12px;
+        }
+        h2::after {
+            display: none;
+        }
+        h2 .section-tag {
+            font-size: 10px;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.6px;
+            background: var(--bg-card);
+            padding: 0 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            line-height: 1.8;
+        }
+        h2 .en-inline {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-left: 4px;
+            letter-spacing: 0.2px;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 26px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            scroll-margin-top: 20px;
+            transition: color var(--duration) var(--ease);
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: var(--text-secondary);
+            line-height: 2.1;
+            font-size: 15.5px;
+            transition: color var(--duration) var(--ease);
+        }
+        p strong {
+            color: var(--accent-light);
+            font-weight: 600;
+            transition: color var(--duration) var(--ease);
+        }
+
+        .en-inline {
+            font-size: 0.6em;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-left: 4px;
+            letter-spacing: 0.2px;
+        }
+        .en-block {
+            display: block;
+            font-size: 0.82em;
+            color: var(--text-muted);
+            margin-top: 2px;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        /* ===== 高亮框 ===== */
+        .highlight-box {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent-border);
+            padding: 16px 24px;
+            border-radius: var(--radius-md);
+            margin: 14px 0 18px 0;
+            transition: all var(--duration) var(--ease);
+            box-shadow: var(--shadow-sm);
+        }
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-box strong {
+            color: var(--accent-light);
+            transition: color var(--duration) var(--ease);
+        }
+
+        .highlight-gold {
+            border-left-color: var(--gold);
+            background: rgba(196, 168, 74, 0.04);
+        }
+        .highlight-gold strong {
+            color: var(--gold-light);
+        }
+
+        .highlight-red {
+            border-left-color: var(--red);
+            background: rgba(184, 74, 74, 0.04);
+        }
+        .highlight-red strong {
+            color: var(--red-light);
+        }
+
+        .highlight-soft {
+            border-left-color: var(--border-medium);
+            background: rgba(255, 255, 255, 0.012);
+        }
+
+        /* ===== 卡片 ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 12px 0 16px 0;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0 16px 0;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 14px;
+            margin: 12px 0 16px 0;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 18px 20px 16px;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s var(--ease);
+            box-shadow: var(--shadow-sm);
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-medium);
+            box-shadow: var(--shadow-md);
+            background: var(--bg-card-hover);
+        }
+        .card .label {
+            font-size: 9px;
+            color: var(--text-muted);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 2px;
+            transition: color var(--duration) var(--ease);
+        }
+        .card .title {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+            transition: color var(--duration) var(--ease);
+        }
+        .card .desc {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            transition: color var(--duration) var(--ease);
+        }
+        .card .desc strong {
+            color: var(--accent-light);
+        }
+
+        .card-accent {
+            border-color: var(--accent-border);
+            background: rgba(138, 170, 106, 0.02);
+        }
+        .card-accent:hover {
+            border-color: var(--accent);
+            background: rgba(138, 170, 106, 0.05);
+        }
+
+        /* ===== 表格 ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 12px 0 16px 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            transition: border-color var(--duration) var(--ease);
+            box-shadow: var(--shadow-sm);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            background: var(--bg-secondary);
+            min-width: 380px;
+            transition: background var(--duration) var(--ease);
+        }
+        th {
+            background: var(--bg-card);
+            color: var(--accent-light);
+            font-weight: 600;
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 2px solid var(--border-subtle);
+            font-size: 11px;
+            letter-spacing: 0.4px;
+            transition: all var(--duration) var(--ease);
+        }
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            vertical-align: top;
+            font-size: 12.5px;
+            transition: all var(--duration) var(--ease);
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background: var(--bg-card);
+        }
+
+        /* ===== 链式流程 ===== */
+        .chain-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 4px 12px;
+            background: var(--bg-card);
+            padding: 12px 22px;
+            border-radius: var(--radius-md);
+            margin: 12px 0 18px 0;
+            border: 1px solid var(--border-subtle);
+            transition: all var(--duration) var(--ease);
+            box-shadow: var(--shadow-sm);
+        }
+        .chain-flow .step {
+            background: var(--bg-secondary);
+            padding: 5px 16px;
+            border-radius: 30px;
+            border: 1px solid var(--border-medium);
+            font-size: 12.5px;
+            color: var(--accent-light);
+            text-align: center;
+            transition: all var(--duration) var(--ease);
+            font-weight: 500;
+        }
+        .chain-flow .step.highlight {
+            border-color: var(--accent);
+            color: var(--text-primary);
+            background: rgba(138, 170, 106, 0.06);
+        }
+        .chain-flow .arrow {
+            color: var(--text-dim);
+            font-size: 16px;
+            font-weight: 300;
+            transition: color var(--duration) var(--ease);
+        }
+
+        /* ===== Banner ===== */
+        .banner-dark {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 32px 36px 28px;
+            text-align: center;
+            margin: 26px 0 30px 0;
+            transition: all var(--duration) var(--ease);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .banner-dark::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-border), transparent);
+            opacity: 0.4;
+        }
+        .banner-dark .qr-placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        .banner-dark .qr-placeholder .qr-box {
+            width: 100px;
+            height: 100px;
+            border: 2px dashed var(--border-medium);
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--bg-primary);
+            transition: all var(--duration) var(--ease);
+            color: var(--text-muted);
+            font-size: 10px;
+            letter-spacing: 0.2px;
+            gap: 2px;
+            padding: 4px;
+        }
+        .banner-dark .qr-placeholder .qr-box .qr-icon {
+            font-size: 30px;
+            opacity: 0.3;
+        }
+        .banner-dark .qr-placeholder .qr-box .qr-label {
+            font-size: 9px;
+            color: var(--text-dim);
+            letter-spacing: 0.6px;
+        }
+        .banner-dark .qr-placeholder .qr-box .qr-sub {
+            font-size: 9px;
+            color: var(--text-dim);
+            opacity: 0.4;
+        }
+        .banner-dark:hover .qr-placeholder .qr-box {
+            border-color: var(--accent-border);
+            background: var(--bg-card);
+        }
+
+        .banner-dark p {
+            font-size: 19px;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+            transition: color var(--duration) var(--ease);
+            line-height: 1.6;
+        }
+        .banner-dark .gold {
+            color: var(--gold-light);
+            font-size: 24px;
+            font-weight: 600;
+            transition: color var(--duration) var(--ease);
+        }
+        .banner-dark .byline {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            margin-top: 10px;
+            transition: color var(--duration) var(--ease);
+            letter-spacing: 0.2px;
+        }
+        .banner-dark .small {
+            font-size: 15px;
+            color: var(--text-secondary);
+            transition: color var(--duration) var(--ease);
+        }
+
+        /* ===== 遮罩 ===== */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 89;
+            opacity: 0;
+            transition: opacity 0.4s var(--ease);
+            backdrop-filter: blur(4px);
+        }
+        .sidebar-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ===== 浮动按钮 ===== */
+        .float-buttons {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+        .float-btn {
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-medium);
+            border-radius: 30px;
+            padding: 8px 18px;
+            cursor: pointer;
+            font-size: 13.5px;
+            transition: all 0.3s var(--ease);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            min-width: 48px;
+            backdrop-filter: blur(8px);
+            background: rgba(20, 28, 20, 0.88);
+            font-weight: 500;
+            letter-spacing: 0.1px;
+        }
+        .float-btn:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+            background: rgba(30, 40, 30, 0.95);
+            color: var(--text-primary);
+            box-shadow: 0 6px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== 字体控制 ===== */
+        body.font-small p {
+            font-size: 14px;
+        }
+        body.font-small h2 {
+            font-size: 19px;
+        }
+        body.font-small h3 {
+            font-size: 16px;
+        }
+        body.font-small .card .desc {
+            font-size: 11.5px;
+        }
+        body.font-small .card .title {
+            font-size: 13.5px;
+        }
+        body.font-small .banner-dark p {
+            font-size: 17px;
+        }
+        body.font-small .banner-dark .gold {
+            font-size: 20px;
+        }
+        body.font-small .chapter h1 {
+            font-size: 30px;
+        }
+        body.font-small .chapter .subtitle {
+            font-size: 14.5px;
+        }
+
+        body.font-large p {
+            font-size: 17px;
+        }
+        body.font-large h2 {
+            font-size: 24px;
+        }
+        body.font-large h3 {
+            font-size: 20px;
+        }
+        body.font-large .card .desc {
+            font-size: 14px;
+        }
+        body.font-large .card .title {
+            font-size: 16.5px;
+        }
+        body.font-large .banner-dark p {
+            font-size: 22px;
+        }
+        body.font-large .banner-dark .gold {
+            font-size: 26px;
+        }
+        body.font-large .chapter h1 {
+            font-size: 44px;
+        }
+        body.font-large .chapter .subtitle {
+            font-size: 19px;
+        }
+
+        /* ===== 装饰 ===== */
+        .divider-wave {
+            text-align: center;
+            color: var(--border-medium);
+            font-size: 13px;
+            letter-spacing: 8px;
+            margin: 20px 0 24px 0;
+            opacity: 0.3;
+            user-select: none;
+            transition: color var(--duration) var(--ease);
+        }
+
+        .pill-tag {
+            display: inline-block;
+            background: var(--bg-card);
+            color: var(--accent-light);
+            font-size: 9.5px;
+            padding: 1px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border-subtle);
+            letter-spacing: 0.3px;
+            margin-right: 3px;
+            transition: all var(--duration) var(--ease);
+        }
+
+        .inline-quote {
+            color: var(--accent-light);
+            font-style: italic;
+            padding: 0 2px;
+            transition: color var(--duration) var(--ease);
+        }
+
+        .footnote {
+            font-size: 11.5px;
+            color: var(--text-dim);
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 12px;
+            margin-top: 14px;
+            transition: all var(--duration) var(--ease);
+        }
+
+        /* ===== 列表 ===== */
+        .styled-list {
+            color: var(--text-secondary);
+            font-size: 14.5px;
+            line-height: 2.3;
+            list-style: none;
+            padding-left: 2px;
+            margin-bottom: 12px;
+        }
+        .styled-list li {
+            padding-left: 4px;
+            position: relative;
+        }
+        .styled-list li::before {
+            content: "•";
+            color: var(--accent);
+            margin-right: 10px;
+            font-weight: 700;
+        }
+        .styled-list li strong {
+            color: var(--accent-light);
+        }
+
+        /* ===== 引用块 ===== */
+        .blockquote-styled {
+            background: var(--bg-card);
+            padding: 18px 26px;
+            border-radius: var(--radius-md);
+            margin: 14px 0 18px 0;
+            border-left: 4px solid var(--accent-border);
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.9;
+            transition: all var(--duration) var(--ease);
+        }
+        .blockquote-styled .source {
+            display: block;
+            margin-top: 6px;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-style: normal;
+            letter-spacing: 0.2px;
+        }
+        .blockquote-styled .source-en {
+            display: block;
+            font-size: 11px;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* ===== 进度条 ===== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-border), var(--accent-light));
+            z-index: 1000;
+            width: 0%;
+            transition: width 0.1s linear;
+            border-radius: 0 2px 2px 0;
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 2px solid var(--border-subtle);
+            font-size: 11px;
+            color: var(--text-dim);
+            text-align: center;
+            transition: all var(--duration) var(--ease);
+        }
+        .footer .brand {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 13px;
+            letter-spacing: 0.6px;
+            margin-bottom: 2px;
+            transition: color var(--duration) var(--ease);
+        }
+        .footer .tagline {
+            color: var(--text-muted);
+            font-size: 11.5px;
+            letter-spacing: 0.6px;
+        }
+        .footer .meta {
+            margin-top: 4px;
+            font-size: 10px;
+            color: var(--text-dim);
+        }
+        .footer .sig {
+            margin-top: 5px;
+            font-size: 9px;
+            color: var(--text-dim);
+            letter-spacing: 1.2px;
+            opacity: 0.4;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 1024px) {
+            .grid-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+            .main {
+                padding: 32px 36px 40px 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 270px;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main {
+                margin-left: 0;
+                padding: 14px 16px 24px 16px;
+            }
+            .mobile-nav {
+                display: flex;
+            }
+            .grid-2,
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .chapter h1 {
+                font-size: 26px;
+            }
+            .banner-dark p {
+                font-size: 17px;
+            }
+            .banner-dark .gold {
+                font-size: 19px;
+            }
+            .banner-dark .small {
+                font-size: 14px;
+            }
+            .sidebar-overlay.active {
+                display: block;
+                opacity: 1;
+            }
+            .float-buttons {
+                bottom: 14px;
+                right: 14px;
+            }
+            .float-btn {
+                padding: 6px 14px;
+                font-size: 11.5px;
+                min-width: 40px;
+            }
+            .banner-dark .qr-placeholder .qr-box {
+                width: 84px;
+                height: 84px;
+            }
+            .banner-dark .qr-placeholder .qr-box .qr-icon {
+                font-size: 24px;
+            }
+            .title-row h1 {
+                font-size: 24px;
+            }
+            .title-row .tag {
+                font-size: 10.5px;
+                padding: 2px 12px;
+            }
+            .sub-brand {
+                font-size: 10px;
+            }
+            .info-row {
+                font-size: 12px;
+                flex-direction: column;
+                gap: 2px;
+            }
+            .brand-right {
+                text-align: left;
+                width: 100%;
+                margin-top: 4px;
+                padding-left: 0;
+                border-left: none;
+            }
+            .brand {
+                flex-direction: column;
+                gap: 3px;
+                padding: 14px 16px;
+            }
+            .designer-note {
+                padding: 14px 16px;
+            }
+            .designer-note p {
+                font-size: 14px;
+            }
+            .section-guide {
+                padding: 14px 16px;
+                font-size: 14px;
+            }
+            .top-nav {
+                font-size: 11px;
+            }
+            .top-nav .badge {
+                font-size: 10px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            h2 .en-inline {
+                font-size: 0.55em;
+            }
+            .chapter {
+                margin-bottom: 36px;
+                padding-bottom: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main {
+                padding: 8px 10px 16px 10px;
+            }
+            .chapter h1 {
+                font-size: 21px;
+            }
+            .chain-flow .step {
+                font-size: 10px;
+                padding: 3px 10px;
+            }
+            .chain-flow .arrow {
+                font-size: 10px;
+            }
+            .banner-dark {
+                padding: 16px 14px 14px;
+            }
+            .banner-dark p {
+                font-size: 14px;
+            }
+            .banner-dark .gold {
+                font-size: 16px;
+            }
+            .banner-dark .small {
+                font-size: 12.5px;
+            }
+            table {
+                font-size: 10px;
+                min-width: 220px;
+            }
+            th,
+            td {
+                padding: 5px 8px;
+            }
+            .card {
+                padding: 12px 14px;
+            }
+            .card .title {
+                font-size: 13.5px;
+            }
+            .card .desc {
+                font-size: 11.5px;
+            }
+            .banner-dark .qr-placeholder .qr-box {
+                width: 68px;
+                height: 68px;
+            }
+            .banner-dark .qr-placeholder .qr-box .qr-icon {
+                font-size: 20px;
+            }
+            .banner-dark .qr-placeholder .qr-box .qr-label {
+                font-size: 9px;
+            }
+            .banner-dark .qr-placeholder .qr-box .qr-sub {
+                font-size: 9px;
+            }
+            .title-row h1 {
+                font-size: 20px;
+            }
+            .title-row .tag {
+                font-size: 9.5px;
+                padding: 1px 10px;
+            }
+            .designer-note .en {
+                font-size: 0.72em;
+            }
+            .section-guide .en-block {
+                font-size: 0.72em;
+            }
+            h2 {
+                font-size: 16px;
+            }
+            h2 .en-inline {
+                font-size: 0.5em;
+                display: block;
+                margin-left: 0;
+            }
+            h3 {
+                font-size: 15.5px;
+            }
+            .brand {
+                gap: 2px;
+                padding: 10px 12px;
+            }
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .info-row {
+                font-size: 11px;
+                gap: 2px 12px;
+            }
+        }
+    </style>
+</head>
+<body data-theme="green">
+
+    <!-- ===== 阅读进度条 ===== -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- ===== 遮罩 ===== -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ===== 侧边栏 ===== -->
+    <nav class="sidebar" id="sidebar">
+        <div class="logo">
+            <span>Ordinary People's Survival Handbook</span>
+            ◈ 普通人生存手册 ◈
+            <span>杨晟琦文明公理系统独立思想锚点</span>
+        </div>
+        <ul class="toc" id="toc">
+            <li class="vol" data-vol="vol1">
+                <a href="#vol1" data-target="vol1">一、认清你站的地方</a>
+                <ul class="sub">
+                    <li><a href="#v1-c1" data-target="v1-c1">1. 无力感是一种理性判断</a></li>
+                    <li><a href="#v1-c2" data-target="v1-c2">2. 结构性的孤独</a></li>
+                    <li><a href="#v1-c3" data-target="v1-c3">3. 容错率</a></li>
+                    <li><a href="#v1-c4" data-target="v1-c4">4. 体感先于数据</a></li>
+                    <li><a href="#v1-c5" data-target="v1-c5">5. 边界的力量</a></li>
+                    <li><a href="#v1-c6" data-target="v1-c6">6. 在缝隙里种花</a></li>
+                </ul>
+            </li>
+            <li class="vol" data-vol="vol2">
+                <a href="#vol2" data-target="vol2">二、看懂游戏规则</a>
+                <ul class="sub">
+                    <li><a href="#v2-c1" data-target="v2-c1">7. 经济周期</a></li>
+                    <li><a href="#v2-c2" data-target="v2-c2">8. 货币</a></li>
+                    <li><a href="#v2-c3" data-target="v2-c3">9. 市场</a></li>
+                    <li><a href="#v2-c4" data-target="v2-c4">10. 对冲</a></li>
+                    <li><a href="#v2-c5" data-target="v2-c5">11. 历史</a></li>
+                </ul>
+            </li>
+            <li class="vol" data-vol="vol3">
+                <a href="#vol3" data-target="vol3">三、参照他山之石</a>
+                <ul class="sub">
+                    <li><a href="#v3-c1" data-target="v3-c1">12. 法治与契约</a></li>
+                    <li><a href="#v3-c2" data-target="v3-c2">13. 住房</a></li>
+                    <li><a href="#v3-c3" data-target="v3-c3">14. 教育</a></li>
+                    <li><a href="#v3-c4" data-target="v3-c4">15. 工作</a></li>
+                    <li><a href="#v3-c5" data-target="v3-c5">16. 信任</a></li>
+                    <li><a href="#v3-c6" data-target="v3-c6">17. 自治</a></li>
+                </ul>
+            </li>
+            <li class="vol" data-vol="vol4">
+                <a href="#vol4" data-target="vol4">四、建立你的系统</a>
+                <ul class="sub">
+                    <li><a href="#v4-c1" data-target="v4-c1">18. 防火墙</a></li>
+                    <li><a href="#v4-c2" data-target="v4-c2">19. 种子</a></li>
+                    <li><a href="#v4-c3" data-target="v4-c3">20. 金钱的复利</a></li>
+                    <li><a href="#v4-c4" data-target="v4-c4">21. 认知的复利</a></li>
+                    <li><a href="#v4-c5" data-target="v4-c5">22. 身体的复利</a></li>
+                    <li><a href="#v4-c6" data-target="v4-c6">23. 时间的复利</a></li>
+                    <li><a href="#v4-c7" data-target="v4-c7">24. 关系的复利</a></li>
+                </ul>
+            </li>
+            <li class="vol" data-vol="vol5">
+                <a href="#vol5" data-target="vol5">五、活出选择权</a>
+                <ul class="sub">
+                    <li><a href="#v5-c1" data-target="v5-c1">25. 真正的财富</a></li>
+                    <li><a href="#v5-c2" data-target="v5-c2">26. 自由</a></li>
+                    <li><a href="#v5-c3" data-target="v5-c3">27. 合法性</a></li>
+                    <li><a href="#v5-c4" data-target="v5-c4">28. 分散</a></li>
+                    <li><a href="#v5-c5" data-target="v5-c5">29. 系统的备胎</a></li>
+                    <li><a href="#v5-c6" data-target="v5-c6">30. 心智不被驯化</a></li>
+                </ul>
+            </li>
+            <li class="vol" data-vol="vol6">
+                <a href="#vol6" data-target="vol6">附录</a>
+                <ul class="sub">
+                    <li><a href="#v6-c1" data-target="v6-c1">核心概念速查</a></li>
+                    <li><a href="#v6-c2" data-target="v6-c2">快速导航路径</a></li>
+                    <li><a href="#v6-c3" data-target="v6-c3">22国完整汇总</a></li>
+                    <li><a href="#v6-c4" data-target="v6-c4">推荐阅读与资源</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="footer-tip">九叔的视野 · 始于2026年5月13日 · 114篇记录</div>
+    </nav>
+
+    <!-- ===== 移动端导航 ===== -->
+    <div class="mobile-nav">
+        <button class="menu-btn" id="menuToggle">☰</button>
+        <span class="title">普通人生存手册</span>
+        <span style="width:36px;"></span>
+    </div>
+
+    <!-- ===== 主内容 ===== -->
+    <main class="main">
+
+        <!-- ===== 顶部 ===== -->
+        <div class="top-nav">
+            <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/" class="back">← 杨晟琦文明公理系统独立思想锚点</a>
+            <span class="badge">九叔的视野 · 普通人生存手册</span>
+        </div>
+
+        <!-- ===== 品牌区 ===== -->
+        <div class="brand">
+            <div class="brand-left">
+                <div class="sub-brand">Ordinary People's Survival Handbook</div>
+                <div class="title-row">
+                    <h1>普通人生存手册</h1>
+                    <span class="tag">九叔的视野</span>
+                </div>
+                <div class="info-row">
+                    <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
+                    <span>全球首发: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+                </div>
+            </div>
+            <div class="brand-right">典藏双语版</div>
+        </div>
+
+        <!-- ============================================================
+        前言
+        ============================================================ -->
+        <div class="chapter-num">前言 · Introduction</div>
+        <div class="designer-note">
+            <p><span class="highlight">这本手册不教你暴富，不教你对冲，不教你抄底。</span></p>
+            <p>它只教一件事：<strong>在系统不站在你这边的时候，怎么活下来，并且慢慢长出属于自己的选择权。</strong></p>
+            <span class="en">This handbook does not teach you to get rich, to hedge, or to bottom-fish. It teaches only one thing: how to survive — and gradually grow your own freedom of choice — when the system is not on your side.</span>
+        </div>
+
+        <section class="chapter" id="vol1">
+            <p>这本手册来自 <strong>（我的ID：杨晟琦 / Yang Shengqi / 九叔 / Uncle Nine）</strong> 自2026年5月13日开始在微信公众号里写下的文字。</p>
+            <p>那些文字不是学术论文，不是投资报告，是一个普通人在系统缝隙里观察、思考、记录下来的生存笔记。</p>
+            <p>这本手册把这些笔记重新整理成一条可走的路。</p>
+            <p>五大部分层层递进：<strong>认清处境 → 看懂规则 → 参照他山 → 建立系统 → 活出选择权</strong>。</p>
+            <p>每一部分都对应一个生存阶段，你可以从任何一处开始，但建议从头读起，因为地基不牢，上层不稳。</p>
+            <span class="en-block">It comes from 114 pieces of writing one person produced over three months. Not academic papers, not investment reports — they are survival notes observed, thought through, and recorded from the cracks of the system. This handbook reorganizes those notes into a walkable path.</span>
+            <span class="en-block">Five layers build on each other: <strong>Recognize Reality → Understand the Rules → Learn from Global References → Build Your System → Live Your Options</strong>. Each layer corresponds to a phase of survival. You can start anywhere, but it is best to read from the beginning — because a weak foundation means an unstable upper structure.</span>
+
+            <div class="divider-wave">· · · · ·</div>
+
+            <div class="banner-dark">
+                <p class="small">系统不会站在你这边，但你可以在系统里长出你自己的规则。</p>
+                <div class="byline">—— 致每一个在缝隙里努力生长的人</div>
+                <span class="en-block" style="font-size:0.78em; color:var(--text-muted); margin-top:4px;">Slowly, but never stop. The system may not be on your side, but you can grow your own rules within it. — To every soul striving in the cracks.</span>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        第一部分：认清你站的地方
+        ============================================================ -->
+        <section class="chapter" id="vol1">
+            <div class="chapter-num">第一部分 · Part I</div>
+            <h1>认清你站的地方 <span class="en-inline">Where You Stand</span></h1>
+            <div class="subtitle">先停下来，看清处境，停止自我欺骗</div>
+            <div class="author-line">认知觉醒 · 直面真实</div>
+
+            <div class="section-guide">
+                <span class="core"><strong>这一部分是最难的，因为它要求你停止自我欺骗。</strong></span>
+                <span class="expo">大多数人终其一生都在逃避真相，而生存的第一步恰恰是睁开眼睛，看清自己站在什么样的地面上。地面的硬度、坡度、裂缝——这些决定了你能走多远，以及摔倒了还能不能爬起来。</span>
+                <span class="en-block">This is the hardest part, because it demands that you stop deceiving yourself. Most people spend their lives avoiding the truth, yet the first step of survival is to open your eyes and see exactly what ground you are standing on. The hardness, the slope, the cracks — these determine how far you can go and whether you can get up after a fall.</span>
+            </div>
+
+            <div class="divider-wave">· · · · ·</div>
+
+            <h2 id="v1-c1">1. 无力感是一种理性判断 <span class="en-inline">Helplessness Is a Rational Judgment</span></h2>
+
+            <p><strong>大多数人感到无力，不是因为他们软弱，是因为他们的感知还在正常工作。</strong></p>
+
+            <p>在一个刻意制造噪音、混淆是非的环境里，依然能感觉到“哪里不对”，这恰恰说明你的判断系统还没有被摧毁。你感到窒息，是因为你还在呼吸；你感到压抑，是因为你还渴望自由。那些麻木的人不痛苦——他们早已缴械投降。</p>
+
+            <p><strong>你对环境的判断是准确的。</strong> 这片土地的结构性特征之一，是极低的容错率。一步踏错，不是跌倒，是坠落。一次错误的专业选择、一次盲目的人生跟随、一次轻信的口头承诺——都可能让你和你的后代用十年、二十年去偿还。这听起来很残酷，但残酷的东西往往是真实的。你越早接受这个设定，越早停止用“我不够努力”来责备自己，你就越早获得真正的清醒。</p>
+
+            <p><strong>你的焦虑、压抑、无能为力——是对一个不合理的系统做出的合理反应。</strong> 你的身体比你的大脑更诚实。大脑可以被叙事驯服，可以被数据安抚，可以被“稳中向好”的措辞麻痹。但你的胃、你的睡眠、你早晨醒来时心口那一块沉甸甸的石头——它们不读新闻，不信口号，只接收真实。</p>
+
+            <p>它们告诉你：这里不对劲。</p>
+
+            <p>不要急着否定这种感受，不要把它当成“负能量”强行压下去。它是一种信号，是你内心深处最后一道防线在发声。你听不见它的时候，才是真正危险的时刻。</p>
+
+            <p>墙上有灰缝，风从那里过来。系统再坚固也有裂缝——裂缝里藏着真相，也藏着透气的地方。找到那些裂缝，不是要你推翻什么，是要你找到那个还能自由呼吸的角落。</p>
+
+            <p><strong>你的无力感不是终点，是你终于开始清醒的起点。</strong></p>
+
+            <span class="en-block">Most people feel helpless not because they are weak, but because their perception is still functioning. In an environment deliberately designed to create noise and confuse right from wrong, the very ability to sense that "something is off" proves that your judgment system has not yet been destroyed. You feel suffocated because you are still breathing; you feel oppressed because you still long for freedom. Those who are numb do not suffer — they have already surrendered.</span>
+
+            <span class="en-block">Your judgment of this environment is accurate. One of the structural features of this land is an extremely low margin for error. One wrong step is not a stumble — it is a fall. One misguided career choice, one blind life decision, one naive trust in a verbal promise — any of these may cost you and your descendants ten or twenty years to repay. This sounds harsh, but harsh things are often true. The sooner you accept this reality, and the sooner you stop blaming yourself for "not trying hard enough," the sooner you will gain true clarity.</span>
+
+            <span class="en-block">Your anxiety, depression, and powerlessness — they are rational responses to an irrational system. Your body is more honest than your mind. The mind can be tamed by narratives, soothed by data, numbed by phrases like "steady and improving." But your stomach, your sleep, the heavy stone on your chest when you wake up in the morning — they do not read the news, they do not believe slogans. They only receive what is real.</span>
+
+            <span class="en-block">They tell you: something is wrong here. Do not rush to dismiss this feeling. Do not suppress it as "negative energy." It is a signal — the last line of defense within you, still speaking. The moment you stop hearing it is the moment you are truly in danger.</span>
+
+            <span class="en-block">There are hairline cracks in the wall, and the wind comes through them. No matter how solid the system, there are always fissures — and in those fissures lie truth and breathing space. Finding them is not about overthrowing anything. It is about finding the corner where you can still breathe freely.</span>
+
+            <span class="en-block"><strong>Your helplessness is not the end. It is the beginning of your awakening.</strong></span>
+
+            <div class="blockquote-styled">
+                “如果你感到无力，那不是你的软弱，而是你的感知在告诉你真相。”
+                <span class="source">—— 九叔 · 生存笔记 #7</span>
+                <span class="source-en">“If you feel powerless, it is not your weakness — it is your perception telling you the truth.”</span>
+            </div>
+
+            <h2 id="v1-c2">2. 结构性的孤独 <span class="en-inline">Structural Loneliness</span></h2>
+
+            <p><strong>你感到孤独，不是因为你不会交朋友。是因为你周围的大多数人，也正在被孤独吞没。</strong></p>
+
+            <p>这不是性格问题，这是一个被精密设计的结构性问题。当每个人都疲于奔命、自顾不暇时，人与人之间的真实连接——那种不需要解释就能被理解的默契、那种深夜一通电话就能托住彼此的关系——正在批量消失。取而代之的是点赞、是表情包、是“改天约”之后永远不会到来的那天。</p>
+
+            <p><strong>在一个被刻意“原子化”的社会里，每个人都被迫成为一座孤岛。</strong></p>
+
+            <p>这是一场无声的工程：把人群拆散成个体，把个体压缩成原子，让每个人只能垂直仰望、无法水平相连。你不认识你的邻居，你不知道楼下便利店老板的名字，你和你最好的朋友可能已经半年没见过面——这不是你变冷漠了，是这个系统不鼓励、不保护、不奖励人与人之间真正的连接。</p>
+
+            <p>你的痛苦——那些让你不舒服的时刻、让你委屈的瞬间、让你愤怒的遭遇——它们不是故障，它们是你内心深处的指南针在动。每一次你在人群中感到格格不入，每一次你被要求“懂事”“忍一忍”“别太敏感”，你感到的那一丝刺痛，其实都在告诉你三件事：</p>
+
+            <p>你是谁。你的边界在哪。以及——什么是你不该接受的。</p>
+
+            <p><strong>你从来没有“见过自己”，因为你从来没有被允许停下来看看。</strong> 这个世界一直在催你往前跑：上学、考试、找工作、赚钱、买房、结婚、养孩子……你不必急于追求深刻，在奔跑中意识到自己是一个有思想、有温度、有边界的人。停下来之后，你会慢慢发现——孤独不是你的错，但连接是你唯一能真正拥有的东西。</p>
+
+            <span class="en-block">You feel lonely not because you are bad at making friends. It is because most people around you are also being swallowed by loneliness. This is not a personality flaw. It is a carefully engineered structural problem. When everyone is exhausted from running just to stay in place, genuine human connection — the kind that requires no explanation, the kind that holds you up with one late-night call — is disappearing in bulk. In its place: likes, emojis, and “let's catch up sometime” that never comes.</span>
+
+            <span class="en-block">In a society deliberately atomized, everyone is forced into an island. This is a silent project: break crowds into individuals, compress individuals into atoms, so that each person can only look upward vertically, never connect horizontally. You do not know your neighbor. You do not know the name of the convenience store owner downstairs. You have not seen your best friend in six months. This is not you becoming cold. This is a system that does not encourage, protect, or reward real human connection.</span>
+
+            <span class="en-block">Your pain — the moments of discomfort, the grievances, the anger — they are not malfunctions. They are your inner compass moving. Every time you feel out of place in a crowd, every time you are told to “be sensible,” “tolerate it,” “don't be so sensitive” — that sting is telling you three things: who you are, where your boundaries lie, and what you should never accept.</span>
+
+            <span class="en-block">You have never “seen yourself” because you have never been allowed to stop. The world keeps pushing you forward: school, exams, jobs, money, house, marriage, children… You do not have to rush into profundity. In the middle of the run, realizing that you are a person with thoughts, with warmth, with boundaries — that is enough. And when you finally stop, you will slowly discover: loneliness is not your fault. But connection is the only thing that is truly yours to build.</span>
+
+            <div class="highlight-soft highlight-box">
+                <p><strong>孤独不是你的错，但连接是你的责任。</strong> 在断裂的世界里，主动寻找同类、建立小范围的信任网络，是生存的必修课。</p>
+                <span class="en-block"><strong>Loneliness is not your fault, but connection is your responsibility.</strong> In a fractured world, actively seeking kindred spirits and building small networks of trust is a survival necessity.</span>
+            </div>
+
+            <h2 id="v1-c3">3. 容错率 <span class="en-inline">Margin for Error</span></h2>
+
+            <p><strong>普通人的容错率，薄得像一张纸。谨慎不是性格，是生存的底线。</strong></p>
+
+            <p>在这片土地上，一个错误的决定、一次盲目的跟随、一次轻信的选择——就可能让你和你的后代用十年、二十年去偿还。这不是夸张，是无数家庭账本上写着的真实数字。你摔一跤，爬起来拍拍灰继续走，那是幸运。你摔一跤，把全家都带进坑里，那才是现实。</p>
+
+            <p><strong>富裕家庭的孩子在“试错”，普通家庭的孩子在“赌命”。</strong></p>
+
+            <p>前者可以换专业、换城市、换赛道、换伴侣——每一次“换”都被美化成“寻找自己”。后者换一次，可能就是跌一个阶层，再也爬不回来。这不是在抱怨命运不公，这是在说一个冰冷的算术题：你的本金越少，每一次下注的代价就越大。那些告诉你“勇敢去闯”“不要怕失败”的人，往往有一个你永远够不到的底牌。</p>
+
+            <p><strong>清醒地知道自己经不起几次折腾，是一种高级的理性。</strong></p>
+
+            <p>这不是胆小，是你在算一笔别人不需要算的账：这次选择如果错了，我需要几年才能回到原地？如果回不来呢？我的家庭能不能承受这个代价？——这些问题，富裕家庭的孩子不需要问，所以他们的步伐可以轻盈。而你问过之后做出的“保守”选择，不是怯懦，是你用头脑替全家扛住了一次可能崩塌的风险。</p>
+
+            <p>谨慎不是美德——美德是可选的。谨慎是普通人的必修课，及格才能活。</p>
+
+            <span class="en-block"><strong>For ordinary people, the margin for error is as thin as paper. Caution is not a personality trait — it is the baseline of survival.</strong></span>
+
+            <span class="en-block">On this land, one wrong decision, one blind following, one naive choice — it may cost you and your descendants ten or twenty years to repay. This is not hyperbole. It is the real number written in the ledgers of countless families. You fall, you get up, you dust yourself off, you keep walking — that is luck. You fall and drag your entire family into the hole — that is reality.</span>
+
+            <span class="en-block"><strong>Children of wealthy families “make mistakes and learn.” Children of ordinary families “gamble with their lives.”</strong></span>
+
+            <span class="en-block">The former can change majors, change cities, change careers, change partners — every “change” is glorified as “finding themselves.” For the latter, one change may mean falling an entire social class, with no way back. This is not about complaining about injustice. It is about a cold arithmetic problem: the smaller your capital, the more expensive every bet you place. Those who tell you to “be brave” and “don't fear failure” almost always have a safety net you will never reach.</span>
+
+            <span class="en-block"><strong>Knowing clearly that you cannot afford many stumbles — that is a higher form of rationality.</strong></span>
+
+            <span class="en-block">This is not cowardice. It is you doing the math that others do not need to do: if this choice goes wrong, how many years will it take me to get back to where I started? What if I never make it back? Can my family bear this cost? — These are questions that children of wealthy families never need to ask, so their steps are light. And the “conservative” choices you make after asking them — those are not timidity. Those are you, using your mind, to prevent one possible collapse for everyone who depends on you.</span>
+
+            <span class="en-block">Caution is not a virtue — virtues are optional. Caution is a required course for ordinary people. You need to pass it to survive.</span>
+
+            <div class="highlight-red highlight-box">
+                <p><strong>你必须赢，因为你输不起。</strong> 这不是压力，是动力。输不起的人，每一步都要算数。</p>
+                <span class="en-block"><strong>You must win because you cannot afford to lose.</strong> This is not pressure — it is motivation. Those who cannot lose must make every step count.</span>
+            </div>
+
+            <h2 id="v1-c4">4. 体感先于数据 <span class="en-inline">Lived Experience Before Data</span></h2>
+
+            <p><strong>先信自己的身体感受，再信宏观数据。数据可以被粉饰，但你后背发凉的感觉骗不了人。</strong></p>
+
+            <p>这是一个被数据淹没的时代。每天有无数个数字砸向你：GDP、CPI、失业率、人均收入、消费指数……它们被制成漂亮的图表，配上笃定的解读，告诉你“一切都在变好”。但你的身体不读图表——它只接收信号。</p>
+
+            <p>当你看到“经济稳中向好”的数据，但身边的朋友都在失业、消费降级、焦虑加重——请相信你的体感。体感是无数真实个体经验的汇总，是未经修饰的底层信号。它可能不够“科学”，不够“宏观”，但它足够真实。</p>
+
+            <p><strong>体感是第一手信息，数据是二手加工。</strong> 学会区分“官方叙事”和“地面实况”，是认知觉醒的第一步。你不需要做经济学家，你只需要做一件事：保持对自己身体的信任。你的胃紧缩、你的肩膀紧绷、你早晨醒来的第一口气——它们从不撒谎。</p>
+
+            <span class="en-block"><strong>Trust your bodily feelings first, macro data second. Data can be polished; the chill down your spine cannot lie.</strong></span>
+
+            <span class="en-block">We live in an age flooded with data. Every day, countless numbers are thrown at you: GDP, CPI, unemployment rates, per capita income, consumption indices… They are made into beautiful charts, accompanied by confident interpretations, telling you that “everything is getting better.” But your body does not read charts — it only receives signals.</span>
+
+            <span class="en-block">When you see data saying “the economy is stable and improving,” but everyone around you is losing jobs, cutting consumption, and growing more anxious — believe your lived experience. It is the aggregate of countless real individual experiences, an unfiltered bottom‑level signal. It may not be “scientific” enough, not “macro” enough — but it is real enough.</span>
+
+            <span class="en-block"><strong>Lived experience is primary; data is processed.</strong> Learning to distinguish between “official narrative” and “ground truth” is the first step of cognitive awakening. You do not need to be an economist. You only need to do one thing: keep trusting your body. Your tight stomach, your tense shoulders, your first breath in the morning — they never lie.</span>
+
+            <div class="highlight-gold highlight-box">
+                <p><strong>体感是第一手信息，数据是二手加工。</strong> 学会区分"官方叙事"和"地面实况"，是认知觉醒的第一步。</p>
+                <span class="en-block"><strong>Lived experience is primary; data is processed.</strong> Learning to distinguish between "official narrative" and "ground truth" is the first step of cognitive awakening.</span>
+            </div>
+
+            <h2 id="v1-c5">5. 边界的力量 <span class="en-inline">The Power of Boundaries</span></h2>
+
+            <p><strong>没有边界的人，谁都可以进来。你永远在应付别人，永远没空面对自己。</strong></p>
+
+            <p>边界不是冷漠，是尊重——尊重自己的时间、精力、情绪和价值观。学会说“不”，学会拒绝，学会在别人越界时果断拉回。你在这个世界上唯一能完全掌控的领地，就是你自己。如果你连这个领地都不设防，谁都可以进来踩一脚。</p>
+
+            <p>很多人不敢设边界，是因为怕得罪人、怕被孤立、怕“不合群”。但你要想清楚：那些因为你设了边界就离开你的人，本来就不该留在你的生命里。真正的尊重，从来不需要你牺牲自己去换取。</p>
+
+            <p><strong>“够了”是一种智慧。</strong> 停下来不是放弃，是你已经看清了这条路的极限。知道什么时候该停下，比知道什么时候该出发更重要。边界是你在这个世界上划出的一块“属于自己”的地盘——不一定要大，但一定要牢固。</p>
+
+            <span class="en-block"><strong>Without boundaries, anyone can come in. You spend your life dealing with others, never having time to face yourself.</strong></span>
+
+            <span class="en-block">Boundaries are not coldness — they are respect: respect for your time, energy, emotions, and values. Learn to say no, to refuse, and to pull back decisively when others cross the line. The only territory you can fully control in this world is yourself. If you do not defend it, anyone can come in and trample it.</span>
+
+            <span class="en-block">Many people are afraid to set boundaries because they fear offending others, being isolated, or being seen as “difficult.” But consider this: those who leave because you set boundaries were never meant to stay in your life anyway. True respect never requires you to sacrifice yourself to earn it.</span>
+
+            <span class="en-block"><strong>“Enough” is wisdom.</strong> Stopping is not giving up; it is seeing the limit of the road. Knowing when to stop is more important than knowing when to start. Boundaries are the piece of ground you claim as your own in this world — it does not have to be large, but it must be solid.</span>
+
+            <div class="highlight-soft highlight-box">
+                <p><strong>边界即自由。</strong> 没有边界的人没有自我，没有自我的人无从谈起选择权。</p>
+                <span class="en-block"><strong>Boundaries are freedom.</strong> Those without boundaries have no self; without a self, there is no talk of choice.</span>
+            </div>
+
+            <h2 id="v1-c6">6. 在缝隙里种花 <span class="en-inline">Plant Flowers in the Cracks</span></h2>
+
+            <p><strong>不宏大，但持久。在大系统里找到小缝隙，在缝隙里种下自己的种子。</strong></p>
+
+            <p>大多数人对“改变”的理解是推翻重来、颠覆式革命。但普通人的改变从来不是那样的。普通人的改变，是在一面坚固的墙上找到一条细缝，把根扎进去，等它慢慢撑开。</p>
+
+            <p>缝隙是什么？是系统不关注、不控制、不收割的微小空间。可能是一个小众技能、一个垂直领域、一个本地社群、一种低成本的生活方式。它不需要你登上山顶，只需要你在山脚找到一个向阳的坡。</p>
+
+            <p><strong>不需要对抗系统，只需要在系统照不到的地方，活出自己的节奏。</strong> 找到它，深耕它，让它成为你的庇护所。缝隙里的花不大，但风吹不走。</p>
+
+            <span class="en-block"><strong>Not grand, but lasting. Find small cracks in the big system, and plant your seeds there.</strong></span>
+
+            <span class="en-block">Most people understand “change” as overthrowing and rebuilding — revolutionary. But change for ordinary people has never been that way. Change for ordinary people is finding a thin crack in a solid wall, driving roots into it, and waiting for it to slowly open.</span>
+
+            <span class="en-block">What are the cracks? Small spaces the system does not monitor, control, or harvest. It could be a niche skill, a vertical domain, a local community, a low‑cost lifestyle. It does not require you to reach the summit — it only requires you to find a sunny slope at the foot of the mountain.</span>
+
+            <span class="en-block"><strong>You do not need to fight the system — just live at your own pace where the system does not reach.</strong> Find it, cultivate it, and make it your shelter. The flowers in the cracks are not large, but the wind cannot blow them away.</span>
+
+            <div class="highlight-box">
+                <p><strong>在系统照不到的地方，活出自己的节奏。</strong> 这是普通人最现实的生存策略。</p>
+                <span class="en-block"><strong>Live your own rhythm where the system does not shine.</strong> This is the most realistic survival strategy for ordinary people.</span>
+            </div>
+
+            <div class="blockquote-styled" style="border-left-color: var(--gold);">
+                <strong>第一部分 · 核心领悟：</strong> 认清处境，不是为了绝望，是为了精准地活着。当你停止了自我欺骗，你就已经走在了大多数人的前面。
+                <span class="source">—— 九叔 · 生存笔记 #14</span>
+            </div>
+
+            <div class="divider-wave">· · · · ·</div>
+            <div class="banner-dark" style="margin-top:4px;">
+                <p class="small">认清处境，不是为了绝望，是为了<strong>精准地活着</strong>。</p>
+                <span class="en-block" style="font-size:0.85em;">Recognizing where you stand is not for despair — it is for <strong>living precisely</strong>.</span>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        第二部分：看懂游戏规则
+        ============================================================ -->
+        <section class="chapter" id="vol2">
+            <div class="chapter-num">第二部分 · Part II</div>
+            <h1>看懂游戏规则 <span class="en-inline">Understand the Rules</span></h1>
+            <div class="subtitle">不犯规，也不被规则吃掉</div>
+            <div class="author-line">理解规则 · 看懂结构</div>
+
+            <div class="section-guide">
+                <span class="core"><strong>认清处境之后，下一步是看懂规则。</strong></span>
+                <span class="expo">大多数人之所以被收割，不是因为不够努力，而是因为看不懂游戏规则。规则是谁制定的？偏向谁？漏洞在哪？你只有看懂了，才能在其中找到自己的位置。</span>
+                <span class="en-block">After recognizing where you stand, the next step is to understand the rules. Most people are harvested not because they are not hardworking, but because they do not see the rules. Who makes them? Whom do they favor? Where are the loopholes? Only when you understand can you find your place within them.</span>
+            </div>
+
+            <div class="divider-wave">· · · · ·</div>
+
+            <h2 id="v2-c1">7. 经济周期 <span class="en-inline">Economic Cycles</span></h2>
+
+            <p><strong>经济像四季，有不同的阶段。你要在不同的季节穿不同的衣服。春天播种、夏天生长、秋天收获、冬天冬眠。</strong></p>
+
+            <p>经济周期不是玄学，是规律。它像潮水一样来了又退，退了又来。普通人最大的错误是在衰退期加杠杆、在过热期追涨、在滞胀期躺平。如果你能识别周期，你就能在别人恐慌时保持冷静，在别人贪婪时保持警惕。</p>
+
+            <p><strong>周期不是命运，是节奏。</strong> 你不需要预测未来，你只需要识别当下，然后做出对应的动作。冬天别折腾，春天别犹豫，夏天别上头，秋天别贪心。普通人能跑赢周期的唯一方法，就是比周期慢半拍——等确认了再动，而不是抢在所有人前面动。</p>
+
+            <span class="en-block"><strong>The economy is like the four seasons, with distinct phases. You need to wear different clothes in different seasons. Sow in spring, grow in summer, harvest in autumn, hibernate in winter.</strong></span>
+
+            <span class="en-block">Economic cycles are not mysticism — they are patterns. They come and go like tides. The biggest mistake ordinary people make is adding leverage in a recession, chasing highs in a boom, and giving up in stagflation. If you can read the cycle, you can stay calm when others panic and stay alert when others are greedy.</span>
+
+            <span class="en-block"><strong>Cycles are not destiny — they are rhythm.</strong> You do not need to predict the future; you only need to recognize the present and act accordingly. Do not stir in winter. Do not hesitate in spring. Do not get carried away in summer. Do not be greedy in autumn. The only way ordinary people can outrun the cycle is to be half a beat slower — move only after confirmation, not before everyone else.</span>
+
+            <div class="grid-4">
+                <div class="card card-accent">
+                    <div class="label">衰退期 · Recession</div>
+                    <div class="title">冬眠</div>
+                    <div class="desc">冬天别折腾。减少消费、保住现金、降低杠杆。<br /><strong>唯一任务：活着。</strong><br><span style="font-size:0.8em;color:var(--text-muted);">Don't stir in winter. Cut spending, preserve cash, reduce leverage. <strong>Only task: survive.</strong></span></div>
+                </div>
+                <div class="card card-accent">
+                    <div class="label">复苏期 · Recovery</div>
+                    <div class="title">春耕</div>
+                    <div class="desc">春天要播种。确认复苏后，再动。<br /><strong>普通人的节奏是：慢半拍。</strong><br><span style="font-size:0.8em;color:var(--text-muted);">Sow in spring. Move only after recovery is confirmed. <strong>The ordinary person's rhythm: half a beat behind.</strong></span></div>
+                </div>
+                <div class="card card-accent">
+                    <div class="label">过热期 · Overheat</div>
+                    <div class="title">夏伏</div>
+                    <div class="desc">夏天别冲动。守住你已经有的。<br /><strong>别中暑，别All in。</strong><br><span style="font-size:0.8em;color:var(--text-muted);">Don't rush in summer. Hold what you have. <strong>Don't overheat, don't go all‑in.</strong></span></div>
+                </div>
+                <div class="card card-accent">
+                    <div class="label">滞胀期 · Stagflation</div>
+                    <div class="title">秋收</div>
+                    <div class="desc">物价涨、收入不涨。把收成藏好。<br /><strong>减少支出，等待下一个周期。</strong><br><span style="font-size:0.8em;color:var(--text-muted);">Prices rise, incomes don't. Store the harvest well. <strong>Cut spending, wait for the next cycle.</strong></span></div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>周期不是命运，是节奏。</strong> 你不需要预测未来，你只需要识别当下，然后做出对应的动作。</p>
+                <span class="en-block"><strong>Cycles are not destiny — they are rhythm.</strong> You do not need to predict the future; you only need to recognize the present and act accordingly.</span>
+            </div>
+
+            <h2 id="v2-c2">8. 货币 <span class="en-inline">Currency</span></h2>
+
+            <p><strong>货币是权力，也是风险。不要把所有的资产押注在单一货币上。</strong></p>
+
+            <p>1923年德国的那一代人，眼睁睁看着毕生积蓄变成废纸。这不是历史故事，是真实发生过的集体悲剧。他们不是不努力，不是不节俭，只是他们相信了一种货币——然后货币背叛了他们。</p>
+
+            <p>M1的变化、G10货币的走势、外汇管制的松紧——这些宏观指标跟你口袋里的钱直接相关。你不一定要成为货币专家，但你要知道：货币的购买力是会变化的，而且变化的速度可能比你想象的要快。不要把鸡蛋放在一个篮子里，也不要把财富放在一种货币里。分散是保护，不是贪婪。</p>
+
+            <span class="en-block"><strong>Currency is power, and also risk. Do not bet all your assets on a single currency.</strong></span>
+
+            <span class="en-block">The German generation of 1923 watched their life savings turn into wallpaper. This is not a historical anecdote; it is a real collective tragedy. They were not lazy. They were not spendthrifts. They simply trusted a currency — and the currency betrayed them.</span>
+
+            <span class="en-block">Changes in M1, movements in G10 currencies, the tightening or loosening of foreign exchange controls — these macro indicators are directly related to the money in your pocket. You do not have to be a currency expert, but you must know: purchasing power changes, and it can change faster than you think. Do not put all your eggs in one basket, nor all your wealth in one currency. Diversification is protection, not greed.</span>
+
+            <div class="highlight-red highlight-box">
+                <p><strong>不要把鸡蛋放在一个篮子里，也不要把财富放在一种货币里。</strong> 分散是保护，不是贪婪。</p>
+                <span class="en-block"><strong>Do not put all your eggs in one basket, nor all your wealth in one currency.</strong> Diversification is protection, not greed.</span>
+            </div>
+
+            <h2 id="v2-c3">9. 市场 <span class="en-inline">Markets</span></h2>
+
+            <p><strong>你不是运气差，你是看不懂结构。规则偏向谁、资金流向哪、信息差在谁手里——这些东西比你技术好不好重要一百倍。</strong></p>
+
+            <p>市场不是公平的竞技场，是有偏向性的角斗场。看懂结构，你才能知道自己在哪个位置、能做什么、不能做什么。盲目努力只会让你在错误的方向上越走越远。</p>
+
+            <p>很多人相信“只要足够努力就能赢”——这是市场最想让你相信的谎言。因为当你相信这一点时，你就不会去看规则、不会去质疑结构、不会去问“谁在制定游戏规则”。而制定规则的人，永远不会输。</p>
+
+            <span class="en-block"><strong>You are not unlucky — you just do not see the structure. Whom do the rules favor? Where does the money flow? Who holds the information advantage? These matter a hundred times more than how skilled you are.</strong></span>
+
+            <span class="en-block">Markets are not fair arenas; they are biased coliseums. Only by reading the structure can you know your position, what you can do, and what you cannot. Blind effort only takes you further in the wrong direction.</span>
+
+            <span class="en-block">Many people believe that “hard work alone will win” — this is the lie the market wants you to believe most. Because when you believe it, you will not look at the rules, you will not question the structure, you will not ask “who makes the rules.” And those who make the rules never lose.</span>
+
+            <div class="highlight-red highlight-box">
+                <p><strong>你不是运气差，你是看不懂结构。</strong> 先看懂结构，再谈努力。</p>
+                <span class="en-block"><strong>You are not unlucky — you just do not see the structure.</strong> Understand the structure first, then talk about effort.</span>
+            </div>
+
+            <h2 id="v2-c4">10. 对冲 <span class="en-inline">Hedging</span></h2>
+
+            <p><strong>活着比赚钱更重要。在不确定的世界里，保住本钱、保住身体、保住选择权——这三样东西比任何收益率都重要。</strong></p>
+
+            <p>对冲不是投机，是保护。用一部分资源去对冲另一部分资源的风险，让你的整体抗风险能力更强。普通人不需要复杂的金融工具，最简单的对冲是：多元收入 + 现金储备 + 健康身体。</p>
+
+            <p>你有没有想过：如果明天你的主要收入来源断了，你能撑多久？三个月？一个月？还是一个星期？——这个问题的答案，就是你的脆弱程度。对冲不是让你更富有，是让你更不容易被击倒。</p>
+
+            <span class="en-block"><strong>Survival matters more than profit. In an uncertain world, preserving principal, preserving health, and preserving options — these three are more important than any rate of return.</strong></span>
+
+            <span class="en-block">Hedging is not speculation — it is protection. Use a portion of resources to hedge the risks of another portion, making your overall risk resistance stronger. Ordinary people do not need complex financial tools; the simplest hedge is: multiple income streams + cash reserves + a healthy body.</span>
+
+            <span class="en-block">Have you ever asked yourself: if your main source of income were cut off tomorrow, how long could you last? Three months? One month? One week? — The answer to that question is your vulnerability. Hedging is not about making you richer. It is about making you harder to knock down.</span>
+
+            <div class="highlight-gold highlight-box">
+                <p><strong>对冲的本质是：不把所有希望押在一个点上。</strong> 哪怕那个点看起来再可靠。</p>
+                <span class="en-block"><strong>The essence of hedging: do not stake all your hopes on a single point.</strong> No matter how reliable that point may seem.</span>
+            </div>
+
+            <h2 id="v2-c5">11. 历史 <span class="en-inline">History</span></h2>
+
+            <p><strong>你不是第一个疼的人，也不会是最后一个。大萧条里排队领汤的人、通胀中看着钞票变废纸的人、滞胀里被掏空的人——他们教会我们同一件事：活着就是胜利。</strong></p>
+
+            <p>历史不会重复，但会押韵。读懂历史不是为了预测未来，是为了知道：人类经历过更糟的，也走过来了。你不是孤独的，你走在一条已经被无数人走过的路上。</p>
+
+            <p>每一次你以为“这次不一样了”的时候，翻开历史书，你会发现：一模一样的事情，已经在另一个时代、另一个国家发生过。历史不能救你，但它能让你知道自己并不孤单。</p>
+
+            <span class="en-block"><strong>You are not the first to hurt, nor will you be the last. Those who queued for soup during the Great Depression, those who watched their money become worthless during hyperinflation, those hollowed out by stagflation — they all teach us the same lesson: survival is victory.</strong></span>
+
+            <span class="en-block">History does not repeat, but it rhymes. Reading history is not for predicting the future — it is to know that humanity has been through worse and come out the other side. You are not alone; you walk a path already trodden by countless others.</span>
+
+            <span class="en-block">Every time you think “this time is different,” open a history book. You will find that the exact same thing has already happened in another era, another country. History cannot save you. But it can let you know that you are not alone.</span>
+
+            <div class="highlight-box">
+                <p><strong>历史是最好的老师，也是最便宜的止痛药。</strong> 你经历的痛苦，前人早已经历，并且留下了应对的方法。</p>
+                <span class="en-block"><strong>History is the best teacher and the cheapest painkiller.</strong> The pain you experience has been felt before, and remedies have been left behind.</span>
+            </div>
+
+            <div class="blockquote-styled" style="border-left-color: var(--gold);">
+                <strong>第二部分 · 核心领悟：</strong> 看懂规则，不是为了利用规则，是为了不被规则吃掉。当你理解了系统的运行逻辑，你就从“被系统推着走”变成了“在系统中找自己的路”。
+                <span class="source">—— 九叔 · 生存笔记 #28</span>
+            </div>
+
+            <div class="divider-wave">· · · · ·</div>
+            <div class="banner-dark">
+                <p class="small">看懂规则，不是为了利用规则，是为了<strong>不被规则吃掉</strong>。</p>
+                <span class="en-block" style="font-size:0.85em;">Understanding the rules is not for exploiting them — it is for <strong>not being devoured by them</strong>.</span>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        第三部分：参照他山之石
+        ============================================================ -->
+        <section class="chapter" id="vol3">
+            <div class="chapter-num">第三部分 · Part III</div>
+            <h1>参照他山之石 <span class="en-inline">Learn from Global References</span></h1>
+            <div class="subtitle">区分哪些疼是必经之路，哪些疼是不必吃的亏</div>
+            <div class="author-line">22国制度参照 · 成熟体系的生存智慧</div>
+
+            <div class="section-guide">
+                <span class="core"><strong>看懂规则之后，你需要知道：同样的困境，别人是怎么应对的？</strong></span>
+                <span class="expo">这个世界上有很多国家、很多社会，它们经历过类似的痛苦，也摸索出了一些解决方案。参照他山之石，不是为了崇洋，是为了帮你看清：哪些疼是必经之路，哪些疼是不必吃的亏。</span>
+                <span class="en-block">After understanding the rules, you need to know: how have others responded to the same challenges? Many countries and societies have experienced similar pains and have groped their way to some solutions. Looking at their stones is not for worship — it is to help you see clearly: which pains are inevitable, and which are unnecessary losses.</span>
+            </div>
+
+            <div class="highlight-gold highlight-box">
+                <p><strong>不是崇洋。是帮你看清：同样的疼，别人怎么兜底。</strong></p>
+                <span class="en-block"><strong>Not about idolizing others. It is about showing you: how do others cushion the same blows?</strong></span>
+            </div>
+
+            <div class="divider-wave">· · · · ·</div>
+
+            <h2 id="v3-c1">12. 法治与契约 <span class="en-inline">Rule of Law &amp; Contract</span></h2>
+
+            <p><strong>有些国家用几百年建立了契约精神，普通人在规则下可以安稳生活。制度是可以设计的——这不是空话，是已经被验证的事实。</strong></p>
+
+            <p>当法治成为社会运行的底层逻辑，普通人不需要靠关系、靠运气、靠“上面有人”才能生存。你只需要遵守规则，规则就会保护你。这是一个可以被复制的文明成果。它不完美，但它比“人治”多了一重最基本的保障：你不会因为今天换了个人管事，就失去昨天拥有的一切。</p>
+
+            <span class="en-block"><strong>Some countries spent centuries building contractual culture, where ordinary people can live securely under the rules. Institutions can be designed — this is not empty rhetoric; it is a proven fact.</strong></span>
+
+            <span class="en-block">When the rule of law becomes the underlying logic of society, ordinary people do not need connections, luck, or “someone above” to survive. You only need to follow the rules, and the rules protect you. This is a replicable civilizational achievement. It is not perfect. But it offers one basic guarantee that rule-by-man does not: you will not lose everything you had yesterday just because someone new is in charge today.</span>
+
+            <div class="highlight-soft highlight-box">
+                <p><strong>法治不是奢侈品，是基础设施。</strong> 没有法治的社会，每个人都是潜在的受害者。</p>
+                <span class="en-block"><strong>Rule of law is not a luxury — it is infrastructure.</strong> In a society without it, every person is a potential victim.</span>
+            </div>
+
+            <h2 id="v3-c2">13. 住房 <span class="en-inline">Housing</span></h2>
+
+            <p><strong>新加坡的组屋制度让年轻人可以用公积金付首付、用低息贷款还月供。不靠父母也能安家。住房被当作民生基础设施，而不是金融投机品。</strong></p>
+
+            <p>在新加坡，年轻的清洁工和年轻的工程师，可能住在同一栋组屋、同一个电梯里。不靠父母、不看阶层，公积金划走首付，剩下的月供比房租还低——这才是“安家”该有的样子。当住房回归居住属性，年轻人不需要背负三十年的债务来换取一个安身之所。他们可以把精力投入到创造、学习和成长中，而不是为了一间房子耗尽青春。</p>
+
+            <span class="en-block"><strong>Singapore's public housing system allows young people to use their CPF for down payments and low‑interest loans for monthly payments. They can settle down without parental help. Housing is treated as livelihood infrastructure, not financial speculation.</strong></span>
+
+            <span class="en-block">In Singapore, a young cleaner and a young engineer may live in the same block, ride the same elevator. No parental help, no class divisions — CPF covers the down payment, and the monthly installment is lower than rent. That is what “settling down” should look like. When housing returns to its residential nature, young people do not need to shoulder thirty years of debt just for a place to live. They can invest their energy in creativity, learning, and growth — not waste their youth chasing a roof.</span>
+
+            <div class="highlight-box">
+                <p><strong>住房是基本人权，不是商品。</strong> 这个观念的转变，决定了一个社会是"为人服务"还是"为资本服务"。</p>
+                <span class="en-block"><strong>Housing is a fundamental human right, not a commodity.</strong> This conceptual shift determines whether a society serves people or capital.</span>
+            </div>
+
+            <h2 id="v3-c3">14. 教育 <span class="en-inline">Education</span></h2>
+
+            <p><strong>德国的双元制让技工和企业一起成长。工匠可以被尊重，收入也可以体面——不读大学也能好好活。</strong></p>
+
+            <p>教育不应该是一条独木桥，而应该是一片森林。每条路都能通向有价值的人生。当社会尊重每一种劳动、每一种技能，人们就不需要挤在同一个赛道上内卷。德国的技工不是“考不上大学的备胎”，他们是经过严格训练、被社会认可、被企业争抢的专业人才。他们的收入不比大学毕业生低，他们的社会地位不比任何人低。</p>
+
+            <span class="en-block"><strong>Germany's dual system allows skilled workers and enterprises to grow together. Artisans are respected, and incomes are decent — you can live well without a university degree.</strong></span>
+
+            <span class="en-block">Education should not be a single‑plank bridge, but a forest. Every path can lead to a meaningful life. When society respects every kind of work and skill, people do not need to crowd into the same track and compete to exhaustion. In Germany, skilled workers are not “fallback options for those who failed university.” They are rigorously trained, socially recognized, and actively recruited by enterprises. Their incomes are no lower than university graduates. Their social status is no lower than anyone else's.</span>
+
+            <h2 id="v3-c4">15. 工作 <span class="en-inline">Work</span></h2>
+
+            <p><strong>在有些国家，下班时间属于你自己。不回消息不扣钱、不开除、不被穿小鞋。这种权利是用法律写下来的。</strong></p>
+
+            <p>工作是为了生活，而不是生活为了工作。当劳动法真正保护劳动者，人们才能有尊严地工作、有质量地生活。这不是乌托邦，是已经在很多地方实现的现实。在那些地方，“下班后不回工作消息”不是人情冷漠，是法律给你的权利——你不必为此感到愧疚。</p>
+
+            <span class="en-block"><strong>In some countries, after‑work hours belong to you. Not replying to messages does not cost you money, get you fired, or invite retaliation. This right is written into law.</strong></span>
+
+            <span class="en-block">Work is for living, not living for work. When labor laws truly protect workers, people can work with dignity and live with quality. This is not a utopia; it is already a reality in many places. In those places, “not replying to work messages after hours” is not coldness — it is your legal right. You do not have to feel guilty about it.</span>
+
+            <div class="highlight-soft highlight-box">
+                <p><strong>劳动者的尊严，是用法律和制度撑起来的。</strong> 不是靠老板的良心。</p>
+                <span class="en-block"><strong>The dignity of workers is upheld by laws and institutions.</strong> Not by the conscience of employers.</span>
+            </div>
+
+            <h2 id="v3-c5">16. 信任 <span class="en-inline">Trust</span></h2>
+
+            <p><strong>北欧的高信任社会意味着：政府不查你、邻居不猜你、制度不防你。信任降低了所有人的交易成本。</strong></p>
+
+            <p>在一个高信任社会里，人们不需要花大量精力去防备、去验证、去证明。信任像空气一样自然存在，让社会运转更加高效、更加温暖。信任不是天生的，是制度长期培育出来的——当制度不把每个人当成潜在的罪犯，人们就不会真的变成罪犯。信任是双向的：你信我，我就值得你信。</p>
+
+            <span class="en-block"><strong>Nordic high‑trust societies mean: the government does not probe you, neighbors do not suspect you, institutions do not guard against you. Trust lowers transaction costs for everyone.</strong></span>
+
+            <span class="en-block">In a high‑trust society, people do not need to spend enormous energy on defense, verification, or proof. Trust exists like air, making society more efficient and more humane. Trust is not innate — it is cultivated by institutions over time. When institutions do not treat everyone as a potential criminal, people do not become criminals. Trust is mutual: if you trust me, I become worthy of that trust.</span>
+
+            <div class="highlight-box">
+                <p><strong>信任像水电一样，是社会的底层设施。</strong> 没有信任的社会，每个人都活在防御模式里。</p>
+                <span class="en-block"><strong>Trust is like water and electricity — it is societal infrastructure.</strong> Without trust, everyone lives in defensive mode.</span>
+            </div>
+
+            <h2 id="v3-c6">17. 自治 <span class="en-inline">Self‑Governance</span></h2>
+
+            <p><strong>美国小镇的图书馆是居民自己修的。不需要等政府拨款——我们自己的事，我们自己干。</strong></p>
+
+            <p>自治是公民社会的核心。当人们相信“我可以改变我身边的环境”，他们就会行动起来。这种行动力是任何自上而下的管理都无法替代的。你不需要等“上面”来解决问题——有些问题，你自己就能解决。你只需要相信一件事：这件事跟我有关，我能做点什么。</p>
+
+            <span class="en-block"><strong>In small American towns, libraries are built by residents themselves. No need to wait for government funding — our own affairs, we handle ourselves.</strong></span>
+
+            <span class="en-block">Self‑governance is the heart of civil society. When people believe “I can change my surroundings,” they act. This agency cannot be replaced by any top‑down management. You do not need to wait for “someone above” to solve problems — some problems, you can solve yourself. You only need to believe one thing: this matters to me, and I can do something about it.</span>
+
+            <div class="highlight-gold highlight-box">
+                <p><strong>从他们身上学什么：</strong> 同样的苦难，是可以被设计的制度接住的。普通人不需要一直硬扛。制度可以兜底，社会可以互助，生活可以更好。</p>
+                <span class="en-block"><strong>What we learn from them:</strong> The same suffering can be cushioned by well‑designed institutions. Ordinary people do not have to endure alone. Institutions can provide safety nets, societies can offer mutual aid, and life can be better.</span>
+            </div>
+
+            <div class="blockquote-styled" style="border-left-color: var(--gold);">
+                <strong>第三部分 · 核心领悟：</strong> 参照他山，不是为了离开，是为了在这里活得更好。他山之石，可以攻玉——别人的制度设计，是我们思考自己处境的镜子。
+                <span class="source">—— 九叔 · 生存笔记 #42</span>
+            </div>
+
+            <div class="divider-wave">· · · · ·</div>
+            <div class="banner-dark">
+                <p class="small">参照他山，不是为了离开，是为了<strong>在这里活得更好</strong>。</p>
+                <span class="en-block" style="font-size:0.85em;">Looking beyond is not for leaving — it is for <strong>living better here</strong>.</span>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        第四部分：建立你的系统
+        ============================================================ -->
+        <section class="chapter" id="vol4">
+            <div class="chapter-num">第四部分 · Part IV</div>
+            <h1>建立你的系统 <span class="en-inline">Build Your System</span></h1>
+            <div class="subtitle">攒本钱，护住脚下那块地</div>
+            <div class="author-line">防火墙 · 种子 · 复利</div>
+
+            <div class="section-guide">
+                <span class="core"><strong>看懂规则、参照他山之后，你必须回到自己身上：我要建立什么样的系统来保护自己？</strong></span>
+                <span class="expo">系统不是一夜建成的，是一砖一瓦垒起来的。但只要你开始垒，就会越来越牢固。</span>
+                <span class="en-block">After understanding the rules and learning from global references, you must return to yourself: what system will I build to protect myself? A system is not built overnight — it is laid brick by brick. But once you start, it becomes stronger over time.</span>
+            </div>
+
+            <div class="divider-wave">· · · · ·</div>
+
+            <h2 id="v4-c1">18. 防火墙 <span class="en-inline">Firewall</span></h2>
+
+            <div class="highlight-box">
+                <p><strong>防火墙 = 现金储备 + 可迁移技能 + 可靠关系 + 身体健康</strong></p>
+                <span class="en-block"><strong>Firewall = Cash Reserves + Transferable Skills + Reliable Relationships + Physical Health</strong></span>
+            </div>
+
+            <p><strong>这四个支点缺一不可。你的安全感不来自某一个支点有多强，而是来自四个支点都在。</strong></p>
+
+            <p>现金储备让你在危机时不慌张，有选择权。可迁移技能让你在任何地方都能找到饭吃。可靠关系让你在困难时有依靠。身体健康让你有资本去经历一切。缺了任何一个，你的防火墙就有裂缝——而裂缝，就是风险进来的地方。</p>
+
+            <ul class="styled-list">
+                <li><strong>现金储备</strong> — 让你在危机时不慌张，有选择权。</li>
+                <li><strong>可迁移技能</strong> — 让你在任何地方都能找到饭吃。</li>
+                <li><strong>可靠关系</strong> — 让你在困难时有依靠。</li>
+                <li><strong>身体健康</strong> — 让你有资本去经历一切。</li>
+            </ul>
+
+            <span class="en-block">These four pillars are indispensable. Your sense of security does not come from how strong any one pillar is, but from all four being in place. Cash reserves give you options in crisis. Transferable skills let you find work anywhere. Reliable relationships give you support in hard times. Physical health gives you the capital to experience it all. Without any one, your firewall has a crack — and cracks are where risk enters.</span>
+
+            <div class="highlight-soft highlight-box">
+                <p><strong>防火墙不是让你不受伤，是让你受伤后还能站起来。</strong></p>
+                <span class="en-block"><strong>A firewall is not about preventing injury — it is about being able to stand up after being injured.</strong></span>
+            </div>
+
+            <h2 id="v4-c2">19. 种子 <span class="en-inline">Seeds</span></h2>
+
+            <p><strong>哪怕饿着肚子，也要把种子种下去。在最艰难的时候，依然要留一点资源投到未来。今天开始，就是最早的时候。</strong></p>
+
+            <p>种子是什么？是一个新技能、一个新领域、一个新关系、一个新习惯。它可能很小，但只要你持续浇灌，它就会长大。种子的力量在于：它来自过去，却属于未来。你种下什么，时间就会还给你什么。</p>
+
+            <span class="en-block"><strong>Even on an empty stomach, plant the seeds. In the hardest times, still set aside some resources for the future. Starting today is the earliest possible moment.</strong></span>
+
+            <span class="en-block">What are seeds? A new skill, a new domain, a new relationship, a new habit. They may be small, but with sustained watering, they grow. The power of seeds: they come from the past but belong to the future. What you plant, time will return to you.</span>
+
+            <div class="highlight-gold highlight-box">
+                <p><strong>种一棵树最好的时间是十年前，其次是现在。</strong> 不要因为晚就放弃，晚开始比不开始好一万倍。</p>
+                <span class="en-block"><strong>The best time to plant a tree was ten years ago. The second best is now.</strong> Do not give up because it is late; starting late is ten thousand times better than not starting at all.</span>
+            </div>
+
+            <h2 id="v4-c3">20. 金钱的复利 <span class="en-inline">Compound Interest of Money</span></h2>
+
+            <p><strong>你不需要很多钱开始，你需要的是时间。复利最大的敌人不是收益率不够高，是迟迟不动。</strong></p>
+
+            <p>每个月存下一笔钱，哪怕只有几百块，十年后、二十年后，它会变成一笔可观的数目。时间是最好的杠杆，可惜大多数人没有耐心等待。他们等不到复利显现的那一天，就在半路把钱花掉了——然后说“复利没用”。</p>
+
+            <span class="en-block"><strong>You do not need a lot of money to start — you need time. The biggest enemy of compound interest is not a low rate, but hesitation.</strong></span>
+
+            <span class="en-block">Save a sum every month, even if it is just a few hundred. Ten or twenty years later, it will grow into a significant amount. Time is the best lever; unfortunately, most people lack the patience to wait. They cannot wait until compound interest reveals itself — they spend the money halfway, and then say “compounding is useless.”</span>
+
+            <div class="highlight-box">
+                <p><strong>复利是时间的魔法，但魔法需要时间才能显现。</strong></p>
+                <span class="en-block"><strong>Compound interest is time's magic, but magic takes time to reveal itself.</strong></span>
+            </div>
+
+            <h2 id="v4-c4">21. 认知的复利 <span class="en-inline">Compound Interest of Cognition</span></h2>
+
+            <p><strong>收藏不等于学到，学到不等于做到。认知复利的关键不是“输入”，是“转化”。你今天学的东西，明天要能用出来。</strong></p>
+
+            <p>每天读十页书、每周写一篇笔记、每月复盘一次——这些微小的习惯，在时间的累积下会重塑你的认知结构。认知的复利比金钱的复利更强大，因为认知决定了你如何使用金钱。没有认知的人，即使中了彩票，几年后也会回到原来的状态。认知，才是一个人真正的天花板。</p>
+
+            <span class="en-block"><strong>Collecting is not learning, and learning is not doing. The key to cognitive compound interest is not "input" — it is "transformation." What you learn today, you must be able to use tomorrow.</strong></span>
+
+            <span class="en-block">Read ten pages a day, write one note a week, review once a month — these tiny habits, accumulated over time, reshape your cognitive architecture. Cognitive compounding is more powerful than monetary compounding, because cognition determines how you use money. Without cognition, even a lottery winner will return to their original state within a few years. Cognition is the true ceiling of a person.</span>
+
+            <div class="highlight-soft highlight-box">
+                <p><strong>认知复利是穷人最可靠的逆袭工具。</strong> 因为它不需要本金，只需要时间和行动。</p>
+                <span class="en-block"><strong>Cognitive compounding is the most reliable comeback tool for the poor.</strong> Because it requires no capital — only time and action.</span>
+            </div>
+
+            <h2 id="v4-c5">22. 身体的复利 <span class="en-inline">Compound Interest of the Body</span></h2>
+
+            <p><strong>身体是复利的第一载体。你所有的一切都寄生在身体上。身体垮了，一切都归零。照顾身体是最高回报的投资。</strong></p>
+
+            <p>每天运动半小时、早睡一小时、少吃一口糖——这些微小的选择，在十年后会显现出巨大的差异。身体的复利被大多数人忽视，但它是所有复利的基础。没有身体，金钱、认知、关系——全都没有容器。</p>
+
+            <span class="en-block"><strong>The body is the primary vehicle of all compounding. Everything you have is hosted in your body. When the body fails, everything resets to zero. Taking care of your body is the highest‑return investment.</strong></span>
+
+            <span class="en-block">Half an hour of exercise a day, an hour of earlier sleep, one less spoonful of sugar — these tiny choices will show enormous differences in ten years. The compounding of the body is overlooked by most, yet it is the foundation of all other compounding. Without a body, money, cognition, relationships — none have a container.</span>
+
+            <div class="highlight-red highlight-box">
+                <p><strong>没有身体，一切都是空谈。</strong> 把身体健康放在第一位，不是自私，是清醒。</p>
+                <span class="en-block"><strong>Without a body, everything is empty talk.</strong> Prioritizing physical health is not selfish — it is clear‑sighted.</span>
+            </div>
+
+            <h2 id="v4-c6">23. 时间的复利 <span class="en-inline">Compound Interest of Time</span></h2>
+
+            <p><strong>你花在哪，你就成为哪。你每天把时间给谁、花在什么事上、注意力投到哪里——这些东西加起来，就是你的人生。</strong></p>
+
+            <p>时间是最公平的资源，每个人每天都有24小时。区别在于你用它来消耗还是来积累。时间的复利是：你今天的每一个选择，都在塑造十年后的你。你如何度过一天，就如何度过一生。</p>
+
+            <span class="en-block"><strong>Where you spend your time, you become. Whom you give your time to, what you spend it on, where you direct your attention — all of it adds up to your life.</strong></span>
+
+            <span class="en-block">Time is the fairest resource; everyone has 24 hours a day. The difference lies in whether you use it to consume or to accumulate. The compounding of time: every choice you make today is shaping the person you will be in ten years. How you spend your day is how you spend your life.</span>
+
+            <div class="highlight-box">
+                <p><strong>你如何度过一天，就如何度过一生。</strong></p>
+                <span class="en-block"><strong>How you spend your day is how you spend your life.</strong></span>
+            </div>
+
+            <h2 id="v4-c7">24. 关系的复利 <span class="en-inline">Compound Interest of Relationships</span></h2>
+
+            <p><strong>善意是长期投资。你对别人释放的善意，不一定会立刻回到你身上，但它迟早会回来。不追求即时回报，追求长期信任。</strong></p>
+
+            <p>在一个人与人之间连接断裂的时代，关系是最稀缺的资源。那些长期积累的信任、互助、情谊，会在你最需要的时候托住你。关系的复利是：你给予世界的，世界终将回馈于你。它无法被通货膨胀侵蚀——因为它本来就不在货币体系里。</p>
+
+            <span class="en-block"><strong>Goodwill is a long‑term investment. The kindness you extend to others may not return immediately, but it will come back. Do not seek instant returns; seek long‑term trust.</strong></span>
+
+            <span class="en-block">In an age when connections between people are breaking, relationships are the scarcest resource. The trust, mutual aid, and bonds accumulated over time will hold you up when you need them most. The compounding of relationships: what you give to the world, the world will eventually return to you. It cannot be eroded by inflation — because it was never in the currency system to begin with.</span>
+
+            <div class="highlight-gold highlight-box">
+                <p><strong>关系的复利比金钱的复利更珍贵，因为它无法被通货膨胀侵蚀。</strong></p>
+                <span class="en-block"><strong>The compounding of relationships is more precious than monetary compounding, because it cannot be eroded by inflation.</strong></span>
+            </div>
+
+            <div class="blockquote-styled" style="border-left-color: var(--gold);">
+                <strong>第四部分 · 核心领悟：</strong> 复利不是一个数字，是一种活法。知识滚知识、能力滚能力、信任滚信任。每天进步一点点，十年后你会感谢今天的自己。
+                <span class="source">—— 九叔 · 生存笔记 #67</span>
+            </div>
+
+            <div class="divider-wave">· · · · ·</div>
+            <div class="banner-dark">
+                <p class="gold">复利不是一个数字，是一种活法。</p>
+                <p class="small">知识滚知识、能力滚能力、信任滚信任。</p>
+                <div class="byline">每天进步一点点，十年后你会感谢今天的自己。</div>
+                <span class="en-block" style="font-size:0.85em; margin-top:4px;">Compounding is not a number — it is a way of life. Knowledge compounds knowledge, ability compounds ability, trust compounds trust. A little progress every day, and ten years from now you will thank yourself.</span>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        第五部分：活出选择权
+        ============================================================ -->
+        <section class="chapter" id="vol5">
+            <div class="chapter-num">第五部分 · Part V</div>
+            <h1>活出选择权 <span class="en-inline">Live Your Options</span></h1>
+            <div class="subtitle">拥有说"不"的权利</div>
+            <div class="author-line">真正的财富 · 自由 · 合法性 · 分散 · 备胎 · 心智</div>
+
+            <div class="section-guide">
+                <span class="core"><strong>建立系统之后，你开始拥有选择权——这是所有努力的终极目的。</strong></span>
+                <span class="expo">选择权不是钱，不是地位，不是权力，是你可以选择不做什么。</span>
+                <span class="en-block">After building your system, you begin to have options — the ultimate purpose of all effort. Options are not money, status, or power; they are the ability to choose what not to do.</span>
+            </div>
+
+            <div class="divider-wave">· · · · ·</div>
+
+            <h2 id="v5-c1">25. 真正的财富 <span class="en-inline">True Wealth</span></h2>
+
+            <div class="highlight-gold highlight-box">
+                <p><strong>真正的财富不是钱，是选择权。</strong></p>
+                <span class="en-block"><strong>True wealth is not money — it is options.</strong></span>
+            </div>
+
+            <p><strong>钱只是工具，选择权才是目的。你积累财富的终极意义是让自己拥有说“不”的权利——不服从、不妥协、不忍受。</strong></p>
+
+            <p>当你可以对一份糟糕的工作说“不”、对一段消耗你的关系说“不”、对一个不合理的要求说“不”——你才是真正富有的。选择权是财富的终极形态。钱没了可以再赚，但选择权一旦失去，你可能需要用一生去赎回。</p>
+
+            <span class="en-block"><strong>Money is just a tool; options are the goal. The ultimate meaning of accumulating wealth is to give yourself the right to say no — no to obedience, no to compromise, no to endurance.</strong></span>
+
+            <span class="en-block">When you can say no to a bad job, no to a draining relationship, no to an unreasonable demand — then you are truly wealthy. Options are the ultimate form of wealth. Money lost can be earned again. But once options are lost, you may spend a lifetime buying them back.</span>
+
+            <h2 id="v5-c2">26. 自由 <span class="en-inline">Freedom</span></h2>
+
+            <p><strong>“随时可以说不”是所有自由的基础。你不需要跟任何人撕破脸，不需要抗争，只需要转身，走向另一条路。</strong></p>
+
+            <p>自由不是“想做什么就做什么”，而是“不想做什么就可以不做什么”。后者才是真正的自由。前者是放纵，后者是自主。自由不是一种状态，是一种能力——离开不喜欢的环境的能力。</p>
+
+            <span class="en-block"><strong>"Being able to say no at any time" is the foundation of all freedom. You do not need to break with anyone, do not need to fight — you just turn and walk another path.</strong></span>
+
+            <span class="en-block">Freedom is not "doing whatever you want"; it is "being able to not do what you do not want to do." The latter is true freedom. The former is indulgence; the latter is autonomy. Freedom is not a state — it is a capacity. The capacity to leave an environment you do not like.</span>
+
+            <div class="highlight-box">
+                <p><strong>自由的本质是：你有选项。</strong> 没有选项的自由是幻觉。</p>
+                <span class="en-block"><strong>The essence of freedom: having options.</strong> Freedom without options is an illusion.</span>
+            </div>
+
+            <h2 id="v5-c3">27. 合法性 <span class="en-inline">Legitimacy</span></h2>
+
+            <p><strong>“合法”给你的不是财富，是安全感。每一步都经得起审查，每一分钱都有据可查——你不需要躲藏，不需要心虚。</strong></p>
+
+            <p>在灰色地带积累的财富，看起来很快，但风险极高。一次审查、一次举报、一次政策变动，就可能让你一无所有。合法是慢的，但它是稳的。稳，比快重要一万倍。因为你输不起。</p>
+
+            <span class="en-block"><strong>"Legal" does not give you wealth — it gives you security. Every step can withstand scrutiny, every penny can be accounted for — you do not need to hide or feel guilty.</strong></span>
+
+            <span class="en-block">Wealth accumulated in gray areas may seem fast, but the risk is extremely high. One audit, one report, one policy change, and you could lose everything. Legality is slow, but it is stable. Stability matters ten thousand times more than speed. Because you cannot afford to lose.</span>
+
+            <div class="highlight-box">
+                <p><strong>"合法"给你的不是财富，是安全感。</strong> 安全感是一切自由的基础。</p>
+                <span class="en-block"><strong>"Legal" does not give you wealth — it gives you security.</strong> Security is the foundation of all freedom.</span>
+            </div>
+
+            <h2 id="v5-c4">28. 分散 <span class="en-inline">Diversification</span></h2>
+
+            <p><strong>不要押注单一法币、单一市场、单一配置。单一配置的风险是：如果它出问题，你什么都剩不下。分散不是贪婪，是保护。</strong></p>
+
+            <p>分散不仅仅是资产的分散，还包括收入来源的分散、技能的分散、关系的分散。你的世界越多元，你被单一风险击倒的可能性就越小。把鸡蛋放在多个篮子里——不是为了多赚钱，是为了不会因为一个篮子掉了，就一无所有。</p>
+
+            <span class="en-block"><strong>Do not bet on a single currency, single market, or single allocation. The risk of a single allocation: if it fails, you have nothing left. Diversification is not greed — it is protection.</strong></span>
+
+            <span class="en-block">Diversification is not just about assets; it includes income sources, skills, and relationships. The more diverse your world, the less likely a single risk can bring you down. Put eggs in multiple baskets — not to make more money, but to ensure that if one basket falls, you are not left with nothing.</span>
+
+            <div class="highlight-soft highlight-box">
+                <p><strong>分散是普通人最有效的风险管理工具。</strong> 不需要复杂，只需要不把所有鸡蛋放在一个篮子里。</p>
+                <span class="en-block"><strong>Diversification is the most effective risk management tool for ordinary people.</strong> It does not need to be complex — just do not put all your eggs in one basket.</span>
+            </div>
+
+            <h2 id="v5-c5">29. 系统的备胎 <span class="en-inline">System Spare Tire</span></h2>
+
+            <p><strong>在系统内找缝隙，在系统外建备胎。不要依赖系统给你饭碗。在它允许的范围内找缝隙，在它管不到的地方建备胎。</strong></p>
+
+            <p>备胎是什么？是副业、是第二技能、是另一个城市的朋友、是海外账户、是随时可以启动的B计划。备胎的意义不是让你离开系统，是让你在系统出问题时，不会一无所有。你不是不信任系统——你只是知道，系统也会出错。</p>
+
+            <span class="en-block"><strong>Find cracks within the system; build a spare tire outside it. Do not depend on the system for your livelihood. Look for cracks where it allows, and build a spare where it does not reach.</strong></span>
+
+            <span class="en-block">What is a spare tire? A side hustle, a second skill, a friend in another city, an overseas account, a Plan B ready to launch at any time. The point is not to leave the system — it is to ensure you are not left with nothing when the system breaks down. It is not that you do not trust the system. It is that you know the system can also break.</span>
+
+            <div class="highlight-gold highlight-box">
+                <p><strong>系统的备胎，是你对不确定性的最后一道防线。</strong></p>
+                <span class="en-block"><strong>The system's spare tire is your last line of defense against uncertainty.</strong></span>
+            </div>
+
+            <h2 id="v5-c6">30. 心智不被驯化 <span class="en-inline">An Untamed Mind</span></h2>
+
+            <p><strong>《肖申克的救赎》教会我们：自由不是不被关住，是在任何环境里都保有内心的独立。选择权的最高形态，是心智不被驯化。</strong></p>
+
+            <p>身体可以被困住，但思想可以自由。保持阅读、保持思考、保持质疑、保持好奇——这些是心智不被驯化的方式。当你的心智是自由的，你就拥有了终极的选择权。没有人能真正困住一个心智自由的人。</p>
+
+            <span class="en-block"><strong>Shawshank Redemption teaches us: Freedom is not about not being confined — it is about maintaining inner independence in any environment. The highest form of options is an untamed mind.</strong></span>
+
+            <span class="en-block">The body can be trapped, but the mind can be free. Keep reading, keep thinking, keep questioning, keep curious — these are ways to keep the mind from being domesticated. When your mind is free, you possess the ultimate option. No one can truly confine a mind that refuses to be tamed.</span>
+
+            <div class="blockquote-styled" style="border-left-color: var(--gold);">
+                <strong>第五部分 · 核心领悟：</strong> 系统困得住身体，困不住心智。多一丝善意，多一丝人性；多一丝人性，多一丝文明。选择权的最高形态，是心智不被驯化。
+                <span class="source">—— 九叔 · 生存笔记 #98</span>
+            </div>
+
+            <div class="banner-dark">
+                <p class="gold">系统困得住身体，困不住心智。</p>
+                <p class="small">多一丝善意，多一丝人性；多一丝人性，多一丝文明。</p>
+                <div class="byline">—— 致每一个在系统里保持清醒的人</div>
+                <span class="en-block" style="font-size:0.85em; margin-top:4px;">The system can confine the body, but never the mind. More kindness, more humanity; more humanity, more civilization. — To every soul who stays awake within the system.</span>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        附录
+        ============================================================ -->
+        <section class="chapter" id="vol6">
+            <div class="chapter-num">附录 · Appendix</div>
+            <h1>核心概念速查 · 导航 · 22国汇总 <span class="en-inline">Quick Reference · Navigation · 22‑Country Summary</span></h1>
+            <div class="subtitle">快速索引工具 · 随时翻阅</div>
+
+            <div class="divider-wave">· · · · ·</div>
+
+            <h2 id="v6-c1">核心概念速查 <span class="en-inline">Core Concepts Quick Reference</span></h2>
+            <div class="grid-4">
+                <div class="card"><div class="label">选择权</div><div class="title">真正的财富</div><div class="desc">你能选择不做什么 <span style="font-size:0.8em;color:var(--text-muted);display:block;">What you choose not to do</span></div></div>
+                <div class="card"><div class="label">复利</div><div class="title">时间×行动</div><div class="desc">系统效应，不只是数字 <span style="font-size:0.8em;color:var(--text-muted);display:block;">Systemic effect, not just numbers</span></div></div>
+                <div class="card"><div class="label">防火墙</div><div class="title">四支点</div><div class="desc">现金+技能+关系+健康 <span style="font-size:0.8em;color:var(--text-muted);display:block;">Cash+Skills+Relations+Health</span></div></div>
+                <div class="card"><div class="label">种子</div><div class="title">核心资源</div><div class="desc">你可增值的东西 <span style="font-size:0.8em;color:var(--text-muted);display:block;">What you can grow</span></div></div>
+                <div class="card"><div class="label">边界</div><div class="title">自由前提</div><div class="desc">站得稳的基础 <span style="font-size:0.8em;color:var(--text-muted);display:block;">Foundation to stand firm</span></div></div>
+                <div class="card"><div class="label">体感先于数据</div><div class="title">先信自己</div><div class="desc">再信宏观 <span style="font-size:0.8em;color:var(--text-muted);display:block;">Trust yourself first, then data</span></div></div>
+                <div class="card"><div class="label">周期</div><div class="title">四季</div><div class="desc">经济有起伏，节奏是关键 <span style="font-size:0.8em;color:var(--text-muted);display:block;">Economy rises and falls; rhythm is key</span></div></div>
+                <div class="card"><div class="label">容错率</div><div class="title">犯错成本</div><div class="desc">普通人容错极低，谨慎是美德 <span style="font-size:0.8em;color:var(--text-muted);display:block;">Low margin for error; caution is a virtue</span></div></div>
+                <div class="card"><div class="label">缝隙</div><div class="title">生存空间</div><div class="desc">系统之外的微小空间 <span style="font-size:0.8em;color:var(--text-muted);display:block;">Small spaces beyond the system</span></div></div>
+                <div class="card"><div class="label">他山参照</div><div class="title">区分</div><div class="desc">必经之疼 vs 不必吃的亏 <span style="font-size:0.8em;color:var(--text-muted);display:block;">Inevitable pain vs. unnecessary loss</span></div></div>
+                <div class="card"><div class="label">对冲</div><div class="title">保护</div><div class="desc">不把所有希望押在一个点上 <span style="font-size:0.8em;color:var(--text-muted);display:block;">Don't stake all on one point</span></div></div>
+                <div class="card"><div class="label">心智自由</div><div class="title">终极选择权</div><div class="desc">在任何环境里保持独立 <span style="font-size:0.8em;color:var(--text-muted);display:block;">Stay independent in any environment</span></div></div>
+            </div>
+
+            <h2 id="v6-c2">快速导航路径 <span class="en-inline">Quick Navigation Paths</span></h2>
+            <p>根据你的当前状态，选择最适合你的阅读路径：</p>
+            <span class="en-block" style="font-size:0.8em;">Choose the path that best fits your current state:</span>
+            <div class="grid-3">
+                <div class="card card-accent">
+                    <div class="label">A 焦虑急救包 <span style="font-size:0.7em;color:var(--text-muted);">Anxiety First Aid</span></div>
+                    <div class="title">快速稳定情绪</div>
+                    <div class="desc"><strong>路径：</strong>认清处境 → 体感先于数据 → 在缝隙里种花<br><br>适合：当你感到被系统压得喘不过气时，先稳住自己。<br><span style="font-size:0.8em;color:var(--text-muted);">For when you feel crushed by the system — stabilize yourself first.</span></div>
+                </div>
+                <div class="card card-accent">
+                    <div class="label">B 认知升级套餐 <span style="font-size:0.7em;color:var(--text-muted);">Cognitive Upgrade</span></div>
+                    <div class="title">重塑思维底层</div>
+                    <div class="desc"><strong>路径：</strong>认清处境（全） → 看懂规则（全）<br><br>适合：当你觉得"哪里不对"但又说不清时，从认知层面重构理解。<br><span style="font-size:0.8em;color:var(--text-muted);">For when you feel "something is off" but can't articulate it — rebuild your understanding at the cognitive level.</span></div>
+                </div>
+                <div class="card card-accent">
+                    <div class="label">C 实战生存全套 <span style="font-size:0.7em;color:var(--text-muted);">Full Survival Suite</span></div>
+                    <div class="title">系统性建立框架</div>
+                    <div class="desc"><strong>路径：</strong>认清处境 → 看懂规则 → 参照他山 → 建立系统 → 活出选择权<br><br>适合：当你准备好系统性改变时，从头到尾完整阅读。<br><span style="font-size:0.8em;color:var(--text-muted);">For when you are ready for systemic change — read from beginning to end.</span></div>
+                </div>
+            </div>
+
+            <h2 id="v6-c3">22国完整汇总 <span class="en-inline">Complete 22‑Country Summary</span></h2>
+            <p>这些国家的制度设计，展示了"另一种可能"。它们不是完美的，但它们在很多方面比我们做得更好。值得参照，值得思考。</p>
+            <span class="en-block" style="font-size:0.8em;">These institutional designs show "another possibility." They are not perfect, but in many ways they do better than we do. Worth referencing, worth thinking about.</span>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th style="width:6%;">#</th><th style="width:15%;">国家 <span class="en-inline" style="font-size:0.65em;">Country</span></th><th style="width:44%;">核心制度 <span class="en-inline" style="font-size:0.65em;">Core Institution</span></th><th style="width:35%;">核心逻辑 <span class="en-inline" style="font-size:0.65em;">Core Logic</span></th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>荷兰</td><td>邻里中心（15分钟城市）</td><td>城市为人服务，时间归还给人</td></tr>
+                        <tr><td>2</td><td>英国</td><td>家庭照护者支持体系</td><td>照顾家人的人，不被社会遗忘</td></tr>
+                        <tr><td>3</td><td>爱尔兰</td><td>整洁小镇竞赛</td><td>社区是居民的共同事业</td></tr>
+                        <tr><td>4</td><td>瑞典</td><td>收入挂钩罚金</td><td>惩罚的"痛感"对所有人平等</td></tr>
+                        <tr><td>5</td><td>德国</td><td>全民基本收入实验+社会市场经济</td><td>效率与公平不冲突</td></tr>
+                        <tr><td>6</td><td>瑞士</td><td>直接民主与公投制度</td><td>权力属于人民，是日常运行的制度</td></tr>
+                        <tr><td>7</td><td>法国</td><td>社会住房+同工同酬</td><td>住房是基础设施，劳动价值不因性别打折</td></tr>
+                        <tr><td>8</td><td>芬兰</td><td>多层次社保+去家庭化</td><td>国家直接对人承诺</td></tr>
+                        <tr><td>9</td><td>挪威</td><td>主权基金与全民分红</td><td>公共财富直接惠及每个公民</td></tr>
+                        <tr><td>10</td><td>丹麦</td><td>高信任社会</td><td>信任是基础设施</td></tr>
+                        <tr><td>11</td><td>美国</td><td>社区自治（公共图书馆）</td><td>公共设施是居民自己维护的</td></tr>
+                        <tr><td>12</td><td>加拿大</td><td>可负担住房+人权本位住房政策</td><td>住房是基本人权</td></tr>
+                        <tr><td>13</td><td>澳大利亚</td><td>劳动者离线权</td><td>工作不吞噬生活</td></tr>
+                        <tr><td>14</td><td>新西兰</td><td>福利体系重构</td><td>从"兜底"到"赋能"</td></tr>
+                        <tr><td>15</td><td>新加坡</td><td>组屋制度+邻里中心</td><td>年轻人买得起房，生活一步到位</td></tr>
+                        <tr><td>16</td><td>日本</td><td>包容性设计+员工选择上司+上四休三</td><td>在系统内部为人留出空间</td></tr>
+                        <tr><td>17</td><td>北欧</td><td>信任社会（跨区域体系）</td><td>信任降低交易成本</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="highlight-gold highlight-box">
+                <p><strong>这22个国家做的是同一件事：把"人"从系统的"燃料"变成系统的"目的"。</strong></p>
+                <p style="margin-top:3px;font-size:13.5px;">它们证明了：制度是可以被设计的，社会是可以被改善的，普通人是可以活得有尊严的。</p>
+                <span class="en-block"><strong>These 22 countries are doing the same thing: turning "people" from the system's "fuel" into the system's "purpose."</strong></span>
+                <span class="en-block" style="font-size:0.85em;">They prove that institutions can be designed, societies can be improved, and ordinary people can live with dignity.</span>
+            </div>
+
+            <h2 id="v6-c4">推荐阅读与资源 <span class="en-inline">Recommended Reading &amp; Resources</span></h2>
+            <div class="grid-2" style="margin-top:6px;">
+                <div class="card"><div class="label">书籍</div><div class="title">认知与思维</div><div class="desc">《思考，快与慢》· 丹尼尔·卡尼曼<br>《原则》· 瑞·达利欧<br>《穷查理宝典》· 查理·芒格</div></div>
+                <div class="card"><div class="label">书籍</div><div class="title">制度与历史</div><div class="desc">《国家为什么会失败》· 阿西莫格鲁<br>《枪炮、病菌与钢铁》· 贾雷德·戴蒙德<br>《21世纪资本论》· 托马斯·皮凯蒂</div></div>
+                <div class="card"><div class="label">书籍</div><div class="title">个人成长</div><div class="desc">《肖申克的救赎》· 斯蒂芬·金<br>《活出意义来》· 维克多·弗兰克尔<br>《被讨厌的勇气》· 岸见一郎</div></div>
+                <div class="card"><div class="label">资源</div><div class="title">持续探索</div><div class="desc">九叔的视野 · 114篇完整记录<br>各国民间社会调查报告<br>独立媒体与深度分析</div></div>
+            </div>
+
+            <div class="footnote">
+                ⚡ 本手册持续更新 · 最新版本基于2026年5月—8月的114篇记录 · V6.0 纯文字呼吸版
+            </div>
+        </section>
+
+        <!-- ===== 结语 ===== -->
+        <div class="banner-dark" style="margin-top:30px;">
+            <div class="qr-placeholder">
+                <div class="qr-box" style="border:none;padding:0;overflow:hidden;background:transparent;">
+                    <img src="公众号二维码.jpg" alt="扫码关注九叔的视野" style="width:100%;height:100%;object-fit:contain;border-radius:4px;">
+                </div>
+            </div>
+            <p class="small">扫一扫“九叔的视野”微信公众号</p>
+            <div class="byline">九叔的视野 · 始于2026年5月13日 · 全114篇完整记录</div>
+            <span class="en-block" style="font-size:0.85em; margin-top:4px;">Slowly, but never stop. The system may not be on your side, but you can grow your own rules within it. — Jiu Shu's Vision · Started May 13, 2026 · All 114 entries</span>
+        </div>
+
+        <!-- ===== 页脚 ===== -->
+        <div class="footer">
+            <div class="brand">普通人生存手册 · 典藏双语版 · V6.0</div>
+            <div class="tagline">承认现实 → 理解规则 → 参照他山 → 建立系统 → 活出选择权</div>
+            <div class="meta">基于九叔的视野 · 114篇完整记录 · 2026年5月—8月</div>
+            <div class="sig">◈ 在系统里长出属于自己的选择权 ◈</div>
+            <span class="en-block" style="font-size:0.75em; margin-top:3px;">Reality → Rules → References → Systems → Options · Grow your own options within the system.</span>
+        </div>
+
+    </main>
+
+    <!-- ===== 浮动按钮 ===== -->
+    <div class="float-buttons">
+        <button class="float-btn" id="themeToggle" title="切换配色（绿/黄/暗红）">🟢</button>
+        <button class="float-btn" id="fontToggle" title="切换字体大小">Aa</button>
+        <button class="float-btn" id="topBtn" title="回到顶部" style="font-size:14px;">↑</button>
+    </div>
+
+    <!-- ============================================================
+    JavaScript
+    ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ---- 1. 主题切换 ----
+            var themeBtn = document.getElementById('themeToggle');
+            if (themeBtn) {
+                var themes = ['green', 'yellow', 'red'];
+                var currentTheme = localStorage.getItem('ys_theme') || 'green';
+
+                function applyTheme(mode) {
+                    document.body.setAttribute('data-theme', mode);
+                    localStorage.setItem('ys_theme', mode);
+                    currentTheme = mode;
+                    var icons = { green: '🟢', yellow: '🟡', red: '🔴' };
+                    themeBtn.textContent = icons[mode] || '🎨';
+                }
+                if (themes.indexOf(currentTheme) === -1) currentTheme = 'green';
+                applyTheme(currentTheme);
+                themeBtn.addEventListener('click', function() {
+                    var idx = themes.indexOf(currentTheme);
+                    applyTheme(themes[(idx + 1) % themes.length]);
+                });
+            }
+
+            // ---- 2. 字体大小 ----
+            var fontBtn = document.getElementById('fontToggle');
+            if (fontBtn) {
+                var sizes = ['normal', 'small', 'large'];
+                var currentSize = localStorage.getItem('ys_font') || 'normal';
+
+                function applyFont(size) {
+                    document.body.classList.remove('font-small', 'font-large');
+                    if (size === 'small') document.body.classList.add('font-small');
+                    if (size === 'large') document.body.classList.add('font-large');
+                    localStorage.setItem('ys_font', size);
+                    currentSize = size;
+                    var labels = { small: 'A⁻', normal: 'Aa', large: 'A⁺' };
+                    fontBtn.textContent = labels[size] || 'Aa';
+                }
+                if (sizes.indexOf(currentSize) === -1) currentSize = 'normal';
+                applyFont(currentSize);
+                fontBtn.addEventListener('click', function() {
+                    var idx = sizes.indexOf(currentSize);
+                    applyFont(sizes[(idx + 1) % sizes.length]);
+                });
+            }
+
+            // ---- 3. 回到顶部 ----
+            var topBtn = document.getElementById('topBtn');
+            if (topBtn) {
+                topBtn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // ---- 4. 阅读进度条 ----
+            var progressBar = document.getElementById('progressBar');
+            if (progressBar) {
+                window.addEventListener('scroll', function() {
+                    var scrollTop = window.scrollY;
+                    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                    progressBar.style.width = Math.min(progress, 100) + '%';
+                }, { passive: true });
+            }
+
+            // ---- 5. 侧边栏联动 ----
+            var sidebar = document.getElementById('sidebar');
+            var overlay = document.getElementById('sidebarOverlay');
+            var menuToggle = document.getElementById('menuToggle');
+            var allLinks = document.querySelectorAll('.sidebar a[href^="#"]');
+
+            if (sidebar && allLinks.length) {
+                var sections = [];
+                var seenIds = {};
+                allLinks.forEach(function(link) {
+                    var href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        var id = href.substring(1);
+                        var el = document.getElementById(id);
+                        if (el && !seenIds[id]) {
+                            seenIds[id] = true;
+                            sections.push({ id: id, el: el, link: link, offsetTop: el.offsetTop });
+                        }
+                    }
+                });
+
+                sections.sort(function(a, b) { return a.offsetTop - b.offsetTop; });
+
+                var currentId = '';
+
+                function updateHighlight() {
+                    var foundId = '';
+                    var scrollY = window.scrollY;
+                    var windowHeight = window.innerHeight;
+                    for (var i = sections.length - 1; i >= 0; i--) {
+                        var rect = sections[i].el.getBoundingClientRect();
+                        if (rect.top <= 150) { foundId = sections[i].id; break; }
+                    }
+                    if (!foundId && sections.length) {
+                        var docHeight = document.documentElement.scrollHeight;
+                        if (scrollY + windowHeight >= docHeight - 100) {
+                            foundId = sections[sections.length - 1].id;
+                        }
+                    }
+                    if (!foundId && sections.length) foundId = sections[0].id;
+                    if (foundId === currentId) return;
+                    currentId = foundId;
+
+                    allLinks.forEach(function(link) { link.classList.remove('active'); });
+                    if (foundId) {
+                        var matchedLinks = document.querySelectorAll('.sidebar a[href="#' + foundId + '"]');
+                        matchedLinks.forEach(function(link) {
+                            link.classList.add('active');
+                            var parentVol = link.closest('.vol');
+                            if (parentVol) {
+                                var parentLink = parentVol.querySelector(':scope > a');
+                                if (parentLink && parentLink !== link) parentLink.classList.add('active');
+                            }
+                        });
+                    }
+                }
+
+                var ticking = false;
+
+                function onScroll() {
+                    if (!ticking) {
+                        window.requestAnimationFrame(function() {
+                            updateHighlight();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }
+
+                function handleLinkClick(e) {
+                    var link = e.currentTarget;
+                    var href = link.getAttribute('href');
+                    if (!href || !href.startsWith('#')) return;
+                    e.preventDefault();
+                    var id = href.substring(1);
+                    var targetEl = document.getElementById(id);
+                    if (!targetEl) return;
+                    var rect = targetEl.getBoundingClientRect();
+                    var targetTop = window.scrollY + rect.top - 30;
+
+                    allLinks.forEach(function(l) { l.classList.remove('active'); });
+                    link.classList.add('active');
+                    var parentVol = link.closest('.vol');
+                    if (parentVol) {
+                        var parentLink = parentVol.querySelector(':scope > a');
+                        if (parentLink && parentLink !== link) parentLink.classList.add('active');
+                    }
+                    currentId = id;
+                    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+                    if (history.pushState) history.pushState(null, '', href);
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('open');
+                        if (overlay) overlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                    setTimeout(function() { updateHighlight(); }, 500);
+                }
+
+                allLinks.forEach(function(link) {
+                    link.addEventListener('click', handleLinkClick);
+                });
+
+                window.addEventListener('scroll', onScroll, { passive: true });
+
+                function openSidebar() {
+                    sidebar.classList.add('open');
+                    if (overlay) overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeSidebar() {
+                    sidebar.classList.remove('open');
+                    if (overlay) overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+
+                if (menuToggle) {
+                    menuToggle.addEventListener('click', function() {
+                        if (sidebar.classList.contains('open')) closeSidebar();
+                        else openSidebar();
+                    });
+                }
+                if (overlay) overlay.addEventListener('click', closeSidebar);
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && sidebar.classList.contains('open')) closeSidebar();
+                });
+
+                var loadDone = function() {
+                    setTimeout(function() {
+                        sections.forEach(function(item) { item.offsetTop = item.el.offsetTop; });
+                        sections.sort(function(a, b) { return a.offsetTop - b.offsetTop; });
+                        updateHighlight();
+                    }, 100);
+                };
+                if (document.readyState === 'complete') loadDone();
+                else window.addEventListener('load', loadDone);
+            }
+
+        })();
+    </script>
+
+</body>
+</html>
