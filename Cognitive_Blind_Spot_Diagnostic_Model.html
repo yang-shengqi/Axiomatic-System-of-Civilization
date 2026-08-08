@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>思维盲区诊断模型 · Cognitive Blind Spot Diagnostic Model · 中英双语 · 杨晟琦文明公理系统</title>
+    <title>思维盲区诊断模型 · 杨晟琦文明公理系统 · YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION · Cognitive Blind Spot Diagnostic Model</title>
     <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
     <style>
-        /* ===== 所有样式保持不变（与你的一致） ===== */
+        /* ===== 全局 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -54,21 +54,6 @@
             color: #5a6a4e;
             font-size: 13px;
             letter-spacing: 1px;
-        }
-        .top-nav .lang-switch {
-            background: transparent;
-            border: 1px solid #3a4638;
-            border-radius: 6px;
-            color: #aaba8a;
-            padding: 4px 12px;
-            font-size: 13px;
-            cursor: pointer;
-            font-family: inherit;
-            transition: .2s;
-        }
-        .top-nav .lang-switch:hover {
-            border-color: #8aaa6a;
-            color: #e2ead4;
         }
 
         .brand {
@@ -1376,31 +1361,30 @@
 
         <!-- ===== 顶部导航 ===== -->
         <div class="top-nav">
-            <a href="./index.html" class="back" data-i18n="back">← 返回体系总入口</a>
-            <span class="badge" data-i18n="badge">杨晟琦文明公理系统 · 独立思想锚点</span>
-            <button class="lang-switch" id="langSwitch">English</button>
+            <a href="./index.html" class="back">← 返回体系总入口</a>
+            <span class="badge">杨晟琦文明公理系统 · 独立思想锚点</span>
         </div>
 
         <!-- ===== 品牌区 ===== -->
         <div class="brand" id="brandArea">
             <div class="brand-left">
-                <div class="sub-brand" id="subBrand">Cognitive Blind Spot Diagnostic Model</div>
+                <div class="sub-brand">Cognitive Blind Spot Diagnostic Model</div>
                 <div class="title-row">
                     <h1 id="mainTitle">一个让人彻底"清醒"的思维模型</h1>
-                    <span class="tag" id="mainTag">思维盲区诊断模型</span>
+                    <span class="tag">思维盲区诊断模型</span>
                 </div>
                 <div class="info-row">
                     <span>作者：杨晟琦</span>
                     <span>ORCID: 0009-0008-3755-8960</span>
-                    <span class="feat"><span class="dot"></span><span id="infoFeat">思维觉醒 · 内部追问 · 心智更新</span></span>
+                    <span class="feat"><span class="dot"></span>思维觉醒 · 内部追问 · 心智更新</span>
                 </div>
             </div>
         </div>
 
         <!-- ===== 介绍 ===== -->
         <div class="intro-box" id="bannerArea">
-            <div class="intro-title" id="introTitle">当你面对一个观点或信息时，你真的学会<span class="highlight">"独立思考"</span>了吗？</div>
-            <div class="intro-desc" id="introDesc">
+            <div class="intro-title">当你面对一个观点或信息时，你真的学会<span class="highlight">"独立思考"</span>了吗？</div>
+            <div class="intro-desc">
                 这套工具通过 36 个递进式问题，全程大约10分钟左右，带你完成一次完整的思维体检：<br>
                 先做 <strong>防忽悠</strong>（外部检验），再做 <strong>觉醒</strong>（内部追问），最后 <strong>内化</strong>（心智更新）。<br>
                 每个问题都有 5 个递进层级，精准定位你的思维盲区。
@@ -1409,20 +1393,20 @@
 
         <!-- ===== 开始区域 ===== -->
         <div class="start-area">
-            <div class="start-label" id="startLabel">📌 输入你想检验的观点或信息</div>
+            <div class="start-label">📌 输入你想检验的观点或信息</div>
             <div class="start-row">
                 <input type="text" id="topicInput" placeholder="输入你的问题..." value="">
-                <button class="btn-start" id="startBtn" data-i18n="startBtn">🚀 开始诊断</button>
-                <button class="btn-example" id="exampleBtn" data-i18n="exampleBtn">📋 加载示例</button>
-                <button class="btn-reset" id="resetBtn" data-i18n="resetBtn">✕ 重置</button>
+                <button class="btn-start" id="startBtn">🚀 开始诊断</button>
+                <button class="btn-example" id="exampleBtn">📋 加载示例</button>
+                <button class="btn-reset" id="resetBtn">✕ 重置</button>
             </div>
-            <div class="start-hint" id="startHint">💡 输入一个具体观点，系统会围绕它生成全部 36 道诊断问题</div>
+            <div class="start-hint">💡 输入一个具体观点，系统会围绕它生成全部 36 道诊断问题</div>
         </div>
 
         <!-- ===== 诊断进行中 ===== -->
         <div class="diagnosis-active" id="diagnosisArea">
             <div class="time-estimate">
-                <span id="timeLabel">⏱️ 预估测试时间：<span class="time-num" id="timeEstimate">约 10 分钟</span></span>
+                <span>⏱️ 预估测试时间：<span class="time-num" id="timeEstimate">约 10 分钟</span></span>
                 <span class="topic-display" id="topicDisplay">主题：未设置</span>
                 <span class="progress-detail" id="timeDetail">已完成 0 / 36 题</span>
             </div>
@@ -1442,11 +1426,11 @@
         <!-- ===== 结果区 ===== -->
         <div class="result-box" id="resultBox">
             <div class="result-header">
-                <div class="result-title" id="reportTitle">📋 诊断报告：<span class="q" id="reportQuestion">（未输入问题）</span></div>
+                <div class="result-title">📋 诊断报告：<span class="q" id="reportQuestion">（未输入问题）</span></div>
                 <div class="result-badge" id="resultBadges">
-                    <span class="badge-item warn" id="badge1">防忽悠：待评估</span>
-                    <span class="badge-item warn" id="badge2">觉醒：待评估</span>
-                    <span class="badge-item warn" id="badge3">内化：待评估</span>
+                    <span class="badge-item warn">防忽悠：待评估</span>
+                    <span class="badge-item warn">觉醒：待评估</span>
+                    <span class="badge-item warn">内化：待评估</span>
                 </div>
             </div>
             <div class="result-body" id="reportBody"></div>
@@ -1461,13 +1445,13 @@
                         <span class="badge">PDF</span>
                     </button>
                 </div>
-                <button class="btn-close" id="closeResultBtn" data-i18n="closeReport">关闭报告</button>
+                <button class="btn-close" id="closeResultBtn">关闭报告</button>
             </div>
         </div>
 
         <!-- ===== 历史记录 ===== -->
         <div class="history-area" id="historyArea">
-            <div class="history-title" id="historyTitle">📜 诊断历史</div>
+            <div class="history-title">📜 诊断历史</div>
             <div class="history-list" id="historyList"></div>
             <div class="history-empty" id="historyEmpty" style="display:none;">暂无历史记录</div>
         </div>
@@ -1486,208 +1470,96 @@
 
     <script>
         // ================================================================
-        // 国际化资源
+        // 所有文案（纯中文）
         // ================================================================
-        const I18N = {
-            zh: {
-                back: '← 返回体系总入口',
-                badge: '杨晟琦文明公理系统 · 独立思想锚点',
-                subBrand: '认知盲区诊断模型',
-                mainTitle: '一个让人彻底"清醒"的思维模型',
-                mainTag: '思维盲区诊断模型',
-                infoFeat: '思维觉醒 · 内部追问 · 心智更新',
-                introTitle: '当你面对一个观点或信息时，你真的学会"独立思考"了吗？',
-                introDesc: '这套工具通过 36 个递进式问题，全程大约10分钟左右，带你完成一次完整的思维体检：<br>先做 <strong>防忽悠</strong>（外部检验），再做 <strong>觉醒</strong>（内部追问），最后 <strong>内化</strong>（心智更新）。<br>每个问题都有 5 个递进层级，精准定位你的思维盲区。',
-                startLabel: '📌 输入你想检验的观点或信息',
-                startBtn: '🚀 开始诊断',
-                exampleBtn: '📋 加载示例',
-                resetBtn: '✕ 重置',
-                startHint: '💡 输入一个具体观点，系统会围绕它生成全部 36 道诊断问题',
-                timeLabel: '⏱️ 预估测试时间：',
-                closeReport: '关闭报告',
-                sharePngLabel: '分享诊断报告',
-                exportPdfLabel: '导出 PDF',
-                historyTitle: '📜 诊断历史',
-                noHistory: '暂无历史记录',
-                viewReport: '查看报告',
-                generateReport: '📋 生成诊断报告',
-                allDone: '所有问题已回答完毕',
-                allDoneSub: '你已对「{topic}」完成了 {total} 个问题的诊断，点击下方按钮生成诊断报告。',
-                layer1: '防忽悠',
-                layer2: '觉醒',
-                layer3: '内化',
-                layer1sub: '外部检验',
-                layer2sub: '内部追问',
-                layer3sub: '心智更新',
-                level5: '⭐⭐⭐⭐⭐ 清醒的思考者',
-                level4: '⭐⭐⭐⭐ 独立的思考者',
-                level3: '⭐⭐⭐ 探索中的思考者',
-                level2: '⭐⭐ 被引导的思考者',
-                level1: '⭐ 被动的接收者',
-                level5desc: '你的思维框架非常完整，具备系统性的批判性思维。你能够独立检验信息、深度追问自己的认知盲区，并将反思内化为行动习惯。你是真正"清醒的思考者"。',
-                level4desc: '你有较强的独立思考能力，但在某些维度上仍有盲区。你已经有意识地检验信息和反思自己，但深度和系统性还可以进一步提升。',
-                level3desc: '你具备基础的批判性思维意识，但深度和系统性不足。你有时候会怀疑信息，但缺乏一套完整的检验框架，容易被表面的逻辑带着走。',
-                level2desc: '你容易被信息带节奏，缺乏主动检验和反思的习惯。你倾向于接受表面信息，很少追问"为什么"或"谁在背后推动"。需要从基础开始建立批判性思维框架。',
-                level1desc: '你习惯性地接受信息，几乎没有反思和检验的意识。你容易被情绪驱动、被立场左右、被利益操控。建议从最基础的"信息源检验"开始重新建立思维习惯。',
-                cardComprehensive: '🧠 综合思维成熟度',
-                cardLayer: '📊 三层能力诊断',
-                cardRadar: '📡 六维能力雷达',
-                cardBlind: '🔍 盲区与优势分析',
-                cardAdvice: '📌 修正建议',
-                blindTitle: '🔍 待升级的思维盲区',
-                noBlind: '🌟 没有明显的思维盲区',
-                noBlindDesc: '你在所有题目中都获得了较高分数，说明你的思维框架已经比较成熟。建议定期重复诊断，持续校准。',
-                strengthTitle: '💪 已具备的优势能力',
-                adviceOverall: '📖 总体建议',
-                advicePriority: '🎯 优先修复目标',
-                adviceLayer: '📚 分层次补充建议',
-                adviceDaily: '⏱️ 每日练习建议',
-                daily1: '🔹 <strong>每日一问</strong>：选一个你今天看到的信息，用5层框架快速检验："来源可靠吗？证据充分吗？逻辑有漏洞吗？谁在背后推动？我被情绪影响了吗？"',
-                daily2: '🔹 <strong>每周一练</strong>：找一篇与你立场相反的文章，逐条列出它的逻辑链条，找出最薄弱的一环。',
-                daily3: '🔹 <strong>每月一复盘</strong>：重新做一次这个诊断，对比前后变化，确认自己是否真的在升级。',
-                hintGray: '💡 <strong>提示：</strong>0-4分的5层递进设计更贴近真实思考的灰度。得分越低代表该处盲区越深，需要优先修复。如需重新诊断，点击「重置」按钮重新开始。',
-                radarNote: '* 各维度得分百分比（0–100%），反映该维度的思维成熟度。分数越高，该维度能力越强。',
-                pass: '✅ 通过',
-                partial: '⚠️ 部分通过',
-                fail: '❌ 未通过',
-                totalLabel: '总分',
-                points: '分（占比',
-                items: '项',
-                andMore: '还有',
-                moreItems: '项优势',
-                blindConcentrate: '你的盲区主要集中在',
-                blindSpots: '处盲区',
-                blindStart: '建议优先从这里开始升级。',
-                blindAction: '📌 具体操作：针对该维度中得分 ≤ 1 的题目，逐一制定"补课计划"——比如查找相关书籍、做专项练习、或找一个擅长这方面的朋友进行对谈。',
-                conclusionMature: '✅ 你的思维框架已经相当成熟。建议保持日常练习，重点关注"是否真的做到了"而不是"是否知道应该这样做"。',
-                conclusionGood: '⚠️ 你已经有了不错的基础，但盲区和碎片化思考仍然存在。建议从最弱的那一层（',
-                conclusionGoodEnd: '）开始集中突破。',
-                conclusionImprove: '❌ 你的思维习惯还有较大的提升空间。建议从最基础的"信息源检验"开始重建，先建立"每一条信息都值得怀疑"的底层意识。',
-                adviceStep1: '防忽悠·外部检验：建议从"信息源、事实、逻辑"三个维度建立"信息检验清单"，每次遇到新信息时主动对照。推荐阅读《批判性思维工具》。',
-                adviceStep2: '觉醒·内部追问：建议培养"元认知"习惯，定期记录自己的情绪触发点和认知偏见。可以尝试写"反思日记"。',
-                adviceStep3: '内化·心智更新：建议将思维升级转化为具体行动——每天主动寻找一个对立观点，每周刻意练习一次"逻辑谬误识别"。',
-                printHint: '提示：0-4分的5层递进设计更贴近真实思考的灰度。'
-            },
-            en: {
-                back: '← Back to System',
-                badge: 'Yang Shengqi\'s Axiomatic System · Independent Anchor',
-                subBrand: 'Cognitive Blind Spot Diagnostic Model',
-                mainTitle: 'A Thinking Model for Complete Awakening',
-                mainTag: 'Blind-Spot Diagnostic Model',
-                infoFeat: 'Awakening · Inner Questioning · Mental Upgrade',
-                introTitle: 'When you face an idea or information, have you truly learned to "think independently"?',
-                introDesc: 'This tool uses 36 progressive questions, about 10 minutes in total, to guide you through a complete mental health check:<br>First <strong>Anti-Manipulation</strong> (external check), then <strong>Awakening</strong> (inner inquiry), finally <strong>Internalization</strong> (mental update).<br>Each question has 5 progressive levels to precisely locate your thinking blind spots.',
-                startLabel: '📌 Enter the idea or information you want to test',
-                startBtn: '🚀 Start Diagnosis',
-                exampleBtn: '📋 Load Example',
-                resetBtn: '✕ Reset',
-                startHint: '💡 Enter a specific viewpoint, and the system will generate all 36 diagnostic questions around it.',
-                timeLabel: '⏱️ Estimated time: ',
-                closeReport: 'Close Report',
-                sharePngLabel: 'Share Report',
-                exportPdfLabel: 'Export PDF',
-                historyTitle: '📜 Diagnosis History',
-                noHistory: 'No history yet',
-                viewReport: 'View Report',
-                generateReport: '📋 Generate Report',
-                allDone: 'All questions answered',
-                allDoneSub: 'You have completed {total} questions on 「{topic}」. Click below to generate your diagnostic report.',
-                layer1: 'Anti-Manipulation',
-                layer2: 'Awakening',
-                layer3: 'Internalization',
-                layer1sub: 'External Check',
-                layer2sub: 'Inner Inquiry',
-                layer3sub: 'Mental Update',
-                level5: '⭐⭐⭐⭐⭐ Clear Thinker',
-                level4: '⭐⭐⭐⭐ Independent Thinker',
-                level3: '⭐⭐⭐ Exploring Thinker',
-                level2: '⭐⭐ Guided Thinker',
-                level1: '⭐ Passive Receiver',
-                level5desc: 'Your thinking framework is comprehensive and systematic. You independently verify information, deeply question your cognitive blind spots, and internalize reflection into action habits. A truly "clear thinker".',
-                level4desc: 'You have strong independent thinking skills, but there are still blind spots in some dimensions. You consciously check information and reflect on yourself, but depth and system can be further improved.',
-                level3desc: 'You have a basic awareness of critical thinking, but lack depth and system. You sometimes doubt information, but lack a complete verification framework, easily led by surface logic.',
-                level2desc: 'You are easily led by information, lacking active checking and reflection habits. You tend to accept surface information, rarely asking "why" or "who is behind it". Need to build a critical thinking framework from the basics.',
-                level1desc: 'You habitually accept information with almost no reflection or verification. You are easily driven by emotions, swayed by positions, and manipulated by interests. Start from the most basic "source verification" to rebuild thinking habits.',
-                cardComprehensive: '🧠 Comprehensive Thinking Maturity',
-                cardLayer: '📊 Three-Layer Capability',
-                cardRadar: '📡 Six-Dimensional Radar',
-                cardBlind: '🔍 Blind Spots & Strengths',
-                cardAdvice: '📌 Recommendations',
-                blindTitle: '🔍 Blind Spots to Upgrade',
-                noBlind: '🌟 No Significant Blind Spots',
-                noBlindDesc: 'You scored high on all questions, indicating a mature thinking framework. Regularly repeat the diagnosis to maintain calibration.',
-                strengthTitle: '💪 Strengths Already Possessed',
-                adviceOverall: '📖 Overall Recommendation',
-                advicePriority: '🎯 Priority Fix Target',
-                adviceLayer: '📚 Layer-specific Supplements',
-                adviceDaily: '⏱️ Daily Practice',
-                daily1: '🔹 <strong>Daily Question</strong>: Pick one piece of information you saw today, quickly check with the 5-layer framework: "Is source reliable? Evidence sufficient? Logic flawed? Who benefits? Am I emotionally affected?"',
-                daily2: '🔹 <strong>Weekly Practice</strong>: Find an article opposing your view, list its logical chain, and identify the weakest link.',
-                daily3: '🔹 <strong>Monthly Review</strong>: Take this diagnosis again, compare changes, and confirm your upgrade.',
-                hintGray: '💡 <strong>Tip:</strong> The 5-level 0-4 scoring reflects the grayness of real thinking. Lower scores indicate deeper blind spots that need priority repair. To re-diagnose, click the "Reset" button.',
-                radarNote: '* Percentage score per dimension (0–100%), reflecting your thinking maturity in that area. Higher score means stronger capability.',
-                pass: '✅ Pass',
-                partial: '⚠️ Partial',
-                fail: '❌ Fail',
-                totalLabel: 'Total',
-                points: 'points (',
-                items: '',
-                andMore: 'and',
-                moreItems: 'more strengths',
-                blindConcentrate: 'Your blind spots are mainly in',
-                blindSpots: 'blind spots',
-                blindStart: 'start upgrading here.',
-                blindAction: '📌 Action: For each question with score ≤ 1 in this dimension, create a "catch-up plan" – read relevant books, do targeted exercises, or discuss with a friend who excels in this area.',
-                conclusionMature: '✅ Your thinking framework is quite mature. Maintain daily practice, focusing on "whether you actually do it" rather than "whether you know you should".',
-                conclusionGood: '⚠️ You have a good foundation, but blind spots and fragmented thinking remain. Start breaking through from the weakest layer (',
-                conclusionGoodEnd: ').',
-                conclusionImprove: '❌ Your thinking habits have much room for improvement. Rebuild from the most basic "source verification" – establish the underlying awareness that "every piece of information is worth questioning."',
-                adviceStep1: 'Anti-Manipulation · External Check: Build a "verification checklist" from source, facts, and logic. Actively use it for every new information. Recommended reading: "Critical Thinking Tools".',
-                adviceStep2: 'Awakening · Inner Inquiry: Cultivate "metacognition" habits. Regularly record your emotional triggers and cognitive biases. Try writing a "reflection diary".',
-                adviceStep3: 'Internalization · Mental Update: Turn thinking upgrade into concrete actions – actively seek opposing views daily, practice "logical fallacy identification" weekly.',
-                printHint: 'Tip: The 5-level 0-4 scoring reflects the grayness of real thinking.'
-            }
+        const T = {
+            back: '← 返回体系总入口',
+            badge: '杨晟琦文明公理系统 · 独立思想锚点',
+            subBrand: '思维盲区诊断模型',
+            mainTitle: '一个让人彻底"清醒"的思维模型',
+            mainTag: '思维盲区诊断模型',
+            infoFeat: '思维觉醒 · 内部追问 · 心智更新',
+            introTitle: '当你面对一个观点或信息时，你真的学会"独立思考"了吗？',
+            introDesc: '这套工具通过 36 个递进式问题，全程大约10分钟左右，带你完成一次完整的思维体检：<br>先做 <strong>防忽悠</strong>（外部检验），再做 <strong>觉醒</strong>（内部追问），最后 <strong>内化</strong>（心智更新）。<br>每个问题都有 5 个递进层级，精准定位你的思维盲区。',
+            startLabel: '📌 输入你想检验的观点或信息',
+            startBtn: '🚀 开始诊断',
+            exampleBtn: '📋 加载示例',
+            resetBtn: '✕ 重置',
+            startHint: '💡 输入一个具体观点，系统会围绕它生成全部 36 道诊断问题',
+            timeLabel: '⏱️ 预估测试时间：',
+            closeReport: '关闭报告',
+            sharePngLabel: '分享诊断报告',
+            exportPdfLabel: '导出 PDF',
+            historyTitle: '📜 诊断历史',
+            noHistory: '暂无历史记录',
+            viewReport: '查看报告',
+            generateReport: '📋 生成诊断报告',
+            allDone: '所有问题已回答完毕',
+            allDoneSub: '你已对「{topic}」完成了 {total} 个问题的诊断，点击下方按钮生成诊断报告。',
+            layer1: '防忽悠',
+            layer2: '觉醒',
+            layer3: '内化',
+            layer1sub: '外部检验',
+            layer2sub: '内部追问',
+            layer3sub: '心智更新',
+            level5: '⭐⭐⭐⭐⭐ 清醒的思考者',
+            level4: '⭐⭐⭐⭐ 独立的思考者',
+            level3: '⭐⭐⭐ 探索中的思考者',
+            level2: '⭐⭐ 被引导的思考者',
+            level1: '⭐ 被动的接收者',
+            level5desc: '你的思维框架非常完整，具备系统性的批判性思维。你能够独立检验信息、深度追问自己的认知盲区，并将反思内化为行动习惯。你是真正"清醒的思考者"。',
+            level4desc: '你有较强的独立思考能力，但在某些维度上仍有盲区。你已经有意识地检验信息和反思自己，但深度和系统性还可以进一步提升。',
+            level3desc: '你具备基础的批判性思维意识，但深度和系统性不足。你有时候会怀疑信息，但缺乏一套完整的检验框架，容易被表面的逻辑带着走。',
+            level2desc: '你容易被信息带节奏，缺乏主动检验和反思的习惯。你倾向于接受表面信息，很少追问"为什么"或"谁在背后推动"。需要从基础开始建立批判性思维框架。',
+            level1desc: '你习惯性地接受信息，几乎没有反思和检验的意识。你容易被情绪驱动、被立场左右、被利益操控。建议从最基础的"信息源检验"开始重新建立思维习惯。',
+            cardComprehensive: '🧠 综合思维成熟度',
+            cardLayer: '📊 三层能力诊断',
+            cardRadar: '📡 六维能力雷达',
+            cardBlind: '🔍 盲区与优势分析',
+            cardAdvice: '📌 修正建议',
+            blindTitle: '🔍 待升级的思维盲区',
+            noBlind: '🌟 没有明显的思维盲区',
+            noBlindDesc: '你在所有题目中都获得了较高分数，说明你的思维框架已经比较成熟。建议定期重复诊断，持续校准。',
+            strengthTitle: '💪 已具备的优势能力',
+            adviceOverall: '📖 总体建议',
+            advicePriority: '🎯 优先修复目标',
+            adviceLayer: '📚 分层次补充建议',
+            adviceDaily: '⏱️ 每日练习建议',
+            daily1: '🔹 <strong>每日一问</strong>：选一个你今天看到的信息，用5层框架快速检验："来源可靠吗？证据充分吗？逻辑有漏洞吗？谁在背后推动？我被情绪影响了吗？"',
+            daily2: '🔹 <strong>每周一练</strong>：找一篇与你立场相反的文章，逐条列出它的逻辑链条，找出最薄弱的一环。',
+            daily3: '🔹 <strong>每月一复盘</strong>：重新做一次这个诊断，对比前后变化，确认自己是否真的在升级。',
+            hintGray: '💡 <strong>提示：</strong>0-4分的5层递进设计更贴近真实思考的灰度。得分越低代表该处盲区越深，需要优先修复。如需重新诊断，点击「重置」按钮重新开始。',
+            radarNote: '* 各维度得分百分比（0–100%），反映该维度的思维成熟度。分数越高，该维度能力越强。',
+            pass: '✅ 通过',
+            partial: '⚠️ 部分通过',
+            fail: '❌ 未通过',
+            totalLabel: '总分',
+            points: '分（占比',
+            items: '项',
+            andMore: '还有',
+            moreItems: '项优势',
+            blindConcentrate: '你的盲区主要集中在',
+            blindSpots: '处盲区',
+            blindStart: '建议优先从这里开始升级。',
+            blindAction: '📌 具体操作：针对该维度中得分 ≤ 1 的题目，逐一制定"补课计划"——比如查找相关书籍、做专项练习、或找一个擅长这方面的朋友进行对谈。',
+            conclusionMature: '✅ 你的思维框架已经相当成熟。建议保持日常练习，重点关注"是否真的做到了"而不是"是否知道应该这样做"。',
+            conclusionGood: '⚠️ 你已经有了不错的基础，但盲区和碎片化思考仍然存在。建议从最弱的那一层（',
+            conclusionGoodEnd: '）开始集中突破。',
+            conclusionImprove: '❌ 你的思维习惯还有较大的提升空间。建议从最基础的"信息源检验"开始重建，先建立"每一条信息都值得怀疑"的底层意识。',
+            adviceStep1: '防忽悠·外部检验：建议从"信息源、事实、逻辑"三个维度建立"信息检验清单"，每次遇到新信息时主动对照。推荐阅读《批判性思维工具》。',
+            adviceStep2: '觉醒·内部追问：建议培养"元认知"习惯，定期记录自己的情绪触发点和认知偏见。可以尝试写"反思日记"。',
+            adviceStep3: '内化·心智更新：建议将思维升级转化为具体行动——每天主动寻找一个对立观点，每周刻意练习一次"逻辑谬误识别"。',
+            printHint: '提示：0-4分的5层递进设计更贴近真实思考的灰度。'
         };
 
-        let currentLang = 'zh';
-
         function t(key, vars) {
-            let str = I18N[currentLang][key] || key;
+            let str = T[key] || key;
             if (vars) {
                 for (let k in vars) {
                     str = str.replace(new RegExp('\\{' + k + '\\}', 'g'), vars[k]);
                 }
             }
             return str;
-        }
-
-        document.getElementById('langSwitch').addEventListener('click', function() {
-            currentLang = (currentLang === 'zh') ? 'en' : 'zh';
-            this.textContent = currentLang === 'zh' ? 'English' : '中文';
-            updateUI();
-            if (document.getElementById('resultBox').classList.contains('show')) {
-                generateReport();
-            }
-            renderHistory();
-        });
-
-        function updateUI() {
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                el.textContent = t(key);
-            });
-            document.getElementById('subBrand').textContent = t('subBrand');
-            document.getElementById('mainTitle').textContent = t('mainTitle');
-            document.getElementById('mainTag').textContent = t('mainTag');
-            document.getElementById('infoFeat').textContent = t('infoFeat');
-            document.getElementById('introTitle').innerHTML = t('introTitle');
-            document.getElementById('introDesc').innerHTML = t('introDesc');
-            document.getElementById('startLabel').textContent = t('startLabel');
-            document.getElementById('startHint').textContent = t('startHint');
-            document.getElementById('timeLabel').innerHTML = '⏱️ ' + t('timeLabel') + '<span class="time-num" id="timeEstimate">约 10 分钟</span>';
-            document.getElementById('historyTitle').textContent = t('historyTitle');
-            document.getElementById('sharePngLabel').textContent = t('sharePngLabel');
-            document.getElementById('exportPdfLabel').textContent = t('exportPdfLabel');
         }
 
         // ================================================================
@@ -1701,14 +1573,6 @@
             { id: 'emotion', icon: '❤️', label: '情绪' },
             { id: 'cost', icon: '⏳', label: '机会成本' }
         ];
-        const DIM_LABELS_EN = {
-            source: 'Source',
-            facts: 'Facts',
-            logic: 'Logic',
-            interests: 'Interests',
-            emotion: 'Emotion',
-            cost: 'Cost'
-        };
 
         const LAYERS = [
             { key: 'step1', label: '防忽悠', sub: '外部检验', badge: 's1' },
@@ -2424,7 +2288,7 @@
         }
 
         // ================================================================
-        // 生成报告（升级版：盲区与优势 + 修正建议）
+        // 生成报告
         // ================================================================
         function generateReport(saveToHistory = true) {
             const question = state.topic || '（未输入问题）';
@@ -2776,11 +2640,7 @@
                 ctx.font = '12px sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                let label = dimResults[i].label;
-                if (currentLang === 'en') {
-                    label = DIM_LABELS_EN[dimResults[i].id] || label;
-                }
-                ctx.fillText(label, labelX, labelY);
+                ctx.fillText(dimResults[i].label, labelX, labelY);
             }
 
             // 数据
@@ -2834,7 +2694,7 @@
             empty.style.display = 'none';
             list.innerHTML = historyRecords.map(rec => {
                 const levelLabel = rec.levelLabel || '⭐';
-                const date = new Date(rec.timestamp).toLocaleString(currentLang === 'zh' ? 'zh-CN' : 'en-US');
+                const date = new Date(rec.timestamp).toLocaleString('zh-CN');
                 return `
                     <div class="history-item" data-id="${rec.id}">
                         <span class="h-topic">${rec.topic}</span>
@@ -2866,7 +2726,7 @@
         }
 
         // ================================================================
-        // ⭐ 截图分享 — 修复底部丢失（增加余量 + 占位元素）
+        // 截图分享
         // ================================================================
         function copyImageDiagnosis() {
             const btn = document.getElementById('copyImageBtn');
@@ -2876,9 +2736,9 @@
 
             const resultBody = document.getElementById('reportBody');
             if (!resultBody || resultBody.children.length === 0) {
-                showToast(currentLang === 'zh' ? '❌ 没有可截图的诊断报告，请先生成报告。' : '❌ No report to screenshot.', true);
+                showToast('❌ 没有可截图的诊断报告，请先生成报告。', true);
                 btn.disabled = false;
-                btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') + ' <span class="badge">PNG</span>';
+                btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
                 return;
             }
 
@@ -2931,7 +2791,7 @@
                 'text-align: center; padding: 16px 0 10px 0; border-top: 1px solid #2a322a; margin-top: 12px;';
             qrDiv.innerHTML = `
                 <img src="QR.jpg" alt="扫码访问" style="display: block; margin: 0 auto; width: 110px; height: 110px; object-fit: contain; border-radius: 8px; border: 1px solid #3a4638; background: #fff; padding: 4px; box-sizing: border-box;" crossorigin="anonymous">
-                <div style="color: #7a8a6e; font-size: 13px; margin-top: 6px; letter-spacing: 1px;">📱 ${currentLang === 'zh' ? '扫码访问 · 杨晟琦文明公理系统' : 'Scan to visit · Yang Shengqi\'s Axiomatic System'}</div>
+                <div style="color: #7a8a6e; font-size: 13px; margin-top: 6px; letter-spacing: 1px;">📱 扫码访问 · 杨晟琦文明公理系统</div>
             `;
 
             const footerClone = document.getElementById('footerArea').cloneNode(true);
@@ -2942,7 +2802,7 @@
             footerClone.style.fontSize = '14px';
             footerClone.style.color = '#5a6a4e';
 
-            // ⭐ 关键修复1：底部透明占位元素（强制撑开底部空间）
+            // 底部透明占位元素
             const spacer = document.createElement('div');
             spacer.style.cssText = 'height: 60px; width: 100%; opacity: 0; pointer-events: none;';
 
@@ -2951,14 +2811,14 @@
             tempContainer.appendChild(reportClone);
             tempContainer.appendChild(qrDiv);
             tempContainer.appendChild(footerClone);
-            tempContainer.appendChild(spacer); // 占位元素放在最底部
+            tempContainer.appendChild(spacer);
 
             document.body.appendChild(tempContainer);
 
             // 强制回流
             void tempContainer.offsetHeight;
 
-            // ⭐ 关键修复2：延迟截图，确保所有元素渲染完成
+            // 延迟截图
             setTimeout(() => {
                 const screenshotPromise = html2canvas(tempContainer, {
                     scale: 2,
@@ -2967,7 +2827,6 @@
                     useCORS: true,
                     logging: false,
                     width: 820,
-                    // ⭐ 关键修复3：显式设置高度为 scrollHeight + 安全余量
                     height: tempContainer.scrollHeight + 80,
                     windowHeight: tempContainer.scrollHeight + 80,
                 });
@@ -2981,48 +2840,37 @@
                         document.body.removeChild(tempContainer);
                         canvas.toBlob(function(blob) {
                             if (!blob) {
-                                showToast(currentLang === 'zh' ? '❌ 截图生成失败，请重试。' :
-                                    '❌ Screenshot failed.', true);
+                                showToast('❌ 截图生成失败，请重试。', true);
                                 btn.disabled = false;
-                                btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') +
-                                    ' <span class="badge">PNG</span>';
+                                btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
                                 return;
                             }
                             if (navigator.clipboard && navigator.clipboard.write) {
                                 const clipboardItem = new ClipboardItem({ 'image/png': blob });
                                 navigator.clipboard.write([clipboardItem]).then(() => {
-                                    showToast(currentLang === 'zh' ? '✅ 截图已分享到剪贴板！' :
-                                        '✅ Screenshot copied to clipboard!');
+                                    showToast('✅ 截图已分享到剪贴板！');
                                     btn.disabled = false;
-                                    btn.innerHTML = '<span class="icon">🖼️</span> ' + t(
-                                        'sharePngLabel') +
-                                        ' <span class="badge">PNG</span>';
+                                    btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
                                 }).catch(() => {
                                     downloadImage(canvas);
                                     btn.disabled = false;
-                                    btn.innerHTML = '<span class="icon">🖼️</span> ' + t(
-                                        'sharePngLabel') +
-                                        ' <span class="badge">PNG</span>';
+                                    btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
                                 });
                             } else {
                                 downloadImage(canvas);
                                 btn.disabled = false;
-                                btn.innerHTML = '<span class="icon">🖼️</span> ' + t(
-                                    'sharePngLabel') +
-                                    ' <span class="badge">PNG</span>';
+                                btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
                             }
                         }, 'image/png');
                     })
                     .catch(err => {
                         document.body.removeChild(tempContainer);
                         console.error(err);
-                        showToast(currentLang === 'zh' ? '❌ 截图超时或失败，请重试。' :
-                            '❌ Screenshot timeout or failed.', true);
+                        showToast('❌ 截图超时或失败，请重试。', true);
                         btn.disabled = false;
-                        btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') +
-                            ' <span class="badge">PNG</span>';
+                        btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
                     });
-            }, 300); // 延迟 300ms 确保渲染完成
+            }, 300);
         }
 
         function downloadImage(canvas) {
@@ -3030,7 +2878,7 @@
             link.download = '思维诊断报告_' + new Date().toISOString().slice(0, 10) + '.png';
             link.href = canvas.toDataURL('image/png');
             link.click();
-            showToast(currentLang === 'zh' ? '✅ 截图已下载！' : '✅ Screenshot downloaded!');
+            showToast('✅ 截图已下载！');
         }
 
         // ================================================================
@@ -3039,7 +2887,7 @@
         function exportPdf() {
             const box = document.getElementById('resultBox');
             if (!box.classList.contains('show')) {
-                showToast(currentLang === 'zh' ? '❌ 请先生成报告。' : '❌ Generate report first.', true);
+                showToast('❌ 请先生成报告。', true);
                 return;
             }
             document.body.classList.add('printing');
@@ -3078,7 +2926,7 @@
             document.getElementById('startBtn').addEventListener('click', function() {
                 const topic = document.getElementById('topicInput').value.trim();
                 if (!topic) {
-                    showToast(currentLang === 'zh' ? '请先输入你想检验的观点或信息。' : 'Please enter a viewpoint.', true);
+                    showToast('请先输入你想检验的观点或信息。', true);
                     return;
                 }
                 state.topic = topic;
@@ -3103,13 +2951,12 @@
                 showDiagnosis();
                 document.getElementById('resultBox').classList.remove('show');
                 document.getElementById('diagnosisArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                showToast(currentLang === 'zh' ? '✅ 已加载示例主题：「' + exampleTopic + '」，开始诊断吧！' :
-                    '✅ Example loaded: 「' + exampleTopic + '」, start diagnosis!');
+                showToast('✅ 已加载示例主题：「' + exampleTopic + '」，开始诊断吧！');
             });
 
             document.getElementById('resetBtn').addEventListener('click', function() {
                 resetState();
-                showToast(currentLang === 'zh' ? '已重置所有数据' : 'Reset complete.');
+                showToast('已重置所有数据');
             });
 
             document.getElementById('closeResultBtn').addEventListener('click', function() {
