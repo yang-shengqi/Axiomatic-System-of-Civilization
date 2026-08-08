@@ -8,7 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
     <style>
-        /* ===== 全局 ===== */
+        /* ===== 所有样式保持不变（与你的一致） ===== */
         * {
             margin: 0;
             padding: 0;
@@ -1492,7 +1492,7 @@
             zh: {
                 back: '← 返回体系总入口',
                 badge: '杨晟琦文明公理系统 · 独立思想锚点',
-                subBrand: '检查 · 追问 · 升级 — 5级诊断工具',
+                subBrand: '认知盲区诊断模型',
                 mainTitle: '一个让人彻底"清醒"的思维模型',
                 mainTag: '思维盲区诊断模型',
                 infoFeat: '思维觉醒 · 内部追问 · 心智更新',
@@ -1571,7 +1571,7 @@
             en: {
                 back: '← Back to System',
                 badge: 'Yang Shengqi\'s Axiomatic System · Independent Anchor',
-                subBrand: 'Check · Question · Upgrade — 5-Level Diagnostic Tool',
+                subBrand: 'Cognitive Blind Spot Diagnostic Model',
                 mainTitle: 'A Thinking Model for Complete Awakening',
                 mainTag: 'Blind-Spot Diagnostic Model',
                 infoFeat: 'Awakening · Inner Questioning · Mental Upgrade',
@@ -2866,7 +2866,7 @@
         }
 
         // ================================================================
-        // ⭐ 截图分享 — 带超时保护，防止卡死
+        // ⭐ 截图分享 — 修复底部丢失（增加余量 + 占位元素）
         // ================================================================
         function copyImageDiagnosis() {
             const btn = document.getElementById('copyImageBtn');
@@ -2942,71 +2942,87 @@
             footerClone.style.fontSize = '14px';
             footerClone.style.color = '#5a6a4e';
 
+            // ⭐ 关键修复1：底部透明占位元素（强制撑开底部空间）
+            const spacer = document.createElement('div');
+            spacer.style.cssText = 'height: 60px; width: 100%; opacity: 0; pointer-events: none;';
+
             tempContainer.appendChild(brandClone);
             tempContainer.appendChild(bannerClone);
             tempContainer.appendChild(reportClone);
             tempContainer.appendChild(qrDiv);
             tempContainer.appendChild(footerClone);
+            tempContainer.appendChild(spacer); // 占位元素放在最底部
 
             document.body.appendChild(tempContainer);
 
             // 强制回流
             void tempContainer.offsetHeight;
 
-            // 截图带超时
-            const screenshotPromise = html2canvas(tempContainer, {
-                scale: 2,
-                backgroundColor: '#141814',
-                allowTaint: false,
-                useCORS: true,
-                logging: false,
-                width: 820,
-            });
+            // ⭐ 关键修复2：延迟截图，确保所有元素渲染完成
+            setTimeout(() => {
+                const screenshotPromise = html2canvas(tempContainer, {
+                    scale: 2,
+                    backgroundColor: '#141814',
+                    allowTaint: false,
+                    useCORS: true,
+                    logging: false,
+                    width: 820,
+                    // ⭐ 关键修复3：显式设置高度为 scrollHeight + 安全余量
+                    height: tempContainer.scrollHeight + 80,
+                    windowHeight: tempContainer.scrollHeight + 80,
+                });
 
-            const timeoutPromise = new Promise((_, reject) => {
-                setTimeout(() => reject(new Error('超时')), 20000);
-            });
+                const timeoutPromise = new Promise((_, reject) => {
+                    setTimeout(() => reject(new Error('超时')), 25000);
+                });
 
-            Promise.race([screenshotPromise, timeoutPromise])
-                .then(canvas => {
-                    document.body.removeChild(tempContainer);
-                    canvas.toBlob(function(blob) {
-                        if (!blob) {
-                            showToast(currentLang === 'zh' ? '❌ 截图生成失败，请重试。' : '❌ Screenshot failed.', true);
-                            btn.disabled = false;
-                            btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') +
-                                ' <span class="badge">PNG</span>';
-                            return;
-                        }
-                        if (navigator.clipboard && navigator.clipboard.write) {
-                            const clipboardItem = new ClipboardItem({ 'image/png': blob });
-                            navigator.clipboard.write([clipboardItem]).then(() => {
-                                showToast(currentLang === 'zh' ? '✅ 截图已分享到剪贴板！' :
-                                    '✅ Screenshot copied to clipboard!');
+                Promise.race([screenshotPromise, timeoutPromise])
+                    .then(canvas => {
+                        document.body.removeChild(tempContainer);
+                        canvas.toBlob(function(blob) {
+                            if (!blob) {
+                                showToast(currentLang === 'zh' ? '❌ 截图生成失败，请重试。' :
+                                    '❌ Screenshot failed.', true);
                                 btn.disabled = false;
                                 btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') +
                                     ' <span class="badge">PNG</span>';
-                            }).catch(() => {
+                                return;
+                            }
+                            if (navigator.clipboard && navigator.clipboard.write) {
+                                const clipboardItem = new ClipboardItem({ 'image/png': blob });
+                                navigator.clipboard.write([clipboardItem]).then(() => {
+                                    showToast(currentLang === 'zh' ? '✅ 截图已分享到剪贴板！' :
+                                        '✅ Screenshot copied to clipboard!');
+                                    btn.disabled = false;
+                                    btn.innerHTML = '<span class="icon">🖼️</span> ' + t(
+                                        'sharePngLabel') +
+                                        ' <span class="badge">PNG</span>';
+                                }).catch(() => {
+                                    downloadImage(canvas);
+                                    btn.disabled = false;
+                                    btn.innerHTML = '<span class="icon">🖼️</span> ' + t(
+                                        'sharePngLabel') +
+                                        ' <span class="badge">PNG</span>';
+                                });
+                            } else {
                                 downloadImage(canvas);
                                 btn.disabled = false;
-                                btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') +
+                                btn.innerHTML = '<span class="icon">🖼️</span> ' + t(
+                                    'sharePngLabel') +
                                     ' <span class="badge">PNG</span>';
-                            });
-                        } else {
-                            downloadImage(canvas);
-                            btn.disabled = false;
-                            btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') +
-                                ' <span class="badge">PNG</span>';
-                        }
-                    }, 'image/png');
-                })
-                .catch(err => {
-                    document.body.removeChild(tempContainer);
-                    console.error(err);
-                    showToast(currentLang === 'zh' ? '❌ 截图超时或失败，请重试。' : '❌ Screenshot timeout or failed.', true);
-                    btn.disabled = false;
-                    btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') + ' <span class="badge">PNG</span>';
-                });
+                            }
+                        }, 'image/png');
+                    })
+                    .catch(err => {
+                        document.body.removeChild(tempContainer);
+                        console.error(err);
+                        showToast(currentLang === 'zh' ? '❌ 截图超时或失败，请重试。' :
+                            '❌ Screenshot timeout or failed.', true);
+                        btn.disabled = false;
+                        btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') +
+                            ' <span class="badge">PNG</span>';
+                    });
+            }, 300); // 延迟 300ms 确保渲染完成
         }
 
         function downloadImage(canvas) {
