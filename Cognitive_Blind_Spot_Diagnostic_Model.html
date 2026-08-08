@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>思维盲区诊断模型 · Cognitive Blind Spot Diagnostic Model · 中英双语 · 杨晟琦文明公理系统</title>
+    <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
     <style>
@@ -29,8 +30,6 @@
             border: 1px solid #2a322a;
             box-shadow: 0 12px 80px rgba(0, 0, 0, 0.8);
         }
-
-        /* ===== 导航 ===== */
         .top-nav {
             display: flex;
             justify-content: space-between;
@@ -124,18 +123,13 @@
             flex-wrap: wrap;
             gap: 6px 24px;
         }
-        .brand-right {
-            font-size: 14px;
-            color: #7a8a6e;
-            text-align: right;
-            align-self: flex-start;
-        }
-        .en {
-            font-size: .8em;
-            color: #7a8a6e;
-            display: block;
-            line-height: 1.6;
-            margin-top: 2px;
+        .info-row .feat .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #8aaa6a;
+            margin-right: 4px;
         }
 
         .intro-box {
@@ -705,91 +699,138 @@
             color: #d4dec4;
             line-height: 1.9;
         }
-        .result-box .result-body .blind-spot {
+
+        /* ===== 盲区与优势分析 ===== */
+        .blind-spot-v2 {
             background: #1a1a1a;
             border-radius: 12px;
-            padding: 14px 20px;
-            border-left: 4px solid #b89a4a;
+            padding: 16px 20px;
+            border-left: 4px solid #b05a4a;
             margin-top: 6px;
         }
-        .result-box .result-body .blind-spot .bs-title {
+        .blind-spot-v2 .bs-title {
             font-weight: 600;
-            color: #b89a4a;
+            color: #b05a4a;
             font-size: 14px;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
         }
-        .result-box .result-body .blind-spot .bs-item {
+        .blind-spot-v2 .bs-item {
             font-size: 13px;
             color: #b6c0aa;
-            padding: 3px 0 3px 20px;
+            padding: 4px 0 4px 18px;
             border-bottom: 1px solid #1a1e1a;
+            position: relative;
         }
-        .result-box .result-body .blind-spot .bs-item:last-child {
+        .blind-spot-v2 .bs-item::before {
+            content: "•";
+            color: #b05a4a;
+            position: absolute;
+            left: 0;
+        }
+        .blind-spot-v2 .bs-item:last-child {
             border-bottom: none;
         }
-        .result-box .result-body .strength {
+
+        .strength-v2 {
             background: #1a221a;
             border-radius: 12px;
-            padding: 14px 20px;
+            padding: 16px 20px;
             border-left: 4px solid #8aaa6a;
             margin-top: 6px;
         }
-        .result-box .result-body .strength .st-title {
+        .strength-v2 .st-title {
             font-weight: 600;
             color: #8aaa6a;
             font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .strength-v2 .st-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .strength-v2 .st-tag {
+            display: inline-block;
+            background: #1a2a1a;
+            color: #b6c0aa;
+            font-size: 12px;
+            padding: 2px 12px;
+            border-radius: 20px;
+            border: 1px solid #3a5a3a;
+        }
+        .strength-v2 .st-more {
+            display: inline-block;
+            font-size: 12px;
+            color: #5a6a4e;
+            padding: 2px 12px;
+        }
+
+        .advice-step {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 14px 20px;
+            border-left: 4px solid #bace9a;
+            margin-top: 8px;
+        }
+        .advice-step .adv-step-title {
+            font-weight: 600;
+            color: #bace9a;
+            font-size: 14px;
             margin-bottom: 4px;
         }
-        .result-box .result-body .strength .st-item {
+        .advice-step .adv-step-item {
             font-size: 13px;
             color: #b6c0aa;
             padding: 3px 0 3px 20px;
+            line-height: 1.8;
             border-bottom: 1px solid #1a1e1a;
+            position: relative;
         }
-        .result-box .result-body .strength .st-item:last-child {
+        .advice-step .adv-step-item:last-child {
             border-bottom: none;
         }
-        .result-box .result-body .advice-box {
+        .advice-step .adv-step-item .step-num {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #2a322a;
+            color: #bace9a;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .advice-step .adv-step-item .step-content {
+            display: inline;
+        }
+
+        .advice-card-v2 {
             background: #1a1a1a;
             border-radius: 12px;
             padding: 16px 22px;
             border-left: 4px solid #bace9a;
             margin-top: 8px;
         }
-        .result-box .result-body .advice-box .adv-title {
+        .advice-card-v2 .adv-title {
             font-weight: 600;
             color: #bace9a;
             font-size: 14px;
             margin-bottom: 4px;
         }
-        .result-box .result-body .advice-box .adv-item {
+        .advice-card-v2 .adv-item {
             font-size: 13px;
             color: #b6c0aa;
             padding: 3px 0 3px 20px;
             line-height: 1.8;
             border-bottom: 1px solid #1a1e1a;
         }
-        .result-box .result-body .advice-box .adv-item:last-child {
+        .advice-card-v2 .adv-item:last-child {
             border-bottom: none;
         }
-        .result-box .result-body .radar-container {
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-            position: relative;
-        }
-        .result-box .result-body .radar-container canvas {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .result-box .result-body .radar-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
 
-        /* ===== 递进式三层能力诊断 ===== */
         .layer-progress {
             display: flex;
             align-items: center;
@@ -806,7 +847,6 @@
             padding: 14px 16px;
             text-align: center;
             border: 2px solid #2a322a;
-            transition: border-color .2s;
         }
         .layer-node.pass {
             border-color: #4a7a4a;
@@ -859,23 +899,17 @@
             padding: 0 2px;
         }
 
-        .result-box .result-body .layer-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px solid #1a1e1a;
-            flex-wrap: wrap;
-            gap: 4px 12px;
+        .radar-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
         }
-        .result-box .result-body .layer-row:last-child {
-            border-bottom: none;
-        }
-        .result-box .result-body .layer-row .layer-label {
-            font-weight: 500;
-            color: #aaba8a;
-        }
-        .result-box .result-body .layer-row .layer-status {
-            font-weight: 600;
+        .radar-container canvas,
+        .radar-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .copy-actions {
@@ -909,7 +943,6 @@
         .btn-copy:disabled {
             opacity: .4;
             cursor: not-allowed;
-            transform: none !important;
         }
         .btn-copy .icon {
             font-size: 16px;
@@ -953,7 +986,6 @@
             color: #7a8a6e;
         }
 
-        /* ===== 历史记录 ===== */
         .history-area {
             margin-top: 30px;
             padding-top: 20px;
@@ -1123,6 +1155,13 @@
                 width: 100%;
                 min-width: auto;
             }
+            .strength-v2 .st-grid {
+                gap: 4px;
+            }
+            .strength-v2 .st-tag {
+                font-size: 11px;
+                padding: 1px 10px;
+            }
         }
         @media (max-width:400px) {
             .result-box .result-body .result-card {
@@ -1186,7 +1225,6 @@
             margin-top: 2px;
         }
 
-        /* ===== print 样式（优化边距） ===== */
         @media print {
             body {
                 background: #fff;
@@ -1245,12 +1283,31 @@
                 border-color: #888 !important;
             }
             .type-desc,
-            .blind-spot,
-            .strength,
-            .advice-box {
+            .blind-spot-v2,
+            .strength-v2,
+            .advice-step,
+            .advice-card-v2 {
                 background: #f0f0f0 !important;
                 border-left-color: #666 !important;
                 color: #222 !important;
+            }
+            .blind-spot-v2 .bs-item {
+                color: #333 !important;
+            }
+            .strength-v2 .st-tag {
+                background: #e8f0e8 !important;
+                border-color: #aaa !important;
+                color: #222 !important;
+            }
+            .advice-step .adv-step-item {
+                color: #333 !important;
+            }
+            .advice-step .adv-step-item .step-num {
+                background: #ddd !important;
+                color: #222 !important;
+            }
+            .advice-card-v2 .adv-item {
+                color: #333 !important;
             }
             .radar-container canvas,
             .radar-container img {
@@ -1286,21 +1343,6 @@
             .layer-arrow {
                 color: #999 !important;
             }
-            .result-box .result-body .result-card .card-content {
-                color: #222 !important;
-            }
-            .result-box .result-body .type-desc {
-                color: #222 !important;
-            }
-            .result-box .result-body .blind-spot .bs-item {
-                color: #333 !important;
-            }
-            .result-box .result-body .strength .st-item {
-                color: #333 !important;
-            }
-            .result-box .result-body .advice-box .adv-item {
-                color: #333 !important;
-            }
             .result-box .result-body .level-badge {
                 color: #222 !important;
                 background: #f0f0f0 !important;
@@ -1325,21 +1367,6 @@
                 border-color: #6a3a2a !important;
                 background: #f0e8e0 !important;
             }
-            .result-box .result-body .layer-row .layer-status {
-                color: #222 !important;
-            }
-            .result-box .result-body .layer-row .layer-label {
-                color: #444 !important;
-            }
-            .result-box .result-body .radar-container {
-                max-width: 320px;
-            }
-            .result-box .result-body .radar-container canvas {
-                max-width: 100%;
-            }
-            .result-box .result-body .radar-container img {
-                max-width: 100%;
-            }
         }
     </style>
 </head>
@@ -1357,7 +1384,7 @@
         <!-- ===== 品牌区 ===== -->
         <div class="brand" id="brandArea">
             <div class="brand-left">
-                <div class="sub-brand" id="subBrand">A Thinking Model for Complete Awakening · Check · Question · Upgrade — 5-Level Diagnostic Tool</div>
+                <div class="sub-brand" id="subBrand">Cognitive Blind Spot Diagnostic Model</div>
                 <div class="title-row">
                     <h1 id="mainTitle">一个让人彻底"清醒"的思维模型</h1>
                     <span class="tag" id="mainTag">思维盲区诊断模型</span>
@@ -1365,7 +1392,7 @@
                 <div class="info-row">
                     <span>作者：杨晟琦</span>
                     <span>ORCID: 0009-0008-3755-8960</span>
-                    <span class="feat"><span class="dot green"></span><span id="infoFeat">思维觉醒 · 内部追问 · 心智更新</span></span>
+                    <span class="feat"><span class="dot"></span><span id="infoFeat">思维觉醒 · 内部追问 · 心智更新</span></span>
                 </div>
             </div>
         </div>
@@ -1395,7 +1422,7 @@
         <!-- ===== 诊断进行中 ===== -->
         <div class="diagnosis-active" id="diagnosisArea">
             <div class="time-estimate">
-                <span id="timeLabel">⏱️ 预估测试时间：<span class="time-num" id="timeEstimate">约 8-12 分钟</span></span>
+                <span id="timeLabel">⏱️ 预估测试时间：<span class="time-num" id="timeEstimate">约 10 分钟</span></span>
                 <span class="topic-display" id="topicDisplay">主题：未设置</span>
                 <span class="progress-detail" id="timeDetail">已完成 0 / 36 题</span>
             </div>
@@ -1459,7 +1486,7 @@
 
     <script>
         // ================================================================
-        // 国际化资源（全覆盖）
+        // 国际化资源
         // ================================================================
         const I18N = {
             zh: {
@@ -1486,14 +1513,12 @@
                 generateReport: '📋 生成诊断报告',
                 allDone: '所有问题已回答完毕',
                 allDoneSub: '你已对「{topic}」完成了 {total} 个问题的诊断，点击下方按钮生成诊断报告。',
-                // 层名称
                 layer1: '防忽悠',
                 layer2: '觉醒',
                 layer3: '内化',
                 layer1sub: '外部检验',
                 layer2sub: '内部追问',
                 layer3sub: '心智更新',
-                // 等级
                 level5: '⭐⭐⭐⭐⭐ 清醒的思考者',
                 level4: '⭐⭐⭐⭐ 独立的思考者',
                 level3: '⭐⭐⭐ 探索中的思考者',
@@ -1504,18 +1529,15 @@
                 level3desc: '你具备基础的批判性思维意识，但深度和系统性不足。你有时候会怀疑信息，但缺乏一套完整的检验框架，容易被表面的逻辑带着走。',
                 level2desc: '你容易被信息带节奏，缺乏主动检验和反思的习惯。你倾向于接受表面信息，很少追问"为什么"或"谁在背后推动"。需要从基础开始建立批判性思维框架。',
                 level1desc: '你习惯性地接受信息，几乎没有反思和检验的意识。你容易被情绪驱动、被立场左右、被利益操控。建议从最基础的"信息源检验"开始重新建立思维习惯。',
-                // 卡片标题
                 cardComprehensive: '🧠 综合思维成熟度',
                 cardLayer: '📊 三层能力诊断',
                 cardRadar: '📡 六维能力雷达',
                 cardBlind: '🔍 盲区与优势分析',
                 cardAdvice: '📌 修正建议',
-                // 盲区
                 blindTitle: '🔍 待升级的思维盲区',
                 noBlind: '🌟 没有明显的思维盲区',
                 noBlindDesc: '你在所有题目中都获得了较高分数，说明你的思维框架已经比较成熟。建议定期重复诊断，持续校准。',
                 strengthTitle: '💪 已具备的优势能力',
-                // 建议
                 adviceOverall: '📖 总体建议',
                 advicePriority: '🎯 优先修复目标',
                 adviceLayer: '📚 分层次补充建议',
@@ -1524,33 +1546,26 @@
                 daily2: '🔹 <strong>每周一练</strong>：找一篇与你立场相反的文章，逐条列出它的逻辑链条，找出最薄弱的一环。',
                 daily3: '🔹 <strong>每月一复盘</strong>：重新做一次这个诊断，对比前后变化，确认自己是否真的在升级。',
                 hintGray: '💡 <strong>提示：</strong>0-4分的5层递进设计更贴近真实思考的灰度。得分越低代表该处盲区越深，需要优先修复。如需重新诊断，点击「重置」按钮重新开始。',
-                // 雷达图备注
                 radarNote: '* 各维度得分百分比（0–100%），反映该维度的思维成熟度。分数越高，该维度能力越强。',
-                // 通过状态
                 pass: '✅ 通过',
                 partial: '⚠️ 部分通过',
                 fail: '❌ 未通过',
-                // 总分标签
                 totalLabel: '总分',
                 points: '分（占比',
                 items: '项',
                 andMore: '还有',
                 moreItems: '项优势',
-                // 盲区描述
                 blindConcentrate: '你的盲区主要集中在',
                 blindSpots: '处盲区',
                 blindStart: '建议优先从这里开始升级。',
                 blindAction: '📌 具体操作：针对该维度中得分 ≤ 1 的题目，逐一制定"补课计划"——比如查找相关书籍、做专项练习、或找一个擅长这方面的朋友进行对谈。',
-                // 结论
                 conclusionMature: '✅ 你的思维框架已经相当成熟。建议保持日常练习，重点关注"是否真的做到了"而不是"是否知道应该这样做"。',
                 conclusionGood: '⚠️ 你已经有了不错的基础，但盲区和碎片化思考仍然存在。建议从最弱的那一层（',
                 conclusionGoodEnd: '）开始集中突破。',
                 conclusionImprove: '❌ 你的思维习惯还有较大的提升空间。建议从最基础的"信息源检验"开始重建，先建立"每一条信息都值得怀疑"的底层意识。',
-                // 分层建议
                 adviceStep1: '防忽悠·外部检验：建议从"信息源、事实、逻辑"三个维度建立"信息检验清单"，每次遇到新信息时主动对照。推荐阅读《批判性思维工具》。',
                 adviceStep2: '觉醒·内部追问：建议培养"元认知"习惯，定期记录自己的情绪触发点和认知偏见。可以尝试写"反思日记"。',
                 adviceStep3: '内化·心智更新：建议将思维升级转化为具体行动——每天主动寻找一个对立观点，每周刻意练习一次"逻辑谬误识别"。',
-                // 打印
                 printHint: '提示：0-4分的5层递进设计更贴近真实思考的灰度。'
             },
             en: {
@@ -1669,14 +1684,14 @@
             document.getElementById('introDesc').innerHTML = t('introDesc');
             document.getElementById('startLabel').textContent = t('startLabel');
             document.getElementById('startHint').textContent = t('startHint');
-            document.getElementById('timeLabel').innerHTML = '⏱️ ' + t('timeLabel') + '<span class="time-num" id="timeEstimate">约 8-12 分钟</span>';
+            document.getElementById('timeLabel').innerHTML = '⏱️ ' + t('timeLabel') + '<span class="time-num" id="timeEstimate">约 10 分钟</span>';
             document.getElementById('historyTitle').textContent = t('historyTitle');
             document.getElementById('sharePngLabel').textContent = t('sharePngLabel');
             document.getElementById('exportPdfLabel').textContent = t('exportPdfLabel');
         }
 
         // ================================================================
-        // 数据：维度、层级、题目
+        // 数据
         // ================================================================
         const DIMENSIONS = [
             { id: 'source', icon: '🔍', label: '信息源' },
@@ -1701,6 +1716,7 @@
             { key: 'step3', label: '内化', sub: '心智更新', badge: 's3' }
         ];
 
+        // 36道题目（完整）
         const QUESTIONS_RAW = [{
             dim: 'source',
             layer: 'step1',
@@ -2248,6 +2264,9 @@
             renderStep();
         }
 
+        // ================================================================
+        // 渲染步骤
+        // ================================================================
         function renderStep() {
             if (!state.isActive || !state.topic) return;
             const container = document.getElementById('stepContainer');
@@ -2405,7 +2424,7 @@
         }
 
         // ================================================================
-        // 生成报告
+        // 生成报告（升级版：盲区与优势 + 修正建议）
         // ================================================================
         function generateReport(saveToHistory = true) {
             const question = state.topic || '（未输入问题）';
@@ -2509,7 +2528,7 @@
 
             const body = document.getElementById('reportBody');
 
-            // ---- 三层能力诊断：递进式卡片 ----
+            // ---- 三层能力诊断 ----
             const layerProgressHtml = `
                 <div class="layer-progress">
                     ${layerResults.map((r, index) => `
@@ -2528,12 +2547,12 @@
             // ---- 雷达图 ----
             const radarHtml = `<div class="radar-container"><canvas id="radarCanvas" width="400" height="400"></canvas></div>`;
 
-            // ---- 盲区与优势 ----
+            // ---- 盲区 ----
             let blindHtml = '';
             if (blindItems.length > 0) {
                 blindHtml = `
-                    <div class="blind-spot">
-                        <div class="bs-title">${t('blindTitle')}（${blindItems.length} ${t('items')}）</div>
+                    <div class="blind-spot-v2">
+                        <div class="bs-title">🔴 ${t('blindTitle')}（${blindItems.length} ${t('items')}）</div>
                         ${blindItems.map(it => {
                             const dim = DIMENSIONS.find(d => d.id === it.dim);
                             const layer = LAYERS.find(l => l.key === it.layer);
@@ -2543,31 +2562,39 @@
                 `;
             } else {
                 blindHtml = `
-                    <div class="strength">
-                        <div class="st-title">${t('noBlind')}</div>
-                        <div class="st-item">${t('noBlindDesc')}</div>
+                    <div class="strength-v2" style="border-left-color:#bace9a;">
+                        <div class="st-title">🌟 ${t('noBlind')}</div>
+                        <div style="font-size:13px; color:#b6c0aa; padding:4px 0;">${t('noBlindDesc')}</div>
                     </div>
                 `;
             }
 
+            // ---- 优势 ----
             let strengthHtml = '';
             if (strengthItems.length > 0) {
+                const maxDisplay = 12;
+                const displayItems = strengthItems.slice(0, maxDisplay);
+                const remaining = strengthItems.length - maxDisplay;
                 strengthHtml = `
-                    <div class="strength" style="margin-top:8px;">
-                        <div class="st-title">${t('strengthTitle')}（${strengthItems.length} ${t('items')}）</div>
-                        ${strengthItems.slice(0, 8).map(it => {
-                            const dim = DIMENSIONS.find(d => d.id === it.dim);
-                            return `<div class="st-item">${dim ? dim.icon : ''} ${dim ? dim.label : ''}：${it.text}</div>`;
-                        }).join('')}
-                        ${strengthItems.length > 8 ? `<div class="st-item">... ${t('andMore')} ${strengthItems.length - 8} ${t('moreItems')}</div>` : ''}
+                    <div class="strength-v2">
+                        <div class="st-title">✅ ${t('strengthTitle')}（${strengthItems.length} ${t('items')}）</div>
+                        <div class="st-grid">
+                            ${displayItems.map(it => {
+                                const dim = DIMENSIONS.find(d => d.id === it.dim);
+                                let shortText = it.text.replace(/^.{0,2}？/, '').slice(0, 28);
+                                if (shortText.length < it.text.length - 2) shortText += '…';
+                                return `<span class="st-tag">${dim ? dim.icon : ''} ${shortText}</span>`;
+                            }).join('')}
+                            ${remaining > 0 ? `<span class="st-more">… ${t('andMore')} ${remaining} ${t('moreItems')}</span>` : ''}
+                        </div>
                     </div>
                 `;
             }
 
+            // ---- 建议 ----
             const sortedLayers = [...layerResults].sort((a, b) => a.pct - b.pct);
             const weakestLayer = sortedLayers[0];
 
-            // ---- 建议 ----
             let specificAdvice = '';
             if (blindItems.length > 0) {
                 const dimBlindCount = {};
@@ -2577,10 +2604,10 @@
                 const topDim = sortedBlindDims[0];
                 const topDimObj = DIMENSIONS.find(d => d.id === topDim);
                 specificAdvice = `
-                    <div class="advice-box">
-                        <div class="adv-title">${t('advicePriority')}</div>
+                    <div class="advice-card-v2" style="border-left-color:#b89a4a;">
+                        <div class="adv-title">🎯 ${t('advicePriority')}</div>
                         <div class="adv-item">${t('blindConcentrate')} <strong>${topDimObj ? topDimObj.icon + ' ' + topDimObj.label : '多个维度'}</strong>（${blindItems.length} ${t('blindSpots')}），${t('blindStart')}</div>
-                        <div class="adv-item" style="margin-top:4px;">${t('blindAction')}</div>
+                        <div class="adv-item">${t('blindAction')}</div>
                     </div>
                 `;
             }
@@ -2593,6 +2620,16 @@
             } else {
                 conclusion = t('conclusionImprove');
             }
+
+            const layerAdviceHtml = layerResults.map((r, index) => `
+                <div class="advice-step" style="border-left-color:${r.cls === 'pass' ? '#8aaa6a' : r.cls === 'warn' ? '#b89a4a' : '#b05a4a'};">
+                    <div class="adv-step-title">${index + 1}. ${r.label} · ${r.statusText}（${r.earned}/${r.total}）</div>
+                    <div class="adv-step-item">
+                        <span class="step-num">${index + 1}</span>
+                        <span class="step-content">${r.key === 'step1' ? t('adviceStep1') : r.key === 'step2' ? t('adviceStep2') : t('adviceStep3')}</span>
+                    </div>
+                </div>
+            `).join('');
 
             // ---- 构建报告 ----
             body.innerHTML = `
@@ -2633,22 +2670,18 @@
                 <div class="result-card">
                     <div class="card-title">${t('cardAdvice')}</div>
                     <div class="card-content">
-                        <div class="advice-box">
+                        <div class="advice-card-v2">
                             <div class="adv-title">${t('adviceOverall')}</div>
                             <div class="adv-item">${conclusion}</div>
                         </div>
                         ${specificAdvice}
 
-                        <div class="advice-box" style="margin-top:12px; border-left-color:#8aaa6a;">
-                            <div class="adv-title">${t('adviceLayer')}</div>
-                            ${layerResults.map(r => `
-                                <div class="adv-item" style="border-top:1px solid #1a1e1a; padding-top:8px; margin-top:6px;">
-                                    <strong>${r.label}</strong>（${r.statusText}，${r.earned}/${r.total}）：${r.key === 'step1' ? t('adviceStep1') : r.key === 'step2' ? t('adviceStep2') : t('adviceStep3')}
-                                </div>
-                            `).join('')}
+                        <div style="margin-top:12px;">
+                            <div style="font-weight:600; color:#aaba8a; font-size:14px; margin-bottom:8px;">${t('adviceLayer')}</div>
+                            ${layerAdviceHtml}
                         </div>
 
-                        <div class="advice-box" style="margin-top:12px; border-left-color:#bace9a;">
+                        <div class="advice-card-v2" style="margin-top:12px; border-left-color:#bace9a;">
                             <div class="adv-title">${t('adviceDaily')}</div>
                             <div class="adv-item">${t('daily1')}</div>
                             <div class="adv-item">${t('daily2')}</div>
@@ -2709,7 +2742,7 @@
 
             ctx.clearRect(0, 0, w, h);
 
-            // 网格 (5层)
+            // 网格
             const levels = 5;
             for (let lv = 1; lv <= levels; lv++) {
                 const r = (radius / levels) * lv;
@@ -2727,7 +2760,7 @@
                 ctx.stroke();
             }
 
-            // 轴线 + 标签
+            // 轴线+标签
             for (let i = 0; i < dims; i++) {
                 const angle = -Math.PI / 2 + i * angleStep;
                 ctx.beginPath();
@@ -2750,7 +2783,7 @@
                 ctx.fillText(label, labelX, labelY);
             }
 
-            // 数据填充
+            // 数据
             const dataPcts = dimResults.map(d => d.pct / 100);
             ctx.beginPath();
             for (let i = 0; i < dims; i++) {
@@ -2833,10 +2866,11 @@
         }
 
         // ================================================================
-        // 截图分享（修复雷达图丢失 + 二维码防变形）
+        // ⭐ 截图分享 — 带超时保护，防止卡死
         // ================================================================
         function copyImageDiagnosis() {
             const btn = document.getElementById('copyImageBtn');
+            if (btn.disabled) return;
             btn.disabled = true;
             btn.innerHTML = '<span class="icon">⏳</span> 生成截图中...';
 
@@ -2848,7 +2882,7 @@
                 return;
             }
 
-            // ---- 关键修复：将 Canvas 转为 img，确保截图捕获 ----
+            // 将 Canvas 转为 img
             const canvas = document.getElementById('radarCanvas');
             if (canvas) {
                 const img = document.createElement('img');
@@ -2859,6 +2893,7 @@
                 canvas.parentNode.replaceChild(img, canvas);
             }
 
+            // 构建临时容器
             const tempContainer = document.createElement('div');
             tempContainer.style.cssText = `
                 position: absolute;
@@ -2875,6 +2910,7 @@
                 z-index: 99999;
             `;
 
+            // 克隆各部分
             const brandClone = document.getElementById('brandArea').cloneNode(true);
             brandClone.style.marginBottom = '20px';
             brandClone.style.paddingBottom = '18px';
@@ -2889,12 +2925,12 @@
             reportClone.style.gap = '28px';
             reportClone.style.padding = '0';
 
-            // 二维码（防变形）
+            // 二维码
             const qrDiv = document.createElement('div');
             qrDiv.style.cssText =
                 'text-align: center; padding: 16px 0 10px 0; border-top: 1px solid #2a322a; margin-top: 12px;';
             qrDiv.innerHTML = `
-                <img src="QR.jpg" alt="扫码访问" style="display: block; margin: 0 auto; width: 110px; height: 110px; object-fit: contain; border-radius: 8px; border: 1px solid #3a4638; background: #fff; padding: 4px; box-sizing: border-box;">
+                <img src="QR.jpg" alt="扫码访问" style="display: block; margin: 0 auto; width: 110px; height: 110px; object-fit: contain; border-radius: 8px; border: 1px solid #3a4638; background: #fff; padding: 4px; box-sizing: border-box;" crossorigin="anonymous">
                 <div style="color: #7a8a6e; font-size: 13px; margin-top: 6px; letter-spacing: 1px;">📱 ${currentLang === 'zh' ? '扫码访问 · 杨晟琦文明公理系统' : 'Scan to visit · Yang Shengqi\'s Axiomatic System'}</div>
             `;
 
@@ -2914,23 +2950,29 @@
 
             document.body.appendChild(tempContainer);
 
-            requestAnimationFrame(() => {
-                html2canvas(tempContainer, {
-                    scale: 2,
-                    backgroundColor: '#141814',
-                    allowTaint: false,
-                    useCORS: true,
-                    logging: false,
-                    width: 820,
-                    height: tempContainer.scrollHeight,
-                    windowWidth: 820,
-                    windowHeight: tempContainer.scrollHeight,
-                }).then(canvas => {
+            // 强制回流
+            void tempContainer.offsetHeight;
+
+            // 截图带超时
+            const screenshotPromise = html2canvas(tempContainer, {
+                scale: 2,
+                backgroundColor: '#141814',
+                allowTaint: false,
+                useCORS: true,
+                logging: false,
+                width: 820,
+            });
+
+            const timeoutPromise = new Promise((_, reject) => {
+                setTimeout(() => reject(new Error('超时')), 20000);
+            });
+
+            Promise.race([screenshotPromise, timeoutPromise])
+                .then(canvas => {
                     document.body.removeChild(tempContainer);
                     canvas.toBlob(function(blob) {
                         if (!blob) {
-                            showToast(currentLang === 'zh' ? '❌ 截图生成失败，请重试。' : '❌ Screenshot failed.',
-                            true);
+                            showToast(currentLang === 'zh' ? '❌ 截图生成失败，请重试。' : '❌ Screenshot failed.', true);
                             btn.disabled = false;
                             btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') +
                                 ' <span class="badge">PNG</span>';
@@ -2957,15 +2999,14 @@
                                 ' <span class="badge">PNG</span>';
                         }
                     }, 'image/png');
-                }).catch(err => {
+                })
+                .catch(err => {
                     document.body.removeChild(tempContainer);
                     console.error(err);
-                    showToast(currentLang === 'zh' ? '❌ 截图失败，请重试。' : '❌ Screenshot failed.', true);
+                    showToast(currentLang === 'zh' ? '❌ 截图超时或失败，请重试。' : '❌ Screenshot timeout or failed.', true);
                     btn.disabled = false;
-                    btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') +
-                        ' <span class="badge">PNG</span>';
+                    btn.innerHTML = '<span class="icon">🖼️</span> ' + t('sharePngLabel') + ' <span class="badge">PNG</span>';
                 });
-            });
         }
 
         function downloadImage(canvas) {
