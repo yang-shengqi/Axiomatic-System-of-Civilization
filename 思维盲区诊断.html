@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>一个让人彻底“清醒”的思维模型 · 杨晟琦文明公理系统</title>
+    <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js">
@@ -580,6 +581,7 @@
             line-height: 1.9;
         }
 
+        /* ===== 六维度进度条 ===== */
         .dim-progress-wrap {
             display: flex;
             flex-direction: column;
@@ -625,6 +627,7 @@
             flex-shrink: 0;
         }
 
+        /* ===== 六维度进度卡片背景 ===== */
         .dim-progress-card {
             background: #1a201a;
             border: 1px solid #2a322a;
@@ -640,6 +643,7 @@
             margin-bottom: 10px;
         }
 
+        /* ===== 轻量化综合成熟度（带绿色UI标签） ===== */
         .level-light {
             text-align: center;
             padding: 8px 0 6px 0;
@@ -649,30 +653,30 @@
             background: #1a2a1a;
             border: 2px solid #4a7a4a;
             border-radius: 40px;
-            padding: 10px 28px 8px 28px;
-        }
-        .level-light .level-label {
-            font-size: 18px;
-            font-weight: 600;
-            color: #e2ead4;
-            display: block;
-            margin-bottom: 2px;
+            padding: 6px 28px;
+            margin-bottom: 10px;
         }
         .level-light .level-stars {
             font-size: 20px;
             letter-spacing: 2px;
             color: #bace9a;
-            display: block;
+        }
+        .level-light .level-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e2ead4;
+            margin-left: 6px;
         }
         .level-light .level-desc {
             font-size: 15px;
             color: #aaba8a;
             line-height: 1.8;
             max-width: 600px;
-            margin: 10px auto 0 auto;
+            margin: 6px auto 0 auto;
             padding: 0 8px;
         }
 
+        /* ===== 轻量化修正建议 ===== */
         .advice-light {
             display: flex;
             flex-direction: column;
@@ -1175,7 +1179,7 @@
                 padding: 0 4px;
             }
             .level-light .level-badge {
-                padding: 8px 18px 6px 18px;
+                padding: 4px 18px;
             }
             .advice-light .advice-main {
                 font-size: 14px;
@@ -1415,7 +1419,7 @@
 
     <script>
         // ================================================================
-        // 全部 JavaScript
+        // 38 道口语化、聊天化、第一人称题目
         // ================================================================
 
         const DIM_MAP = {
@@ -1432,116 +1436,45 @@
             step3: { label: '内化', sub: '心智更新', badge: 's3' }
         };
 
-        const OP_BEHAVIOR = [
-            { label: 'A', text: '我完全不会', score: 0 },
-            { label: 'B', text: '我不太会', score: 1 },
-            { label: 'C', text: '我有时候会', score: 2 },
-            { label: 'D', text: '我经常会', score: 3 },
-            { label: 'E', text: '我每次都会', score: 4 }
-        ];
-        const OP_ABILITY = [
-            { label: 'A', text: '我完全做不到', score: 0 },
-            { label: 'B', text: '我不太能做到', score: 1 },
-            { label: 'C', text: '我有时候能做到', score: 2 },
-            { label: 'D', text: '我基本能做到', score: 3 },
-            { label: 'E', text: '我完全能做到', score: 4 }
-        ];
-        const OP_FREQUENCY = [
-            { label: 'A', text: '从来没有', score: 0 },
-            { label: 'B', text: '很少', score: 1 },
-            { label: 'C', text: '有时候', score: 2 },
-            { label: 'D', text: '经常', score: 3 },
-            { label: 'E', text: '总是', score: 4 }
-        ];
-        const OP_WILL = [
-            { label: 'A', text: '我完全不想', score: 0 },
-            { label: 'B', text: '我不太想', score: 1 },
-            { label: 'C', text: '我有点想', score: 2 },
-            { label: 'D', text: '我很想', score: 3 },
-            { label: 'E', text: '我非常想', score: 4 }
-        ];
-        const OP_EMOTION = [
-            { label: 'A', text: '我完全不害怕', score: 0 },
-            { label: 'B', text: '我不太害怕', score: 1 },
-            { label: 'C', text: '我有点害怕', score: 2 },
-            { label: 'D', text: '我比较害怕', score: 3 },
-            { label: 'E', text: '我非常害怕', score: 4 }
-        ];
-        const OP_WORRY = [
-            { label: 'A', text: '我完全不担心', score: 0 },
-            { label: 'B', text: '我不太担心', score: 1 },
-            { label: 'C', text: '我有点担心', score: 2 },
-            { label: 'D', text: '我比较担心', score: 3 },
-            { label: 'E', text: '我非常担心', score: 4 }
-        ];
-        const OP_WEIGH = [
-            { label: 'A', text: '我完全没有权衡过', score: 0 },
-            { label: 'B', text: '我很少权衡', score: 1 },
-            { label: 'C', text: '我有时候会权衡', score: 2 },
-            { label: 'D', text: '我经常会权衡', score: 3 },
-            { label: 'E', text: '我每次都会权衡', score: 4 }
-        ];
-        const OP_PREFERENCE = [
-            { label: 'A', text: '我更相信说话的人（权威）', score: 0 },
-            { label: 'B', text: '我略微倾向权威', score: 1 },
-            { label: 'C', text: '我两者都会看', score: 2 },
-            { label: 'D', text: '我略微倾向内容本身', score: 3 },
-            { label: 'E', text: '我只相信内容本身', score: 4 }
-        ];
-        const OP_COGNITION = [
-            { label: 'A', text: '我从来没想过', score: 0 },
-            { label: 'B', text: '我不太会想', score: 1 },
-            { label: 'C', text: '我有时候会想', score: 2 },
-            { label: 'D', text: '我经常会想', score: 3 },
-            { label: 'E', text: '我每次都会想', score: 4 }
-        ];
-        const OP_CLARITY = [
-            { label: 'A', text: '我从来没想过这个问题', score: 0 },
-            { label: 'B', text: '我大致想过，但没明确底线', score: 1 },
-            { label: 'C', text: '我有些模糊的原则', score: 2 },
-            { label: 'D', text: '我有明确的底线', score: 3 },
-            { label: 'E', text: '我不仅有明确底线，还提前计划过', score: 4 }
-        ];
-
         const QUESTIONS_RAW = [
-            { dim: 'source', layer: 'step1', text: '面对一个信息，你会主动去查它的原始出处吗？', opts: OP_BEHAVIOR },
-            { dim: 'source', layer: 'step1', text: '你判断一个信息可不可信，是更相信说话的人，还是更相信内容本身？', opts: OP_PREFERENCE },
-            { dim: 'source', layer: 'step2', text: '你会因为“这个信息刚好符合你的想法”就不去怀疑它的来源吗？', opts: OP_BEHAVIOR },
-            { dim: 'source', layer: 'step2', text: '如果同一个信息来自你平时不太喜欢的媒体，你会不会就不太信了？', opts: OP_BEHAVIOR },
-            { dim: 'source', layer: 'step3', text: '你会不会主动建立一套“我觉得可信的来源”清单，然后经常更新？', opts: OP_BEHAVIOR },
-            { dim: 'source', layer: 'step3', text: '你会主动去找一些跟你观点不一样的声音，来检验自己的信息来源够不够全面吗？', opts: OP_BEHAVIOR },
-            { dim: 'facts', layer: 'step1', text: '你能分清楚“客观事实”和“自己的感觉”之间的区别吗？', opts: OP_ABILITY },
-            { dim: 'facts', layer: 'step1', text: '看到一组数据，你会去想它的采集方法或者样本够不够有代表性吗？', opts: OP_BEHAVIOR },
-            { dim: 'facts', layer: 'step2', text: '你是不是经常先有了一个想法，然后再去找证据来支持自己？', opts: OP_FREQUENCY },
-            { dim: 'facts', layer: 'step2', text: '你会不会有意忽略那些跟你观点冲突的事实？', opts: OP_BEHAVIOR },
-            { dim: 'facts', layer: 'step3', text: '你会刻意找一些反例来检验自己的结论吗？', opts: OP_BEHAVIOR },
-            { dim: 'facts', layer: 'step3', text: '你打算怎么养成“先看证据再下结论”的习惯？', opts: OP_WILL },
-            { dim: 'logic', layer: 'step1', text: '你的结论要成立，得靠哪些前提假设？要是这些假设不成立，你的结论还站得住脚吗？', opts: OP_COGNITION },
-            { dim: 'logic', layer: 'step1', text: '你会试着从完全相反的角度去推一遍，看看能不能得出同样合理的逻辑吗？', opts: OP_BEHAVIOR },
-            { dim: 'logic', layer: 'step2', text: '当“大家都这么说”的时候，你会不会就不太想自己去检验逻辑了？', opts: OP_BEHAVIOR },
-            { dim: 'logic', layer: 'step2', text: '你会不会因为一个逻辑听起来“让人舒服”就放松了对它的挑剔？', opts: OP_BEHAVIOR },
-            { dim: 'logic', layer: 'step3', text: '你愿意定期挑战自己熟悉的论证方式，换个全新的角度去重新想一遍吗？', opts: OP_WILL },
-            { dim: 'logic', layer: 'step3', text: '你会刻意去学一些常见的逻辑错误，然后在生活中把它们认出来吗？', opts: OP_BEHAVIOR },
-            { dim: 'interests', layer: 'step1', text: '你会有意识地想“谁的视角被忽略了”或者“谁在背后推这个观点”吗？', opts: OP_BEHAVIOR },
-            { dim: 'interests', layer: 'step1', text: '你能看清楚，那些跟你立场相反的人，他们能从这件事里得到什么吗？', opts: OP_ABILITY },
-            { dim: 'interests', layer: 'step2', text: '你会在多大程度上承认自己错了？', opts: OP_BEHAVIOR },
-            { dim: 'interests', layer: 'step2', text: '你害怕事情本身的风险吗？', opts: OP_EMOTION },
-            { dim: 'interests', layer: 'step2', text: '你的判断在多大程度上是为了维护你想成为的那种人的形象？', opts: OP_COGNITION },
-            { dim: 'interests', layer: 'step3', text: '当利益和真相撞在一起的时候，你的选择是什么？', opts: OP_CLARITY },
-            { dim: 'interests', layer: 'step3', text: '你会主动反思自己有没有因为利益而扭曲了判断吗？', opts: OP_BEHAVIOR },
-            { dim: 'emotion', layer: 'step1', text: '在做重要判断的时候，你的情绪（比如生气、兴奋、害怕）影响大不大？', opts: OP_COGNITION },
-            { dim: 'emotion', layer: 'step1', text: '你能分清楚“这个信息让我不舒服”和“这个信息是假的”之间的差别吗？', opts: OP_ABILITY },
-            { dim: 'emotion', layer: 'step2', text: '你害怕“事情搞砸了”吗？', opts: OP_EMOTION },
-            { dim: 'emotion', layer: 'step2', text: '你害怕“承认自己看走了眼”吗？', opts: OP_EMOTION },
-            { dim: 'emotion', layer: 'step3', text: '情绪上头的时候，你会主动停下来冷静一下再做判断吗？', opts: OP_BEHAVIOR },
-            { dim: 'emotion', layer: 'step3', text: '你愿意记下自己的情绪触发点，提前想好怎么应对吗？', opts: OP_WILL },
-            { dim: 'cost', layer: 'step1', text: '做决定之前，你会不会去想“最坏能坏到哪一步”和它发生的概率？', opts: OP_BEHAVIOR },
-            { dim: 'cost', layer: 'step1', text: '你会同时把“相信”和“不相信”两种选择的后果都摆出来比一比吗？', opts: OP_WEIGH },
-            { dim: 'cost', layer: 'step2', text: '你害怕“做出错误选择”吗？', opts: OP_EMOTION },
-            { dim: 'cost', layer: 'step2', text: '你害怕“承认自己做出了错误选择”吗？', opts: OP_EMOTION },
-            { dim: 'cost', layer: 'step2', text: '如果暂时不判断、保持中立，你会担心错过什么吗？', opts: OP_WORRY },
-            { dim: 'cost', layer: 'step3', text: '你愿意为了看清真相，去承受“不跟着大家走”带来的不确定感吗？', opts: OP_WILL },
-            { dim: 'cost', layer: 'step3', text: '你会搭一个简单的决策框架，帮自己在下次做判断时系统评估得失吗？', opts: OP_BEHAVIOR }
+            { dim: 'source', layer: 'step1', text: '面对一个信息，你会主动去查它的原始出处吗？', opts: [{ label: 'A', text: '我完全不会去查，信就信了', score: 0 }, { label: 'B', text: '我一般不太会去查，除非这个信息让我觉得可疑', score: 1 }, { label: 'C', text: '我有时候会去查一下，但也不是每次都查', score: 2 }, { label: 'D', text: '我经常会去查，想知道是不是真的', score: 3 }, { label: 'E', text: '我每次都会去查，不查我不放心', score: 4 }] },
+            { dim: 'source', layer: 'step1', text: '你判断一个信息可不可信，是更相信说话的人，还是更相信内容本身？', opts: [{ label: 'A', text: '我更相信说话的人，权威说了我就信', score: 0 }, { label: 'B', text: '我有点倾向于看人，但也会看内容', score: 1 }, { label: 'C', text: '我两边都会看，但说不上更信哪个', score: 2 }, { label: 'D', text: '我更看重内容本身，是谁说的没那么重要', score: 3 }, { label: 'E', text: '我只相信内容本身，不管是谁说的', score: 4 }] },
+            { dim: 'source', layer: 'step2', text: '你会因为“这个信息刚好符合你的想法”就不去怀疑它的来源吗？', opts: [{ label: 'A', text: '我经常这样，符合我心意的我就信了', score: 0 }, { label: 'B', text: '我有时候会，但也会提醒自己要保持怀疑', score: 1 }, { label: 'C', text: '我不太会这样，还是会保持一点怀疑', score: 2 }, { label: 'D', text: '我基本不会，我会刻意反着去怀疑', score: 3 }, { label: 'E', text: '我完全不会，越符合我心意的我越要查清楚', score: 4 }] },
+            { dim: 'source', layer: 'step2', text: '如果同一个信息来自你平时不太喜欢的媒体，你会不会就不太信了？', opts: [{ label: 'A', text: '我会，看到是这个媒体我就不太信了', score: 0 }, { label: 'B', text: '我可能有点怀疑，但不会完全否定', score: 1 }, { label: 'C', text: '我不太会因为媒体而改变判断，除非有前科', score: 2 }, { label: 'D', text: '我基本不会，我会看内容本身来定', score: 3 }, { label: 'E', text: '我完全不会，媒体是谁我不太在意', score: 4 }] },
+            { dim: 'source', layer: 'step3', text: '你会不会主动建立一套“我觉得可信的来源”清单，然后经常更新？', opts: [{ label: 'A', text: '我不会，我觉得没这个必要', score: 0 }, { label: 'B', text: '我偶尔会想想，但不会真的列出来', score: 1 }, { label: 'C', text: '我大概心里有数，但不会正式整理', score: 2 }, { label: 'D', text: '我会在脑子里有一份清单，也会不定期更新', score: 3 }, { label: 'E', text: '我会很认真地建立一份清单，并且定期更新', score: 4 }] },
+            { dim: 'source', layer: 'step3', text: '你会主动去找一些跟你观点不一样的声音，来检验自己的信息来源够不够全面吗？', opts: [{ label: 'A', text: '我不会，我只想看我认同的观点', score: 0 }, { label: 'B', text: '我很少这样，除非有人提到我才去看', score: 1 }, { label: 'C', text: '我有时候会，想看看对方说什么', score: 2 }, { label: 'D', text: '我经常会，我觉得这样才能全面', score: 3 }, { label: 'E', text: '我每次都会，我觉得这是必须的', score: 4 }] },
+            { dim: 'facts', layer: 'step1', text: '你能分清楚“客观事实”和“自己的感觉”之间的区别吗？', opts: [{ label: 'A', text: '我完全分不清，我觉得感觉就是事实', score: 0 }, { label: 'B', text: '我有时候能分清楚，但容易被感觉带偏', score: 1 }, { label: 'C', text: '我大概能分清楚，但偶尔也会混淆', score: 2 }, { label: 'D', text: '我大部分能分清，知道什么是事实什么是感觉', score: 3 }, { label: 'E', text: '我每次都能分清楚，我很在意这个区别', score: 4 }] },
+            { dim: 'facts', layer: 'step1', text: '看到一组数据，你会去想它的采集方法或者样本够不够有代表性吗？', opts: [{ label: 'A', text: '我不会想那么多，数据就是数据', score: 0 }, { label: 'B', text: '我很少会想这些，除非数据看起来很离谱', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会深究', score: 2 }, { label: 'D', text: '我经常会思考这些，数据的来源很重要', score: 3 }, { label: 'E', text: '我每次都会先问：这数据是怎么来的？', score: 4 }] },
+            { dim: 'facts', layer: 'step2', text: '你是不是经常先有了一个想法，然后再去找证据来支持自己？', opts: [{ label: 'A', text: '我经常这样，我觉得先有想法很正常', score: 0 }, { label: 'B', text: '我有时候会这样，但也不是每次都这样', score: 1 }, { label: 'C', text: '我不太会这样，我会先看证据再下结论', score: 2 }, { label: 'D', text: '我很少这样，我会刻意提醒自己先看证据', score: 3 }, { label: 'E', text: '我完全不会这样，证据永远走在结论前面', score: 4 }] },
+            { dim: 'facts', layer: 'step2', text: '你会不会有意忽略那些跟你观点冲突的事实？', opts: [{ label: 'A', text: '我会，看到冲突的事实我就不舒服，会下意识忽略', score: 0 }, { label: 'B', text: '我有时候会，但事后可能会后悔', score: 1 }, { label: 'C', text: '我不太会，但有时候也会不自觉地回避', score: 2 }, { label: 'D', text: '我基本不会，我会正视冲突的事实', score: 3 }, { label: 'E', text: '我完全不会，我反而会特别关注那些冲突的事实', score: 4 }] },
+            { dim: 'facts', layer: 'step3', text: '你会刻意找一些反例来检验自己的结论吗？', opts: [{ label: 'A', text: '我不会，我觉得我的结论已经很对了', score: 0 }, { label: 'B', text: '我很少这样做，除非有人提醒我', score: 1 }, { label: 'C', text: '我有时候会，想看看自己会不会被推翻', score: 2 }, { label: 'D', text: '我经常会，我觉得这样才能确保结论可靠', score: 3 }, { label: 'E', text: '我每次都会，找不到反例我才放心', score: 4 }] },
+            { dim: 'facts', layer: 'step3', text: '你打算怎么养成“先看证据再下结论”的习惯？', opts: [{ label: 'A', text: '我没想过要养成这种习惯，我觉得现在这样挺好的', score: 0 }, { label: 'B', text: '我有点想改，但不知道从哪开始', score: 1 }, { label: 'C', text: '我可能会试试看，但不确定能不能坚持', score: 2 }, { label: 'D', text: '我正在努力培养这个习惯，已经有一些进步了', score: 3 }, { label: 'E', text: '我已经有了这个习惯，而且我觉得对我帮助很大', score: 4 }] },
+            { dim: 'logic', layer: 'step1', text: '你的结论要成立，得靠哪些前提假设？要是这些假设不成立，你的结论还站得住脚吗？', opts: [{ label: 'A', text: '我从来没想过这个问题，结论就是结论', score: 0 }, { label: 'B', text: '我很少会去想这些假设，我觉得不影响', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会太深入', score: 2 }, { label: 'D', text: '我经常会想，而且我会去验证这些假设', score: 3 }, { label: 'E', text: '我每次都会先想清楚前提假设，不然不敢下结论', score: 4 }] },
+            { dim: 'logic', layer: 'step1', text: '你会试着从完全相反的角度去推一遍，看看能不能得出同样合理的逻辑吗？', opts: [{ label: 'A', text: '我不会，我觉得自己的角度就够了', score: 0 }, { label: 'B', text: '我很少这样，觉得有点浪费时间', score: 1 }, { label: 'C', text: '我有时候会试试，但推不下去就放弃了', score: 2 }, { label: 'D', text: '我经常会这样，我觉得这样才能全面', score: 3 }, { label: 'E', text: '我每次都会，我习惯从两边看问题', score: 4 }] },
+            { dim: 'logic', layer: 'step2', text: '当“大家都这么说”的时候，你会不会就不太想自己去检验逻辑了？', opts: [{ label: 'A', text: '我会，大家都这么说，应该不会错', score: 0 }, { label: 'B', text: '我有时候会，觉得随大流比较省心', score: 1 }, { label: 'C', text: '我不太会，还是会自己想一想', score: 2 }, { label: 'D', text: '我基本不会，我还是想自己过一遍逻辑', score: 3 }, { label: 'E', text: '我完全不会，大家都说的我更要自己验证', score: 4 }] },
+            { dim: 'logic', layer: 'step2', text: '你会不会因为一个逻辑听起来“让人舒服”就放松了对它的挑剔？', opts: [{ label: 'A', text: '我会，舒服的逻辑我倾向于相信', score: 0 }, { label: 'B', text: '我有时候会，但也会提醒自己不能太放松', score: 1 }, { label: 'C', text: '我不太会，舒服不一定就靠谱', score: 2 }, { label: 'D', text: '我基本不会，我会刻意警惕舒服的逻辑', score: 3 }, { label: 'E', text: '我完全不会，越舒服的逻辑我越要挑刺', score: 4 }] },
+            { dim: 'logic', layer: 'step3', text: '你愿意定期挑战自己熟悉的论证方式，换个全新的角度去重新想一遍吗？', opts: [{ label: 'A', text: '我不愿意，我觉得我现在的思考方式就够了', score: 0 }, { label: 'B', text: '我有点不愿意，感觉太费劲了', score: 1 }, { label: 'C', text: '我可能愿意试试，但不会经常做', score: 2 }, { label: 'D', text: '我挺愿意的，我觉得这能帮我突破', score: 3 }, { label: 'E', text: '我非常愿意，我经常这样做，我觉得特别有用', score: 4 }] },
+            { dim: 'logic', layer: 'step3', text: '你会刻意去学一些常见的逻辑错误，然后在生活中把它们认出来吗？', opts: [{ label: 'A', text: '我不会，我觉得学那些没什么用', score: 0 }, { label: 'B', text: '我可能偶尔会看一下，但不会特意记', score: 1 }, { label: 'C', text: '我有时候会关注，但不会认真去学', score: 2 }, { label: 'D', text: '我经常学，而且能在生活中认出不少', score: 3 }, { label: 'E', text: '我一直在学，而且已经成了我的习惯', score: 4 }] },
+            { dim: 'interests', layer: 'step1', text: '你会有意识地想“谁的视角被忽略了”或者“谁在背后推这个观点”吗？', opts: [{ label: 'A', text: '我不会想这些，我觉得那不重要', score: 0 }, { label: 'B', text: '我很少想，除非有人提醒我', score: 1 }, { label: 'C', text: '我有时候会想一下，但不会深入', score: 2 }, { label: 'D', text: '我经常会想，我觉得这很重要', score: 3 }, { label: 'E', text: '我每次都会想，这是我的习惯', score: 4 }] },
+            { dim: 'interests', layer: 'step1', text: '你能看清楚，那些跟你立场相反的人，他们能从这件事里得到什么吗？', opts: [{ label: 'A', text: '我看不出来，我不知道他们能得到什么', score: 0 }, { label: 'B', text: '我偶尔能看出来一点，但不太确定', score: 1 }, { label: 'C', text: '我有时候能看清楚，但需要仔细想', score: 2 }, { label: 'D', text: '我大部分能看清楚，我知道他们的动机', score: 3 }, { label: 'E', text: '我每次都能看清楚，我特别擅长这个', score: 4 }] },
+            { dim: 'interests', layer: 'step2', text: '你会在多大程度上承认自己错了？', opts: [{ label: 'A', text: '我完全不会承认，我没错', score: 0 }, { label: 'B', text: '我有时候会，但很不情愿', score: 1 }, { label: 'C', text: '我基本会承认，但需要证据确凿', score: 2 }, { label: 'D', text: '我经常会承认，我觉得错了就错了', score: 3 }, { label: 'E', text: '我每次都会立刻承认，我觉得没什么丢人的', score: 4 }] },
+            { dim: 'interests', layer: 'step2', text: '你害怕事情本身的风险吗？', opts: [{ label: 'A', text: '我完全不害怕，我胆子大', score: 0 }, { label: 'B', text: '我不太害怕，我觉得自己能应对', score: 1 }, { label: 'C', text: '我有点害怕，但还能接受', score: 2 }, { label: 'D', text: '我比较害怕，有时候会睡不着', score: 3 }, { label: 'E', text: '我非常害怕，风险让我很焦虑', score: 4 }] },
+            { dim: 'interests', layer: 'step2', text: '你的判断在多大程度上是为了维护你想成为的那种人的形象？', opts: [{ label: 'A', text: '我不会为了维护形象去改变判断，真实最重要', score: 0 }, { label: 'B', text: '我有时候会，但不会太刻意', score: 1 }, { label: 'C', text: '我会在意，但我不太清楚影响有多大', score: 2 }, { label: 'D', text: '我会，尤其是在一些特定场合', score: 3 }, { label: 'E', text: '我几乎每次都这样，我很清楚自己想成为什么样的人', score: 4 }] },
+            { dim: 'interests', layer: 'step3', text: '当利益和真相撞在一起的时候，你的选择是什么？', opts: [{ label: 'A', text: '我从来没想过这个问题，到时候再说', score: 0 }, { label: 'B', text: '我大致想过，但没什么明确的底线', score: 1 }, { label: 'C', text: '我大概有一些模糊的原则，但不太清晰', score: 2 }, { label: 'D', text: '我有明确的底线，我知道自己会怎么选', score: 3 }, { label: 'E', text: '我不仅清楚自己的底线，还为此提前做过计划', score: 4 }] },
+            { dim: 'interests', layer: 'step3', text: '你会主动反思自己有没有因为利益而扭曲了判断吗？', opts: [{ label: 'A', text: '我不会，我相信自己不会被利益影响', score: 0 }, { label: 'B', text: '我很少反思，觉得自己应该没问题', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会刻意去深挖', score: 2 }, { label: 'D', text: '我经常会反思，我觉得人人都会被影响', score: 3 }, { label: 'E', text: '我每次都会反思，我特别警惕这一点', score: 4 }] },
+            { dim: 'emotion', layer: 'step1', text: '在做重要判断的时候，你的情绪（比如生气、兴奋、害怕）影响大不大？', opts: [{ label: 'A', text: '我完全不会注意到情绪的影响，我是理性的人', score: 0 }, { label: 'B', text: '我好像不太会留意到情绪在起作用', score: 1 }, { label: 'C', text: '我有时候能感觉到情绪在影响我', score: 2 }, { label: 'D', text: '我能清楚地感觉到情绪在影响我的判断', score: 3 }, { label: 'E', text: '情绪几乎每一次都在影响我，我都知道', score: 4 }] },
+            { dim: 'emotion', layer: 'step1', text: '你能分清楚“这个信息让我不舒服”和“这个信息是假的”之间的差别吗？', opts: [{ label: 'A', text: '我完全分不清楚，不舒服就是假的', score: 0 }, { label: 'B', text: '我有时候分不清，情绪容易干扰我', score: 1 }, { label: 'C', text: '我大概能分清楚，但偶尔也会混淆', score: 2 }, { label: 'D', text: '我大部分能分清，知道这两者的区别', score: 3 }, { label: 'E', text: '我每次都能分清楚，我特别在意这个区别', score: 4 }] },
+            { dim: 'emotion', layer: 'step2', text: '你害怕“事情搞砸了”吗？', opts: [{ label: 'A', text: '我完全不害怕，反正都能解决', score: 0 }, { label: 'B', text: '我不太害怕，我觉得自己扛得住', score: 1 }, { label: 'C', text: '我有点害怕，但还能保持冷静', score: 2 }, { label: 'D', text: '我比较害怕，会让我很焦虑', score: 3 }, { label: 'E', text: '我非常害怕，我经常担心事情会搞砸', score: 4 }] },
+            { dim: 'emotion', layer: 'step2', text: '你害怕“承认自己看走了眼”吗？', opts: [{ label: 'A', text: '我完全不害怕，错了就承认呗', score: 0 }, { label: 'B', text: '我不太害怕，我觉得这很正常', score: 1 }, { label: 'C', text: '我有点害怕，但也能接受', score: 2 }, { label: 'D', text: '我比较害怕，会觉得丢面子', score: 3 }, { label: 'E', text: '我非常害怕，我宁可别人说我固执也不愿意承认自己错了', score: 4 }] },
+            { dim: 'emotion', layer: 'step3', text: '情绪上头的时候，你会主动停下来冷静一下再做判断吗？', opts: [{ label: 'A', text: '我不会，我就是想马上做决定', score: 0 }, { label: 'B', text: '我很少会停下来，情绪来了就来了', score: 1 }, { label: 'C', text: '我有时候会停一下，但不太管用', score: 2 }, { label: 'D', text: '我经常会停下，让自己先冷静冷静', score: 3 }, { label: 'E', text: '我每次都会停下来，冷静后再决定', score: 4 }] },
+            { dim: 'emotion', layer: 'step3', text: '你愿意记下自己的情绪触发点，提前想好怎么应对吗？', opts: [{ label: 'A', text: '我不愿意，我觉得这没什么用', score: 0 }, { label: 'B', text: '我有点不愿意，感觉太麻烦了', score: 1 }, { label: 'C', text: '我可能会试试，但不知道能不能坚持', score: 2 }, { label: 'D', text: '我挺愿意的，我正在尝试这样做', score: 3 }, { label: 'E', text: '我非常愿意，我已经在做了，而且很有帮助', score: 4 }] },
+            { dim: 'cost', layer: 'step1', text: '做决定之前，你会不会去想“最坏能坏到哪一步”和它发生的概率？', opts: [{ label: 'A', text: '我完全不会想，想那么多干嘛', score: 0 }, { label: 'B', text: '我不太会想，感觉会越想越怕', score: 1 }, { label: 'C', text: '我有时候会想一下，但不会很仔细', score: 2 }, { label: 'D', text: '我经常会想，我觉得要考虑最坏情况', score: 3 }, { label: 'E', text: '我每次都会想，我会仔细计算概率', score: 4 }] },
+            { dim: 'cost', layer: 'step1', text: '你会同时把“相信”和“不相信”两种选择的后果都摆出来比一比吗？', opts: [{ label: 'A', text: '我完全不会，相信就相信了', score: 0 }, { label: 'B', text: '我很少权衡，觉得太累了', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会并列比较', score: 2 }, { label: 'D', text: '我经常会比一比，这样更清楚', score: 3 }, { label: 'E', text: '我每次都会仔细对比，这是我的决策习惯', score: 4 }] },
+            { dim: 'cost', layer: 'step2', text: '你害怕“做出错误选择”吗？', opts: [{ label: 'A', text: '我完全不害怕，选错了就改', score: 0 }, { label: 'B', text: '我不太害怕，我觉得没有完美的选择', score: 1 }, { label: 'C', text: '我有点害怕，但也不会太纠结', score: 2 }, { label: 'D', text: '我比较害怕，我会反复想会不会选错', score: 3 }, { label: 'E', text: '我非常害怕，我经常因为怕选错而犹豫不决', score: 4 }] },
+            { dim: 'cost', layer: 'step2', text: '你害怕“承认自己做出了错误选择”吗？', opts: [{ label: 'A', text: '我完全不害怕，错了就大方承认', score: 0 }, { label: 'B', text: '我不太害怕，我觉得承认错误没什么', score: 1 }, { label: 'C', text: '我有点害怕，会有点不好意思', score: 2 }, { label: 'D', text: '我比较害怕，感觉承认错了很丢脸', score: 3 }, { label: 'E', text: '我非常害怕，我宁可死扛也不愿承认自己选错了', score: 4 }] },
+            { dim: 'cost', layer: 'step2', text: '如果暂时不判断、保持中立，你会担心错过什么吗？', opts: [{ label: 'A', text: '我完全不担心，保持中立挺好的', score: 0 }, { label: 'B', text: '我不太担心，我觉得等等看也没关系', score: 1 }, { label: 'C', text: '我有点担心，怕错过了最佳时机', score: 2 }, { label: 'D', text: '我比较担心，我不太喜欢悬而未决', score: 3 }, { label: 'E', text: '我非常担心，我恨不得马上就做决定', score: 4 }] },
+            { dim: 'cost', layer: 'step3', text: '你愿意为了看清真相，去承受“不跟着大家走”带来的不确定感吗？', opts: [{ label: 'A', text: '我不愿意，不确定感太难受了', score: 0 }, { label: 'B', text: '我不太愿意，我觉得跟着大家更安全', score: 1 }, { label: 'C', text: '我可能会愿意，但要看情况', score: 2 }, { label: 'D', text: '我挺愿意的，真相比舒服更重要', score: 3 }, { label: 'E', text: '我非常愿意，我不怕不确定，我怕看不清真相', score: 4 }] },
+            { dim: 'cost', layer: 'step3', text: '你会搭一个简单的决策框架，帮自己在下次做判断时系统评估得失吗？', opts: [{ label: 'A', text: '我不会，我觉得没必要', score: 0 }, { label: 'B', text: '我可能想过，但没真的去做', score: 1 }, { label: 'C', text: '我有时候会试着弄一个，但不太系统', score: 2 }, { label: 'D', text: '我正在建立自己的决策框架，已经有一些了', score: 3 }, { label: 'E', text: '我已经有了很完善的决策框架，一直在用', score: 4 }] }
         ];
 
         // ================================================================
@@ -1850,7 +1783,7 @@
         }
 
         // ================================================================
-        // 生成报告（含二维码）
+        // 生成报告
         // ================================================================
         function generateReport(saveToHistory = true) {
             const total = TOTAL;
@@ -1879,15 +1812,15 @@
 
             let level, levelLabel, levelClass;
             if (totalPct >= 80) { level = 5;
-                levelLabel = '清醒的思考者';
+                levelLabel = '您属于清醒的思考者';
                 levelClass = 'l5'; } else if (totalPct >= 60) { level = 4;
-                levelLabel = '独立的思考者';
+                levelLabel = '您属于独立的思考者';
                 levelClass = 'l4'; } else if (totalPct >= 40) { level = 3;
-                levelLabel = '探索中的思考者';
+                levelLabel = '您属于探索中的思考者';
                 levelClass = 'l3'; } else if (totalPct >= 20) { level = 2;
-                levelLabel = '被引导的思考者';
+                levelLabel = '您属于被引导的思考者';
                 levelClass = 'l2'; } else { level = 1;
-                levelLabel = '被动的接收者';
+                levelLabel = '您属于被动的接收者';
                 levelClass = 'l1'; }
 
             const dimResults = Object.keys(DIM_MAP).map(dimId => {
@@ -1919,6 +1852,7 @@
 
             const body = document.getElementById('reportBody');
 
+            // 三层能力诊断
             const layerProgressHtml = `
                 <div class="layer-progress">
                     ${layerResults.map((r, i) => `
@@ -1934,6 +1868,7 @@
                 </div>
             `;
 
+            // 六维度细分进度（带背景卡片）
             const dimProgressHtml = `
                 <div class="dim-progress-card">
                     <div class="card-title">📊 六维度细分进度</div>
@@ -1952,13 +1887,14 @@
                 </div>
             `;
 
+            // 轻量化综合成熟度（带绿色UI标签）—— 外面套上 dim-progress-card
             const stars = '⭐'.repeat(level);
             const levelHtml = `
                 <div class="dim-progress-card">
                     <div class="level-light">
                         <div class="level-badge">
-                            <span class="level-label">${levelLabel}</span>
                             <span class="level-stars">${stars}</span>
+                            <span class="level-label">${levelLabel}</span>
                         </div>
                         <div class="level-desc">
                             你具备基础的批判性思维意识，但深度和系统性不足。你有时候会怀疑信息，但缺乏一套完整的检验框架，容易被表面的逻辑带着走。
@@ -1967,6 +1903,7 @@
                 </div>
             `;
 
+            // 轻量化修正建议 —— 外面套上 dim-progress-card
             let adviceText = '';
             const weakestLayer = layerResults.sort((a, b) => a.pct - b.pct)[0];
             if (level >= 4) {
@@ -1993,7 +1930,8 @@
             `;
 
             const radarHtml = `<div class="radar-container"><canvas id="radarCanvas" width="400" height="400"></canvas></div>`;
-            const brandFooter = `<div class="report-footer-brand" id="reportFooterBrand">思维盲区诊断模型 · 杨晟琦文明公理系统</div>`;
+
+            const brandFooter = `<div class="report-footer-brand">思维盲区诊断模型· 杨晟琦文明公理系统 </div>`;
 
             body.innerHTML = `
                 <div class="result-card">
@@ -2010,7 +1948,6 @@
                 ${brandFooter}
             `;
 
-            // 绘制雷达图
             requestAnimationFrame(() => {
                 const canvas = document.getElementById('radarCanvas');
                 if (canvas) {
@@ -2022,43 +1959,6 @@
                     }, 100);
                 }
             });
-
-            // ---- 延迟生成二维码（确保 DOM 已渲染） ----
-            setTimeout(() => {
-                const brandEl = document.getElementById('reportFooterBrand');
-                if (brandEl) {
-                    const qrWrapper = document.createElement('div');
-                    qrWrapper.style.cssText = 'text-align:center; margin-bottom:12px;';
-
-                    const qrContainer = document.createElement('div');
-                    qrContainer.style.cssText = 'display:inline-block; background:#fff; padding:6px; border-radius:8px;';
-                    qrContainer.id = 'qrCodeInReport';
-                    qrWrapper.appendChild(qrContainer);
-
-                    brandEl.parentNode.insertBefore(qrWrapper, brandEl);
-
-                    if (typeof QRCode !== 'undefined') {
-                        try {
-                            new QRCode(qrContainer, {
-                                text: 'https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/思维盲区诊断.html',
-                                width: 90,
-                                height: 90,
-                                colorDark: '#0b0e0b',
-                                colorLight: '#ffffff',
-                                correctLevel: QRCode.CorrectLevel.H
-                            });
-                        } catch (e) {
-                            qrContainer.textContent = '扫码访问';
-                            qrContainer.style.cssText +=
-                                'display:flex;align-items:center;justify-content:center;font-size:14px;color:#0b0e0b;';
-                        }
-                    } else {
-                        qrContainer.textContent = '扫码访问';
-                        qrContainer.style.cssText +=
-                            'display:flex;align-items:center;justify-content:center;font-size:14px;color:#0b0e0b;';
-                    }
-                }
-            }, 300);
 
             document.getElementById('resultBox').classList.add('show');
             document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -2167,7 +2067,7 @@
         }
 
         // ================================================================
-        // 导出 PNG（二维码也使用新地址）
+        // 导出 PNG（二维码修复 + 新地址）
         // ================================================================
         function exportPngReport() {
             const btn = document.getElementById('copyImageBtn');
@@ -2217,12 +2117,11 @@
                 cloneCanvas.parentNode.replaceChild(img, cloneCanvas);
             }
 
-            // 二维码
             const qrContainer = document.createElement('div');
             qrContainer.style.cssText =
-                'text-align:center; margin-top:20px; padding-top:16px; border-top:1px solid #2a322a;';
+                'text-align:center; margin-top:20px; padding-top:16px; border-top:1px solid #2a322a; display:flex; flex-direction:column; align-items:center;';
             const qrInner = document.createElement('div');
-            qrInner.style.cssText = 'display:inline-block; background:#fff; padding:6px; border-radius:8px;';
+            qrInner.style.cssText = 'display:inline-block; background:#fff; padding:6px; border-radius:8px; width:102px; height:102px;';
             qrInner.id = 'qrTemp';
             qrContainer.appendChild(qrInner);
 
@@ -2241,23 +2140,32 @@
 
             document.body.appendChild(tempContainer);
 
-            const qrTempDiv = document.getElementById('qrTemp');
-            if (qrTempDiv && typeof QRCode !== 'undefined') {
-                try {
-                    new QRCode(qrTempDiv, {
-                        text: 'https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/Cognitive-Blind-Spot-Diagnostic-Model.html',
-                        width: 90,
-                        height: 90,
-                        colorDark: '#0b0e0b',
-                        colorLight: '#ffffff',
-                        correctLevel: QRCode.CorrectLevel.H
-                    });
-                } catch (e) {
-                    qrTempDiv.textContent = '扫码';
-                    qrTempDiv.style.cssText +=
-                        'display:flex;align-items:center;justify-content:center;font-size:14px;color:#0b0e0b;';
-                }
-            }
+            // ===== 二维码生成（新地址） =====
+const qrTempDiv = document.getElementById('qrTemp');
+if (qrTempDiv) {
+    qrTempDiv.innerHTML = '';
+    qrTempDiv.style.cssText = '';
+    qrTempDiv.style.width = '102px';
+    qrTempDiv.style.height = '102px';
+    qrTempDiv.style.display = 'flex';
+    qrTempDiv.style.alignItems = 'center';
+    qrTempDiv.style.justifyContent = 'center';
+    qrTempDiv.style.background = '#ffffff';
+    qrTempDiv.style.borderRadius = '8px';
+    qrTempDiv.style.padding = '6px';
+    qrTempDiv.style.overflow = 'hidden';
+
+    // 使用在线 API 生成二维码图片
+    const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=' +
+        encodeURIComponent('https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/思维盲区诊断.html');
+    const img = document.createElement('img');
+    img.src = qrUrl;
+    img.style.width = '90px';
+    img.style.height = '90px';
+    img.style.display = 'block';
+    img.alt = '二维码';
+    qrTempDiv.appendChild(img);
+}
 
             void tempContainer.offsetHeight;
 
@@ -2286,11 +2194,11 @@
                     btn.disabled = false;
                     btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
                 });
-            }, 500);
+            }, 1000);
         }
 
         // ================================================================
-        // 导出 TXT
+        // 导出 TXT（含在线测试地址 — 新地址）
         // ================================================================
         function exportTxtReport() {
             const total = TOTAL;
@@ -2326,7 +2234,7 @@
             const lines = [];
             lines.push('═══════════════════════════════════════');
             lines.push('  思维盲区诊断报告（TXT 导出）');
-            lines.push('一个让人彻底“清醒”的思维模型');
+            lines.push('  杨晟琦 · 思维盲区诊断模型 · 纯粹版');
             lines.push('  生成时间：' + new Date().toLocaleString('zh-CN'));
             lines.push('═══════════════════════════════════════');
             lines.push('');
@@ -2366,6 +2274,7 @@
             lines.push('═══════════════════════════════════════');
             lines.push('  杨晟琦文明公理系统 · CC BY-ND 4.0');
             lines.push('═══════════════════════════════════════');
+            lines.push('在线测试：https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/思维盲区诊断.html');
 
             const txt = lines.join('\n');
             const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
