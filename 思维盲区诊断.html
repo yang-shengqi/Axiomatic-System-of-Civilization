@@ -7,8 +7,6 @@
     <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js">
-    </script>
     <style>
         * {
             margin: 0;
@@ -1392,7 +1390,7 @@
             <div class="result-footer">
                 <div class="copy-actions">
                     <button class="btn-copy" id="copyImageBtn"><span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span></button>
-                    <button class="btn-copy" id="exportTxtBtn"><span class="icon">📄</span> 导出诊断报告（TXT） <span class="badge">文本</span></button>
+                    <button class="btn-copy" id="shareImageBtn"><span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span></button>
                 </div>
                 <div class="result-bottom-actions">
                     <button class="btn-reset" id="resetFromResultBtn">↻ 重新开始</button>
@@ -2067,7 +2065,7 @@
         }
 
         // ================================================================
-        // 导出 PNG（二维码修复 + 新地址）
+        // 导出 PNG（下载到本地）
         // ================================================================
         function exportPngReport() {
             const btn = document.getElementById('copyImageBtn');
@@ -2117,12 +2115,20 @@
                 cloneCanvas.parentNode.replaceChild(img, cloneCanvas);
             }
 
+            // 二维码（用 API 生成）
             const qrContainer = document.createElement('div');
             qrContainer.style.cssText =
                 'text-align:center; margin-top:20px; padding-top:16px; border-top:1px solid #2a322a; display:flex; flex-direction:column; align-items:center;';
             const qrInner = document.createElement('div');
             qrInner.style.cssText = 'display:inline-block; background:#fff; padding:6px; border-radius:8px; width:102px; height:102px;';
-            qrInner.id = 'qrTemp';
+            const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=' +
+                encodeURIComponent('https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/思维盲区诊断.html');
+            const qrImg = document.createElement('img');
+            qrImg.src = qrUrl;
+            qrImg.style.width = '90px';
+            qrImg.style.height = '90px';
+            qrImg.style.display = 'block';
+            qrInner.appendChild(qrImg);
             qrContainer.appendChild(qrInner);
 
             const qrText = document.createElement('div');
@@ -2139,33 +2145,6 @@
             tempContainer.appendChild(copyright);
 
             document.body.appendChild(tempContainer);
-
-            // ===== 二维码生成（新地址） =====
-const qrTempDiv = document.getElementById('qrTemp');
-if (qrTempDiv) {
-    qrTempDiv.innerHTML = '';
-    qrTempDiv.style.cssText = '';
-    qrTempDiv.style.width = '102px';
-    qrTempDiv.style.height = '102px';
-    qrTempDiv.style.display = 'flex';
-    qrTempDiv.style.alignItems = 'center';
-    qrTempDiv.style.justifyContent = 'center';
-    qrTempDiv.style.background = '#ffffff';
-    qrTempDiv.style.borderRadius = '8px';
-    qrTempDiv.style.padding = '6px';
-    qrTempDiv.style.overflow = 'hidden';
-
-    // 使用在线 API 生成二维码图片
-    const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=' +
-        encodeURIComponent('https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/思维盲区诊断.html');
-    const img = document.createElement('img');
-    img.src = qrUrl;
-    img.style.width = '90px';
-    img.style.height = '90px';
-    img.style.display = 'block';
-    img.alt = '二维码';
-    qrTempDiv.appendChild(img);
-}
 
             void tempContainer.offsetHeight;
 
@@ -2190,7 +2169,7 @@ if (qrTempDiv) {
                 }).catch(err => {
                     document.body.removeChild(tempContainer);
                     console.error(err);
-                    showToast('❌ 截图生成失败，请重试或使用 TXT 导出。', true);
+                    showToast('❌ 截图生成失败，请重试。', true);
                     btn.disabled = false;
                     btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
                 });
@@ -2198,92 +2177,144 @@ if (qrTempDiv) {
         }
 
         // ================================================================
-        // 导出 TXT（含在线测试地址 — 新地址）
+        // 复制/分享 PNG（手机端用系统分享，电脑端下载兜底）
         // ================================================================
-        function exportTxtReport() {
-            const total = TOTAL;
-            let totalEarned = 0,
-                totalMax = total * 4;
-            const dimScores = {};
-            const layerScores = { step1: { earned: 0, total: 0 }, step2: { earned: 0, total: 0 }, step3: { earned: 0,
-                    total: 0 } };
+        function sharePngReport() {
+            const btn = document.getElementById('shareImageBtn');
+            if (btn.disabled) return;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="icon">⏳</span> 生成中...';
 
-            state.questions.forEach((q, idx) => {
-                const ans = state.answers['q_' + idx];
-                const score = ans ? ans.score : 0;
-                totalEarned += score;
-                const dim = q.dim,
-                    layer = q.layer;
-                if (!dimScores[dim]) dimScores[dim] = { earned: 0, total: 0 };
-                dimScores[dim].earned += score;
-                dimScores[dim].total += 4;
-                if (layerScores[layer]) {
-                    layerScores[layer].earned += score;
-                    layerScores[layer].total += 4;
-                }
-            });
+            const resultBody = document.getElementById('reportBody');
+            if (!resultBody || resultBody.children.length === 0) {
+                showToast('❌ 没有可分享的报告，请先生成报告。', true);
+                btn.disabled = false;
+                btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                return;
+            }
 
-            const totalPct = totalMax > 0 ? (totalEarned / totalMax) * 100 : 0;
-            let levelLabel = '';
-            if (totalPct >= 80) levelLabel = '⭐⭐⭐⭐⭐ 清醒的思考者';
-            else if (totalPct >= 60) levelLabel = '⭐⭐⭐⭐ 独立的思考者';
-            else if (totalPct >= 40) levelLabel = '⭐⭐⭐ 探索中的思考者';
-            else if (totalPct >= 20) levelLabel = '⭐⭐ 被引导的思考者';
-            else levelLabel = '⭐ 被动的接收者';
+            const canvasEl = document.getElementById('radarCanvas');
+            let radarImageData = null;
+            if (canvasEl) {
+                radarImageData = canvasEl.toDataURL('image/png');
+            }
 
-            const lines = [];
-            lines.push('═══════════════════════════════════════');
-            lines.push('  思维盲区诊断报告（TXT 导出）');
-            lines.push('  杨晟琦 · 思维盲区诊断模型 · 纯粹版');
-            lines.push('  生成时间：' + new Date().toLocaleString('zh-CN'));
-            lines.push('═══════════════════════════════════════');
-            lines.push('');
-            lines.push('📊 综合成熟度：' + Math.round(totalPct) + '%  (' + totalEarned + '/' + totalMax + ')');
-            lines.push('🏆 等级：' + levelLabel);
-            lines.push('');
-            lines.push('📊 三层能力诊断：');
-            ['step1', 'step2', 'step3'].forEach(key => {
-                const d = layerScores[key];
-                const pct = d.total > 0 ? (d.earned / d.total) * 100 : 0;
-                lines.push('  ' + LAYER_MAP[key].label + '（' + LAYER_MAP[key].sub + '）：' + Math.round(pct) +
-                    '%  (' + d.earned + '/' + d.total + ')');
-            });
-            lines.push('');
-            lines.push('📊 六维度细分：');
-            Object.keys(DIM_MAP).forEach(dimId => {
-                const d = dimScores[dimId] || { earned: 0, total: 0 };
-                const pct = d.total > 0 ? (d.earned / d.total) * 100 : 0;
-                lines.push('  ' + DIM_MAP[dimId].label + '：' + Math.round(pct) +
-                    '%  (' + d.earned + '/' + d.total + ')');
-            });
-            lines.push('');
-            lines.push('📌 修正建议：');
-            lines.push('  📖 总体建议：');
-            if (totalPct >= 80) lines.push('    你的思维框架已经相当成熟。建议保持日常练习，重点关注"是否真的做到了"而不是"是否知道应该这样做"。');
-            else if (totalPct >= 40) lines.push(
-                '    你已经有了不错的基础，但盲区和碎片化思考仍然存在。建议从最弱的那一层开始集中突破。');
-            else lines.push('    你的思维习惯还有较大的提升空间。建议从最基础的"信息源检验"开始重建。');
-            lines.push('');
-            lines.push('  ⏱️ 每日练习建议：');
-            lines.push('    · 每日一问：选一个你今天看到的信息，用你学到的框架快速检验。');
-            lines.push('    · 每周一练：找一篇与你立场相反的文章，找出最薄弱的一环。');
-            lines.push('    · 每月一复盘：重新做一次诊断，对比前后变化。');
-            lines.push('');
-            lines.push('  💡 提示：0-4分的五级量表，得分越低代表该处盲区越深，需要优先修复。');
-            lines.push('');
-            lines.push('═══════════════════════════════════════');
-            lines.push('  杨晟琦文明公理系统 · CC BY-ND 4.0');
-            lines.push('═══════════════════════════════════════');
-            lines.push('在线测试：https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/思维盲区诊断.html');
+            const tempContainer = document.createElement('div');
+            tempContainer.style.cssText = `
+                position: absolute;
+                left: -9999px;
+                top: 0;
+                width: 780px;
+                background: #141814;
+                padding: 32px 36px 28px;
+                border-radius: 24px;
+                border: 1px solid #2a322a;
+                font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+                color: #d0d6c8;
+                line-height: 1.7;
+                z-index: 99999;
+            `;
 
-            const txt = lines.join('\n');
-            const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
-            const link = document.createElement('a');
-            link.download = '思维诊断报告_' + new Date().toISOString().slice(0, 10) + '.txt';
-            link.href = URL.createObjectURL(blob);
-            link.click();
-            URL.revokeObjectURL(link.href);
-            showToast('✅ TXT 报告已下载！');
+            const reportClone = resultBody.cloneNode(true);
+            const cloneCanvas = reportClone.querySelector('#radarCanvas');
+            if (cloneCanvas && radarImageData) {
+                const img = document.createElement('img');
+                img.src = radarImageData;
+                img.style.width = '100%';
+                img.style.height = 'auto';
+                img.setAttribute('alt', '六维能力雷达图');
+                cloneCanvas.parentNode.replaceChild(img, cloneCanvas);
+            }
+
+            // 二维码（用 API 生成）
+            const qrContainer = document.createElement('div');
+            qrContainer.style.cssText =
+                'text-align:center; margin-top:20px; padding-top:16px; border-top:1px solid #2a322a; display:flex; flex-direction:column; align-items:center;';
+            const qrInner = document.createElement('div');
+            qrInner.style.cssText = 'display:inline-block; background:#fff; padding:6px; border-radius:8px; width:102px; height:102px;';
+            const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=' +
+                encodeURIComponent('https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/思维盲区诊断.html');
+            const qrImg = document.createElement('img');
+            qrImg.src = qrUrl;
+            qrImg.style.width = '90px';
+            qrImg.style.height = '90px';
+            qrImg.style.display = 'block';
+            qrInner.appendChild(qrImg);
+            qrContainer.appendChild(qrInner);
+
+            const qrText = document.createElement('div');
+            qrText.style.cssText = 'color:#7a8a6e; font-size:13px; margin-top:8px; letter-spacing:1px;';
+            qrText.textContent = '扫码访问 · 杨晟琦文明公理系统 · 独立思想锚点';
+            qrContainer.appendChild(qrText);
+
+            const copyright = document.createElement('div');
+            copyright.style.cssText = 'color:#3a4638; font-size:11px; margin-top:8px; text-align:center;';
+            copyright.textContent = '杨晟琦 · 思维盲区诊断模型 · 纯粹版 · CC BY-ND 4.0';
+
+            tempContainer.appendChild(reportClone);
+            tempContainer.appendChild(qrContainer);
+            tempContainer.appendChild(copyright);
+            document.body.appendChild(tempContainer);
+
+            void tempContainer.offsetHeight;
+
+            setTimeout(() => {
+                html2canvas(tempContainer, {
+                    scale: 2,
+                    backgroundColor: '#141814',
+                    allowTaint: true,
+                    useCORS: true,
+                    logging: false,
+                    width: 780,
+                    height: tempContainer.scrollHeight + 40
+                }).then(canvas => {
+                    document.body.removeChild(tempContainer);
+                    canvas.toBlob(function(blob) {
+                        if (!blob) {
+                            showToast('❌ 图片生成失败', true);
+                            btn.disabled = false;
+                            btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                            return;
+                        }
+                        const file = new File([blob], '思维诊断报告.png', { type: 'image/png' });
+                        // 手机端使用 Web Share API
+                        if (navigator.share) {
+                            navigator.share({
+                                title: '思维诊断报告',
+                                files: [file]
+                            }).then(() => {
+                                showToast('✅ 已分享，可选择保存到相册');
+                                btn.disabled = false;
+                                btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                            }).catch((err) => {
+                                // 用户取消分享，提示
+                                if (err.name === 'AbortError') {
+                                    showToast('已取消分享');
+                                } else {
+                                    showToast('⚠️ 分享失败，可点击“导出”下载', true);
+                                }
+                                btn.disabled = false;
+                                btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                            });
+                        } else {
+                            // 电脑端不支持分享，走下载
+                            const link = document.createElement('a');
+                            link.download = '思维诊断报告.png';
+                            link.href = canvas.toDataURL('image/png');
+                            link.click();
+                            showToast('✅ 图片已下载');
+                            btn.disabled = false;
+                            btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                        }
+                    }, 'image/png');
+                }).catch(err => {
+                    document.body.removeChild(tempContainer);
+                    console.error(err);
+                    showToast('❌ 生成失败，请重试', true);
+                    btn.disabled = false;
+                    btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                });
+            }, 1000);
         }
 
         // ================================================================
@@ -2417,7 +2448,7 @@ if (qrTempDiv) {
             });
 
             document.getElementById('copyImageBtn').addEventListener('click', exportPngReport);
-            document.getElementById('exportTxtBtn').addEventListener('click', exportTxtReport);
+            document.getElementById('shareImageBtn').addEventListener('click', sharePngReport);
         });
     </script>
 </body>
