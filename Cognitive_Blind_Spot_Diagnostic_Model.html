@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>思维盲区诊断模型 · 杨晟琦文明公理系统 · YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION · Cognitive Blind Spot Diagnostic Model</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>一个让人彻底“清醒”的思维模型 · 杨晟琦文明公理系统</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js">
     <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
     <style>
-        /* ===== 全局 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -16,7 +16,7 @@
         }
         body {
             background: #0b0e0b;
-            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
             color: #d0d6c8;
             line-height: 1.7;
             padding: 28px 18px;
@@ -55,11 +55,9 @@
             font-size: 13px;
             letter-spacing: 1px;
         }
-
         .brand {
             display: flex;
             align-items: flex-start;
-            justify-content: space-between;
             flex-wrap: wrap;
             margin-bottom: 20px;
             padding-bottom: 18px;
@@ -120,16 +118,16 @@
         .intro-box {
             background: #1a201a;
             border-radius: 16px;
-            padding: 20px 26px;
-            margin-bottom: 24px;
+            padding: 24px 28px;
+            margin-bottom: 28px;
             border: 1px solid #2a322a;
             border-left: 5px solid #bace9a;
         }
         .intro-box .intro-title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             color: #e2ead4;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
         .intro-box .intro-title .highlight {
             color: #bace9a;
@@ -137,120 +135,65 @@
         .intro-box .intro-desc {
             font-size: 15px;
             color: #b6c0aa;
-            line-height: 1.9;
-            margin-bottom: 10px;
+            line-height: 2;
         }
         .intro-box .intro-desc strong {
             color: #d4dec4;
         }
+        .intro-box .intro-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid #2a322a;
+        }
+        .intro-box .intro-features span {
+            font-size: 14px;
+            color: #aaba8a;
+        }
+        .intro-box .intro-features .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #8aaa6a;
+            margin-right: 6px;
+        }
 
         .start-area {
-            background: #1a201a;
-            border-radius: 16px;
-            padding: 20px 24px;
-            margin-bottom: 24px;
-            border: 1px solid #2a322a;
+            text-align: center;
+            padding: 20px 0 10px;
         }
-        .start-area .start-label {
-            font-weight: 600;
-            color: #aaba8a;
-            font-size: 15px;
-            margin-bottom: 10px;
-        }
-        .start-area .start-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .start-area .start-row input {
-            flex: 1;
-            min-width: 160px;
-            background: #0b0e0b;
-            border: 1px solid #2a322a;
-            border-radius: 10px;
-            padding: 10px 18px;
-            color: #e2ead4;
-            font-size: 16px;
-            font-family: inherit;
-            outline: none;
-            transition: border-color .2s;
-        }
-        .start-area .start-row input:focus {
-            border-color: #8aaa6a;
-        }
-        .start-area .start-row input::placeholder {
-            color: #3a4638;
-        }
-        .start-area .start-row .btn-start {
+        .start-area .btn-start {
             background: #2a322a;
             border: 1px solid #3a4638;
-            border-radius: 10px;
-            padding: 10px 28px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 16px;
+            padding: 16px 60px;
+            font-size: 22px;
+            font-weight: 700;
             color: #bace9a;
             cursor: pointer;
             font-family: inherit;
-            transition: all .25s;
-            white-space: nowrap;
+            transition: all .3s;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
-        .start-area .start-row .btn-start:hover {
+        .start-area .btn-start:hover {
             border-color: #8aaa6a;
             color: #e2ead4;
             background: #3a4638;
-            box-shadow: 0 0 24px rgba(138, 170, 106, .12);
+            box-shadow: 0 0 40px rgba(138, 170, 106, .15);
+            transform: scale(1.02);
         }
-        .start-area .start-row .btn-example {
-            background: transparent;
-            border: 1px solid #3a4638;
-            border-radius: 8px;
-            padding: 10px 18px;
-            font-size: 14px;
-            color: #7a8a6e;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all .2s;
-            white-space: nowrap;
-        }
-        .start-area .start-row .btn-example:hover {
-            border-color: #8aaa6a;
-            color: #aaba8a;
-        }
-        .start-area .start-row .btn-reset {
-            background: transparent;
-            border: 1px solid #2a322a;
-            border-radius: 8px;
-            padding: 10px 18px;
-            font-size: 14px;
-            color: #5a6a4e;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all .2s;
-            white-space: nowrap;
-        }
-        .start-area .start-row .btn-reset:hover {
-            border-color: #5a6a4e;
-            color: #7a8a6e;
+        .start-area .btn-start:disabled {
+            opacity: .4;
+            cursor: not-allowed;
+            transform: none;
         }
         .start-area .start-hint {
-            font-size: 13px;
+            font-size: 14px;
             color: #5a6a4e;
-            margin-top: 8px;
-        }
-        @media (max-width:600px) {
-            .start-area .start-row {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .start-area .start-row input {
-                min-width: auto;
-            }
-            .start-area .start-row .btn-start,
-            .start-area .start-row .btn-example,
-            .start-area .start-row .btn-reset {
-                text-align: center;
-            }
+            margin-top: 14px;
         }
 
         .diagnosis-active {
@@ -277,20 +220,15 @@
             color: #bace9a;
             font-weight: 600;
         }
+        .time-estimate .timer {
+            color: #8aaa6a;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
         .time-estimate .progress-detail {
             color: #5a6a4e;
             font-size: 13px;
         }
-        .time-estimate .topic-display {
-            color: #aaba8a;
-            font-weight: 500;
-            background: #0b0e0b;
-            padding: 2px 14px;
-            border-radius: 30px;
-            border: 1px solid #2a322a;
-            font-size: 13px;
-        }
-
         .progress-bar {
             background: #1a201a;
             border-radius: 12px;
@@ -309,9 +247,6 @@
         }
         .progress-bar .progress-text strong {
             color: #bace9a;
-        }
-        .progress-bar .progress-text .dim-label {
-            color: #aaba8a;
         }
         .progress-bar .progress-track {
             flex: 1;
@@ -455,15 +390,6 @@
             background: #8aaa6a;
             box-shadow: inset 0 0 0 3px #0b0e0b;
         }
-        .step-card .question-block .q-options label .score-hint {
-            font-size: 12px;
-            color: #5a6a4e;
-            margin-left: auto;
-            flex-shrink: 0;
-            background: #1a1a1a;
-            padding: 0 8px;
-            border-radius: 10px;
-        }
         .step-card .step-footer {
             display: flex;
             justify-content: space-between;
@@ -533,26 +459,42 @@
             color: #b6c0aa;
             margin-bottom: 16px;
         }
-        .complete-msg .btn-report {
-            background: #2a322a;
-            border: 1px solid #3a4638;
-            border-radius: 10px;
-            padding: 12px 40px;
+        .complete-msg .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .complete-msg .btn-group .btn-report,
+        .complete-msg .btn-group .btn-reset {
+            padding: 12px 36px;
             font-size: 17px;
             font-weight: 600;
-            color: #bace9a;
+            border-radius: 10px;
             cursor: pointer;
             font-family: inherit;
             transition: all .25s;
+            border: 1px solid #3a4638;
+            background: #2a322a;
+            color: #bace9a;
         }
-        .complete-msg .btn-report:hover {
+        .complete-msg .btn-group .btn-report:hover {
             border-color: #8aaa6a;
             color: #e2ead4;
             background: #3a4638;
             box-shadow: 0 0 24px rgba(138, 170, 106, .12);
         }
+        .complete-msg .btn-group .btn-reset {
+            background: transparent;
+            color: #5a6a4e;
+            border-color: #2a322a;
+        }
+        .complete-msg .btn-group .btn-reset:hover {
+            border-color: #5a6a4e;
+            color: #7a8a6e;
+            background: #1a1a1a;
+        }
 
-        /* ===== 结果区 ===== */
         .result-box {
             background: transparent;
             padding: 0;
@@ -623,11 +565,6 @@
             border-radius: 16px;
             padding: 24px 28px;
             border: 1px solid #2a322a;
-            transition: transform .15s ease, box-shadow .2s ease;
-        }
-        .result-box .result-body .result-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
         }
         .result-box .result-body .result-card .card-title {
             font-weight: 700;
@@ -642,178 +579,144 @@
             color: #b6c0aa;
             line-height: 1.9;
         }
-        .result-box .result-body .level-badge {
-            display: inline-block;
-            font-size: 20px;
-            font-weight: 700;
-            padding: 8px 28px;
-            border-radius: 40px;
-            margin: 4px 0 10px;
-        }
-        .level-badge.l5 {
-            color: #bace9a;
-            background: #1a2a1a;
-            border: 2px solid #8aaa6a;
-        }
-        .level-badge.l4 {
-            color: #aaba8a;
-            background: #1a241a;
-            border: 2px solid #8aaa6a;
-        }
-        .level-badge.l3 {
-            color: #b89a4a;
-            background: #2a2418;
-            border: 2px solid #b89a4a;
-        }
-        .level-badge.l2 {
-            color: #b05a4a;
-            background: #2a1a18;
-            border: 2px solid #b05a4a;
-        }
-        .level-badge.l1 {
-            color: #7a4a3a;
-            background: #1a0e0c;
-            border: 2px solid #6a3a2a;
-        }
-        .result-box .result-body .type-desc {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 14px 20px;
-            border-left: 4px solid #bace9a;
-            font-size: 15px;
-            color: #d4dec4;
-            line-height: 1.9;
-        }
 
-        /* ===== 盲区与优势分析 ===== */
-        .blind-spot-v2 {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 16px 20px;
-            border-left: 4px solid #b05a4a;
-            margin-top: 6px;
-        }
-        .blind-spot-v2 .bs-title {
-            font-weight: 600;
-            color: #b05a4a;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .blind-spot-v2 .bs-item {
-            font-size: 13px;
-            color: #b6c0aa;
-            padding: 4px 0 4px 18px;
-            border-bottom: 1px solid #1a1e1a;
-            position: relative;
-        }
-        .blind-spot-v2 .bs-item::before {
-            content: "•";
-            color: #b05a4a;
-            position: absolute;
-            left: 0;
-        }
-        .blind-spot-v2 .bs-item:last-child {
-            border-bottom: none;
-        }
-
-        .strength-v2 {
-            background: #1a221a;
-            border-radius: 12px;
-            padding: 16px 20px;
-            border-left: 4px solid #8aaa6a;
-            margin-top: 6px;
-        }
-        .strength-v2 .st-title {
-            font-weight: 600;
-            color: #8aaa6a;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .strength-v2 .st-grid {
+        /* ===== 六维度进度条 ===== */
+        .dim-progress-wrap {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 6px;
+            margin-top: 6px;
         }
-        .strength-v2 .st-tag {
-            display: inline-block;
-            background: #1a2a1a;
-            color: #b6c0aa;
-            font-size: 12px;
-            padding: 2px 12px;
-            border-radius: 20px;
-            border: 1px solid #3a5a3a;
+        .dim-progress-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .strength-v2 .st-more {
-            display: inline-block;
-            font-size: 12px;
-            color: #5a6a4e;
-            padding: 2px 12px;
-        }
-
-        .advice-step {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 14px 20px;
-            border-left: 4px solid #bace9a;
-            margin-top: 8px;
-        }
-        .advice-step .adv-step-title {
-            font-weight: 600;
-            color: #bace9a;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-        .advice-step .adv-step-item {
+        .dim-progress-item .dim-label {
+            width: 70px;
             font-size: 13px;
-            color: #b6c0aa;
-            padding: 3px 0 3px 20px;
-            line-height: 1.8;
-            border-bottom: 1px solid #1a1e1a;
-            position: relative;
-        }
-        .advice-step .adv-step-item:last-child {
-            border-bottom: none;
-        }
-        .advice-step .adv-step-item .step-num {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #2a322a;
-            color: #bace9a;
-            font-size: 11px;
-            font-weight: 700;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            margin-right: 8px;
+            color: #aaba8a;
             flex-shrink: 0;
         }
-        .advice-step .adv-step-item .step-content {
-            display: inline;
+        .dim-progress-item .dim-track {
+            flex: 1;
+            height: 6px;
+            background: #2a322a;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .dim-progress-item .dim-track .dim-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width .6s ease;
+            background: #8aaa6a;
+        }
+        .dim-progress-item .dim-pct {
+            width: 40px;
+            font-size: 13px;
+            color: #7a8a6e;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .dim-progress-item .dim-score {
+            width: 60px;
+            font-size: 12px;
+            color: #5a6a4e;
+            text-align: right;
+            flex-shrink: 0;
         }
 
-        .advice-card-v2 {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 16px 22px;
-            border-left: 4px solid #bace9a;
-            margin-top: 8px;
+        /* ===== 六维度进度卡片背景 ===== */
+        .dim-progress-card {
+            background: #1a201a;
+            border: 1px solid #2a322a;
+            border-radius: 16px;
+            padding: 20px 24px 18px;
         }
-        .advice-card-v2 .adv-title {
-            font-weight: 600;
+        .dim-progress-card .card-title {
+            font-weight: 700;
+            color: #d4dec4;
+            font-size: 16px;
+            border-bottom: 2px solid #2a322a;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+        }
+
+        /* ===== 轻量化综合成熟度（带绿色UI标签） ===== */
+        .level-light {
+            text-align: center;
+            padding: 8px 0 6px 0;
+        }
+        .level-light .level-badge {
+            display: inline-block;
+            background: #1a2a1a;
+            border: 2px solid #4a7a4a;
+            border-radius: 40px;
+            padding: 6px 28px;
+            margin-bottom: 10px;
+        }
+        .level-light .level-stars {
+            font-size: 20px;
+            letter-spacing: 2px;
             color: #bace9a;
-            font-size: 14px;
-            margin-bottom: 4px;
         }
-        .advice-card-v2 .adv-item {
-            font-size: 13px;
-            color: #b6c0aa;
-            padding: 3px 0 3px 20px;
+        .level-light .level-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e2ead4;
+            margin-left: 6px;
+        }
+        .level-light .level-desc {
+            font-size: 15px;
+            color: #aaba8a;
             line-height: 1.8;
-            border-bottom: 1px solid #1a1e1a;
+            max-width: 600px;
+            margin: 6px auto 0 auto;
+            padding: 0 8px;
         }
-        .advice-card-v2 .adv-item:last-child {
-            border-bottom: none;
+
+        /* ===== 轻量化修正建议 ===== */
+        .advice-light {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .advice-light .advice-main {
+            font-size: 15px;
+            color: #d4dec4;
+            line-height: 1.8;
+            text-align: center;
+        }
+        .advice-light .advice-main strong {
+            color: #bace9a;
+        }
+        .advice-light .advice-items {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-left: 4px;
+        }
+        .advice-light .advice-item {
+            font-size: 14px;
+            color: #b6c0aa;
+            line-height: 1.8;
+            padding-left: 20px;
+            position: relative;
+        }
+        .advice-light .advice-item::before {
+            content: "·";
+            color: #5a7a4a;
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+        }
+        .advice-light .advice-hint {
+            font-size: 13px;
+            color: #4a5a3e;
+            text-align: center;
+            padding-top: 6px;
+            border-top: 1px solid #2a322a;
+            margin-top: 4px;
         }
 
         .layer-progress {
@@ -827,7 +730,6 @@
         .layer-node {
             flex: 1;
             min-width: 100px;
-            background: #1a1a1a;
             border-radius: 12px;
             padding: 14px 16px;
             text-align: center;
@@ -835,15 +737,15 @@
         }
         .layer-node.pass {
             border-color: #4a7a4a;
-            background: #1a2a1a;
+            background: #1a3a1a;
         }
         .layer-node.warn {
-            border-color: #7a6a2a;
-            background: #2a2418;
+            border-color: #b89a4a;
+            background: #3a2a1a;
         }
         .layer-node.fail {
-            border-color: #7a3a2a;
-            background: #2a1a18;
+            border-color: #b05a4a;
+            background: #3a1a1a;
         }
         .layer-node .layer-node-icon {
             font-size: 20px;
@@ -897,17 +799,38 @@
             display: block;
         }
 
+        .report-footer-brand {
+            text-align: center;
+            font-size: 12px;
+            color: #3a4638;
+            padding-top: 12px;
+            margin-top: 8px;
+            border-top: 1px solid #2a322a;
+            letter-spacing: 0.5px;
+        }
+
+        .result-box .result-footer {
+            background: #141814;
+            padding: 16px 28px;
+            border: 1px solid #2a322a;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
         .copy-actions {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
-            align-items: center;
+            justify-content: center;
         }
         .btn-copy {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 500;
@@ -923,7 +846,6 @@
             border-color: #8aaa6a;
             color: #e2ead4;
             background: #3a4638;
-            box-shadow: 0 0 20px rgba(138, 170, 106, .1);
         }
         .btn-copy:disabled {
             opacity: .4;
@@ -942,33 +864,29 @@
             margin-left: 2px;
             border: 1px solid #3a5a3a;
         }
-
-        .result-box .result-footer {
-            background: #141814;
-            padding: 14px 28px;
-            border: 1px solid #2a322a;
-            border-top: none;
-            border-radius: 0 0 16px 16px;
+        .result-bottom-actions {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 12px;
             flex-wrap: wrap;
-            gap: 12px 16px;
+            justify-content: center;
         }
-        .result-box .result-footer .btn-close {
+        .result-bottom-actions .btn-reset,
+        .result-bottom-actions .btn-close {
             background: transparent;
             border: 1px solid #2a322a;
             border-radius: 8px;
-            padding: 6px 20px;
+            padding: 8px 20px;
             font-size: 14px;
             color: #5a6a4e;
             cursor: pointer;
             font-family: inherit;
             transition: all .2s;
         }
-        .result-box .result-footer .btn-close:hover {
+        .result-bottom-actions .btn-reset:hover,
+        .result-bottom-actions .btn-close:hover {
             border-color: #5a6a4e;
             color: #7a8a6e;
+            background: #1a1a1a;
         }
 
         .history-area {
@@ -981,8 +899,6 @@
             font-weight: 600;
             color: #aaba8a;
             margin-bottom: 12px;
-            cursor: pointer;
-            user-select: none;
         }
         .history-area .history-list {
             display: flex;
@@ -995,14 +911,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 14px;
+            padding: 10px 16px;
             background: #1a1a1a;
             border-radius: 8px;
             border: 1px solid #2a322a;
             font-size: 13px;
             color: #b6c0aa;
             cursor: pointer;
-            transition: .2s;
+            transition: all .2s;
+            width: 100%;
+            gap: 8px;
+            flex-wrap: wrap;
         }
         .history-area .history-item:hover {
             border-color: #4a5a3e;
@@ -1011,150 +930,60 @@
         .history-area .history-item .h-topic {
             font-weight: 500;
             color: #d4dec4;
+            flex: 1;
+            min-width: 80px;
         }
         .history-area .history-item .h-meta {
             color: #7a8a6e;
             font-size: 12px;
+            white-space: nowrap;
         }
         .history-area .history-item .h-level {
             font-weight: 600;
             padding: 1px 12px;
             border-radius: 20px;
             font-size: 12px;
+            white-space: nowrap;
+        }
+        .history-area .history-item .history-actions {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .history-area .history-item .history-view-btn {
+            border: 1px solid #3a4638;
+            padding: 2px 14px;
+            border-radius: 16px;
+            font-size: 12px;
+            color: #bace9a;
+            background: #2a322a;
+            transition: all .2s;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .history-area .history-item .history-view-btn:hover {
+            border-color: #8aaa6a;
+            color: #e2ead4;
+            background: #3a4638;
+        }
+        .history-area .history-item .history-del-btn {
+            border: none;
+            background: transparent;
+            color: #5a3a3a;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0 4px;
+            transition: color .2s;
+            line-height: 1;
+        }
+        .history-area .history-item .history-del-btn:hover {
+            color: #b05a4a;
         }
         .history-empty {
             color: #5a6a4e;
             font-size: 14px;
             padding: 12px 0;
-        }
-
-        @media (max-width:600px) {
-            .container {
-                padding: 16px 12px 18px;
-                border-radius: 20px;
-            }
-            .title-row h1 {
-                font-size: 24px;
-            }
-            .title-row .tag {
-                font-size: 11px;
-                padding: 2px 12px;
-            }
-            .brand {
-                flex-direction: column;
-                gap: 6px;
-            }
-            .brand-right {
-                text-align: left;
-            }
-            .intro-box {
-                padding: 16px 18px;
-            }
-            .intro-box .intro-title {
-                font-size: 16px;
-            }
-            .intro-box .intro-desc {
-                font-size: 14px;
-            }
-            .start-area {
-                padding: 16px 16px;
-            }
-            .step-card {
-                padding: 16px 16px 20px;
-            }
-            .step-card .question-block .q-text {
-                font-size: 15px;
-            }
-            .step-card .question-block .q-options label {
-                padding: 8px 12px;
-                font-size: 13px;
-                flex-wrap: wrap;
-            }
-            .step-card .step-footer {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .step-card .btn-back {
-                text-align: center;
-            }
-            .result-box .result-header {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 16px 18px;
-            }
-            .result-box .result-body .result-card {
-                padding: 18px 16px;
-            }
-            .result-box .result-body {
-                gap: 18px;
-            }
-            .result-box .result-footer {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-                padding: 12px 16px;
-            }
-            .copy-actions {
-                justify-content: center;
-            }
-            .result-box .result-footer .btn-close {
-                text-align: center;
-            }
-            .progress-bar {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 6px;
-                padding: 8px 14px;
-            }
-            .progress-bar .progress-track {
-                min-width: auto;
-            }
-            .complete-msg {
-                padding: 20px 16px;
-            }
-            .complete-msg .title {
-                font-size: 19px;
-            }
-            .time-estimate {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 4px;
-            }
-            .time-estimate .topic-display {
-                font-size: 12px;
-                padding: 1px 10px;
-            }
-            .history-area .history-item {
-                flex-wrap: wrap;
-                gap: 4px;
-            }
-            .layer-progress {
-                flex-direction: column;
-                gap: 6px;
-            }
-            .layer-arrow {
-                transform: rotate(90deg);
-                font-size: 18px;
-            }
-            .layer-node {
-                width: 100%;
-                min-width: auto;
-            }
-            .strength-v2 .st-grid {
-                gap: 4px;
-            }
-            .strength-v2 .st-tag {
-                font-size: 11px;
-                padding: 1px 10px;
-            }
-        }
-        @media (max-width:400px) {
-            .result-box .result-body .result-card {
-                padding: 14px 12px;
-            }
-            .result-box .result-body .result-card .card-title {
-                font-size: 15px;
-            }
         }
 
         .toast {
@@ -1209,6 +1038,163 @@
             display: block;
             margin-top: 2px;
         }
+        .footer .watermark {
+            font-size: 11px;
+            color: #3a4638;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width:600px) {
+            .container {
+                padding: 16px 12px 18px;
+                border-radius: 20px;
+            }
+            .title-row h1 {
+                font-size: 24px;
+            }
+            .title-row .tag {
+                font-size: 11px;
+                padding: 2px 12px;
+            }
+            .brand {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .intro-box {
+                padding: 16px 18px;
+            }
+            .intro-box .intro-title {
+                font-size: 18px;
+            }
+            .intro-box .intro-desc {
+                font-size: 14px;
+            }
+            .start-area .btn-start {
+                padding: 14px 40px;
+                font-size: 18px;
+            }
+            .step-card {
+                padding: 16px 16px 20px;
+            }
+            .step-card .question-block .q-text {
+                font-size: 15px;
+            }
+            .step-card .question-block .q-options label {
+                padding: 8px 12px;
+                font-size: 13px;
+                flex-wrap: wrap;
+            }
+            .step-card .step-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .step-card .btn-back {
+                text-align: center;
+            }
+            .result-box .result-header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 16px 18px;
+            }
+            .result-box .result-body .result-card {
+                padding: 18px 16px;
+            }
+            .result-box .result-body {
+                gap: 18px;
+            }
+            .result-box .result-footer {
+                padding: 14px 16px;
+            }
+            .copy-actions {
+                justify-content: center;
+            }
+            .result-bottom-actions {
+                justify-content: center;
+            }
+            .progress-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+                padding: 8px 14px;
+            }
+            .progress-bar .progress-track {
+                min-width: auto;
+            }
+            .complete-msg {
+                padding: 20px 16px;
+            }
+            .complete-msg .title {
+                font-size: 19px;
+            }
+            .complete-msg .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .time-estimate {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .history-area .history-item {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .history-area .history-item .h-topic {
+                width: 100%;
+            }
+            .layer-progress {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .layer-arrow {
+                transform: rotate(90deg);
+                font-size: 18px;
+            }
+            .layer-node {
+                width: 100%;
+                min-width: auto;
+            }
+            .dim-progress-item .dim-label {
+                width: 55px;
+                font-size: 12px;
+            }
+            .dim-progress-item .dim-pct {
+                width: 35px;
+                font-size: 12px;
+            }
+            .dim-progress-item .dim-score {
+                width: 50px;
+                font-size: 11px;
+            }
+            .dim-progress-card {
+                padding: 16px 16px 14px;
+            }
+            .history-area .history-item .history-actions {
+                margin-left: auto;
+            }
+            .level-light .level-desc {
+                font-size: 14px;
+                padding: 0 4px;
+            }
+            .level-light .level-badge {
+                padding: 4px 18px;
+            }
+            .advice-light .advice-main {
+                font-size: 14px;
+            }
+            .advice-light .advice-item {
+                font-size: 13px;
+            }
+        }
+        @media (max-width:400px) {
+            .result-box .result-body .result-card {
+                padding: 14px 12px;
+            }
+            .result-box .result-body .result-card .card-title {
+                font-size: 15px;
+            }
+        }
 
         @media print {
             body {
@@ -1234,7 +1220,8 @@
             .btn-close,
             .btn-report,
             .btn-back,
-            .copy-actions {
+            .copy-actions,
+            .result-bottom-actions {
                 display: none !important;
             }
             .result-box {
@@ -1264,35 +1251,32 @@
             .result-box .result-body .result-card .card-content {
                 color: #222;
             }
-            .level-badge {
-                border-color: #888 !important;
+            .level-light .level-desc {
+                color: #444 !important;
             }
-            .type-desc,
-            .blind-spot-v2,
-            .strength-v2,
-            .advice-step,
-            .advice-card-v2 {
-                background: #f0f0f0 !important;
-                border-left-color: #666 !important;
-                color: #222 !important;
-            }
-            .blind-spot-v2 .bs-item {
-                color: #333 !important;
-            }
-            .strength-v2 .st-tag {
+            .level-light .level-badge {
+                border-color: #4a7a4a !important;
                 background: #e8f0e8 !important;
-                border-color: #aaa !important;
+            }
+            .level-light .level-label {
                 color: #222 !important;
             }
-            .advice-step .adv-step-item {
-                color: #333 !important;
+            .level-light .level-stars {
+                color: #b89a4a !important;
             }
-            .advice-step .adv-step-item .step-num {
-                background: #ddd !important;
+            .advice-light .advice-main {
                 color: #222 !important;
             }
-            .advice-card-v2 .adv-item {
+            .advice-light .advice-item {
                 color: #333 !important;
+            }
+            .advice-light .advice-hint {
+                color: #666 !important;
+                border-color: #ccc !important;
+            }
+            .report-footer-brand {
+                color: #888 !important;
+                border-color: #ccc !important;
             }
             .radar-container canvas,
             .radar-container img {
@@ -1328,93 +1312,68 @@
             .layer-arrow {
                 color: #999 !important;
             }
-            .result-box .result-body .level-badge {
-                color: #222 !important;
-                background: #f0f0f0 !important;
+            .dim-progress-item .dim-track .dim-fill {
+                background: #4a7a4a !important;
             }
-            .result-box .result-body .level-badge.l5 {
-                border-color: #2a6a2a !important;
-                background: #e0f0e0 !important;
+            .dim-progress-card {
+                background: #f5f5f5 !important;
+                border-color: #ddd !important;
             }
-            .result-box .result-body .level-badge.l4 {
-                border-color: #4a8a4a !important;
-                background: #e8f0e8 !important;
-            }
-            .result-box .result-body .level-badge.l3 {
-                border-color: #b89a4a !important;
-                background: #f5f0e0 !important;
-            }
-            .result-box .result-body .level-badge.l2 {
-                border-color: #b05a4a !important;
-                background: #f0e8e0 !important;
-            }
-            .result-box .result-body .level-badge.l1 {
-                border-color: #6a3a2a !important;
-                background: #f0e8e0 !important;
+            .report-footer-brand {
+                display: none !important;
             }
         }
     </style>
 </head>
 <body>
-
     <div class="container" id="app">
-
-        <!-- ===== 顶部导航 ===== -->
         <div class="top-nav">
             <a href="./index.html" class="back">← 返回体系总入口</a>
             <span class="badge">杨晟琦文明公理系统 · 独立思想锚点</span>
         </div>
 
-        <!-- ===== 品牌区 ===== -->
-        <div class="brand" id="brandArea">
+        <div class="brand">
             <div class="brand-left">
                 <div class="sub-brand">Cognitive Blind Spot Diagnostic Model</div>
                 <div class="title-row">
-                    <h1 id="mainTitle">一个让人彻底"清醒"的思维模型</h1>
-                    <span class="tag">思维盲区诊断模型</span>
+                    <h1>一个让人彻底“清醒”的思维模型</h1>
+                    <span class="tag">思维盲区诊断</span>
                 </div>
                 <div class="info-row">
                     <span>作者：杨晟琦</span>
                     <span>ORCID: 0009-0008-3755-8960</span>
-                    <span class="feat"><span class="dot"></span>思维觉醒 · 内部追问 · 心智更新</span>
+                    <span class="feat">思维觉醒 · 内部追问 · 心智更新</span>
                 </div>
             </div>
         </div>
 
-        <!-- ===== 介绍 ===== -->
-        <div class="intro-box" id="bannerArea">
-            <div class="intro-title">当你面对一个观点或信息时，你真的学会<span class="highlight">"独立思考"</span>了吗？</div>
+        <div class="intro-box">
+            <div class="intro-title">🧠 你真的了解自己的思维方式吗？</div>
             <div class="intro-desc">
-                这套工具通过 36 个递进式问题，全程大约10分钟左右，带你完成一次完整的思维体检：<br>
-                先做 <strong>防忽悠</strong>（外部检验），再做 <strong>觉醒</strong>（内部追问），最后 <strong>内化</strong>（心智更新）。<br>
-                每个问题都有 5 个递进层级，精准定位你的思维盲区。
+                这套工具通过 <strong>38 个关于“你如何思考”的元认知问题</strong>，帮你深度扫描自己的思维习惯。<br />
+                它不依赖任何外部话题，只审视你自身的 <strong>信息处理、逻辑推理、情绪管理、利益觉察</strong> 等底层能力。
+            </div>
+            <div class="intro-features">
+                <span><span class="dot"></span> 防忽悠 · 检验你对外部信息的防御能力</span>
+                <span><span class="dot"></span> 觉醒 · 追问你的内部认知偏见</span>
+                <span><span class="dot"></span> 内化 · 评估你能否将反思转化为行动</span>
+                <span><span class="dot"></span> 答题时间：所需约 10 分钟 · 共38 题</span>
             </div>
         </div>
 
-        <!-- ===== 开始区域 ===== -->
-        <div class="start-area">
-            <div class="start-label">📌 输入你想检验的观点或信息</div>
-            <div class="start-row">
-                <input type="text" id="topicInput" placeholder="输入你的问题..." value="">
-                <button class="btn-start" id="startBtn">🚀 开始诊断</button>
-                <button class="btn-example" id="exampleBtn">📋 加载示例</button>
-                <button class="btn-reset" id="resetBtn">✕ 重置</button>
-            </div>
-            <div class="start-hint">💡 输入一个具体观点，系统会围绕它生成全部 36 道诊断问题</div>
+        <div class="start-area" id="startArea">
+            <button class="btn-start" id="startBtn">🚀 开始诊断</button>
+            <div class="start-hint">点开始诊断开始，全程约 10 分钟。回答越真实，结果越准确。</div>
         </div>
 
-        <!-- ===== 诊断进行中 ===== -->
         <div class="diagnosis-active" id="diagnosisArea">
             <div class="time-estimate">
-                <span>⏱️ 预估测试时间：<span class="time-num" id="timeEstimate">约 10 分钟</span></span>
-                <span class="topic-display" id="topicDisplay">主题：未设置</span>
-                <span class="progress-detail" id="timeDetail">已完成 0 / 36 题</span>
+                <span>⏱️ 预估时间：<span class="time-num">约 10 分钟</span> <span class="timer" id="timerDisplay">⏱️ 00:00</span></span>
+                <span class="progress-detail" id="timeDetail">0 / 38 题</span>
             </div>
-            <div class="progress-bar" id="progressBar">
+            <div class="progress-bar">
                 <span class="progress-text" id="progressText">
-                    已作答 <strong id="answeredCount">0</strong> / <span id="totalCount">36</span> 题
-                    ｜ 维度：<span class="dim-label" id="currentDimLabel">—</span>
-                    ｜ 层：<span id="currentLayerLabel">—</span>
+                    已作答 <strong id="answeredCount">0</strong> / <span id="totalCount">38</span> 题
                 </span>
                 <div class="progress-track">
                     <div class="fill" id="progressFill" style="width:0%;"></div>
@@ -1423,585 +1382,115 @@
             <div id="stepContainer"></div>
         </div>
 
-        <!-- ===== 结果区 ===== -->
         <div class="result-box" id="resultBox">
             <div class="result-header">
-                <div class="result-title">📋 诊断报告：<span class="q" id="reportQuestion">（未输入问题）</span></div>
-                <div class="result-badge" id="resultBadges">
-                    <span class="badge-item warn">防忽悠：待评估</span>
-                    <span class="badge-item warn">觉醒：待评估</span>
-                    <span class="badge-item warn">内化：待评估</span>
-                </div>
+                <div class="result-title">📋 诊断报告：<span class="q">你的思维模式</span></div>
+                <div class="result-badge" id="resultBadges"></div>
             </div>
             <div class="result-body" id="reportBody"></div>
             <div class="result-footer">
                 <div class="copy-actions">
-                    <button class="btn-copy" id="copyImageBtn">
-                        <span class="icon">🖼️</span> <span id="sharePngLabel">分享诊断报告</span>
-                        <span class="badge">PNG</span>
-                    </button>
-                    <button class="btn-copy" id="exportPdfBtn">
-                        <span class="icon">📄</span> <span id="exportPdfLabel">导出 PDF</span>
-                        <span class="badge">PDF</span>
-                    </button>
+                    <button class="btn-copy" id="copyImageBtn"><span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span></button>
+                    <button class="btn-copy" id="exportTxtBtn"><span class="icon">📄</span> 导出诊断报告（TXT） <span class="badge">文本</span></button>
                 </div>
-                <button class="btn-close" id="closeResultBtn">关闭报告</button>
+                <div class="result-bottom-actions">
+                    <button class="btn-reset" id="resetFromResultBtn">↻ 重新开始</button>
+                    <button class="btn-close" id="closeResultBtn">关闭报告</button>
+                </div>
             </div>
         </div>
 
-        <!-- ===== 历史记录 ===== -->
         <div class="history-area" id="historyArea">
             <div class="history-title">📜 诊断历史</div>
             <div class="history-list" id="historyList"></div>
             <div class="history-empty" id="historyEmpty" style="display:none;">暂无历史记录</div>
         </div>
 
-        <!-- ===== 页脚 ===== -->
-        <div class="footer" id="footerArea">
+        <div class="footer">
             杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年
             <span class="en">Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026</span>
             <span style="display:block; margin-top:4px;">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
             <span class="en" style="display:block; font-size:.85em; color:#7a8a6e;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a></span>
         </div>
-
     </div>
 
     <div class="toast" id="toast"></div>
 
     <script>
         // ================================================================
-        // 所有文案（纯中文）
+        // 38 道口语化、聊天化、第一人称题目
         // ================================================================
-        const T = {
-            back: '← 返回体系总入口',
-            badge: '杨晟琦文明公理系统 · 独立思想锚点',
-            subBrand: '思维盲区诊断模型',
-            mainTitle: '一个让人彻底"清醒"的思维模型',
-            mainTag: '思维盲区诊断模型',
-            infoFeat: '思维觉醒 · 内部追问 · 心智更新',
-            introTitle: '当你面对一个观点或信息时，你真的学会"独立思考"了吗？',
-            introDesc: '这套工具通过 36 个递进式问题，全程大约10分钟左右，带你完成一次完整的思维体检：<br>先做 <strong>防忽悠</strong>（外部检验），再做 <strong>觉醒</strong>（内部追问），最后 <strong>内化</strong>（心智更新）。<br>每个问题都有 5 个递进层级，精准定位你的思维盲区。',
-            startLabel: '📌 输入你想检验的观点或信息',
-            startBtn: '🚀 开始诊断',
-            exampleBtn: '📋 加载示例',
-            resetBtn: '✕ 重置',
-            startHint: '💡 输入一个具体观点，系统会围绕它生成全部 36 道诊断问题',
-            timeLabel: '⏱️ 预估测试时间：',
-            closeReport: '关闭报告',
-            sharePngLabel: '分享诊断报告',
-            exportPdfLabel: '导出 PDF',
-            historyTitle: '📜 诊断历史',
-            noHistory: '暂无历史记录',
-            viewReport: '查看报告',
-            generateReport: '📋 生成诊断报告',
-            allDone: '所有问题已回答完毕',
-            allDoneSub: '你已对「{topic}」完成了 {total} 个问题的诊断，点击下方按钮生成诊断报告。',
-            layer1: '防忽悠',
-            layer2: '觉醒',
-            layer3: '内化',
-            layer1sub: '外部检验',
-            layer2sub: '内部追问',
-            layer3sub: '心智更新',
-            level5: '⭐⭐⭐⭐⭐ 清醒的思考者',
-            level4: '⭐⭐⭐⭐ 独立的思考者',
-            level3: '⭐⭐⭐ 探索中的思考者',
-            level2: '⭐⭐ 被引导的思考者',
-            level1: '⭐ 被动的接收者',
-            level5desc: '你的思维框架非常完整，具备系统性的批判性思维。你能够独立检验信息、深度追问自己的认知盲区，并将反思内化为行动习惯。你是真正"清醒的思考者"。',
-            level4desc: '你有较强的独立思考能力，但在某些维度上仍有盲区。你已经有意识地检验信息和反思自己，但深度和系统性还可以进一步提升。',
-            level3desc: '你具备基础的批判性思维意识，但深度和系统性不足。你有时候会怀疑信息，但缺乏一套完整的检验框架，容易被表面的逻辑带着走。',
-            level2desc: '你容易被信息带节奏，缺乏主动检验和反思的习惯。你倾向于接受表面信息，很少追问"为什么"或"谁在背后推动"。需要从基础开始建立批判性思维框架。',
-            level1desc: '你习惯性地接受信息，几乎没有反思和检验的意识。你容易被情绪驱动、被立场左右、被利益操控。建议从最基础的"信息源检验"开始重新建立思维习惯。',
-            cardComprehensive: '🧠 综合思维成熟度',
-            cardLayer: '📊 三层能力诊断',
-            cardRadar: '📡 六维能力雷达',
-            cardBlind: '🔍 盲区与优势分析',
-            cardAdvice: '📌 修正建议',
-            blindTitle: '🔍 待升级的思维盲区',
-            noBlind: '🌟 没有明显的思维盲区',
-            noBlindDesc: '你在所有题目中都获得了较高分数，说明你的思维框架已经比较成熟。建议定期重复诊断，持续校准。',
-            strengthTitle: '💪 已具备的优势能力',
-            adviceOverall: '📖 总体建议',
-            advicePriority: '🎯 优先修复目标',
-            adviceLayer: '📚 分层次补充建议',
-            adviceDaily: '⏱️ 每日练习建议',
-            daily1: '🔹 <strong>每日一问</strong>：选一个你今天看到的信息，用5层框架快速检验："来源可靠吗？证据充分吗？逻辑有漏洞吗？谁在背后推动？我被情绪影响了吗？"',
-            daily2: '🔹 <strong>每周一练</strong>：找一篇与你立场相反的文章，逐条列出它的逻辑链条，找出最薄弱的一环。',
-            daily3: '🔹 <strong>每月一复盘</strong>：重新做一次这个诊断，对比前后变化，确认自己是否真的在升级。',
-            hintGray: '💡 <strong>提示：</strong>0-4分的5层递进设计更贴近真实思考的灰度。得分越低代表该处盲区越深，需要优先修复。如需重新诊断，点击「重置」按钮重新开始。',
-            radarNote: '* 各维度得分百分比（0–100%），反映该维度的思维成熟度。分数越高，该维度能力越强。',
-            pass: '✅ 通过',
-            partial: '⚠️ 部分通过',
-            fail: '❌ 未通过',
-            totalLabel: '总分',
-            points: '分（占比',
-            items: '项',
-            andMore: '还有',
-            moreItems: '项优势',
-            blindConcentrate: '你的盲区主要集中在',
-            blindSpots: '处盲区',
-            blindStart: '建议优先从这里开始升级。',
-            blindAction: '📌 具体操作：针对该维度中得分 ≤ 1 的题目，逐一制定"补课计划"——比如查找相关书籍、做专项练习、或找一个擅长这方面的朋友进行对谈。',
-            conclusionMature: '✅ 你的思维框架已经相当成熟。建议保持日常练习，重点关注"是否真的做到了"而不是"是否知道应该这样做"。',
-            conclusionGood: '⚠️ 你已经有了不错的基础，但盲区和碎片化思考仍然存在。建议从最弱的那一层（',
-            conclusionGoodEnd: '）开始集中突破。',
-            conclusionImprove: '❌ 你的思维习惯还有较大的提升空间。建议从最基础的"信息源检验"开始重建，先建立"每一条信息都值得怀疑"的底层意识。',
-            adviceStep1: '防忽悠·外部检验：建议从"信息源、事实、逻辑"三个维度建立"信息检验清单"，每次遇到新信息时主动对照。推荐阅读《批判性思维工具》。',
-            adviceStep2: '觉醒·内部追问：建议培养"元认知"习惯，定期记录自己的情绪触发点和认知偏见。可以尝试写"反思日记"。',
-            adviceStep3: '内化·心智更新：建议将思维升级转化为具体行动——每天主动寻找一个对立观点，每周刻意练习一次"逻辑谬误识别"。',
-            printHint: '提示：0-4分的5层递进设计更贴近真实思考的灰度。'
+
+        const DIM_MAP = {
+            source: { icon: '🔍', label: '信息源' },
+            facts: { icon: '📊', label: '事实依据' },
+            logic: { icon: '🧠', label: '推理逻辑' },
+            interests: { icon: '💰', label: '利益关联' },
+            emotion: { icon: '❤️', label: '情绪影响' },
+            cost: { icon: '⏳', label: '代价权衡' }
+        };
+        const LAYER_MAP = {
+            step1: { label: '防忽悠', sub: '外部检验', badge: 's1' },
+            step2: { label: '觉醒', sub: '内部追问', badge: 's2' },
+            step3: { label: '内化', sub: '心智更新', badge: 's3' }
         };
 
-        function t(key, vars) {
-            let str = T[key] || key;
-            if (vars) {
-                for (let k in vars) {
-                    str = str.replace(new RegExp('\\{' + k + '\\}', 'g'), vars[k]);
-                }
-            }
-            return str;
-        }
-
-        // ================================================================
-        // 数据
-        // ================================================================
-        const DIMENSIONS = [
-            { id: 'source', icon: '🔍', label: '信息源' },
-            { id: 'facts', icon: '📊', label: '事实' },
-            { id: 'logic', icon: '🧠', label: '逻辑' },
-            { id: 'interests', icon: '💰', label: '利益' },
-            { id: 'emotion', icon: '❤️', label: '情绪' },
-            { id: 'cost', icon: '⏳', label: '机会成本' }
+        const QUESTIONS_RAW = [
+            { dim: 'source', layer: 'step1', text: '面对一个信息，你会主动去查它的原始出处吗？', opts: [{ label: 'A', text: '我完全不会去查，信就信了', score: 0 }, { label: 'B', text: '我一般不太会去查，除非这个信息让我觉得可疑', score: 1 }, { label: 'C', text: '我有时候会去查一下，但也不是每次都查', score: 2 }, { label: 'D', text: '我经常会去查，想知道是不是真的', score: 3 }, { label: 'E', text: '我每次都会去查，不查我不放心', score: 4 }] },
+            { dim: 'source', layer: 'step1', text: '你判断一个信息可不可信，是更相信说话的人，还是更相信内容本身？', opts: [{ label: 'A', text: '我更相信说话的人，权威说了我就信', score: 0 }, { label: 'B', text: '我有点倾向于看人，但也会看内容', score: 1 }, { label: 'C', text: '我两边都会看，但说不上更信哪个', score: 2 }, { label: 'D', text: '我更看重内容本身，是谁说的没那么重要', score: 3 }, { label: 'E', text: '我只相信内容本身，不管是谁说的', score: 4 }] },
+            { dim: 'source', layer: 'step2', text: '你会因为“这个信息刚好符合你的想法”就不去怀疑它的来源吗？', opts: [{ label: 'A', text: '我经常这样，符合我心意的我就信了', score: 0 }, { label: 'B', text: '我有时候会，但也会提醒自己要保持怀疑', score: 1 }, { label: 'C', text: '我不太会这样，还是会保持一点怀疑', score: 2 }, { label: 'D', text: '我基本不会，我会刻意反着去怀疑', score: 3 }, { label: 'E', text: '我完全不会，越符合我心意的我越要查清楚', score: 4 }] },
+            { dim: 'source', layer: 'step2', text: '如果同一个信息来自你平时不太喜欢的媒体，你会不会就不太信了？', opts: [{ label: 'A', text: '我会，看到是这个媒体我就不太信了', score: 0 }, { label: 'B', text: '我可能有点怀疑，但不会完全否定', score: 1 }, { label: 'C', text: '我不太会因为媒体而改变判断，除非有前科', score: 2 }, { label: 'D', text: '我基本不会，我会看内容本身来定', score: 3 }, { label: 'E', text: '我完全不会，媒体是谁我不太在意', score: 4 }] },
+            { dim: 'source', layer: 'step3', text: '你会不会主动建立一套“我觉得可信的来源”清单，然后经常更新？', opts: [{ label: 'A', text: '我不会，我觉得没这个必要', score: 0 }, { label: 'B', text: '我偶尔会想想，但不会真的列出来', score: 1 }, { label: 'C', text: '我大概心里有数，但不会正式整理', score: 2 }, { label: 'D', text: '我会在脑子里有一份清单，也会不定期更新', score: 3 }, { label: 'E', text: '我会很认真地建立一份清单，并且定期更新', score: 4 }] },
+            { dim: 'source', layer: 'step3', text: '你会主动去找一些跟你观点不一样的声音，来检验自己的信息来源够不够全面吗？', opts: [{ label: 'A', text: '我不会，我只想看我认同的观点', score: 0 }, { label: 'B', text: '我很少这样，除非有人提到我才去看', score: 1 }, { label: 'C', text: '我有时候会，想看看对方说什么', score: 2 }, { label: 'D', text: '我经常会，我觉得这样才能全面', score: 3 }, { label: 'E', text: '我每次都会，我觉得这是必须的', score: 4 }] },
+            { dim: 'facts', layer: 'step1', text: '你能分清楚“客观事实”和“自己的感觉”之间的区别吗？', opts: [{ label: 'A', text: '我完全分不清，我觉得感觉就是事实', score: 0 }, { label: 'B', text: '我有时候能分清楚，但容易被感觉带偏', score: 1 }, { label: 'C', text: '我大概能分清楚，但偶尔也会混淆', score: 2 }, { label: 'D', text: '我大部分能分清，知道什么是事实什么是感觉', score: 3 }, { label: 'E', text: '我每次都能分清楚，我很在意这个区别', score: 4 }] },
+            { dim: 'facts', layer: 'step1', text: '看到一组数据，你会去想它的采集方法或者样本够不够有代表性吗？', opts: [{ label: 'A', text: '我不会想那么多，数据就是数据', score: 0 }, { label: 'B', text: '我很少会想这些，除非数据看起来很离谱', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会深究', score: 2 }, { label: 'D', text: '我经常会思考这些，数据的来源很重要', score: 3 }, { label: 'E', text: '我每次都会先问：这数据是怎么来的？', score: 4 }] },
+            { dim: 'facts', layer: 'step2', text: '你是不是经常先有了一个想法，然后再去找证据来支持自己？', opts: [{ label: 'A', text: '我经常这样，我觉得先有想法很正常', score: 0 }, { label: 'B', text: '我有时候会这样，但也不是每次都这样', score: 1 }, { label: 'C', text: '我不太会这样，我会先看证据再下结论', score: 2 }, { label: 'D', text: '我很少这样，我会刻意提醒自己先看证据', score: 3 }, { label: 'E', text: '我完全不会这样，证据永远走在结论前面', score: 4 }] },
+            { dim: 'facts', layer: 'step2', text: '你会不会有意忽略那些跟你观点冲突的事实？', opts: [{ label: 'A', text: '我会，看到冲突的事实我就不舒服，会下意识忽略', score: 0 }, { label: 'B', text: '我有时候会，但事后可能会后悔', score: 1 }, { label: 'C', text: '我不太会，但有时候也会不自觉地回避', score: 2 }, { label: 'D', text: '我基本不会，我会正视冲突的事实', score: 3 }, { label: 'E', text: '我完全不会，我反而会特别关注那些冲突的事实', score: 4 }] },
+            { dim: 'facts', layer: 'step3', text: '你会刻意找一些反例来检验自己的结论吗？', opts: [{ label: 'A', text: '我不会，我觉得我的结论已经很对了', score: 0 }, { label: 'B', text: '我很少这样做，除非有人提醒我', score: 1 }, { label: 'C', text: '我有时候会，想看看自己会不会被推翻', score: 2 }, { label: 'D', text: '我经常会，我觉得这样才能确保结论可靠', score: 3 }, { label: 'E', text: '我每次都会，找不到反例我才放心', score: 4 }] },
+            { dim: 'facts', layer: 'step3', text: '你打算怎么养成“先看证据再下结论”的习惯？', opts: [{ label: 'A', text: '我没想过要养成这种习惯，我觉得现在这样挺好的', score: 0 }, { label: 'B', text: '我有点想改，但不知道从哪开始', score: 1 }, { label: 'C', text: '我可能会试试看，但不确定能不能坚持', score: 2 }, { label: 'D', text: '我正在努力培养这个习惯，已经有一些进步了', score: 3 }, { label: 'E', text: '我已经有了这个习惯，而且我觉得对我帮助很大', score: 4 }] },
+            { dim: 'logic', layer: 'step1', text: '你的结论要成立，得靠哪些前提假设？要是这些假设不成立，你的结论还站得住脚吗？', opts: [{ label: 'A', text: '我从来没想过这个问题，结论就是结论', score: 0 }, { label: 'B', text: '我很少会去想这些假设，我觉得不影响', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会太深入', score: 2 }, { label: 'D', text: '我经常会想，而且我会去验证这些假设', score: 3 }, { label: 'E', text: '我每次都会先想清楚前提假设，不然不敢下结论', score: 4 }] },
+            { dim: 'logic', layer: 'step1', text: '你会试着从完全相反的角度去推一遍，看看能不能得出同样合理的逻辑吗？', opts: [{ label: 'A', text: '我不会，我觉得自己的角度就够了', score: 0 }, { label: 'B', text: '我很少这样，觉得有点浪费时间', score: 1 }, { label: 'C', text: '我有时候会试试，但推不下去就放弃了', score: 2 }, { label: 'D', text: '我经常会这样，我觉得这样才能全面', score: 3 }, { label: 'E', text: '我每次都会，我习惯从两边看问题', score: 4 }] },
+            { dim: 'logic', layer: 'step2', text: '当“大家都这么说”的时候，你会不会就不太想自己去检验逻辑了？', opts: [{ label: 'A', text: '我会，大家都这么说，应该不会错', score: 0 }, { label: 'B', text: '我有时候会，觉得随大流比较省心', score: 1 }, { label: 'C', text: '我不太会，还是会自己想一想', score: 2 }, { label: 'D', text: '我基本不会，我还是想自己过一遍逻辑', score: 3 }, { label: 'E', text: '我完全不会，大家都说的我更要自己验证', score: 4 }] },
+            { dim: 'logic', layer: 'step2', text: '你会不会因为一个逻辑听起来“让人舒服”就放松了对它的挑剔？', opts: [{ label: 'A', text: '我会，舒服的逻辑我倾向于相信', score: 0 }, { label: 'B', text: '我有时候会，但也会提醒自己不能太放松', score: 1 }, { label: 'C', text: '我不太会，舒服不一定就靠谱', score: 2 }, { label: 'D', text: '我基本不会，我会刻意警惕舒服的逻辑', score: 3 }, { label: 'E', text: '我完全不会，越舒服的逻辑我越要挑刺', score: 4 }] },
+            { dim: 'logic', layer: 'step3', text: '你愿意定期挑战自己熟悉的论证方式，换个全新的角度去重新想一遍吗？', opts: [{ label: 'A', text: '我不愿意，我觉得我现在的思考方式就够了', score: 0 }, { label: 'B', text: '我有点不愿意，感觉太费劲了', score: 1 }, { label: 'C', text: '我可能愿意试试，但不会经常做', score: 2 }, { label: 'D', text: '我挺愿意的，我觉得这能帮我突破', score: 3 }, { label: 'E', text: '我非常愿意，我经常这样做，我觉得特别有用', score: 4 }] },
+            { dim: 'logic', layer: 'step3', text: '你会刻意去学一些常见的逻辑错误，然后在生活中把它们认出来吗？', opts: [{ label: 'A', text: '我不会，我觉得学那些没什么用', score: 0 }, { label: 'B', text: '我可能偶尔会看一下，但不会特意记', score: 1 }, { label: 'C', text: '我有时候会关注，但不会认真去学', score: 2 }, { label: 'D', text: '我经常学，而且能在生活中认出不少', score: 3 }, { label: 'E', text: '我一直在学，而且已经成了我的习惯', score: 4 }] },
+            { dim: 'interests', layer: 'step1', text: '你会有意识地想“谁的视角被忽略了”或者“谁在背后推这个观点”吗？', opts: [{ label: 'A', text: '我不会想这些，我觉得那不重要', score: 0 }, { label: 'B', text: '我很少想，除非有人提醒我', score: 1 }, { label: 'C', text: '我有时候会想一下，但不会深入', score: 2 }, { label: 'D', text: '我经常会想，我觉得这很重要', score: 3 }, { label: 'E', text: '我每次都会想，这是我的习惯', score: 4 }] },
+            { dim: 'interests', layer: 'step1', text: '你能看清楚，那些跟你立场相反的人，他们能从这件事里得到什么吗？', opts: [{ label: 'A', text: '我看不出来，我不知道他们能得到什么', score: 0 }, { label: 'B', text: '我偶尔能看出来一点，但不太确定', score: 1 }, { label: 'C', text: '我有时候能看清楚，但需要仔细想', score: 2 }, { label: 'D', text: '我大部分能看清楚，我知道他们的动机', score: 3 }, { label: 'E', text: '我每次都能看清楚，我特别擅长这个', score: 4 }] },
+            { dim: 'interests', layer: 'step2', text: '你会在多大程度上承认自己错了？', opts: [{ label: 'A', text: '我完全不会承认，我没错', score: 0 }, { label: 'B', text: '我有时候会，但很不情愿', score: 1 }, { label: 'C', text: '我基本会承认，但需要证据确凿', score: 2 }, { label: 'D', text: '我经常会承认，我觉得错了就错了', score: 3 }, { label: 'E', text: '我每次都会立刻承认，我觉得没什么丢人的', score: 4 }] },
+            { dim: 'interests', layer: 'step2', text: '你害怕事情本身的风险吗？', opts: [{ label: 'A', text: '我完全不害怕，我胆子大', score: 0 }, { label: 'B', text: '我不太害怕，我觉得自己能应对', score: 1 }, { label: 'C', text: '我有点害怕，但还能接受', score: 2 }, { label: 'D', text: '我比较害怕，有时候会睡不着', score: 3 }, { label: 'E', text: '我非常害怕，风险让我很焦虑', score: 4 }] },
+            { dim: 'interests', layer: 'step2', text: '你的判断在多大程度上是为了维护你想成为的那种人的形象？', opts: [{ label: 'A', text: '我不会为了维护形象去改变判断，真实最重要', score: 0 }, { label: 'B', text: '我有时候会，但不会太刻意', score: 1 }, { label: 'C', text: '我会在意，但我不太清楚影响有多大', score: 2 }, { label: 'D', text: '我会，尤其是在一些特定场合', score: 3 }, { label: 'E', text: '我几乎每次都这样，我很清楚自己想成为什么样的人', score: 4 }] },
+            { dim: 'interests', layer: 'step3', text: '当利益和真相撞在一起的时候，你的选择是什么？', opts: [{ label: 'A', text: '我从来没想过这个问题，到时候再说', score: 0 }, { label: 'B', text: '我大致想过，但没什么明确的底线', score: 1 }, { label: 'C', text: '我大概有一些模糊的原则，但不太清晰', score: 2 }, { label: 'D', text: '我有明确的底线，我知道自己会怎么选', score: 3 }, { label: 'E', text: '我不仅清楚自己的底线，还为此提前做过计划', score: 4 }] },
+            { dim: 'interests', layer: 'step3', text: '你会主动反思自己有没有因为利益而扭曲了判断吗？', opts: [{ label: 'A', text: '我不会，我相信自己不会被利益影响', score: 0 }, { label: 'B', text: '我很少反思，觉得自己应该没问题', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会刻意去深挖', score: 2 }, { label: 'D', text: '我经常会反思，我觉得人人都会被影响', score: 3 }, { label: 'E', text: '我每次都会反思，我特别警惕这一点', score: 4 }] },
+            { dim: 'emotion', layer: 'step1', text: '在做重要判断的时候，你的情绪（比如生气、兴奋、害怕）影响大不大？', opts: [{ label: 'A', text: '我完全不会注意到情绪的影响，我是理性的人', score: 0 }, { label: 'B', text: '我好像不太会留意到情绪在起作用', score: 1 }, { label: 'C', text: '我有时候能感觉到情绪在影响我', score: 2 }, { label: 'D', text: '我能清楚地感觉到情绪在影响我的判断', score: 3 }, { label: 'E', text: '情绪几乎每一次都在影响我，我都知道', score: 4 }] },
+            { dim: 'emotion', layer: 'step1', text: '你能分清楚“这个信息让我不舒服”和“这个信息是假的”之间的差别吗？', opts: [{ label: 'A', text: '我完全分不清楚，不舒服就是假的', score: 0 }, { label: 'B', text: '我有时候分不清，情绪容易干扰我', score: 1 }, { label: 'C', text: '我大概能分清楚，但偶尔也会混淆', score: 2 }, { label: 'D', text: '我大部分能分清，知道这两者的区别', score: 3 }, { label: 'E', text: '我每次都能分清楚，我特别在意这个区别', score: 4 }] },
+            { dim: 'emotion', layer: 'step2', text: '你害怕“事情搞砸了”吗？', opts: [{ label: 'A', text: '我完全不害怕，反正都能解决', score: 0 }, { label: 'B', text: '我不太害怕，我觉得自己扛得住', score: 1 }, { label: 'C', text: '我有点害怕，但还能保持冷静', score: 2 }, { label: 'D', text: '我比较害怕，会让我很焦虑', score: 3 }, { label: 'E', text: '我非常害怕，我经常担心事情会搞砸', score: 4 }] },
+            { dim: 'emotion', layer: 'step2', text: '你害怕“承认自己看走了眼”吗？', opts: [{ label: 'A', text: '我完全不害怕，错了就承认呗', score: 0 }, { label: 'B', text: '我不太害怕，我觉得这很正常', score: 1 }, { label: 'C', text: '我有点害怕，但也能接受', score: 2 }, { label: 'D', text: '我比较害怕，会觉得丢面子', score: 3 }, { label: 'E', text: '我非常害怕，我宁可别人说我固执也不愿意承认自己错了', score: 4 }] },
+            { dim: 'emotion', layer: 'step3', text: '情绪上头的时候，你会主动停下来冷静一下再做判断吗？', opts: [{ label: 'A', text: '我不会，我就是想马上做决定', score: 0 }, { label: 'B', text: '我很少会停下来，情绪来了就来了', score: 1 }, { label: 'C', text: '我有时候会停一下，但不太管用', score: 2 }, { label: 'D', text: '我经常会停下，让自己先冷静冷静', score: 3 }, { label: 'E', text: '我每次都会停下来，冷静后再决定', score: 4 }] },
+            { dim: 'emotion', layer: 'step3', text: '你愿意记下自己的情绪触发点，提前想好怎么应对吗？', opts: [{ label: 'A', text: '我不愿意，我觉得这没什么用', score: 0 }, { label: 'B', text: '我有点不愿意，感觉太麻烦了', score: 1 }, { label: 'C', text: '我可能会试试，但不知道能不能坚持', score: 2 }, { label: 'D', text: '我挺愿意的，我正在尝试这样做', score: 3 }, { label: 'E', text: '我非常愿意，我已经在做了，而且很有帮助', score: 4 }] },
+            { dim: 'cost', layer: 'step1', text: '做决定之前，你会不会去想“最坏能坏到哪一步”和它发生的概率？', opts: [{ label: 'A', text: '我完全不会想，想那么多干嘛', score: 0 }, { label: 'B', text: '我不太会想，感觉会越想越怕', score: 1 }, { label: 'C', text: '我有时候会想一下，但不会很仔细', score: 2 }, { label: 'D', text: '我经常会想，我觉得要考虑最坏情况', score: 3 }, { label: 'E', text: '我每次都会想，我会仔细计算概率', score: 4 }] },
+            { dim: 'cost', layer: 'step1', text: '你会同时把“相信”和“不相信”两种选择的后果都摆出来比一比吗？', opts: [{ label: 'A', text: '我完全不会，相信就相信了', score: 0 }, { label: 'B', text: '我很少权衡，觉得太累了', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会并列比较', score: 2 }, { label: 'D', text: '我经常会比一比，这样更清楚', score: 3 }, { label: 'E', text: '我每次都会仔细对比，这是我的决策习惯', score: 4 }] },
+            { dim: 'cost', layer: 'step2', text: '你害怕“做出错误选择”吗？', opts: [{ label: 'A', text: '我完全不害怕，选错了就改', score: 0 }, { label: 'B', text: '我不太害怕，我觉得没有完美的选择', score: 1 }, { label: 'C', text: '我有点害怕，但也不会太纠结', score: 2 }, { label: 'D', text: '我比较害怕，我会反复想会不会选错', score: 3 }, { label: 'E', text: '我非常害怕，我经常因为怕选错而犹豫不决', score: 4 }] },
+            { dim: 'cost', layer: 'step2', text: '你害怕“承认自己做出了错误选择”吗？', opts: [{ label: 'A', text: '我完全不害怕，错了就大方承认', score: 0 }, { label: 'B', text: '我不太害怕，我觉得承认错误没什么', score: 1 }, { label: 'C', text: '我有点害怕，会有点不好意思', score: 2 }, { label: 'D', text: '我比较害怕，感觉承认错了很丢脸', score: 3 }, { label: 'E', text: '我非常害怕，我宁可死扛也不愿承认自己选错了', score: 4 }] },
+            { dim: 'cost', layer: 'step2', text: '如果暂时不判断、保持中立，你会担心错过什么吗？', opts: [{ label: 'A', text: '我完全不担心，保持中立挺好的', score: 0 }, { label: 'B', text: '我不太担心，我觉得等等看也没关系', score: 1 }, { label: 'C', text: '我有点担心，怕错过了最佳时机', score: 2 }, { label: 'D', text: '我比较担心，我不太喜欢悬而未决', score: 3 }, { label: 'E', text: '我非常担心，我恨不得马上就做决定', score: 4 }] },
+            { dim: 'cost', layer: 'step3', text: '你愿意为了看清真相，去承受“不跟着大家走”带来的不确定感吗？', opts: [{ label: 'A', text: '我不愿意，不确定感太难受了', score: 0 }, { label: 'B', text: '我不太愿意，我觉得跟着大家更安全', score: 1 }, { label: 'C', text: '我可能会愿意，但要看情况', score: 2 }, { label: 'D', text: '我挺愿意的，真相比舒服更重要', score: 3 }, { label: 'E', text: '我非常愿意，我不怕不确定，我怕看不清真相', score: 4 }] },
+            { dim: 'cost', layer: 'step3', text: '你会搭一个简单的决策框架，帮自己在下次做判断时系统评估得失吗？', opts: [{ label: 'A', text: '我不会，我觉得没必要', score: 0 }, { label: 'B', text: '我可能想过，但没真的去做', score: 1 }, { label: 'C', text: '我有时候会试着弄一个，但不太系统', score: 2 }, { label: 'D', text: '我正在建立自己的决策框架，已经有一些了', score: 3 }, { label: 'E', text: '我已经有了很完善的决策框架，一直在用', score: 4 }] }
         ];
 
-        const LAYERS = [
-            { key: 'step1', label: '防忽悠', sub: '外部检验', badge: 's1' },
-            { key: 'step2', label: '觉醒', sub: '内部追问', badge: 's2' },
-            { key: 'step3', label: '内化', sub: '心智更新', badge: 's3' }
-        ];
-
-        // 36道题目（完整）
-        const QUESTIONS_RAW = [{
-            dim: 'source',
-            layer: 'step1',
-            text: '当你看到{topic}这个信息或观点时，你通常会怎么做？',
-            options: [
-                { label: 'A', text: '我会主动查找多个独立来源进行系统性交叉验证，并建立信息档案', score: 4 },
-                { label: 'B', text: '我会查一两个我信任的权威来源确认，如果一致就不再深究', score: 3 },
-                { label: 'C', text: '我会看一眼来源，如果看起来正规就不会再查证', score: 2 },
-                { label: 'D', text: '我凭感觉判断真假，很少主动查证', score: 1 },
-                { label: 'E', text: '我看到什么就信什么，从不查证', score: 0 }
-            ]
-        }, {
-            dim: 'source',
-            layer: 'step1',
-            text: '关于{topic}这个信息的发布方，你了解他们的背景和利益关系吗？',
-            options: [
-                { label: 'A', text: '我会主动深入调查发布方的背景、财务关系、政治立场和历史信誉', score: 4 },
-                { label: 'B', text: '我会看发布方是谁，如果是大媒体或知名机构就不再深究', score: 3 },
-                { label: 'C', text: '我大概知道是谁发的，但不会特意去查背景', score: 2 },
-                { label: 'D', text: '我不关心是谁发的，只关心内容本身', score: 1 },
-                { label: 'E', text: '我完全不了解，也不觉得需要了解', score: 0 }
-            ]
-        }, {
-            dim: 'source',
-            layer: 'step2',
-            text: '你为什么会相信{topic}这个说法？是什么在支撑你的信任？',
-            options: [
-                { label: 'A', text: '我会基于证据质量、历史准确性和逻辑一致性做系统性评估，并觉察自己的认知偏见', score: 4 },
-                { label: 'B', text: '我相信是因为之前没出过错，但很少深入反思信任的来源', score: 3 },
-                { label: 'C', text: '我信任是因为大家都信，或者是我习惯用这个来源', score: 2 },
-                { label: 'D', text: '我没想过这个问题，就是习惯性地相信', score: 1 },
-                { label: 'E', text: '我不需要理由，相信就是相信', score: 0 }
-            ]
-        }, {
-            dim: 'source',
-            layer: 'step2',
-            text: '如果换一个立场完全相反的人对{topic}说同样的话，你的判断会改变吗？',
-            options: [
-                { label: 'A', text: '我会用完全相同的标准检验，刻意隔离立场影响，只关注证据和逻辑', score: 4 },
-                { label: 'B', text: '我会更警惕，但不会直接否定，会先看证据', score: 3 },
-                { label: 'C', text: '我会多思考一下，但大概率还是立场决定态度', score: 2 },
-                { label: 'D', text: '立场决定态度——是我认同的人我就信，不认同的就不信', score: 1 },
-                { label: 'E', text: '我根本不在乎谁说的，我只认我最初看到的版本', score: 0 }
-            ]
-        }, {
-            dim: 'source',
-            layer: 'step3',
-            text: '经过对{topic}的思考，你会如何调整自己未来对待信息来源的方式？',
-            options: [
-                { label: 'A', text: '我会建立一套"信息来源可信度评估框架"，每次遇到新信息都主动套用并更新', score: 4 },
-                { label: 'B', text: '我会比以前更留意，但不会建立系统的框架', score: 3 },
-                { label: 'C', text: '我会稍微注意一下，但不会刻意改变习惯', score: 2 },
-                { label: 'D', text: '我觉得知道就行了，没必要改变什么', score: 1 },
-                { label: 'E', text: '完全不会改变，我觉得现在这样就挺好', score: 0 }
-            ]
-        }, {
-            dim: 'source',
-            layer: 'step3',
-            text: '你是否会主动寻找与{topic}立场相反的观点来检验自己的偏见？',
-            options: [
-                { label: 'A', text: '我经常这样做，视其为日常思维训练的必要部分，并会记录反思', score: 4 },
-                { label: 'B', text: '我偶尔会看对立观点，但不会刻意寻找', score: 3 },
-                { label: 'C', text: '我很少看对立观点，除非有人硬塞给我', score: 2 },
-                { label: 'D', text: '我不看对立观点，觉得浪费时间或让人心烦', score: 1 },
-                { label: 'E', text: '我绝对不看，看了只会扰乱我', score: 0 }
-            ]
-        }, {
-            dim: 'facts',
-            layer: 'step1',
-            text: '当你看到{topic}中的关键数据或证据时，你会怎么做？',
-            options: [
-                { label: 'A', text: '我会追溯原始出处，确认数据采集方法、样本量和统计显著性', score: 4 },
-                { label: 'B', text: '我会查看数据来源，如果来自知名机构就不再深究', score: 3 },
-                { label: 'C', text: '我会大概看一下数据是否合理，不会专门验证', score: 2 },
-                { label: 'D', text: '我很少怀疑数据，除非看起来特别离谱', score: 1 },
-                { label: 'E', text: '我从不质疑任何数据', score: 0 }
-            ]
-        }, {
-            dim: 'facts',
-            layer: 'step1',
-            text: '你能识别出{topic}中"数据被选择性呈现"或"断章取义"的情况吗？',
-            options: [
-                { label: 'A', text: '我经常能敏锐地识别出选择性呈现，并主动查找完整的上下文和数据全貌', score: 4 },
-                { label: 'B', text: '我有时能察觉，但需要比较警觉才行', score: 3 },
-                { label: 'C', text: '我偶尔能看出来，但大部分时候意识不到', score: 2 },
-                { label: 'D', text: '我很少能看出来，除非被明确告知', score: 1 },
-                { label: 'E', text: '我完全分辨不出来', score: 0 }
-            ]
-        }, {
-            dim: 'facts',
-            layer: 'step2',
-            text: '你为什么不怀疑{topic}中的某些证据？你的信任从何而来？',
-            options: [
-                { label: 'A', text: '我意识到自己容易被"符合预期的证据"说服，所以会刻意寻找反证和偏差', score: 4 },
-                { label: 'B', text: '如果证据看起来很专业、很权威，我不会轻易怀疑', score: 3 },
-                { label: 'C', text: '我信任是因为大多数人都在引用，应该没问题', score: 2 },
-                { label: 'D', text: '我很少怀疑证据，看起来靠谱就信', score: 1 },
-                { label: 'E', text: '我不怀疑任何东西', score: 0 }
-            ]
-        }, {
-            dim: 'facts',
-            layer: 'step2',
-            text: '你是否在用自己的"期待结果"来评判{topic}中证据的有效性？',
-            options: [
-                { label: 'A', text: '我经常警惕这一点，会刻意检查是否在"先有结论再找证据"，并纠正自己', score: 4 },
-                { label: 'B', text: '我偶尔会意识到，但不太会主动纠正', score: 3 },
-                { label: 'C', text: '我很少意识到自己的期待在影响判断', score: 2 },
-                { label: 'D', text: '我有时会想"希望这是对的"，但不会深究', score: 1 },
-                { label: 'E', text: '我没有这种意识，也不觉得需要', score: 0 }
-            ]
-        }, {
-            dim: 'facts',
-            layer: 'step3',
-            text: '经过对{topic}的思考，你会如何改变自己对待证据的方式？',
-            options: [
-                { label: 'A', text: '我会用"证据链"系统性评估，把"事实"和"感受"分别列出来对比', score: 4 },
-                { label: 'B', text: '我会比过去更频繁地查证来源，但不会有系统性改变', score: 3 },
-                { label: 'C', text: '我会稍微注意一下，但不会花太多精力', score: 2 },
-                { label: 'D', text: '我觉得现在这样就够了，不需要改变', score: 1 },
-                { label: 'E', text: '我不会改变', score: 0 }
-            ]
-        }, {
-            dim: 'facts',
-            layer: 'step3',
-            text: '你会主动寻找反例来检验你对{topic}的结论吗？',
-            options: [
-                { label: 'A', text: '我专门训练自己寻找反例，把"能否找到反例"当作判断逻辑是否成立的重要标准', score: 4 },
-                { label: 'B', text: '我偶尔会找，但如果太难找就算了', score: 3 },
-                { label: 'C', text: '我很少主动找反例，除非有人提醒', score: 2 },
-                { label: 'D', text: '我不会找反例，觉得没必要', score: 1 },
-                { label: 'E', text: '我绝对不会找反例，那会动摇我的信念', score: 0 }
-            ]
-        }, {
-            dim: 'logic',
-            layer: 'step1',
-            text: '当{topic}这个观点被呈现给你时，你会怎么做？',
-            options: [
-                { label: 'A', text: '我会主动追问"还有其他可能的解释吗？"并列出至少两种替代方案来比较', score: 4 },
-                { label: 'B', text: '我会想一下有没有别的解释，但通常不会深究', score: 3 },
-                { label: 'C', text: '如果解释听起来合理，我就接受，不会再想其他的', score: 2 },
-                { label: 'D', text: '我很少想别的解释，相信第一感觉', score: 1 },
-                { label: 'E', text: '我从不思考其他可能性', score: 0 }
-            ]
-        }, {
-            dim: 'logic',
-            layer: 'step1',
-            text: '你能识别出{topic}中"因果关系被过度简化"或"虚假相关"的情况吗？',
-            options: [
-                { label: 'A', text: '我经常能发现简单的因果背后隐藏的复杂因素，并指出"第三变量"', score: 4 },
-                { label: 'B', text: '我有时能看出问题，但不太会说清楚漏洞在哪', score: 3 },
-                { label: 'C', text: '我偶尔能意识到，但大多数时候会被说服', score: 2 },
-                { label: 'D', text: '我很少想到这一点，除非被人提醒', score: 1 },
-                { label: 'E', text: '我完全看不出因果关系有问题', score: 0 }
-            ]
-        }, {
-            dim: 'logic',
-            layer: 'step2',
-            text: '你如何判断{topic}背后的逻辑是否可靠？',
-            options: [
-                { label: 'A', text: '我会检验前提的真实性、推理的严密性、结论的保守性，并寻找逻辑漏洞', score: 4 },
-                { label: 'B', text: '我会顺着推一遍，如果没发现明显矛盾就觉得是可靠的', score: 3 },
-                { label: 'C', text: '如果听起来有道理，我不会深究前提和过程', score: 2 },
-                { label: 'D', text: '我很少检验逻辑，感觉对就对', score: 1 },
-                { label: 'E', text: '我不检验任何逻辑', score: 0 }
-            ]
-        }, {
-            dim: 'logic',
-            layer: 'step2',
-            text: '如果{topic}的逻辑让你感到"安心"或"舒服"，你会怎么处理？',
-            options: [
-                { label: 'A', text: '我会立刻警觉——太舒服的逻辑往往有陷阱，我会刻意挑刺', score: 4 },
-                { label: 'B', text: '我会觉得"有道理"，但还是会稍微留个心眼', score: 3 },
-                { label: 'C', text: '我会觉得很舒服，更加相信它', score: 2 },
-                { label: 'D', text: '我不会多想，舒服就是对的', score: 1 },
-                { label: 'E', text: '我完全被舒服的感觉引导', score: 0 }
-            ]
-        }, {
-            dim: 'logic',
-            layer: 'step3',
-            text: '你是否愿意承认"我对{topic}的逻辑可能是错的"？',
-            options: [
-                { label: 'A', text: '我习惯性用"假如我错了"来重新检验，把认错视为认知升级的机会', score: 4 },
-                { label: 'B', text: '我经常主动审视自己的推理，但有时会陷入自我怀疑', score: 3 },
-                { label: 'C', text: '我愿意承认，但需要别人先指出问题', score: 2 },
-                { label: 'D', text: '我很少承认自己逻辑错了，除非证据确凿', score: 1 },
-                { label: 'E', text: '我不认为自己会错', score: 0 }
-            ]
-        }, {
-            dim: 'logic',
-            layer: 'step3',
-            text: '你会如何训练自己的逻辑能力来更好地分析{topic}这类问题？',
-            options: [
-                { label: 'A', text: '我会主动学习逻辑学、研究常见谬误，并刻意练习识别和构建论证', score: 4 },
-                { label: 'B', text: '我会有意识地多问"为什么"，但不会专门学习', score: 3 },
-                { label: 'C', text: '我偶尔会看点逻辑相关的文章，但不会刻意练习', score: 2 },
-                { label: 'D', text: '我觉得逻辑是天生的，不需要专门训练', score: 1 },
-                { label: 'E', text: '逻辑根本不重要', score: 0 }
-            ]
-        }, {
-            dim: 'interests',
-            layer: 'step1',
-            text: '当你看到{topic}这个信息时，你会想到"谁最希望我相信这个"吗？',
-            options: [
-                { label: 'A', text: '我总会深入分析信息背后的利益主体，并评估他们的动机强度和一致性', score: 4 },
-                { label: 'B', text: '我经常会想"谁在背后推动"，但不会深入调查', score: 3 },
-                { label: 'C', text: '我偶尔会想到，但不是每次都', score: 2 },
-                { label: 'D', text: '我很少想到这个问题', score: 1 },
-                { label: 'E', text: '我从未想过这个问题', score: 0 }
-            ]
-        }, {
-            dim: 'interests',
-            layer: 'step1',
-            text: '你能否识别{topic}传播者的具体利益诉求（流量、金钱、政治立场等）？',
-            options: [
-                { label: 'A', text: '我善于识别不同利益主体，能精准区分"说了什么"和"为什么说"', score: 4 },
-                { label: 'B', text: '我能看出一些明显的利益关系，但容易忽略隐蔽的', score: 3 },
-                { label: 'C', text: '我能看到表面的利益，但更深层的我看不出来', score: 2 },
-                { label: 'D', text: '我很少能看出来，除非特别明显', score: 1 },
-                { label: 'E', text: '我完全分辨不出来', score: 0 }
-            ]
-        }, {
-            dim: 'interests',
-            layer: 'step2',
-            text: '你是否愿意看见{topic}背后的"利益之手"？',
-            options: [
-                { label: 'A', text: '我主动寻求看见隐藏的利益，即使这会颠覆我的认知和立场', score: 4 },
-                { label: 'B', text: '我愿意看，但不想被它影响太多，所以有时刻意忽略', score: 3 },
-                { label: 'C', text: '我看见了也会假装没看见，因为太麻烦', score: 2 },
-                { label: 'D', text: '我看见了也会说"这是正常的"，不愿深究', score: 1 },
-                { label: 'E', text: '我不觉得有隐藏的利益，都是为你好', score: 0 }
-            ]
-        }, {
-            dim: 'interests',
-            layer: 'step2',
-            text: '如果承认"我被{topic}的利益影响了"，你会失去什么？',
-            options: [
-                { label: 'A', text: '我明白承认被影响不会失去什么，反而会让自己更清醒、更自由', score: 4 },
-                { label: 'B', text: '我会感到不舒服，但知道这是必要的', score: 3 },
-                { label: 'C', text: '我会感到丢脸或动摇，所以尽量不承认', score: 2 },
-                { label: 'D', text: '我坚决不承认，承认了就等于输了', score: 1 },
-                { label: 'E', text: '我绝不会承认', score: 0 }
-            ]
-        }, {
-            dim: 'interests',
-            layer: 'step3',
-            text: '经过对{topic}的分析，你如何调整自己看待"利益"的方式？',
-            options: [
-                { label: 'A', text: '我会把"谁在受益"变成下意识的第二反应，养成直觉性追问的习惯', score: 4 },
-                { label: 'B', text: '我会有意识地提醒自己关注利益，但还没形成下意识习惯', score: 3 },
-                { label: 'C', text: '我偶尔会提醒自己，但很快会忘记', score: 2 },
-                { label: 'D', text: '我觉得知道就行了，不需要刻意改变', score: 1 },
-                { label: 'E', text: '我不打算改变', score: 0 }
-            ]
-        }, {
-            dim: 'interests',
-            layer: 'step3',
-            text: '你会把"利益分析"当作日常思考的一部分吗？',
-            options: [
-                { label: 'A', text: '我已经把它内化成思维方式，自动分析每一个输入的利益结构', score: 4 },
-                { label: 'B', text: '我会在重要或可疑的事情上分析，但不会日常化', score: 3 },
-                { label: 'C', text: '我偶尔会分析，但大多数时候懒得想', score: 2 },
-                { label: 'D', text: '很少分析', score: 1 },
-                { label: 'E', text: '完全不分析', score: 0 }
-            ]
-        }, {
-            dim: 'emotion',
-            layer: 'step1',
-            text: '当你看到{topic}并产生强烈情绪（恐惧、愤怒、兴奋）时，你会怎么做？',
-            options: [
-                { label: 'A', text: '我会立刻停下，分析情绪源："这是我自己的敏感点，还是有人在刻意操控？"', score: 4 },
-                { label: 'B', text: '我会警觉并提醒自己冷静，但不会详细分析', score: 3 },
-                { label: 'C', text: '我会先感受情绪，事后再反思', score: 2 },
-                { label: 'D', text: '我被情绪牵着走，很少停下来思考', score: 1 },
-                { label: 'E', text: '我完全跟随情绪，从不反思', score: 0 }
-            ]
-        }, {
-            dim: 'emotion',
-            layer: 'step1',
-            text: '你能识别{topic}中的"情绪操控"信号吗？',
-            options: [
-                { label: 'A', text: '我能精准识别"制造紧迫感、煽动恐惧、过度煽情、二元对立"等手法', score: 4 },
-                { label: 'B', text: '我能识别一些明显的，但高级的操控我分辨不出', score: 3 },
-                { label: 'C', text: '我偶尔能看出一点，但经常中招', score: 2 },
-                { label: 'D', text: '我很少能识别出来', score: 1 },
-                { label: 'E', text: '我完全分辨不出来', score: 0 }
-            ]
-        }, {
-            dim: 'emotion',
-            layer: 'step2',
-            text: '你对{topic}的情绪是真的被"事实"点燃的，还是被"暗示"点燃的？',
-            options: [
-                { label: 'A', text: '我能清晰区分事实和暗示，知道情绪被什么具体要素触发', score: 4 },
-                { label: 'B', text: '我有时能区分，但情绪上来时容易模糊', score: 3 },
-                { label: 'C', text: '我很难区分，感觉就是事实本身让我激动', score: 2 },
-                { label: 'D', text: '我分不清，情绪就是情绪', score: 1 },
-                { label: 'E', text: '我不需要区分', score: 0 }
-            ]
-        }, {
-            dim: 'emotion',
-            layer: 'step2',
-            text: '如果"去掉情绪的滤镜"，你看待{topic}会有什么不同？',
-            options: [
-                { label: 'A', text: '我会刻意剥离情绪，用"白描法"重述信息内容，只留事实骨架', score: 4 },
-                { label: 'B', text: '我会尝试冷静，但很难完全剥离情绪', score: 3 },
-                { label: 'C', text: '我很少剥离情绪，感觉情绪就是信息的一部分', score: 2 },
-                { label: 'D', text: '我几乎不剥离情绪', score: 1 },
-                { label: 'E', text: '我不会剥离情绪', score: 0 }
-            ]
-        }, {
-            dim: 'emotion',
-            layer: 'step3',
-            text: '面对{topic}引发的强烈情绪，你会如何处理？',
-            options: [
-                { label: 'A', text: '我把情绪当作"线索"："这里有问题值得深挖"，而不是当作"指令"去行动', score: 4 },
-                { label: 'B', text: '我会先处理情绪，再处理信息', score: 3 },
-                { label: 'C', text: '我会先反应，过后再复盘', score: 2 },
-                { label: 'D', text: '我很少控制情绪，先发泄再说', score: 1 },
-                { label: 'E', text: '我完全被情绪指挥', score: 0 }
-            ]
-        }, {
-            dim: 'emotion',
-            layer: 'step3',
-            text: '你会记录自己对{topic}这类信息的"情绪触发点"吗？',
-            options: [
-                { label: 'A', text: '我会刻意记录，形成自己的"软肋清单"，并制定应对预案', score: 4 },
-                { label: 'B', text: '我大概知道自己容易被什么触发，但没有记录', score: 3 },
-                { label: 'C', text: '我有时会反思，但不会记录', score: 2 },
-                { label: 'D', text: '我很少反思自己的情绪触发', score: 1 },
-                { label: 'E', text: '我从不反思', score: 0 }
-            ]
-        }, {
-            dim: 'cost',
-            layer: 'step1',
-            text: '在做与{topic}相关的决策前，你会计算"如果我错了，最大损失是什么"吗？',
-            options: [
-                { label: 'A', text: '我会系统性地评估最坏情况、发生概率和可承受程度，并制定兜底方案', score: 4 },
-                { label: 'B', text: '我会大概想一下最坏情况，但不会详细计算', score: 3 },
-                { label: 'C', text: '我会想到损失，但不想吓到自己就不深想', score: 2 },
-                { label: 'D', text: '我很少想损失，只想着收益', score: 1 },
-                { label: 'E', text: '我完全不想损失', score: 0 }
-            ]
-        }, {
-            dim: 'cost',
-            layer: 'step1',
-            text: '你会权衡"相信{topic}"和"不相信"两种选择的后果吗？',
-            options: [
-                { label: 'A', text: '我会同时详细计算"相信的代价"和"不相信的代价"，并比较权衡', score: 4 },
-                { label: 'B', text: '我会考虑两方面，但不会详细计算', score: 3 },
-                { label: 'C', text: '我主要考虑"相信了会怎样"，"不相信"几乎不想', score: 2 },
-                { label: 'D', text: '我通常只算一边', score: 1 },
-                { label: 'E', text: '我不计算任何代价', score: 0 }
-            ]
-        }, {
-            dim: 'cost',
-            layer: 'step2',
-            text: '面对{topic}，你害怕失去的是什么？这种恐惧是真实的还是被放大的？',
-            options: [
-                { label: 'A', text: '我能精准分辨真实恐惧和放大恐惧，知道自己在怕什么、该不该怕', score: 4 },
-                { label: 'B', text: '我有时能分辨，但大多数时候被恐惧推着走', score: 3 },
-                { label: 'C', text: '我很难分辨，就是害怕', score: 2 },
-                { label: 'D', text: '我不分析恐惧，害怕就是害怕', score: 1 },
-                { label: 'E', text: '我不需要分析', score: 0 }
-            ]
-        }, {
-            dim: 'cost',
-            layer: 'step2',
-            text: '你对{topic}的决策是受"恐惧"驱动的，还是受"理性评估"驱动的？',
-            options: [
-                { label: 'A', text: '我的决策基于理性评估框架，恐惧只是输入项之一，会被纳入计算', score: 4 },
-                { label: 'B', text: '我大部分时间基于理性，但恐惧还是会影响最终选择', score: 3 },
-                { label: 'C', text: '恐惧占一半，理性占一半', score: 2 },
-                { label: 'D', text: '我大部分时间被恐惧支配', score: 1 },
-                { label: 'E', text: '我完全被恐惧支配', score: 0 }
-            ]
-        }, {
-            dim: 'cost',
-            layer: 'step3',
-            text: '经过对{topic}的思考，你会如何改变自己的决策方式？',
-            options: [
-                { label: 'A', text: '我会建立"决策清单"框架：每次决策前按步骤评估代价、收益、概率、替代方案', score: 4 },
-                { label: 'B', text: '我会提醒自己理性决策，但没有固定框架', score: 3 },
-                { label: 'C', text: '我偶尔会理性，但大多数时候凭感觉', score: 2 },
-                { label: 'D', text: '我不打算改变决策方式', score: 1 },
-                { label: 'E', text: '我觉得凭感觉就很好', score: 0 }
-            ]
-        }, {
-            dim: 'cost',
-            layer: 'step3',
-            text: '你是否能够"不盲从{topic}"而不感到焦虑？',
-            options: [
-                { label: 'A', text: '我清楚"不盲从"是一种主动选择，能坦然面对不盲从的代价，并接受机会成本', score: 4 },
-                { label: 'B', text: '我会有焦虑，但能忍受并坚持独立思考', score: 3 },
-                { label: 'C', text: '我会有焦虑，经常因为焦虑而放弃独立思考', score: 2 },
-                { label: 'D', text: '我不盲从就会非常焦虑，所以总是随大流', score: 1 },
-                { label: 'E', text: '不盲从我就活不下去', score: 0 }
-            ]
-        }];
-
         // ================================================================
-        // 状态管理
+        // 状态管理 + 计时器
         // ================================================================
         let state = {
-            topic: '',
+            questions: [],
             answers: {},
+            shuffledIndices: [],
             currentStep: 0,
-            isActive: false,
-            shuffledIndices: []
+            isActive: false
         };
-        const TOTAL_QS = QUESTIONS_RAW.length;
-        const MAX_SCORE = 4;
-
+        const TOTAL = QUESTIONS_RAW.length;
         let historyRecords = [];
-
-        function loadHistory() {
-            try { const raw = localStorage.getItem('cqd_history_v2'); if (raw) historyRecords = JSON.parse(raw); } catch (
-            e) { historyRecords = []; }
-        }
-
-        function saveHistory() {
-            try { localStorage.setItem('cqd_history_v2', JSON.stringify(historyRecords)); } catch (e) {}
-        }
+        let timerSeconds = 0;
+        let timerInterval = null;
+        let timerStarted = false;
 
         function shuffleArray(arr) {
             for (let i = arr.length - 1; i > 0; i--) {
@@ -2011,212 +1500,221 @@
             return arr;
         }
 
-        function resetShuffledIndices() {
-            state.shuffledIndices = Array.from({ length: TOTAL_QS }, (_, i) => i);
-            shuffleArray(state.shuffledIndices);
+        function loadHistory() {
+            try { const raw = localStorage.getItem('cqd_pure_history'); if (raw) historyRecords = JSON.parse(raw); } catch (
+                e) { historyRecords = []; }
         }
 
-        function getQuestionByShuffledIndex(step) {
-            if (step >= TOTAL_QS) return null;
-            const realIdx = state.shuffledIndices[step];
-            return QUESTIONS_RAW[realIdx] || null;
-        }
-
-        function getRealIndex(step) {
-            return state.shuffledIndices[step] !== undefined ? state.shuffledIndices[step] : -1;
-        }
-
-        function getAnswerForStep(step) {
-            const realIdx = getRealIndex(step);
-            if (realIdx === -1) return null;
-            return state.answers['q_' + realIdx] || null;
-        }
-
-        function setAnswerForStep(step, val) {
-            const realIdx = getRealIndex(step);
-            if (realIdx === -1) return;
-            state.answers['q_' + realIdx] = val;
-        }
-
-        function isAnsweredForStep(step) {
-            const realIdx = getRealIndex(step);
-            if (realIdx === -1) return false;
-            return state.answers['q_' + realIdx] !== undefined && state.answers['q_' + realIdx] !== null;
-        }
-
-        function getFirstUnansweredStep() {
-            for (let i = 0; i < TOTAL_QS; i++) {
-                if (!isAnsweredForStep(i)) return i;
-            }
-            return -1;
-        }
-
-        function getLastAnsweredStep() {
-            for (let i = TOTAL_QS - 1; i >= 0; i--) {
-                if (isAnsweredForStep(i)) return i;
-            }
-            return -1;
-        }
-
-        function isAllDone() {
-            for (let i = 0; i < TOTAL_QS; i++) {
-                if (!isAnsweredForStep(i)) return false;
-            }
-            return true;
-        }
-
-        function getProgress() {
-            let done = 0;
-            for (let i = 0; i < TOTAL_QS; i++) {
-                if (isAnsweredForStep(i)) done++;
-            }
-            return { done, total: TOTAL_QS };
+        function saveHistory() {
+            try { localStorage.setItem('cqd_pure_history', JSON.stringify(historyRecords)); } catch (e) {}
         }
 
         function saveState() {
             try {
-                localStorage.setItem('cqd_state_v3', JSON.stringify({
-                    topic: state.topic,
+                localStorage.setItem('cqd_pure_state', JSON.stringify({
+                    questions: state.questions,
                     answers: state.answers,
+                    shuffledIndices: state.shuffledIndices,
                     currentStep: state.currentStep,
                     isActive: state.isActive,
-                    shuffledIndices: state.shuffledIndices
+                    timerSeconds: timerSeconds
                 }));
             } catch (e) {}
         }
 
         function loadState() {
             try {
-                const raw = localStorage.getItem('cqd_state_v3');
+                const raw = localStorage.getItem('cqd_pure_state');
                 if (raw) {
                     const data = JSON.parse(raw);
-                    state.topic = data.topic || '';
+                    state.questions = data.questions || [];
                     state.answers = data.answers || {};
+                    state.shuffledIndices = data.shuffledIndices || [];
                     state.currentStep = data.currentStep || 0;
                     state.isActive = data.isActive || false;
-                    state.shuffledIndices = data.shuffledIndices || [];
-                    if (state.shuffledIndices.length !== TOTAL_QS) {
-                        resetShuffledIndices();
+                    timerSeconds = data.timerSeconds || 0;
+                    if (state.questions.length === TOTAL) {
+                        if (state.isActive) {
+                            showDiagnosis();
+                            renderStep();
+                            if (timerSeconds > 0) {
+                                timerStarted = true;
+                                updateTimerDisplay();
+                                startTimer();
+                            }
+                        }
+                        return;
                     }
-                    document.getElementById('topicInput').value = state.topic;
-                    if (state.isActive && state.topic) {
-                        showDiagnosis();
-                        renderStep();
-                    }
-                } else {
-                    resetShuffledIndices();
                 }
-            } catch (e) { resetShuffledIndices(); }
+                initQuestions();
+            } catch (e) { initQuestions(); }
         }
 
-        function resetState() {
-            state.topic = '';
+        function initQuestions() {
+            state.questions = QUESTIONS_RAW.map(q => ({
+                dim: q.dim,
+                layer: q.layer,
+                text: q.text,
+                options: q.opts.map(o => ({ ...o }))
+            }));
+            state.shuffledIndices = Array.from({ length: TOTAL }, (_, i) => i);
+            shuffleArray(state.shuffledIndices);
             state.answers = {};
             state.currentStep = 0;
             state.isActive = false;
-            resetShuffledIndices();
-            document.getElementById('topicInput').value = '';
-            localStorage.removeItem('cqd_state_v3');
-            document.getElementById('resultBox').classList.remove('show');
-            document.getElementById('diagnosisArea').classList.remove('visible');
-            document.getElementById('stepContainer').innerHTML = '';
+            timerSeconds = 0;
+            timerStarted = false;
+            if (timerInterval) { clearInterval(timerInterval);
+                timerInterval = null; }
+            updateTimerDisplay();
+            saveState();
         }
 
+        function startTimer() {
+            if (timerInterval) return;
+            timerInterval = setInterval(() => {
+                timerSeconds++;
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+
+        function updateTimerDisplay() {
+            const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+            const s = String(timerSeconds % 60).padStart(2, '0');
+            document.getElementById('timerDisplay').textContent = '⏱️ ' + m + ':' + s;
+        }
+
+        function resetTimer() {
+            stopTimer();
+            timerSeconds = 0;
+            timerStarted = false;
+            updateTimerDisplay();
+        }
+
+        function fullReset() {
+            stopTimer();
+            resetTimer();
+            state.answers = {};
+            state.currentStep = 0;
+            state.isActive = false;
+            state.shuffledIndices = Array.from({ length: TOTAL }, (_, i) => i);
+            shuffleArray(state.shuffledIndices);
+            saveState();
+            document.getElementById('diagnosisArea').classList.remove('visible');
+            document.getElementById('resultBox').classList.remove('show');
+            document.getElementById('stepContainer').innerHTML = '';
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('startBtn').textContent = '🚀 开始诊断';
+            document.getElementById('startArea').style.display = 'block';
+            document.getElementById('progressFill').style.width = '0%';
+            document.getElementById('answeredCount').textContent = '0';
+            document.getElementById('timeDetail').textContent = '0 / ' + TOTAL + ' 题';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showToast('已重置，可以重新开始诊断');
+        }
+
+        // ================================================================
+        // 诊断流程
+        // ================================================================
         function showDiagnosis() {
+            document.getElementById('startArea').style.display = 'none';
             document.getElementById('diagnosisArea').classList.add('visible');
-            document.getElementById('topicDisplay').textContent = '主题：' + state.topic;
+            document.getElementById('totalCount').textContent = TOTAL;
             renderStep();
         }
 
-        // ================================================================
-        // 渲染步骤
-        // ================================================================
         function renderStep() {
-            if (!state.isActive || !state.topic) return;
-            const container = document.getElementById('stepContainer');
-            const isDone = isAllDone();
-            const prog = getProgress();
-            const pct = (prog.done / prog.total) * 100;
+            const total = TOTAL;
+            const done = Object.keys(state.answers).length;
+            const pct = (done / total) * 100;
             document.getElementById('progressFill').style.width = pct + '%';
-            document.getElementById('answeredCount').textContent = prog.done;
-            document.getElementById('totalCount').textContent = prog.total;
-            document.getElementById('timeDetail').textContent = '已完成 ' + prog.done + ' / ' + prog.total + ' 题';
-            document.getElementById('topicDisplay').textContent = '主题：' + state.topic;
+            document.getElementById('answeredCount').textContent = done;
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('timeDetail').textContent = done + ' / ' + total + ' 题';
 
-            if (isDone) {
-                document.getElementById('currentDimLabel').textContent = '✅ 全部完成';
-                document.getElementById('currentLayerLabel').textContent = '—';
-                container.innerHTML = `
+            if (done === total) {
+                stopTimer();
+                document.getElementById('stepContainer').innerHTML = `
                     <div class="complete-msg">
                         <div class="icon">🎉</div>
-                        <div class="title" id="completeTitle">${t('allDone')}</div>
-                        <div class="sub" id="completeSub">${t('allDoneSub', {topic: state.topic, total: TOTAL_QS})}</div>
-                        <button class="btn-report" id="generateReportBtn">${t('generateReport')}</button>
+                        <div class="title">所有问题已回答完毕</div>
+                        <div class="sub">你已完成全部 ${total} 个问题的诊断，点击下方按钮生成报告。</div>
+                        <div class="btn-group">
+                            <button class="btn-report" id="generateReportBtn">📋 生成诊断报告</button>
+                            <button class="btn-reset" id="resetFromCompleteBtn">↻ 重新开始</button>
+                        </div>
                     </div>
                 `;
                 document.getElementById('generateReportBtn')?.addEventListener('click', function() {
                     generateReport(true);
                 });
+                document.getElementById('resetFromCompleteBtn')?.addEventListener('click', function() {
+                    fullReset();
+                });
                 return;
             }
 
-            let current = getFirstUnansweredStep();
-            if (current === -1) { renderStep(); return; }
-            if (state.currentStep >= TOTAL_QS) state.currentStep = current;
-            if (isAnsweredForStep(state.currentStep) && state.currentStep < TOTAL_QS - 1) {
-                if (isAnsweredForStep(state.currentStep + 1)) {
-                    const nextUn = getFirstUnansweredStep();
-                    if (nextUn !== -1) state.currentStep = nextUn;
-                }
+            let step = 0;
+            for (let i = 0; i < total; i++) {
+                const realIdx = state.shuffledIndices[i];
+                if (!state.answers['q_' + realIdx]) { step = i; break; }
             }
+            if (step >= total) { renderStep(); return; }
 
-            const step = state.currentStep;
-            if (step >= TOTAL_QS) { state.currentStep = getFirstUnansweredStep();
-                saveState();
-                renderStep(); return; }
-
-            const q = getQuestionByShuffledIndex(step);
+            const realIdx = state.shuffledIndices[step];
+            const q = state.questions[realIdx];
             if (!q) { renderStep(); return; }
-            const qText = q.text.replace(/\{topic\}/g, '「' + state.topic + '」');
-            const dim = DIMENSIONS.find(d => d.id === q.dim);
-            const layer = LAYERS.find(l => l.key === q.layer);
-            const stepNum = step + 1;
-            const ans = getAnswerForStep(step);
 
-            document.getElementById('currentDimLabel').textContent = (dim ? dim.icon + ' ' + dim.label : '—');
-            document.getElementById('currentLayerLabel').textContent = layer ? layer.label : '—';
+            const dim = DIM_MAP[q.dim] || { icon: '📌', label: '维度' };
+            const layer = LAYER_MAP[q.layer] || { label: '思考', sub: '追问', badge: 's1' };
+            const stepNum = step + 1;
+            const ans = state.answers['q_' + realIdx];
+
+            const rawOpts = q.options.map((opt, idx) => ({ ...opt, origIdx: idx }));
+            const shuffledOpts = shuffleArray([...rawOpts]);
+            shuffledOpts.forEach((opt, idx) => { opt.label = String.fromCharCode(65 + idx); });
 
             let optsHtml = '';
-            q.options.forEach((opt, idx) => {
-                const selected = ans && ans.optionIndex === idx;
+            shuffledOpts.forEach((opt, idx) => {
+                const isSelected = ans && ans.origIdx === opt.origIdx;
                 optsHtml += `
-                    <label class="${selected ? 'selected' : ''}">
-                        <input type="radio" name="q_${step}" value="${idx}" ${selected ? 'checked' : ''}>
+                    <label class="${isSelected ? 'selected' : ''}">
+                        <input type="radio" name="q_${step}" value="${idx}" data-origidx="${opt.origIdx}" ${isSelected ? 'checked' : ''}>
                         <span class="option-label">${opt.label}</span>
                         <span>${opt.text}</span>
-                        <span class="score-hint">${opt.score}分</span>
                     </label>
                 `;
             });
 
-            const hasPrev = getLastAnsweredStep() !== -1 && getLastAnsweredStep() < step;
+            let hasPrev = false;
+            for (let i = step - 1; i >= 0; i--) {
+                const ridx = state.shuffledIndices[i];
+                if (state.answers['q_' + ridx]) { hasPrev = true; break; }
+            }
 
-            container.innerHTML = `
+            document.getElementById('stepContainer').innerHTML = `
                 <div class="step-card">
                     <div class="step-header">
                         <div class="step-title">
-                            <span class="dim">${dim ? dim.icon + ' ' + dim.label : ''}</span>
-                            <span class="layer">· ${layer ? layer.label + ' · ' + layer.sub : ''}</span>
+                            <span class="dim">${dim.icon} ${dim.label}</span>
+                            <span class="layer">· ${layer.label} · ${layer.sub}</span>
                         </div>
-                        <div class="step-badge ${layer ? layer.badge : 's1'}">
-                            ${layer ? layer.label : ''}
-                            <span class="sub">· ${layer ? layer.sub : ''}</span>
-                            <span style="margin-left:8px; font-weight:400; color:#5a6a4e;">${stepNum} / ${TOTAL_QS}</span>
+                        <div class="step-badge ${layer.badge}">
+                            ${layer.label}
+                            <span class="sub">· ${layer.sub}</span>
+                            <span style="margin-left:8px; font-weight:400; color:#5a6a4e;">${stepNum} / ${total}</span>
                         </div>
                     </div>
                     <div class="question-block">
                         <div class="q-text">
-                            <span class="q-num">Q${stepNum}.</span> ${qText}
+                            <span class="q-num">Q${stepNum}.</span> ${q.text}
                         </div>
                         <div class="q-options">
                             ${optsHtml}
@@ -2233,47 +1731,43 @@
                 </div>
             `;
 
-            const backBtn = document.getElementById('backBtn');
-            if (backBtn && hasPrev) {
-                backBtn.addEventListener('click', function() {
-                    const last = getLastAnsweredStep();
-                    if (last !== -1 && last < state.currentStep) {
-                        const realIdx = getRealIndex(last);
-                        if (realIdx !== -1) delete state.answers['q_' + realIdx];
-                        state.currentStep = last;
+            document.getElementById('backBtn')?.addEventListener('click', function() {
+                for (let i = step - 1; i >= 0; i--) {
+                    const ridx = state.shuffledIndices[i];
+                    if (state.answers['q_' + ridx]) {
+                        delete state.answers['q_' + ridx];
                         saveState();
                         renderStep();
+                        return;
                     }
-                });
-            }
+                }
+            });
 
-            container.querySelectorAll('input[type="radio"]').forEach(radio => {
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
                 radio.addEventListener('change', function() {
                     if (!this.checked) return;
                     const idx = parseInt(this.value);
-                    const qObj = getQuestionByShuffledIndex(step);
-                    const score = qObj.options[idx].score;
-                    setAnswerForStep(step, { optionIndex: idx, score: score });
+                    const origIdx = parseInt(this.dataset.origidx);
+                    const selectedOpt = shuffledOpts.find(o => o.origIdx === origIdx);
+                    if (!selectedOpt) return;
+                    state.answers['q_' + realIdx] = { origIdx: origIdx, score: selectedOpt.score };
                     saveState();
+
                     const labels = this.closest('.q-options').querySelectorAll('label');
                     labels.forEach(l => l.classList.remove('selected'));
                     this.closest('label').classList.add('selected');
+
                     const status = document.querySelector('.step-status');
                     if (status) {
                         status.className = 'step-status done';
                         status.innerHTML = '✅ 已作答，自动进入下一题...';
                     }
-                    const p = getProgress();
-                    document.getElementById('progressFill').style.width = ((p.done / p.total) * 100) + '%';
-                    document.getElementById('answeredCount').textContent = p.done;
-                    document.getElementById('timeDetail').textContent = '已完成 ' + p.done + ' / ' + p.total + ' 题';
-                    const nextUn = getFirstUnansweredStep();
-                    if (nextUn !== -1) {
-                        state.currentStep = nextUn;
-                    } else {
-                        state.currentStep = TOTAL_QS;
-                    }
-                    saveState();
+
+                    const doneNow = Object.keys(state.answers).length;
+                    document.getElementById('progressFill').style.width = ((doneNow / total) * 100) + '%';
+                    document.getElementById('answeredCount').textContent = doneNow;
+                    document.getElementById('timeDetail').textContent = doneNow + ' / ' + total + ' 题';
+
                     setTimeout(() => { renderStep(); }, 350);
                 });
             });
@@ -2291,296 +1785,196 @@
         // 生成报告
         // ================================================================
         function generateReport(saveToHistory = true) {
-            const question = state.topic || '（未输入问题）';
-            document.getElementById('reportQuestion').textContent = question;
-
-            const dimScores = {};
-            DIMENSIONS.forEach(d => { dimScores[d.id] = { earned: 0, total: 0, count: 0, items: [] }; });
-            const layerScores = {
-                step1: { earned: 0, total: 0, count: 0, items: [] },
-                step2: { earned: 0, total: 0, count: 0, items: [] },
-                step3: { earned: 0, total: 0, count: 0, items: [] }
-            };
+            const total = TOTAL;
             let totalEarned = 0,
-                totalMax = 0;
-            const allItems = [];
+                totalMax = total * 4;
+            const dimScores = {};
+            const layerScores = { step1: { earned: 0, total: 0 }, step2: { earned: 0, total: 0 }, step3: { earned: 0,
+                    total: 0 } };
 
-            QUESTIONS_RAW.forEach((q, idx) => {
+            state.questions.forEach((q, idx) => {
                 const ans = state.answers['q_' + idx];
                 const score = ans ? ans.score : 0;
-                const maxScore = MAX_SCORE;
+                totalEarned += score;
                 const dim = q.dim,
                     layer = q.layer;
-                if (dimScores[dim]) {
-                    dimScores[dim].earned += score;
-                    dimScores[dim].total += maxScore;
-                    dimScores[dim].count++;
-                    dimScores[dim].items.push({ text: q.text.replace(/\{topic\}/g, '「' + state.topic + '」'), score,
-                        max: maxScore, answered: !!ans });
-                }
+                if (!dimScores[dim]) dimScores[dim] = { earned: 0, total: 0 };
+                dimScores[dim].earned += score;
+                dimScores[dim].total += 4;
                 if (layerScores[layer]) {
                     layerScores[layer].earned += score;
-                    layerScores[layer].total += maxScore;
-                    layerScores[layer].count++;
-                    layerScores[layer].items.push({ dim, text: q.text.replace(/\{topic\}/g, '「' + state.topic + '」'),
-                        score, max: maxScore, answered: !!ans });
+                    layerScores[layer].total += 4;
                 }
-                totalEarned += score;
-                totalMax += maxScore;
-                allItems.push({ dim, layer, text: q.text.replace(/\{topic\}/g, '「' + state.topic + '」'), score,
-                    max: maxScore, answered: !!ans, qIndex: idx });
             });
 
             const totalPct = totalMax > 0 ? (totalEarned / totalMax) * 100 : 0;
 
-            let level, levelLabel, levelDesc, levelClass;
-            if (totalPct >= 80) {
-                level = 5;
-                levelLabel = t('level5');
-                levelClass = 'l5';
-                levelDesc = t('level5desc');
-            } else if (totalPct >= 60) {
-                level = 4;
-                levelLabel = t('level4');
-                levelClass = 'l4';
-                levelDesc = t('level4desc');
-            } else if (totalPct >= 40) {
-                level = 3;
-                levelLabel = t('level3');
-                levelClass = 'l3';
-                levelDesc = t('level3desc');
-            } else if (totalPct >= 20) {
-                level = 2;
-                levelLabel = t('level2');
-                levelClass = 'l2';
-                levelDesc = t('level2desc');
-            } else {
-                level = 1;
-                levelLabel = t('level1');
-                levelClass = 'l1';
-                levelDesc = t('level1desc');
-            }
+            let level, levelLabel, levelClass;
+            if (totalPct >= 80) { level = 5;
+                levelLabel = '您属于清醒的思考者';
+                levelClass = 'l5'; } else if (totalPct >= 60) { level = 4;
+                levelLabel = '您属于独立的思考者';
+                levelClass = 'l4'; } else if (totalPct >= 40) { level = 3;
+                levelLabel = '您属于探索中的思考者';
+                levelClass = 'l3'; } else if (totalPct >= 20) { level = 2;
+                levelLabel = '您属于被引导的思考者';
+                levelClass = 'l2'; } else { level = 1;
+                levelLabel = '您属于被动的接收者';
+                levelClass = 'l1'; }
 
-            const layerResults = LAYERS.map(layer => {
-                const data = layerScores[layer.key];
+            const dimResults = Object.keys(DIM_MAP).map(dimId => {
+                const data = dimScores[dimId] || { earned: 0, total: 0 };
+                const pct = data.total > 0 ? (data.earned / data.total) * 100 : 0;
+                return { id: dimId, icon: DIM_MAP[dimId].icon, label: DIM_MAP[dimId].label, pct, earned: data.earned,
+                    total: data.total };
+            });
+
+            const layerResults = ['step1', 'step2', 'step3'].map(key => {
+                const data = layerScores[key];
                 const pct = data.total > 0 ? (data.earned / data.total) * 100 : 0;
                 let status, statusText, cls;
                 if (pct >= 70) { status = 'pass';
-                    statusText = t('pass');
+                    statusText = '✅ 通过';
                     cls = 'pass'; } else if (pct >= 45) { status = 'warn';
-                    statusText = t('partial');
+                    statusText = '⚠️ 部分通过';
                     cls = 'warn'; } else { status = 'fail';
-                    statusText = t('fail');
+                    statusText = '❌ 未通过';
                     cls = 'fail'; }
-                return { ...data, pct, status, statusText, cls, label: layer.label, sub: layer.sub, key: layer.key };
+                return { key, label: LAYER_MAP[key].label, sub: LAYER_MAP[key].sub, pct, earned: data.earned,
+                    total: data.total, statusText, cls };
             });
 
-            const dimResults = DIMENSIONS.map(dim => {
-                const data = dimScores[dim.id];
-                const pct = data.total > 0 ? (data.earned / data.total) * 100 : 0;
-                return { id: dim.id, icon: dim.icon, label: dim.label, earned: data.earned, total: data.total, pct,
-                    items: data.items };
-            });
-
-            const blindItems = allItems.filter(it => it.score <= 1 && it.answered);
-            const strengthItems = allItems.filter(it => it.score >= 3 && it.answered);
-
-            const badges = document.getElementById('resultBadges');
-            badges.innerHTML = layerResults.map(r =>
-                `<span class="badge-item ${r.cls}">${r.label}：${r.statusText}（${r.earned}/${r.total}）</span>`
-            ).join('');
+            document.getElementById('resultBadges').innerHTML = `
+                <span class="badge-item ${totalPct >= 60 ? 'pass' : totalPct >= 40 ? 'warn' : 'fail'}">成熟度：${Math.round(totalPct)}%</span>
+                <span class="badge-item ${totalPct >= 60 ? 'pass' : 'warn'}">等级：${levelLabel.slice(0, 6)}</span>
+            `;
 
             const body = document.getElementById('reportBody');
 
-            // ---- 三层能力诊断 ----
+            // 三层能力诊断
             const layerProgressHtml = `
                 <div class="layer-progress">
-                    ${layerResults.map((r, index) => `
+                    ${layerResults.map((r, i) => `
                         <div class="layer-node ${r.cls}">
-                            <div class="layer-node-icon">${index === 0 ? '🛡️' : index === 1 ? '🧠' : '🌱'}</div>
+                            <div class="layer-node-icon">${i === 0 ? '🛡️' : i === 1 ? '🧠' : '🌱'}</div>
                             <div class="layer-node-label">${r.label}</div>
                             <div class="layer-node-sub">${r.sub}</div>
                             <div class="layer-node-status ${r.cls}">${r.statusText}</div>
-                            <div class="layer-node-score">${r.earned}/${r.total}</div>
+                            <div class="layer-node-score">${Math.round(r.pct)}% · ${r.earned}/${r.total}</div>
                         </div>
-                        ${index < layerResults.length - 1 ? '<div class="layer-arrow">→</div>' : ''}
+                        ${i < 2 ? '<div class="layer-arrow">→</div>' : ''}
                     `).join('')}
                 </div>
             `;
 
-            // ---- 雷达图 ----
-            const radarHtml = `<div class="radar-container"><canvas id="radarCanvas" width="400" height="400"></canvas></div>`;
-
-            // ---- 盲区 ----
-            let blindHtml = '';
-            if (blindItems.length > 0) {
-                blindHtml = `
-                    <div class="blind-spot-v2">
-                        <div class="bs-title">🔴 ${t('blindTitle')}（${blindItems.length} ${t('items')}）</div>
-                        ${blindItems.map(it => {
-                            const dim = DIMENSIONS.find(d => d.id === it.dim);
-                            const layer = LAYERS.find(l => l.key === it.layer);
-                            return `<div class="bs-item">${dim ? dim.icon : ''} ${dim ? dim.label : ''} · ${layer ? layer.label : ''}：${it.text}</div>`;
-                        }).join('')}
-                    </div>
-                `;
-            } else {
-                blindHtml = `
-                    <div class="strength-v2" style="border-left-color:#bace9a;">
-                        <div class="st-title">🌟 ${t('noBlind')}</div>
-                        <div style="font-size:13px; color:#b6c0aa; padding:4px 0;">${t('noBlindDesc')}</div>
-                    </div>
-                `;
-            }
-
-            // ---- 优势 ----
-            let strengthHtml = '';
-            if (strengthItems.length > 0) {
-                const maxDisplay = 12;
-                const displayItems = strengthItems.slice(0, maxDisplay);
-                const remaining = strengthItems.length - maxDisplay;
-                strengthHtml = `
-                    <div class="strength-v2">
-                        <div class="st-title">✅ ${t('strengthTitle')}（${strengthItems.length} ${t('items')}）</div>
-                        <div class="st-grid">
-                            ${displayItems.map(it => {
-                                const dim = DIMENSIONS.find(d => d.id === it.dim);
-                                let shortText = it.text.replace(/^.{0,2}？/, '').slice(0, 28);
-                                if (shortText.length < it.text.length - 2) shortText += '…';
-                                return `<span class="st-tag">${dim ? dim.icon : ''} ${shortText}</span>`;
-                            }).join('')}
-                            ${remaining > 0 ? `<span class="st-more">… ${t('andMore')} ${remaining} ${t('moreItems')}</span>` : ''}
-                        </div>
-                    </div>
-                `;
-            }
-
-            // ---- 建议 ----
-            const sortedLayers = [...layerResults].sort((a, b) => a.pct - b.pct);
-            const weakestLayer = sortedLayers[0];
-
-            let specificAdvice = '';
-            if (blindItems.length > 0) {
-                const dimBlindCount = {};
-                blindItems.forEach(it => { if (!dimBlindCount[it.dim]) dimBlindCount[it.dim] = 0;
-                    dimBlindCount[it.dim]++; });
-                const sortedBlindDims = Object.keys(dimBlindCount).sort((a, b) => dimBlindCount[b] - dimBlindCount[a]);
-                const topDim = sortedBlindDims[0];
-                const topDimObj = DIMENSIONS.find(d => d.id === topDim);
-                specificAdvice = `
-                    <div class="advice-card-v2" style="border-left-color:#b89a4a;">
-                        <div class="adv-title">🎯 ${t('advicePriority')}</div>
-                        <div class="adv-item">${t('blindConcentrate')} <strong>${topDimObj ? topDimObj.icon + ' ' + topDimObj.label : '多个维度'}</strong>（${blindItems.length} ${t('blindSpots')}），${t('blindStart')}</div>
-                        <div class="adv-item">${t('blindAction')}</div>
-                    </div>
-                `;
-            }
-
-            let conclusion = '';
-            if (level >= 4) {
-                conclusion = t('conclusionMature');
-            } else if (level === 3) {
-                conclusion = t('conclusionGood') + weakestLayer.label + t('conclusionGoodEnd');
-            } else {
-                conclusion = t('conclusionImprove');
-            }
-
-            const layerAdviceHtml = layerResults.map((r, index) => `
-                <div class="advice-step" style="border-left-color:${r.cls === 'pass' ? '#8aaa6a' : r.cls === 'warn' ? '#b89a4a' : '#b05a4a'};">
-                    <div class="adv-step-title">${index + 1}. ${r.label} · ${r.statusText}（${r.earned}/${r.total}）</div>
-                    <div class="adv-step-item">
-                        <span class="step-num">${index + 1}</span>
-                        <span class="step-content">${r.key === 'step1' ? t('adviceStep1') : r.key === 'step2' ? t('adviceStep2') : t('adviceStep3')}</span>
-                    </div>
-                </div>
-            `).join('');
-
-            // ---- 构建报告 ----
-            body.innerHTML = `
-                <div class="result-card">
-                    <div class="card-title">${t('cardComprehensive')}</div>
-                    <div class="card-content">
-                        <div class="level-badge ${levelClass}">${levelLabel}</div>
-                        <div class="type-desc">${levelDesc}</div>
-                        <div style="margin-top:10px; font-size:13px; color:#5a6a4e;">
-                            ${t('totalLabel')} ${Math.round(totalEarned)} / ${totalMax} ${t('points')}${Math.round(totalPct)}%）
-                        </div>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="card-title">${t('cardLayer')}</div>
-                    <div class="card-content">
-                        ${layerProgressHtml}
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="card-title">${t('cardRadar')}</div>
-                    <div class="card-content">
-                        ${radarHtml}
-                        <div style="font-size:12px; color:#5a6a4e; margin-top:8px; text-align:center;">${t('radarNote')}</div>
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="card-title">${t('cardBlind')}</div>
-                    <div class="card-content">
-                        ${blindHtml}
-                        ${strengthHtml}
-                    </div>
-                </div>
-
-                <div class="result-card">
-                    <div class="card-title">${t('cardAdvice')}</div>
-                    <div class="card-content">
-                        <div class="advice-card-v2">
-                            <div class="adv-title">${t('adviceOverall')}</div>
-                            <div class="adv-item">${conclusion}</div>
-                        </div>
-                        ${specificAdvice}
-
-                        <div style="margin-top:12px;">
-                            <div style="font-weight:600; color:#aaba8a; font-size:14px; margin-bottom:8px;">${t('adviceLayer')}</div>
-                            ${layerAdviceHtml}
-                        </div>
-
-                        <div class="advice-card-v2" style="margin-top:12px; border-left-color:#bace9a;">
-                            <div class="adv-title">${t('adviceDaily')}</div>
-                            <div class="adv-item">${t('daily1')}</div>
-                            <div class="adv-item">${t('daily2')}</div>
-                            <div class="adv-item">${t('daily3')}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="result-card" style="border-left-color:#5a6a4e; margin-top:0;">
-                    <div class="card-content" style="font-size:13px; color:#5a6a4e;">
-                        ${t('hintGray')}
+            // 六维度细分进度（带背景卡片）
+            const dimProgressHtml = `
+                <div class="dim-progress-card">
+                    <div class="card-title">📊 六维度细分进度</div>
+                    <div class="dim-progress-wrap">
+                        ${dimResults.map(d => `
+                            <div class="dim-progress-item">
+                                <span class="dim-label">${d.label}</span>
+                                <div class="dim-track">
+                                    <div class="dim-fill" style="width:${Math.round(d.pct)}%;"></div>
+                                </div>
+                                <span class="dim-pct">${Math.round(d.pct)}%</span>
+                                <span class="dim-score">${d.earned}/${d.total}</span>
+                            </div>
+                        `).join('')}
                     </div>
                 </div>
             `;
 
-            // ---- 绘制雷达图 ----
-            setTimeout(() => {
-                drawRadar(dimResults);
-            }, 100);
+            // ===== 修改开始：等级标题 + 建议行动 各自独立背景框 =====
+            // 轻量化综合成熟度（带绿色UI标签）—— 外面套上 dim-progress-card
+            const stars = '⭐'.repeat(level);
+            const levelHtml = `
+                <div class="dim-progress-card">
+                    <div class="level-light">
+                        <div class="level-badge">
+                            <span class="level-stars">${stars}</span>
+                            <span class="level-label">${levelLabel}</span>
+                        </div>
+                        <div class="level-desc">
+                            你具备基础的批判性思维意识，但深度和系统性不足。你有时候会怀疑信息，但缺乏一套完整的检验框架，容易被表面的逻辑带着走。
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // 轻量化修正建议 —— 外面套上 dim-progress-card
+            let adviceText = '';
+            const weakestLayer = layerResults.sort((a, b) => a.pct - b.pct)[0];
+            if (level >= 4) {
+                adviceText = '你的思维框架已经相当成熟。建议保持日常练习，重点关注“是否真的做到了”而不是“是否知道应该这样做”。';
+            } else if (level === 3) {
+                adviceText = '你已经有了不错的基础，但盲区和碎片化思考仍然存在。建议从最弱的那一层（<strong>' + weakestLayer
+                    .label + '</strong>）开始集中突破。';
+            } else {
+                adviceText = '你的思维习惯还有较大的提升空间。建议从最基础的“信息源检验”开始重建，先建立“每一条信息都值得怀疑”的底层意识。';
+            }
+
+            const adviceHtml = `
+                <div class="dim-progress-card">
+                    <div class="advice-light">
+                        <div class="advice-main">${adviceText}</div>
+                        <div class="advice-items">
+                            <div class="advice-item">每日选一条信息，用框架快速检验</div>
+                            <div class="advice-item">每周找一篇对立立场文章，挑最弱一环</div>
+                            <div class="advice-item">每月重做一次诊断，对比变化</div>
+                        </div>
+                        <div class="advice-hint">提示：得分越低盲区越深，优先修复</div>
+                    </div>
+                </div>
+            `;
+            // ===== 修改结束 =====
+
+            const radarHtml = `<div class="radar-container"><canvas id="radarCanvas" width="400" height="400"></canvas></div>`;
+
+            const brandFooter = `<div class="report-footer-brand">思维盲区诊断模型· 杨晟琦文明公理系统 </div>`;
+
+            // 重新组织 body 内容，三个卡片（维度进度、等级、建议）平级，各自独立
+            body.innerHTML = `
+                <div class="result-card">
+                    <div class="card-title">📊 三层能力诊断</div>
+                    <div class="card-content">${layerProgressHtml}</div>
+                </div>
+                <div class="result-card">
+                    <div class="card-title">📡 六维能力雷达</div>
+                    <div class="card-content">${radarHtml}<div style="font-size:12px;color:#5a6a4e;margin-top:8px;text-align:center;">* 各维度得分百分比，反映该维度的思维成熟度。</div></div>
+                </div>
+                ${dimProgressHtml}
+                ${levelHtml}
+                ${adviceHtml}
+                ${brandFooter}
+            `;
+
+            requestAnimationFrame(() => {
+                const canvas = document.getElementById('radarCanvas');
+                if (canvas) {
+                    drawRadar(dimResults);
+                } else {
+                    setTimeout(() => {
+                        const c2 = document.getElementById('radarCanvas');
+                        if (c2) drawRadar(dimResults);
+                    }, 100);
+                }
+            });
 
             document.getElementById('resultBox').classList.add('show');
             document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            // ---- 保存历史 ----
             if (saveToHistory) {
                 const record = {
                     id: Date.now(),
                     timestamp: new Date().toISOString(),
-                    topic: state.topic,
-                    answers: JSON.parse(JSON.stringify(state.answers)),
                     totalEarned: Math.round(totalEarned),
                     totalMax: totalMax,
                     totalPct: Math.round(totalPct),
                     level: level,
-                    levelLabel: levelLabel
+                    levelLabel: levelLabel,
+                    answers: JSON.parse(JSON.stringify(state.answers))
                 };
                 historyRecords.unshift(record);
                 if (historyRecords.length > 50) historyRecords = historyRecords.slice(0, 50);
@@ -2590,7 +1984,7 @@
         }
 
         // ================================================================
-        // 绘制六边形雷达图
+        // 雷达图绘制
         // ================================================================
         function drawRadar(dimResults) {
             const canvas = document.getElementById('radarCanvas');
@@ -2606,10 +2000,8 @@
 
             ctx.clearRect(0, 0, w, h);
 
-            // 网格
-            const levels = 5;
-            for (let lv = 1; lv <= levels; lv++) {
-                const r = (radius / levels) * lv;
+            for (let lv = 1; lv <= 5; lv++) {
+                const r = (radius / 5) * lv;
                 ctx.beginPath();
                 for (let i = 0; i < dims; i++) {
                     const angle = -Math.PI / 2 + i * angleStep;
@@ -2624,7 +2016,6 @@
                 ctx.stroke();
             }
 
-            // 轴线+标签
             for (let i = 0; i < dims; i++) {
                 const angle = -Math.PI / 2 + i * angleStep;
                 ctx.beginPath();
@@ -2643,7 +2034,6 @@
                 ctx.fillText(dimResults[i].label, labelX, labelY);
             }
 
-            // 数据
             const dataPcts = dimResults.map(d => d.pct / 100);
             ctx.beginPath();
             for (let i = 0; i < dims; i++) {
@@ -2662,7 +2052,6 @@
             ctx.lineWidth = 2.5;
             ctx.stroke();
 
-            // 数据点
             for (let i = 0; i < dims; i++) {
                 const val = Math.min(dataPcts[i], 1);
                 const r = radius * val;
@@ -2680,6 +2069,216 @@
         }
 
         // ================================================================
+        // 导出 PNG
+        // ================================================================
+        function exportPngReport() {
+            const btn = document.getElementById('copyImageBtn');
+            if (btn.disabled) return;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="icon">⏳</span> 生成截图中...';
+
+            const resultBody = document.getElementById('reportBody');
+            if (!resultBody || resultBody.children.length === 0) {
+                showToast('❌ 没有可截图的报告，请先生成报告。', true);
+                btn.disabled = false;
+                btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
+                return;
+            }
+
+            const canvasEl = document.getElementById('radarCanvas');
+            let radarImageData = null;
+            if (canvasEl) {
+                radarImageData = canvasEl.toDataURL('image/png');
+            }
+
+            const tempContainer = document.createElement('div');
+            tempContainer.style.cssText = `
+                position: absolute;
+                left: -9999px;
+                top: 0;
+                width: 780px;
+                background: #141814;
+                padding: 32px 36px 28px;
+                border-radius: 24px;
+                border: 1px solid #2a322a;
+                font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+                color: #d0d6c8;
+                line-height: 1.7;
+                z-index: 99999;
+            `;
+
+            const reportClone = resultBody.cloneNode(true);
+
+            const cloneCanvas = reportClone.querySelector('#radarCanvas');
+            if (cloneCanvas && radarImageData) {
+                const img = document.createElement('img');
+                img.src = radarImageData;
+                img.style.width = '100%';
+                img.style.height = 'auto';
+                img.setAttribute('alt', '六维能力雷达图');
+                cloneCanvas.parentNode.replaceChild(img, cloneCanvas);
+            }
+
+            const qrContainer = document.createElement('div');
+            qrContainer.style.cssText =
+                'text-align:center; margin-top:20px; padding-top:16px; border-top:1px solid #2a322a;';
+            const qrInner = document.createElement('div');
+            qrInner.style.cssText = 'display:inline-block; background:#fff; padding:6px; border-radius:8px;';
+            qrInner.id = 'qrTemp';
+            qrContainer.appendChild(qrInner);
+
+            const qrText = document.createElement('div');
+            qrText.style.cssText = 'color:#7a8a6e; font-size:13px; margin-top:8px; letter-spacing:1px;';
+            qrText.textContent = '扫码访问 · 杨晟琦文明公理系统 · 独立思想锚点';
+            qrContainer.appendChild(qrText);
+
+            const copyright = document.createElement('div');
+            copyright.style.cssText = 'color:#3a4638; font-size:11px; margin-top:8px; text-align:center;';
+            copyright.textContent = '杨晟琦 · 思维盲区诊断模型 · 纯粹版 · CC BY-ND 4.0';
+
+            tempContainer.appendChild(reportClone);
+            tempContainer.appendChild(qrContainer);
+            tempContainer.appendChild(copyright);
+
+            document.body.appendChild(tempContainer);
+
+            const qrTempDiv = document.getElementById('qrTemp');
+            if (qrTempDiv && typeof QRCode !== 'undefined') {
+                try {
+                    new QRCode(qrTempDiv, {
+                        text: 'https://yangchengqi.com',
+                        width: 90,
+                        height: 90,
+                        colorDark: '#0b0e0b',
+                        colorLight: '#ffffff',
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                } catch (e) {
+                    qrTempDiv.textContent = 'QR';
+                    qrTempDiv.style.cssText +=
+                        'display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:bold;color:#0b0e0b;';
+                }
+            }
+
+            void tempContainer.offsetHeight;
+
+            setTimeout(() => {
+                html2canvas(tempContainer, {
+                    scale: 2,
+                    backgroundColor: '#141814',
+                    allowTaint: true,
+                    useCORS: true,
+                    logging: false,
+                    width: 780,
+                    height: tempContainer.scrollHeight + 40
+                }).then(canvas => {
+                    document.body.removeChild(tempContainer);
+                    const link = document.createElement('a');
+                    link.download = '思维诊断报告_' + new Date().toISOString().slice(0, 10) + '.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    showToast('✅ PNG 报告已下载！');
+                    btn.disabled = false;
+                    btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
+                }).catch(err => {
+                    document.body.removeChild(tempContainer);
+                    console.error(err);
+                    showToast('❌ 截图生成失败，请重试或使用 TXT 导出。', true);
+                    btn.disabled = false;
+                    btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
+                });
+            }, 500);
+        }
+
+        // ================================================================
+        // 导出 TXT
+        // ================================================================
+        function exportTxtReport() {
+            const total = TOTAL;
+            let totalEarned = 0,
+                totalMax = total * 4;
+            const dimScores = {};
+            const layerScores = { step1: { earned: 0, total: 0 }, step2: { earned: 0, total: 0 }, step3: { earned: 0,
+                    total: 0 } };
+
+            state.questions.forEach((q, idx) => {
+                const ans = state.answers['q_' + idx];
+                const score = ans ? ans.score : 0;
+                totalEarned += score;
+                const dim = q.dim,
+                    layer = q.layer;
+                if (!dimScores[dim]) dimScores[dim] = { earned: 0, total: 0 };
+                dimScores[dim].earned += score;
+                dimScores[dim].total += 4;
+                if (layerScores[layer]) {
+                    layerScores[layer].earned += score;
+                    layerScores[layer].total += 4;
+                }
+            });
+
+            const totalPct = totalMax > 0 ? (totalEarned / totalMax) * 100 : 0;
+            let levelLabel = '';
+            if (totalPct >= 80) levelLabel = '⭐⭐⭐⭐⭐ 清醒的思考者';
+            else if (totalPct >= 60) levelLabel = '⭐⭐⭐⭐ 独立的思考者';
+            else if (totalPct >= 40) levelLabel = '⭐⭐⭐ 探索中的思考者';
+            else if (totalPct >= 20) levelLabel = '⭐⭐ 被引导的思考者';
+            else levelLabel = '⭐ 被动的接收者';
+
+            const lines = [];
+            lines.push('═══════════════════════════════════════');
+            lines.push('  思维盲区诊断报告（TXT 导出）');
+            lines.push('一个让人彻底“清醒”的思维模型');
+            lines.push('  生成时间：' + new Date().toLocaleString('zh-CN'));
+            lines.push('═══════════════════════════════════════');
+            lines.push('');
+            lines.push('📊 综合成熟度：' + Math.round(totalPct) + '%  (' + totalEarned + '/' + totalMax + ')');
+            lines.push('🏆 等级：' + levelLabel);
+            lines.push('');
+            lines.push('📊 三层能力诊断：');
+            ['step1', 'step2', 'step3'].forEach(key => {
+                const d = layerScores[key];
+                const pct = d.total > 0 ? (d.earned / d.total) * 100 : 0;
+                lines.push('  ' + LAYER_MAP[key].label + '（' + LAYER_MAP[key].sub + '）：' + Math.round(pct) +
+                    '%  (' + d.earned + '/' + d.total + ')');
+            });
+            lines.push('');
+            lines.push('📊 六维度细分：');
+            Object.keys(DIM_MAP).forEach(dimId => {
+                const d = dimScores[dimId] || { earned: 0, total: 0 };
+                const pct = d.total > 0 ? (d.earned / d.total) * 100 : 0;
+                lines.push('  ' + DIM_MAP[dimId].label + '：' + Math.round(pct) +
+                    '%  (' + d.earned + '/' + d.total + ')');
+            });
+            lines.push('');
+            lines.push('📌 修正建议：');
+            lines.push('  📖 总体建议：');
+            if (totalPct >= 80) lines.push('    你的思维框架已经相当成熟。建议保持日常练习，重点关注"是否真的做到了"而不是"是否知道应该这样做"。');
+            else if (totalPct >= 40) lines.push(
+                '    你已经有了不错的基础，但盲区和碎片化思考仍然存在。建议从最弱的那一层开始集中突破。');
+            else lines.push('    你的思维习惯还有较大的提升空间。建议从最基础的"信息源检验"开始重建。');
+            lines.push('');
+            lines.push('  ⏱️ 每日练习建议：');
+            lines.push('    · 每日一问：选一个你今天看到的信息，用你学到的框架快速检验。');
+            lines.push('    · 每周一练：找一篇与你立场相反的文章，找出最薄弱的一环。');
+            lines.push('    · 每月一复盘：重新做一次诊断，对比前后变化。');
+            lines.push('');
+            lines.push('  💡 提示：0-4分的五级量表，得分越低代表该处盲区越深，需要优先修复。');
+            lines.push('');
+            lines.push('═══════════════════════════════════════');
+            lines.push('  杨晟琦文明公理系统 · CC BY-ND 4.0');
+            lines.push('═══════════════════════════════════════'); 
+
+            const txt = lines.join('\n');
+            const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.download = '思维诊断报告_' + new Date().toISOString().slice(0, 10) + '.txt';
+            link.href = URL.createObjectURL(blob);
+            link.click();
+            URL.revokeObjectURL(link.href);
+            showToast('✅ TXT 报告已下载！');
+        }
+
+        // ================================================================
         // 历史记录
         // ================================================================
         function renderHistory() {
@@ -2688,211 +2287,69 @@
             if (historyRecords.length === 0) {
                 list.innerHTML = '';
                 empty.style.display = 'block';
-                empty.textContent = t('noHistory');
+                empty.textContent = '暂无历史记录';
                 return;
             }
             empty.style.display = 'none';
             list.innerHTML = historyRecords.map(rec => {
-                const levelLabel = rec.levelLabel || '⭐';
+                const label = rec.levelLabel || '⭐';
                 const date = new Date(rec.timestamp).toLocaleString('zh-CN');
                 return `
                     <div class="history-item" data-id="${rec.id}">
-                        <span class="h-topic">${rec.topic}</span>
+                        <span class="h-topic">思维诊断</span>
                         <span class="h-meta">${date}</span>
-                        <span class="h-level" style="color:${rec.totalPct >= 80 ? '#8aaa6a' : rec.totalPct >= 60 ? '#bace9a' : rec.totalPct >= 40 ? '#b89a4a' : '#b05a4a'};">${levelLabel}</span>
-                        <span style="font-size:12px; color:#5a6a4e;">${rec.totalEarned}/${rec.totalMax}</span>
-                        <span style="font-size:12px; color:#7a8a6e; cursor:pointer;" class="history-view">${t('viewReport')}</span>
+                        <span class="h-level" style="color:${rec.totalPct >= 80 ? '#8aaa6a' : rec.totalPct >= 60 ? '#bace9a' : rec.totalPct >= 40 ? '#b89a4a' : '#b05a4a'};">${label}</span>
+                        <div class="history-actions">
+                            <span class="history-view-btn">查看报告</span>
+                            <button class="history-del-btn" title="删除记录">✕</button>
+                        </div>
                     </div>
                 `;
             }).join('');
 
             list.querySelectorAll('.history-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    if (e.target.classList.contains('history-view')) {
-                        const id = parseInt(this.dataset.id);
-                        const rec = historyRecords.find(r => r.id === id);
-                        if (rec) {
-                            const oldAnswers = state.answers;
-                            const oldTopic = state.topic;
-                            state.answers = JSON.parse(JSON.stringify(rec.answers));
-                            state.topic = rec.topic;
-                            generateReport(false);
-                            state.answers = oldAnswers;
-                            state.topic = oldTopic;
-                        }
+                const viewBtn = item.querySelector('.history-view-btn');
+                const delBtn = item.querySelector('.history-del-btn');
+                const id = parseInt(item.dataset.id);
+
+                const viewReport = function() {
+                    const rec = historyRecords.find(r => r.id === id);
+                    if (rec && rec.answers && Object.keys(rec.answers).length > 0) {
+                        const oldAnswers = state.answers;
+                        state.answers = JSON.parse(JSON.stringify(rec.answers));
+                        if (state.questions.length === 0) initQuestions();
+                        generateReport(false);
+                        state.answers = oldAnswers;
+                        showToast('📋 已加载历史报告');
+                    } else {
+                        showToast('⚠️ 该历史记录不包含答题数据，无法查看报告。', true);
                     }
-                });
-            });
-        }
+                };
 
-        // ================================================================
-        // 截图分享
-        // ================================================================
-        function copyImageDiagnosis() {
-            const btn = document.getElementById('copyImageBtn');
-            if (btn.disabled) return;
-            btn.disabled = true;
-            btn.innerHTML = '<span class="icon">⏳</span> 生成截图中...';
-
-            const resultBody = document.getElementById('reportBody');
-            if (!resultBody || resultBody.children.length === 0) {
-                showToast('❌ 没有可截图的诊断报告，请先生成报告。', true);
-                btn.disabled = false;
-                btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
-                return;
-            }
-
-            // 将 Canvas 转为 img
-            const canvas = document.getElementById('radarCanvas');
-            if (canvas) {
-                const img = document.createElement('img');
-                img.src = canvas.toDataURL('image/png');
-                img.style.width = '100%';
-                img.style.height = 'auto';
-                img.setAttribute('id', 'radarImage');
-                canvas.parentNode.replaceChild(img, canvas);
-            }
-
-            // 构建临时容器
-            const tempContainer = document.createElement('div');
-            tempContainer.style.cssText = `
-                position: absolute;
-                left: -9999px;
-                top: 0;
-                width: 820px;
-                background: #141814;
-                padding: 40px 44px 34px;
-                border-radius: 28px;
-                border: 1px solid #2a322a;
-                font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
-                color: #d0d6c8;
-                line-height: 1.7;
-                z-index: 99999;
-            `;
-
-            // 克隆各部分
-            const brandClone = document.getElementById('brandArea').cloneNode(true);
-            brandClone.style.marginBottom = '20px';
-            brandClone.style.paddingBottom = '18px';
-            brandClone.style.borderBottom = '2px solid #2a322a';
-
-            const bannerClone = document.getElementById('bannerArea').cloneNode(true);
-            bannerClone.style.marginBottom = '24px';
-
-            const reportClone = resultBody.cloneNode(true);
-            reportClone.style.display = 'flex';
-            reportClone.style.flexDirection = 'column';
-            reportClone.style.gap = '28px';
-            reportClone.style.padding = '0';
-
-            // 二维码
-            const qrDiv = document.createElement('div');
-            qrDiv.style.cssText =
-                'text-align: center; padding: 16px 0 10px 0; border-top: 1px solid #2a322a; margin-top: 12px;';
-            qrDiv.innerHTML = `
-                <img src="QR.jpg" alt="扫码访问" style="display: block; margin: 0 auto; width: 110px; height: 110px; object-fit: contain; border-radius: 8px; border: 1px solid #3a4638; background: #fff; padding: 4px; box-sizing: border-box;" crossorigin="anonymous">
-                <div style="color: #7a8a6e; font-size: 13px; margin-top: 6px; letter-spacing: 1px;">📱 扫码访问 · 杨晟琦文明公理系统</div>
-            `;
-
-            const footerClone = document.getElementById('footerArea').cloneNode(true);
-            footerClone.style.marginTop = '20px';
-            footerClone.style.paddingTop = '20px';
-            footerClone.style.borderTop = '2px solid #2a322a';
-            footerClone.style.textAlign = 'center';
-            footerClone.style.fontSize = '14px';
-            footerClone.style.color = '#5a6a4e';
-
-            // 底部透明占位元素
-            const spacer = document.createElement('div');
-            spacer.style.cssText = 'height: 60px; width: 100%; opacity: 0; pointer-events: none;';
-
-            tempContainer.appendChild(brandClone);
-            tempContainer.appendChild(bannerClone);
-            tempContainer.appendChild(reportClone);
-            tempContainer.appendChild(qrDiv);
-            tempContainer.appendChild(footerClone);
-            tempContainer.appendChild(spacer);
-
-            document.body.appendChild(tempContainer);
-
-            // 强制回流
-            void tempContainer.offsetHeight;
-
-            // 延迟截图
-            setTimeout(() => {
-                const screenshotPromise = html2canvas(tempContainer, {
-                    scale: 2,
-                    backgroundColor: '#141814',
-                    allowTaint: false,
-                    useCORS: true,
-                    logging: false,
-                    width: 820,
-                    height: tempContainer.scrollHeight + 80,
-                    windowHeight: tempContainer.scrollHeight + 80,
+                item.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('history-del-btn')) return;
+                    viewReport();
                 });
 
-                const timeoutPromise = new Promise((_, reject) => {
-                    setTimeout(() => reject(new Error('超时')), 25000);
-                });
-
-                Promise.race([screenshotPromise, timeoutPromise])
-                    .then(canvas => {
-                        document.body.removeChild(tempContainer);
-                        canvas.toBlob(function(blob) {
-                            if (!blob) {
-                                showToast('❌ 截图生成失败，请重试。', true);
-                                btn.disabled = false;
-                                btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
-                                return;
-                            }
-                            if (navigator.clipboard && navigator.clipboard.write) {
-                                const clipboardItem = new ClipboardItem({ 'image/png': blob });
-                                navigator.clipboard.write([clipboardItem]).then(() => {
-                                    showToast('✅ 截图已分享到剪贴板！');
-                                    btn.disabled = false;
-                                    btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
-                                }).catch(() => {
-                                    downloadImage(canvas);
-                                    btn.disabled = false;
-                                    btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
-                                });
-                            } else {
-                                downloadImage(canvas);
-                                btn.disabled = false;
-                                btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
-                            }
-                        }, 'image/png');
-                    })
-                    .catch(err => {
-                        document.body.removeChild(tempContainer);
-                        console.error(err);
-                        showToast('❌ 截图超时或失败，请重试。', true);
-                        btn.disabled = false;
-                        btn.innerHTML = '<span class="icon">🖼️</span> 分享诊断报告 <span class="badge">PNG</span>';
+                if (viewBtn) {
+                    viewBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        viewReport();
                     });
-            }, 300);
-        }
+                }
 
-        function downloadImage(canvas) {
-            const link = document.createElement('a');
-            link.download = '思维诊断报告_' + new Date().toISOString().slice(0, 10) + '.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-            showToast('✅ 截图已下载！');
-        }
-
-        // ================================================================
-        // 导出 PDF
-        // ================================================================
-        function exportPdf() {
-            const box = document.getElementById('resultBox');
-            if (!box.classList.contains('show')) {
-                showToast('❌ 请先生成报告。', true);
-                return;
-            }
-            document.body.classList.add('printing');
-            window.print();
-            document.body.classList.remove('printing');
+                if (delBtn) {
+                    delBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        if (confirm('确定要删除这条历史记录吗？')) {
+                            historyRecords = historyRecords.filter(r => r.id !== id);
+                            saveHistory();
+                            renderHistory();
+                            showToast('已删除历史记录');
+                        }
+                    });
+                }
+            });
         }
 
         // ================================================================
@@ -2911,70 +2368,48 @@
         }
 
         // ================================================================
-        // 事件绑定
+        // 初始化
         // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
             loadHistory();
             loadState();
             renderHistory();
 
-            if (state.isActive && state.topic) {
+            if (state.isActive && state.questions.length === TOTAL) {
                 showDiagnosis();
-                renderStep();
+                if (timerSeconds > 0) {
+                    timerStarted = true;
+                    updateTimerDisplay();
+                    startTimer();
+                }
             }
 
             document.getElementById('startBtn').addEventListener('click', function() {
-                const topic = document.getElementById('topicInput').value.trim();
-                if (!topic) {
-                    showToast('请先输入你想检验的观点或信息。', true);
+                if (state.isActive) {
+                    showDiagnosis();
                     return;
                 }
-                state.topic = topic;
-                state.answers = {};
-                state.currentStep = 0;
+                initQuestions();
                 state.isActive = true;
-                resetShuffledIndices();
+                timerSeconds = 0;
+                timerStarted = true;
+                updateTimerDisplay();
+                startTimer();
                 saveState();
                 showDiagnosis();
                 document.getElementById('resultBox').classList.remove('show');
             });
 
-            document.getElementById('exampleBtn').addEventListener('click', function() {
-                const exampleTopic = '人均收入上万元';
-                document.getElementById('topicInput').value = exampleTopic;
-                state.topic = exampleTopic;
-                state.answers = {};
-                state.currentStep = 0;
-                state.isActive = true;
-                resetShuffledIndices();
-                saveState();
-                showDiagnosis();
-                document.getElementById('resultBox').classList.remove('show');
-                document.getElementById('diagnosisArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                showToast('✅ 已加载示例主题：「' + exampleTopic + '」，开始诊断吧！');
-            });
-
-            document.getElementById('resetBtn').addEventListener('click', function() {
-                resetState();
-                showToast('已重置所有数据');
+            document.getElementById('resetFromResultBtn')?.addEventListener('click', function() {
+                fullReset();
             });
 
             document.getElementById('closeResultBtn').addEventListener('click', function() {
                 document.getElementById('resultBox').classList.remove('show');
             });
 
-            document.getElementById('copyImageBtn').addEventListener('click', copyImageDiagnosis);
-            document.getElementById('exportPdfBtn').addEventListener('click', exportPdf);
-
-            document.getElementById('topicInput').addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    document.getElementById('startBtn').click();
-                }
-            });
-
-            if (state.topic && document.getElementById('topicInput').value !== state.topic) {
-                document.getElementById('topicInput').value = state.topic;
-            }
+            document.getElementById('copyImageBtn').addEventListener('click', exportPngReport);
+            document.getElementById('exportTxtBtn').addEventListener('click', exportTxtReport);
         });
     </script>
 </body>
