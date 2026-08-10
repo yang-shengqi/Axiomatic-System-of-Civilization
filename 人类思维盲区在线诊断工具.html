@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>一个让人彻底“清醒”的思维模型 · 杨晟琦文明公理系统</title>
-    <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
+    <title>人类思维盲区在线诊断工具 · 一个让人彻底“清醒”的思维模型 · 杨晟琦文明公理系统</title>
+    <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js">
     </script>
     <style>
-        /* ----- 全局基础样式 ----- */
+        /* ===== 样式与原文件完全一致，仅微调 print 及容器 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -32,8 +33,6 @@
             border: 1px solid #2a322a;
             box-shadow: 0 12px 80px rgba(0, 0, 0, 0.8);
         }
-
-        /* ----- 导航与品牌 ----- */
         .top-nav {
             display: flex;
             justify-content: space-between;
@@ -118,8 +117,6 @@
             background: #8aaa6a;
             margin-right: 4px;
         }
-
-        /* ----- 介绍区 ----- */
         .intro-box {
             background: #1a201a;
             border-radius: 16px;
@@ -162,8 +159,6 @@
             background: #8aaa6a;
             margin-right: 6px;
         }
-
-        /* ----- 开始按钮 ----- */
         .start-area {
             text-align: center;
             padding: 20px 0 10px;
@@ -198,15 +193,12 @@
             color: #5a6a4e;
             margin-top: 14px;
         }
-
-        /* ----- 诊断区 ----- */
         .diagnosis-active {
             display: none;
         }
         .diagnosis-active.visible {
             display: block;
         }
-
         .time-estimate {
             background: #1a201a;
             border-radius: 12px;
@@ -234,7 +226,6 @@
             color: #5a6a4e;
             font-size: 13px;
         }
-
         .progress-bar {
             background: #1a201a;
             border-radius: 12px;
@@ -269,8 +260,6 @@
             transition: width .5s ease;
             width: 0;
         }
-
-        /* ----- 题目卡片 ----- */
         .step-card {
             background: #171c18;
             border-radius: 16px;
@@ -329,7 +318,6 @@
             font-size: 11px;
             color: #7a8a6e;
         }
-
         .step-card .question-block .q-text {
             font-size: 16px;
             color: #d4dec4;
@@ -398,7 +386,6 @@
             background: #8aaa6a;
             box-shadow: inset 0 0 0 3px #0b0e0b;
         }
-
         .step-card .step-footer {
             display: flex;
             justify-content: space-between;
@@ -445,8 +432,6 @@
             opacity: .3;
             cursor: not-allowed;
         }
-
-        /* ----- 完成状态 ----- */
         .complete-msg {
             text-align: center;
             padding: 30px 20px;
@@ -504,8 +489,6 @@
             color: #7a8a6e;
             background: #1a1a1a;
         }
-
-        /* ----- 结果区 ----- */
         .result-box {
             background: transparent;
             padding: 0;
@@ -515,7 +498,6 @@
         .result-box.show {
             display: block;
         }
-
         .result-box .result-header {
             background: #1e241e;
             border-radius: 16px 16px 0 0;
@@ -564,15 +546,12 @@
             border-color: #7a6a2a;
             background: #2a2418;
         }
-
-        /* ----- 报告正文（居中容器） ----- */
         .result-box .result-body {
             padding: 0;
             background: transparent;
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* 使子容器居中 */
         }
         .result-box .result-body .report-inner {
             max-width: 820px;
@@ -600,8 +579,6 @@
             color: #b6c0aa;
             line-height: 1.9;
         }
-
-        /* ----- 维度进度条 ----- */
         .dim-progress-wrap {
             display: flex;
             flex-direction: column;
@@ -646,7 +623,6 @@
             text-align: right;
             flex-shrink: 0;
         }
-
         .dim-progress-card {
             background: #1a201a;
             border: 1px solid #2a322a;
@@ -663,8 +639,6 @@
             padding-bottom: 6px;
             margin-bottom: 10px;
         }
-
-        /* ----- 等级与建议 ----- */
         .level-light {
             text-align: center;
             padding: 8px 0 6px 0;
@@ -696,7 +670,6 @@
             margin: 6px auto 0 auto;
             padding: 0 8px;
         }
-
         .advice-light {
             display: flex;
             flex-direction: column;
@@ -739,8 +712,6 @@
             border-top: 1px solid #2a322a;
             margin-top: 4px;
         }
-
-        /* ----- 三层诊断 ----- */
         .layer-progress {
             display: flex;
             align-items: center;
@@ -807,8 +778,6 @@
             flex-shrink: 0;
             padding: 0 2px;
         }
-
-        /* ----- 雷达图 ----- */
         .radar-container {
             width: 100%;
             max-width: 400px;
@@ -821,8 +790,6 @@
             height: auto;
             display: block;
         }
-
-        /* ----- 底部二维码 + 版权（居中，含完整声明） ----- */
         .qr-wrapper {
             display: flex;
             flex-direction: column;
@@ -867,8 +834,6 @@
             font-weight: 500;
             color: #5a7a4a;
         }
-
-        /* ----- 结果底部操作栏 ----- */
         .result-box .result-footer {
             background: #141814;
             padding: 16px 28px;
@@ -948,8 +913,6 @@
             color: #7a8a6e;
             background: #1a1a1a;
         }
-
-        /* ----- 历史记录 ----- */
         .history-area {
             margin-top: 30px;
             padding-top: 20px;
@@ -1046,8 +1009,6 @@
             font-size: 14px;
             padding: 12px 0;
         }
-
-        /* ----- Toast ----- */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -1077,8 +1038,6 @@
             background: #2a1a18;
             color: #b05a4a;
         }
-
-        /* ----- 页脚 ----- */
         .footer {
             margin-top: 48px;
             padding-top: 20px;
@@ -1101,8 +1060,6 @@
             display: block;
             margin-top: 2px;
         }
-
-        /* ----- 响应式 ----- */
         @media (max-width:600px) {
             .container {
                 padding: 16px 12px 18px;
@@ -1252,8 +1209,6 @@
                 height: 72px !important;
             }
         }
-
-        /* ----- 打印优化 ----- */
         @media print {
             body {
                 background: #fff;
@@ -1397,8 +1352,8 @@
             <div class="brand-left">
                 <div class="sub-brand">Cognitive Blind Spot Diagnostic Model</div>
                 <div class="title-row">
-                    <h1>一个让人彻底“清醒”的思维模型</h1>
-                    <span class="tag">人类思维盲区在线诊断工具 </span>
+                    <h1>人类思维盲区在线诊断工具</h1>
+                    <span class="tag">一个让人彻底“清醒”的思维模型</span>
                 </div>
                 <div class="info-row">
                     <span>作者：杨晟琦</span>
@@ -1478,7 +1433,7 @@
 
     <script>
         // ================================================================
-        // 38 道元认知题目（完整）
+        // 38 道元认知题目（数据保持不变）
         // ================================================================
         const DIM_MAP = { source: { icon: '🔍', label: '信息源' }, facts: { icon: '📊', label: '事实依据' }, logic: { icon: '🧠',
                 label: '推理逻辑' }, interests: { icon: '💰', label: '利益关联' }, emotion: { icon: '❤️',
@@ -1653,7 +1608,7 @@
         ];
 
         // ================================================================
-        // 状态管理与核心逻辑
+        // 状态管理
         // ================================================================
         let state = { questions: [], answers: {}, shuffledIndices: [], currentStep: 0, isActive: false, timerStarted: false };
         const TOTAL = QUESTIONS_RAW.length;
@@ -1698,7 +1653,9 @@
                     state.isActive = data.isActive || false;
                     timerSeconds = data.timerSeconds || 0;
                     state.timerStarted = data.timerStarted || false;
-                    if (state.questions.length === TOTAL) {
+                    if (state.questions.length === TOTAL &&
+                        state.shuffledIndices.length === TOTAL &&
+                        state.shuffledIndices.every(i => typeof i === 'number' && i >= 0 && i < TOTAL)) {
                         if (state.isActive) {
                             showDiagnosis();
                             renderStep();
@@ -1712,8 +1669,7 @@
         }
 
         function initQuestions() {
-            state.questions = QUESTIONS_RAW.map(q => ({ dim: q.dim, layer: q.layer, text: q.text, options: q.opts.map(o => ({ ...
-                        o })) }));
+            state.questions = QUESTIONS_RAW.map(q => ({ dim: q.dim, layer: q.layer, text: q.text, options: q.opts.map(o => ({ ...o })) }));
             state.shuffledIndices = Array.from({ length: TOTAL }, (_, i) => i);
             shuffleArray(state.shuffledIndices);
             state.answers = {};
@@ -1759,11 +1715,8 @@
         function fullReset() {
             stopTimer();
             resetTimer();
-            state.answers = {};
-            state.currentStep = 0;
+            initQuestions();
             state.isActive = false;
-            state.shuffledIndices = Array.from({ length: TOTAL }, (_, i) => i);
-            shuffleArray(state.shuffledIndices);
             saveState();
             document.getElementById('diagnosisArea').classList.remove('visible');
             document.getElementById('resultBox').classList.remove('show');
@@ -1785,6 +1738,9 @@
             renderStep();
         }
 
+        // ================================================================
+        // 渲染题目
+        // ================================================================
         function renderStep() {
             const total = TOTAL;
             const done = Object.keys(state.answers).length;
@@ -1793,6 +1749,7 @@
             document.getElementById('answeredCount').textContent = done;
             document.getElementById('totalCount').textContent = total;
             document.getElementById('timeDetail').textContent = done + ' / ' + total + ' 题';
+
             if (done === total) {
                 stopTimer();
                 document.getElementById('stepContainer').innerHTML = `
@@ -1806,26 +1763,33 @@
                         </div>
                     </div>
                 `;
-                document.getElementById('generateReportBtn')?.addEventListener('click', function() { generateReport(true); });
-                document.getElementById('resetFromCompleteBtn')?.addEventListener('click', function() { fullReset(); });
+                const genBtn = document.getElementById('generateReportBtn');
+                const resetBtn = document.getElementById('resetFromCompleteBtn');
+                if (genBtn) genBtn.addEventListener('click', function() { generateReport(true); }, { once: true });
+                if (resetBtn) resetBtn.addEventListener('click', function() { fullReset(); }, { once: true });
                 return;
             }
+
             let step = 0;
             for (let i = 0; i < total; i++) {
                 const realIdx = state.shuffledIndices[i];
                 if (!state.answers['q_' + realIdx]) { step = i; break; }
             }
             if (step >= total) { renderStep(); return; }
+
             const realIdx = state.shuffledIndices[step];
             const q = state.questions[realIdx];
             if (!q) { renderStep(); return; }
+
             const dim = DIM_MAP[q.dim] || { icon: '📌', label: '维度' };
             const layer = LAYER_MAP[q.layer] || { label: '思考', sub: '追问', badge: 's1' };
             const stepNum = step + 1;
             const ans = state.answers['q_' + realIdx];
+
             const rawOpts = q.options.map((opt, idx) => ({ ...opt, origIdx: idx }));
             const shuffledOpts = shuffleArray([...rawOpts]);
             shuffledOpts.forEach((opt, idx) => { opt.label = String.fromCharCode(65 + idx); });
+
             let optsHtml = '';
             shuffledOpts.forEach((opt, idx) => {
                 const isSelected = ans && ans.origIdx === opt.origIdx;
@@ -1837,11 +1801,13 @@
                     </label>
                 `;
             });
+
             let hasPrev = false;
             for (let i = step - 1; i >= 0; i--) {
                 const ridx = state.shuffledIndices[i];
                 if (state.answers['q_' + ridx]) { hasPrev = true; break; }
             }
+
             document.getElementById('stepContainer').innerHTML = `
                 <div class="step-card">
                     <div class="step-header">
@@ -1873,6 +1839,7 @@
                     </div>
                 </div>
             `;
+
             document.getElementById('backBtn')?.addEventListener('click', function() {
                 for (let i = step - 1; i >= 0; i--) {
                     const ridx = state.shuffledIndices[i];
@@ -1884,6 +1851,7 @@
                     }
                 }
             });
+
             document.querySelectorAll('input[type="radio"]').forEach(radio => {
                 radio.addEventListener('change', function() {
                     if (!this.checked) return;
@@ -1906,6 +1874,7 @@
                     setTimeout(() => { renderStep(); }, 350);
                 });
             });
+
             if (ans) {
                 const status = document.querySelector('.step-status');
                 if (status) { status.className = 'step-status done';
@@ -1914,17 +1883,20 @@
         }
 
         // ================================================================
-        // 生成报告（修复居中关键：去掉 width:100%，让 margin:auto 生效）
+        // 生成报告
         // ================================================================
-        function generateReport(saveToHistory = true) {
-            const total = TOTAL;
+        function generateReport(saveToHistory = true, customAnswers = null) {
+            const answers = customAnswers || state.answers;
             let totalEarned = 0,
-                totalMax = total * 4;
+                totalMax = TOTAL * 4;
             const dimScores = {};
             const layerScores = { step1: { earned: 0, total: 0 }, step2: { earned: 0, total: 0 }, step3: { earned: 0,
                     total: 0 } };
-            state.questions.forEach((q, idx) => {
-                const ans = state.answers['q_' + idx];
+
+            state.shuffledIndices.forEach((realIdx) => {
+                const q = state.questions[realIdx];
+                if (!q) return;
+                const ans = answers['q_' + realIdx];
                 const score = ans ? ans.score : 0;
                 totalEarned += score;
                 const dim = q.dim,
@@ -1937,6 +1909,7 @@
                     layerScores[layer].total += 4;
                 }
             });
+
             const totalPct = totalMax > 0 ? (totalEarned / totalMax) * 100 : 0;
             let level, levelLabel, levelDesc;
             if (totalPct >= 80) { level = 5;
@@ -1957,6 +1930,7 @@
                 return { id: dimId, icon: DIM_MAP[dimId].icon, label: DIM_MAP[dimId].label, pct, earned: data.earned,
                     total: data.total };
             });
+
             const layerResults = ['step1', 'step2', 'step3'].map(key => {
                 const data = layerScores[key];
                 const pct = data.total > 0 ? (data.earned / data.total) * 100 : 0;
@@ -1965,8 +1939,8 @@
                     cls = 'pass'; } else if (pct >= 45) { statusText = '⚠️ 部分通过';
                     cls = 'warn'; } else { statusText = '❌ 未通过';
                     cls = 'fail'; }
-                return { key, label: LAYER_MAP[key].label, sub: LAYER_MAP[key].sub, pct, earned: data.earned,
-                    total: data.total, statusText, cls };
+                return { key, label: LAYER_MAP[key].label, sub: LAYER_MAP[key].sub, pct, earned: data.earned, total: data
+                        .total, statusText, cls };
             });
 
             document.getElementById('resultBadges').innerHTML = `
@@ -1975,8 +1949,6 @@
             `;
 
             const body = document.getElementById('reportBody');
-
-            // ---- 品牌头部（居中） ----
             const headerHtml = `
                 <div class="result-card" style="border-bottom:1px solid #2a322a; padding-bottom:12px; margin-bottom:12px; text-align:center;">
                     <div style="font-size:13px; font-weight:600; letter-spacing:1.6px; color:#8a9a7e; text-transform:uppercase;">Cognitive Blind Spot Diagnostic Model</div>
@@ -1986,7 +1958,6 @@
                 </div>
             `;
 
-            // ---- 三层诊断（居中） ----
             const layerProgressHtml = `
                 <div class="layer-progress" style="justify-content:center;">
                     ${layerResults.map((r, i) => `
@@ -2002,7 +1973,6 @@
                 </div>
             `;
 
-            // ---- 六维进度 ----
             const dimProgressHtml = `
                 <div class="dim-progress-card" style="text-align:left;">
                     <div class="card-title">📊 六维度细分进度</div>
@@ -2021,7 +1991,6 @@
                 </div>
             `;
 
-            // ---- 等级 ----
             const stars = '⭐'.repeat(level);
             const levelHtml = `
                 <div class="dim-progress-card">
@@ -2035,17 +2004,13 @@
                 </div>
             `;
 
-            // ---- 建议 ----
-            let adviceText = '';
             const weakestLayer = layerResults.sort((a, b) => a.pct - b.pct)[0];
-            if (level >= 4) {
-                adviceText = '你的思维框架已经相当成熟。建议保持日常练习，重点关注“是否真的做到了”而不是“是否知道应该这样做”。';
-            } else if (level === 3) {
-                adviceText = '你已经有了不错的基础，但盲区和碎片化思考仍然存在。建议从最弱的那一层（<strong>' + weakestLayer
-                    .label + '</strong>）开始集中突破。';
-            } else {
-                adviceText = '你的思维习惯还有较大的提升空间。建议从最基础的“信息源检验”开始重建，先建立“每一条信息都值得怀疑”的底层意识。';
-            }
+            let adviceText = '';
+            if (level >= 4) adviceText = '你的思维框架已经相当成熟。建议保持日常练习，重点关注“是否真的做到了”而不是“是否知道应该这样做”。';
+            else if (level === 3) adviceText = '你已经有了不错的基础，但盲区和碎片化思考仍然存在。建议从最弱的那一层（<strong>' + weakestLayer.label +
+                '</strong>）开始集中突破。';
+            else adviceText = '你的思维习惯还有较大的提升空间。建议从最基础的“信息源检验”开始重建，先建立“每一条信息都值得怀疑”的底层意识。';
+
             const adviceHtml = `
                 <div class="dim-progress-card">
                     <div class="advice-light">
@@ -2060,10 +2025,8 @@
                 </div>
             `;
 
-            // ---- 雷达图 ----
             const radarHtml = `<div class="radar-container"><canvas id="radarCanvas" width="400" height="400"></canvas></div>`;
 
-            // ---- 底部二维码 + 版权（完整声明） ----
             const footerHtml = `
                 <div class="qr-wrapper" style="padding-bottom: 20px;">
                     <div class="qr-box" id="qrCodeContainer">
@@ -2079,7 +2042,6 @@
                 </div>
             `;
 
-            // ---- 组装全部内容（关键：去掉 width:100%，使 margin:auto 生效） ----
             const innerHtml = `
                 <div class="report-inner" style="max-width:820px; margin:0 auto;">
                     ${headerHtml}
@@ -2100,19 +2062,13 @@
 
             body.innerHTML = innerHtml;
 
-            // ---- 绘制雷达图 ----
             requestAnimationFrame(() => {
                 const canvas = document.getElementById('radarCanvas');
                 if (canvas) drawRadar(dimResults);
-                else {
-                    setTimeout(() => {
-                        const c2 = document.getElementById('radarCanvas');
-                        if (c2) drawRadar(dimResults);
-                    }, 100);
-                }
+                else setTimeout(() => { const c2 = document.getElementById('radarCanvas'); if (c2) drawRadar(
+                    dimResults); }, 100);
             });
 
-            // ---- 生成二维码（重试） ----
             function generateQR() {
                 const qrContainer = document.getElementById('qrCodeInReport');
                 if (qrContainer && typeof QRCode !== 'undefined') {
@@ -2126,7 +2082,7 @@
                             correctLevel: QRCode.CorrectLevel.H
                         });
                         return true;
-                    } catch (e) { console.warn('QR生成失败', e); }
+                    } catch (e) {}
                 }
                 return false;
             }
@@ -2134,13 +2090,12 @@
             const tryGenerateQR = () => {
                 if (generateQR()) return;
                 attempts++;
-                if (attempts < 5) {
-                    setTimeout(tryGenerateQR, 300);
-                } else {
+                if (attempts < 5) setTimeout(tryGenerateQR, 300);
+                else {
                     const fallback = document.getElementById('qrCodeInReport');
                     if (fallback) {
-                        fallback.textContent = '扫码';
-                        fallback.style.cssText += 'display:flex;align-items:center;justify-content:center;font-size:14px;color:#0b0e0b;';
+                        fallback.textContent = '请刷新页面重试';
+                        fallback.style.cssText += 'display:flex;align-items:center;justify-content:center;font-size:12px;color:#0b0e0b;';
                     }
                 }
             };
@@ -2158,7 +2113,7 @@
                     totalPct: Math.round(totalPct),
                     level: level,
                     levelLabel: levelLabel,
-                    answers: JSON.parse(JSON.stringify(state.answers))
+                    answers: JSON.parse(JSON.stringify(answers))
                 };
                 historyRecords.unshift(record);
                 if (historyRecords.length > 50) historyRecords = historyRecords.slice(0, 50);
@@ -2175,20 +2130,20 @@
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             const w = canvas.width,
-                h = canvas.height;
-            const cx = w / 2,
+                h = canvas.height,
+                cx = w / 2,
                 cy = h / 2;
             const radius = Math.min(w, h) * 0.38;
-            const dims = dimResults.length;
-            const angleStep = (Math.PI * 2) / dims;
+            const dims = dimResults.length,
+                angleStep = (Math.PI * 2) / dims;
             ctx.clearRect(0, 0, w, h);
             for (let lv = 1; lv <= 5; lv++) {
                 const r = (radius / 5) * lv;
                 ctx.beginPath();
                 for (let i = 0; i < dims; i++) {
                     const angle = -Math.PI / 2 + i * angleStep;
-                    const x = cx + r * Math.cos(angle);
-                    const y = cy + r * Math.sin(angle);
+                    const x = cx + r * Math.cos(angle),
+                        y = cy + r * Math.sin(angle);
                     if (i === 0) ctx.moveTo(x, y);
                     else ctx.lineTo(x, y);
                 }
@@ -2206,8 +2161,8 @@
                 ctx.lineWidth = 1;
                 ctx.stroke();
                 const labelR = radius + 28;
-                const labelX = cx + labelR * Math.cos(angle);
-                const labelY = cy + labelR * Math.sin(angle);
+                const labelX = cx + labelR * Math.cos(angle),
+                    labelY = cy + labelR * Math.sin(angle);
                 ctx.fillStyle = '#aaba8a';
                 ctx.font = '12px sans-serif';
                 ctx.textAlign = 'center';
@@ -2220,8 +2175,8 @@
                 const val = Math.min(dataPcts[i], 1);
                 const r = radius * val;
                 const angle = -Math.PI / 2 + i * angleStep;
-                const x = cx + r * Math.cos(angle);
-                const y = cy + r * Math.sin(angle);
+                const x = cx + r * Math.cos(angle),
+                    y = cy + r * Math.sin(angle);
                 if (i === 0) ctx.moveTo(x, y);
                 else ctx.lineTo(x, y);
             }
@@ -2235,8 +2190,8 @@
                 const val = Math.min(dataPcts[i], 1);
                 const r = radius * val;
                 const angle = -Math.PI / 2 + i * angleStep;
-                const x = cx + r * Math.cos(angle);
-                const y = cy + r * Math.sin(angle);
+                const x = cx + r * Math.cos(angle),
+                    y = cy + r * Math.sin(angle);
                 ctx.beginPath();
                 ctx.arc(x, y, 4, 0, 2 * Math.PI);
                 ctx.fillStyle = '#bace9a';
@@ -2248,7 +2203,8 @@
         }
 
         // ================================================================
-        // 导出 PNG（最终修复版：居中 + 雷达图保留）
+        // 【核心修复】导出 PNG — 彻底解决“丢一半”问题
+        // 采用固定宽容器 + 精确高度测量 + 充足缓冲
         // ================================================================
         function exportPngReport() {
             const btn = document.getElementById('copyImageBtn');
@@ -2264,110 +2220,171 @@
                 return;
             }
 
-            // ---- 1. 获取雷达图 Canvas 数据（关键：先转成图片） ----
+            // 获取雷达图数据
             const radarCanvas = document.getElementById('radarCanvas');
             let radarImageData = null;
             if (radarCanvas) {
                 try { radarImageData = radarCanvas.toDataURL('image/png'); } catch (e) {}
             }
 
-            // ---- 2. 等待渲染完成 ----
-            setTimeout(() => {
-                // ---- 3. 克隆报告内容 ----
+            // 等待 QR 码渲染完成（加长超时）
+            const waitForRender = () => {
+                return new Promise((resolve) => {
+                    let attempts = 0;
+                    const check = () => {
+                        const qr = document.getElementById('qrCodeInReport');
+                        if (qr && (qr.querySelector('canvas') || qr.querySelector('img') || qr.textContent.trim() !==
+                                '')) {
+                            resolve();
+                            return;
+                        }
+                        attempts++;
+                        if (attempts > 30) { // 最多等 6 秒
+                            resolve();
+                            return;
+                        }
+                        setTimeout(check, 200);
+                    };
+                    check();
+                });
+            };
+
+            waitForRender().then(() => {
+                // ---- 克隆报告内容 ----
                 const clone = resultBody.cloneNode(true);
 
-                // ---- 4. 替换雷达 Canvas 为图片 ----
+                // 替换雷达图为静态图片
                 const cloneRadar = clone.querySelector('#radarCanvas');
-                if (cloneRadar && radarImageData) {
+                if (cloneRadar && cloneRadar.parentNode && radarImageData) {
                     const img = document.createElement('img');
                     img.src = radarImageData;
                     img.style.width = '100%';
                     img.style.height = 'auto';
+                    img.style.display = 'block';
                     img.setAttribute('alt', '六维能力雷达图');
                     cloneRadar.parentNode.replaceChild(img, cloneRadar);
                 }
 
-                // ---- 5. 创建居中容器 ----
-                const wrapper = document.createElement('div');
-                wrapper.style.cssText = `
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
+                // ---- 构建固定宽度 820px 的容器 ----
+                const FIXED_WIDTH = 820;
+                const container = document.createElement('div');
+                container.style.cssText = `
+                    width: ${FIXED_WIDTH}px;
+                    padding: 40px 30px;
                     background: #141814;
-                    padding: 30px 20px;
-                    width: 100%;
+                    box-sizing: border-box;
+                    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+                    color: #d0d6c8;
+                    line-height: 1.7;
+                    overflow: visible;
                 `;
 
-                // ---- 6. 强制所有元素居中 ----
+                // 调整克隆内部样式，确保所有内容在固定宽度下正确显示
                 const inner = clone.querySelector('.report-inner');
                 if (inner) {
                     inner.style.margin = '0 auto';
                     inner.style.width = '100%';
-                    inner.style.maxWidth = '820px';
+                    inner.style.maxWidth = FIXED_WIDTH + 'px';
+                    inner.style.boxSizing = 'border-box';
                 }
-                clone.querySelectorAll('.result-card, .dim-progress-card, .report-inner, .qr-wrapper').forEach(el => {
-                    el.style.width = '100%';
-                    el.style.maxWidth = '820px';
-                    el.style.margin = '0 auto';
-                });
+                clone.querySelectorAll('.result-card, .dim-progress-card, .report-inner, .qr-wrapper, .radar-container')
+                    .forEach(el => {
+                        el.style.width = '100%';
+                        el.style.maxWidth = FIXED_WIDTH + 'px';
+                        el.style.margin = '0 auto';
+                        el.style.boxSizing = 'border-box';
+                        el.style.overflow = 'visible';
+                    });
+                // 雷达容器特殊处理
+                const radarContainer = clone.querySelector('.radar-container');
+                if (radarContainer) {
+                    radarContainer.style.maxWidth = '400px';
+                    radarContainer.style.margin = '0 auto';
+                }
                 const layerProgress = clone.querySelector('.layer-progress');
                 if (layerProgress) {
                     layerProgress.style.justifyContent = 'center';
+                    layerProgress.style.flexWrap = 'wrap';
                 }
+                // 保证所有卡片内内容不溢出
+                clone.querySelectorAll('.result-card .card-content, .dim-progress-card .card-content')
+                    .forEach(el => {
+                        el.style.wordBreak = 'break-word';
+                        el.style.overflow = 'visible';
+                    });
 
-                wrapper.appendChild(clone);
+                container.appendChild(clone);
 
-                // ---- 7. 放入临时容器 ----
+                // ---- 挂载到隐藏 DOM 并等待布局 ----
                 const tempContainer = document.createElement('div');
                 tempContainer.style.cssText = `
                     position: absolute;
                     left: -9999px;
                     top: 0;
-                    width: 860px;
-                    background: #141814;
-                    border-radius: 24px;
-                    border: 1px solid #2a322a;
-                    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
-                    color: #d0d6c8;
-                    line-height: 1.7;
                     z-index: 99999;
-                    display: flex;
-                    justify-content: center;
+                    width: ${FIXED_WIDTH}px;
+                    overflow: visible;
                 `;
-                tempContainer.appendChild(wrapper);
+                tempContainer.appendChild(container);
                 document.body.appendChild(tempContainer);
 
-                // ---- 8. 截图 ----
-                html2canvas(tempContainer, {
-                    scale: 2,
-                    backgroundColor: '#141814',
-                    allowTaint: false,
-                    useCORS: true,
-                    logging: false,
-                    width: 860,
-                    height: tempContainer.scrollHeight + 20
-                }).then(canvas => {
-                    document.body.removeChild(tempContainer);
-                    const link = document.createElement('a');
-                    link.download = '思维诊断报告_' + new Date().toISOString().slice(0, 10) + '.png';
-                    link.href = canvas.toDataURL('image/png');
-                    link.click();
-                    showToast('✅ PNG 报告已下载！');
-                    btn.disabled = false;
-                    btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
-                }).catch(err => {
-                    document.body.removeChild(tempContainer);
-                    console.error(err);
-                    showToast('❌ 截图生成失败，请重试。', true);
-                    btn.disabled = false;
-                    btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
+                // 等待两帧确保布局完成
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        // 额外延迟 300ms 确保 QR 码等动态内容完全渲染
+                        setTimeout(() => {
+                            // 精确测量高度：scrollHeight 包含所有溢出内容
+                            let height = container.scrollHeight;
+                            // 如果高度为 0 或过小，用 offsetHeight 兜底
+                            if (height < 100) height = container.offsetHeight || 800;
+                            // 增加充足缓冲（padding 上下各 40px + 额外 60px 安全余量）
+                            const finalHeight = height + 80;
+
+                            // ---- 渲染 ----
+                            html2canvas(container, {
+                                scale: 2,
+                                backgroundColor: '#141814',
+                                allowTaint: false,
+                                useCORS: true,
+                                logging: false,
+                                width: FIXED_WIDTH,
+                                height: finalHeight,
+                                onclone: function(doc) {
+                                    // 确保克隆文档中的元素可见
+                                    const els = doc.querySelectorAll(
+                                        '.result-card, .dim-progress-card, .qr-wrapper');
+                                    els.forEach(el => {
+                                        el.style.overflow = 'visible';
+                                        el.style.maxHeight = 'none';
+                                    });
+                                }
+                            }).then(canvas => {
+                                document.body.removeChild(tempContainer);
+                                const link = document.createElement('a');
+                                link.download = '思维诊断报告_' + new Date().toISOString()
+                                    .slice(0, 10) + '.png';
+                                link.href = canvas.toDataURL('image/png');
+                                link.click();
+                                showToast('✅ PNG 报告已下载！');
+                                btn.disabled = false;
+                                btn.innerHTML =
+                                    '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
+                            }).catch(err => {
+                                document.body.removeChild(tempContainer);
+                                console.error(err);
+                                showToast('❌ 截图生成失败，请重试。', true);
+                                btn.disabled = false;
+                                btn.innerHTML =
+                                    '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
+                            });
+                        }, 350);
+                    });
                 });
-            }, 1200);
+            });
         }
 
         // ================================================================
-        // 复制/分享 PNG（同样处理雷达图）
+        // 【核心修复】复制/分享 PNG — 同样修复截断问题
         // ================================================================
         function sharePngReport() {
             const btn = document.getElementById('shareImageBtn');
@@ -2389,132 +2406,210 @@
                 try { radarImageData = radarCanvas.toDataURL('image/png'); } catch (e) {}
             }
 
-            setTimeout(() => {
+            const waitForRender = () => {
+                return new Promise((resolve) => {
+                    let attempts = 0;
+                    const check = () => {
+                        const qr = document.getElementById('qrCodeInReport');
+                        if (qr && (qr.querySelector('canvas') || qr.querySelector('img') || qr.textContent.trim() !==
+                                '')) {
+                            resolve();
+                            return;
+                        }
+                        attempts++;
+                        if (attempts > 30) { resolve(); return; }
+                        setTimeout(check, 200);
+                    };
+                    check();
+                });
+            };
+
+            waitForRender().then(() => {
                 const clone = resultBody.cloneNode(true);
 
                 const cloneRadar = clone.querySelector('#radarCanvas');
-                if (cloneRadar && radarImageData) {
+                if (cloneRadar && cloneRadar.parentNode && radarImageData) {
                     const img = document.createElement('img');
                     img.src = radarImageData;
                     img.style.width = '100%';
                     img.style.height = 'auto';
+                    img.style.display = 'block';
                     img.setAttribute('alt', '六维能力雷达图');
                     cloneRadar.parentNode.replaceChild(img, cloneRadar);
                 }
 
-                const wrapper = document.createElement('div');
-                wrapper.style.cssText = `
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
+                const FIXED_WIDTH = 820;
+                const container = document.createElement('div');
+                container.style.cssText = `
+                    width: ${FIXED_WIDTH}px;
+                    padding: 40px 30px;
                     background: #141814;
-                    padding: 30px 20px;
-                    width: 100%;
+                    box-sizing: border-box;
+                    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+                    color: #d0d6c8;
+                    line-height: 1.7;
+                    overflow: visible;
                 `;
 
                 const inner = clone.querySelector('.report-inner');
                 if (inner) {
                     inner.style.margin = '0 auto';
                     inner.style.width = '100%';
-                    inner.style.maxWidth = '820px';
+                    inner.style.maxWidth = FIXED_WIDTH + 'px';
+                    inner.style.boxSizing = 'border-box';
                 }
-                clone.querySelectorAll('.result-card, .dim-progress-card, .report-inner, .qr-wrapper').forEach(el => {
-                    el.style.width = '100%';
-                    el.style.maxWidth = '820px';
-                    el.style.margin = '0 auto';
-                });
+                clone.querySelectorAll('.result-card, .dim-progress-card, .report-inner, .qr-wrapper, .radar-container')
+                    .forEach(el => {
+                        el.style.width = '100%';
+                        el.style.maxWidth = FIXED_WIDTH + 'px';
+                        el.style.margin = '0 auto';
+                        el.style.boxSizing = 'border-box';
+                        el.style.overflow = 'visible';
+                    });
+                const radarContainer = clone.querySelector('.radar-container');
+                if (radarContainer) {
+                    radarContainer.style.maxWidth = '400px';
+                    radarContainer.style.margin = '0 auto';
+                }
                 const layerProgress = clone.querySelector('.layer-progress');
                 if (layerProgress) {
                     layerProgress.style.justifyContent = 'center';
+                    layerProgress.style.flexWrap = 'wrap';
                 }
+                clone.querySelectorAll('.result-card .card-content, .dim-progress-card .card-content')
+                    .forEach(el => {
+                        el.style.wordBreak = 'break-word';
+                        el.style.overflow = 'visible';
+                    });
 
-                wrapper.appendChild(clone);
+                container.appendChild(clone);
 
                 const tempContainer = document.createElement('div');
                 tempContainer.style.cssText = `
                     position: absolute;
                     left: -9999px;
                     top: 0;
-                    width: 860px;
-                    background: #141814;
-                    border-radius: 24px;
-                    border: 1px solid #2a322a;
-                    font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
-                    color: #d0d6c8;
-                    line-height: 1.7;
                     z-index: 99999;
-                    display: flex;
-                    justify-content: center;
+                    width: ${FIXED_WIDTH}px;
+                    overflow: visible;
                 `;
-                tempContainer.appendChild(wrapper);
+                tempContainer.appendChild(container);
                 document.body.appendChild(tempContainer);
 
-                html2canvas(tempContainer, {
-                    scale: 2,
-                    backgroundColor: '#141814',
-                    allowTaint: false,
-                    useCORS: true,
-                    logging: false,
-                    width: 860,
-                    height: tempContainer.scrollHeight + 20
-                }).then(canvas => {
-                    document.body.removeChild(tempContainer);
-                    canvas.toBlob(function(blob) {
-                        if (!blob) {
-                            showToast('❌ 图片生成失败', true);
-                            btn.disabled = false;
-                            btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
-                            return;
-                        }
-                        const file = new File([blob], '思维诊断报告.png', { type: 'image/png' });
-                        if (navigator.share) {
-                            navigator.share({ title: '思维诊断报告', files: [file] }).then(() => {
-                                showToast('✅ 已分享，可选择保存到相册');
-                            }).catch((err) => {
-                                if (err.name === 'AbortError') {
-                                    showToast('已取消分享');
-                                } else {
-                                    showToast('⚠️ 分享失败，可点击“导出”下载', true);
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        setTimeout(() => {
+                            let height = container.scrollHeight;
+                            if (height < 100) height = container.offsetHeight || 800;
+                            const finalHeight = height + 80;
+
+                            html2canvas(container, {
+                                scale: 2,
+                                backgroundColor: '#141814',
+                                allowTaint: false,
+                                useCORS: true,
+                                logging: false,
+                                width: FIXED_WIDTH,
+                                height: finalHeight,
+                                onclone: function(doc) {
+                                    const els = doc.querySelectorAll(
+                                        '.result-card, .dim-progress-card, .qr-wrapper');
+                                    els.forEach(el => {
+                                        el.style.overflow = 'visible';
+                                        el.style.maxHeight = 'none';
+                                    });
                                 }
-                            });
-                            btn.disabled = false;
-                            btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
-                            return;
-                        }
-                        if (navigator.clipboard && navigator.clipboard.write) {
-                            const clipboardItem = new ClipboardItem({ 'image/png': blob });
-                            navigator.clipboard.write([clipboardItem]).then(() => {
-                                showToast('✅ 图片已复制到剪贴板！可直接粘贴（Ctrl+V）');
+                            }).then(canvas => {
+                                document.body.removeChild(tempContainer);
+                                canvas.toBlob(function(blob) {
+                                    if (!blob) {
+                                        showToast('❌ 图片生成失败', true);
+                                        btn.disabled = false;
+                                        btn.innerHTML =
+                                            '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                                        return;
+                                    }
+                                    const file = new File([blob], '思维诊断报告.png', {
+                                        type: 'image/png'
+                                    });
+
+                                    if (navigator.share && navigator.canShare && navigator
+                                        .canShare({ files: [file] })) {
+                                        navigator.share({ title: '思维诊断报告',
+                                            files: [file] }).then(() => {
+                                            showToast('✅ 已分享，可选择保存到相册');
+                                        }).catch((err) => {
+                                            if (err.name === 'AbortError') showToast(
+                                                '已取消分享');
+                                            else showToast('⚠️ 分享失败，可点击“导出”下载',
+                                                true);
+                                        });
+                                        btn.disabled = false;
+                                        btn.innerHTML =
+                                            '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                                        return;
+                                    }
+
+                                    if (navigator.clipboard && window.ClipboardItem) {
+                                        const clipboardItem = new ClipboardItem({
+                                            'image/png': blob
+                                        });
+                                        navigator.clipboard.write([clipboardItem])
+                                            .then(() => {
+                                                showToast(
+                                                    '✅ 图片已复制到剪贴板！可直接粘贴（Ctrl+V）'
+                                                    );
+                                                btn.disabled = false;
+                                                btn.innerHTML =
+                                                    '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                                            }).catch(() => {
+                                                const link = document
+                                                    .createElement('a');
+                                                link.download =
+                                                    '思维诊断报告.png';
+                                                link.href = canvas.toDataURL(
+                                                    'image/png');
+                                                link.click();
+                                                showToast(
+                                                    '✅ 图片已下载（复制失败，已转为下载）'
+                                                    );
+                                                btn.disabled = false;
+                                                btn.innerHTML =
+                                                    '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                                            });
+                                    } else {
+                                        const link = document.createElement(
+                                            'a');
+                                        link.download = '思维诊断报告.png';
+                                        link.href = canvas.toDataURL(
+                                        'image/png');
+                                        link.click();
+                                        const isMobile = /Mobi|Android|iPhone|iPad/i
+                                            .test(navigator.userAgent);
+                                        if (isMobile) {
+                                            showToast(
+                                                '📱 复制到剪贴板失败，已转为下载。建议使用“导出”按钮保存图片。',
+                                                true);
+                                        } else {
+                                            showToast('✅ 图片已下载');
+                                        }
+                                        btn.disabled = false;
+                                        btn.innerHTML =
+                                            '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                                    }
+                                }, 'image/png');
+                            }).catch(err => {
+                                document.body.removeChild(tempContainer);
+                                console.error(err);
+                                showToast('❌ 生成失败，请重试', true);
                                 btn.disabled = false;
-                                btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
-                            }).catch(() => {
-                                const link = document.createElement('a');
-                                link.download = '思维诊断报告.png';
-                                link.href = canvas.toDataURL('image/png');
-                                link.click();
-                                showToast('✅ 图片已下载（复制失败，已转为下载）');
-                                btn.disabled = false;
-                                btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                                btn.innerHTML =
+                                    '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
                             });
-                        } else {
-                            const link = document.createElement('a');
-                            link.download = '思维诊断报告.png';
-                            link.href = canvas.toDataURL('image/png');
-                            link.click();
-                            showToast('✅ 图片已下载');
-                            btn.disabled = false;
-                            btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
-                        }
-                    }, 'image/png');
-                }).catch(err => {
-                    document.body.removeChild(tempContainer);
-                    console.error(err);
-                    showToast('❌ 生成失败，请重试', true);
-                    btn.disabled = false;
-                    btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                        }, 350);
+                    });
                 });
-            }, 1200);
+            });
         }
 
         // ================================================================
@@ -2545,21 +2640,18 @@
                     </div>
                 `;
             }).join('');
+
             list.querySelectorAll('.history-item').forEach(item => {
                 const viewBtn = item.querySelector('.history-view-btn');
                 const delBtn = item.querySelector('.history-del-btn');
                 const id = parseInt(item.dataset.id);
                 const viewReport = function() {
                     if (state.isActive && Object.keys(state.answers).length > 0) {
-                        if (!confirm('查看历史报告将覆盖当前答题进度，确定继续吗？')) { return; }
+                        if (!confirm('查看历史报告将覆盖当前答题进度，确定继续吗？')) return;
                     }
                     const rec = historyRecords.find(r => r.id === id);
                     if (rec && rec.answers && Object.keys(rec.answers).length > 0) {
-                        const oldAnswers = state.answers;
-                        state.answers = JSON.parse(JSON.stringify(rec.answers));
-                        if (state.questions.length === 0) initQuestions();
-                        generateReport(false);
-                        state.answers = oldAnswers;
+                        generateReport(false, rec.answers);
                         showToast('📋 已加载历史报告');
                     } else {
                         showToast('⚠️ 该历史记录不包含答题数据，无法查看报告。', true);
