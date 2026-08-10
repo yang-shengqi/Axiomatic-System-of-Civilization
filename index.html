@@ -106,6 +106,8 @@
         .feature-item { font-size:15px; line-height:1.7; color:#b6c0aa; padding-left:4px; }
         .feature-item .num { font-weight:700; color:#e2ead4; margin-right:4px; }
         .feature-item .en { font-size:.75em; color:#7a8a6e; }
+
+        /* ===== 五层卡片 —— 去掉整层点击感应 ===== */
         .layer {
             background: #1a201c;
             border-radius: 16px;
@@ -113,15 +115,13 @@
             margin-bottom: 32px;
             border: 1px solid #2a322a;
             border-left: 6px solid #8aaa6a;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            transition: border-color 0.3s ease;
             position: relative;
             overflow: hidden;
+            cursor: default;
         }
         .layer:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-            border-color: #4a5a3e;
+            border-color: #3a4a3a;
         }
         .layer::after {
             content: '';
@@ -130,7 +130,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(138,170,106,0.03), transparent 70%);
+            background: radial-gradient(circle at 30% 50%, rgba(138,170,106,0.02), transparent 70%);
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.6s ease;
@@ -189,7 +189,7 @@
         .angle-card .angle-text .en { font-size:.85em; color:#6a7a5e; display:block; margin-top:3px; }
 
         /* ============================================================ */
-        /* ===== 入口按钮 —— 全新升级，诱惑点击 ===== */
+        /* ===== 入口按钮 —— 仅按钮有感应 ===== */
         /* ============================================================ */
         .layer-cta {
             display: inline-flex;
@@ -217,8 +217,23 @@
             z-index: 2;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
+        /* 图片标签在按钮文字右上角 */
+        .hot-icon {
+            display: inline-block;
+            margin-left: 2px;
+            line-height: 1;
+            flex-shrink: 0;
+            position: relative;
+            top: -6px;
+        }
+        .hot-icon img {
+            height: 13px;
+            width: auto;
+            display: block;
+        }
+
         .layer-cta .cta-arrow {
             display: inline-block;
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -252,7 +267,7 @@
             z-index: 1;
             pointer-events: none;
         }
-        /* 悬停状态 */
+        /* 悬停状态 —— 按钮感应强烈 */
         .layer-cta:hover {
             border-color: #8aaa6a;
             color: #e2ead4;
@@ -274,7 +289,7 @@
             transform: scale(0.96) translateY(0px);
             transition-duration: 0.08s;
         }
-        /* 呼吸脉动（吸引注意） */
+        /* 呼吸脉动 */
         .layer-cta.pulse {
             animation: ctaPulse 3s ease-in-out infinite;
         }
@@ -435,6 +450,8 @@
             .layer .logic-block .logic-item { font-size:13px; }
             .layer-cta { padding:8px 18px; font-size:14px; }
             .layer-cta .cta-en { font-size:9px; }
+            .hot-icon img { height:15px; }
+            .hot-icon { top:-4px; }
         }
         @media (max-width:600px) { .angle-grid { grid-template-columns:1fr; } }
         @media (max-width:480px) {
@@ -455,6 +472,8 @@
             .angle-card .angle-text { font-size:13px; }
             .layer-cta { padding:6px 14px; font-size:13px; gap:6px; }
             .layer-cta .cta-en { font-size:8px; }
+            .hot-icon img { height:13px; }
+            .hot-icon { top:-3px; }
         }
     </style>
 </head>
@@ -527,8 +546,8 @@
         <span class="en" style="font-size:.85em;">Five layers, sequentially connected. Each step is the premise for the next. Each layer is observed from three positions: Earth, State, Individual. Three independent angles, together forming a complete view.</span>
     </p>
 
-    <!-- ===== 第一层 ===== -->
-    <div class="layer" onclick="window.open('./人类思维盲区在线诊断工具.html','_blank')">
+    <!-- ===== 第一层（NEW 图片） ===== -->
+    <div class="layer">
         <div class="layer-num">第一层 <span class="en-num">Layer 1</span></div>
         <div class="layer-name">人类思维盲区在线诊断工具<span class="en-inline">Human Cognitive Blind Spot Online Diagnostic Tool</span></div>
         <div class="layer-position">
@@ -581,16 +600,18 @@
                 <div class="angle-text">日常语言写成，不需要专业知识。一个普通人不需要任何前置培训，就能独立完成这份自我对话；他获得的是对自己思维结构的第一次看见。<span class="en">Written in everyday language, no expertise required. An ordinary person can complete this self-dialogue independently.</span></div>
             </div>
         </div>
+        <!-- 按钮：第一层用 new.gif -->
         <a class="layer-cta pulse" href="./人类思维盲区在线诊断工具.html" target="_blank" rel="noopener noreferrer">
             <span class="cta-text">
-                点此进入第一层：人类思维盲区在线诊断工具
+                点此进入：人类思维盲区在线诊断工具
+                <span class="hot-icon"><img src="hot.gif" alt="hot"></span>
             </span>
             <span class="cta-en">Click to View</span>
         </a>
     </div>
 
-    <!-- ===== 第二层 ===== -->
-    <div class="layer" onclick="window.open('./杨晟琦文明公理系统纯净结构版.html','_blank')">
+    <!-- ===== 第二层（HOT 图片） ===== -->
+    <div class="layer">
         <div class="layer-num">第二层 <span class="en-num">Layer 2</span></div>
         <div class="layer-name">杨晟琦文明公理系统纯净结构版 <span class="en-inline">Yang Shengqi's Axiomatic System of Civilization — Pure Structure Edition</span></div>
         <div class="layer-position">
@@ -647,16 +668,18 @@
                 <div class="angle-text">这是普通人第一次能用一套统一的、可辨认的语言来描述“这个系统怎么了？”<br>不是好与坏，是锁死、失聪、逃逸、空心。模糊的痛苦变成了精确的诊断。<span class="en">For the first time, ordinary people can describe "what is wrong" in a unified language—not good/bad, but locked, deaf, hollow.</span></div>
             </div>
         </div>
+        <!-- 按钮：第二层用 hot.gif -->
         <a class="layer-cta pulse" href="./杨晟琦文明公理系统纯净结构版.html" target="_blank" rel="noopener noreferrer">
             <span class="cta-text">
-                点此进入第二层：杨晟琦文明公理系统纯净结构版
+                点此进入：杨晟琦文明公理系统纯净结构版
+                <span class="hot-icon"><img src="hot.gif" alt="HOT"></span>
             </span>
             <span class="cta-en">Click to View</span>
         </a>
     </div>
 
-    <!-- ===== 第三层 ===== -->
-    <div class="layer" onclick="window.open('./杨晟琦文明公理系统之文明等级评分器.html','_blank')">
+    <!-- ===== 第三层（HOT 图片） ===== -->
+    <div class="layer">
         <div class="layer-num">第三层 <span class="en-num">Layer 3</span></div>
         <div class="layer-name">杨晟琦文明公理系统之文明等级评分器 <span class="en-inline">Yang Shengqi's Axiomatic System of Civilization: Civilization Level Scoring Tool</span></div>
         <div class="layer-position">
@@ -711,16 +734,18 @@
                 <div class="angle-text">不需要专业知识，任何一个识字的人都能独立完成评分。<br>完成后获得两个清晰的输出：我的系统处于什么等级，以及正在走向九步路径的哪一步。<br>模糊的“不对劲”变成了可辨认的坐标。<span class="en">No expertise required. Anyone literate can complete the scoring independently. Two clear outputs: what level the system is at, and which step of the nine-step path it is heading toward.</span></div>
             </div>
         </div>
+        <!-- 按钮：第三层用 hot.gif -->
         <a class="layer-cta pulse" href="./杨晟琦文明公理系统之文明等级评分器.html" target="_blank" rel="noopener noreferrer">
             <span class="cta-text">
-                点此进入第三层：杨晟琦文明公理系统之文明等级评分器
+                点此进入：杨晟琦文明公理系统之文明等级评分器
+                <span class="hot-icon"><img src="hot.gif" alt="HOT"></span>
             </span>
             <span class="cta-en">Click to View</span>
         </a>
     </div>
 
-    <!-- ===== 第四层 ===== -->
-    <div class="layer" onclick="window.open('./全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）.html','_blank')">
+    <!-- ===== 第四层（HOT 图片） ===== -->
+    <div class="layer">
         <div class="layer-num">第四层 <span class="en-num">Layer 4</span></div>
         <div class="layer-name">药方 <span class="en-inline">Prescription</span></div>
         <div class="layer-position">
@@ -777,16 +802,18 @@
                 <div class="angle-text">药方不要求个人做任何“牺牲”，不需要上街抗议，不需要公开表态，不需要等待改变。<br>被卡住了，就直接接入新系统。<br>你不需要改变你的位置，只需要改变你的规则。<span class="en">No "sacrifice" required—no protests, no public statements, no waiting. If stuck, directly access the new system. You don't need to change your position—only your rules.</span></div>
             </div>
         </div>
+        <!-- 按钮：第四层用 hot.gif -->
         <a class="layer-cta pulse" href="./全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）.html" target="_blank" rel="noopener noreferrer">
             <span class="cta-text">
-                点此进入第四层：全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）
+                点此进入：全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）
+                <span class="hot-icon"><img src="hot.gif" alt="HOT"></span>
             </span>
             <span class="cta-en">Click to View</span>
         </a>
     </div>
 
-    <!-- ===== 第五层 ===== -->
-    <div class="layer" onclick="window.open('#','_blank')" style="cursor:default;">
+    <!-- ===== 第五层（无按钮） ===== -->
+    <div class="layer">
         <div class="layer-num">第五层 <span class="en-num">Layer 5</span></div>
         <div class="layer-name">两份善意的后门 <span class="en-inline">Two Goodwill Back Doors</span></div>
         <div class="layer-position">
