@@ -120,7 +120,7 @@
             background:#1a201a;
             border-radius:12px;
             padding:10px 18px;
-            margin-bottom:20px;
+            margin-bottom:16px;
             border:1px solid #2a322a;
             display:flex;
             align-items:center;
@@ -133,39 +133,53 @@
         .time-estimate .time-num { color:#bace9a; font-weight:600; }
         .time-estimate .timer { color:#8aaa6a; font-weight:600; font-variant-numeric:tabular-nums; }
         .time-estimate .progress-detail { color:#5a6a4e; font-size:13px; }
+
+        /* ===== 顶部进度条：一行布局 ===== */
         .progress-bar {
             background:#1a201a;
             border-radius:12px;
             padding:8px 16px;
-            margin-bottom:8px;
-            border:1px solid #2a322a;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            flex-wrap:wrap;
-            gap:6px 12px;
-        }
-        .progress-bar .progress-text { font-size:14px; color:#7a8a6e; }
-        .progress-bar .progress-text strong { color:#bace9a; }
-        .progress-bar .progress-track { flex:1; min-width:80px; height:4px; background:#2a322a; border-radius:4px; overflow:hidden; }
-        .progress-bar .progress-track .fill { height:100%; background:#8aaa6a; border-radius:4px; transition:width .5s ease; width:0; }
-        /* ===== 维度扫描进度（第2条优化） ===== */
-        .dim-scan-progress {
-            font-size:13px;
-            color:#8a9a7e;
             margin-bottom:16px;
-            padding:6px 16px;
             border:1px solid #2a322a;
-            border-radius:10px;
-            background:#101810;
             display:flex;
-            justify-content:space-between;
             align-items:center;
+            justify-content:space-between;
             flex-wrap:wrap;
-            gap:4px 12px;
+            gap:8px 12px;
         }
-        .dim-scan-progress .dim-scan-label { font-weight:600; color:#bace9a; }
-        .dim-scan-progress .dim-scan-next { color:#5a6a4e; }
+        .progress-bar .total-progress {
+            font-size:14px;
+            color:#7a8a6e;
+            white-space:nowrap;
+        }
+        .progress-bar .total-progress strong {
+            color:#bace9a;
+        }
+        .progress-bar .progress-track {
+            flex:1;
+            min-width:60px;
+            height:4px;
+            background:#2a322a;
+            border-radius:4px;
+            overflow:hidden;
+        }
+        .progress-bar .progress-track .fill {
+            height:100%;
+            background:#8aaa6a;
+            border-radius:4px;
+            transition:width .5s ease;
+            width:0;
+        }
+        .progress-bar .next-dim-label {
+            font-size:14px;
+            color:#7a8a6e;
+            white-space:nowrap;
+        }
+        .progress-bar .next-dim-name {
+            color:#8aaa6a;
+            font-weight:500;
+        }
+
         .step-card {
             background:#171c18;
             border-radius:16px;
@@ -183,9 +197,34 @@
             padding-bottom:10px;
             border-bottom:1px solid #2a322a;
         }
-        .step-card .step-header .step-title { font-size:18px; font-weight:700; color:#e2ead4; }
-        .step-card .step-header .step-title .dim { color:#bace9a; }
-        .step-card .step-header .step-title .layer { font-weight:400; font-size:14px; color:#7a8a6e; }
+        .step-card .step-header .step-title {
+            font-size:17px;
+            font-weight:700;
+            color:#d4dec4;
+        }
+        .step-card .step-header .step-title .dim {
+            color:#bace9a;
+        }
+        .step-card .step-header .step-title .dim-progress {
+            color:#7a8a6e;
+            font-weight:400;
+            font-size:15px;
+        }
+        .step-card .step-header .step-title .sep {
+            color:#5a6a4e;
+            font-weight:300;
+            margin:0 4px;
+        }
+        .step-card .step-header .step-title .layer-name {
+            color:#7a8a6e;
+            font-weight:400;
+            font-size:15px;
+        }
+        .step-card .step-header .step-title .layer-sub {
+            color:#6a7a5e;
+            font-weight:300;
+            font-size:14px;
+        }
         .step-card .step-header .step-badge {
             display:inline-block;
             font-size:12px;
@@ -198,7 +237,8 @@
         .step-card .step-header .step-badge.s2 { color:#bace9a; background:#1a2a1a; border-color:#b89a4a; }
         .step-card .step-header .step-badge.s3 { color:#d4dec4; background:#1a2a1a; border-color:#8aaa6a; }
         .step-card .step-header .step-badge .sub { font-weight:400; font-size:11px; color:#7a8a6e; }
-        /* ===== 探测偏误标签（第1条优化，低调注释风格） ===== */
+
+        /* ===== 探测偏误标签 ===== */
         .purpose-tag {
             font-size: 14px;
             color: #6a7a5e;
@@ -585,8 +625,10 @@
             .result-box .result-footer { padding:14px 16px; }
             .copy-actions { justify-content:center; }
             .result-bottom-actions { justify-content:center; }
-            .progress-bar { flex-direction:column; align-items:stretch; gap:6px; padding:8px 14px; }
-            .progress-bar .progress-track { min-width:auto; }
+            .progress-bar { flex-direction:row; flex-wrap:wrap; padding:8px 12px; gap:6px 8px; }
+            .progress-bar .total-progress { font-size:13px; }
+            .progress-bar .next-dim-label { font-size:13px; }
+            .progress-bar .progress-track { min-width:40px; flex:0 1 60px; }
             .complete-msg { padding:20px 16px; }
             .complete-msg .title { font-size:19px; }
             .complete-msg .btn-group { flex-direction:column; align-items:stretch; }
@@ -607,7 +649,6 @@
             .advice-light .advice-item { font-size:13px; }
             .qr-wrapper .qr-box { width:80px; height:80px; line-height:80px; }
             .qr-wrapper .qr-box canvas, .qr-wrapper .qr-box img { width:72px !important; height:72px !important; }
-            .dim-scan-progress { flex-direction:column; align-items:flex-start; gap:2px; }
         }
         @media print {
             body { background:#fff; padding:0; color:#000; }
@@ -640,7 +681,7 @@
             .qr-wrapper .qr-label { color:#666 !important; }
             .qr-wrapper .qr-box { border:1px solid #ccc; }
         }
-        /* ===== 开场模态框（第6条优化） ===== */
+        /* ===== 开场模态框 ===== */
         #introModal {
             display:none;
             position:fixed;
@@ -720,19 +761,21 @@
     </div>
     <!-- 诊断区 -->
     <div class="diagnosis-active" id="diagnosisArea">
+        <!-- ===== 顶部时间区 ===== -->
         <div class="time-estimate">
-            <span>⏱️ 预估时间：<span class="time-num">约 10 分钟</span> <span class="timer" id="timerDisplay">⏱️ 00:00</span></span>
+            <span>预估时间：<span class="time-num">约 10 分钟</span> <span class="timer" id="timerDisplay">⏱️ 00:00</span></span>
             <span class="progress-detail" id="timeDetail">0 / 38 题</span>
         </div>
+
+        <!-- ===== 顶部进度条：一行布局 ===== -->
         <div class="progress-bar">
-            <span class="progress-text">已作答 <strong id="answeredCount">0</strong> / <span id="totalCount">38</span> 题</span>
-            <div class="progress-track"><div class="fill" id="progressFill" style="width:0%;"></div></div>
+            <span class="total-progress">已作答 <strong id="answeredCount">0</strong> / <span id="totalCount">38</span> 题</span>
+            <div class="progress-track">
+                <div class="fill" id="progressFill" style="width:0%;"></div>
+            </div>
+            <span class="next-dim-label">下一维度：<span class="next-dim-name" id="nextDimLabel">事实依据</span></span>
         </div>
-        <!-- 维度扫描进度（第2条优化） -->
-        <div class="dim-scan-progress" id="dimScanProgress">
-            <span><span class="dim-scan-label">🔍 当前维度：</span><span id="currentDimLabel">信息源</span>（<span id="dimAnsweredCount">0</span>/<span id="dimTotalCount">6</span>）</span>
-            <span class="dim-scan-next">下一维度：<span id="nextDimLabel">事实依据</span></span>
-        </div>
+
         <div id="stepContainer"></div>
     </div>
     <!-- 结果 -->
@@ -768,7 +811,7 @@
     </div>
 </div>
 
-<!-- ===== 开场模态框（第6条优化） ===== -->
+<!-- ===== 开场模态框 ===== -->
 <div id="introModal">
     <div class="modal-box">
         <div class="modal-icon">🧠</div>
@@ -805,7 +848,7 @@
     const DIM_ORDER = ['source', 'facts', 'logic', 'interests', 'emotion', 'cost'];
 
     // ================================================================
-    // 38 道元认知题目（嵌入 purpose 字段）
+    // 38 道元认知题目
     // ================================================================
     const QUESTIONS_RAW = [
         { dim:'source', layer:'step1', purpose:'源头质疑 —— 你是否习惯性接受信息而不查证？', text:'面对一个信息，你会主动去查它的原始出处吗？', opts:[{label:'A',text:'我完全不会去查，信就信了',score:0},{label:'B',text:'我一般不太会去查，除非这个信息让我觉得可疑',score:1},{label:'C',text:'我有时候会去查一下，但也不是每次都查',score:2},{label:'D',text:'我经常会去查，想知道是不是真的',score:3},{label:'E',text:'我每次都会去查，不查我不放心',score:4}] },
@@ -913,9 +956,6 @@
         document.getElementById('progressFill').style.width='0%';
         document.getElementById('answeredCount').textContent='0';
         document.getElementById('timeDetail').textContent='0 / '+TOTAL+' 题';
-        document.getElementById('dimAnsweredCount').textContent='0';
-        document.getElementById('dimTotalCount').textContent='6';
-        document.getElementById('currentDimLabel').textContent='信息源';
         document.getElementById('nextDimLabel').textContent='事实依据';
         window.scrollTo({ top:0, behavior:'smooth' });
         showToast('已重置，可以重新开始诊断');
@@ -923,21 +963,9 @@
     function showDiagnosis(){ document.getElementById('startArea').style.display='none'; document.getElementById('diagnosisArea').classList.add('visible'); document.getElementById('totalCount').textContent=TOTAL; renderStep(); }
 
     // ================================================================
-    // 更新维度扫描进度（动态计算，修复 (0/7) 问题）
+    // 更新下一维度
     // ================================================================
     function updateDimScanProgress(currentDim) {
-        const dimIndices = state.shuffledIndices.filter(idx => state.questions[idx].dim === currentDim);
-        const dimTotal = dimIndices.length;
-        let dimAnswered = 0;
-        dimIndices.forEach(idx => {
-            if (state.answers['q_'+idx]) dimAnswered++;
-        });
-        const dimLabel = DIM_MAP[currentDim]?.label || currentDim;
-        document.getElementById('currentDimLabel').textContent = dimLabel;
-        document.getElementById('dimAnsweredCount').textContent = dimAnswered;
-        document.getElementById('dimTotalCount').textContent = dimTotal;
-
-        // 计算下一维度
         const dimIndex = DIM_ORDER.indexOf(currentDim);
         let nextLabel = '全部完成 🎯';
         if (dimIndex !== -1 && dimIndex + 1 < DIM_ORDER.length) {
@@ -948,7 +976,7 @@
     }
 
     // ================================================================
-    // 渲染题目（集成第1条：低调注释风格的探测偏误标签）
+    // 渲染题目（已删除独立的“当前维度”行）
     // ================================================================
     function renderStep(){
         const total=TOTAL, done=Object.keys(state.answers).length, pct=(done/total)*100;
@@ -985,10 +1013,16 @@
         const realIdx=state.shuffledIndices[step], q=state.questions[realIdx];
         if(!q){ renderStep(); return; }
 
-        // 更新维度扫描进度
         updateDimScanProgress(q.dim);
 
-        const dim=DIM_MAP[q.dim]||{icon:'📌',label:'维度'}, layer=LAYER_MAP[q.layer]||{label:'思考',sub:'追问',badge:'s1'};
+        // 计算维度进度
+        const dimIndices = state.shuffledIndices.filter(idx => state.questions[idx].dim === q.dim);
+        const dimTotal = dimIndices.length;
+        let dimAnswered = 0;
+        dimIndices.forEach(idx => { if (state.answers['q_'+idx]) dimAnswered++; });
+
+        const dim=DIM_MAP[q.dim]||{icon:'📌',label:'维度'};
+        const layer=LAYER_MAP[q.layer]||{label:'思考',sub:'追问',badge:'s1'};
         const stepNum=step+1, ans=state.answers['q_'+realIdx];
         const rawOpts=q.options.map((opt,idx)=>({...opt,origIdx:idx}));
         const shuffledOpts=shuffleArray([...rawOpts]);
@@ -1006,13 +1040,22 @@
         let hasPrev=false;
         for(let i=step-1;i>=0;i--){ const ridx=state.shuffledIndices[i]; if(state.answers['q_'+ridx]){ hasPrev=true; break; } }
 
-        // ---- 探测偏误标签（无图标、无加粗、低调注释风格） ----
+        // ---- 探测偏误标签 ----
         const purposeHtml = q.purpose ? `<div class="purpose-tag">探测偏误：${q.purpose}</div>` : '';
+
+        // ---- 题卡标题：维度名（进度）· 层级名 · 子层级 ----
+        const dimProgressText = `（${dimAnswered}/${dimTotal}）`;
 
         document.getElementById('stepContainer').innerHTML=`
             <div class="step-card">
                 <div class="step-header">
-                    <div class="step-title"><span class="dim">${dim.icon} ${dim.label}</span> <span class="layer">· ${layer.label} · ${layer.sub}</span></div>
+                    <div class="step-title">
+                        <span class="dim">${dim.label} <span class="dim-progress">${dimProgressText}</span></span>
+                        <span class="sep">·</span>
+                        <span class="layer-name">${layer.label}</span>
+                        <span class="sep">·</span>
+                        <span class="layer-sub">${layer.sub}</span>
+                    </div>
                     <div class="step-badge ${layer.badge}">${layer.label} <span class="sub">· ${layer.sub}</span> <span style="margin-left:8px;font-weight:400;color:#5a6a4e;">${stepNum} / ${total}</span></div>
                 </div>
                 <div class="question-block">
@@ -1056,7 +1099,7 @@
     }
 
     // ================================================================
-    // 生成报告（保留原样）
+    // 生成报告
     // ================================================================
     function generateReport(saveToHistory=true, customAnswers=null){
         const answers=customAnswers||state.answers;
@@ -1442,7 +1485,7 @@
     function showToast(message,isError){ const el=document.getElementById('toast'); el.textContent=message; el.className='toast'+(isError?' error':''); void el.offsetWidth; el.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>{ el.classList.remove('show'); },3000); }
 
     // ================================================================
-    // 初始化（集成第6条：开场模态框 + 倒计时）
+    // 初始化
     // ================================================================
     document.addEventListener('DOMContentLoaded',function(){
         loadHistory();
