@@ -7,2279 +7,1300 @@
     <title>杨晟琦文明公理系统之文明等级评分器 · 杨晟琦文明公理系统 · 独立思想锚点</title>
     <style>
         /* ===== 全局重置 & 字体 ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #0f1210;
-            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
-            color: #d0d6c8;
-            line-height: 1.8;
-            padding: 28px 18px;
-        }
-
-        .container {
-            max-width: 1120px;
-            margin: 0 auto;
-            background: #171c18;
-            padding: 44px 52px 38px;
-            border-radius: 24px;
-            border: 1px solid #2a322a;
-            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
-        }
-
-        /* ===== 顶部导航 ===== */
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            padding-bottom: 14px;
-            margin-bottom: 22px;
-            border-bottom: 1px solid #2a322a;
-            font-size: 14px;
-        }
-        .top-nav .back {
-            color: #7a8a6e;
-            text-decoration: none;
-            border-bottom: 1px dotted #4a5a3e;
-        }
-        .top-nav .back:hover {
-            color: #aaba8a;
-            border-bottom-color: #aaba8a;
-        }
-        .top-nav .badge {
-            color: #5a6a4e;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
-
-        /* ===== 品牌区（中英双语） ===== */
-        .brand {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #2a322a;
-        }
-        .brand-left {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .sub-brand {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1.4px;
-            color: #8a9a7e;
-            text-transform: uppercase;
-        }
-        .title-row {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px 18px;
-            margin-top: 2px;
-        }
-        .title-row h1 {
-            font-size: 36px;
-            font-weight: 700;
-            color: #e2ead4;
-            line-height: 1.25;
-        }
-        .title-row .tag {
-            background: #2a322a;
-            color: #e2ead4;
-            font-size: 14px;
-            font-weight: 500;
-            padding: 4px 18px;
-            border-radius: 30px;
-            border: 1px solid #3a4638;
-        }
-        .info-row {
-            font-size: 15px;
-            color: #7a8a6e;
-            margin-top: 6px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px 24px;
-        }
-        .info-row a {
-            color: #aaba8a;
-            text-decoration: none;
-            border-bottom: 1px dotted #4a5a3e;
-        }
-        .info-row a:hover {
-            border-bottom: 1px solid #aaba8a;
-        }
-        .brand-right {
-            font-size: 15px;
-            color: #7a8a6e;
-            text-align: right;
-            align-self: flex-start;
-            margin-top: 4px;
-        }
-
-        .en {
-            font-size: 0.8em;
-            color: #7a8a6e;
-            display: block;
-            line-height: 1.6;
-            margin-top: 2px;
-        }
-        .en-inline {
-            font-size: 0.8em;
-            color: #7a8a6e;
-        }
-
-        /* ===== 标题 ===== */
-        h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-top: 48px;
-            margin-bottom: 16px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #2a322a;
-            color: #e2ead4;
-        }
-        h2 .en-inline {
-            font-size: 0.6em;
-            font-weight: 400;
-            color: #7a8a6e;
-            margin-left: 12px;
-        }
-        h3 {
-            font-size: 21px;
-            font-weight: 600;
-            margin-top: 32px;
-            margin-bottom: 14px;
-            color: #d4dec4;
-        }
-        h3 .en-inline {
-            font-size: 0.6em;
-            font-weight: 400;
-            color: #7a8a6e;
-            margin-left: 8px;
-        }
-        p {
-            margin-bottom: 16px;
-            color: #c6ceba;
-            line-height: 1.8;
-        }
-
-        /* ===== 卡片 ===== */
-        .content-card {
-            background: #1e241e;
-            border-radius: 14px;
-            padding: 22px 28px 18px;
-            margin: 0 0 20px 0;
-            border: 1px solid #2a322a;
-            border-left: 5px solid #8aaa6a;
-            transition: transform 0.15s ease, box-shadow 0.2s ease;
-        }
-        .content-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        .content-card .highlight-box {
-            background: #171c18;
-            border-left: 4px solid #bace9a;
-            padding: 12px 18px;
-            border-radius: 8px;
-            margin: 10px 0 12px 0;
-        }
-        .content-card .highlight-box p {
-            margin-bottom: 4px;
-            font-size: 16px;
-            color: #d4dec4;
-        }
-
-        /* ===== 门禁 ===== */
-        .gate-section {
-            background: #1e241e;
-            border-radius: 14px;
-            padding: 22px 28px 18px;
-            border: 1px solid #2a322a;
-            border-left: 5px solid #bace9a;
-            margin-bottom: 28px;
-            transition: border-color 0.4s, opacity 0.4s;
-        }
-        .gate-section.locked {
-            border-left-color: #b05a4a;
-            opacity: 0.9;
-        }
-        .gate-section.unlocked {
-            border-left-color: #8aaa6a;
-            opacity: 1;
-        }
-        .gate-section .gate-checkbox {
-            display: block;
-            padding: 6px 0;
-            font-size: 15px;
-            color: #c6ceba;
-            cursor: pointer;
-        }
-        .gate-section .gate-checkbox input[type="checkbox"] {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            background: #171c18;
-            border: 1px solid #3a4638;
-            border-radius: 4px;
-            margin-right: 12px;
-            vertical-align: middle;
-            cursor: pointer;
-            transition: all 0.2s;
-            flex-shrink: 0;
-        }
-        .gate-section .gate-checkbox input[type="checkbox"]:checked {
-            background: #8aaa6a;
-            border-color: #8aaa6a;
-            position: relative;
-        }
-        .gate-section .gate-checkbox input[type="checkbox"]:checked::after {
-            content: "✓";
-            color: #171c18;
-            font-weight: 700;
-            font-size: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            line-height: 18px;
-        }
-        .gate-section .gate-checkbox .gate-detail {
-            display: block;
-            font-size: 14px;
-            color: #7a8a6e;
-            padding-left: 32px;
-            margin-top: 2px;
-            line-height: 1.6;
-        }
-        .gate-status {
-            margin-top: 12px;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.4s;
-        }
-        .gate-status.blocked {
-            background: #2a1a18;
-            color: #b05a4a;
-            border: 1px solid #b05a4a;
-        }
-        .gate-status.unblocked {
-            background: #1a2a1a;
-            color: #8aaa6a;
-            border: 1px solid #8aaa6a;
-        }
-        .gate-preview {
-            font-size: 13px;
-            color: #5a6a4e;
-            margin-top: 6px;
-            text-align: center;
-            transition: opacity 0.4s;
-        }
-        .gate-preview.active {
-            color: #7a8a6e;
-        }
-
-        /* ===== 打分区域 ===== */
-        .scoring-area {
-            transition: opacity 0.5s ease, pointer-events 0.5s ease;
-        }
-        .scoring-area.disabled {
-            opacity: 0.3;
-            pointer-events: none;
-            user-select: none;
-        }
-        .scoring-area.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* ===== 滑块 ===== */
-        .slider-group {
-            margin-bottom: 30px;
-            padding-bottom: 22px;
-            border-bottom: 1px solid #1e241e;
-        }
-        .slider-group:last-of-type {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-        .slider-group label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 15px;
-            font-weight: 500;
-            color: #c6ceba;
-            margin-bottom: 2px;
-        }
-        .slider-group label .score {
-            color: #bace9a;
-            font-weight: 600;
-            min-width: 28px;
-            text-align: right;
-        }
-        .slider-group .example {
-            font-size: 14px;
-            color: #7a8a6e;
-            margin-bottom: 4px;
-            line-height: 1.5;
-        }
-        .slider-group .meaning {
-            font-size: 13px;
-            color: #b6c0aa;
-            background: #171c18;
-            padding: 6px 12px;
-            border-radius: 6px;
-            margin: 4px 0 6px 0;
-            border-left: 3px solid #8aaa6a;
-            line-height: 1.6;
-            min-height: 36px;
-            transition: all 0.2s;
-        }
-        .slider-group .anchor {
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            color: #4a5a3e;
-            margin-top: 2px;
-            padding: 0 2px;
-            flex-wrap: wrap;
-            gap: 2px 6px;
-        }
-        .slider-group .anchor span:first-child {
-            color: #6a5a4a;
-        }
-        .slider-group .anchor span:last-child {
-            color: #6a8a5a;
-        }
-        .slider-group .anchor span:nth-child(2) {
-            color: #5a6a4e;
-        }
-        input[type="range"] {
-            width: 100%;
-            height: 4px;
-            -webkit-appearance: none;
-            background: #2a322a;
-            border-radius: 4px;
-            outline: none;
-            margin: 6px 0 2px 0;
-            transition: background 0.2s;
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            background: #8aaa6a;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid #171c18;
-            box-shadow: 0 0 8px rgba(138, 170, 106, 0.25);
-            transition: transform 0.15s, box-shadow 0.15s;
-        }
-        input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 16px rgba(138, 170, 106, 0.4);
-        }
-        input[type="range"]::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
-            background: #8aaa6a;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid #171c18;
-        }
-
-        .category-summary {
-            background: #1e241e;
-            border-radius: 10px;
-            padding: 10px 16px;
-            margin-top: 6px;
-            border: 1px solid #2a322a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            font-size: 15px;
-            color: #b6c0aa;
-        }
-        .category-summary .cat-score {
-            font-weight: 700;
-            color: #e2ead4;
-            font-size: 18px;
-        }
-
-        /* ===== 司法输入区 ===== */
-        .input-row {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin: 10px 0 8px 0;
-        }
-        .input-group {
-            flex: 1;
-            min-width: 160px;
-        }
-        .input-group label {
-            font-size: 14px;
-            color: #7a8a6e;
-            display: block;
-            margin-bottom: 2px;
-        }
-        .input-group input {
-            width: 100%;
-            background: #171c18;
-            border: 1px solid #2a322a;
-            border-radius: 8px;
-            padding: 8px 12px;
-            color: #e2ead4;
-            font-size: 15px;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .input-group input:focus {
-            border-color: #8aaa6a;
-        }
-        .input-group input::placeholder {
-            color: #4a5a3e;
-        }
-        .input-group .input-hint {
-            font-size: 12px;
-            color: #4a5a3e;
-            margin-top: 2px;
-        }
-        .data-ref-toggle {
-            background: #1a201a;
-            border: 1px solid #2a322a;
-            border-radius: 8px;
-            padding: 6px 14px;
-            font-size: 13px;
-            color: #7a8a6e;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.2s;
-            margin-top: 4px;
-        }
-        .data-ref-toggle:hover {
-            border-color: #8aaa6a;
-            color: #aaba8a;
-        }
-        .data-ref-box {
-            background: #171c18;
-            border-radius: 8px;
-            padding: 10px 14px;
-            margin-top: 6px;
-            font-size: 13px;
-            color: #7a8a6e;
-            border: 1px solid #2a322a;
-            display: none;
-        }
-        .data-ref-box.open {
-            display: block;
-        }
-        .data-ref-box .example-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 2px 0;
-            border-bottom: 1px solid #1a1e1a;
-            flex-wrap: wrap;
-            gap: 4px 8px;
-        }
-        .data-ref-box .example-row:last-child {
-            border-bottom: none;
-        }
-        .data-ref-box .highlight-num {
-            color: #bace9a;
-            font-weight: 600;
-        }
-        .data-ref-box .note {
-            font-size: 12px;
-            color: #5a6a4e;
-            margin-top: 4px;
-        }
-
-        /* ===== 结果区 ===== */
-        .result-box {
-            background: #1e241e;
-            border-radius: 14px;
-            padding: 24px 28px 20px;
-            margin: 18px 0 14px 0;
-            border: 1px solid #2a322a;
-            border-left: 5px solid #8aaa6a;
-        }
-        .result-box .result-main {
-            text-align: center;
-            padding-bottom: 16px;
-            border-bottom: 2px solid #2a322a;
-            margin-bottom: 16px;
-        }
-        .result-box .result-main .big-score {
-            font-size: 56px;
-            font-weight: 700;
-            color: #e2ead4;
-            letter-spacing: 1px;
-            line-height: 1.2;
-        }
-        .result-box .result-main .big-score .denom {
-            font-size: 24px;
-            font-weight: 400;
-            color: #5a6a4e;
-        }
-        .result-box .result-main .big-level {
-            font-size: 28px;
-            font-weight: 700;
-            margin-top: 6px;
-        }
-        .result-box .result-main .big-level.level-low {
-            color: #b05a4a;
-        }
-        .result-box .result-main .big-level.level-mid {
-            color: #bace9a;
-        }
-        .result-box .result-main .big-level.level-high {
-            color: #8aaa6a;
-        }
-        .result-box .result-main .big-level.not-entered {
-            color: #b05a4a;
-        }
-        .result-box .result-main .placeholder {
-            color: #5a6a4e;
-            font-size: 18px;
-            font-weight: 400;
-            padding: 10px 0;
-        }
-
-        .result-box .result-section {
-            margin-top: 14px;
-            padding-top: 14px;
-            border-top: 1px solid #2a322a;
-        }
-        .result-box .result-section:first-of-type {
-            border-top: none;
-            margin-top: 0;
-            padding-top: 0;
-        }
-        .result-box .result-section .section-title {
-            font-weight: 600;
-            color: #d4dec4;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-        .result-box .result-section .section-body {
-            font-size: 15px;
-            color: #b6c0aa;
-            line-height: 1.8;
-        }
-        .result-box .result-section .section-body .dim-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 2px 0;
-            border-bottom: 1px solid #1a1e1a;
-            flex-wrap: wrap;
-            gap: 2px 8px;
-        }
-        .result-box .result-section .section-body .dim-row:last-child {
-            border-bottom: none;
-        }
-        .result-box .result-section .section-body .dim-row .dim-name {
-            color: #7a8a6e;
-        }
-        .result-box .result-section .section-body .dim-row .dim-score {
-            color: #d4dec4;
-            font-weight: 600;
-        }
-        .result-box .result-section .section-body .weak-item {
-            padding: 4px 0 4px 16px;
-            border-left: 3px solid #b05a4a;
-            margin: 4px 0;
-            color: #c6ceba;
-        }
-        .result-box .result-section .section-body .weak-item .w-val {
-            color: #b05a4a;
-            font-weight: 600;
-        }
-        .result-box .result-section .section-body .status-ok {
-            color: #8aaa6a;
-        }
-        .result-box .result-section .section-body .status-fail {
-            color: #b05a4a;
-        }
-        .result-box .result-section .section-body .status-warn {
-            color: #b89a4a;
-        }
-        .result-box .result-section .section-body .calc-path {
-            font-size: 13px;
-            color: #5a6a4e;
-            padding: 4px 0;
-            border-bottom: 1px solid #1a1e1a;
-        }
-        .result-box .result-section .section-body .calc-path .highlight {
-            color: #bace9a;
-        }
-
-        /* ===== WJP映射 ===== */
-        .wjp-box {
-            background: #171c18;
-            border-radius: 10px;
-            padding: 14px 18px;
-            margin-top: 10px;
-            border: 1px solid #2a322a;
-            font-size: 14px;
-            color: #b6c0aa;
-        }
-        .wjp-box .wjp-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 3px 0;
-            border-bottom: 1px solid #1a1e1a;
-            flex-wrap: wrap;
-            gap: 2px 8px;
-        }
-        .wjp-box .wjp-row:last-child {
-            border-bottom: none;
-        }
-        .wjp-box .wjp-label {
-            color: #7a8a6e;
-        }
-        .wjp-box .wjp-value {
-            color: #d4dec4;
-            font-weight: 600;
-        }
-        .wjp-box .wjp-ref-note {
-            font-size: 12px;
-            color: #5a6a4e;
-            border-top: 1px solid #2a322a;
-            padding-top: 10px;
-            margin-top: 10px;
-            line-height: 1.8;
-        }
-        .wjp-box .wjp-ref-note strong {
-            color: #aaba8a;
-        }
-        .wjp-box .wjp-legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 16px;
-            margin-top: 6px;
-            font-size: 12px;
-            color: #5a6a4e;
-        }
-        .wjp-box .wjp-legend .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .wjp-box .wjp-legend .color-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 3px;
-            display: inline-block;
-        }
-        .color-dot.red {
-            background: #b05a4a;
-        }
-        .color-dot.yellow {
-            background: #b89a4a;
-        }
-        .color-dot.green {
-            background: #6a8a5a;
-        }
-        .color-dot.bright {
-            background: #8aaa6a;
-        }
-        .wjp-box .wjp-position {
-            font-size: 13px;
-            color: #7a8a6e;
-            margin-top: 4px;
-        }
-        .wjp-box .wjp-position strong {
-            color: #bace9a;
-        }
-
-        /* ===== 历史趋势 ===== */
-        .history-box {
-            background: #171c18;
-            border-radius: 10px;
-            padding: 14px 18px;
-            margin-top: 14px;
-            border: 1px solid #2a322a;
-        }
-        .history-box .h-title {
-            font-size: 13px;
-            color: #7a8a6e;
-            margin-bottom: 8px;
-        }
-        .history-dots {
-            display: flex;
-            gap: 12px;
-            align-items: flex-end;
-            justify-content: center;
-            height: 70px;
-            padding: 8px 0;
-            flex-wrap: wrap;
-        }
-        .history-dot {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: #2a322a;
-            border: 2px solid #2a322a;
-            transition: all 0.4s ease;
-            position: relative;
-            cursor: default;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .history-dot.has-data {
-            background: #8aaa6a;
-            border-color: #8aaa6a;
-            box-shadow: 0 0 12px rgba(138, 170, 106, 0.2);
-        }
-        .history-dot.has-data.current {
-            background: #8aaa6a;
-            border-color: #8aaa6a;
-            box-shadow: 0 0 24px rgba(138, 170, 106, 0.6);
-            transform: scale(1.2);
-            animation: pulse-glow 1.8s ease-in-out infinite;
-        }
-        @keyframes pulse-glow {
-            0%,
-            100% {
-                box-shadow: 0 0 16px rgba(138, 170, 106, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 32px rgba(138, 170, 106, 0.8);
-            }
-        }
-        .history-dot .h-val {
-            position: absolute;
-            top: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 11px;
-            color: #7a8a6e;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .history-dot.has-data .h-val {
-            opacity: 1;
-        }
-        .history-dot .h-label {
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 9px;
-            color: #4a5a3e;
-            white-space: nowrap;
-        }
-        .history-dot .h-label.current-label {
-            color: #8aaa6a;
-            font-weight: 600;
-        }
-        .history-empty {
-            font-size: 13px;
-            color: #5a6a4e;
-            padding: 12px 0;
-            text-align: center;
-        }
-
-        .btn-clear {
-            background: #2a1a18;
-            border: 1px solid #3a322a;
-            border-radius: 6px;
-            padding: 4px 16px;
-            font-size: 13px;
-            color: #7a6a5e;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        .btn-clear:hover {
-            border-color: #6a5a4a;
-            color: #aaba8a;
-        }
-        .btn-rescore {
-            background: #2a322a;
-            border: 1px solid #3a4638;
-            border-radius: 8px;
-            padding: 8px 24px;
-            font-size: 15px;
-            color: #aaba8a;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.2s;
-            margin-top: 8px;
-        }
-        .btn-rescore:hover {
-            border-color: #8aaa6a;
-            color: #e2ead4;
-            background: #3a4638;
-        }
-
-        /* ===== 页脚 ===== */
-        .footer {
-            margin-top: 48px;
-            padding-top: 22px;
-            border-top: 2px solid #2a322a;
-            font-size: 14px;
-            color: #5a6a4e;
-            text-align: center;
-        }
-        .footer a {
-            color: #7a8a6e;
-            border-bottom: 1px dotted #4a5a3e;
-        }
-        .footer a:hover {
-            border-bottom: 1px solid #7a8a6e;
-            color: #aaba8a;
-        }
-        .footer .en {
-            font-size: 0.85em;
-            color: #7a8a6e;
-            display: block;
-            margin-top: 2px;
-        }
-
-        /* ===== 响应式 ===== */
-        @media (max-width: 768px) {
-            .container {
-                padding: 22px 14px 24px;
-            }
-            .title-row h1 {
-                font-size: 28px;
-            }
-            .title-row .tag {
-                font-size: 12px;
-                padding: 2px 12px;
-            }
-            .info-row {
-                font-size: 14px;
-                flex-direction: column;
-                gap: 2px;
-            }
-            .brand-right {
-                text-align: left;
-                width: 100%;
-                margin-top: 6px;
-            }
-            .result-box .result-main .big-score {
-                font-size: 40px;
-            }
-            .result-box .result-main .big-level {
-                font-size: 22px;
-            }
-            h2 {
-                font-size: 24px;
-            }
-            h3 {
-                font-size: 19px;
-            }
-            .input-row {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .slider-group .meaning {
-                font-size: 12px;
-                padding: 4px 10px;
-            }
-            .gate-section .gate-checkbox .gate-detail {
-                font-size: 13px;
-                padding-left: 28px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 14px 10px 18px;
-            }
-            .title-row h1 {
-                font-size: 22px;
-            }
-            .title-row .tag {
-                font-size: 11px;
-                padding: 2px 10px;
-            }
-            .brand {
-                flex-direction: column;
-                gap: 6px;
-            }
-            .brand-right {
-                text-align: left;
-            }
-            .result-box .result-main .big-score {
-                font-size: 32px;
-            }
-            .result-box .result-main .big-level {
-                font-size: 18px;
-            }
-            h2 {
-                font-size: 20px;
-            }
-            h3 {
-                font-size: 17px;
-            }
-            .result-box {
-                padding: 16px 14px;
-            }
-            .content-card {
-                padding: 14px 14px;
-            }
-            .gate-section {
-                padding: 16px 14px;
-            }
-            .slider-group {
-                margin-bottom: 22px;
-                padding-bottom: 16px;
-            }
-            .slider-group label {
-                font-size: 14px;
-            }
-            .slider-group .example {
-                font-size: 13px;
-            }
-            .slider-group .meaning {
-                font-size: 12px;
-                padding: 4px 8px;
-                min-height: 28px;
-            }
-            .slider-group .anchor {
-                font-size: 10px;
-            }
-            .history-dot {
-                width: 18px;
-                height: 18px;
-            }
-            .history-dots {
-                gap: 6px;
-                height: 50px;
-            }
-            .history-dot .h-val {
-                font-size: 9px;
-                top: -16px;
-            }
-            .history-dot .h-label {
-                font-size: 7px;
-                bottom: -14px;
-            }
-            .gate-section .gate-checkbox .gate-detail {
-                font-size: 12px;
-                padding-left: 24px;
-            }
-            .gate-status .en,
-            .gate-preview .en-inline {
-                font-size: 0.7em !important;
-            }
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background:#0f1210; font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif; color:#d0d6c8; line-height:1.8; padding:28px 18px; }
+        .container { max-width:1120px; margin:0 auto; background:#171c18; padding:44px 52px 38px; border-radius:24px; border:1px solid #2a322a; box-shadow:0 8px 60px rgba(0,0,0,0.7); }
+        .top-nav { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding-bottom:14px; margin-bottom:22px; border-bottom:1px solid #2a322a; font-size:14px; }
+        .top-nav .back { color:#7a8a6e; text-decoration:none; border-bottom:1px dotted #4a5a3e; }
+        .top-nav .back:hover { color:#aaba8a; border-bottom-color:#aaba8a; }
+        .top-nav .badge { color:#5a6a4e; font-size:13px; letter-spacing:1px; }
+        .brand { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; margin-bottom:20px; padding-bottom:20px; border-bottom:2px solid #2a322a; }
+        .brand-left { display:flex; flex-direction:column; gap:4px; }
+        .sub-brand { font-size:14px; font-weight:600; letter-spacing:1.4px; color:#8a9a7e; text-transform:uppercase; }
+        .title-row { display:flex; align-items:center; flex-wrap:wrap; gap:10px 18px; margin-top:2px; }
+        .title-row h1 { font-size:36px; font-weight:700; color:#e2ead4; line-height:1.25; }
+        .title-row .tag { background:#2a322a; color:#e2ead4; font-size:14px; font-weight:500; padding:4px 18px; border-radius:30px; border:1px solid #3a4638; }
+        .info-row { font-size:15px; color:#7a8a6e; margin-top:6px; display:flex; flex-wrap:wrap; gap:6px 24px; }
+        .info-row a { color:#aaba8a; text-decoration:none; border-bottom:1px dotted #4a5a3e; }
+        .info-row a:hover { border-bottom:1px solid #aaba8a; }
+        .brand-right { font-size:15px; color:#7a8a6e; text-align:right; align-self:flex-start; margin-top:4px; }
+        .en { font-size:0.8em; color:#7a8a6e; display:block; line-height:1.6; margin-top:2px; }
+        .en-inline { font-size:0.8em; color:#7a8a6e; }
+        h2 { font-size:28px; font-weight:700; margin-top:48px; margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid #2a322a; color:#e2ead4; }
+        h2 .en-inline { font-size:0.6em; font-weight:400; color:#7a8a6e; margin-left:12px; }
+        h3 { font-size:21px; font-weight:600; margin-top:32px; margin-bottom:14px; color:#d4dec4; }
+        h3 .en-inline { font-size:0.6em; font-weight:400; color:#7a8a6e; margin-left:8px; }
+        p { margin-bottom:16px; color:#c6ceba; line-height:1.8; }
+        .content-card { background:#1e241e; border-radius:14px; padding:22px 28px 18px; margin:0 0 20px 0; border:1px solid #2a322a; border-left:5px solid #8aaa6a; transition:transform 0.15s ease, box-shadow 0.2s ease; }
+        .content-card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.3); }
+        .content-card .highlight-box { background:#171c18; border-left:4px solid #bace9a; padding:12px 18px; border-radius:8px; margin:10px 0 12px 0; }
+        .content-card .highlight-box p { margin-bottom:4px; font-size:16px; color:#d4dec4; }
+        .gate-section { background:#1e241e; border-radius:14px; padding:22px 28px 18px; border:1px solid #2a322a; border-left:5px solid #bace9a; margin-bottom:28px; transition:border-color 0.4s, opacity 0.4s; }
+        .gate-section.locked { border-left-color:#b05a4a; opacity:0.9; }
+        .gate-section.unlocked { border-left-color:#8aaa6a; opacity:1; }
+        .gate-section .gate-checkbox { display:block; padding:6px 0; font-size:15px; color:#c6ceba; cursor:pointer; }
+        .gate-section .gate-checkbox input[type="checkbox"] { -webkit-appearance:none; appearance:none; width:18px; height:18px; background:#171c18; border:1px solid #3a4638; border-radius:4px; margin-right:12px; vertical-align:middle; cursor:pointer; transition:all 0.2s; flex-shrink:0; }
+        .gate-section .gate-checkbox input[type="checkbox"]:checked { background:#8aaa6a; border-color:#8aaa6a; position:relative; }
+        .gate-section .gate-checkbox input[type="checkbox"]:checked::after { content:"✓"; color:#171c18; font-weight:700; font-size:14px; display:flex; justify-content:center; align-items:center; line-height:18px; }
+        .gate-section .gate-checkbox .gate-detail { display:block; font-size:14px; color:#7a8a6e; padding-left:32px; margin-top:2px; line-height:1.6; }
+        .gate-status { margin-top:12px; padding:10px 16px; border-radius:8px; font-size:15px; font-weight:600; text-align:center; transition:all 0.4s; }
+        .gate-status.blocked { background:#2a1a18; color:#b05a4a; border:1px solid #b05a4a; }
+        .gate-status.unblocked { background:#1a2a1a; color:#8aaa6a; border:1px solid #8aaa6a; }
+        .gate-preview { font-size:13px; color:#5a6a4e; margin-top:6px; text-align:center; transition:opacity 0.4s; }
+        .gate-preview.active { color:#7a8a6e; }
+        .scoring-area { transition:opacity 0.5s ease, pointer-events 0.5s ease; }
+        .scoring-area.disabled { opacity:0.3; pointer-events:none; user-select:none; }
+        .scoring-area.active { opacity:1; pointer-events:auto; }
+        .slider-group { margin-bottom:30px; padding-bottom:22px; border-bottom:1px solid #1e241e; }
+        .slider-group:last-of-type { border-bottom:none; margin-bottom:0; }
+        .slider-group label { display:flex; justify-content:space-between; font-size:15px; font-weight:500; color:#c6ceba; margin-bottom:2px; }
+        .slider-group label .score { color:#bace9a; font-weight:600; min-width:28px; text-align:right; }
+        .slider-group .example { font-size:14px; color:#7a8a6e; margin-bottom:4px; line-height:1.5; }
+        .slider-group .meaning { font-size:13px; color:#b6c0aa; background:#171c18; padding:6px 12px; border-radius:6px; margin:4px 0 6px 0; border-left:3px solid #8aaa6a; line-height:1.6; min-height:36px; transition:all 0.2s; }
+        .slider-group .anchor { display:flex; justify-content:space-between; font-size:11px; color:#4a5a3e; margin-top:2px; padding:0 2px; flex-wrap:wrap; gap:2px 6px; }
+        .slider-group .anchor span:first-child { color:#6a5a4a; }
+        .slider-group .anchor span:last-child { color:#6a8a5a; }
+        .slider-group .anchor span:nth-child(2) { color:#5a6a4e; }
+        input[type="range"] { width:100%; height:4px; -webkit-appearance:none; background:#2a322a; border-radius:4px; outline:none; margin:6px 0 2px 0; transition:background 0.2s; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; background:#8aaa6a; border-radius:50%; cursor:pointer; border:2px solid #171c18; box-shadow:0 0 8px rgba(138,170,106,0.25); transition:transform 0.15s, box-shadow 0.15s; }
+        input[type="range"]::-webkit-slider-thumb:hover { transform:scale(1.1); box-shadow:0 0 16px rgba(138,170,106,0.4); }
+        input[type="range"]::-moz-range-thumb { width:18px; height:18px; background:#8aaa6a; border-radius:50%; cursor:pointer; border:2px solid #171c18; }
+        .category-summary { background:#1e241e; border-radius:10px; padding:10px 16px; margin-top:6px; border:1px solid #2a322a; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; font-size:15px; color:#b6c0aa; }
+        .category-summary .cat-score { font-weight:700; color:#e2ead4; font-size:18px; }
+        .input-row { display:flex; gap:16px; flex-wrap:wrap; margin:10px 0 8px 0; }
+        .input-group { flex:1; min-width:160px; }
+        .input-group label { font-size:14px; color:#7a8a6e; display:block; margin-bottom:2px; }
+        .input-group input { width:100%; background:#171c18; border:1px solid #2a322a; border-radius:8px; padding:8px 12px; color:#e2ead4; font-size:15px; font-family:inherit; outline:none; transition:border-color 0.2s; }
+        .input-group input:focus { border-color:#8aaa6a; }
+        .input-group input::placeholder { color:#4a5a3e; }
+        .input-group .input-hint { font-size:12px; color:#4a5a3e; margin-top:2px; }
+        .data-ref-toggle { background:#1a201a; border:1px solid #2a322a; border-radius:8px; padding:6px 14px; font-size:13px; color:#7a8a6e; cursor:pointer; font-family:inherit; transition:all 0.2s; margin-top:4px; }
+        .data-ref-toggle:hover { border-color:#8aaa6a; color:#aaba8a; }
+        .data-ref-box { background:#171c18; border-radius:8px; padding:10px 14px; margin-top:6px; font-size:13px; color:#7a8a6e; border:1px solid #2a322a; display:none; }
+        .data-ref-box.open { display:block; }
+        .data-ref-box .example-row { display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px solid #1a1e1a; flex-wrap:wrap; gap:4px 8px; }
+        .data-ref-box .example-row:last-child { border-bottom:none; }
+        .data-ref-box .highlight-num { color:#bace9a; font-weight:600; }
+        .data-ref-box .note { font-size:12px; color:#5a6a4e; margin-top:4px; }
+        .result-box { background:#1e241e; border-radius:14px; padding:24px 28px 20px; margin:18px 0 14px 0; border:1px solid #2a322a; border-left:5px solid #8aaa6a; }
+        .result-box .result-main { text-align:center; padding-bottom:16px; border-bottom:2px solid #2a322a; margin-bottom:16px; }
+        .result-box .result-main .big-score { font-size:56px; font-weight:700; color:#e2ead4; letter-spacing:1px; line-height:1.2; }
+        .result-box .result-main .big-score .denom { font-size:24px; font-weight:400; color:#5a6a4e; }
+        .result-box .result-main .big-level { font-size:28px; font-weight:700; margin-top:6px; }
+        .result-box .result-main .big-level.level-low { color:#b05a4a; }
+        .result-box .result-main .big-level.level-mid { color:#bace9a; }
+        .result-box .result-main .big-level.level-high { color:#8aaa6a; }
+        .result-box .result-main .big-level.not-entered { color:#b05a4a; }
+        .result-box .result-main .placeholder { color:#5a6a4e; font-size:18px; font-weight:400; padding:10px 0; }
+        .result-box .result-section { margin-top:14px; padding-top:14px; border-top:1px solid #2a322a; }
+        .result-box .result-section:first-of-type { border-top:none; margin-top:0; padding-top:0; }
+        .result-box .result-section .section-title { font-weight:600; color:#d4dec4; font-size:16px; margin-bottom:6px; }
+        .result-box .result-section .section-body { font-size:15px; color:#b6c0aa; line-height:1.8; }
+        .result-box .result-section .section-body .dim-row { display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px solid #1a1e1a; flex-wrap:wrap; gap:2px 8px; }
+        .result-box .result-section .section-body .dim-row:last-child { border-bottom:none; }
+        .result-box .result-section .section-body .dim-row .dim-name { color:#7a8a6e; }
+        .result-box .result-section .section-body .dim-row .dim-score { color:#d4dec4; font-weight:600; }
+        .result-box .result-section .section-body .weak-item { padding:4px 0 4px 16px; border-left:3px solid #b05a4a; margin:4px 0; color:#c6ceba; }
+        .result-box .result-section .section-body .weak-item .w-val { color:#b05a4a; font-weight:600; }
+        .result-box .result-section .section-body .status-ok { color:#8aaa6a; }
+        .result-box .result-section .section-body .status-fail { color:#b05a4a; }
+        .result-box .result-section .section-body .status-warn { color:#b89a4a; }
+        .result-box .result-section .section-body .calc-path { font-size:13px; color:#5a6a4e; padding:4px 0; border-bottom:1px solid #1a1e1a; }
+        .result-box .result-section .section-body .calc-path .highlight { color:#bace9a; }
+        .wjp-box { background:#171c18; border-radius:10px; padding:14px 18px; margin-top:10px; border:1px solid #2a322a; font-size:14px; color:#b6c0aa; }
+        .wjp-box .wjp-row { display:flex; justify-content:space-between; padding:3px 0; border-bottom:1px solid #1a1e1a; flex-wrap:wrap; gap:2px 8px; }
+        .wjp-box .wjp-row:last-child { border-bottom:none; }
+        .wjp-box .wjp-label { color:#7a8a6e; }
+        .wjp-box .wjp-value { color:#d4dec4; font-weight:600; }
+        .wjp-box .wjp-ref-note { font-size:12px; color:#5a6a4e; border-top:1px solid #2a322a; padding-top:10px; margin-top:10px; line-height:1.8; }
+        .wjp-box .wjp-ref-note strong { color:#aaba8a; }
+        .wjp-box .wjp-legend { display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:6px; font-size:12px; color:#5a6a4e; }
+        .wjp-box .wjp-legend .legend-item { display:flex; align-items:center; gap:4px; }
+        .wjp-box .wjp-legend .color-dot { width:12px; height:12px; border-radius:3px; display:inline-block; }
+        .color-dot.red { background:#b05a4a; }
+        .color-dot.yellow { background:#b89a4a; }
+        .color-dot.green { background:#6a8a5a; }
+        .color-dot.bright { background:#8aaa6a; }
+        .wjp-box .wjp-position { font-size:13px; color:#7a8a6e; margin-top:4px; }
+        .wjp-box .wjp-position strong { color:#bace9a; }
+        .history-box { background:#171c18; border-radius:10px; padding:14px 18px; margin-top:14px; border:1px solid #2a322a; }
+        .history-box .h-title { font-size:13px; color:#7a8a6e; margin-bottom:8px; }
+        .history-dots { display:flex; gap:12px; align-items:flex-end; justify-content:center; height:70px; padding:8px 0; flex-wrap:wrap; }
+        .history-dot { width:28px; height:28px; border-radius:50%; background:#2a322a; border:2px solid #2a322a; transition:all 0.4s ease; position:relative; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+        .history-dot.has-data { background:#8aaa6a; border-color:#8aaa6a; box-shadow:0 0 12px rgba(138,170,106,0.2); }
+        .history-dot.has-data.current { background:#8aaa6a; border-color:#8aaa6a; box-shadow:0 0 24px rgba(138,170,106,0.6); transform:scale(1.2); animation:pulse-glow 1.8s ease-in-out infinite; }
+        @keyframes pulse-glow { 0%,100% { box-shadow:0 0 16px rgba(138,170,106,0.4); } 50% { box-shadow:0 0 32px rgba(138,170,106,0.8); } }
+        .history-dot .h-val { position:absolute; top:-22px; left:50%; transform:translateX(-50%); font-size:11px; color:#7a8a6e; white-space:nowrap; opacity:0; transition:opacity 0.3s; }
+        .history-dot.has-data .h-val { opacity:1; }
+        .history-dot .h-label { position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); font-size:9px; color:#4a5a3e; white-space:nowrap; }
+        .history-dot .h-label.current-label { color:#8aaa6a; font-weight:600; }
+        .history-detail-popup { display:none; background:#1e241e; border-radius:8px; padding:12px 16px; margin-top:8px; border:1px solid #2a322a; font-size:13px; color:#b6c0aa; max-height:200px; overflow-y:auto; }
+        .history-detail-popup.open { display:block; }
+        .history-detail-popup .detail-row { display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px solid #1a1e1a; flex-wrap:wrap; gap:2px 8px; }
+        .history-detail-popup .detail-row:last-child { border-bottom:none; }
+        .history-empty { font-size:13px; color:#5a6a4e; padding:12px 0; text-align:center; }
+        .btn-clear { background:#2a1a18; border:1px solid #3a322a; border-radius:6px; padding:4px 16px; font-size:13px; color:#7a6a5e; cursor:pointer; font-family:inherit; }
+        .btn-clear:hover { border-color:#6a5a4a; color:#aaba8a; }
+        .btn-rescore { background:#2a322a; border:1px solid #3a4638; border-radius:8px; padding:8px 24px; font-size:15px; color:#aaba8a; cursor:pointer; font-family:inherit; transition:all 0.2s; margin-top:8px; }
+        .btn-rescore:hover { border-color:#8aaa6a; color:#e2ead4; background:#3a4638; }
+        .btn-reset-all { background:#2a1a18; border:1px solid #3a322a; border-radius:6px; padding:6px 18px; font-size:14px; color:#7a6a5e; cursor:pointer; font-family:inherit; transition:all 0.2s; margin-left:12px; }
+        .btn-reset-all:hover { border-color:#6a5a4a; color:#aaba8a; background:#1a1a1a; }
+        .footer { margin-top:48px; padding-top:22px; border-top:2px solid #2a322a; font-size:14px; color:#5a6a4e; text-align:center; }
+        .footer a { color:#7a8a6e; border-bottom:1px dotted #4a5a3e; }
+        .footer a:hover { border-bottom:1px solid #7a8a6e; color:#aaba8a; }
+        .footer .en { font-size:0.85em; color:#7a8a6e; display:block; margin-top:2px; }
+        @media (max-width:768px) { .container { padding:22px 14px 24px; } .title-row h1 { font-size:28px; } .title-row .tag { font-size:12px; padding:2px 12px; } .info-row { font-size:14px; flex-direction:column; gap:2px; } .brand-right { text-align:left; width:100%; margin-top:6px; } .result-box .result-main .big-score { font-size:40px; } .result-box .result-main .big-level { font-size:22px; } h2 { font-size:24px; } h3 { font-size:19px; } .input-row { flex-direction:column; gap:10px; } .slider-group .meaning { font-size:12px; padding:4px 10px; } .gate-section .gate-checkbox .gate-detail { font-size:13px; padding-left:28px; } }
+        @media (max-width:480px) { .container { padding:14px 10px 18px; } .title-row h1 { font-size:22px; } .title-row .tag { font-size:11px; padding:2px 10px; } .brand { flex-direction:column; gap:6px; } .brand-right { text-align:left; } .result-box .result-main .big-score { font-size:32px; } .result-box .result-main .big-level { font-size:18px; } h2 { font-size:20px; } h3 { font-size:17px; } .result-box { padding:16px 14px; } .content-card { padding:14px 14px; } .gate-section { padding:16px 14px; } .slider-group { margin-bottom:22px; padding-bottom:16px; } .slider-group label { font-size:14px; } .slider-group .example { font-size:13px; } .slider-group .meaning { font-size:12px; padding:4px 8px; min-height:28px; } .slider-group .anchor { font-size:10px; } .history-dot { width:18px; height:18px; } .history-dots { gap:6px; height:50px; } .history-dot .h-val { font-size:9px; top:-16px; } .history-dot .h-label { font-size:7px; bottom:-14px; } .gate-section .gate-checkbox .gate-detail { font-size:12px; padding-left:24px; } .gate-status .en, .gate-preview .en-inline { font-size:0.7em !important; } }
     </style>
 </head>
 <body>
-
-    <div class="container">
-
-        <!-- ===== 顶部导航 ===== -->
-        <div class="top-nav">
-            <a href="./index.html" class="back">← 返回体系总入口 </a>
-            <span class="badge">杨晟琦文明公理系统之文明等级评分器 · 杨晟琦文明公理系统 · 独立思想锚点</span>
-        </div>
-
-        <!-- ===== 品牌区（中英双语） ===== -->
-        <div class="brand">
-            <div class="brand-left">
-                <div class="sub-brand">YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION Civilization Level Scoring Tool</div>
-                <div class="title-row">
-                    <h1>杨晟琦文明公理系统</h1>
-                    <span class="tag">文明等级评分器</span>
-                </div>
-                <div class="info-row">
-                    <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
-                    <span>封装: 2026年8月7日 </span>
-                    <span>许可: CC BY-ND 4.0 </span>
-                    <span>版本: 全球通用版本 1.0</span>
-                </div>
+<div class="container">
+    <!-- ===== 顶部导航 ===== -->
+    <div class="top-nav">
+        <a href="./index.html" class="back">← 返回体系总入口</a>
+        <span class="badge">杨晟琦文明公理系统之文明等级评分器 · 杨晟琦文明公理系统 · 独立思想锚点</span>
+    </div>
+    <!-- ===== 品牌区 ===== -->
+    <div class="brand">
+        <div class="brand-left">
+            <div class="sub-brand">YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION Civilization Level Scoring Tool</div>
+            <div class="title-row">
+                <h1>杨晟琦文明公理系统</h1>
+                <span class="tag">文明等级评分器</span>
             </div>
-            <div class="brand-right"></div>
-        </div>
-
-        <!-- ================================================================ -->
-        <!-- 第一层：三大基石（门禁） -->
-        <!-- ================================================================ -->
-        <div class="gate-section locked" id="gateSection">
-            <h2>第一层：三大基石 <span class="en-inline">Layer 1: The Three Cornerstones</span></h2>
-            <p style="font-size:15px; color:#7a8a6e; margin-bottom:12px;">
-                三大基石是文明系统的前提条件，缺一不可。全部确认后方可进入打分。缺任何一条，系统直接判定为<strong>“未进入文明等级”</strong>。
-                <span class="en">The Three Cornerstones are the prerequisite conditions of a civilizational system. All must be confirmed before scoring. Missing any one results in a direct judgment of <strong>"Not Entered into Civilization Level."</strong></span>
-            </p>
-
-            <label class="gate-checkbox">
-                <input type="checkbox" id="g1">
-                <strong>基石一：文明的基石</strong>
-                <span class="gate-detail">自由是文明的前提，规则是自由的边界，而规则的唯一合法性来自公平、公正、公开。个体拥有自主选择的权利，不被工具化；规则面前人人平等，制定透明，执行无偏。</span>
-                <span class="gate-detail en" style="font-size:0.85em;">Freedom is the prerequisite of civilization; rules are the boundaries of freedom; the sole legitimacy of rules comes from fairness, justice, and openness. Individuals have the right to choose freely, and are not instrumentalized; all are equal before rules, with transparent formulation and impartial enforcement.</span>
-            </label>
-
-            <label class="gate-checkbox">
-                <input type="checkbox" id="g2">
-                <strong>基石二：社会的基石</strong>
-                <span class="gate-detail">正义是底层百姓唯一的压舱石，利益是得利者唯一的压舱石。当两者碰撞时，系统必须倾听直觉报警，而非用“程序合规”宣判直觉无效。底层百姓唯一拥有的是基于生存经验的“公平直觉”。</span>
-                <span class="gate-detail en" style="font-size:0.85em;">Justice is the only ballast for ordinary people; interests are the only ballast for the advantaged. When they collide, the system must listen to intuitive alarms, rather than invalidating intuition through "procedural compliance." What ordinary people possess is a "fairness intuition" rooted in lived survival experience.</span>
-            </label>
-
-            <label class="gate-checkbox">
-                <input type="checkbox" id="g3">
-                <strong>基石三：治理的基石</strong>
-                <span class="gate-detail">判决书未出，任何公民和财产受完全保护，不可被提前处置；司法系统的所有系统性代价由系统自身承担，不转嫁给个体。权力可以被行使，但必须在每一个普通人的注视下行使。</span>
-                <span class="gate-detail en" style="font-size:0.85em;">Before a verdict, citizens and property are fully protected and may not be pre-disposed; all systemic costs of the judicial system are borne by the system itself, not shifted onto individuals. Power may be exercised, but only under the watchful eyes of every ordinary person.</span>
-            </label>
-
-            <div id="gateStatus" class="gate-status blocked">
-                ⛔ 基石未全部确认：缺失「文明基石、社会基石、治理基石」。请勾选全部三项后进入打分。
-                <span class="en">⛔ Not all cornerstones confirmed: missing "Foundation of Civilization, Foundation of Society, Foundation of Governance". Please check all three before scoring.</span>
-            </div>
-            <div class="gate-preview" id="gatePreview">
-                ✓ 确认后，下方打分区将自动解锁
-                <span class="en-inline" style="font-size:0.85em; color:#5a6a4e;">✓ The scoring area below will unlock upon confirmation</span>
+            <div class="info-row">
+                <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
+                <span>封装: 2026年8月7日</span>
+                <span>许可: CC BY-ND 4.0</span>
+                <span>版本: 全球通用版本 1.1</span>
             </div>
         </div>
-
-        <!-- ================================================================ -->
-        <!-- 第二层：四大类 · 18个子项 -->
-        <!-- ================================================================ -->
-        <div class="scoring-area disabled" id="scoringArea">
-
-            <h2>第二层：四大要素 · 十八个子项 <span class="en-inline">Layer 2: Four Core Elements · Eighteen Sub-Items</span></h2>
-            <p style="font-size:14px; color:#7a8a6e; margin-bottom:16px;">
-                每个子项滑动打分（0-10分）。大类得分为子项平均分 × 2.5（满分25）。<br>
-                <span style="color:#4a5a3e;">每个分数都有对应的具体场景描述，滑动时自动显示。</span>
-                <span class="en">Each sub-item is scored on a sliding scale (0-10). Category score = average sub-score × 2.5 (max 25).<br><span style="color:#4a5a3e;">Each score has a specific scenario description, displayed automatically as you slide.</span></span>
-            </p>
-
-            <!-- ===== 一、生存与劳动保障 ===== -->
-            <h3>一、生存与劳动保障 <span class="en-inline">I. Survival & Labor Security</span></h3>
-            <div id="cat1">
-
-                <div class="slider-group">
-                    <label>① 基本生存保障 <span class="score" id="c1s1_val">0</span></label>
-                    <div class="example">失业后能撑多久？大病会不会放弃治疗？<span class="en-inline">How long can you survive after job loss? Would you give up treatment for a major illness?</span></div>
-                    <div class="meaning" id="c1s1_mean">0分：失业即断粮，撑不过1个月；大病直接放弃治疗</div>
-                    <div class="anchor">
-                        <span>0分：撑不过1个月</span>
-                        <span>5分：撑3-6个月</span>
-                        <span>10分：撑24个月以上</span>
-                    </div>
-                    <input type="range" id="c1s1" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>② 劳动安全与健康 <span class="score" id="c1s2_val">0</span></label>
-                    <div class="example">工作环境安全吗？工伤有保障吗？职业病防治是否有效？<span class="en-inline">Is the work environment safe? Is workplace injury covered? Is occupational disease prevention effective?</span></div>
-                    <div class="meaning" id="c1s2_mean">0分：工作环境等于“搏命”，工伤无人管</div>
-                    <div class="anchor">
-                        <span>0分：危险无保障</span>
-                        <span>5分：基本保护存在</span>
-                        <span>10分：制度性底线</span>
-                    </div>
-                    <input type="range" id="c1s2" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>③ 基本收入水平 <span class="score" id="c1s3_val">0</span></label>
-                    <div class="example">最低工资能养活自己吗？普通劳动者能否体面生活？<span class="en-inline">Can the minimum wage support a living? Can ordinary workers live with dignity?</span></div>
-                    <div class="meaning" id="c1s3_mean">0分：收入只够吃饭和房租，别的什么都别想</div>
-                    <div class="anchor">
-                        <span>0分：只够吃饭和房租</span>
-                        <span>5分：温饱有余，应急不足</span>
-                        <span>10分：支撑完整生活计划</span>
-                    </div>
-                    <input type="range" id="c1s3" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>④ 劳动权利的制度保护 <span class="score" id="c1s4_val">0</span></label>
-                    <div class="example">劳动法是否被严格执行？劳动者是否有组织化的集体谈判权？<span class="en-inline">Is labor law strictly enforced? Do workers have organized collective bargaining rights?</span></div>
-                    <div class="meaning" id="c1s4_mean">0分：劳动法不存在或无效，劳动者没有任何组织化权利</div>
-                    <div class="anchor">
-                        <span>0分：不存在或无效</span>
-                        <span>5分：有框架但无效</span>
-                        <span>10分：严格执行，真实有效</span>
-                    </div>
-                    <input type="range" id="c1s4" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="category-summary">
-                    <span>大类得分 <span class="en-inline" style="font-weight:400; color:#5a6a4e; font-size:13px;">Category Score</span></span>
-                    <span class="cat-score" id="cat1_score">0.0</span>
-                </div>
-            </div>
-
-            <!-- ===== 二、劳动价值平等 ===== -->
-            <h3>二、劳动价值平等 <span class="en-inline">II. Equal Labor Value</span></h3>
-            <div id="cat2">
-
-                <div class="slider-group">
-                    <label>① 同工同酬 <span class="score" id="c2s1_val">0</span></label>
-                    <div class="example">同样岗位，性别、户籍、年龄、身份背景是否影响收入？<span class="en-inline">Does gender, household registration, age, or background affect income for the same position?</span></div>
-                    <div class="meaning" id="c2s1_mean">0分：你身边到处是同工不同酬，性别/身份决定收入</div>
-                    <div class="anchor">
-                        <span>0分：身份决定收入</span>
-                        <span>5分：法律好看，执行打折</span>
-                        <span>10分：同工同酬铁律</span>
-                    </div>
-                    <input type="range" id="c2s1" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>② 职业稳定性与年龄歧视 <span class="score" id="c2s2_val">0</span></label>
-                    <div class="example">35岁后还能有体面工作吗？年龄是否成为职业的硬性门槛？<span class="en-inline">Can you still find decent work after 35? Does age become a hard threshold?</span></div>
-                    <div class="meaning" id="c2s2_mean">0分：35岁是道坎，过了就没戏，招聘信息都写“35岁以下”</div>
-                    <div class="anchor">
-                        <span>0分：35岁即“死期”</span>
-                        <span>5分：45岁后很困难</span>
-                        <span>10分：任何年龄公平机会</span>
-                    </div>
-                    <input type="range" id="c2s2" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>③ 社会保障平等性 <span class="score" id="c2s3_val">0</span></label>
-                    <div class="example">你的工作有完整的五险一金吗？灵活就业者是否有同等保障？<span class="en-inline">Does your job have full social security coverage? Do gig workers have equal protection?</span></div>
-                    <div class="meaning" id="c2s3_mean">0分：灵活就业者就是“裸奔”，完全没有社保</div>
-                    <div class="anchor">
-                        <span>0分：灵活就业者“裸奔”</span>
-                        <span>5分：全覆盖但水平有差异</span>
-                        <span>10分：社保无死角、无差异</span>
-                    </div>
-                    <input type="range" id="c2s3" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>④ 劳动尊严与离线权 <span class="score" id="c2s4_val">0</span></label>
-                    <div class="example">你能拒绝不合理加班吗？下班后能不理工作消息吗？<span class="en-inline">Can you refuse unreasonable overtime? Can you ignore work messages after hours?</span></div>
-                    <div class="meaning" id="c2s4_mean">0分：24小时待命，手机一响就紧张，拒绝即开除</div>
-                    <div class="anchor">
-                        <span>0分：24小时待命</span>
-                        <span>5分：有补偿但拒绝仍有压力</span>
-                        <span>10分：下班即离线，法律保障</span>
-                    </div>
-                    <input type="range" id="c2s4" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>⑤ 代际公平与社会流动 <span class="score" id="c2s5_val">0</span></label>
-                    <div class="example">你的孩子靠努力能改变阶层吗？机会是否被出身锁定？<span class="en-inline">Can your children change their class through effort? Are opportunities locked by birth?</span></div>
-                    <div class="meaning" id="c2s5_mean">0分：出身决定命运，你是什么阶层孩子基本还是什么阶层</div>
-                    <div class="anchor">
-                        <span>0分：出身决定命运</span>
-                        <span>5分：有机会但通道收窄</span>
-                        <span>10分：社会流动性强</span>
-                    </div>
-                    <input type="range" id="c2s5" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>⑥ 职业选择自由 <span class="score" id="c2s6_val">0</span></label>
-                    <div class="example">个体是否因出身、性别、种姓等先天因素而遭受职业限制？<span class="en-inline">Do individuals face occupational restrictions due to birth, gender, caste, or other innate factors?</span></div>
-                    <div class="meaning" id="c2s6_mean">0分：职业被你的出身锁死了，你想做什么不由你决定</div>
-                    <div class="anchor">
-                        <span>0分：被先天身份锁定</span>
-                        <span>5分：能选但空间有限</span>
-                        <span>10分：完全自由</span>
-                    </div>
-                    <input type="range" id="c2s6" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="category-summary">
-                    <span>大类得分 <span class="en-inline" style="font-weight:400; color:#5a6a4e; font-size:13px;">Category Score</span></span>
-                    <span class="cat-score" id="cat2_score">0.0</span>
-                </div>
-            </div>
-
-            <!-- ===== 三、收入分配公平 ===== -->
-            <h3>三、收入分配公平 <span class="en-inline">III. Fair Income Distribution</span></h3>
-            <div id="cat3">
-
-                <div class="slider-group">
-                    <label>① 收入差距 <span class="score" id="c3s1_val">0</span></label>
-                    <div class="example">你身边的贫富差距大吗？底层与顶层的收入倍数是多少？<span class="en-inline">Is the wealth gap wide around you? What's the income multiple between the bottom and the top?</span></div>
-                    <div class="meaning" id="c3s1_mean">0分：一个天一个地，底层跟顶层隔了百倍</div>
-                    <div class="anchor">
-                        <span>0分：相差百倍</span>
-                        <span>5分：差距明显但底层有保障</span>
-                        <span>10分：差距小，有公平感</span>
-                    </div>
-                    <input type="range" id="c3s1" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>② 财富积累机会 <span class="score" id="c3s2_val">0</span></label>
-                    <div class="example">普通人靠劳动能存下钱、积累资产、获得财产性收入吗？<span class="en-inline">Can ordinary people save money, accumulate assets, and gain property income through labor?</span></div>
-                    <div class="meaning" id="c3s2_mean">0分：存不下钱，永远在负债，财富积累跟你没关系</div>
-                    <div class="anchor">
-                        <span>0分：存不下钱</span>
-                        <span>5分：长期奋斗可积累</span>
-                        <span>10分：劳动就能积累资产</span>
-                    </div>
-                    <input type="range" id="c3s2" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>③ 再分配机制 <span class="score" id="c3s3_val">0</span></label>
-                    <div class="example">税收和公共支出是否在向低收入者倾斜？是否有效缩小差距？<span class="en-inline">Do taxes and public spending favor low-income groups? Do they effectively reduce the gap?</span></div>
-                    <div class="meaning" id="c3s3_mean">0分：税收福利都在帮富人，富人有避税手段，穷人缴税比例反而更高</div>
-                    <div class="anchor">
-                        <span>0分：都在帮富人</span>
-                        <span>5分：有调节但力度不足</span>
-                        <span>10分：有效托底</span>
-                    </div>
-                    <input type="range" id="c3s3" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>④ 劳动所得 vs 资本所得 <span class="score" id="c3s4_val">0</span></label>
-                    <div class="example">劳动所得是否被权力或资本截留？劳动收入与资本收入是否失衡？<span class="en-inline">Is labor income intercepted by power or capital? Is there an imbalance between labor and capital income?</span></div>
-                    <div class="meaning" id="c3s4_mean">0分：劳动是给资本打工，越干越穷，劳动者被系统性收割</div>
-                    <div class="anchor">
-                        <span>0分：劳动是被收割</span>
-                        <span>5分：劳动能活，资本能富</span>
-                        <span>10分：劳动与资本基本平衡</span>
-                    </div>
-                    <input type="range" id="c3s4" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="category-summary">
-                    <span>大类得分 <span class="en-inline" style="font-weight:400; color:#5a6a4e; font-size:13px;">Category Score</span></span>
-                    <span class="cat-score" id="cat3_score">0.0</span>
-                </div>
-            </div>
-
-            <!-- ===== 四、言论与精神自由 ===== -->
-            <h3>四、言论与精神自由 <span class="en-inline">IV. Freedom of Speech & Spirit</span></h3>
-            <div id="cat4">
-
-                <div class="slider-group">
-                    <label>① 言论表达自由 <span class="score" id="c4s1_val">0</span></label>
-                    <div class="example">你能公开批评制度、政策或官员而不被报复吗？<span class="en-inline">Can you openly criticize systems, policies, or officials without retaliation?</span></div>
-                    <div class="meaning" id="c4s1_mean">0分：说错一句话，人生就完蛋，任何批评都被视为“攻击”</div>
-                    <div class="anchor">
-                        <span>0分：言论即风险</span>
-                        <span>5分：说话要绕弯子</span>
-                        <span>10分：公开批评不受报复</span>
-                    </div>
-                    <input type="range" id="c4s1" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>② 信息获取自由 <span class="score" id="c4s2_val">0</span></label>
-                    <div class="example">你能自由获取多元的信息来源吗？信息是否被过滤？<span class="en-inline">Can you freely access diverse sources of information? Is information filtered?</span></div>
-                    <div class="meaning" id="c4s2_mean">0分：只能看到官方想让你看到的，外部世界跟你无关</div>
-                    <div class="anchor">
-                        <span>0分：只能看到官方信息</span>
-                        <span>5分：多元存在但获取有成本</span>
-                        <span>10分：自由流通，无审查</span>
-                    </div>
-                    <input type="range" id="c4s2" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>③ 精神文化自由 <span class="score" id="c4s3_val">0</span></label>
-                    <div class="example">你的信仰、艺术创作、生活方式受限制吗？边缘文化是否被允许？<span class="en-inline">Are your beliefs, art, and lifestyle restricted? Is fringe culture allowed?</span></div>
-                    <div class="meaning" id="c4s3_mean">0分：精神世界被管制，你喜欢的乐队、画家大部分在国内看不到</div>
-                    <div class="anchor">
-                        <span>0分：精神世界被管制</span>
-                        <span>5分：有空间但不敢越界</span>
-                        <span>10分：所有文化表达享有空间</span>
-                    </div>
-                    <input type="range" id="c4s3" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>④ 学术与媒体独立 <span class="score" id="c4s4_val">0</span></label>
-                    <div class="example">艺术、学术、媒体是否拥有独立探索的空间？是否服务于权力？<span class="en-inline">Do art, academia, and media have independent space? Are they serving power?</span></div>
-                    <div class="meaning" id="c4s4_mean">0分：学术=宣传，媒体=喇叭，什么能研究、能报道都有明确的“政治正确”</div>
-                    <div class="anchor">
-                        <span>0分：学术=宣传</span>
-                        <span>5分：学术有空间，媒体有边界</span>
-                        <span>10分：完全独立</span>
-                    </div>
-                    <input type="range" id="c4s4" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="category-summary">
-                    <span>大类得分 <span class="en-inline" style="font-weight:400; color:#5a6a4e; font-size:13px;">Category Score</span></span>
-                    <span class="cat-score" id="cat4_score">0.0</span>
-                </div>
-            </div>
-
-            <!-- ================================================================ -->
-            <!-- 第三层：司法验证（治理基石） -->
-            <!-- ================================================================ -->
-            <h2 style="margin-top:48px;">第三层：司法验证（治理基石） <span class="en-inline">Layer 3: Judicial Verification (Governance Cornerstone)</span></h2>
-            <p style="font-size:14px; color:#7a8a6e; margin-bottom:16px;">
-                治理基石的三条硬条件被独立验证。司法维度不参与正向加分，只做减法。<br>
-                <span style="color:#4a5a3e;">司法验证得分将作为折扣系数作用于最终得分（0.8-1.0之间）。</span>
-                <span class="en">The three hard conditions of the Governance Cornerstone are independently verified. The judicial dimension does not add positive points—it only subtracts.<br><span style="color:#4a5a3e;">The judicial verification score acts as a discount factor on the final score (between 0.8 and 1.0).</span></span>
-            </p>
-
-            <div id="judgeArea">
-
-                <div class="slider-group">
-                    <label>① 判决前不可触碰人身财产 <span class="score" id="j1_val">0</span></label>
-                    <div class="example">判决书出来之前，权力能否随意冻结资产、限制人身自由？<span class="en-inline">Before a verdict, can power arbitrarily freeze assets or restrict personal freedom?</span></div>
-                    <div class="meaning" id="j1_mean">0分：权力想抓就抓，想封就封，没有判决书人也抓了钱也冻了</div>
-                    <div class="anchor">
-                        <span>0分：想抓就抓</span>
-                        <span>5分：大部分情况不能碰</span>
-                        <span>10分：绝对不可触碰</span>
-                    </div>
-                    <input type="range" id="j1" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>② 系统性代价由系统承担 <span class="score" id="j2_val">0</span></label>
-                    <div class="example">如果司法系统错了、拖延了、不可追溯了——代价由谁承担？<span class="en-inline">If the judicial system errs, delays, or becomes untraceable—who bears the cost?</span></div>
-                    <div class="meaning" id="j2_mean">0分：错就错了，受害者自己扛，系统连道歉都没有</div>
-                    <div class="anchor">
-                        <span>0分：受害者自己扛</span>
-                        <span>5分：赔偿存在但金额低</span>
-                        <span>10分：承担全部代价</span>
-                    </div>
-                    <input type="range" id="j2" min="0" max="10" value="0" step="1">
-                </div>
-
-                <div class="slider-group">
-                    <label>③ 不公感知必须响应 <span class="score" id="j3_val">0</span></label>
-                    <div class="example">当你觉得“这不公平”时，系统会认真听吗？<span class="en-inline">When you feel "this is unfair," does the system listen?</span></div>
-                    <div class="meaning" id="j3_mean">0分：“不公平”这三个字都不能说，任何质疑都会被压制</div>
-                    <div class="anchor">
-                        <span>0分：不能说</span>
-                        <span>5分：有反馈但少实质解决</span>
-                        <span>10分：自动受理、公开响应</span>
-                    </div>
-                    <input type="range" id="j3" min="0" max="10" value="0" step="1">
-                </div>
-
-                <!-- 系统认错记录 -->
-                <div style="background:#1a201a; border-radius:12px; padding:16px 20px; margin-top:10px; border:1px solid #2a322a; border-left:4px solid #b89a4a;">
-                    <p style="font-size:14px; font-weight:600; color:#d4dec4; margin-bottom:8px;">系统“认错记录”密度（硬约束） <span class="en-inline">System "Error Acknowledgment" Density (Hard Constraint)</span></p>
-                    <p style="font-size:13px; color:#7a8a6e; margin-bottom:10px;">系统的正式“认错”记录（如国家赔偿、错案纠正等）。密度越高，司法维度被锁定的上限越低。<span class="en">The system's formal "error acknowledgment" records (e.g., state compensation, wrongful conviction corrections). The higher the density, the lower the judicial dimension's cap.</span></p>
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label>累计“认错”记录数 <span class="en-inline">Cumulative "error acknowledgment" count</span></label>
-                            <input type="number" id="compCases" placeholder="输入累计记录数" min="0" step="1">
-                            <div class="input-hint">件（累计记录） <span class="en-inline">Count</span></div>
-                        </div>
-                        <div class="input-group">
-                            <label>总人口 <span class="en-inline">Total Population</span></label>
-                            <input type="number" id="compPop" placeholder="输入人口（万人）" min="0" step="1">
-                            <div class="input-hint">万人 <span class="en-inline">10,000 people</span></div>
-                        </div>
-                        <div class="input-group" style="min-width:120px; flex:0.6;">
-                            <label>记录密度 <span class="en-inline">Record Density</span></label>
-                            <div style="background:#171c18; border-radius:8px; padding:8px 12px; color:#bace9a; font-weight:600; font-size:15px; border:1px solid #2a322a; min-height:42px; display:flex; align-items:center;" id="densityDisplay">—</div>
-                            <div class="input-hint">件/万人 <span class="en-inline">per 10,000 people</span></div>
-                        </div>
-                        <div class="input-group" style="min-width:100px; flex:0.5;">
-                            <label>约束等级 <span class="en-inline">Constraint Level</span></label>
-                            <div style="background:#171c18; border-radius:8px; padding:8px 12px; color:#bace9a; font-weight:600; font-size:14px; border:1px solid #2a322a; min-height:42px; display:flex; align-items:center;" id="constraintLevel">—</div>
-                            <div class="input-hint">最高得分锁定 <span class="en-inline">Max Score Cap</span></div>
-                        </div>
-                    </div>
-                    <button class="data-ref-toggle" id="dataRefToggle">📊 查看密度约束参照 <span class="en-inline">View Density Constraint Reference</span></button>
-                    <div class="data-ref-box" id="dataRefBox">
-                        <div style="font-weight:500; color:#aaba8a; margin-bottom:4px;">密度约束参照 <span class="en-inline">Density Constraint Reference</span></div>
-                        <div class="example-row"><span>密度 ≤ 0.5 件/万人</span><span>约束等级：<span class="highlight-num">无约束</span>（司法上限 ≤ 10 分）</span></div>
-                        <div class="example-row"><span>密度 ≤ 1.0 件/万人</span><span>约束等级：<span class="highlight-num">轻度约束</span>（司法上限 ≤ 8 分）</span></div>
-                        <div class="example-row"><span>密度 ≤ 2.0 件/万人</span><span>约束等级：<span class="highlight-num">中度约束</span>（司法上限 ≤ 6 分）</span></div>
-                        <div class="example-row"><span>密度 ≤ 5.0 件/万人</span><span>约束等级：<span class="highlight-num">重度约束</span>（司法上限 ≤ 4 分）</span></div>
-                        <div class="example-row"><span>密度 &gt; 5.0 件/万人</span><span>约束等级：<span class="highlight-num">极度约束</span>（司法上限 ≤ 1 分）</span></div>
-                        <div class="note">密度越高，表明系统的“认错记录”越密集，司法可信度越受约束。<span class="en">Higher density indicates more frequent system "error acknowledgments," and greater constraint on judicial credibility.</span></div>
-                    </div>
-                </div>
-            </div>
-
-        </div><!-- /scoring-area -->
-
-        <!-- ================================================================ -->
-        <!-- 第四层：结果展示 -->
-        <!-- ================================================================ -->
-        <h2 style="margin-top:40px;">第四层：评分结果与诊断 <span class="en-inline">Layer 4: Results & Diagnosis</span></h2>
-        <div class="result-box" id="resultBox">
-            <div id="resultContent">
-                <div class="result-main">
-                    <div class="placeholder">调整滑块后自动生成结果 <span class="en">Results will appear after adjusting the sliders</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================================================================ -->
-        <!-- 第五层：历史趋势（点阵图） -->
-        <!-- ================================================================ -->
-        <div class="history-box" id="historyBox">
-            <div class="h-title">最近7次评分趋势 <span style="color:#4a5a3e; font-weight:400; font-size:12px;">（灰色：无记录 · 亮绿色：有记录 · 大圆点：当前）</span>
-                <span class="en" style="font-size:12px; display:inline; margin-left:6px;">Last 7 scores (gray: no record · bright green: recorded · large dot: current)</span>
-            </div>
-            <div class="history-dots" id="historyDots">
-                <div class="history-empty">暂无历史记录，完成打分后自动保存 <span class="en">No history yet, will auto-save after scoring</span></div>
-            </div>
-            <div style="margin-top:8px; display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
-                <button class="btn-clear" id="clearHistoryBtn">清空历史 <span class="en-inline">Clear History</span></button>
-                <span style="font-size:12px; color:#5a6a4e;" id="historyCount">记录数: 0 <span class="en-inline">Records: 0</span></span>
-            </div>
-        </div>
-
-        <!-- ================================================================ -->
-        <!-- 页脚 -->
-        <!-- ================================================================ -->
-        <div class="footer">
-            杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年
-            <span class="en">Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026</span>
-            <span style="display:block; margin-top:4px;">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
-            <span class="en" style="display:block; font-size:0.85em; color:#7a8a6e;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a></span>
-        </div>
-
+        <div class="brand-right"></div>
     </div>
 
-    <script>
-        // ================================================================
-        // 配置
-        // ================================================================
-        const categories = [
-            { name: '生存与劳动保障', id: 'cat1', items: ['c1s1', 'c1s2', 'c1s3', 'c1s4'], scoreId: 'cat1_score' },
-            { name: '劳动价值平等', id: 'cat2', items: ['c2s1', 'c2s2', 'c2s3', 'c2s4', 'c2s5', 'c2s6'], scoreId: 'cat2_score' },
-            { name: '收入分配公平', id: 'cat3', items: ['c3s1', 'c3s2', 'c3s3', 'c3s4'], scoreId: 'cat3_score' },
-            { name: '言论与精神自由', id: 'cat4', items: ['c4s1', 'c4s2', 'c4s3', 'c4s4'], scoreId: 'cat4_score' }
-        ];
+    <!-- ================================================================ -->
+    <!-- 第一层：三大基石（门禁） -->
+    <!-- ================================================================ -->
+    <div class="gate-section locked" id="gateSection">
+        <h2>第一层：三大基石 <span class="en-inline">Layer 1: The Three Cornerstones</span></h2>
+        <p style="font-size:15px; color:#7a8a6e; margin-bottom:12px;">
+            三大基石是文明系统的前提条件，缺一不可。全部确认后方可进入打分。缺任何一条，系统直接判定为<strong>“未进入文明等级”</strong>。
+            <span class="en">The Three Cornerstones are the prerequisite conditions of a civilizational system. All must be confirmed before scoring. Missing any one results in a direct judgment of <strong>"Not Entered into Civilization Level."</strong></span>
+        </p>
+        <label class="gate-checkbox">
+            <input type="checkbox" id="g1">
+            <strong>基石一：文明的基石</strong>
+            <span class="gate-detail">自由是文明的前提，规则是自由的边界，而规则的唯一合法性来自公平、公正、公开。个体拥有自主选择的权利，不被工具化；规则面前人人平等，制定透明，执行无偏。</span>
+            <span class="gate-detail en" style="font-size:0.85em;">Freedom is the prerequisite of civilization; rules are the boundaries of freedom; the sole legitimacy of rules comes from fairness, justice, and openness. Individuals have the right to choose freely, and are not instrumentalized; all are equal before rules, with transparent formulation and impartial enforcement.</span>
+        </label>
+        <label class="gate-checkbox">
+            <input type="checkbox" id="g2">
+            <strong>基石二：社会的基石</strong>
+            <span class="gate-detail">正义是底层百姓唯一的压舱石，利益是得利者唯一的压舱石。当两者碰撞时，系统必须倾听直觉报警，而非用“程序合规”宣判直觉无效。底层百姓唯一拥有的是基于生存经验的“公平直觉”。</span>
+            <span class="gate-detail en" style="font-size:0.85em;">Justice is the only ballast for ordinary people; interests are the only ballast for the advantaged. When they collide, the system must listen to intuitive alarms, rather than invalidating intuition through "procedural compliance." What ordinary people possess is a "fairness intuition" rooted in lived survival experience.</span>
+        </label>
+        <label class="gate-checkbox">
+            <input type="checkbox" id="g3">
+            <strong>基石三：治理的基石</strong>
+            <span class="gate-detail">判决书未出，任何公民和财产受完全保护，不可被提前处置；司法系统的所有系统性代价由系统自身承担，不转嫁给个体。权力可以被行使，但必须在每一个普通人的注视下行使。</span>
+            <span class="gate-detail en" style="font-size:0.85em;">Before a verdict, citizens and property are fully protected and may not be pre-disposed; all systemic costs of the judicial system are borne by the system itself, not shifted onto individuals. Power may be exercised, but only under the watchful eyes of every ordinary person.</span>
+        </label>
+        <div id="gateStatus" class="gate-status blocked">
+            ⛔ 基石未全部确认：缺失「文明基石、社会基石、治理基石」。请勾选全部三项后进入打分。
+            <span class="en">⛔ Not all cornerstones confirmed: missing "Foundation of Civilization, Foundation of Society, Foundation of Governance". Please check all three before scoring.</span>
+        </div>
+        <div class="gate-preview" id="gatePreview">
+            ✓ 确认后，下方打分区将自动解锁
+            <span class="en-inline" style="font-size:0.85em; color:#5a6a4e;">✓ The scoring area below will unlock upon confirmation</span>
+        </div>
+    </div>
 
-        const judgeItems = ['j1', 'j2', 'j3'];
-        const judgeLabels = ['判决前不可触碰人身财产', '系统性代价由系统承担', '不公感知必须响应'];
+    <!-- ================================================================ -->
+    <!-- 第二层：四大类 · 18个子项 -->
+    <!-- ================================================================ -->
+    <div class="scoring-area disabled" id="scoringArea">
+        <h2>第二层：四大要素 · 十八个子项 <span class="en-inline">Layer 2: Four Core Elements · Eighteen Sub-Items</span></h2>
+        <p style="font-size:14px; color:#7a8a6e; margin-bottom:16px;">
+            每个子项滑动打分（0-10分）。大类得分为子项平均分 × 2.5（满分25）。<br>
+            <span style="color:#4a5a3e;">每个分数都有对应的具体场景描述，滑动时自动显示。</span>
+            <span class="en">Each sub-item is scored on a sliding scale (0-10). Category score = average sub-score × 2.5 (max 25).<br><span style="color:#4a5a3e;">Each score has a specific scenario description, displayed automatically as you slide.</span></span>
+        </p>
+        <!-- 一键重置按钮 -->
+        <div style="text-align:right; margin-bottom:16px;">
+            <button class="btn-reset-all" id="resetAllBtn">↺ 重置所有分数</button>
+        </div>
 
-        const meanings = {
-            c1s1: [
-                '0分：失业即断粮，撑不过1个月；大病直接放弃治疗，不敢去医院',
-                '1分：失业后1-2个月内靠借钱度日；大病“能救就救”，但会掏空全家',
-                '2分：失业后能撑2-3个月，靠亲友接济；大病需举债，但“能救就救”',
-                '3分：失业后能撑3-4个月，有少量积蓄和亲友帮补；大病需消耗大部分积蓄',
-                '4分：失业后能撑4-6个月，有基础储蓄和亲友帮补；大病会消耗大部分积蓄但不会立刻返贫',
-                '5分：失业后能撑6-9个月，有失业保险和基本储蓄；大病个人负担不超过年收入的20%',
-                '6分：失业后能撑9-12个月，有失业保险和基本储蓄；大病个人负担不超过年收入的15%',
-                '7分：失业后能撑12-15个月，有充分的失业保险；大病个人负担不超过年收入的10%',
-                '8分：失业后能撑15-18个月，有充分的失业保险和家庭支持；大病个人负担不超过年收入的8%',
-                '9分：失业后能撑18-24个月，有完善的社会保障安全网；大病个人负担不超过年收入的5%',
-                '10分：失业后能撑24个月以上，有充分的社会保障安全网；大病全覆盖，个人负担几乎为零'
-            ],
-            c1s2: [
-                '0分：工作环境等于“搏命”，天天担心出事故；工伤没人管，自己扛',
-                '1分：工作环境危险，工伤无保障；出事只能自己解决',
-                '2分：有基本劳动保护但形同虚设；工伤赔付周期漫长，耗不起',
-                '3分：劳动保护存在，但执行弱；安全培训走过场',
-                '4分：基本保护有，但过劳严重；工伤赔付流程复杂',
-                '5分：制度存在但执行弱；长期加班，身体被透支',
-                '6分：制度基本落实；职业病有定期检查，但覆盖率不高',
-                '7分：工作环境安全，工伤有保障；职业病防治基本到位',
-                '8分：工作环境安全健康；工伤能拿到合理赔偿，流程透明',
-                '9分：劳动安全是制度性保障；工伤赔付及时，职业病有效防控',
-                '10分：劳动安全是制度性底线；工伤保障完善，职业病零容忍'
-            ],
-            c1s3: [
-                '0分：收入只够吃饭和房租，别的什么都别想；不敢生病不敢休息',
-                '1分：收入勉强够基本生存，没有任何余裕',
-                '2分：能吃饱，但存不下钱；有任何意外支出就崩盘',
-                '3分：能覆盖基本温饱，但无余裕应对突发支出',
-                '4分：温饱有余，但储蓄增长极慢；遇到失业或大病就扛不住',
-                '5分：能存下一点钱，但非常有限；应急能力不足',
-                '6分：能覆盖基本温饱，有一定应急能力',
-                '7分：体面生活，能存钱；有应对突发支出的能力',
-                '8分：不仅能温饱，还能规划未来；有积蓄、有保险、有选择',
-                '9分：收入充裕，能支撑完整的生活计划；生活有尊严、有安全感',
-                '10分：收入足以支撑完整的生活计划；有充分积累、保险和选择自由'
-            ],
-            c1s4: [
-                '0分：劳动法不存在或无效，劳动者没有任何组织化权利',
-                '1分：劳动法形同虚设，维权成本极高，普通人耗不起',
-                '2分：有劳动法但执行弱；维权流程漫长，劳动者无话语权',
-                '3分：劳动法存在，但集体谈判形同虚设',
-                '4分：有工会但基本无效；工人声音传不上去',
-                '5分：有集体谈判框架但效果有限',
-                '6分：劳动法基本被执行；维权渠道存在但效率低',
-                '7分：劳动法被执行；劳动者有维权渠道，虽然不完美但能用',
-                '8分：劳动法被严格执行；劳动者有真实有效的维权途径',
-                '9分：劳动权利受制度性保护；集体谈判权基本有效',
-                '10分：劳动法被严格执行，集体谈判权真实有效'
-            ],
-            c2s1: [
-                '0分：你身边到处是同工不同酬，性别/身份决定收入',
-                '1分：同工不同酬是普遍现象，大家已经习惯了',
-                '2分：女同事干同样的活工资少一截；外地人工龄不算数',
-                '3分：差距明显，但已经习惯了，没人较真',
-                '4分：身份因素仍然显著影响收入',
-                '5分：法律写得好看，执行层面照样打折',
-                '6分：同工同酬有规定，但执行不彻底',
-                '7分：身份因素影响很小；同样岗位基本同酬',
-                '8分：身份不再是决定性因素；同工同酬基本实现',
-                '9分：同工同酬被严格执行；违规会被追责',
-                '10分：同工同酬是铁律，没人敢破；身份完全不影响收入'
-            ],
-            c2s2: [
-                '0分：35岁是道坎，过了就没戏；招聘都写“35岁以下”',
-                '1分：35岁后简历投出去石沉大海',
-                '2分：35岁后机会骤减，年龄成为硬性门槛',
-                '3分：40岁前还行，过了就开始慌',
-                '4分：40岁后明显感到门槛在变高',
-                '5分：45岁后很吃力，随时可能被优化',
-                '6分：45岁后机会很少，但还有一线可能',
-                '7分：年龄是参考，不是硬门槛',
-                '8分：中年换工作也正常，45岁以上仍有公平机会',
-                '9分：经验被尊重，年龄不影响职业发展',
-                '10分：任何年龄都有公平机会；经验与年龄被合理尊重'
-            ],
-            c2s3: [
-                '0分：灵活就业者就是“裸奔”，完全没有社保',
-                '1分：灵活就业者几乎无保障，只有极少数例外',
-                '2分：有社保但不完整；有医保没养老，有工伤没失业',
-                '3分：社保覆盖存在，但缺口明显',
-                '4分：有基础社保，但保障水平低，覆盖不完整',
-                '5分：基本全覆盖，但灵活就业者和正式工的保障水平差一截',
-                '6分：社保体系完整，但灵活就业者保障偏低',
-                '7分：社保体系相对完善，差异不大',
-                '8分：社保体系完整，差距可控',
-                '9分：所有劳动者享有完整保障，基本无差异',
-                '10分：社保无死角、无差异；所有劳动者保障平等'
-            ],
-            c2s4: [
-                '0分：24小时待命，手机一响就紧张，拒绝即开除',
-                '1分：随时可能被工作消息打断，无边界可言',
-                '2分：下班后照样被工作消息轰炸；不回复就扣钱',
-                '3分：加班是常态，拒绝加班压力很大',
-                '4分：加班有补偿，但拒绝加班仍有压力',
-                '5分：加班有约定，但边界模糊；紧急时候逃不掉',
-                '6分：加班有限度，离线权基本被尊重',
-                '7分：工作时间边界清晰，加班有明确补偿',
-                '8分：离线权被尊重，非紧急情况不会被打扰',
-                '9分：下班时间属于自己；离线权有制度保障',
-                '10分：下班即离线，法律铁打；谁敢非工作时间打扰谁担责'
-            ],
-            c2s5: [
-                '0分：出身决定命运，你是什么阶层孩子基本还是什么阶层',
-                '1分：上升通道几乎关闭，努力改变不了出身',
-                '2分：有希望但极难；需要极其优秀的个人努力才能突破',
-                '3分：有机会突破，但概率极低',
-                '4分：你的孩子要考进最好的学校才能勉强够到你现在的起点',
-                '5分：有机会但通道收窄；竞争异常激烈',
-                '6分：上升通道存在，但大多数人在半路被挤掉',
-                '7分：努力能看到回报；社会流动性尚可',
-                '8分：只要肯努力，就有机会改变处境',
-                '9分：社会流动性强；机会相对平等',
-                '10分：社会流动性极强；出生不再是决定性因素'
-            ],
-            c2s6: [
-                '0分：职业被你的出身锁死了，你想做什么不由你决定',
-                '1分：职业选择几乎为零，被先天身份锁定',
-                '2分：法律上自由，但实际上有看不见的门槛',
-                '3分：制度废除了限制，但现实中有看不见的墙',
-                '4分：能选，但选择空间有限',
-                '5分：职业自由是相对的，总有东西在框着你',
-                '6分：选择空间在扩大，但仍然有限',
-                '7分：自由度高，限制极少',
-                '8分：职业主要看能力和兴趣，身份因素基本不干预',
-                '9分：职业选择几乎完全自由',
-                '10分：完全自由，只受能力限制'
-            ],
-            c3s1: [
-                '0分：一个天一个地，底层跟顶层隔了百倍，你认识的人里有穷到卖血的，也有富到买楼的',
-                '1分：贫富差距极其悬殊，你随时能感受到阶级的鸿沟',
-                '2分：差距非常扎眼，但还不至于绝望',
-                '3分：你身边贫富差距明显，富人和穷人生活在两个世界',
-                '4分：差距明显，但底层有基本保障，不至于饿死',
-                '5分：差距明显但底层有保障，穷人至少不至于绝望',
-                '6分：贫富差距可控，普通人也能看到希望',
-                '7分：差距适中，劳动能追上资本',
-                '8分：收入差距有，但普通人的努力能跟上社会的脚步',
-                '9分：差距小，社会有公平感',
-                '10分：收入差距很小，劳动收入可以和资本收入抗衡'
-            ],
-            c3s2: [
-                '0分：存不下钱，永远在负债，财富积累跟你没关系',
-                '1分：月月光，甚至倒欠，没有任何积累',
-                '2分：能活着，但攒不下什么；任何大额支出都会把你打回原形',
-                '3分：有基本生存，但积累极少',
-                '4分：能存一点钱，但速度极慢',
-                '5分：长期奋斗可积累基础财富，你身边有人通过十年以上劳动终于攒下一套房',
-                '6分：财富积累需要很长时间，但有可能',
-                '7分：劳动能存钱，但速度不算快',
-                '8分：普通人通过劳动能积累资产，过程辛苦但有可能',
-                '9分：财富积累渠道相对畅通',
-                '10分：劳动就能积累资产；普通人也能有稳定的财产性收入'
-            ],
-            c3s3: [
-                '0分：税收福利都在帮富人，富人有各种避税手段，穷人缴税比例反而更高',
-                '1分：再分配机制严重失灵，穷人在承担更多负担',
-                '2分：福利政策存在，但大多数需要帮助的人拿不到',
-                '3分：有福利，但门槛高、流程复杂',
-                '4分：有调节作用但力度不足，效果有限',
-                '5分：能缓和一点差距，但起不到决定性作用',
-                '6分：再分配有一定效果，但不够',
-                '7分：福利向低收入倾斜，效果明显',
-                '8分：税收和支出在主动缩小差距，效果肉眼可见',
-                '9分：再分配机制有效托底，没有人被落下',
-                '10分：再分配机制完整且有效，显著缩小差距'
-            ],
-            c3s4: [
-                '0分：劳动是给资本打工，越干越穷，劳动者被系统性收割',
-                '1分：干活的钱永远追不上资产增值的钱',
-                '2分：劳动收入被系统性截留，资本占绝对优势',
-                '3分：你身边靠资产赚钱的人比靠劳动赚钱的人过得好太多',
-                '4分：资本收益远高于劳动收益',
-                '5分：劳动收入可以维持体面生活，但财富积累主要靠资产',
-                '6分：劳动能活，资本能富，差距在缩小',
-                '7分：劳动与资本基本平衡',
-                '8分：劳动者享有合理份额；劳动不再是“被收割”的代名词',
-                '9分：劳动所得与资本所得相对公平',
-                '10分：劳动所得与资本所得公平分配；不存在系统性失衡'
-            ],
-            c4s1: [
-                '0分：说错一句话，人生就完蛋，任何批评都被视为“攻击”',
-                '1分：言论即风险，没人敢说话',
-                '2分：技术性讨论可以，政治话题绝对不行',
-                '3分：说天气可以，说政策不行；边界模糊，你不知道哪句话越界',
-                '4分：你可以说，但不能直说；自我审查是日常操作',
-                '5分：说话要绕弯子，风险依然存在',
-                '6分：批评被容忍，但不被欢迎',
-                '7分：言论边界清晰，批评不会招致毁灭性打击',
-                '8分：公开批评可以，但仍有隐性压力',
-                '9分：言论自由受法律保护且实际有效',
-                '10分：公开批评不被报复；公共讨论是正常的'
-            ],
-            c4s2: [
-                '0分：只能看到官方想让你看到的，外部世界跟你无关',
-                '1分：信息被严格过滤，外部世界跟你无关',
-                '2分：能看见一些不同的声音，但不完整',
-                '3分：偶尔能接触到多元信息，但关键部分被拦截',
-                '4分：多元信息存在，但获取有成本',
-                '5分：信息流通不顺畅，需要技巧才能看到不同的声音',
-                '6分：多元信息可获取，但有少量限制',
-                '7分：信息流通基本自由，有少量限制但不构成根本障碍',
-                '8分：多元信息可自由获取',
-                '9分：信息自由流通，无审查',
-                '10分：信息完全自由流通，无审查、无壁垒'
-            ],
-            c4s3: [
-                '0分：精神世界被管制，你喜欢的乐队、画家大部分在国内看不到',
-                '1分：你能看到的东西都是被筛选过的',
-                '2分：主流文化自由，边缘文化被压制',
-                '3分：你能看到主流的东西，非主流的东西会被“消失”',
-                '4分：文化表达有边界，你知道什么能碰什么不能碰',
-                '5分：有一定空间，但不敢越界',
-                '6分：精神文化多元，但有隐形红线',
-                '7分：大多数表达是自由的，少数话题仍有风险',
-                '8分：精神文化表达相对自由',
-                '9分：所有文化表达享有空间，边缘文化也被允许存在',
-                '10分：法律同等保护，文化表达完全自由'
-            ],
-            c4s4: [
-                '0分：学术=宣传，媒体=喇叭，什么能研究、能报道都有明确的“政治正确”',
-                '1分：学术和媒体完全服务于权力',
-                '2分：技术性讨论有自由，政治议题没有',
-                '3分：科学研究可以谈方法，但不能碰结论',
-                '4分：媒体可以报小事，但不能报大事',
-                '5分：学术有空间，媒体有边界',
-                '6分：学术空间相对宽松，媒体在红线之内自由',
-                '7分：学术与媒体基本独立',
-                '8分：独立研究是常态，媒体报道有公信力',
-                '9分：学术与媒体独立性强',
-                '10分：学术与媒体完全独立，自由探索成为常态'
-            ],
-            j1: [
-                '0分：权力想抓就抓，想封就封，没有判决书人也抓了钱也冻了',
-                '1分：程序形同虚设，权力想绕过就能绕过',
-                '2分：法律说不行，但权力有办法绕开',
-                '3分：程序上有规定，但实践中经常被绕过',
-                '4分：大部分情况下有程序约束，但例外很多',
-                '5分：大部分情况不能碰，但存在例外',
-                '6分：制度约束有效，少数特殊情况会绕过程序',
-                '7分：制度规定严格，执行比较到位',
-                '8分：除非极其特殊情况，否则不敢提前触碰',
-                '9分：制度硬约束，违规会被追责',
-                '10分：判决前绝对不可触碰，谁敢违规谁担责'
-            ],
-            j2: [
-                '0分：错就错了，受害者自己扛，系统连道歉都没有',
-                '1分：系统不承担任何责任，受害者孤立无援',
-                '2分：有赔偿但极难拿到，流程漫长到你耗不起',
-                '3分：制度上写着可以赔，但基本拿不到',
-                '4分：能拿到赔偿，但流程折腾两三年',
-                '5分：赔偿存在但金额低、周期长',
-                '6分：赔偿机制存在，效率不高但能走通',
-                '7分：系统会认真赔偿，不会赖账',
-                '8分：赔偿机制健全，流程透明',
-                '9分：系统愿意承担后果，赔偿及时',
-                '10分：系统承担全部代价，设滞纳金和熔断机制'
-            ],
-            j3: [
-                '0分：“不公平”这三个字都不能说，任何质疑都会被压制',
-                '1分：你觉得自己被欺负了，但没人会听你说',
-                '2分：有渠道反映，但基本石沉大海',
-                '3分：你可以去投诉，但99%不会得到任何回应',
-                '4分：投诉有回应，但都是官话套话',
-                '5分：有反馈但很少实质解决',
-                '6分：你提交的问题会有人接，但解决不了实质问题',
-                '7分：不公感知会被认真受理',
-                '8分：你的不公感知会被系统接住，能看到处理进展',
-                '9分：不公感知被认真处理，有明确的解决路径',
-                '10分：不公感知自动受理、公开响应、限期解决'
-            ]
-        };
+        <!-- ===== 一、生存与劳动保障 ===== -->
+        <h3>一、生存与劳动保障 <span class="en-inline">I. Survival & Labor Security</span></h3>
+        <div id="cat1">
+            <div class="slider-group">
+                <label>① 基本生存保障 <span class="score" id="c1s1_val">0</span></label>
+                <div class="example">失业后能撑多久？大病会不会放弃治疗？<span class="en-inline">How long can you survive after job loss? Would you give up treatment for a major illness?</span></div>
+                <div class="meaning" id="c1s1_mean">0分：失业即断粮，撑不过1个月；大病直接放弃治疗</div>
+                <div class="anchor"><span>0分：撑不过1个月</span><span>5分：撑3-6个月</span><span>10分：撑24个月以上</span></div>
+                <input type="range" id="c1s1" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>② 劳动安全与健康 <span class="score" id="c1s2_val">0</span></label>
+                <div class="example">工作环境安全吗？工伤有保障吗？职业病防治是否有效？<span class="en-inline">Is the work environment safe? Is workplace injury covered? Is occupational disease prevention effective?</span></div>
+                <div class="meaning" id="c1s2_mean">0分：工作环境等于“搏命”，工伤无人管</div>
+                <div class="anchor"><span>0分：危险无保障</span><span>5分：基本保护存在</span><span>10分：制度性底线</span></div>
+                <input type="range" id="c1s2" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>③ 基本收入水平 <span class="score" id="c1s3_val">0</span></label>
+                <div class="example">最低工资能养活自己吗？普通劳动者能否体面生活？<span class="en-inline">Can the minimum wage support a living? Can ordinary workers live with dignity?</span></div>
+                <div class="meaning" id="c1s3_mean">0分：收入只够吃饭和房租，别的什么都别想</div>
+                <div class="anchor"><span>0分：只够吃饭和房租</span><span>5分：温饱有余，应急不足</span><span>10分：支撑完整生活计划</span></div>
+                <input type="range" id="c1s3" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>④ 劳动权利的制度保护 <span class="score" id="c1s4_val">0</span></label>
+                <div class="example">劳动法是否被严格执行？劳动者是否有组织化的集体谈判权？<span class="en-inline">Is labor law strictly enforced? Do workers have organized collective bargaining rights?</span></div>
+                <div class="meaning" id="c1s4_mean">0分：劳动法不存在或无效，劳动者没有任何组织化权利</div>
+                <div class="anchor"><span>0分：不存在或无效</span><span>5分：有框架但无效</span><span>10分：严格执行，真实有效</span></div>
+                <input type="range" id="c1s4" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="category-summary">
+                <span>大类得分 <span class="en-inline" style="font-weight:400; color:#5a6a4e; font-size:13px;">Category Score</span></span>
+                <span class="cat-score" id="cat1_score">0.0</span>
+            </div>
+        </div>
 
-        const nineSteps = [
-            { max: 19, label: '结构性不公', desc: '资源与权力分配的制度性倾斜，社会层面的爆发风险。系统处于准丛林状态。' },
-            { max: 29, label: '结构性锁死', desc: '不公被制度固化，无法通过常规渠道修正，系统脆化，硬着陆风险上升。' },
-            { max: 39, label: '结构性错位', desc: '系统对自身问题的认知偏离现实，决策失误风险持续累积。' },
-            { max: 49, label: '结构性矛盾', desc: '个体理性与系统理性对冲，集体行动失灵，内部对冲风险加剧。' },
-            { max: 59, label: '结构性收缩', desc: '为维持控制而收紧空间，压制反馈，失控风险加速累积。' },
-            { max: 69, label: '结构性失聪', desc: '系统拒绝接收负面信号，问题积累到临界点才被暴露。' },
-            { max: 79, label: '结构性逃逸', desc: '有能力的个体和资本用脚投票，系统自我消耗，加速空心化。' },
-            { max: 89, label: '结构性空心', desc: '壳在运行而实质已无，全面崩盘风险。' },
-            { max: 100, label: '结构性死亡', desc: '系统丧失自我修复能力，最终风险本身。' }
-        ];
+        <!-- ===== 二、劳动价值平等 ===== -->
+        <h3>二、劳动价值平等 <span class="en-inline">II. Equal Labor Value</span></h3>
+        <div id="cat2">
+            <div class="slider-group">
+                <label>① 同工同酬 <span class="score" id="c2s1_val">0</span></label>
+                <div class="example">同样岗位，性别、户籍、年龄、身份背景是否影响收入？<span class="en-inline">Does gender, household registration, age, or background affect income for the same position?</span></div>
+                <div class="meaning" id="c2s1_mean">0分：你身边到处是同工不同酬，性别/身份决定收入</div>
+                <div class="anchor"><span>0分：身份决定收入</span><span>5分：法律好看，执行打折</span><span>10分：同工同酬铁律</span></div>
+                <input type="range" id="c2s1" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>② 职业稳定性与年龄歧视 <span class="score" id="c2s2_val">0</span></label>
+                <div class="example">35岁后还能有体面工作吗？年龄是否成为职业的硬性门槛？<span class="en-inline">Can you still find decent work after 35? Does age become a hard threshold?</span></div>
+                <div class="meaning" id="c2s2_mean">0分：35岁是道坎，过了就没戏，招聘信息都写“35岁以下”</div>
+                <div class="anchor"><span>0分：35岁即“死期”</span><span>5分：45岁后很困难</span><span>10分：任何年龄公平机会</span></div>
+                <input type="range" id="c2s2" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>③ 社会保障平等性 <span class="score" id="c2s3_val">0</span></label>
+                <div class="example">你的工作有完整的五险一金吗？灵活就业者是否有同等保障？<span class="en-inline">Does your job have full social security coverage? Do gig workers have equal protection?</span></div>
+                <div class="meaning" id="c2s3_mean">0分：灵活就业者就是“裸奔”，完全没有社保</div>
+                <div class="anchor"><span>0分：灵活就业者“裸奔”</span><span>5分：全覆盖但水平有差异</span><span>10分：社保无死角、无差异</span></div>
+                <input type="range" id="c2s3" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>④ 劳动尊严与离线权 <span class="score" id="c2s4_val">0</span></label>
+                <div class="example">你能拒绝不合理加班吗？下班后能不理工作消息吗？<span class="en-inline">Can you refuse unreasonable overtime? Can you ignore work messages after hours?</span></div>
+                <div class="meaning" id="c2s4_mean">0分：24小时待命，手机一响就紧张，拒绝即开除</div>
+                <div class="anchor"><span>0分：24小时待命</span><span>5分：有补偿但拒绝仍有压力</span><span>10分：下班即离线，法律保障</span></div>
+                <input type="range" id="c2s4" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>⑤ 代际公平与社会流动 <span class="score" id="c2s5_val">0</span></label>
+                <div class="example">你的孩子靠努力能改变阶层吗？机会是否被出身锁定？<span class="en-inline">Can your children change their class through effort? Are opportunities locked by birth?</span></div>
+                <div class="meaning" id="c2s5_mean">0分：出身决定命运，你是什么阶层孩子基本还是什么阶层</div>
+                <div class="anchor"><span>0分：出身决定命运</span><span>5分：有机会但通道收窄</span><span>10分：社会流动性强</span></div>
+                <input type="range" id="c2s5" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>⑥ 职业选择自由 <span class="score" id="c2s6_val">0</span></label>
+                <div class="example">个体是否因出身、性别、种姓等先天因素而遭受职业限制？<span class="en-inline">Do individuals face occupational restrictions due to birth, gender, caste, or other innate factors?</span></div>
+                <div class="meaning" id="c2s6_mean">0分：职业被你的出身锁死了，你想做什么不由你决定</div>
+                <div class="anchor"><span>0分：被先天身份锁定</span><span>5分：能选但空间有限</span><span>10分：完全自由</span></div>
+                <input type="range" id="c2s6" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="category-summary">
+                <span>大类得分 <span class="en-inline" style="font-weight:400; color:#5a6a4e; font-size:13px;">Category Score</span></span>
+                <span class="cat-score" id="cat2_score">0.0</span>
+            </div>
+        </div>
 
-        const wjpDims = [
-            { cat: '生存与劳动保障', dim: '秩序与安全 + 监管执法' },
-            { cat: '劳动价值平等', dim: '基本权利保障' },
-            { cat: '收入分配公平', dim: '腐败控制与透明治理' },
-            { cat: '言论与精神自由', dim: '开放政府与信息流通' },
-            { cat: '司法', dim: '民事司法 + 刑事司法' }
-        ];
+        <!-- ===== 三、收入分配公平 ===== -->
+        <h3>三、收入分配公平 <span class="en-inline">III. Fair Income Distribution</span></h3>
+        <div id="cat3">
+            <div class="slider-group">
+                <label>① 收入差距 <span class="score" id="c3s1_val">0</span></label>
+                <div class="example">你身边的贫富差距大吗？底层与顶层的收入倍数是多少？<span class="en-inline">Is the wealth gap wide around you? What's the income multiple between the bottom and the top?</span></div>
+                <div class="meaning" id="c3s1_mean">0分：一个天一个地，底层跟顶层隔了百倍</div>
+                <div class="anchor"><span>0分：相差百倍</span><span>5分：差距明显但底层有保障</span><span>10分：差距小，有公平感</span></div>
+                <input type="range" id="c3s1" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>② 财富积累机会 <span class="score" id="c3s2_val">0</span></label>
+                <div class="example">普通人靠劳动能存下钱、积累资产、获得财产性收入吗？<span class="en-inline">Can ordinary people save money, accumulate assets, and gain property income through labor?</span></div>
+                <div class="meaning" id="c3s2_mean">0分：存不下钱，永远在负债，财富积累跟你没关系</div>
+                <div class="anchor"><span>0分：存不下钱</span><span>5分：长期奋斗可积累</span><span>10分：劳动就能积累资产</span></div>
+                <input type="range" id="c3s2" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>③ 再分配机制 <span class="score" id="c3s3_val">0</span></label>
+                <div class="example">税收和公共支出是否在向低收入者倾斜？是否有效缩小差距？<span class="en-inline">Do taxes and public spending favor low-income groups? Do they effectively reduce the gap?</span></div>
+                <div class="meaning" id="c3s3_mean">0分：税收福利都在帮富人，富人有避税手段，穷人缴税比例反而更高</div>
+                <div class="anchor"><span>0分：都在帮富人</span><span>5分：有调节但力度不足</span><span>10分：有效托底</span></div>
+                <input type="range" id="c3s3" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>④ 劳动所得 vs 资本所得 <span class="score" id="c3s4_val">0</span></label>
+                <div class="example">劳动所得是否被权力或资本截留？劳动收入与资本收入是否失衡？<span class="en-inline">Is labor income intercepted by power or capital? Is there an imbalance between labor and capital income?</span></div>
+                <div class="meaning" id="c3s4_mean">0分：劳动是给资本打工，越干越穷，劳动者被系统性收割</div>
+                <div class="anchor"><span>0分：劳动是被收割</span><span>5分：劳动能活，资本能富</span><span>10分：劳动与资本基本平衡</span></div>
+                <input type="range" id="c3s4" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="category-summary">
+                <span>大类得分 <span class="en-inline" style="font-weight:400; color:#5a6a4e; font-size:13px;">Category Score</span></span>
+                <span class="cat-score" id="cat3_score">0.0</span>
+            </div>
+        </div>
 
-        const densityConstraints = [
-            { max: 0.5, score: 10, label: '无约束' },
-            { max: 1.0, score: 8, label: '轻度约束' },
-            { max: 2.0, score: 6, label: '中度约束' },
-            { max: 5.0, score: 4, label: '重度约束' },
-            { max: Infinity, score: 1, label: '极度约束' }
-        ];
+        <!-- ===== 四、言论与精神自由 ===== -->
+        <h3>四、言论与精神自由 <span class="en-inline">IV. Freedom of Speech & Spirit</span></h3>
+        <div id="cat4">
+            <div class="slider-group">
+                <label>① 言论表达自由 <span class="score" id="c4s1_val">0</span></label>
+                <div class="example">你能公开批评制度、政策或官员而不被报复吗？<span class="en-inline">Can you openly criticize systems, policies, or officials without retaliation?</span></div>
+                <div class="meaning" id="c4s1_mean">0分：说错一句话，人生就完蛋，任何批评都被视为“攻击”</div>
+                <div class="anchor"><span>0分：言论即风险</span><span>5分：说话要绕弯子</span><span>10分：公开批评不受报复</span></div>
+                <input type="range" id="c4s1" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>② 信息获取自由 <span class="score" id="c4s2_val">0</span></label>
+                <div class="example">你能自由获取多元的信息来源吗？信息是否被过滤？<span class="en-inline">Can you freely access diverse sources of information? Is information filtered?</span></div>
+                <div class="meaning" id="c4s2_mean">0分：只能看到官方想让你看到的，外部世界跟你无关</div>
+                <div class="anchor"><span>0分：只能看到官方信息</span><span>5分：多元存在但获取有成本</span><span>10分：自由流通，无审查</span></div>
+                <input type="range" id="c4s2" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>③ 精神文化自由 <span class="score" id="c4s3_val">0</span></label>
+                <div class="example">你的信仰、艺术创作、生活方式受限制吗？边缘文化是否被允许？<span class="en-inline">Are your beliefs, art, and lifestyle restricted? Is fringe culture allowed?</span></div>
+                <div class="meaning" id="c4s3_mean">0分：精神世界被管制，你喜欢的乐队、画家大部分在国内看不到</div>
+                <div class="anchor"><span>0分：精神世界被管制</span><span>5分：有空间但不敢越界</span><span>10分：所有文化表达享有空间</span></div>
+                <input type="range" id="c4s3" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>④ 学术与媒体独立 <span class="score" id="c4s4_val">0</span></label>
+                <div class="example">艺术、学术、媒体是否拥有独立探索的空间？是否服务于权力？<span class="en-inline">Do art, academia, and media have independent space? Are they serving power?</span></div>
+                <div class="meaning" id="c4s4_mean">0分：学术=宣传，媒体=喇叭，什么能研究、能报道都有明确的“政治正确”</div>
+                <div class="anchor"><span>0分：学术=宣传</span><span>5分：学术有空间，媒体有边界</span><span>10分：完全独立</span></div>
+                <input type="range" id="c4s4" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="category-summary">
+                <span>大类得分 <span class="en-inline" style="font-weight:400; color:#5a6a4e; font-size:13px;">Category Score</span></span>
+                <span class="cat-score" id="cat4_score">0.0</span>
+            </div>
+        </div>
 
-        let hasValidScore = false;
+        <!-- ================================================================ -->
+        <!-- 第三层：司法验证（治理基石） -->
+        <!-- ================================================================ -->
+        <h2 style="margin-top:48px;">第三层：司法验证（治理基石） <span class="en-inline">Layer 3: Judicial Verification (Governance Cornerstone)</span></h2>
+        <p style="font-size:14px; color:#7a8a6e; margin-bottom:16px;">
+            治理基石的三条硬条件被独立验证。司法维度不参与正向加分，只做减法。<br>
+            <span style="color:#4a5a3e;">司法验证得分将作为折扣系数作用于最终得分（0.8-1.0之间）。</span>
+            <span class="en">The three hard conditions of the Governance Cornerstone are independently verified. The judicial dimension does not add positive points—it only subtracts.<br><span style="color:#4a5a3e;">The judicial verification score acts as a discount factor on the final score (between 0.8 and 1.0).</span></span>
+        </p>
+        <div id="judgeArea">
+            <div class="slider-group">
+                <label>① 判决前不可触碰人身财产 <span class="score" id="j1_val">0</span></label>
+                <div class="example">判决书出来之前，权力能否随意冻结资产、限制人身自由？<span class="en-inline">Before a verdict, can power arbitrarily freeze assets or restrict personal freedom?</span></div>
+                <div class="meaning" id="j1_mean">0分：权力想抓就抓，想封就封，没有判决书人也抓了钱也冻了</div>
+                <div class="anchor"><span>0分：想抓就抓</span><span>5分：大部分情况不能碰</span><span>10分：绝对不可触碰</span></div>
+                <input type="range" id="j1" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>② 系统性代价由系统承担 <span class="score" id="j2_val">0</span></label>
+                <div class="example">如果司法系统错了、拖延了、不可追溯了——代价由谁承担？<span class="en-inline">If the judicial system errs, delays, or becomes untraceable—who bears the cost?</span></div>
+                <div class="meaning" id="j2_mean">0分：错就错了，受害者自己扛，系统连道歉都没有</div>
+                <div class="anchor"><span>0分：受害者自己扛</span><span>5分：赔偿存在但金额低</span><span>10分：承担全部代价</span></div>
+                <input type="range" id="j2" min="0" max="10" value="0" step="1">
+            </div>
+            <div class="slider-group">
+                <label>③ 不公感知必须响应 <span class="score" id="j3_val">0</span></label>
+                <div class="example">当你觉得“这不公平”时，系统会认真听吗？<span class="en-inline">When you feel "this is unfair," does the system listen?</span></div>
+                <div class="meaning" id="j3_mean">0分：“不公平”这三个字都不能说，任何质疑都会被压制</div>
+                <div class="anchor"><span>0分：不能说</span><span>5分：有反馈但少实质解决</span><span>10分：自动受理、公开响应</span></div>
+                <input type="range" id="j3" min="0" max="10" value="0" step="1">
+            </div>
+            <!-- 系统认错记录 -->
+            <div style="background:#1a201a; border-radius:12px; padding:16px 20px; margin-top:10px; border:1px solid #2a322a; border-left:4px solid #b89a4a;">
+                <p style="font-size:14px; font-weight:600; color:#d4dec4; margin-bottom:8px;">系统“认错记录”密度（硬约束） <span class="en-inline">System "Error Acknowledgment" Density (Hard Constraint)</span></p>
+                <p style="font-size:13px; color:#7a8a6e; margin-bottom:10px;">系统的正式“认错”记录（如国家赔偿、错案纠正等）。密度越高，司法维度被锁定的上限越低。<span class="en">The system's formal "error acknowledgment" records (e.g., state compensation, wrongful conviction corrections). The higher the density, the lower the judicial dimension's cap.</span></p>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>累计“认错”记录数 <span class="en-inline">Cumulative "error acknowledgment" count</span></label>
+                        <input type="number" id="compCases" placeholder="输入累计记录数" min="0" step="1">
+                        <div class="input-hint">件（累计记录） <span class="en-inline">Count</span></div>
+                    </div>
+                    <div class="input-group">
+                        <label>总人口 <span class="en-inline">Total Population</span></label>
+                        <input type="number" id="compPop" placeholder="输入人口（万人）" min="0" step="1">
+                        <div class="input-hint">万人 <span class="en-inline">10,000 people</span></div>
+                    </div>
+                    <div class="input-group" style="min-width:120px; flex:0.6;">
+                        <label>记录密度 <span class="en-inline">Record Density</span></label>
+                        <div style="background:#171c18; border-radius:8px; padding:8px 12px; color:#bace9a; font-weight:600; font-size:15px; border:1px solid #2a322a; min-height:42px; display:flex; align-items:center;" id="densityDisplay">—</div>
+                        <div class="input-hint">件/万人 <span class="en-inline">per 10,000 people</span></div>
+                    </div>
+                    <div class="input-group" style="min-width:100px; flex:0.5;">
+                        <label>约束等级 <span class="en-inline">Constraint Level</span></label>
+                        <div style="background:#171c18; border-radius:8px; padding:8px 12px; color:#bace9a; font-weight:600; font-size:14px; border:1px solid #2a322a; min-height:42px; display:flex; align-items:center;" id="constraintLevel">—</div>
+                        <div class="input-hint">最高得分锁定 <span class="en-inline">Max Score Cap</span></div>
+                    </div>
+                </div>
+                <button class="data-ref-toggle" id="dataRefToggle">📊 查看密度约束参照 <span class="en-inline">View Density Constraint Reference</span></button>
+                <div class="data-ref-box" id="dataRefBox">
+                    <div style="font-weight:500; color:#aaba8a; margin-bottom:4px;">密度约束参照 <span class="en-inline">Density Constraint Reference</span></div>
+                    <div class="example-row"><span>密度 ≤ 0.5 件/万人</span><span>约束等级：<span class="highlight-num">无约束</span>（司法上限 ≤ 10 分）</span></div>
+                    <div class="example-row"><span>密度 ≤ 1.0 件/万人</span><span>约束等级：<span class="highlight-num">轻度约束</span>（司法上限 ≤ 8 分）</span></div>
+                    <div class="example-row"><span>密度 ≤ 2.0 件/万人</span><span>约束等级：<span class="highlight-num">中度约束</span>（司法上限 ≤ 6 分）</span></div>
+                    <div class="example-row"><span>密度 ≤ 5.0 件/万人</span><span>约束等级：<span class="highlight-num">重度约束</span>（司法上限 ≤ 4 分）</span></div>
+                    <div class="example-row"><span>密度 &gt; 5.0 件/万人</span><span>约束等级：<span class="highlight-num">极度约束</span>（司法上限 ≤ 1 分）</span></div>
+                    <div class="note">密度越高，表明系统的“认错记录”越密集，司法可信度越受约束。<span class="en">Higher density indicates more frequent system "error acknowledgments," and greater constraint on judicial credibility.</span></div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /scoring-area -->
 
-        // ================================================================
-        // 历史记录
-        // ================================================================
-        function getHistory() {
-            try { return JSON.parse(localStorage.getItem('civ_public_v4_history')) || []; } catch { return []; }
+    <!-- ================================================================ -->
+    <!-- 第四层：结果展示 -->
+    <!-- ================================================================ -->
+    <h2 style="margin-top:40px;">第四层：评分结果与诊断 <span class="en-inline">Layer 4: Results & Diagnosis</span></h2>
+    <div class="result-box" id="resultBox">
+        <div id="resultContent">
+            <div class="result-main">
+                <div class="placeholder">调整滑块后自动生成结果 <span class="en">Results will appear after adjusting the sliders</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- 第五层：历史趋势（点阵图 + 可查看明细） -->
+    <!-- ================================================================ -->
+    <div class="history-box" id="historyBox">
+        <div class="h-title">最近7次评分趋势 <span style="color:#4a5a3e; font-weight:400; font-size:12px;">（灰色：无记录 · 亮绿色：有记录 · 大圆点：当前 · 点击圆点查看明细）</span>
+            <span class="en" style="font-size:12px; display:inline; margin-left:6px;">Last 7 scores (gray: no record · bright green: recorded · large dot: current · click dot for details)</span>
+        </div>
+        <div class="history-dots" id="historyDots">
+            <div class="history-empty">暂无历史记录，完成打分后自动保存 <span class="en">No history yet, will auto-save after scoring</span></div>
+        </div>
+        <div id="historyDetailPopup" class="history-detail-popup"></div>
+        <div style="margin-top:8px; display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+            <button class="btn-clear" id="clearHistoryBtn">清空历史 <span class="en-inline">Clear History</span></button>
+            <span style="font-size:12px; color:#5a6a4e;" id="historyCount">记录数: 0 <span class="en-inline">Records: 0</span></span>
+        </div>
+    </div>
+
+    <!-- ===== 页脚 ===== -->
+    <div class="footer">
+        杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年
+        <span class="en">Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026</span>
+        <span style="display:block; margin-top:4px;">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+        <span class="en" style="display:block; font-size:0.85em; color:#7a8a6e;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a></span>
+    </div>
+</div>
+
+<script>
+    // ================================================================
+    // 配置（与原版一致）
+    // ================================================================
+    const categories = [
+        { name:'生存与劳动保障', id:'cat1', items:['c1s1','c1s2','c1s3','c1s4'], scoreId:'cat1_score' },
+        { name:'劳动价值平等', id:'cat2', items:['c2s1','c2s2','c2s3','c2s4','c2s5','c2s6'], scoreId:'cat2_score' },
+        { name:'收入分配公平', id:'cat3', items:['c3s1','c3s2','c3s3','c3s4'], scoreId:'cat3_score' },
+        { name:'言论与精神自由', id:'cat4', items:['c4s1','c4s2','c4s3','c4s4'], scoreId:'cat4_score' }
+    ];
+    const judgeItems = ['j1','j2','j3'];
+    const judgeLabels = ['判决前不可触碰人身财产','系统性代价由系统承担','不公感知必须响应'];
+
+    const meanings = {
+        c1s1: ['0分：失业即断粮，撑不过1个月；大病直接放弃治疗，不敢去医院',
+            '1分：失业后1-2个月内靠借钱度日；大病“能救就救”，但会掏空全家',
+            '2分：失业后能撑2-3个月，靠亲友接济；大病需举债，但“能救就救”',
+            '3分：失业后能撑3-4个月，有少量积蓄和亲友帮补；大病需消耗大部分积蓄',
+            '4分：失业后能撑4-6个月，有基础储蓄和亲友帮补；大病会消耗大部分积蓄但不会立刻返贫',
+            '5分：失业后能撑6-9个月，有失业保险和基本储蓄；大病个人负担不超过年收入的20%',
+            '6分：失业后能撑9-12个月，有失业保险和基本储蓄；大病个人负担不超过年收入的15%',
+            '7分：失业后能撑12-15个月，有充分的失业保险；大病个人负担不超过年收入的10%',
+            '8分：失业后能撑15-18个月，有充分的失业保险和家庭支持；大病个人负担不超过年收入的8%',
+            '9分：失业后能撑18-24个月，有完善的社会保障安全网；大病个人负担不超过年收入的5%',
+            '10分：失业后能撑24个月以上，有充分的社会保障安全网；大病全覆盖，个人负担几乎为零'
+        ],
+        c1s2: ['0分：工作环境等于“搏命”，天天担心出事故；工伤没人管，自己扛',
+            '1分：工作环境危险，工伤无保障；出事只能自己解决',
+            '2分：有基本劳动保护但形同虚设；工伤赔付周期漫长，耗不起',
+            '3分：劳动保护存在，但执行弱；安全培训走过场',
+            '4分：基本保护有，但过劳严重；工伤赔付流程复杂',
+            '5分：制度存在但执行弱；长期加班，身体被透支',
+            '6分：制度基本落实；职业病有定期检查，但覆盖率不高',
+            '7分：工作环境安全，工伤有保障；职业病防治基本到位',
+            '8分：工作环境安全健康；工伤能拿到合理赔偿，流程透明',
+            '9分：劳动安全是制度性保障；工伤赔付及时，职业病有效防控',
+            '10分：劳动安全是制度性底线；工伤保障完善，职业病零容忍'
+        ],
+        c1s3: ['0分：收入只够吃饭和房租，别的什么都别想；不敢生病不敢休息',
+            '1分：收入勉强够基本生存，没有任何余裕',
+            '2分：能吃饱，但存不下钱；有任何意外支出就崩盘',
+            '3分：能覆盖基本温饱，但无余裕应对突发支出',
+            '4分：温饱有余，但储蓄增长极慢；遇到失业或大病就扛不住',
+            '5分：能存下一点钱，但非常有限；应急能力不足',
+            '6分：能覆盖基本温饱，有一定应急能力',
+            '7分：体面生活，能存钱；有应对突发支出的能力',
+            '8分：不仅能温饱，还能规划未来；有积蓄、有保险、有选择',
+            '9分：收入充裕，能支撑完整的生活计划；生活有尊严、有安全感',
+            '10分：收入足以支撑完整的生活计划；有充分积累、保险和选择自由'
+        ],
+        c1s4: ['0分：劳动法不存在或无效，劳动者没有任何组织化权利',
+            '1分：劳动法形同虚设，维权成本极高，普通人耗不起',
+            '2分：有劳动法但执行弱；维权流程漫长，劳动者无话语权',
+            '3分：劳动法存在，但集体谈判形同虚设',
+            '4分：有工会但基本无效；工人声音传不上去',
+            '5分：有集体谈判框架但效果有限',
+            '6分：劳动法基本被执行；维权渠道存在但效率低',
+            '7分：劳动法被执行；劳动者有维权渠道，虽然不完美但能用',
+            '8分：劳动法被严格执行；劳动者有真实有效的维权途径',
+            '9分：劳动权利受制度性保护；集体谈判权基本有效',
+            '10分：劳动法被严格执行，集体谈判权真实有效'
+        ],
+        c2s1: ['0分：你身边到处是同工不同酬，性别/身份决定收入',
+            '1分：同工不同酬是普遍现象，大家已经习惯了',
+            '2分：女同事干同样的活工资少一截；外地人工龄不算数',
+            '3分：差距明显，但已经习惯了，没人较真',
+            '4分：身份因素仍然显著影响收入',
+            '5分：法律写得好看，执行层面照样打折',
+            '6分：同工同酬有规定，但执行不彻底',
+            '7分：身份因素影响很小；同样岗位基本同酬',
+            '8分：身份不再是决定性因素；同工同酬基本实现',
+            '9分：同工同酬被严格执行；违规会被追责',
+            '10分：同工同酬是铁律，没人敢破；身份完全不影响收入'
+        ],
+        c2s2: ['0分：35岁是道坎，过了就没戏；招聘都写“35岁以下”',
+            '1分：35岁后简历投出去石沉大海',
+            '2分：35岁后机会骤减，年龄成为硬性门槛',
+            '3分：40岁前还行，过了就开始慌',
+            '4分：40岁后明显感到门槛在变高',
+            '5分：45岁后很吃力，随时可能被优化',
+            '6分：45岁后机会很少，但还有一线可能',
+            '7分：年龄是参考，不是硬门槛',
+            '8分：中年换工作也正常，45岁以上仍有公平机会',
+            '9分：经验被尊重，年龄不影响职业发展',
+            '10分：任何年龄都有公平机会；经验与年龄被合理尊重'
+        ],
+        c2s3: ['0分：灵活就业者就是“裸奔”，完全没有社保',
+            '1分：灵活就业者几乎无保障，只有极少数例外',
+            '2分：有社保但不完整；有医保没养老，有工伤没失业',
+            '3分：社保覆盖存在，但缺口明显',
+            '4分：有基础社保，但保障水平低，覆盖不完整',
+            '5分：基本全覆盖，但灵活就业者和正式工的保障水平差一截',
+            '6分：社保体系完整，但灵活就业者保障偏低',
+            '7分：社保体系相对完善，差异不大',
+            '8分：社保体系完整，差距可控',
+            '9分：所有劳动者享有完整保障，基本无差异',
+            '10分：社保无死角、无差异；所有劳动者保障平等'
+        ],
+        c2s4: ['0分：24小时待命，手机一响就紧张，拒绝即开除',
+            '1分：随时可能被工作消息打断，无边界可言',
+            '2分：下班后照样被工作消息轰炸；不回复就扣钱',
+            '3分：加班是常态，拒绝加班压力很大',
+            '4分：加班有补偿，但拒绝加班仍有压力',
+            '5分：加班有约定，但边界模糊；紧急时候逃不掉',
+            '6分：加班有限度，离线权基本被尊重',
+            '7分：工作时间边界清晰，加班有明确补偿',
+            '8分：离线权被尊重，非紧急情况不会被打扰',
+            '9分：下班时间属于自己；离线权有制度保障',
+            '10分：下班即离线，法律铁打；谁敢非工作时间打扰谁担责'
+        ],
+        c2s5: ['0分：出身决定命运，你是什么阶层孩子基本还是什么阶层',
+            '1分：上升通道几乎关闭，努力改变不了出身',
+            '2分：有希望但极难；需要极其优秀的个人努力才能突破',
+            '3分：有机会突破，但概率极低',
+            '4分：你的孩子要考进最好的学校才能勉强够到你现在的起点',
+            '5分：有机会但通道收窄；竞争异常激烈',
+            '6分：上升通道存在，但大多数人在半路被挤掉',
+            '7分：努力能看到回报；社会流动性尚可',
+            '8分：只要肯努力，就有机会改变处境',
+            '9分：社会流动性强；机会相对平等',
+            '10分：社会流动性极强；出生不再是决定性因素'
+        ],
+        c2s6: ['0分：职业被你的出身锁死了，你想做什么不由你决定',
+            '1分：职业选择几乎为零，被先天身份锁定',
+            '2分：法律上自由，但实际上有看不见的门槛',
+            '3分：制度废除了限制，但现实中有看不见的墙',
+            '4分：能选，但选择空间有限',
+            '5分：职业自由是相对的，总有东西在框着你',
+            '6分：选择空间在扩大，但仍然有限',
+            '7分：自由度高，限制极少',
+            '8分：职业主要看能力和兴趣，身份因素基本不干预',
+            '9分：职业选择几乎完全自由',
+            '10分：完全自由，只受能力限制'
+        ],
+        c3s1: ['0分：一个天一个地，底层跟顶层隔了百倍，你认识的人里有穷到卖血的，也有富到买楼的',
+            '1分：贫富差距极其悬殊，你随时能感受到阶级的鸿沟',
+            '2分：差距非常扎眼，但还不至于绝望',
+            '3分：你身边贫富差距明显，富人和穷人生活在两个世界',
+            '4分：差距明显，但底层有基本保障，不至于饿死',
+            '5分：差距明显但底层有保障，穷人至少不至于绝望',
+            '6分：贫富差距可控，普通人也能看到希望',
+            '7分：差距适中，劳动能追上资本',
+            '8分：收入差距有，但普通人的努力能跟上社会的脚步',
+            '9分：差距小，社会有公平感',
+            '10分：收入差距很小，劳动收入可以和资本收入抗衡'
+        ],
+        c3s2: ['0分：存不下钱，永远在负债，财富积累跟你没关系',
+            '1分：月月光，甚至倒欠，没有任何积累',
+            '2分：能活着，但攒不下什么；任何大额支出都会把你打回原形',
+            '3分：有基本生存，但积累极少',
+            '4分：能存一点钱，但速度极慢',
+            '5分：长期奋斗可积累基础财富，你身边有人通过十年以上劳动终于攒下一套房',
+            '6分：财富积累需要很长时间，但有可能',
+            '7分：劳动能存钱，但速度不算快',
+            '8分：普通人通过劳动能积累资产，过程辛苦但有可能',
+            '9分：财富积累渠道相对畅通',
+            '10分：劳动就能积累资产；普通人也能有稳定的财产性收入'
+        ],
+        c3s3: ['0分：税收福利都在帮富人，富人有各种避税手段，穷人缴税比例反而更高',
+            '1分：再分配机制严重失灵，穷人在承担更多负担',
+            '2分：福利政策存在，但大多数需要帮助的人拿不到',
+            '3分：有福利，但门槛高、流程复杂',
+            '4分：有调节作用但力度不足，效果有限',
+            '5分：能缓和一点差距，但起不到决定性作用',
+            '6分：再分配有一定效果，但不够',
+            '7分：福利向低收入倾斜，效果明显',
+            '8分：税收和支出在主动缩小差距，效果肉眼可见',
+            '9分：再分配机制有效托底，没有人被落下',
+            '10分：再分配机制完整且有效，显著缩小差距'
+        ],
+        c3s4: ['0分：劳动是给资本打工，越干越穷，劳动者被系统性收割',
+            '1分：干活的钱永远追不上资产增值的钱',
+            '2分：劳动收入被系统性截留，资本占绝对优势',
+            '3分：你身边靠资产赚钱的人比靠劳动赚钱的人过得好太多',
+            '4分：资本收益远高于劳动收益',
+            '5分：劳动收入可以维持体面生活，但财富积累主要靠资产',
+            '6分：劳动能活，资本能富，差距在缩小',
+            '7分：劳动与资本基本平衡',
+            '8分：劳动者享有合理份额；劳动不再是“被收割”的代名词',
+            '9分：劳动所得与资本所得相对公平',
+            '10分：劳动所得与资本所得公平分配；不存在系统性失衡'
+        ],
+        c4s1: ['0分：说错一句话，人生就完蛋，任何批评都被视为“攻击”',
+            '1分：言论即风险，没人敢说话',
+            '2分：技术性讨论可以，政治话题绝对不行',
+            '3分：说天气可以，说政策不行；边界模糊，你不知道哪句话越界',
+            '4分：你可以说，但不能直说；自我审查是日常操作',
+            '5分：说话要绕弯子，风险依然存在',
+            '6分：批评被容忍，但不被欢迎',
+            '7分：言论边界清晰，批评不会招致毁灭性打击',
+            '8分：公开批评可以，但仍有隐性压力',
+            '9分：言论自由受法律保护且实际有效',
+            '10分：公开批评不被报复；公共讨论是正常的'
+        ],
+        c4s2: ['0分：只能看到官方想让你看到的，外部世界跟你无关',
+            '1分：信息被严格过滤，外部世界跟你无关',
+            '2分：能看见一些不同的声音，但不完整',
+            '3分：偶尔能接触到多元信息，但关键部分被拦截',
+            '4分：多元信息存在，但获取有成本',
+            '5分：信息流通不顺畅，需要技巧才能看到不同的声音',
+            '6分：多元信息可获取，但有少量限制',
+            '7分：信息流通基本自由，有少量限制但不构成根本障碍',
+            '8分：多元信息可自由获取',
+            '9分：信息自由流通，无审查',
+            '10分：信息完全自由流通，无审查、无壁垒'
+        ],
+        c4s3: ['0分：精神世界被管制，你喜欢的乐队、画家大部分在国内看不到',
+            '1分：你能看到的东西都是被筛选过的',
+            '2分：主流文化自由，边缘文化被压制',
+            '3分：你能看到主流的东西，非主流的东西会被“消失”',
+            '4分：文化表达有边界，你知道什么能碰什么不能碰',
+            '5分：有一定空间，但不敢越界',
+            '6分：精神文化多元，但有隐形红线',
+            '7分：大多数表达是自由的，少数话题仍有风险',
+            '8分：精神文化表达相对自由',
+            '9分：所有文化表达享有空间，边缘文化也被允许存在',
+            '10分：法律同等保护，文化表达完全自由'
+        ],
+        c4s4: ['0分：学术=宣传，媒体=喇叭，什么能研究、能报道都有明确的“政治正确”',
+            '1分：学术和媒体完全服务于权力',
+            '2分：技术性讨论有自由，政治议题没有',
+            '3分：科学研究可以谈方法，但不能碰结论',
+            '4分：媒体可以报小事，但不能报大事',
+            '5分：学术有空间，媒体有边界',
+            '6分：学术空间相对宽松，媒体在红线之内自由',
+            '7分：学术与媒体基本独立',
+            '8分：独立研究是常态，媒体报道有公信力',
+            '9分：学术与媒体独立性强',
+            '10分：学术与媒体完全独立，自由探索成为常态'
+        ],
+        j1: ['0分：权力想抓就抓，想封就封，没有判决书人也抓了钱也冻了',
+            '1分：程序形同虚设，权力想绕过就能绕过',
+            '2分：法律说不行，但权力有办法绕开',
+            '3分：程序上有规定，但实践中经常被绕过',
+            '4分：大部分情况下有程序约束，但例外很多',
+            '5分：大部分情况不能碰，但存在例外',
+            '6分：制度约束有效，少数特殊情况会绕过程序',
+            '7分：制度规定严格，执行比较到位',
+            '8分：除非极其特殊情况，否则不敢提前触碰',
+            '9分：制度硬约束，违规会被追责',
+            '10分：判决前绝对不可触碰，谁敢违规谁担责'
+        ],
+        j2: ['0分：错就错了，受害者自己扛，系统连道歉都没有',
+            '1分：系统不承担任何责任，受害者孤立无援',
+            '2分：有赔偿但极难拿到，流程漫长到你耗不起',
+            '3分：制度上写着可以赔，但基本拿不到',
+            '4分：能拿到赔偿，但流程折腾两三年',
+            '5分：赔偿存在但金额低、周期长',
+            '6分：赔偿机制存在，效率不高但能走通',
+            '7分：系统会认真赔偿，不会赖账',
+            '8分：赔偿机制健全，流程透明',
+            '9分：系统愿意承担后果，赔偿及时',
+            '10分：系统承担全部代价，设滞纳金和熔断机制'
+        ],
+        j3: ['0分：“不公平”这三个字都不能说，任何质疑都会被压制',
+            '1分：你觉得自己被欺负了，但没人会听你说',
+            '2分：有渠道反映，但基本石沉大海',
+            '3分：你可以去投诉，但99%不会得到任何回应',
+            '4分：投诉有回应，但都是官话套话',
+            '5分：有反馈但很少实质解决',
+            '6分：你提交的问题会有人接，但解决不了实质问题',
+            '7分：不公感知会被认真受理',
+            '8分：你的不公感知会被系统接住，能看到处理进展',
+            '9分：不公感知被认真处理，有明确的解决路径',
+            '10分：不公感知自动受理、公开响应、限期解决'
+        ]
+    };
+
+    const nineSteps = [
+        { max:19, label:'结构性不公', desc:'资源与权力分配的制度性倾斜，社会层面的爆发风险。系统处于准丛林状态。' },
+        { max:29, label:'结构性锁死', desc:'不公被制度固化，无法通过常规渠道修正，系统脆化，硬着陆风险上升。' },
+        { max:39, label:'结构性错位', desc:'系统对自身问题的认知偏离现实，决策失误风险持续累积。' },
+        { max:49, label:'结构性矛盾', desc:'个体理性与系统理性对冲，集体行动失灵，内部对冲风险加剧。' },
+        { max:59, label:'结构性收缩', desc:'为维持控制而收紧空间，压制反馈，失控风险加速累积。' },
+        { max:69, label:'结构性失聪', desc:'系统拒绝接收负面信号，问题积累到临界点才被暴露。' },
+        { max:79, label:'结构性逃逸', desc:'有能力的个体和资本用脚投票，系统自我消耗，加速空心化。' },
+        { max:89, label:'结构性空心', desc:'壳在运行而实质已无，全面崩盘风险。' },
+        { max:100, label:'结构性死亡', desc:'系统丧失自我修复能力，最终风险本身。' }
+    ];
+
+    const wjpDims = [
+        { cat:'生存与劳动保障', dim:'秩序与安全 + 监管执法' },
+        { cat:'劳动价值平等', dim:'基本权利保障' },
+        { cat:'收入分配公平', dim:'腐败控制与透明治理' },
+        { cat:'言论与精神自由', dim:'开放政府与信息流通' },
+        { cat:'司法', dim:'民事司法 + 刑事司法' }
+    ];
+
+    const densityConstraints = [
+        { max:0.5, score:10, label:'无约束' },
+        { max:1.0, score:8, label:'轻度约束' },
+        { max:2.0, score:6, label:'中度约束' },
+        { max:5.0, score:4, label:'重度约束' },
+        { max:Infinity, score:1, label:'极度约束' }
+    ];
+
+    let hasValidScore = false;
+    let currentFullSnapshot = null; // 存储最新快照用于历史保存
+
+    // ================================================================
+    // 历史记录（升级版：存完整快照）
+    // ================================================================
+    function getHistory() {
+        try { return JSON.parse(localStorage.getItem('civ_public_v4_history')) || []; } catch { return []; }
+    }
+    function saveHistory(snapshot) {
+        let hist = getHistory();
+        hist.push({ ...snapshot, time:Date.now() });
+        if (hist.length > 30) hist = hist.slice(-30);
+        localStorage.setItem('civ_public_v4_history', JSON.stringify(hist));
+    }
+    function clearHistory() {
+        localStorage.removeItem('civ_public_v4_history');
+        renderHistory();
+        document.getElementById('historyDetailPopup').classList.remove('open');
+        document.getElementById('historyDetailPopup').innerHTML = '';
+    }
+    function renderHistory() {
+        const hist = getHistory();
+        const recent = hist.slice(-7);
+        document.getElementById('historyCount').textContent = '记录数: ' + hist.length + ' ' + (hist.length>0 ? '' : '');
+        const container = document.getElementById('historyDots');
+        if (recent.length === 0) {
+            container.innerHTML = '<div class="history-empty">暂无历史记录，完成打分后自动保存 <span class="en">No history yet, will auto-save after scoring</span></div>';
+            return;
+        }
+        let html = '';
+        const startIdx = Math.max(0, recent.length - 7);
+        for (let i = 0; i < 7; i++) {
+            const idx = startIdx + i;
+            const entry = idx < recent.length ? recent[idx] : null;
+            const val = entry ? entry.score : 0;
+            const has = entry !== null;
+            const isCurrent = has && idx === recent.length - 1;
+            const cls = 'history-dot' + (has ? ' has-data' : '') + (isCurrent ? ' current' : '');
+            const dataIdx = has ? idx : -1;
+            html += `<div class="${cls}" data-idx="${dataIdx}" title="${has ? val+'分' : '无记录'}">
+                ${has ? `<span class="h-val">${val}</span>` : ''}
+                ${isCurrent ? `<span class="h-label current-label">当前</span>` : ''}
+            </div>`;
+        }
+        container.innerHTML = html;
+        // 绑定点击事件显示明细
+        container.querySelectorAll('.history-dot.has-data').forEach(el => {
+            el.addEventListener('click', function(e) {
+                const idx = parseInt(this.dataset.idx, 10);
+                const hist = getHistory();
+                if (idx >= 0 && idx < hist.length) {
+                    showHistoryDetail(hist[idx]);
+                }
+            });
+        });
+    }
+    function showHistoryDetail(entry) {
+        const popup = document.getElementById('historyDetailPopup');
+        if (!entry || !entry.catScores) {
+            popup.classList.remove('open');
+            popup.innerHTML = '';
+            return;
+        }
+        const catNames = categories.map(c => c.name);
+        let html = '<div style="font-weight:600;color:#d4dec4;margin-bottom:6px;">📋 ' + new Date(entry.time).toLocaleString('zh-CN') + ' 明细</div>';
+        catNames.forEach((name, i) => {
+            const s = entry.catScores && entry.catScores[i] !== undefined ? entry.catScores[i] : 0;
+            html += `<div class="detail-row"><span>${name}</span><span>${s.toFixed(1)} 分</span></div>`;
+        });
+        if (entry.judgeAvg !== undefined) {
+            html += `<div class="detail-row"><span>司法验证综合</span><span>${entry.judgeAvg.toFixed(1)} 分</span></div>`;
+        }
+        if (entry.levelText) {
+            html += `<div class="detail-row"><span>等级</span><span style="font-weight:600;color:#bace9a;">${entry.levelText}</span></div>`;
+        }
+        popup.innerHTML = html;
+        popup.classList.add('open');
+    }
+
+    // ================================================================
+    // 密度计算
+    // ================================================================
+    function computeDensity() {
+        const cases = parseFloat(document.getElementById('compCases').value) || 0;
+        const pop = parseFloat(document.getElementById('compPop').value) || 0;
+        const densityDisplay = document.getElementById('densityDisplay');
+        const constraintDisplay = document.getElementById('constraintLevel');
+        if (cases <= 0 || pop <= 0) {
+            densityDisplay.textContent = '—';
+            constraintDisplay.textContent = '—';
+            return { density:0, maxScore:10, label:'无数据' };
+        }
+        const density = cases / pop;
+        densityDisplay.textContent = density.toFixed(4);
+        let maxScore = 10, label = '无约束';
+        for (const c of densityConstraints) {
+            if (density <= c.max) { maxScore = c.score; label = c.label + ' (≤' + c.score + '分)'; break; }
+        }
+        constraintDisplay.textContent = label;
+        return { density, maxScore, label };
+    }
+
+    // ================================================================
+    // 门禁控制
+    // ================================================================
+    function checkGate() {
+        const g1 = document.getElementById('g1').checked;
+        const g2 = document.getElementById('g2').checked;
+        const g3 = document.getElementById('g3').checked;
+        const allChecked = g1 && g2 && g3;
+        const gateStatus = document.getElementById('gateStatus');
+        const gateSection = document.getElementById('gateSection');
+        const scoringArea = document.getElementById('scoringArea');
+        const gatePreview = document.getElementById('gatePreview');
+        if (allChecked) {
+            gateSection.classList.remove('locked');
+            gateSection.classList.add('unlocked');
+            gateStatus.className = 'gate-status unblocked';
+            gateStatus.innerHTML = '✅ 三大基石已全部确认。可进入打分。 <span class="en">✅ All three cornerstones confirmed. You may proceed to scoring.</span>';
+            gatePreview.innerHTML = '✓ 已解锁，下方打分区已激活 <span class="en-inline" style="font-size:0.85em; color:#5a6a4e;">✓ Unlocked, scoring area below is active</span>';
+            gatePreview.className = 'gate-preview active';
+            scoringArea.classList.remove('disabled');
+            scoringArea.classList.add('active');
+            return true;
+        } else {
+            gateSection.classList.add('locked');
+            gateSection.classList.remove('unlocked');
+            gateStatus.className = 'gate-status blocked';
+            let missing = [];
+            if (!g1) missing.push('文明基石');
+            if (!g2) missing.push('社会基石');
+            if (!g3) missing.push('治理基石');
+            gateStatus.innerHTML = '⛔ 基石未全部确认：缺失「' + missing.join('、') + '」。请勾选全部三项后进入打分。 <span class="en">⛔ Not all cornerstones confirmed: missing "' + missing.join('、') + '". Please check all three before scoring.</span>';
+            gatePreview.innerHTML = '✓ 确认后，下方打分区将自动解锁 <span class="en-inline" style="font-size:0.85em; color:#5a6a4e;">✓ The scoring area below will unlock upon confirmation</span>';
+            gatePreview.className = 'gate-preview';
+            scoringArea.classList.add('disabled');
+            scoringArea.classList.remove('active');
+            renderResultNotEntered(missing);
+            return false;
+        }
+    }
+
+    // ================================================================
+    // 更新含义显示
+    // ================================================================
+    function updateMeaning(sliderId, meaningId, meaningsMap) {
+        const slider = document.getElementById(sliderId);
+        const meaningEl = document.getElementById(meaningId);
+        if (!slider || !meaningEl) return;
+        const val = parseInt(slider.value, 10) || 0;
+        const meaningsList = meaningsMap[sliderId];
+        if (meaningsList && meaningsList[val]) {
+            meaningEl.textContent = meaningsList[val];
+        } else {
+            meaningEl.textContent = val + '分';
+        }
+    }
+
+    // ================================================================
+    // 渲染结果（含优先行动建议）
+    // ================================================================
+    function renderResultNotEntered(missing) {
+        const container = document.getElementById('resultContent');
+        hasValidScore = false;
+        const missingStr = missing.join('、');
+        container.innerHTML = `
+            <div class="result-main">
+                <div class="big-score" style="font-size:40px; color:#b05a4a;">—</div>
+                <div class="big-level not-entered" style="font-size:32px;">
+                    未进入文明等级
+                    <span class="en" style="font-size:0.6em; font-weight:400; color:#7a8a6e;">Not Entered into Civilization Level</span>
+                </div>
+            </div>
+            <div class="result-section">
+                <div class="section-title">诊断摘要 <span class="en-inline" style="font-weight:400; font-size:0.7em; color:#7a8a6e; margin-left:8px;">Diagnosis Summary</span></div>
+                <div class="section-body">
+                    <p>三大基石未全部确认。缺失项：<strong style="color:#b05a4a;">${missingStr}</strong>。<span class="en">Not all three cornerstones confirmed. Missing: <strong style="color:#b05a4a;">${missingStr}</strong>.</span></p>
+                    <p style="font-size:14px; color:#7a8a6e; margin-top:8px;">文明的前提是三大基石同时成立。缺一则系统不具备被评估为“文明”的基本资格。<span class="en">The three cornerstones must hold simultaneously. Missing any one disqualifies the system from being evaluated as "civilization."</span></p>
+                    <p style="margin-top:8px; color:#7a8a6e;">请返回顶部确认全部基石后，再进行打分。<span class="en">Please return to the top, confirm all three cornerstones, then proceed with scoring.</span></p>
+                </div>
+            </div>
+            <div class="result-section">
+                <div class="section-title">九式诊断定位 <span class="en-inline" style="font-weight:400; font-size:0.7em; color:#7a8a6e; margin-left:8px;">Nine-Step Diagnosis Positioning</span></div>
+                <div class="section-body">
+                    <p><span style="color:#b05a4a; font-weight:600;">未进入诊断路径</span> — 因基石缺失，系统不具备文明基本资格，无法定位。<span class="en"><span style="color:#b05a4a; font-weight:600;">Not Entered into Diagnostic Path</span> — Due to missing cornerstones, the system lacks the basic qualification for civilization and cannot be positioned.</span></p>
+                    <p style="font-size:13px; color:#5a6a4e; margin-top:4px;">基石是文明的“零号原则”，缺一则后续一切诊断无效。<span class="en">The cornerstones are civilization's "Zero Principle" — missing any one invalidates all subsequent diagnoses.</span></p>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderResultEntered(baseTotal, catScores, catNames, judgeAvg, judgeScores, densityInfo, hasLowBucket) {
+        const container = document.getElementById('resultContent');
+        hasValidScore = true;
+
+        const densityMax = densityInfo ? densityInfo.maxScore : 10;
+        const judgeFinal = Math.min(judgeAvg, densityMax);
+        const discount = 0.8 + (judgeFinal / 10) * 0.2;
+        const finalScore = Math.round(baseTotal * discount);
+        let levelText, levelClass;
+        if (hasLowBucket) {
+            levelText = '低级文明（最短木桶律触发）';
+            levelClass = 'level-low';
+        } else if (finalScore <= 39) {
+            levelText = '低级文明';
+            levelClass = 'level-low';
+        } else if (finalScore <= 79) {
+            levelText = '中级文明';
+            levelClass = 'level-mid';
+        } else {
+            levelText = '高级文明';
+            levelClass = 'level-high';
         }
 
-        function saveHistory(score) {
-            let hist = getHistory();
-            hist.push({ score, time: Date.now() });
-            if (hist.length > 30) hist = hist.slice(-30);
-            localStorage.setItem('civ_public_v4_history', JSON.stringify(hist));
+        let dimHtml = '';
+        catNames.forEach((name, i) => {
+            dimHtml += `<div class="dim-row"><span class="dim-name">${name}</span><span class="dim-score">${catScores[i].toFixed(1)} 分（满分25）</span></div>`;
+        });
+
+        let minIdx = 0, minVal = catScores[0];
+        catScores.forEach((s, i) => { if (s < minVal) { minVal = s; minIdx = i; } });
+        const weakestCat = catNames[minIdx];
+
+        let step = nineSteps.find(s => finalScore <= s.max);
+        if (!step) step = nineSteps[nineSteps.length - 1];
+        let diagText = '';
+        if (hasLowBucket) {
+            diagText = '⛔ 最短木桶律已触发：某一核心要素得分≤5，总分自动锁死低级文明。其他三项表现再优异不可拉升、不可弥补。' +
+                ' 系统处于「' + step.label + '」阶段。' + step.desc;
+        } else {
+            diagText = '当前系统处于「' + step.label + '」阶段。' + step.desc;
+            if (finalScore <= 39) diagText += ' 系统处于准丛林状态，需要从根源重建基石。';
+            else if (finalScore <= 79) diagText += ' 基石已立，但仍有结构性问题待解决。建议优先处理「' + weakestCat + '」维度的制度性缺陷。';
+            else diagText += ' 系统已接近或达到高级文明临界点。需监测代际纠偏机制是否持续运转。';
+        }
+        if (judgeFinal <= 2) diagText += ' ⚠️ 司法验证未通过，治理基石存在系统性缺陷。';
+        else if (judgeFinal <= 5) diagText += ' ⚠️ 司法验证部分通过，治理基石存在明显瑕疵。';
+
+        const judgeStatus = judgeFinal >= 8 ? '✅ 通过' : (judgeFinal >= 5 ? '⚠️ 部分通过' : '❌ 未通过');
+        const judgeStatusClass = judgeFinal >= 8 ? 'status-ok' : (judgeFinal >= 5 ? 'status-warn' : 'status-fail');
+
+        // ===== 优先行动建议（新增） =====
+        let actionHtml = '';
+        if (hasLowBucket) {
+            actionHtml = `<p><strong>🚨 优先行动：</strong>触发最短木桶律，核心要素「${weakestCat}」得分≤5。应立即针对该要素制定系统性修复方案，其他维度再优异也无法拉升总等级。</p>`;
+        } else {
+            let actions = [];
+            if (weakestCat === '生存与劳动保障') {
+                actions.push('优先完善基本社会保障安全网，确保失业和大病风险不击穿个体生存底线。');
+            } else if (weakestCat === '劳动价值平等') {
+                actions.push('重点消除职场歧视（年龄、性别、户籍），推进同工同酬和离线权立法。');
+            } else if (weakestCat === '收入分配公平') {
+                actions.push('强化再分配机制，缩小贫富差距，确保劳动所得与资本所得相对平衡。');
+            } else if (weakestCat === '言论与精神自由') {
+                actions.push('推动信息自由流通，保障学术和媒体独立，让批评和多元声音得到合法空间。');
+            }
+            if (judgeFinal <= 5) {
+                actions.push('司法验证薄弱，需优先落实“判决前不可触碰人身财产”、“系统承担错误成本”、“不公感知必须响应”三条硬条件。');
+            }
+            if (actions.length === 0) actions.push('保持现有制度建设，重点关注代际纠偏和社会流动性，防止系统僵化。');
+            actionHtml = `<p><strong>📌 优先行动建议：</strong></p><ul style="padding-left:20px; margin:4px 0;">`;
+            actions.forEach(a => { actionHtml += `<li>${a}</li>`; });
+            actionHtml += `</ul>`;
         }
 
-        function clearHistory() {
-            localStorage.removeItem('civ_public_v4_history');
+        // WJP映射
+        let wjpHtml = '';
+        let wjpAvg = 0;
+        catScores.forEach((s, i) => {
+            const wjp = (s / 25) * 0.9 + 0.1;
+            wjpAvg += wjp;
+            wjpHtml += `<div class="wjp-row"><span class="wjp-label">${wjpDims[i].dim}</span><span class="wjp-value">${wjp.toFixed(2)}</span></div>`;
+        });
+        const judgeWjp = (judgeFinal / 10) * 0.9 + 0.1;
+        wjpAvg = (wjpAvg + judgeWjp) / (wjpDims.length);
+        wjpHtml += `<div class="wjp-row"><span class="wjp-label">民事司法 + 刑事司法</span><span class="wjp-value">${judgeWjp.toFixed(2)}</span></div>`;
+        const wjpLegend = `<div class="wjp-legend">
+            <span class="legend-item"><span class="color-dot red"></span> &lt; 0.30 严重不足</span>
+            <span class="legend-item"><span class="color-dot yellow"></span> 0.30-0.60 待改进</span>
+            <span class="legend-item"><span class="color-dot green"></span> 0.60-0.80 良好</span>
+            <span class="legend-item"><span class="color-dot bright"></span> &gt; 0.80 优秀</span>
+        </div>`;
+        const refNote = `<div class="wjp-ref-note"><strong>📌 参照说明：</strong> 本评分器的锚点参照国际劳工组织（ILO）社会保障底线标准、经济合作与发展组织（OECD）成员国平均实践水平，以及22个“以人为本”制度体系国家在相应维度的最优实践方向。WJP法治指数（世界正义工程）在结果区提供辅助印证，不参与计分。</div>`;
+        const wjpPosition = `你的得分在参照系中的位置：约 <strong style="color:#bace9a;">${(wjpAvg).toFixed(2)}</strong>（0-1区间，越高越好）`;
+        const calcPath = `四大类总分 ${baseTotal.toFixed(1)} → 司法验证平均分 ${judgeAvg.toFixed(1)} 分 × 密度约束 ≤ ${densityMax} 分 → 综合司法 ${judgeFinal.toFixed(1)} 分 → 折扣系数 ${discount.toFixed(2)} → 最终得分 ${finalScore}`;
+
+        let densityHtml = '';
+        if (densityInfo && densityInfo.density > 0) {
+            densityHtml = `<div style="font-size:13px; color:#7a8a6e; margin-top:4px;">记录密度：${densityInfo.density.toFixed(4)} 件/万人 | 约束等级：${densityInfo.label} | 司法上限：≤${densityInfo.maxScore}分</div>`;
+        } else {
+            densityHtml = `<div style="font-size:13px; color:#4a5a3e; margin-top:4px;">未输入“认错记录”数据，司法维度仅基于主观打分</div>`;
+        }
+
+        let judgeDetailHtml = '';
+        judgeScores.forEach((s, i) => {
+            judgeDetailHtml += `<div class="dim-row"><span class="dim-name">${judgeLabels[i]}</span><span class="dim-score">${s.toFixed(1)} 分</span></div>`;
+        });
+        const cornerstoneStatus = '✅ 三大基石：已全部确认';
+        const bucketStatus = hasLowBucket ? '⛔ 最短木桶律：触发（某一核心要素得分≤5，总分锁死低级）' : '✅ 最短木桶律：未触发（所有维度均超过5分）';
+        const judgeStatusLine = judgeFinal >= 8 ? '✅ 司法验证：通过（治理基石可预期，对权力的制约有效）' : (judgeFinal >= 5 ? '⚠️ 司法验证：部分通过（治理基石存在瑕疵）' : '❌ 司法验证：未通过（治理基石存在系统性缺陷）');
+        const weakDiagnosis = hasLowBucket ? `⚠️ 最短木桶律触发：核心要素「${weakestCat}」得分 ≤ 5（${minVal.toFixed(1)} 分），系统被锁定为低级文明。` : `📌 最薄弱维度：${weakestCat}（${minVal.toFixed(1)} 分），建议优先关注该维度的制度建设。`;
+
+        container.innerHTML = `
+            <div class="result-main">
+                <div class="big-score">${finalScore}<span class="denom"> / 100</span></div>
+                <div class="big-level ${levelClass}">${levelText}</div>
+            </div>
+            <div class="result-section">
+                <div class="section-title">四大要素得分明细</div>
+                <div class="section-body">${dimHtml}</div>
+            </div>
+            <div class="result-section">
+                <div class="section-title">司法验证（治理基石）</div>
+                <div class="section-body">
+                    ${judgeDetailHtml}
+                    <div style="margin-top:6px; padding-top:6px; border-top:1px solid #1a1e1a;">
+                        <div class="dim-row"><span class="dim-name">司法维度综合得分</span><span class="dim-score" style="color:${judgeFinal <= 2 ? '#b05a4a' : judgeFinal <= 5 ? '#b89a4a' : '#8aaa6a'};">${judgeFinal.toFixed(1)} 分</span></div>
+                        <div class="dim-row"><span class="dim-name">司法折扣系数</span><span class="dim-score">${discount.toFixed(2)}</span></div>
+                        <div class="calc-path">完整计算路径：<span class="highlight">${calcPath}</span></div>
+                        ${densityHtml}
+                    </div>
+                </div>
+            </div>
+            <div class="result-section">
+                <div class="section-title">诊断定位</div>
+                <div class="section-body">
+                    <p><strong>九式路径定位：</strong> ${diagText}</p>
+                    <p style="margin-top:8px;"><strong>薄弱项提示：</strong> ${weakDiagnosis}</p>
+                    <p style="margin-top:8px;"><strong>司法验证状态：</strong><span class="${judgeStatusClass}">${judgeStatus}</span></p>
+                    ${judgeFinal <= 2 ? '<p style="color:#b05a4a; font-size:14px; margin-top:6px;">⚠️ 治理基石存在系统性缺陷：三条硬条件中至少两条严重不足。对权力的制约是文明的前提，需优先修复。</p>' : ''}
+                    ${hasLowBucket ? '<p style="color:#b05a4a; font-size:14px; margin-top:6px;">⛔ 最短木桶律已触发：某项核心要素得分≤5，系统被锁定为低级文明。其他维度再优异不可拉升、不可弥补。</p>' : ''}
+                </div>
+            </div>
+            <!-- ===== 新增：优先行动建议 ===== -->
+            <div class="result-section">
+                <div class="section-title">优先行动建议 <span class="en-inline" style="font-weight:400; font-size:0.7em; color:#7a8a6e; margin-left:8px;">Priority Action Recommendations</span></div>
+                <div class="section-body">${actionHtml}</div>
+            </div>
+            <div class="result-section">
+                <div class="section-title">WJP 法治维度映射参照</div>
+                <div class="wjp-box" style="margin-top:0;">
+                    ${wjpHtml}
+                    <div class="wjp-position">${wjpPosition}</div>
+                    ${wjpLegend}
+                    ${refNote}
+                </div>
+            </div>
+            <div class="result-section">
+                <div class="section-title">元法则状态</div>
+                <div class="section-body">
+                    <div>${cornerstoneStatus}</div>
+                    <div>${bucketStatus}</div>
+                    <div class="${judgeStatusClass}">${judgeStatusLine}</div>
+                </div>
+            </div>
+            <div class="result-section" style="text-align:center;">
+                <button class="btn-rescore" id="rescoreBtn">↺ 重新评分</button>
+            </div>
+        `;
+
+        document.getElementById('rescoreBtn')?.addEventListener('click', function() {
+            document.getElementById('scoringArea').scrollIntoView({ behavior:'smooth', block:'start' });
+            const firstSlider = document.querySelector('.scoring-area input[type="range"]');
+            if (firstSlider) setTimeout(() => firstSlider.focus(), 400);
+        });
+
+        // 保存快照到历史（包含各维度得分、司法平均、等级）
+        if (hasValidScore) {
+            const snapshot = {
+                score: finalScore,
+                catScores: catScores,
+                judgeAvg: judgeAvg,
+                levelText: levelText,
+                time: Date.now()
+            };
+            saveHistory(snapshot);
             renderHistory();
         }
+    }
 
-        function renderHistory() {
-            const hist = getHistory();
-            const recent = hist.slice(-7);
-            document.getElementById('historyCount').textContent = '记录数: 0';
-            const container = document.getElementById('historyDots');
-            if (recent.length === 0) {
-                container.innerHTML = '<div class="history-empty">暂无历史记录，完成打分后自动保存 <span class="en">No history yet, will auto-save after scoring</span></div>';
-                return;
-            }
-            let html = '';
-            const startIdx = Math.max(0, recent.length - 7);
-            for (let i = 0; i < 7; i++) {
-                const idx = startIdx + i;
-                const entry = idx < recent.length ? recent[idx] : null;
-                const val = entry ? entry.score : 0;
-                const has = entry !== null;
-                const isCurrent = has && idx === recent.length - 1;
-                const cls = 'history-dot' +
-                    (has ? ' has-data' : '') +
-                    (isCurrent ? ' current' : '');
-                html += `
-                    <div class="${cls}" title="${has ? val + '分' : '无记录'}">
-                        ${has ? `<span class="h-val">${val}</span>` : ''}
-                        ${isCurrent ? `<span class="h-label current-label">当前</span>` : ''}
-                    </div>
-                `;
-            }
-            container.innerHTML = html;
-        }
+    // ================================================================
+    // 核心更新
+    // ================================================================
+    function update() {
+        if (!checkGate()) return;
 
-        // ================================================================
-        // 密度计算
-        // ================================================================
-        function computeDensity() {
-            const cases = parseFloat(document.getElementById('compCases').value) || 0;
-            const pop = parseFloat(document.getElementById('compPop').value) || 0;
-            const densityDisplay = document.getElementById('densityDisplay');
-            const constraintDisplay = document.getElementById('constraintLevel');
+        const allSliderIds = [
+            'c1s1','c1s2','c1s3','c1s4',
+            'c2s1','c2s2','c2s3','c2s4','c2s5','c2s6',
+            'c3s1','c3s2','c3s3','c3s4',
+            'c4s1','c4s2','c4s3','c4s4',
+            'j1','j2','j3'
+        ];
+        allSliderIds.forEach(id => { updateMeaning(id, id + '_mean', meanings); });
 
-            if (cases <= 0 || pop <= 0) {
-                densityDisplay.textContent = '—';
-                constraintDisplay.textContent = '—';
-                return { density: 0, maxScore: 10, label: '无数据' };
-            }
-
-            const density = cases / pop;
-            densityDisplay.textContent = density.toFixed(4);
-
-            let maxScore = 10;
-            let label = '无约束';
-            for (const c of densityConstraints) {
-                if (density <= c.max) {
-                    maxScore = c.score;
-                    label = c.label + ' (≤' + c.score + '分)';
-                    break;
-                }
-            }
-            constraintDisplay.textContent = label;
-            return { density, maxScore, label };
-        }
-
-        // ================================================================
-        // 门禁控制
-        // ================================================================
-        function checkGate() {
-            const g1 = document.getElementById('g1').checked;
-            const g2 = document.getElementById('g2').checked;
-            const g3 = document.getElementById('g3').checked;
-            const allChecked = g1 && g2 && g3;
-            const gateStatus = document.getElementById('gateStatus');
-            const gateSection = document.getElementById('gateSection');
-            const scoringArea = document.getElementById('scoringArea');
-            const gatePreview = document.getElementById('gatePreview');
-
-            if (allChecked) {
-                gateSection.classList.remove('locked');
-                gateSection.classList.add('unlocked');
-                gateStatus.className = 'gate-status unblocked';
-                gateStatus.innerHTML = '✅ 三大基石已全部确认。可进入打分。 <span class="en">✅ All three cornerstones confirmed. You may proceed to scoring.</span>';
-                gatePreview.innerHTML = '✓ 已解锁，下方打分区已激活 <span class="en-inline" style="font-size:0.85em; color:#5a6a4e;">✓ Unlocked, scoring area below is active</span>';
-                gatePreview.className = 'gate-preview active';
-                scoringArea.classList.remove('disabled');
-                scoringArea.classList.add('active');
-                return true;
-            } else {
-                gateSection.classList.add('locked');
-                gateSection.classList.remove('unlocked');
-                gateStatus.className = 'gate-status blocked';
-                let missing = [];
-                if (!g1) missing.push('文明基石');
-                if (!g2) missing.push('社会基石');
-                if (!g3) missing.push('治理基石');
-                gateStatus.innerHTML = '⛔ 基石未全部确认：缺失「' + missing.join('、') + '」。请勾选全部三项后进入打分。 <span class="en">⛔ Not all cornerstones confirmed: missing "' + missing.join('、') + '". Please check all three before scoring.</span>';
-                gatePreview.innerHTML = '✓ 确认后，下方打分区将自动解锁 <span class="en-inline" style="font-size:0.85em; color:#5a6a4e;">✓ The scoring area below will unlock upon confirmation</span>';
-                gatePreview.className = 'gate-preview';
-                scoringArea.classList.add('disabled');
-                scoringArea.classList.remove('active');
-                renderResultNotEntered(missing);
-                return false;
-            }
-        }
-
-        // ================================================================
-        // 更新含义显示
-        // ================================================================
-        function updateMeaning(sliderId, meaningId, meaningsMap) {
-            const slider = document.getElementById(sliderId);
-            const meaningEl = document.getElementById(meaningId);
-            if (!slider || !meaningEl) return;
-            const val = parseInt(slider.value, 10) || 0;
-            const meaningsList = meaningsMap[sliderId];
-            if (meaningsList && meaningsList[val]) {
-                meaningEl.textContent = meaningsList[val];
-            } else {
-                meaningEl.textContent = val + '分';
-            }
-        }
-
-        // ================================================================
-        // 渲染结果
-        // ================================================================
-        function renderResultNotEntered(missing) {
-            const container = document.getElementById('resultContent');
-            hasValidScore = false;
-            const missingStr = missing.join('、');
-            container.innerHTML = `
-                <div class="result-main">
-                    <div class="big-score" style="font-size:40px; color:#b05a4a;">—</div>
-                    <div class="big-level not-entered" style="font-size:32px;">
-                        未进入文明等级
-                        <span class="en" style="font-size:0.6em; font-weight:400; color:#7a8a6e;">Not Entered into Civilization Level</span>
-                    </div>
-                </div>
-                <div class="result-section">
-                    <div class="section-title">
-                        诊断摘要
-                        <span class="en-inline" style="font-weight:400; font-size:0.7em; color:#7a8a6e; margin-left:8px;">Diagnosis Summary</span>
-                    </div>
-                    <div class="section-body">
-                        <p>
-                            三大基石未全部确认。缺失项：<strong style="color:#b05a4a;">${missingStr}</strong>。
-                            <span class="en">Not all three cornerstones confirmed. Missing: <strong style="color:#b05a4a;">${missingStr}</strong>.</span>
-                        </p>
-                        <p style="font-size:14px; color:#7a8a6e; margin-top:8px;">
-                            文明的前提是三大基石同时成立。缺一则系统不具备被评估为“文明”的基本资格。
-                            <span class="en">The three cornerstones must hold simultaneously. Missing any one disqualifies the system from being evaluated as "civilization."</span>
-                        </p>
-                        <p style="margin-top:8px; color:#7a8a6e;">
-                            请返回顶部确认全部基石后，再进行打分。
-                            <span class="en">Please return to the top, confirm all three cornerstones, then proceed with scoring.</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="result-section">
-                    <div class="section-title">
-                        九式诊断定位
-                        <span class="en-inline" style="font-weight:400; font-size:0.7em; color:#7a8a6e; margin-left:8px;">Nine-Step Diagnosis Positioning</span>
-                    </div>
-                    <div class="section-body">
-                        <p>
-                            <span style="color:#b05a4a; font-weight:600;">未进入诊断路径</span> — 因基石缺失，系统不具备文明基本资格，无法定位。
-                            <span class="en"><span style="color:#b05a4a; font-weight:600;">Not Entered into Diagnostic Path</span> — Due to missing cornerstones, the system lacks the basic qualification for civilization and cannot be positioned.</span>
-                        </p>
-                        <p style="font-size:13px; color:#5a6a4e; margin-top:4px;">
-                            基石是文明的“零号原则”，缺一则后续一切诊断无效。
-                            <span class="en">The cornerstones are civilization's "Zero Principle" — missing any one invalidates all subsequent diagnoses.</span>
-                        </p>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderResultEntered(baseTotal, catScores, catNames, judgeAvg, judgeScores, densityInfo, hasLowBucket) {
-            const container = document.getElementById('resultContent');
-            hasValidScore = true;
-
-            const densityMax = densityInfo ? densityInfo.maxScore : 10;
-            const judgeFinal = Math.min(judgeAvg, densityMax);
-            const discount = 0.8 + (judgeFinal / 10) * 0.2;
-            const finalScore = Math.round(baseTotal * discount);
-
-            let levelText, levelClass;
-            if (hasLowBucket) {
-                levelText = '低级文明（最短木桶律触发）';
-                levelClass = 'level-low';
-            } else if (finalScore <= 39) {
-                levelText = '低级文明';
-                levelClass = 'level-low';
-            } else if (finalScore <= 79) {
-                levelText = '中级文明';
-                levelClass = 'level-mid';
-            } else {
-                levelText = '高级文明';
-                levelClass = 'level-high';
-            }
-
-            let dimHtml = '';
-            catNames.forEach((name, i) => {
-                dimHtml +=
-                    `<div class="dim-row"><span class="dim-name">${name}</span><span class="dim-score">${catScores[i].toFixed(1)} 分（满分25）</span></div>`;
-            });
-
-            let minIdx = 0,
-                minVal = catScores[0];
-            catScores.forEach((s, i) => { if (s < minVal) { minVal = s;
-                    minIdx = i; } });
-            const weakestCat = catNames[minIdx];
-
-            let step = nineSteps.find(s => finalScore <= s.max);
-            if (!step) step = nineSteps[nineSteps.length - 1];
-            let diagText = '';
-            if (hasLowBucket) {
-                diagText = '⛔ 最短木桶律已触发：某一核心要素得分≤5，总分自动锁死低级文明。其他三项表现再优异不可拉升、不可弥补。' +
-                    ' 系统处于「' + step.label + '」阶段。' + step.desc;
-            } else {
-                diagText = '当前系统处于「' + step.label + '」阶段。' + step.desc;
-                if (finalScore <= 39) {
-                    diagText += ' 系统处于准丛林状态，需要从根源重建基石。';
-                } else if (finalScore <= 79) {
-                    diagText += ' 基石已立，但仍有结构性问题待解决。建议优先处理「' + weakestCat + '」维度的制度性缺陷。';
-                } else {
-                    diagText += ' 系统已接近或达到高级文明临界点。需监测代际纠偏机制是否持续运转。';
-                }
-            }
-            if (judgeFinal <= 2) {
-                diagText += ' ⚠️ 司法验证未通过，治理基石存在系统性缺陷。';
-            } else if (judgeFinal <= 5) {
-                diagText += ' ⚠️ 司法验证部分通过，治理基石存在明显瑕疵。';
-            }
-
-            const judgeStatus = judgeFinal >= 8 ? '✅ 通过' : (judgeFinal >= 5 ? '⚠️ 部分通过' : '❌ 未通过');
-            const judgeStatusClass = judgeFinal >= 8 ? 'status-ok' : (judgeFinal >= 5 ? 'status-warn' : 'status-fail');
-
-            let wjpHtml = '';
-            let wjpAvg = 0;
-            catScores.forEach((s, i) => {
-                const wjp = (s / 25) * 0.9 + 0.1;
-                wjpAvg += wjp;
-                wjpHtml += `
-                    <div class="wjp-row">
-                        <span class="wjp-label">${wjpDims[i].dim}</span>
-                        <span class="wjp-value">${wjp.toFixed(2)}</span>
-                    </div>
-                `;
-            });
-            const judgeWjp = (judgeFinal / 10) * 0.9 + 0.1;
-            wjpAvg = (wjpAvg + judgeWjp) / (wjpDims.length);
-            wjpHtml += `
-                <div class="wjp-row">
-                    <span class="wjp-label">民事司法 + 刑事司法</span>
-                    <span class="wjp-value">${judgeWjp.toFixed(2)}</span>
-                </div>
-            `;
-
-            const wjpLegend = `
-                <div class="wjp-legend">
-                    <span class="legend-item"><span class="color-dot red"></span> &lt; 0.30 严重不足</span>
-                    <span class="legend-item"><span class="color-dot yellow"></span> 0.30-0.60 待改进</span>
-                    <span class="legend-item"><span class="color-dot green"></span> 0.60-0.80 良好</span>
-                    <span class="legend-item"><span class="color-dot bright"></span> &gt; 0.80 优秀</span>
-                </div>
-            `;
-
-            const refNote = `
-                <div class="wjp-ref-note">
-                    <strong>📌 参照说明：</strong> 本评分器的锚点参照国际劳工组织（ILO）社会保障底线标准、经济合作与发展组织（OECD）成员国平均实践水平，以及22个“以人为本”制度体系国家在相应维度的最优实践方向。WJP法治指数（世界正义工程）在结果区提供辅助印证，不参与计分。
-                </div>
-            `;
-
-            const wjpPosition =
-                `你的得分在参照系中的位置：约 <strong style="color:#bace9a;">${(wjpAvg).toFixed(2)}</strong>（0-1区间，越高越好）`;
-
-            const calcPath =
-                `四大类总分 ${baseTotal.toFixed(1)} → 司法验证平均分 ${judgeAvg.toFixed(1)} 分 × 密度约束 ≤ ${densityMax} 分 → 综合司法 ${judgeFinal.toFixed(1)} 分 → 折扣系数 ${discount.toFixed(2)} → 最终得分 ${finalScore}`;
-
-            let densityHtml = '';
-            if (densityInfo && densityInfo.density > 0) {
-                densityHtml = `
-                    <div style="font-size:13px; color:#7a8a6e; margin-top:4px;">
-                        记录密度：${densityInfo.density.toFixed(4)} 件/万人 | 约束等级：${densityInfo.label} | 司法上限：≤${densityInfo.maxScore}分
-                    </div>
-                `;
-            } else {
-                densityHtml =
-                    `<div style="font-size:13px; color:#4a5a3e; margin-top:4px;">未输入“认错记录”数据，司法维度仅基于主观打分</div>`;
-            }
-
-            let judgeDetailHtml = '';
-            judgeScores.forEach((s, i) => {
-                judgeDetailHtml +=
-                    `<div class="dim-row"><span class="dim-name">${judgeLabels[i]}</span><span class="dim-score">${s.toFixed(1)} 分</span></div>`;
-            });
-
-            const cornerstoneStatus = '✅ 三大基石：已全部确认';
-            const bucketStatus = hasLowBucket ?
-                '⛔ 最短木桶律：触发（某一核心要素得分≤5，总分锁死低级）' :
-                '✅ 最短木桶律：未触发（所有维度均超过5分）';
-            const judgeStatusLine = judgeFinal >= 8 ?
-                '✅ 司法验证：通过（治理基石可预期，对权力的制约有效）' :
-                (judgeFinal >= 5 ?
-                    '⚠️ 司法验证：部分通过（治理基石存在瑕疵）' :
-                    '❌ 司法验证：未通过（治理基石存在系统性缺陷）');
-
-            const weakDiagnosis = hasLowBucket ?
-                `⚠️ 最短木桶律触发：核心要素「${weakestCat}」得分 ≤ 5（${minVal.toFixed(1)} 分），系统被锁定为低级文明。` :
-                `📌 最薄弱维度：${weakestCat}（${minVal.toFixed(1)} 分），建议优先关注该维度的制度建设。`;
-
-            container.innerHTML = `
-                <div class="result-main">
-                    <div class="big-score">${finalScore}<span class="denom"> / 100</span></div>
-                    <div class="big-level ${levelClass}">${levelText}</div>
-                </div>
-
-                <div class="result-section">
-                    <div class="section-title">四大要素得分明细</div>
-                    <div class="section-body">${dimHtml}</div>
-                </div>
-
-                <div class="result-section">
-                    <div class="section-title">司法验证（治理基石）</div>
-                    <div class="section-body">
-                        ${judgeDetailHtml}
-                        <div style="margin-top:6px; padding-top:6px; border-top:1px solid #1a1e1a;">
-                            <div class="dim-row">
-                                <span class="dim-name">司法维度综合得分</span>
-                                <span class="dim-score" style="color:${judgeFinal <= 2 ? '#b05a4a' : judgeFinal <= 5 ? '#b89a4a' : '#8aaa6a'};">${judgeFinal.toFixed(1)} 分</span>
-                            </div>
-                            <div class="dim-row">
-                                <span class="dim-name">司法折扣系数</span>
-                                <span class="dim-score">${discount.toFixed(2)}</span>
-                            </div>
-                            <div class="calc-path">完整计算路径：<span class="highlight">${calcPath}</span></div>
-                            ${densityHtml}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="result-section">
-                    <div class="section-title">诊断定位</div>
-                    <div class="section-body">
-                        <p><strong>九式路径定位：</strong> ${diagText}</p>
-                        <p style="margin-top:8px;"><strong>薄弱项提示：</strong> ${weakDiagnosis}</p>
-                        <p style="margin-top:8px;"><strong>司法验证状态：</strong><span class="${judgeStatusClass}">${judgeStatus}</span></p>
-                        ${judgeFinal <= 2 ? '<p style="color:#b05a4a; font-size:14px; margin-top:6px;">⚠️ 治理基石存在系统性缺陷：三条硬条件中至少两条严重不足。对权力的制约是文明的前提，需优先修复。</p>' : ''}
-                        ${hasLowBucket ? '<p style="color:#b05a4a; font-size:14px; margin-top:6px;">⛔ 最短木桶律已触发：某项核心要素得分≤5，系统被锁定为低级文明。其他维度再优异不可拉升、不可弥补。</p>' : ''}
-                    </div>
-                </div>
-
-                <div class="result-section">
-                    <div class="section-title">WJP 法治维度映射参照</div>
-                    <div class="wjp-box" style="margin-top:0;">
-                        ${wjpHtml}
-                        <div class="wjp-position">${wjpPosition}</div>
-                        ${wjpLegend}
-                        ${refNote}
-                    </div>
-                </div>
-
-                <div class="result-section">
-                    <div class="section-title">元法则状态</div>
-                    <div class="section-body">
-                        <div>${cornerstoneStatus}</div>
-                        <div>${bucketStatus}</div>
-                        <div class="${judgeStatusClass}">${judgeStatusLine}</div>
-                    </div>
-                </div>
-
-                <div class="result-section" style="text-align:center;">
-                    <button class="btn-rescore" id="rescoreBtn">↺ 重新评分</button>
-                </div>
-            `;
-
-            const rescoreBtnEl = document.getElementById('rescoreBtn');
-            if (rescoreBtnEl) {
-                rescoreBtnEl.addEventListener('click', function() {
-                    document.getElementById('scoringArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    const firstSlider = document.querySelector('.scoring-area input[type="range"]');
-                    if (firstSlider) setTimeout(() => firstSlider.focus(), 400);
-                });
-            }
-
-            if (hasValidScore) {
-                saveHistory(finalScore);
-                renderHistory();
-            }
-        }
-
-        // ================================================================
-        // 核心更新
-        // ================================================================
-        function update() {
-            if (!checkGate()) return;
-
-            const allSliderIds = [
-                'c1s1', 'c1s2', 'c1s3', 'c1s4',
-                'c2s1', 'c2s2', 'c2s3', 'c2s4', 'c2s5', 'c2s6',
-                'c3s1', 'c3s2', 'c3s3', 'c3s4',
-                'c4s1', 'c4s2', 'c4s3', 'c4s4',
-                'j1', 'j2', 'j3'
-            ];
-            allSliderIds.forEach(id => {
-                updateMeaning(id, id + '_mean', meanings);
-            });
-
-            let catScores = [];
-            let catNames = categories.map(c => c.name);
-
-            categories.forEach(cat => {
-                let sum = 0,
-                    count = 0;
-                cat.items.forEach(id => {
-                    const slider = document.getElementById(id);
-                    if (!slider) return;
-                    const val = parseInt(slider.value, 10) || 0;
-                    const displayEl = document.getElementById(id + '_val');
-                    if (displayEl) displayEl.textContent = val;
-                    sum += val;
-                    count++;
-                });
-                const avg = count > 0 ? sum / count : 0;
-                const catScore = avg * 2.5;
-                const scoreEl = document.getElementById(cat.scoreId);
-                if (scoreEl) scoreEl.textContent = catScore.toFixed(1);
-                catScores.push(catScore);
-            });
-
-            const baseTotal = catScores.reduce((a, b) => a + b, 0);
-            const hasLowBucket = catScores.some(s => s <= 5);
-
-            let judgeSum = 0;
-            let judgeScores = [];
-            judgeItems.forEach(id => {
+        let catScores = [], catNames = categories.map(c => c.name);
+        categories.forEach(cat => {
+            let sum = 0, count = 0;
+            cat.items.forEach(id => {
                 const slider = document.getElementById(id);
                 if (!slider) return;
                 const val = parseInt(slider.value, 10) || 0;
                 const displayEl = document.getElementById(id + '_val');
                 if (displayEl) displayEl.textContent = val;
-                judgeSum += val;
-                judgeScores.push(val);
+                sum += val; count++;
             });
-            const judgeAvg = judgeScores.length > 0 ? judgeSum / judgeScores.length : 0;
-
-            const densityInfo = computeDensity();
-
-            let hasAnyScore = false;
-            document.querySelectorAll('.scoring-area input[type="range"]').forEach(s => {
-                if (parseInt(s.value, 10) > 0) hasAnyScore = true;
-            });
-            if (!hasAnyScore && getHistory().length === 0) {
-                const container = document.getElementById('resultContent');
-                container.innerHTML = `
-                    <div class="result-main">
-                        <div class="placeholder">调整滑块后自动生成结果 <span class="en">Results will appear after adjusting the sliders</span></div>
-                    </div>
-                `;
-                return;
-            }
-
-            renderResultEntered(baseTotal, catScores, catNames, judgeAvg, judgeScores, densityInfo, hasLowBucket);
-        }
-
-        // ================================================================
-        // 事件绑定
-        // ================================================================
-        document.querySelectorAll('.gate-checkbox input[type="checkbox"]').forEach(cb => {
-            cb.addEventListener('change', update);
+            const avg = count > 0 ? sum / count : 0;
+            const catScore = avg * 2.5;
+            const scoreEl = document.getElementById(cat.scoreId);
+            if (scoreEl) scoreEl.textContent = catScore.toFixed(1);
+            catScores.push(catScore);
         });
+        const baseTotal = catScores.reduce((a,b) => a + b, 0);
+        const hasLowBucket = catScores.some(s => s <= 5);
 
+        let judgeSum = 0, judgeScores = [];
+        judgeItems.forEach(id => {
+            const slider = document.getElementById(id);
+            if (!slider) return;
+            const val = parseInt(slider.value, 10) || 0;
+            const displayEl = document.getElementById(id + '_val');
+            if (displayEl) displayEl.textContent = val;
+            judgeSum += val; judgeScores.push(val);
+        });
+        const judgeAvg = judgeScores.length > 0 ? judgeSum / judgeScores.length : 0;
+        const densityInfo = computeDensity();
+
+        let hasAnyScore = false;
         document.querySelectorAll('.scoring-area input[type="range"]').forEach(s => {
-            s.addEventListener('input', update);
+            if (parseInt(s.value,10) > 0) hasAnyScore = true;
         });
+        if (!hasAnyScore && getHistory().length === 0) {
+            const container = document.getElementById('resultContent');
+            container.innerHTML = `<div class="result-main"><div class="placeholder">调整滑块后自动生成结果 <span class="en">Results will appear after adjusting the sliders</span></div></div>`;
+            return;
+        }
+        renderResultEntered(baseTotal, catScores, catNames, judgeAvg, judgeScores, densityInfo, hasLowBucket);
+    }
 
-        document.getElementById('compCases').addEventListener('input', update);
-        document.getElementById('compPop').addEventListener('input', update);
-
-        document.getElementById('clearHistoryBtn').addEventListener('click', clearHistory);
-
-        document.getElementById('dataRefToggle').addEventListener('click', function() {
-            const box = document.getElementById('dataRefBox');
-            box.classList.toggle('open');
-            this.textContent = box.classList.contains('open') ? '📊 收起参照' : '📊 查看密度约束参照';
+    // ================================================================
+    // 一键重置所有分数（新增）
+    // ================================================================
+    function resetAllScores() {
+        if (!confirm('确定要重置所有分数吗？当前评分结果将丢失。')) return;
+        document.querySelectorAll('.scoring-area input[type="range"]').forEach(s => { s.value = '0'; });
+        // 重置显示值
+        document.querySelectorAll('.scoring-area .score').forEach(el => { el.textContent = '0'; });
+        // 重置含义显示
+        const allSliderIds = [
+            'c1s1','c1s2','c1s3','c1s4',
+            'c2s1','c2s2','c2s3','c2s4','c2s5','c2s6',
+            'c3s1','c3s2','c3s3','c3s4',
+            'c4s1','c4s2','c4s3','c4s4',
+            'j1','j2','j3'
+        ];
+        allSliderIds.forEach(id => { updateMeaning(id, id + '_mean', meanings); });
+        // 重置大类得分显示
+        categories.forEach(cat => {
+            const scoreEl = document.getElementById(cat.scoreId);
+            if (scoreEl) scoreEl.textContent = '0.0';
         });
-
-        // ================================================================
-        // 初始化
-        // ================================================================
+        // 重置密度显示
+        document.getElementById('densityDisplay').textContent = '—';
+        document.getElementById('constraintLevel').textContent = '—';
+        // 触发更新
         update();
-        renderHistory();
-        setTimeout(() => checkGate(), 100);
-    </script>
+        showToast('所有分数已重置');
+    }
 
+    // ================================================================
+    // Toast（简易）
+    // ================================================================
+    function showToast(msg) {
+        const toast = document.createElement('div');
+        toast.style.cssText = 'position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#1a2a1a; color:#d4dec4; padding:12px 28px; border-radius:12px; border:1px solid #4a7a4a; font-size:14px; font-weight:500; box-shadow:0 8px 32px rgba(0,0,0,0.6); z-index:9999; opacity:0; transition:opacity 0.4s; max-width:90%; text-align:center;';
+        toast.textContent = msg;
+        document.body.appendChild(toast);
+        requestAnimationFrame(() => { toast.style.opacity = '1'; });
+        setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 500); }, 2500);
+    }
+
+    // ================================================================
+    // 事件绑定
+    // ================================================================
+    document.querySelectorAll('.gate-checkbox input[type="checkbox"]').forEach(cb => cb.addEventListener('change', update));
+    document.querySelectorAll('.scoring-area input[type="range"]').forEach(s => s.addEventListener('input', update));
+    document.getElementById('compCases').addEventListener('input', update);
+    document.getElementById('compPop').addEventListener('input', update);
+    document.getElementById('clearHistoryBtn').addEventListener('click', clearHistory);
+    document.getElementById('dataRefToggle').addEventListener('click', function() {
+        const box = document.getElementById('dataRefBox');
+        box.classList.toggle('open');
+        this.textContent = box.classList.contains('open') ? '📊 收起参照' : '📊 查看密度约束参照';
+    });
+    // 一键重置按钮
+    document.getElementById('resetAllBtn').addEventListener('click', resetAllScores);
+
+    // ================================================================
+    // 初始化
+    // ================================================================
+    update();
+    renderHistory();
+    setTimeout(() => checkGate(), 100);
+</script>
 </body>
 </html>
