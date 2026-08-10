@@ -7,12 +7,7 @@
     <title>杨晟琦文明公理系统首页 · 独立思想锚点</title>
     <style>
         /* ===== 全局重置 & 字体 ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
             background: #0b0e0c;
             font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
@@ -20,7 +15,6 @@
             line-height: 1.8;
             padding: 28px 18px;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -28,10 +22,8 @@
             padding: 48px 56px 40px;
             border-radius: 24px;
             border: 1px solid #2a322a;
-            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 8px 60px rgba(0,0,0,0.7);
         }
-
-        /* ===== 顶部导航条 ===== */
         .top-nav {
             display: flex;
             justify-content: space-between;
@@ -42,25 +34,9 @@
             border-bottom: 1px solid #2a322a;
             font-size: 14px;
         }
-
-        .top-nav .back {
-            color: #7a8a6e;
-            text-decoration: none;
-            border-bottom: 1px dotted #4a5a3e;
-            transition: color 0.2s, border-color 0.2s;
-        }
-        .top-nav .back:hover {
-            color: #aaba8a;
-            border-bottom-color: #aaba8a;
-        }
-
-        .top-nav .badge {
-            color: #5a6a4e;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
-
-        /* ===== 顶部品牌区 ===== */
+        .top-nav .back { color:#7a8a6e; text-decoration:none; border-bottom:1px dotted #4a5a3e; transition:color .2s,border-color .2s; }
+        .top-nav .back:hover { color:#aaba8a; border-bottom-color:#aaba8a; }
+        .top-nav .badge { color:#5a6a4e; font-size:13px; letter-spacing:1px; }
         .brand {
             display: flex;
             align-items: flex-start;
@@ -70,81 +46,17 @@
             padding-bottom: 20px;
             border-bottom: 2px solid #2a322a;
         }
-
-        .brand-left {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .sub-brand {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1.4px;
-            color: #8a9a7e;
-            text-transform: uppercase;
-            margin-bottom: 2px;
-        }
-
-        .title-row {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px 18px;
-            margin-top: 2px;
-        }
-
-        .title-row h1 {
-            font-size: 36px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #e2ead4;
-            margin: 0;
-            line-height: 1.25;
-            display: inline;
-        }
-
-        .title-row .tag {
-            background: #2a322a;
-            color: #e2ead4;
-            font-size: 14px;
-            font-weight: 500;
-            padding: 4px 18px;
-            border-radius: 30px;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
-            display: inline-block;
-            border: 1px solid #3a4638;
-        }
-
-        .info-row {
-            font-size: 15px;
-            color: #7a8a6e;
-            margin-top: 6px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px 24px;
-        }
-
-        .info-row a {
-            color: #aaba8a;
-            text-decoration: none;
-            border-bottom: 1px dotted #4a5a3e;
-            transition: border-color 0.2s;
-        }
-        .info-row a:hover {
-            border-bottom: 1px solid #aaba8a;
-        }
-
-        .brand-right {
-            font-size: 15px;
-            color: #7a8a6e;
-            text-align: right;
-            align-self: flex-start;
-            margin-top: 4px;
-        }
-
-        /* ===== 设计者自述 ===== */
+        .brand-left { display:flex; flex-direction:column; gap:4px; }
+        .sub-brand { font-size:14px; font-weight:600; letter-spacing:1.4px; color:#8a9a7e; text-transform:uppercase; margin-bottom:2px; }
+        .title-row { display:flex; align-items:center; flex-wrap:wrap; gap:10px 18px; margin-top:2px; }
+        .title-row h1 { font-size:36px; font-weight:700; letter-spacing:.5px; color:#e2ead4; margin:0; line-height:1.25; display:inline; }
+        .title-row .tag { background:#2a322a; color:#e2ead4; font-size:14px; font-weight:500; padding:4px 18px; border-radius:30px; letter-spacing:.5px; white-space:nowrap; display:inline-block; border:1px solid #3a4638; }
+        .info-row { font-size:15px; color:#7a8a6e; margin-top:6px; display:flex; flex-wrap:wrap; gap:6px 24px; }
+        .info-row a { color:#aaba8a; text-decoration:none; border-bottom:1px dotted #4a5a3e; transition:border-color .2s; }
+        .info-row a:hover { border-bottom:1px solid #aaba8a; }
+        .brand-right { font-size:15px; color:#7a8a6e; text-align:right; align-self:flex-start; margin-top:4px; }
+        .en { font-size:.8em; color:#7a8a6e; font-weight:400; display:block; line-height:1.6; margin-top:2px; }
+        .en-inline { font-size:.8em; color:#7a8a6e; font-weight:400; }
         .designer-note {
             background: #1a201c;
             padding: 22px 30px;
@@ -152,43 +64,9 @@
             margin: 8px 0 28px 0;
             border-left: 5px solid #8aaa6a;
         }
-
-        .designer-note p {
-            margin-bottom: 4px;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #c6ceba;
-        }
-
-        .designer-note .highlight {
-            color: #e2ead4;
-            font-weight: 600;
-        }
-
-        .designer-note .en {
-            color: #7a8a6e;
-            font-size: 0.85em;
-            display: block;
-            margin-top: 2px;
-        }
-
-        /* ===== 英文辅助 ===== */
-        .en {
-            font-size: 0.8em;
-            color: #7a8a6e;
-            font-weight: 400;
-            display: block;
-            line-height: 1.6;
-            margin-top: 2px;
-        }
-
-        .en-inline {
-            font-size: 0.8em;
-            color: #7a8a6e;
-            font-weight: 400;
-        }
-
-        /* ===== 统一的一级标题样式（h2） ===== */
+        .designer-note p { margin-bottom:4px; font-size:16px; line-height:1.8; color:#c6ceba; }
+        .designer-note .highlight { color:#e2ead4; font-weight:600; }
+        .designer-note .en { color:#7a8a6e; font-size:.85em; display:block; margin-top:2px; }
         h2 {
             font-size: 28px;
             font-weight: 700;
@@ -197,50 +75,14 @@
             padding-bottom: 10px;
             border-bottom: 2px solid #2a322a;
             color: #e2ead4;
-            letter-spacing: 0.5px;
+            letter-spacing: .5px;
         }
-
-        h2 .en-inline {
-            font-size: 0.6em;
-            font-weight: 400;
-            color: #7a8a6e;
-            margin-left: 12px;
-        }
-
-        /* ===== 二级标题（h3） ===== */
-        h3 {
-            font-size: 21px;
-            font-weight: 600;
-            margin-top: 32px;
-            margin-bottom: 14px;
-            color: #d4dec4;
-        }
-
-        h3 .en-inline {
-            font-size: 0.6em;
-            font-weight: 400;
-            color: #7a8a6e;
-            margin-left: 8px;
-        }
-
-        p {
-            margin-bottom: 16px;
-            color: #c6ceba;
-            line-height: 1.8;
-        }
-
-        a {
-            color: #aaba8a;
-            text-decoration: none;
-            border-bottom: 1px dotted #4a5a3e;
-            transition: border-color 0.15s, color 0.15s;
-        }
-        a:hover {
-            border-bottom: 1px solid #aaba8a;
-            color: #bace9a;
-        }
-
-        /* ===== 独立的背景框：系统定位 ===== */
+        h2 .en-inline { font-size:.6em; font-weight:400; color:#7a8a6e; margin-left:12px; }
+        h3 { font-size:21px; font-weight:600; margin-top:32px; margin-bottom:14px; color:#d4dec4; }
+        h3 .en-inline { font-size:.6em; font-weight:400; color:#7a8a6e; margin-left:8px; }
+        p { margin-bottom:16px; color:#c6ceba; line-height:1.8; }
+        a { color:#aaba8a; text-decoration:none; border-bottom:1px dotted #4a5a3e; transition:border-color .15s,color .15s; }
+        a:hover { border-bottom:1px solid #aaba8a; color:#bace9a; }
         .section-positioning {
             background: #1a201c;
             border-radius: 14px;
@@ -248,27 +90,10 @@
             margin: 0 0 16px 0;
             border: 1px solid #2a322a;
         }
-
-        .section-positioning h3 {
-            margin-top: 0;
-            margin-bottom: 12px;
-            color: #e2ead4;
-        }
-
-        .section-positioning .positioning p {
-            font-size: 16px;
-            line-height: 1.9;
-            margin-bottom: 10px;
-            color: #c6ceba;
-        }
-        .section-positioning .positioning p:last-child {
-            margin-bottom: 0;
-        }
-        .section-positioning .positioning strong {
-            color: #bace9a;
-        }
-
-        /* ===== 独立的背景框：核心特点 ===== */
+        .section-positioning h3 { margin-top:0; margin-bottom:12px; color:#e2ead4; }
+        .section-positioning .positioning p { font-size:16px; line-height:1.9; margin-bottom:10px; color:#c6ceba; }
+        .section-positioning .positioning p:last-child { margin-bottom:0; }
+        .section-positioning .positioning strong { color:#bace9a; }
         .section-features {
             background: #1a201c;
             border-radius: 14px;
@@ -276,39 +101,11 @@
             margin: 0 0 28px 0;
             border: 1px solid #2a322a;
         }
-
-        .section-features h3 {
-            margin-top: 0;
-            margin-bottom: 14px;
-            color: #e2ead4;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px 28px;
-            margin-top: 0;
-        }
-
-        .feature-item {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #b6c0aa;
-            padding-left: 4px;
-        }
-
-        .feature-item .num {
-            font-weight: 700;
-            color: #e2ead4;
-            margin-right: 4px;
-        }
-
-        .feature-item .en {
-            font-size: 0.75em;
-            color: #7a8a6e;
-        }
-
-        /* ===== 五层完整链路 ===== */
+        .section-features h3 { margin-top:0; margin-bottom:14px; color:#e2ead4; }
+        .feature-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px 28px; margin-top:0; }
+        .feature-item { font-size:15px; line-height:1.7; color:#b6c0aa; padding-left:4px; }
+        .feature-item .num { font-weight:700; color:#e2ead4; margin-right:4px; }
+        .feature-item .en { font-size:.75em; color:#7a8a6e; }
         .layer {
             background: #1a201c;
             border-radius: 16px;
@@ -316,82 +113,51 @@
             margin-bottom: 32px;
             border: 1px solid #2a322a;
             border-left: 6px solid #8aaa6a;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-
-        .layer .layer-num {
-            font-size: 15px;
-            font-weight: 600;
-            color: #5a7a4a;
-            letter-spacing: 1.5px;
-            margin-bottom: 2px;
+        .layer:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+            border-color: #4a5a3e;
         }
-
-        .layer .layer-num .en-num {
-            font-size: 0.65em;
-            font-weight: 400;
-            color: #5a6a4e;
-            margin-left: 8px;
-            letter-spacing: 0.5px;
+        .layer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(138,170,106,0.03), transparent 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s ease;
         }
-
-        .layer .layer-name {
-            font-size: 26px;
-            font-weight: 600;
-            color: #e2ead4;
-            margin-bottom: 6px;
+        .layer:hover::after {
+            opacity: 1;
         }
-
-        .layer .layer-name .en-inline {
-            font-size: 0.55em;
-            font-weight: 400;
-            color: #7a8a6e;
-            margin-left: 10px;
-        }
-
+        .layer .layer-num { font-size:15px; font-weight:600; color:#5a7a4a; letter-spacing:1.5px; margin-bottom:2px; }
+        .layer .layer-num .en-num { font-size:.65em; font-weight:400; color:#5a6a4e; margin-left:8px; letter-spacing:.5px; }
+        .layer .layer-name { font-size:26px; font-weight:600; color:#e2ead4; margin-bottom:6px; }
+        .layer .layer-name .en-inline { font-size:.55em; font-weight:400; color:#7a8a6e; margin-left:10px; }
         .layer .layer-position {
-            font-size: 15px;
-            color: #7a8a6e;
-            margin-bottom: 14px;
-            padding: 10px 16px;
-            background: #131816;
-            border-radius: 8px;
-            border-left: 3px solid #4a5a3e;
-            line-height: 1.8;
+            font-size:15px;
+            color:#7a8a6e;
+            margin-bottom:14px;
+            padding:10px 16px;
+            background:#131816;
+            border-radius:8px;
+            border-left:3px solid #4a5a3e;
+            line-height:1.8;
         }
-
-        .layer .layer-position .en {
-            font-size: 0.85em;
-            color: #5a6a4e;
-            display: block;
-            margin-top: 2px;
-        }
-
-        .layer .layer-desc {
-            font-size: 15px;
-            color: #c6ceba;
-            margin-bottom: 18px;
-            line-height: 2.0;
-        }
-
-        .layer .layer-desc p {
-            margin-bottom: 8px;
-        }
-
-        .layer .layer-desc ul {
-            padding-left: 22px;
-            margin-bottom: 8px;
-        }
-
-        .layer .layer-desc ul li {
-            margin-bottom: 4px;
-            color: #b6c0aa;
-        }
-
-        .layer .layer-desc strong {
-            color: #d4dec4;
-        }
-
-        /* ===== 逻辑指引区块 ===== */
+        .layer .layer-position .en { font-size:.85em; color:#5a6a4e; display:block; margin-top:2px; }
+        .layer .layer-desc { font-size:15px; color:#c6ceba; margin-bottom:18px; line-height:2.0; }
+        .layer .layer-desc p { margin-bottom:8px; }
+        .layer .layer-desc ul { padding-left:22px; margin-bottom:8px; }
+        .layer .layer-desc ul li { margin-bottom:4px; color:#b6c0aa; }
+        .layer .layer-desc strong { color:#d4dec4; }
         .layer .logic-block {
             background: #131816;
             border-radius: 10px;
@@ -399,92 +165,17 @@
             margin: 14px 0 18px 0;
             border: 1px solid #242c22;
         }
-
-        .layer .logic-block .logic-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #7a8a6e;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .layer .logic-block .logic-label .en-label {
-            font-size: 0.7em;
-            font-weight: 400;
-            color: #5a6a4e;
-            margin-left: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        .layer .logic-block .logic-item {
-            font-size: 14px;
-            color: #b6c0aa;
-            line-height: 1.9;
-            padding: 10px 0 12px 0;
-            border-bottom: 1px solid #1e241e;
-        }
-
-        .layer .logic-block .logic-item:last-child {
-            border-bottom: none;
-        }
-
-        .layer .logic-block .logic-item .logic-num {
-            display: inline;
-            font-weight: 700;
-            color: #5a7a4a;
-            font-size: 14px;
-        }
-
-        .layer .logic-block .logic-item .logic-title {
-            display: inline;
-            font-weight: 600;
-            color: #d4dec4;
-            font-size: 15px;
-            margin-left: 2px;
-        }
-
-        .layer .logic-block .logic-item .logic-body {
-            display: block;
-            color: #b6c0aa;
-            font-size: 14px;
-            margin-top: 4px;
-            line-height: 1.9;
-        }
-
-        .layer .logic-block .logic-item .logic-summary {
-            display: block;
-            color: #c6ceba;
-            font-size: 14px;
-            font-weight: 500;
-            margin-top: 4px;
-            padding-left: 12px;
-            border-left: 2px solid #4a5a3e;
-        }
-
-        .layer .logic-block .logic-item .logic-en-body {
-            display: block;
-            font-size: 0.8em;
-            color: #5a6a4e;
-            line-height: 1.7;
-            margin-top: 4px;
-        }
-
-        .layer .logic-block .logic-item .logic-en-summary {
-            display: block;
-            font-size: 0.8em;
-            color: #5a6a4e;
-            line-height: 1.7;
-            margin-top: 2px;
-        }
-
-        /* ===== 三层角度卡 ===== */
-        .angle-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 18px;
-            margin: 18px 0 20px 0;
-        }
-
+        .layer .logic-block .logic-label { font-size:13px; font-weight:600; color:#7a8a6e; letter-spacing:2px; margin-bottom:12px; }
+        .layer .logic-block .logic-label .en-label { font-size:.7em; font-weight:400; color:#5a6a4e; margin-left:8px; letter-spacing:.5px; }
+        .layer .logic-block .logic-item { font-size:14px; color:#b6c0aa; line-height:1.9; padding:10px 0 12px 0; border-bottom:1px solid #1e241e; }
+        .layer .logic-block .logic-item:last-child { border-bottom:none; }
+        .layer .logic-block .logic-item .logic-num { display:inline; font-weight:700; color:#5a7a4a; font-size:14px; }
+        .layer .logic-block .logic-item .logic-title { display:inline; font-weight:600; color:#d4dec4; font-size:15px; margin-left:2px; }
+        .layer .logic-block .logic-item .logic-body { display:block; color:#b6c0aa; font-size:14px; margin-top:4px; line-height:1.9; }
+        .layer .logic-block .logic-item .logic-summary { display:block; color:#c6ceba; font-size:14px; font-weight:500; margin-top:4px; padding-left:12px; border-left:2px solid #4a5a3e; }
+        .layer .logic-block .logic-item .logic-en-body { display:block; font-size:.8em; color:#5a6a4e; line-height:1.7; margin-top:4px; }
+        .layer .logic-block .logic-item .logic-en-summary { display:block; font-size:.8em; color:#5a6a4e; line-height:1.7; margin-top:2px; }
+        .angle-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; margin:18px 0 20px 0; }
         .angle-card {
             background: #131816;
             border-radius: 12px;
@@ -492,87 +183,125 @@
             border: 1px solid #242c22;
             border-top: 3px solid #5a7a4a;
         }
+        .angle-card .angle-label { font-size:16px; font-weight:700; color:#bace9a; letter-spacing:1px; margin-bottom:6px; }
+        .angle-card .angle-label .en { font-size:.6em; font-weight:400; color:#5a6a4e; display:inline; margin-left:6px; }
+        .angle-card .angle-text { font-size:14px; color:#b6c0aa; line-height:1.8; }
+        .angle-card .angle-text .en { font-size:.85em; color:#6a7a5e; display:block; margin-top:3px; }
 
-        .angle-card .angle-label {
-            font-size: 16px;
-            font-weight: 700;
-            color: #bace9a;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-        }
-
-        .angle-card .angle-label .en {
-            font-size: 0.6em;
-            font-weight: 400;
-            color: #5a6a4e;
-            display: inline;
-            margin-left: 6px;
-        }
-
-        .angle-card .angle-text {
-            font-size: 14px;
-            color: #b6c0aa;
-            line-height: 1.8;
-        }
-
-        .angle-card .angle-text .en {
-            font-size: 0.85em;
-            color: #6a7a5e;
-            display: block;
-            margin-top: 3px;
-        }
-
-        .layer .layer-link {
-            display: inline-block;
+        /* ============================================================ */
+        /* ===== 入口按钮 —— 全新升级，诱惑点击 ===== */
+        /* ============================================================ */
+        .layer-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             margin-top: 6px;
-            text-decoration: none;
-            transition: border-color 0.2s, color 0.2s;
-        }
-
-        .layer .layer-link .link-en {
-            display: block;
-            font-size: 12px;
-            color: #5a6a4e;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            border-bottom: none;
-            margin-bottom: 1px;
-        }
-
-        .layer .layer-link .link-zh {
-            display: block;
-            font-size: 14px;
+            padding: 10px 28px 10px 26px;
+            background: transparent;
+            border: 1.5px solid #3a4a3a;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 600;
             color: #aaba8a;
-            border-bottom: 1px solid #3a4a3a;
-            padding-bottom: 2px;
-            transition: border-color 0.2s, color 0.2s;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            user-select: none;
+            box-shadow: 0 0 0 rgba(138,170,106,0);
         }
-
-        .layer .layer-link:hover .link-zh {
-            color: #d4dec4;
-            border-bottom-color: #8aaa6a;
+        .layer-cta .cta-text {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-
-        .layer .layer-link .link-zh .arrow {
-            color: #5a7a4a;
-            margin-left: 4px;
+        .layer-cta .cta-arrow {
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 18px;
+            line-height: 1;
+            position: relative;
+            z-index: 2;
         }
+        .layer-cta .cta-en {
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+            color: #5a6a4e;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+        /* 光泽层 */
+        .layer-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 300%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(138,170,106,0.06), rgba(138,170,106,0.10), rgba(138,170,106,0.06), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.7s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+        /* 悬停状态 */
+        .layer-cta:hover {
+            border-color: #8aaa6a;
+            color: #e2ead4;
+            background: rgba(138,170,106,0.06);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 30px rgba(138,170,106,0.12), 0 0 60px rgba(138,170,106,0.04);
+        }
+        .layer-cta:hover::before {
+            left: 100%;
+        }
+        .layer-cta:hover .cta-arrow {
+            transform: translateX(6px) scale(1.1);
+        }
+        .layer-cta:hover .cta-en {
+            color: #7a8a6e;
+        }
+        /* 点击状态 */
+        .layer-cta:active {
+            transform: scale(0.96) translateY(0px);
+            transition-duration: 0.08s;
+        }
+        /* 呼吸脉动（吸引注意） */
+        .layer-cta.pulse {
+            animation: ctaPulse 3s ease-in-out infinite;
+        }
+        @keyframes ctaPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(138,170,106,0); }
+            50% { box-shadow: 0 0 30px 4px rgba(138,170,106,0.06); }
+        }
+        /* 不同层的按钮边框色微调 */
+        .layer:nth-child(1) .layer-cta { border-color: #4a6a4a; }
+        .layer:nth-child(2) .layer-cta { border-color: #6a5a3a; }
+        .layer:nth-child(3) .layer-cta { border-color: #3a6a5a; }
+        .layer:nth-child(4) .layer-cta { border-color: #5a3a5a; }
+        .layer:nth-child(5) .layer-cta { border-color: #5a7a3a; }
+        .layer:nth-child(1) .layer-cta:hover { border-color: #8aaa6a; }
+        .layer:nth-child(2) .layer-cta:hover { border-color: #b89a4a; }
+        .layer:nth-child(3) .layer-cta:hover { border-color: #6a9a8a; }
+        .layer:nth-child(4) .layer-cta:hover { border-color: #8a6a8a; }
+        .layer:nth-child(5) .layer-cta:hover { border-color: #bace9a; }
 
-        /* 不同层的边框色 */
-        .layer:nth-child(1) { border-left-color: #8aaa6a; }
-        .layer:nth-child(2) { border-left-color: #b89a4a; }
-        .layer:nth-child(3) { border-left-color: #6a9a8a; }
-        .layer:nth-child(4) { border-left-color: #8a6a8a; }
-        .layer:nth-child(5) { border-left-color: #bace9a; }
+        .layer .layer-link-old { display:none; }
 
-        /* ===== 七层架构卡片 ===== */
         .layer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 18px 20px;
             margin: 16px 0 8px 0;
         }
-
         .layer-card {
             background: #1a201c;
             border-radius: 14px;
@@ -581,61 +310,14 @@
             border-top: 4px solid #8aaa6a;
             transition: transform 0.15s ease, box-shadow 0.2s ease;
         }
-        .layer-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .layer-card .layer-num {
-            display: inline-block;
-            background: #2a322a;
-            color: #aaba8a;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 0 14px;
-            border-radius: 30px;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .layer-card .layer-title {
-            font-weight: 700;
-            font-size: 17px;
-            color: #e2ead4;
-            margin-bottom: 4px;
-        }
-
-        .layer-card .layer-docs {
-            font-size: 14px;
-            color: #b6c0aa;
-            line-height: 1.7;
-        }
-
-        .layer-card .layer-docs a {
-            border-bottom: 1px dotted #4a5a3e;
-            color: #b6c0aa;
-        }
-        .layer-card .layer-docs a:hover {
-            border-bottom: 1px solid #aaba8a;
-            color: #aaba8a;
-        }
-
-        .layer-card .layer-func {
-            font-size: 14px;
-            color: #7a8a6e;
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 1px dashed #2a322a;
-        }
-
-        .layer-card .layer-func .en {
-            font-size: 0.8em;
-            color: #5a6a4e;
-            display: block;
-            margin-top: 2px;
-        }
-
-        /* ===== 核心公式 ===== */
+        .layer-card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.3); }
+        .layer-card .layer-num { display:inline-block; background:#2a322a; color:#aaba8a; font-size:12px; font-weight:600; padding:0 14px; border-radius:30px; letter-spacing:.5px; margin-bottom:8px; }
+        .layer-card .layer-title { font-weight:700; font-size:17px; color:#e2ead4; margin-bottom:4px; }
+        .layer-card .layer-docs { font-size:14px; color:#b6c0aa; line-height:1.7; }
+        .layer-card .layer-docs a { border-bottom:1px dotted #4a5a3e; color:#b6c0aa; }
+        .layer-card .layer-docs a:hover { border-bottom:1px solid #aaba8a; color:#aaba8a; }
+        .layer-card .layer-func { font-size:14px; color:#7a8a6e; margin-top:8px; padding-top:8px; border-top:1px dashed #2a322a; }
+        .layer-card .layer-func .en { font-size:.8em; color:#5a6a4e; display:block; margin-top:2px; }
         .formula-box {
             background: #1a201c;
             border-radius: 16px;
@@ -644,129 +326,27 @@
             text-align: center;
             font-size: 22px;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: .5px;
             border: 1px solid #2a322a;
             color: #e2ead4;
         }
-
-        .formula-box .small {
-            font-size: 16px;
-            font-weight: 400;
-            color: #7a8a6e;
-            display: block;
-            margin-top: 6px;
-        }
-
-        .formula-box .formula-en {
-            font-size: 0.6em;
-            font-weight: 400;
-            color: #7a8a6e;
-            display: block;
-            margin-top: 6px;
-        }
-
-        /* ===== 三大元法则徽章 ===== */
-        .meta-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px 24px;
-            margin: 10px 0 14px 0;
-        }
-
-        .meta-badge {
-            background: #2a322a;
-            padding: 5px 22px;
-            border-radius: 30px;
-            font-weight: 500;
-            font-size: 15px;
-            color: #aaba8a;
-            border: 1px solid #3a4638;
-        }
-
-        .meta-badge .en-inline {
-            color: #5a6a4e;
-            font-size: 0.65em;
-            font-weight: 400;
-            margin-left: 4px;
-        }
-
-        /* ===== 核心机制 ===== */
-        .mechanism-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-            gap: 14px;
-            margin: 10px 0 8px 0;
-        }
-
-        .mechanism-item {
-            background: #1a201c;
-            padding: 14px 18px;
-            border-radius: 10px;
-            border-left: 3px solid #8aaa6a;
-            font-size: 15px;
-            color: #c6ceba;
-        }
-
-        .mechanism-item strong {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 2px;
-            color: #e2ead4;
-        }
-
-        .mechanism-item .en {
-            font-size: 0.75em;
-            color: #7a8a6e;
-        }
-
-        /* ===== 链接列表 ===== */
-        .link-group {
-            margin: 16px 0 10px 0;
-        }
-
-        .link-group h4 {
-            font-size: 17px;
-            font-weight: 600;
-            margin-top: 20px;
-            margin-bottom: 8px;
-            color: #d4dec4;
-        }
-
-        .link-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .link-list li {
-            padding: 6px 0;
-            border-bottom: 1px solid #242c22;
-            font-size: 15px;
-            color: #b6c0aa;
-        }
-        .link-list li:last-child {
-            border-bottom: none;
-        }
-
-        .link-list .tag {
-            display: inline-block;
-            background: #2a322a;
-            font-size: 12px;
-            padding: 0 12px;
-            border-radius: 12px;
-            margin-right: 10px;
-            color: #aaba8a;
-            font-weight: 500;
-        }
-
-        .link-list a {
-            color: #b6c0aa;
-        }
-        .link-list a:hover {
-            color: #aaba8a;
-            border-bottom: 1px solid #aaba8a;
-        }
-
-        /* ===== 引用格式 ===== */
+        .formula-box .small { font-size:16px; font-weight:400; color:#7a8a6e; display:block; margin-top:6px; }
+        .formula-box .formula-en { font-size:.6em; font-weight:400; color:#7a8a6e; display:block; margin-top:6px; }
+        .meta-badges { display:flex; flex-wrap:wrap; gap:12px 24px; margin:10px 0 14px 0; }
+        .meta-badge { background:#2a322a; padding:5px 22px; border-radius:30px; font-weight:500; font-size:15px; color:#aaba8a; border:1px solid #3a4638; }
+        .meta-badge .en-inline { color:#5a6a4e; font-size:.65em; font-weight:400; margin-left:4px; }
+        .mechanism-list { display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:14px; margin:10px 0 8px 0; }
+        .mechanism-item { background:#1a201c; padding:14px 18px; border-radius:10px; border-left:3px solid #8aaa6a; font-size:15px; color:#c6ceba; }
+        .mechanism-item strong { display:block; font-weight:700; margin-bottom:2px; color:#e2ead4; }
+        .mechanism-item .en { font-size:.75em; color:#7a8a6e; }
+        .link-group { margin:16px 0 10px 0; }
+        .link-group h4 { font-size:17px; font-weight:600; margin-top:20px; margin-bottom:8px; color:#d4dec4; }
+        .link-list { list-style:none; padding:0; }
+        .link-list li { padding:6px 0; border-bottom:1px solid #242c22; font-size:15px; color:#b6c0aa; }
+        .link-list li:last-child { border-bottom:none; }
+        .link-list .tag { display:inline-block; background:#2a322a; font-size:12px; padding:0 12px; border-radius:12px; margin-right:10px; color:#aaba8a; font-weight:500; }
+        .link-list a { color:#b6c0aa; }
+        .link-list a:hover { color:#aaba8a; border-bottom:1px solid #aaba8a; }
         .bib-box {
             background: #1a201c;
             border-radius: 12px;
@@ -776,7 +356,6 @@
             position: relative;
             overflow-x: auto;
         }
-
         .bib-box .copy-btn {
             position: absolute;
             top: 10px;
@@ -794,17 +373,8 @@
             font-family: inherit;
             line-height: 1.5;
         }
-        .bib-box .copy-btn:hover {
-            background: #3a4638;
-            color: #e2ead4;
-            border-color: #8aaa6a;
-        }
-        .bib-box .copy-btn.copied {
-            background: #2a5a3a;
-            color: #e2ead4;
-            border-color: #8aaa6a;
-        }
-
+        .bib-box .copy-btn:hover { background:#3a4638; color:#e2ead4; border-color:#8aaa6a; }
+        .bib-box .copy-btn.copied { background:#2a5a3a; color:#e2ead4; border-color:#8aaa6a; }
         .bib-content {
             font-family: "SF Mono", "Menlo", "Consolas", monospace;
             font-size: 13px;
@@ -819,8 +389,6 @@
             color: #b6c0aa;
             line-height: 1.6;
         }
-
-        /* ===== 页脚 ===== */
         .footer {
             margin-top: 48px;
             padding-top: 22px;
@@ -829,202 +397,64 @@
             color: #5a6a4e;
             text-align: center;
         }
+        .footer a { color:#7a8a6e; border-bottom:1px dotted #4a5a3e; }
+        .footer a:hover { border-bottom:1px solid #7a8a6e; color:#aaba8a; }
+        .footer .en { font-size:.85em; color:#7a8a6e; display:block; margin-top:2px; }
 
-        .footer a {
-            color: #7a8a6e;
-            border-bottom: 1px dotted #4a5a3e;
+        /* ===== 响应式 ===== */
+        @media (max-width:1024px) { .angle-grid { grid-template-columns:1fr 1fr 1fr; gap:14px; } }
+        @media (max-width:820px) { .angle-grid { grid-template-columns:1fr 1fr; } }
+        @media (max-width:768px) {
+            body { padding:14px 8px; }
+            .container { padding:22px 14px 24px; }
+            .title-row h1 { font-size:28px; }
+            .title-row .tag { font-size:12px; padding:2px 12px; }
+            .sub-brand { font-size:12px; }
+            .info-row { font-size:14px; flex-direction:column; gap:2px; }
+            .brand-right { text-align:left; width:100%; margin-top:6px; }
+            .formula-box { font-size:18px; padding:16px 14px; }
+            .formula-box .small { font-size:14px; }
+            .formula-box .formula-en { font-size:.6em; }
+            .layer-grid { grid-template-columns:1fr; }
+            .mechanism-list { grid-template-columns:1fr; }
+            .feature-grid { grid-template-columns:1fr; gap:8px; }
+            .designer-note { padding:16px 18px; }
+            .section-positioning, .section-features { padding:16px 18px; }
+            .feature-item { font-size:14px; }
+            .top-nav { font-size:13px; }
+            .top-nav .badge { font-size:12px; }
+            .bib-box .copy-btn { font-size:12px; padding:2px 10px; top:6px; right:8px; }
+            .bib-content { font-size:12px; padding-right:50px; }
+            h2 { font-size:24px; }
+            h3 { font-size:19px; }
+            .layer { padding:20px 16px; margin-bottom:24px; }
+            .layer .layer-name { font-size:20px; }
+            .layer .layer-position { font-size:14px; padding:8px 12px; }
+            .angle-card { padding:14px 16px; }
+            .angle-card .angle-text { font-size:13px; }
+            .layer .logic-block .logic-item { font-size:13px; }
+            .layer-cta { padding:8px 18px; font-size:14px; }
+            .layer-cta .cta-en { font-size:9px; }
         }
-        .footer a:hover {
-            border-bottom: 1px solid #7a8a6e;
-            color: #aaba8a;
-        }
-
-        .footer .en {
-            font-size: 0.85em;
-            color: #7a8a6e;
-            display: block;
-            margin-top: 2px;
-        }
-
-        /* ============================================================ */
-        /* 响应式 */
-        /* ============================================================ */
-
-        @media (max-width: 1024px) {
-            .angle-grid {
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 14px;
-            }
-        }
-
-        @media (max-width: 820px) {
-            .angle-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 14px 8px;
-            }
-            .container {
-                padding: 22px 14px 24px;
-            }
-            .title-row h1 {
-                font-size: 28px;
-            }
-            .title-row .tag {
-                font-size: 12px;
-                padding: 2px 12px;
-            }
-            .sub-brand {
-                font-size: 12px;
-            }
-            .info-row {
-                font-size: 14px;
-                flex-direction: column;
-                gap: 2px;
-            }
-            .brand-right {
-                text-align: left;
-                width: 100%;
-                margin-top: 6px;
-            }
-            .formula-box {
-                font-size: 18px;
-                padding: 16px 14px;
-            }
-            .formula-box .small {
-                font-size: 14px;
-            }
-            .formula-box .formula-en {
-                font-size: 0.6em;
-            }
-            .layer-grid {
-                grid-template-columns: 1fr;
-            }
-            .mechanism-list {
-                grid-template-columns: 1fr;
-            }
-            .feature-grid {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            .designer-note {
-                padding: 16px 18px;
-            }
-            .section-positioning,
-            .section-features {
-                padding: 16px 18px;
-            }
-            .feature-item {
-                font-size: 14px;
-            }
-            .top-nav {
-                font-size: 13px;
-            }
-            .top-nav .badge {
-                font-size: 12px;
-            }
-            .bib-box .copy-btn {
-                font-size: 12px;
-                padding: 2px 10px;
-                top: 6px;
-                right: 8px;
-            }
-            .bib-content {
-                font-size: 12px;
-                padding-right: 50px;
-            }
-            h2 {
-                font-size: 24px;
-            }
-            h3 {
-                font-size: 19px;
-            }
-            .layer {
-                padding: 20px 16px;
-                margin-bottom: 24px;
-            }
-            .layer .layer-name {
-                font-size: 20px;
-            }
-            .layer .layer-position {
-                font-size: 14px;
-                padding: 8px 12px;
-            }
-            .angle-card {
-                padding: 14px 16px;
-            }
-            .angle-card .angle-text {
-                font-size: 13px;
-            }
-            .layer .logic-block .logic-item {
-                font-size: 13px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .angle-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 14px 10px 18px;
-            }
-            .title-row h1 {
-                font-size: 22px;
-            }
-            .title-row .tag {
-                font-size: 11px;
-                padding: 2px 10px;
-            }
-            .formula-box {
-                font-size: 16px;
-                padding: 12px 10px;
-            }
-            .formula-box .small {
-                font-size: 13px;
-            }
-            .formula-box .formula-en {
-                font-size: 0.6em;
-            }
-            .brand {
-                flex-direction: column;
-                gap: 6px;
-            }
-            .brand-right {
-                text-align: left;
-            }
-            .link-list li {
-                font-size: 14px;
-            }
-            .bib-content {
-                font-size: 11px;
-                padding-right: 40px;
-            }
-            .layer {
-                padding: 16px 12px;
-                margin-bottom: 18px;
-            }
-            .layer .layer-name {
-                font-size: 18px;
-            }
-            .layer .logic-block {
-                padding: 12px 14px;
-            }
-            .layer .logic-block .logic-item {
-                font-size: 13px;
-                padding: 8px 0 10px 0;
-            }
-            .angle-card {
-                padding: 12px 14px;
-            }
-            .angle-card .angle-text {
-                font-size: 13px;
-            }
+        @media (max-width:600px) { .angle-grid { grid-template-columns:1fr; } }
+        @media (max-width:480px) {
+            .container { padding:14px 10px 18px; }
+            .title-row h1 { font-size:22px; }
+            .title-row .tag { font-size:11px; padding:2px 10px; }
+            .formula-box { font-size:16px; padding:12px 10px; }
+            .formula-box .small { font-size:13px; }
+            .brand { flex-direction:column; gap:6px; }
+            .brand-right { text-align:left; }
+            .link-list li { font-size:14px; }
+            .bib-content { font-size:11px; padding-right:40px; }
+            .layer { padding:16px 12px; margin-bottom:18px; }
+            .layer .layer-name { font-size:18px; }
+            .layer .logic-block { padding:12px 14px; }
+            .layer .logic-block .logic-item { font-size:13px; padding:8px 0 10px 0; }
+            .angle-card { padding:12px 14px; }
+            .angle-card .angle-text { font-size:13px; }
+            .layer-cta { padding:6px 14px; font-size:13px; gap:6px; }
+            .layer-cta .cta-en { font-size:8px; }
         }
     </style>
 </head>
@@ -1066,22 +496,10 @@
     <div class="section-positioning">
         <h3>系统定位 <span class="en-inline">System Positioning</span></h3>
         <div class="positioning">
-            <p>
-                <strong>杨晟琦文明公理系统</strong> 是一套自洽的、可检验的文明底层逻辑框架。
-                <span class="en">Yang Shengqi's Axiomatic System of Civilization is a self-consistent, testable foundational framework for civilization at the logical level.</span>
-            </p>
-            <p>
-                它从公理定义出发，经诊断模型、度量工具、过程监测、药方设计、操作手册到验证工具，构成完整闭环。
-                <span class="en">It forms a complete closed loop, from axiomatic definitions through diagnostic models, measurement tools, process monitoring, prescription design, operational manuals, to validation instruments.</span>
-            </p>
-            <p>
-                它不依附于任何国家、政权、资本或组织，不依赖任何外部条件。
-                <span class="en">It is not affiliated with any state, regime, capital, or organization, and depends on no external conditions.</span>
-            </p>
-            <p>
-                它的唯一前提是：系统愿意被对照检验。
-                <span class="en">Its only premise: the system is willing to be examined against this benchmark.</span>
-            </p>
+            <p><strong>杨晟琦文明公理系统</strong> 是一套自洽的、可检验的文明底层逻辑框架。<span class="en">Yang Shengqi's Axiomatic System of Civilization is a self-consistent, testable foundational framework for civilization at the logical level.</span></p>
+            <p>它从公理定义出发，经诊断模型、度量工具、过程监测、药方设计、操作手册到验证工具，构成完整闭环。<span class="en">It forms a complete closed loop, from axiomatic definitions through diagnostic models, measurement tools, process monitoring, prescription design, operational manuals, to validation instruments.</span></p>
+            <p>它不依附于任何国家、政权、资本或组织，不依赖任何外部条件。<span class="en">It is not affiliated with any state, regime, capital, or organization, and depends on no external conditions.</span></p>
+            <p>它的唯一前提是：系统愿意被对照检验。<span class="en">Its only premise: the system is willing to be examined against this benchmark.</span></p>
         </div>
     </div>
 
@@ -1089,38 +507,14 @@
     <div class="section-features">
         <h3>核心特点 <span class="en-inline">Core Features</span></h3>
         <div class="feature-grid">
-            <div class="feature-item">
-                <span class="num">1.</span> 三段式结构：方向 → 诊断 → 处方，逻辑不可拆分，缺一则系统失效。
-                <span class="en">Three-stage structure: Direction → Diagnosis → Prescription. Indivisible logic; missing one breaks the system.</span>
-            </div>
-            <div class="feature-item">
-                <span class="num">2.</span> 可计算函数：文明指数将“文明”从修辞转化为可测量的数学公式。
-                <span class="en">Computable function: The Civilization Index transforms "civilization" from rhetoric into a measurable mathematical formula.</span>
-            </div>
-            <div class="feature-item">
-                <span class="num">3.</span> 三条元法则：基石否决权、体感优先律、最短木桶律，封堵一切数据粉饰与选择性执行。
-                <span class="en">Three meta-principles: Cornerstone Veto, Primacy of Lived Experience, Shortest Plank Rule — blocking all data manipulation and selective enforcement.</span>
-            </div>
-            <div class="feature-item">
-                <span class="num">4.</span> 九式诊断路径：从结构性不公到结构性死亡，完整揭示系统如何走向崩溃。
-                <span class="en">Nine-step diagnostic path: From structural injustice to structural death, fully revealing how a system collapses.</span>
-            </div>
-            <div class="feature-item">
-                <span class="num">5.</span> 双重锁定：法律铁索 + 三重剥离 + 物理隔绝，使制度具有反脆弱性。
-                <span class="en">Dual legal-physical lock: Legal Chains + Threefold Severance + Physical Isolation, rendering the institution anti-fragile.</span>
-            </div>
-            <div class="feature-item">
-                <span class="num">6.</span> 非归责性操作手册：七条方法论不追究个人责任，只提供可执行的系统翻转路径。
-                <span class="en">Non-attributional operations manual: Seven methodologies that do not blame individuals, only providing executable pathways to reverse the system.</span>
-            </div>
-            <div class="feature-item">
-                <span class="num">7.</span> 独立验证机制：用系统自身的工具检验系统自身，完成完整闭环验收。
-                <span class="en">Independent verification mechanism: Using the system's own tools to audit itself, completing a full closed-loop validation.</span>
-            </div>
-            <div class="feature-item">
-                <span class="num">8.</span> 无条件启动：不依赖“好领导”或“足够资源”，只依赖系统愿意被对照检验。
-                <span class="en">Unconditional activation: Does not depend on "good leadership" or "sufficient resources" — only on a willingness to be tested.</span>
-            </div>
+            <div class="feature-item"><span class="num">1.</span> 三段式结构：方向 → 诊断 → 处方，逻辑不可拆分，缺一则系统失效。<span class="en">Three-stage structure: Direction → Diagnosis → Prescription. Indivisible logic; missing one breaks the system.</span></div>
+            <div class="feature-item"><span class="num">2.</span> 可计算函数：文明指数将“文明”从修辞转化为可测量的数学公式。<span class="en">Computable function: The Civilization Index transforms "civilization" from rhetoric into a measurable mathematical formula.</span></div>
+            <div class="feature-item"><span class="num">3.</span> 三条元法则：基石否决权、体感优先律、最短木桶律，封堵一切数据粉饰与选择性执行。<span class="en">Three meta-principles: Cornerstone Veto, Primacy of Lived Experience, Shortest Plank Rule — blocking all data manipulation and selective enforcement.</span></div>
+            <div class="feature-item"><span class="num">4.</span> 九式诊断路径：从结构性不公到结构性死亡，完整揭示系统如何走向崩溃。<span class="en">Nine-step diagnostic path: From structural injustice to structural death, fully revealing how a system collapses.</span></div>
+            <div class="feature-item"><span class="num">5.</span> 双重锁定：法律铁索 + 三重剥离 + 物理隔绝，使制度具有反脆弱性。<span class="en">Dual legal-physical lock: Legal Chains + Threefold Severance + Physical Isolation, rendering the institution anti-fragile.</span></div>
+            <div class="feature-item"><span class="num">6.</span> 非归责性操作手册：七条方法论不追究个人责任，只提供可执行的系统翻转路径。<span class="en">Non-attributional operations manual: Seven methodologies that do not blame individuals, only providing executable pathways to reverse the system.</span></div>
+            <div class="feature-item"><span class="num">7.</span> 独立验证机制：用系统自身的工具检验系统自身，完成完整闭环验收。<span class="en">Independent verification mechanism: Using the system's own tools to audit itself, completing a full closed-loop validation.</span></div>
+            <div class="feature-item"><span class="num">8.</span> 无条件启动：不依赖“好领导”或“足够资源”，只依赖系统愿意被对照检验。<span class="en">Unconditional activation: Does not depend on "good leadership" or "sufficient resources" — only on a willingness to be tested.</span></div>
         </div>
     </div>
 
@@ -1130,11 +524,11 @@
     <h2>五层完整链路 <span class="en-inline">Complete Chain</span></h2>
     <p style="margin-bottom:22px; color:#7a8a6e; font-size:16px;">
         五层递进。每一步都是下一步的前提。每一层从三个位置观察同一件事：地球、国家、个人。三个角度相互独立，合起来构成完整视图。
-        <span class="en" style="font-size:0.85em;">Five layers, sequentially connected. Each step is the premise for the next. Each layer is observed from three positions: Earth, State, Individual. Three independent angles, together forming a complete view.</span>
+        <span class="en" style="font-size:.85em;">Five layers, sequentially connected. Each step is the premise for the next. Each layer is observed from three positions: Earth, State, Individual. Three independent angles, together forming a complete view.</span>
     </p>
 
     <!-- ===== 第一层 ===== -->
-    <div class="layer">
+    <div class="layer" onclick="window.open('./人类思维盲区在线诊断工具.html','_blank')">
         <div class="layer-num">第一层 <span class="en-num">Layer 1</span></div>
         <div class="layer-name">人类思维盲区在线诊断工具<span class="en-inline">Human Cognitive Blind Spot Online Diagnostic Tool</span></div>
         <div class="layer-position">
@@ -1148,7 +542,6 @@
         </div>
         <div class="logic-block">
             <div class="logic-label">逻辑指引 <span class="en-label">Logic Guide</span></div>
-
             <div class="logic-item">
                 <span class="logic-num">1.</span>
                 <span class="logic-title">一致性前提</span>
@@ -1157,7 +550,6 @@
                 <span class="logic-summary">即：如果你在回答这些问题时发现自己对某些维度缺乏清晰感知，你在后续阅读中需要更警觉——因为你更容易把公理读成口号，把诊断读成攻击。</span>
                 <span class="logic-en-summary">If you find yourself lacking clear perception in certain dimensions while answering these questions, you will need greater vigilance in subsequent reading.</span>
             </div>
-
             <div class="logic-item">
                 <span class="logic-num">2.</span>
                 <span class="logic-title">自我参照性</span>
@@ -1166,7 +558,6 @@
                 <span class="logic-summary">即：这一层解决的不是“你够不够聪明”，而是“你够不够清醒”——清醒到知道自己的思维习惯会把什么内容扭曲。</span>
                 <span class="logic-en-summary">This layer is not about whether you are smart enough—it is about whether you are clear-headed enough to know what your thinking habits will distort.</span>
             </div>
-
             <div class="logic-item">
                 <span class="logic-num">3.</span>
                 <span class="logic-title">不可逆性</span>
@@ -1179,29 +570,27 @@
         <div class="angle-grid">
             <div class="angle-card">
                 <div class="angle-label">地球 <span class="en">Earth</span></div>
-                <div class="angle-text">这套诊断不依赖任何文化传统、不预设任何教育背景、不要求任何专业知识。</div>
-                <div class="angle-text">它在任何地方、对任何人都能生效。</div>
-                <div class="angle-text">因为它只问一件事：你愿不愿意面对自己的思维习惯？<span class="en">This diagnosis depends on no cultural tradition, presumes no educational background, requires no expertise. It works anywhere, for anyone.</span></div>
+                <div class="angle-text">这套诊断不依赖任何文化传统、不预设任何教育背景、不要求任何专业知识。它在任何地方、对任何人都能生效。因为它只问一件事：你愿不愿意面对自己的思维习惯？<span class="en">This diagnosis depends on no cultural tradition, presumes no educational background, requires no expertise. It works anywhere, for anyone.</span></div>
             </div>
             <div class="angle-card">
                 <div class="angle-label">国家 <span class="en">State</span></div>
-                <div class="angle-text">这套工具直接面对个体，绕开了所有教育系统、话语系统、信息过滤系统。</div>
-                <div class="angle-text">国家无法干预结果，因为答案只存在于个体内部，不经过任何中间机构。<span class="en">The tool engages directly with the individual, bypassing all educational and discursive systems. The state cannot interfere with the outcome.</span></div>
+                <div class="angle-text">这套工具直接面对个体，绕开了所有教育系统、话语系统、信息过滤系统。国家无法干预结果，因为答案只存在于个体内部，不经过任何中间机构。<span class="en">The tool engages directly with the individual, bypassing all educational and discursive systems. The state cannot interfere with the outcome.</span></div>
             </div>
             <div class="angle-card">
                 <div class="angle-label">个人 <span class="en">Individual</span></div>
-                <div class="angle-text">日常语言写成，不需要专业知识。</div>
-                <div class="angle-text">一个普通人不需要任何前置培训，就能独立完成这份自我对话；他获得的是对自己思维结构的第一次看见。<span class="en">Written in everyday language, no expertise required. An ordinary person can complete this self-dialogue independently.</span></div>
+                <div class="angle-text">日常语言写成，不需要专业知识。一个普通人不需要任何前置培训，就能独立完成这份自我对话；他获得的是对自己思维结构的第一次看见。<span class="en">Written in everyday language, no expertise required. An ordinary person can complete this self-dialogue independently.</span></div>
             </div>
         </div>
-        <a class="layer-link" href="./人类思维盲区在线诊断工具.html" target="_blank" rel="noopener noreferrer">
-            <span class="link-en">View Detail</span>
-            <span class="link-zh">查看详情 <span class="arrow">→</span></span>
+        <a class="layer-cta pulse" href="./人类思维盲区在线诊断工具.html" target="_blank" rel="noopener noreferrer">
+            <span class="cta-text">
+                点此进入第一层：人类思维盲区在线诊断工具
+            </span>
+            <span class="cta-en">Click to View</span>
         </a>
     </div>
 
     <!-- ===== 第二层 ===== -->
-    <div class="layer">
+    <div class="layer" onclick="window.open('./杨晟琦文明公理系统纯净结构版.html','_blank')">
         <div class="layer-num">第二层 <span class="en-num">Layer 2</span></div>
         <div class="layer-name">杨晟琦文明公理系统纯净结构版 <span class="en-inline">Yang Shengqi's Axiomatic System of Civilization — Pure Structure Edition</span></div>
         <div class="layer-position">
@@ -1219,7 +608,6 @@
         </div>
         <div class="logic-block">
             <div class="logic-label">逻辑指引 <span class="en-label">Logic Guide</span></div>
-
             <div class="logic-item">
                 <span class="logic-num">1.</span>
                 <span class="logic-title">单向递进性</span>
@@ -1228,7 +616,6 @@
                 <span class="logic-summary">即：诊断的唯一任务是“找到当前在哪一步”——过去不可逆，未来可干预。</span>
                 <span class="logic-en-summary">The only task of diagnosis is to identify where the system currently stands—the past is irreversible, the future is intervenable.</span>
             </div>
-
             <div class="logic-item">
                 <span class="logic-num">2.</span>
                 <span class="logic-title">倒推可解性</span>
@@ -1237,7 +624,6 @@
                 <span class="logic-summary">即：知道在哪一步，就知道缺了什么；知道缺了什么，就知道要补什么。</span>
                 <span class="logic-en-summary">Knowing where you are tells you what is missing; knowing what is missing tells you what to replenish.</span>
             </div>
-
             <div class="logic-item">
                 <span class="logic-num">3.</span>
                 <span class="logic-title">自举验证</span>
@@ -1261,14 +647,16 @@
                 <div class="angle-text">这是普通人第一次能用一套统一的、可辨认的语言来描述“这个系统怎么了？”<br>不是好与坏，是锁死、失聪、逃逸、空心。模糊的痛苦变成了精确的诊断。<span class="en">For the first time, ordinary people can describe "what is wrong" in a unified language—not good/bad, but locked, deaf, hollow.</span></div>
             </div>
         </div>
-        <a class="layer-link" href="./杨晟琦文明公理系统纯净结构版.html" target="_blank" rel="noopener noreferrer">
-            <span class="link-en">View Detail</span>
-            <span class="link-zh">查看详情 <span class="arrow">→</span></span>
+        <a class="layer-cta pulse" href="./杨晟琦文明公理系统纯净结构版.html" target="_blank" rel="noopener noreferrer">
+            <span class="cta-text">
+                点此进入第二层：杨晟琦文明公理系统纯净结构版
+            </span>
+            <span class="cta-en">Click to View</span>
         </a>
     </div>
 
     <!-- ===== 第三层 ===== -->
-    <div class="layer">
+    <div class="layer" onclick="window.open('./杨晟琦文明公理系统之文明等级评分器.html','_blank')">
         <div class="layer-num">第三层 <span class="en-num">Layer 3</span></div>
         <div class="layer-name">杨晟琦文明公理系统之文明等级评分器 <span class="en-inline">Yang Shengqi's Axiomatic System of Civilization: Civilization Level Scoring Tool</span></div>
         <div class="layer-position">
@@ -1284,7 +672,6 @@
         </div>
         <div class="logic-block">
             <div class="logic-label">逻辑指引 <span class="en-label">Logic Guide</span></div>
-
             <div class="logic-item">
                 <span class="logic-num">1.</span>
                 <span class="logic-title">量化不等于客观化</span>
@@ -1293,7 +680,6 @@
                 <span class="logic-summary">即：量尺本身不是真理，但它让所有使用它的人说同一套语言。</span>
                 <span class="logic-en-summary">The ruler itself is not truth—but it lets everyone who uses it speak the same language.</span>
             </div>
-
             <div class="logic-item">
                 <span class="logic-num">2.</span>
                 <span class="logic-title">熔断优先于计算</span>
@@ -1302,7 +688,6 @@
                 <span class="logic-summary">即：系统在计算之前就已经嵌入了价值判断——这些判断不是“加分项”，是“终止条件”。</span>
                 <span class="logic-en-summary">The system embeds value judgments before calculation—these are not bonus items, they are termination conditions.</span>
             </div>
-
             <div class="logic-item">
                 <span class="logic-num">3.</span>
                 <span class="logic-title">司法的不可加分性</span>
@@ -1326,14 +711,16 @@
                 <div class="angle-text">不需要专业知识，任何一个识字的人都能独立完成评分。<br>完成后获得两个清晰的输出：我的系统处于什么等级，以及正在走向九步路径的哪一步。<br>模糊的“不对劲”变成了可辨认的坐标。<span class="en">No expertise required. Anyone literate can complete the scoring independently. Two clear outputs: what level the system is at, and which step of the nine-step path it is heading toward.</span></div>
             </div>
         </div>
-        <a class="layer-link" href="./杨晟琦文明公理系统之文明等级评分器.html" target="_blank" rel="noopener noreferrer">
-            <span class="link-en">View Detail</span>
-            <span class="link-zh">查看详情 <span class="arrow">→</span></span>
+        <a class="layer-cta pulse" href="./杨晟琦文明公理系统之文明等级评分器.html" target="_blank" rel="noopener noreferrer">
+            <span class="cta-text">
+                点此进入第三层：杨晟琦文明公理系统之文明等级评分器
+            </span>
+            <span class="cta-en">Click to View</span>
         </a>
     </div>
 
     <!-- ===== 第四层 ===== -->
-    <div class="layer">
+    <div class="layer" onclick="window.open('./全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）.html','_blank')">
         <div class="layer-num">第四层 <span class="en-num">Layer 4</span></div>
         <div class="layer-name">药方 <span class="en-inline">Prescription</span></div>
         <div class="layer-position">
@@ -1351,7 +738,6 @@
         </div>
         <div class="logic-block">
             <div class="logic-label">逻辑指引 <span class="en-label">Logic Guide</span></div>
-
             <div class="logic-item">
                 <span class="logic-num">1.</span>
                 <span class="logic-title">不修正旧系统，只建立平行结构</span>
@@ -1360,7 +746,6 @@
                 <span class="logic-summary">即：不推翻，不等待，只新建。</span>
                 <span class="logic-en-summary">Do not overthrow, do not wait—only build anew.</span>
             </div>
-
             <div class="logic-item">
                 <span class="logic-num">2.</span>
                 <span class="logic-title">隔离是前提，激励是后续</span>
@@ -1369,7 +754,6 @@
                 <span class="logic-summary">即：先确保不会被消灭，再确保有人愿意进来。</span>
                 <span class="logic-en-summary">First ensure it cannot be destroyed, then ensure people are willing to enter.</span>
             </div>
-
             <div class="logic-item">
                 <span class="logic-num">3.</span>
                 <span class="logic-title">七条手册的排列不是随机的</span>
@@ -1393,14 +777,16 @@
                 <div class="angle-text">药方不要求个人做任何“牺牲”，不需要上街抗议，不需要公开表态，不需要等待改变。<br>被卡住了，就直接接入新系统。<br>你不需要改变你的位置，只需要改变你的规则。<span class="en">No "sacrifice" required—no protests, no public statements, no waiting. If stuck, directly access the new system. You don't need to change your position—only your rules.</span></div>
             </div>
         </div>
-        <a class="layer-link" href="./全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）.html" target="_blank" rel="noopener noreferrer">
-            <span class="link-en">View Detail</span>
-            <span class="link-zh">查看详情 <span class="arrow">→</span></span>
+        <a class="layer-cta pulse" href="./全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）.html" target="_blank" rel="noopener noreferrer">
+            <span class="cta-text">
+                点此进入第四层：全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）
+            </span>
+            <span class="cta-en">Click to View</span>
         </a>
     </div>
 
     <!-- ===== 第五层 ===== -->
-    <div class="layer">
+    <div class="layer" onclick="window.open('#','_blank')" style="cursor:default;">
         <div class="layer-num">第五层 <span class="en-num">Layer 5</span></div>
         <div class="layer-name">两份善意的后门 <span class="en-inline">Two Goodwill Back Doors</span></div>
         <div class="layer-position">
@@ -1419,7 +805,6 @@
         </div>
         <div class="logic-block">
             <div class="logic-label">逻辑指引 <span class="en-label">Logic Guide</span></div>
-
             <div class="logic-item">
                 <span class="logic-num">1.</span>
                 <span class="logic-title">清算vs不清算的困境解法</span>
@@ -1428,7 +813,6 @@
                 <span class="logic-summary">即：旧系统的人不需要变好，只需要在规则层面切换。这个切换是他们自己的利益计算推动的，不是被强迫的。</span>
                 <span class="logic-en-summary">Old-system people don't need to become good—they only need to switch at the rule level. This switch is driven by their own interest calculation, not by coercion.</span>
             </div>
-
             <div class="logic-item">
                 <span class="logic-num">2.</span>
                 <span class="logic-title">博弈论驱动的过渡</span>
@@ -1437,7 +821,6 @@
                 <span class="logic-summary">即：不需要他们变好人，只需要他们算清楚账。系统不改造人性，只重新设计激励结构。</span>
                 <span class="logic-en-summary">The system does not reform human nature—it only restructures incentives.</span>
             </div>
-
             <div class="logic-item">
                 <span class="logic-num">3.</span>
                 <span class="logic-title">系统自毁机制</span>
@@ -1461,15 +844,9 @@
                 <div class="angle-text">第一份后门让百姓不需要经历“清算”的混乱,旧系统的人安静地走进来，生活继续，不需要仇恨，不需要复仇。<br>第二份后门让百姓不需要寻找新的“救世主”，系统不是某人的，是所有人的。<span class="en">The first back door spares people from liquidation chaos. The second spares them from needing a new savior—the system belongs to no one.</span></div>
             </div>
         </div>
-        <div style="margin-top:6px;">
-            <a class="layer-link" href="#" target="_blank" rel="noopener noreferrer" style="margin-right:20px;">
-                <span class="link-en">First Back Door (Not for Public Release)</span>
-                <span class="link-zh">第一份：过渡通道（暂不公开）</span>
-            </a>
-            <a class="layer-link" href="#" target="_blank" rel="noopener noreferrer">
-                <span class="link-en">Second Back Door (Not for Public Release)</span>
-                <span class="link-zh">第二份：设计者退场（暂不公开）</span>
-            </a>
+        <div style="margin-top:6px; display:flex; flex-wrap:wrap; gap:12px 20px;">
+            <span style="color:#5a6a4e; font-size:14px;">第一份：过渡通道（暂不公开）</span>
+            <span style="color:#5a6a4e; font-size:14px;">第二份：设计者退场（暂不公开）</span>
         </div>
     </div>
 
@@ -1477,26 +854,19 @@
     <!-- ===== 体系概述 ===== -->
     <!-- ============================================================ -->
     <h2 style="margin-top:48px;">体系概述 <span class="en-inline">System Overview</span></h2>
-    <p>
-        本体系是一套从公理定义到验收报告的完整思想架构，由核心文档构成，分为多个逻辑层，每一层都不可省略，缺一则系统失效。
-        <span class="en">This system is a complete intellectual architecture from axiomatic definition to acceptance report. Each layer is indispensable; missing any one renders the entire system invalid.</span>
-    </p>
+    <p>本体系是一套从公理定义到验收报告的完整思想架构，由核心文档构成，分为多个逻辑层，每一层都不可省略，缺一则系统失效。<span class="en">This system is a complete intellectual architecture from axiomatic definition to acceptance report. Each layer is indispensable; missing any one renders the entire system invalid.</span></p>
 
     <h3>核心层 <span class="en-inline">Core Layers</span></h3>
     <div class="layer-grid">
-
         <div class="layer-card">
             <span class="layer-num">元框架</span>
-            <div class="layer-title">三大基石 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:6px;">Three Cornerstones</span></div>
-            <div class="layer-docs">
-                <a href="./三大基石：一种文明系统的底层重构框架.html" target="_blank" rel="noopener noreferrer">《三大基石：一种文明系统的底层重构框架》</a>
-            </div>
+            <div class="layer-title">三大基石 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Three Cornerstones</span></div>
+            <div class="layer-docs"><a href="./三大基石：一种文明系统的底层重构框架.html" target="_blank" rel="noopener noreferrer">《三大基石：一种文明系统的底层重构框架》</a></div>
             <div class="layer-func">定义“什么是好系统” <span class="en">Defines "what is a good system"</span></div>
         </div>
-
         <div class="layer-card" style="border-top-color:#b89a4a;">
             <span class="layer-num">诊断模型</span>
-            <div class="layer-title">三条路径 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:6px;">Diagnostic Model</span></div>
+            <div class="layer-title">三条路径 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Diagnostic Model</span></div>
             <div class="layer-docs">
                 <a href="./低级文明的完整路径图.html" target="_blank" rel="noopener noreferrer">《低级文明的完整路径图》</a><br>
                 <a href="./确定性社会系统形成的必要条件与阻碍因素.html" target="_blank" rel="noopener noreferrer">《确定性社会系统形成的必要条件与阻碍因素》</a><br>
@@ -1504,71 +874,51 @@
             </div>
             <div class="layer-func">揭示“坏系统如何死亡” <span class="en">Reveals "how a bad system dies"</span></div>
         </div>
-
         <div class="layer-card" style="border-top-color:#6a9a8a;">
             <span class="layer-num">度量工具</span>
-            <div class="layer-title">文明等级判断说明书 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:6px;">Measurement Tool</span></div>
-            <div class="layer-docs">
-                <a href="./文明等级判断说明书.html" target="_blank" rel="noopener noreferrer">《文明等级判断说明书》</a>
-            </div>
+            <div class="layer-title">文明等级判断说明书 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Measurement Tool</span></div>
+            <div class="layer-docs"><a href="./文明等级判断说明书.html" target="_blank" rel="noopener noreferrer">《文明等级判断说明书》</a></div>
             <div class="layer-func">将文明从修辞转化为可计算函数 <span class="en">Transforms civilization from rhetoric into a computable function</span></div>
         </div>
-
         <div class="layer-card" style="border-top-color:#8a6a8a;">
             <span class="layer-num">过程监测</span>
-            <div class="layer-title">非死锁的条件分析 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:6px;">Process Monitoring</span></div>
-            <div class="layer-docs">
-                <a href="./系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制.html" target="_blank" rel="noopener noreferrer">《系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制》</a>
-            </div>
+            <div class="layer-title">非死锁的条件分析 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Process Monitoring</span></div>
+            <div class="layer-docs"><a href="./系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制.html" target="_blank" rel="noopener noreferrer">《系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制》</a></div>
             <div class="layer-func">观察“系统正在哪一环” <span class="en">Observes "which stage the system is at"</span></div>
         </div>
-
         <div class="layer-card" style="border-top-color:#9a8a6a;">
             <span class="layer-num">药方</span>
-            <div class="layer-title">全球人类主权基金 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:6px;">Prescription</span></div>
+            <div class="layer-title">全球人类主权基金 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Prescription</span></div>
             <div class="layer-docs">
                 <a href="./全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）.html" target="_blank" rel="noopener noreferrer">《全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）》</a><br>
                 <a href="./全球人类主权基金：重构中国与全球利益格局的制度构想（英文版）.html" target="_blank" rel="noopener noreferrer">《全球人类主权基金：重构中国与全球利益格局的制度构想（英文版）》</a>
             </div>
             <div class="layer-func">提供解决方案 <span class="en">Provides solutions</span></div>
         </div>
-
         <div class="layer-card" style="border-top-color:#6a8a9a;">
             <span class="layer-num">操作手册</span>
-            <div class="layer-title">改变底层逻辑的方法论 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:6px;">Operations Manual</span></div>
-            <div class="layer-docs">
-                <a href="./改变底层逻辑的方法论（非归因，可操作）.html" target="_blank" rel="noopener noreferrer">《改变底层逻辑的方法论（非归因，可操作）》</a>
-            </div>
+            <div class="layer-title">改变底层逻辑的方法论 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Operations Manual</span></div>
+            <div class="layer-docs"><a href="./改变底层逻辑的方法论（非归因，可操作）.html" target="_blank" rel="noopener noreferrer">《改变底层逻辑的方法论（非归因，可操作）》</a></div>
             <div class="layer-func">提供执行路径 <span class="en">Provides execution pathways</span></div>
         </div>
-
         <div class="layer-card" style="border-top-color:#7a9a8a;">
             <span class="layer-num">验证工具</span>
-            <div class="layer-title">从地球人类视野的推演 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:6px;">Validation Tool</span></div>
-            <div class="layer-docs">
-                <a href="./从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心.html" target="_blank" rel="noopener noreferrer">《从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心》</a>
-            </div>
+            <div class="layer-title">从地球人类视野的推演 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Validation Tool</span></div>
+            <div class="layer-docs"><a href="./从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心.html" target="_blank" rel="noopener noreferrer">《从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心》</a></div>
             <div class="layer-func">论证“为什么必然赢” <span class="en">Demonstrates "why it must prevail"</span></div>
         </div>
-
         <div class="layer-card" style="border-top-color:#6a7a9a;">
             <span class="layer-num">验收报告</span>
-            <div class="layer-title">文明公理宪法与全球人类主权基金的验收报告 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:6px;">Acceptance Report</span></div>
-            <div class="layer-docs">
-                <a href="./文明公理宪法与全球人类主权基金的验收报告.html" target="_blank" rel="noopener noreferrer">《文明公理宪法与全球人类主权基金的验收报告》</a>
-            </div>
+            <div class="layer-title">文明公理宪法与全球人类主权基金的验收报告 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Acceptance Report</span></div>
+            <div class="layer-docs"><a href="./文明公理宪法与全球人类主权基金的验收报告.html" target="_blank" rel="noopener noreferrer">《文明公理宪法与全球人类主权基金的验收报告》</a></div>
             <div class="layer-func">用自身工具检验自身 <span class="en">Uses its own tools to audit itself</span></div>
         </div>
-
         <div class="layer-card" style="border-top-color:#6a9a8a;">
             <span class="layer-num">量化评分</span>
-            <div class="layer-title">文明等级评分器 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:6px;">Civilization Level Scoring Tool</span></div>
-            <div class="layer-docs">
-                <a href="./杨晟琦文明公理系统之文明等级评分器.html" target="_blank" rel="noopener noreferrer">《文明等级评分器》</a>
-            </div>
+            <div class="layer-title">文明等级评分器 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Civilization Level Scoring Tool</span></div>
+            <div class="layer-docs"><a href="./杨晟琦文明公理系统之文明等级评分器.html" target="_blank" rel="noopener noreferrer">《文明等级评分器》</a></div>
             <div class="layer-func">全球各国人民都可以在线评分 <span class="en">People from all countries can score online</span></div>
         </div>
-
     </div>
 
     <!-- ============================================================ -->
@@ -1596,39 +946,20 @@
     <!-- ============================================================ -->
     <h3>核心机制 <span class="en-inline">Core Mechanisms</span></h3>
     <div class="mechanism-list">
-        <div class="mechanism-item">
-            <strong>法律铁索 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e;">Legal Chains</span></strong>
-            三条永久底线，任何政府不得抽离本金与收益
-            <span class="en">Three permanent bottom lines; no government may withdraw principal or returns</span>
-        </div>
-        <div class="mechanism-item">
-            <strong>三重剥离 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e;">Threefold Severance</span></strong>
-            财产权剥离至法人 · 人事权剥离于公职 · 受益权脱离政治权利
-            <span class="en">Property rights severed to legal entities; personnel severed from public office; beneficiary rights severed from political rights</span>
-        </div>
-        <div class="mechanism-item">
-            <strong>物理隔绝 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e;">Physical Isolation</span></strong>
-            资本 · 治理 · 分配三层次隔离，资产不受任何单一政权控制
-            <span class="en">Three-tier isolation of capital, governance, and distribution; assets不受 any single regime's control</span>
-        </div>
-        <div class="mechanism-item">
-            <strong>善意后门 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e;">Goodwill Back Door</span></strong>
-            不换人只换规则，不翻旧账只锁未来
-            <span class="en">Change the rules, not the people; lock the future, not the past</span>
-        </div>
+        <div class="mechanism-item"><strong>法律铁索 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;">Legal Chains</span></strong>三条永久底线，任何政府不得抽离本金与收益<span class="en">Three permanent bottom lines; no government may withdraw principal or returns</span></div>
+        <div class="mechanism-item"><strong>三重剥离 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;">Threefold Severance</span></strong>财产权剥离至法人 · 人事权剥离于公职 · 受益权脱离政治权利<span class="en">Property rights severed to legal entities; personnel severed from public office; beneficiary rights severed from political rights</span></div>
+        <div class="mechanism-item"><strong>物理隔绝 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;">Physical Isolation</span></strong>资本 · 治理 · 分配三层次隔离，资产不受任何单一政权控制<span class="en">Three-tier isolation of capital, governance, and distribution; assets不受 any single regime's control</span></div>
+        <div class="mechanism-item"><strong>善意后门 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;">Goodwill Back Door</span></strong>不换人只换规则，不翻旧账只锁未来<span class="en">Change the rules, not the people; lock the future, not the past</span></div>
     </div>
 
     <!-- ============================================================ -->
     <!-- ===== 永久存档入口 ===== -->
     <!-- ============================================================ -->
     <h2>永久存档入口 <span class="en-inline">Permanent Archives</span></h2>
-    <p>
-        本体系通过<strong>地理分散</strong>（瑞士、美国、全球区块链）、<strong>技术异构</strong>（学术存档、区块链、代码托管）和<strong>冗余备份</strong>，将文档固化于以下平台：
-        <span class="en">This system secures its documents across the following platforms through <strong>geographic dispersion</strong> (Switzerland, United States, global blockchain), <strong>technological heterogeneity</strong> (academic archives, blockchain, code hosting), and <strong>redundant backup</strong>.</span>
-    </p>
+    <p>本体系通过<strong>地理分散</strong>（瑞士、美国、全球区块链）、<strong>技术异构</strong>（学术存档、区块链、代码托管）和<strong>冗余备份</strong>，将文档固化于以下平台：<span class="en">This system secures its documents across the following platforms through <strong>geographic dispersion</strong> (Switzerland, United States, global blockchain), <strong>technological heterogeneity</strong> (academic archives, blockchain, code hosting), and <strong>redundant backup</strong>.</span></p>
 
     <div class="link-group">
-        <h4>📘 学术引用入口（推荐） <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:8px;">Academic References (Recommended)</span></h4>
+        <h4>📘 学术引用入口（推荐） <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:8px;">Academic References (Recommended)</span></h4>
         <ul class="link-list">
             <li><span class="tag">OSF</span> <a href="https://osf.io/vntzq/" target="_blank">https://osf.io/vntzq/</a> （主入口 · DOI: 10.17605/OSF.IO/VNTZQ）</li>
             <li><span class="tag">哈佛 Dataverse</span> <a href="https://dataverse.harvard.edu/dataverse/yangshengqi" target="_blank">https://dataverse.harvard.edu/dataverse/yangshengqi</a> （DOI: 10.7910/DVN/VNQANE）</li>
@@ -1637,7 +968,7 @@
     </div>
 
     <div class="link-group">
-        <h4>⛓️ 区块链永久存储（ArDrive / Arweave） <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:8px;">Blockchain Permanent Storage</span></h4>
+        <h4>⛓️ 区块链永久存储（ArDrive / Arweave） <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:8px;">Blockchain Permanent Storage</span></h4>
         <ul class="link-list">
             <li><span class="tag">总览</span> <a href="https://app.ardrive.io/#/file/26aff7bf-266b-4579-8fb9-b1215181a3f0/view" target="_blank">杨晟琦的文明操作系统 · 完整体系简介</a></li>
             <li><span class="tag">元框架</span> <a href="https://app.ardrive.io/#/file/5dd474b4-c270-4cce-beb7-aee547f7f988/view" target="_blank">三大基石：一种文明系统的底层重构框架</a></li>
@@ -1652,7 +983,7 @@
     </div>
 
     <div class="link-group">
-        <h4>🌐 其他公开入口 <span class="en-inline" style="font-size:0.7em; font-weight:400; color:#7a8a6e; margin-left:8px;">Other Public Access Points</span></h4>
+        <h4>🌐 其他公开入口 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:8px;">Other Public Access Points</span></h4>
         <ul class="link-list">
             <li><span class="tag">WordPress</span> <a href="https://uncineline.wordpress.com/" target="_blank">https://uncineline.wordpress.com/</a> （思想首发阵地 · 博客平台）</li>
             <li><span class="tag">GitHub</span> <a href="https://github.com/yang-shengqi/global-human-sovereign-fund" target="_blank">https://github.com/yang-shengqi/global-human-sovereign-fund</a> （国际代码托管平台 · 全球访问）</li>
@@ -1703,7 +1034,7 @@
         杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年 · 本页为公开索引入口
         <span class="en">Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026 · This page is a public index entry</span>
         <span style="display:block; margin-top:4px;">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
-        <span class="en" style="display:block; font-size:0.85em; color:#7a8a6e;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a></span>
+        <span class="en" style="display:block; font-size:.85em; color:#7a8a6e;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a></span>
     </div>
 
 </div>
@@ -1713,7 +1044,6 @@
         const box = document.getElementById(boxId);
         const content = box.querySelector('.bib-content');
         if (!content) return;
-
         const text = content.textContent;
 
         if (navigator.clipboard && navigator.clipboard.writeText) {
