@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js">
     </script>
     <style>
-        /* ===== 全局样式（与第三版完全一致） ===== */
+        /* ===== 全局样式 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -1096,289 +1096,79 @@
             margin-top: 2px;
         }
         @media (max-width:600px) {
-            .container {
-                padding: 16px 12px 18px;
-                border-radius: 20px;
-            }
-            .title-row h1 {
-                font-size: 24px;
-            }
-            .title-row .tag {
-                font-size: 11px;
-                padding: 2px 12px;
-            }
-            .brand {
-                flex-direction: column;
-                gap: 6px;
-            }
-            .intro-box {
-                padding: 16px 18px;
-            }
-            .intro-box .intro-title {
-                font-size: 18px;
-            }
-            .intro-box .intro-desc {
-                font-size: 14px;
-            }
-            .start-area .btn-start {
-                padding: 14px 40px;
-                font-size: 18px;
-            }
-            .step-card {
-                padding: 16px 16px 20px;
-            }
-            .step-card .question-block .q-text {
-                font-size: 15px;
-            }
-            .step-card .question-block .q-options label {
-                padding: 8px 12px;
-                font-size: 13px;
-                flex-wrap: wrap;
-            }
-            .step-card .step-footer {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .step-card .btn-back {
-                text-align: center;
-            }
-            .result-box .result-header {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 16px 18px;
-            }
-            .result-box .result-body .result-card {
-                padding: 18px 16px;
-            }
-            .result-box .result-footer {
-                padding: 14px 16px;
-            }
-            .copy-actions {
-                justify-content: center;
-            }
-            .result-bottom-actions {
-                justify-content: center;
-            }
-            .progress-bar {
-                flex-direction: row;
-                flex-wrap: wrap;
-                padding: 8px 12px;
-                gap: 6px 8px;
-            }
-            .progress-bar .total-progress {
-                font-size: 13px;
-            }
-            .progress-bar .next-dim-label {
-                font-size: 13px;
-            }
-            .progress-bar .progress-track {
-                min-width: 40px;
-                flex: 0 1 60px;
-            }
-            .complete-msg {
-                padding: 20px 16px;
-            }
-            .complete-msg .title {
-                font-size: 19px;
-            }
-            .complete-msg .btn-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .time-estimate {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 4px;
-            }
-            .history-area .history-item {
-                flex-wrap: wrap;
-                gap: 6px;
-            }
-            .history-area .history-item .h-topic {
-                width: 100%;
-            }
-            .layer-progress {
-                flex-direction: column;
-                gap: 6px;
-            }
-            .layer-arrow {
-                transform: rotate(90deg);
-                font-size: 18px;
-            }
-            .layer-node {
-                width: 100%;
-                min-width: auto;
-            }
-            .dim-progress-item .dim-label {
-                width: 55px;
-                font-size: 12px;
-            }
-            .dim-progress-item .dim-pct {
-                width: 35px;
-                font-size: 12px;
-            }
-            .dim-progress-item .dim-score {
-                width: 50px;
-                font-size: 11px;
-            }
-            .dim-progress-card {
-                padding: 16px 16px 14px;
-            }
-            .history-area .history-item .history-actions {
-                margin-left: auto;
-            }
-            .level-light .level-desc {
-                font-size: 14px;
-                padding: 0 4px;
-            }
-            .level-light .level-badge {
-                padding: 4px 18px;
-            }
-            .advice-light .advice-main {
-                font-size: 14px;
-            }
-            .advice-light .advice-item {
-                font-size: 13px;
-            }
-            .qr-wrapper .qr-box {
-                width: 80px;
-                height: 80px;
-                line-height: 80px;
-            }
-            .qr-wrapper .qr-box canvas,
-            .qr-wrapper .qr-box img {
-                width: 72px !important;
-                height: 72px !important;
-            }
+            .container { padding: 16px 12px 18px; border-radius: 20px; }
+            .title-row h1 { font-size: 24px; }
+            .title-row .tag { font-size: 11px; padding: 2px 12px; }
+            .brand { flex-direction: column; gap: 6px; }
+            .intro-box { padding: 16px 18px; }
+            .intro-box .intro-title { font-size: 18px; }
+            .intro-box .intro-desc { font-size: 14px; }
+            .start-area .btn-start { padding: 14px 40px; font-size: 18px; }
+            .step-card { padding: 16px 16px 20px; }
+            .step-card .question-block .q-text { font-size: 15px; }
+            .step-card .question-block .q-options label { padding: 8px 12px; font-size: 13px; flex-wrap: wrap; }
+            .step-card .step-footer { flex-direction: column; align-items: stretch; }
+            .step-card .btn-back { text-align: center; }
+            .result-box .result-header { flex-direction: column; align-items: flex-start; padding: 16px 18px; }
+            .result-box .result-body .result-card { padding: 18px 16px; }
+            .result-box .result-footer { padding: 14px 16px; }
+            .copy-actions { justify-content: center; }
+            .result-bottom-actions { justify-content: center; }
+            .progress-bar { flex-direction: row; flex-wrap: wrap; padding: 8px 12px; gap: 6px 8px; }
+            .progress-bar .total-progress { font-size: 13px; }
+            .progress-bar .next-dim-label { font-size: 13px; }
+            .progress-bar .progress-track { min-width: 40px; flex: 0 1 60px; }
+            .complete-msg { padding: 20px 16px; }
+            .complete-msg .title { font-size: 19px; }
+            .complete-msg .btn-group { flex-direction: column; align-items: stretch; }
+            .time-estimate { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .history-area .history-item { flex-wrap: wrap; gap: 6px; }
+            .history-area .history-item .h-topic { width: 100%; }
+            .layer-progress { flex-direction: column; gap: 6px; }
+            .layer-arrow { transform: rotate(90deg); font-size: 18px; }
+            .layer-node { width: 100%; min-width: auto; }
+            .dim-progress-item .dim-label { width: 55px; font-size: 12px; }
+            .dim-progress-item .dim-pct { width: 35px; font-size: 12px; }
+            .dim-progress-item .dim-score { width: 50px; font-size: 11px; }
+            .dim-progress-card { padding: 16px 16px 14px; }
+            .history-area .history-item .history-actions { margin-left: auto; }
+            .level-light .level-desc { font-size: 14px; padding: 0 4px; }
+            .level-light .level-badge { padding: 4px 18px; }
+            .advice-light .advice-main { font-size: 14px; }
+            .advice-light .advice-item { font-size: 13px; }
+            .qr-wrapper .qr-box { width: 80px; height: 80px; line-height: 80px; }
+            .qr-wrapper .qr-box canvas, .qr-wrapper .qr-box img { width: 72px !important; height: 72px !important; }
         }
         @media print {
-            body {
-                background: #fff;
-                padding: 0;
-                color: #000;
-            }
-            .container {
-                max-width: 100%;
-                background: #fff;
-                padding: 40px 44px 34px !important;
-                border: none;
-                box-shadow: none;
-                border-radius: 0;
-            }
-            .top-nav,
-            .start-area,
-            .diagnosis-active,
-            .result-footer,
-            .footer,
-            .history-area,
-            .btn-copy,
-            .btn-close,
-            .btn-report,
-            .btn-back,
-            .copy-actions,
-            .result-bottom-actions {
-                display: none !important;
-            }
-            .result-box {
-                display: block !important;
-                margin-top: 0;
-            }
-            .result-box .result-header {
-                background: #f0f0f0;
-                border-color: #ccc;
-                color: #000;
-                border-radius: 8px 8px 0 0;
-                padding: 16px 24px;
-            }
-            .result-box .result-body .result-card {
-                background: #fafafa;
-                border-color: #ddd;
-                color: #000;
-                page-break-inside: avoid;
-                margin-bottom: 12px;
-                border-radius: 8px;
-                padding: 18px 22px;
-            }
-            .result-box .result-body .result-card .card-title {
-                color: #222;
-                border-bottom-color: #ccc;
-            }
-            .result-box .result-body .result-card .card-content {
-                color: #222;
-            }
-            .level-light .level-desc {
-                color: #444 !important;
-            }
-            .level-light .level-badge {
-                border-color: #4a7a4a !important;
-                background: #e8f0e8 !important;
-            }
-            .level-light .level-label {
-                color: #222 !important;
-            }
-            .level-light .level-stars {
-                color: #b89a4a !important;
-            }
-            .advice-light .advice-main {
-                color: #222 !important;
-            }
-            .advice-light .advice-item {
-                color: #333 !important;
-            }
-            .advice-light .advice-hint {
-                color: #666 !important;
-                border-color: #ccc !important;
-            }
-            .radar-container canvas,
-            .radar-container img {
-                border: 1px solid #ccc;
-                max-width: 320px;
-                margin: 0 auto;
-            }
-            .history-area {
-                display: none !important;
-            }
-            .layer-node {
-                background: #f5f5f5 !important;
-                border-color: #ccc !important;
-            }
-            .layer-node.pass {
-                border-color: #4a7a4a !important;
-                background: #e8f0e8 !important;
-            }
-            .layer-node.warn {
-                border-color: #b89a4a !important;
-                background: #f5f0e0 !important;
-            }
-            .layer-node.fail {
-                border-color: #b05a4a !important;
-                background: #f0e8e0 !important;
-            }
-            .layer-node .layer-node-label {
-                color: #222 !important;
-            }
-            .layer-node .layer-node-sub {
-                color: #666 !important;
-            }
-            .layer-arrow {
-                color: #999 !important;
-            }
-            .dim-progress-item .dim-track .dim-fill {
-                background: #4a7a4a !important;
-            }
-            .dim-progress-card {
-                background: #f5f5f5 !important;
-                border-color: #ddd !important;
-            }
-            .qr-wrapper .qr-footer {
-                color: #666 !important;
-            }
-            .qr-wrapper .qr-label {
-                color: #666 !important;
-            }
-            .qr-wrapper .qr-box {
-                border: 1px solid #ccc;
-            }
+            body { background: #fff; padding: 0; color: #000; }
+            .container { max-width: 100%; background: #fff; padding: 40px 44px 34px !important; border: none; box-shadow: none; border-radius: 0; }
+            .top-nav, .start-area, .diagnosis-active, .result-footer, .footer, .history-area, .btn-copy, .btn-close, .btn-report, .btn-back, .copy-actions, .result-bottom-actions { display: none !important; }
+            .result-box { display: block !important; margin-top: 0; }
+            .result-box .result-header { background: #f0f0f0; border-color: #ccc; color: #000; border-radius: 8px 8px 0 0; padding: 16px 24px; }
+            .result-box .result-body .result-card { background: #fafafa; border-color: #ddd; color: #000; page-break-inside: avoid; margin-bottom: 12px; border-radius: 8px; padding: 18px 22px; }
+            .result-box .result-body .result-card .card-title { color: #222; border-bottom-color: #ccc; }
+            .result-box .result-body .result-card .card-content { color: #222; }
+            .level-light .level-desc { color: #444 !important; }
+            .level-light .level-badge { border-color: #4a7a4a !important; background: #e8f0e8 !important; }
+            .level-light .level-label { color: #222 !important; }
+            .level-light .level-stars { color: #b89a4a !important; }
+            .advice-light .advice-main { color: #222 !important; }
+            .advice-light .advice-item { color: #333 !important; }
+            .advice-light .advice-hint { color: #666 !important; border-color: #ccc !important; }
+            .radar-container canvas, .radar-container img { border: 1px solid #ccc; max-width: 320px; margin: 0 auto; }
+            .history-area { display: none !important; }
+            .layer-node { background: #f5f5f5 !important; border-color: #ccc !important; }
+            .layer-node.pass { border-color: #4a7a4a !important; background: #e8f0e8 !important; }
+            .layer-node.warn { border-color: #b89a4a !important; background: #f5f0e0 !important; }
+            .layer-node.fail { border-color: #b05a4a !important; background: #f0e8e0 !important; }
+            .layer-node .layer-node-label { color: #222 !important; }
+            .layer-node .layer-node-sub { color: #666 !important; }
+            .layer-arrow { color: #999 !important; }
+            .dim-progress-item .dim-track .dim-fill { background: #4a7a4a !important; }
+            .dim-progress-card { background: #f5f5f5 !important; border-color: #ddd !important; }
+            .qr-wrapper .qr-footer { color: #666 !important; }
+            .qr-wrapper .qr-label { color: #666 !important; }
+            .qr-wrapper .qr-box { border: 1px solid #ccc; }
         }
         #introModal {
             display: none;
@@ -1403,51 +1193,18 @@
             text-align: center;
             box-shadow: 0 24px 80px rgba(0, 0, 0, 0.9);
         }
-        #introModal .modal-box .modal-icon {
-            font-size: 52px;
-            margin-bottom: 12px;
-        }
-        #introModal .modal-box h2 {
-            font-size: 26px;
-            font-weight: 700;
-            color: #e2ead4;
-            margin-bottom: 12px;
-        }
-        #introModal .modal-box p {
-            font-size: 16px;
-            color: #b6c0aa;
-            line-height: 1.9;
-            margin-bottom: 16px;
-        }
-        #introModal .modal-box p strong.highlight {
-            color: #bace9a;
-        }
-        #introModal .modal-box p strong.warn {
-            color: #b89a4a;
-        }
-        #introModal .modal-box .countdown-label {
-            font-size: 14px;
-            color: #5a6a4e;
-            margin-top: 8px;
-        }
-        #introModal .modal-box .countdown-number {
-            font-size: 44px;
-            font-weight: 700;
-            color: #bace9a;
-            margin-top: 4px;
-        }
+        #introModal .modal-box .modal-icon { font-size: 52px; margin-bottom: 12px; }
+        #introModal .modal-box h2 { font-size: 26px; font-weight: 700; color: #e2ead4; margin-bottom: 12px; }
+        #introModal .modal-box p { font-size: 16px; color: #b6c0aa; line-height: 1.9; margin-bottom: 16px; }
+        #introModal .modal-box p strong.highlight { color: #bace9a; }
+        #introModal .modal-box p strong.warn { color: #b89a4a; }
+        #introModal .modal-box .countdown-label { font-size: 14px; color: #5a6a4e; margin-top: 8px; }
+        #introModal .modal-box .countdown-number { font-size: 44px; font-weight: 700; color: #bace9a; margin-top: 4px; }
         @media (max-width:600px) {
-            #introModal .modal-box {
-                padding: 28px 20px;
-            }
-            #introModal .modal-box h2 {
-                font-size: 22px;
-            }
-            #introModal .modal-box p {
-                font-size: 15px;
-            }
+            #introModal .modal-box { padding: 28px 20px; }
+            #introModal .modal-box h2 { font-size: 22px; }
+            #introModal .modal-box p { font-size: 15px; }
         }
-        /* ===== 导出截图专用：确保所有内容可见 ===== */
         .screenshot-container {
             overflow: visible !important;
             height: auto !important;
@@ -1464,23 +1221,17 @@
             overflow: visible !important;
             max-height: none !important;
         }
-        .screenshot-container .layer-progress {
-            flex-wrap: wrap !important;
-        }
-        .screenshot-container .layer-node {
-            flex: 0 1 auto !important;
-        }
+        .screenshot-container .layer-progress { flex-wrap: wrap !important; }
+        .screenshot-container .layer-node { flex: 0 1 auto !important; }
     </style>
 </head>
 <body>
 
     <div class="container" id="app">
-        <!-- 导航 -->
         <div class="top-nav">
             <a href="./index.html" class="back">← 返回体系总入口</a>
             <span class="badge">人类思维盲区在线诊断工具 · 杨晟琦文明公理系统 · 独立思想锚点</span>
         </div>
-        <!-- 品牌 -->
         <div class="brand">
             <div class="brand-left">
                 <div class="sub-brand">Cognitive Blind Spot Diagnostic Model</div>
@@ -1495,7 +1246,6 @@
                 </div>
             </div>
         </div>
-        <!-- 介绍 -->
         <div class="intro-box">
             <div class="intro-title">你真的了解自己的思维方式吗？</div>
             <div class="intro-desc">
@@ -1509,26 +1259,21 @@
                 <span><span class="dot"></span> 本工具采用6维度 × 3层次交叉验证矩阵诊断</span>
             </div>
         </div>
-        <!-- 开始 -->
         <div class="start-area" id="startArea">
             <button class="btn-start" id="startBtn">点此开始诊断</button>
             <div class="start-hint">点开始诊断开始，全程约 10 分钟。回答越真实，结果越准确。</div>
         </div>
-        <!-- 诊断区 -->
         <div class="diagnosis-active" id="diagnosisArea">
             <div class="time-estimate">
                 <span>预估答题时间：约 10 ~ 12 分钟，当前已用：<span id="timerDisplay">⏱️ 00:00</span> 分钟。</span>
             </div>
             <div class="progress-bar">
                 <span class="total-progress">已作答 <strong id="answeredCount">0</strong> / <span id="totalCount">38</span> 题</span>
-                <div class="progress-track">
-                    <div class="fill" id="progressFill" style="width:0%;"></div>
-                </div>
+                <div class="progress-track"><div class="fill" id="progressFill" style="width:0%;"></div></div>
                 <span class="next-dim-label">下一维度：<span class="next-dim-name" id="nextDimLabel">事实依据</span></span>
             </div>
             <div id="stepContainer"></div>
         </div>
-        <!-- 结果 -->
         <div class="result-box" id="resultBox">
             <div class="result-header">
                 <div class="result-title">📋 诊断报告：<span class="q">你的思维模式</span></div>
@@ -1546,13 +1291,11 @@
                 </div>
             </div>
         </div>
-        <!-- 历史 -->
         <div class="history-area" id="historyArea">
             <div class="history-title">📜 诊断历史</div>
             <div class="history-list" id="historyList"></div>
             <div class="history-empty" id="historyEmpty" style="display:none;">暂无历史记录</div>
         </div>
-        <!-- 页脚 -->
         <div class="footer">
             杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年
             <span class="en">Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026</span>
@@ -1561,7 +1304,6 @@
         </div>
     </div>
 
-    <!-- ===== 开场模态框 ===== -->
     <div id="introModal">
         <div class="modal-box">
             <div class="modal-icon">🧠</div>
@@ -1580,7 +1322,7 @@
 
     <script>
         // ================================================================
-        // 维度与层次映射（与原版一致）
+        // 维度与层次映射
         // ================================================================
         const DIM_MAP = {
             source: { icon: '🔍', label: '信息源' },
@@ -1598,7 +1340,7 @@
         const DIM_ORDER = ['source', 'facts', 'logic', 'interests', 'emotion', 'cost'];
 
         // ================================================================
-        // 38 道元认知题目（与原版完全一致）
+        // 38 道元认知题目（完整保留）
         // ================================================================
         const QUESTIONS_RAW = [
             { dim: 'source', layer: 'step1', purpose: '源头质疑 —— 你是否习惯性接受信息而不查证？',
@@ -1803,7 +1545,7 @@
         ];
 
         // ================================================================
-        // 状态管理（与原版一致，仅保留核心函数）
+        // 状态管理
         // ================================================================
         let state = { questions: [], answers: {}, shuffledIndices: [], currentStep: 0, isActive: false, timerStarted: false };
         const TOTAL = QUESTIONS_RAW.length;
@@ -2047,7 +1789,7 @@
         }
 
         // ================================================================
-        // 生成报告（与原版一致）
+        // 生成报告
         // ================================================================
         function generateReport(saveToHistory = true, customAnswers = null) {
             const answers = customAnswers || state.answers;
@@ -2370,7 +2112,7 @@
         }
 
         // ================================================================
-        // 终极修复：导出 PNG —— 统一自适应 + 重试 + 进度
+        // 【最终稳定版】导出 PNG —— 电脑端紧凑 + 手机端截断自动重试
         // ================================================================
         async function exportPngReport() {
             const btn = document.getElementById('copyImageBtn');
@@ -2475,7 +2217,7 @@
             tempContainer.appendChild(container);
             document.body.appendChild(tempContainer);
 
-            // ---- 统一自适应 ----
+            // ---------- 电脑端紧凑，手机端兜底 ----------
             container.style.height = 'auto';
             container.style.minHeight = 'auto';
             try { await document.fonts.ready; } catch (e) {}
@@ -2486,13 +2228,17 @@
                 return new Promise(resolve => { img.onload = resolve; img.onerror = resolve; });
             }));
 
+            // 获取真实内容高度
             const realHeight = container.scrollHeight;
-            const FINAL_BUFFER = 0.4; // 统一40%冗余
-            const finalHeight = Math.ceil(realHeight * (1 + FINAL_BUFFER)) + 100;
+
+            // ★★★ 核心修改：冗余降到 5%，额外只加 20px ★★★
+            const FINAL_BUFFER = 0.05;
+            const finalHeight = Math.ceil(realHeight * (1 + FINAL_BUFFER)) + 20;
+
             container.style.height = finalHeight + 'px';
             container.style.minHeight = finalHeight + 'px';
 
-            showToast('⏳ 正在生成高清图片...');
+            showToast('⏳ 正在生成图片...');
 
             const scale = 2;
 
@@ -2510,6 +2256,7 @@
                     logging: false,
                     width: FIXED_WIDTH,
                     height: useHeight,
+                    windowHeight: useHeight,
                     onclone: function(doc) {
                         const allEls = doc.querySelectorAll('*');
                         allEls.forEach(el => {
@@ -2527,7 +2274,7 @@
             try {
                 let canvas = await doCapture(null);
 
-                // 截断检测
+                // 截断检测（只在手机端可能触发）
                 const ctx = canvas.getContext('2d');
                 const bottomRow = ctx.getImageData(0, canvas.height - 10, canvas.width, 10);
                 let emptyPixels = 0;
@@ -2536,8 +2283,9 @@
                 }
                 const emptyRatio = emptyPixels / (bottomRow.data.length / 4);
                 if (emptyRatio > 0.6) {
+                    // 手机端如果截断，用 1.3 倍高度重试（电脑端几乎不会触发）
                     showToast('⏳ 检测到截断，自动重试（放大高度）...');
-                    const retryHeight = Math.ceil(finalHeight * 2.0);
+                    const retryHeight = Math.ceil(finalHeight * 1.3);
                     canvas = await doCapture(retryHeight);
                 }
 
@@ -2559,7 +2307,7 @@
         }
 
         // ================================================================
-        // 复制/分享 PNG —— 同样自适应 + 重试 + 进度
+        // 复制/分享 PNG —— 同样逻辑
         // ================================================================
         async function sharePngReport() {
             const btn = document.getElementById('shareImageBtn');
@@ -2662,7 +2410,6 @@
             tempContainer.appendChild(container);
             document.body.appendChild(tempContainer);
 
-            // ---- 统一自适应 ----
             container.style.height = 'auto';
             container.style.minHeight = 'auto';
             try { await document.fonts.ready; } catch (e) {}
@@ -2674,8 +2421,8 @@
             }));
 
             const realHeight = container.scrollHeight;
-            const FINAL_BUFFER = 0.4;
-            const finalHeight = Math.ceil(realHeight * (1 + FINAL_BUFFER)) + 100;
+            const FINAL_BUFFER = 0.05;
+            const finalHeight = Math.ceil(realHeight * (1 + FINAL_BUFFER)) + 20;
             container.style.height = finalHeight + 'px';
             container.style.minHeight = finalHeight + 'px';
 
@@ -2697,6 +2444,7 @@
                     logging: false,
                     width: FIXED_WIDTH,
                     height: useHeight,
+                    windowHeight: useHeight,
                     onclone: function(doc) {
                         const allEls = doc.querySelectorAll('*');
                         allEls.forEach(el => {
@@ -2723,7 +2471,7 @@
                 const emptyRatio = emptyPixels / (bottomRow.data.length / 4);
                 if (emptyRatio > 0.6) {
                     showToast('⏳ 检测到截断，自动重试...');
-                    const retryHeight = Math.ceil(finalHeight * 2.0);
+                    const retryHeight = Math.ceil(finalHeight * 1.3);
                     canvas = await doCapture(retryHeight);
                 }
 
