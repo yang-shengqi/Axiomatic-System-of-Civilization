@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="你真的了解自己的思维方式吗？38道元认知问题，6维度×3层次交叉验证，帮你扫描信息源、事实依据、推理逻辑、利益关联、情绪影响、代价权衡六大盲区。10分钟完成，生成属于你的思维诊断报告。">
+    <meta name="description" content="Do you really understand how you think? 38 metacognitive questions, 6 dimensions × 3 layers cross-validated, help you scan six blind spots: information sources, factual basis, reasoning logic, interest associations, emotional influence, and cost-benefit tradeoffs. Complete in 10 minutes and generate your personal thinking diagnostic report.">
     <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
-    <title>人类思维盲区在线诊断工具 · 杨晟琦文明公理系统</title>
+    <title>Human Cognitive Blind Spot Diagnostic Tool · Yang Shengqi's Axiomatic System of Civilization</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js">
     </script>
     <style>
-        /* ===== 全局样式 ===== */
+        /* ===== Global Styles ===== */
         * {
             margin: 0;
             padding: 0;
@@ -1231,77 +1231,77 @@
 
     <div class="container" id="app">
         <div class="top-nav">
-            <a href="./index.html" class="back">← 返回体系总入口</a>
-            <span class="badge">人类思维盲区在线诊断工具 · 杨晟琦文明公理系统 · 独立思想锚点</span>
+            <a href="./index.html" class="back">← Back to Main Portal</a>
+            <span class="badge">Human Cognitive Blind Spot Diagnostic Tool · Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor</span>
         </div>
         <div class="brand">
             <div class="brand-left">
                 <div class="sub-brand">Cognitive Blind Spot Diagnostic Model</div>
                 <div class="title-row">
-                    <h1>人类思维盲区在线诊断工具</h1>
-                    <span class="tag">一个让人彻底"清醒"的思维模型</span>
+                    <h1>Human Cognitive Blind Spot Diagnostic Tool</h1>
+                    <span class="tag">A "Wake-Up Call" for Your Thinking</span>
                 </div>
                 <div class="info-row">
-                    <span>作者：杨晟琦</span>
+                    <span>Author: Yang Shengqi</span>
                     <span>ORCID: 0009-0008-3755-8960</span>
-                    <span class="feat">思维觉醒 · 内部追问 · 心智更新</span>
+                    <span class="feat">Cognitive Awakening · Internal Inquiry · Mindset Renewal</span>
                 </div>
             </div>
         </div>
         <div class="intro-box">
-            <div class="intro-title">你真的了解自己的思维方式吗？</div>
+            <div class="intro-title">Do You Really Understand How You Think?</div>
             <div class="intro-desc">
-                这套工具通过 <strong>38 个关于"你如何思考"的元认知问题</strong>，帮你深度扫描自己的思维习惯。<br />
-                它不依赖任何外部话题，只审视你自身的 <strong>信息处理、逻辑推理、情绪管理、利益觉察</strong> 等底层能力。
+                This tool uses <strong>38 metacognitive questions</strong> about <strong>"how you think"</strong> to deeply scan your thinking habits.<br />
+                It does not rely on any external topic — it only examines your underlying abilities in <strong>information processing, logical reasoning, emotional management, interest awareness</strong>, and more.
             </div>
             <div class="intro-features">
-                <span><span class="dot"></span> 防忽悠 · 检验你对外部信息的防御能力</span>
-                <span><span class="dot"></span> 觉醒 · 追问你的内部认知偏见</span>
-                <span><span class="dot"></span> 内化 · 评估你能否将反思转化为行动</span>
-                <span><span class="dot"></span> 本工具采用6维度 × 3层次交叉验证矩阵诊断</span>
+                <span><span class="dot"></span> Anti-Deception · Test your ability to defend against misinformation</span>
+                <span><span class="dot"></span> Awakening · Probe your internal cognitive biases</span>
+                <span><span class="dot"></span> Internalization · Assess whether you turn reflection into action</span>
+                <span><span class="dot"></span> 6 Dimensions × 3 Layers cross-validation matrix</span>
             </div>
         </div>
         <div class="start-area" id="startArea">
-            <button class="btn-start" id="startBtn">点此开始诊断</button>
-            <div class="start-hint">点开始诊断开始，全程约 10 分钟。回答越真实，结果越准确。</div>
+            <button class="btn-start" id="startBtn">Start Diagnosis</button>
+            <div class="start-hint">Click to begin — about 10 minutes. The more honest your answers, the more accurate your results.</div>
         </div>
         <div class="diagnosis-active" id="diagnosisArea">
             <div class="time-estimate">
-                <span>预估答题时间：约 10 ~ 12 分钟，当前已用：<span id="timerDisplay">⏱️ 00:00</span> 分钟。</span>
+                <span>Estimated time: 10–12 minutes · Elapsed: <span id="timerDisplay">⏱️ 00:00</span></span>
             </div>
             <div class="progress-bar">
-                <span class="total-progress">已作答 <strong id="answeredCount">0</strong> / <span id="totalCount">38</span> 题</span>
+                <span class="total-progress">Answered <strong id="answeredCount">0</strong> / <span id="totalCount">38</span></span>
                 <div class="progress-track"><div class="fill" id="progressFill" style="width:0%;"></div></div>
-                <span class="next-dim-label">下一维度：<span class="next-dim-name" id="nextDimLabel">事实依据</span></span>
+                <span class="next-dim-label">Next Dimension: <span class="next-dim-name" id="nextDimLabel">Factual Basis</span></span>
             </div>
             <div id="stepContainer"></div>
         </div>
         <div class="result-box" id="resultBox">
             <div class="result-header">
-                <div class="result-title">📋 诊断报告：<span class="q">你的思维模式</span></div>
+                <div class="result-title">📋 Diagnostic Report: <span class="q">Your Thinking Profile</span></div>
                 <div class="result-badge" id="resultBadges"></div>
             </div>
             <div class="result-body" id="reportBody"></div>
             <div class="result-footer">
                 <div class="copy-actions">
-                    <button class="btn-copy" id="copyImageBtn"><span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span></button>
-                    <button class="btn-copy" id="shareImageBtn"><span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span></button>
+                    <button class="btn-copy" id="copyImageBtn"><span class="icon">🖼️</span> Export Report (PNG) <span class="badge">Screenshot</span></button>
+                    <button class="btn-copy" id="shareImageBtn"><span class="icon">📋</span> Copy Report (PNG) <span class="badge">Copy</span></button>
                 </div>
                 <div class="result-bottom-actions">
-                    <button class="btn-reset" id="resetFromResultBtn">↻ 重新开始</button>
-                    <button class="btn-close" id="closeResultBtn">关闭报告</button>
+                    <button class="btn-reset" id="resetFromResultBtn">↻ Restart</button>
+                    <button class="btn-close" id="closeResultBtn">Close Report</button>
                 </div>
             </div>
         </div>
         <div class="history-area" id="historyArea">
-            <div class="history-title">📜 诊断历史</div>
+            <div class="history-title">📜 Diagnostic History</div>
             <div class="history-list" id="historyList"></div>
-            <div class="history-empty" id="historyEmpty" style="display:none;">暂无历史记录</div>
+            <div class="history-empty" id="historyEmpty" style="display:none;">No history records</div>
         </div>
         <div class="footer">
-            杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年
+            Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026
             <span class="en">Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026</span>
-            <span style="display:block; margin-top:4px;">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+            <span style="display:block; margin-top:4px;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.en" target="_blank">CC BY-ND 4.0</a></span>
             <span class="en" style="display:block; font-size:.85em; color:#7a8a6e;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a></span>
         </div>
     </div>
@@ -1309,13 +1309,13 @@
     <div id="introModal">
         <div class="modal-box">
             <div class="modal-icon">🧠</div>
-            <h2>诊断即将开始</h2>
+            <h2>Diagnosis About to Begin</h2>
             <p>
-                本工具采用 <strong class="highlight">6维度 × 3层次 交叉验证矩阵</strong>。<br>
-                您可能会感受到题目之间的 <strong class="warn">相似性</strong>，这正是信度设计的核心 ——<br>
-                旨在过滤随机作答，确保您的报告具备 <strong class="highlight">学术级精准度</strong>。
+                This tool uses a <strong class="highlight">6 Dimension × 3 Layer cross-validation matrix</strong>.<br>
+                You may notice <strong class="warn">similarity</strong> between questions — this is by design.<br>
+                It ensures <strong class="highlight">academic-grade precision</strong> by filtering random responses.
             </p>
-            <div class="countdown-label">⏳ 3 秒后自动进入...</div>
+            <div class="countdown-label">⏳ Starting in 3 seconds...</div>
             <div class="countdown-number" id="introCountdown">3</div>
         </div>
     </div>
@@ -1323,237 +1323,236 @@
     <div class="toast" id="toast"></div>
     <script>
         // ================================================================
-        // 维度与层次映射
+        // Dimension & Layer Mapping
         // ================================================================
         const DIM_MAP = {
-            source: { icon: '🔍', label: '信息源' },
-            facts: { icon: '📊', label: '事实依据' },
-            logic: { icon: '🧠', label: '推理逻辑' },
-            interests: { icon: '💰', label: '利益关联' },
-            emotion: { icon: '❤️', label: '情绪影响' },
-            cost: { icon: '⏳', label: '代价权衡' }
+            source: { icon: '🔍', label: 'Information Source' },
+            facts: { icon: '📊', label: 'Factual Basis' },
+            logic: { icon: '🧠', label: 'Reasoning Logic' },
+            interests: { icon: '💰', label: 'Interest Association' },
+            emotion: { icon: '❤️', label: 'Emotional Influence' },
+            cost: { icon: '⏳', label: 'Cost-Benefit Tradeoff' }
         };
         const LAYER_MAP = {
-            step1: { label: '防忽悠', sub: '外部检验', badge: 's1' },
-            step2: { label: '觉醒', sub: '内部追问', badge: 's2' },
-            step3: { label: '内化', sub: '心智更新', badge: 's3' }
+            step1: { label: 'Anti-Deception', sub: 'External Check', badge: 's1' },
+            step2: { label: 'Awakening', sub: 'Internal Inquiry', badge: 's2' },
+            step3: { label: 'Internalization', sub: 'Mindset Renewal', badge: 's3' }
         };
         const DIM_ORDER = ['source', 'facts', 'logic', 'interests', 'emotion', 'cost'];
 
         // ================================================================
-        // 38 道元认知题目
+        // 38 Metacognitive Questions (English)
         // ================================================================
         const QUESTIONS_RAW = [
-            { dim: 'source', layer: 'step1', purpose: '源头质疑 —— 你是否习惯性接受信息而不查证？',
-                text: '面对一个信息，你会主动去查它的原始出处吗？', opts: [{ label: 'A', text: '我完全不会去查，信就信了', score: 0 },
-                { label: 'B', text: '我一般不太会去查，除非这个信息让我觉得非常可疑', score: 1 },
-                { label: 'C', text: '我有时候会去查一下，但也不是每次都查', score: 2 },
-                { label: 'D', text: '重要的、可疑的信息我会认真查，日常信息我信任常识', score: 4 },
-                { label: 'E', text: '我每次都会去查，不查我不放心', score: 3 }] },
-            { dim: 'source', layer: 'step1', purpose: '权威偏误 —— 你是否因发言者身份而轻信内容？',
-                text: '你判断一个信息可不可信，是更相信说话的人，还是更相信内容本身？', opts: [{ label: 'A', text: '我更相信说话的人，权威说了我就信',
-                    score: 0 }, { label: 'B', text: '我有点倾向于看人，但也会看内容', score: 1 },
-                { label: 'C', text: '我两边都会看，但说不上更信哪个', score: 2 }, { label: 'D', text: '我更看重内容本身，是谁说的没那么重要',
-                    score: 3 }, { label: 'E', text: '我只相信内容本身，不管是谁说的', score: 4 }] },
-            { dim: 'source', layer: 'step2', purpose: '确认偏误 —— 你是否只愿怀疑不符合预期的信息？',
-                text: '你会因为"这个信息刚好符合你的想法"就不去怀疑它的来源吗？', opts: [{ label: 'A', text: '我经常这样，符合我心意的我就信了',
-                    score: 0 }, { label: 'B', text: '我有时候会，但也会提醒自己要保持怀疑', score: 1 },
-                { label: 'C', text: '我不太会这样，还是会保持一点怀疑', score: 2 }, { label: 'D', text: '我基本不会，我会刻意反着去怀疑',
-                    score: 3 }, { label: 'E', text: '我完全不会，越符合我心意的我越要查清楚', score: 4 }] },
-            { dim: 'source', layer: 'step2', purpose: '来源厌恶 —— 你是否因信息源偏好而否定信息？',
-                text: '如果同一个信息来自你平时不太喜欢的媒体，你会不会就不太信了？', opts: [{ label: 'A', text: '我会，看到是这个媒体我就不太信了',
-                    score: 0 }, { label: 'B', text: '我可能有点怀疑，但不会完全否定', score: 1 },
-                { label: 'C', text: '我不太会因为媒体而改变判断，除非有前科', score: 2 },
-                { label: 'D', text: '我基本不会，我会看内容本身来定', score: 3 }, { label: 'E', text: '我完全不会，媒体是谁我不太在意',
+            { dim: 'source', layer: 'step1', purpose: 'Source skepticism — do you habitually accept information without verification?',
+                text: 'When you encounter new information, do you actively check its original source?', opts: [{ label: 'A', text: 'I never check — if it\'s said, I trust it', score: 0 },
+                { label: 'B', text: 'I rarely check, unless the information seems highly suspicious', score: 1 },
+                { label: 'C', text: 'I sometimes check, but not every time', score: 2 },
+                { label: 'D', text: 'For important or suspicious info I check carefully; for daily info I rely on common sense', score: 4 },
+                { label: 'E', text: 'I always check — I\'m not comfortable without verification', score: 3 }] },
+            { dim: 'source', layer: 'step1', purpose: 'Authority bias — do you trust the messenger over the message?',
+                text: 'When judging credibility, do you rely more on who said it or on the content itself?', opts: [{ label: 'A', text: 'I trust the speaker — if an authority says it, I believe it',
+                    score: 0 }, { label: 'B', text: 'I lean toward the speaker, but I also consider the content', score: 1 },
+                { label: 'C', text: 'I look at both, but I\'m not sure which I trust more', score: 2 }, { label: 'D', text: 'I value the content more — who said it matters less',
+                    score: 3 }, { label: 'E', text: 'I only trust the content itself, regardless of the source', score: 4 }] },
+            { dim: 'source', layer: 'step2', purpose: 'Confirmation bias — do you only doubt information that contradicts your views?',
+                text: 'Do you tend to accept information without question when it matches your existing beliefs?', opts: [{ label: 'A', text: 'Yes, I often trust information that aligns with my views',
+                    score: 0 }, { label: 'B', text: 'Sometimes, but I try to remind myself to stay skeptical', score: 1 },
+                { label: 'C', text: 'I don\'t do this often — I maintain some skepticism', score: 2 }, { label: 'D', text: 'I rarely do this — I deliberately challenge information that fits my views',
+                    score: 3 }, { label: 'E', text: 'I never do this — the more it fits my views, the more I verify it', score: 4 }] },
+            { dim: 'source', layer: 'step2', purpose: 'Source aversion — do you reject information based on the source?',
+                text: 'If the same information comes from a source you usually dislike, do you tend to distrust it?', opts: [{ label: 'A', text: 'Yes — if I see that source, I automatically distrust it',
+                    score: 0 }, { label: 'B', text: 'I might be skeptical, but I won\'t completely dismiss it', score: 1 },
+                { label: 'C', text: 'I don\'t let the source affect my judgment unless it has a proven track record of inaccuracy', score: 2 },
+                { label: 'D', text: 'I mostly ignore the source and evaluate the content itself', score: 3 }, { label: 'E', text: 'I don\'t care about the source at all — content is everything',
                     score: 4 }] },
-            { dim: 'source', layer: 'step3', purpose: '系统性怀疑 —— 你是否有意识构建并更新可信来源清单？',
-                text: '你会不会主动建立一套"我觉得可信的来源"清单，然后经常更新？', opts: [{ label: 'A', text: '我不会，我觉得没这个必要', score: 0 },
-                { label: 'B', text: '我偶尔会想想，但不会真的列出来', score: 1 }, { label: 'C', text: '我大概心里有数，但不会正式整理',
-                    score: 2 }, { label: 'D', text: '我会在脑子里有一份清单，也会不定期更新', score: 3 },
-                { label: 'E', text: '我会很认真地建立一份清单，并且定期更新', score: 4 }] },
-            { dim: 'source', layer: 'step3', purpose: '回声室效应 —— 你是否主动寻找对立观点以检验全面性？',
-                text: '你会主动去找一些跟你观点不一样的声音，来检验自己的信息来源够不够全面吗？', opts: [{ label: 'A', text: '我不会，我只想看我认同的观点',
-                    score: 0 }, { label: 'B', text: '我很少这样，除非有人提到我才去看', score: 1 },
-                { label: 'C', text: '我有时候会，想看看对方说什么', score: 2 }, { label: 'D', text: '我经常会，我觉得这样才能全面',
-                    score: 3 }, { label: 'E', text: '我每次都会，我觉得这是必须的', score: 4 }] },
+            { dim: 'source', layer: 'step3', purpose: 'Systematic skepticism — do you actively build and update a list of trusted sources?',
+                text: 'Do you consciously maintain a personal "trusted sources" list and update it regularly?', opts: [{ label: 'A', text: 'No, I don\'t see the need', score: 0 },
+                { label: 'B', text: 'I occasionally think about it, but never actually list anything', score: 1 }, { label: 'C', text: 'I have a mental list, but I don\'t formalize it',
+                    score: 2 }, { label: 'D', text: 'I keep a mental list and update it from time to time', score: 3 },
+                { label: 'E', text: 'I maintain a detailed written list and review it regularly', score: 4 }] },
+            { dim: 'source', layer: 'step3', purpose: 'Echo chamber effect — do you actively seek opposing viewpoints?',
+                text: 'Do you actively look for perspectives that differ from your own to test the completeness of your information?', opts: [{ label: 'A', text: 'No — I only want to see views I agree with',
+                    score: 0 }, { label: 'B', text: 'Rarely — only if someone else brings them up', score: 1 },
+                { label: 'C', text: 'Sometimes — I\'m curious what the other side says', score: 2 }, { label: 'D', text: 'Often — I think that\'s essential for completeness',
+                    score: 3 }, { label: 'E', text: 'Always — I consider it a necessary practice', score: 4 }] },
 
-            { dim: 'facts', layer: 'step1', purpose: '事实-感觉混淆 —— 你是否能区分客观事实与主观感受？',
-                text: '你能分清楚"客观事实"和"自己的感觉"之间的区别吗？', opts: [{ label: 'A', text: '我完全分不清，我觉得感觉就是事实', score: 0 },
-                { label: 'B', text: '我有时候能分清楚，但容易被感觉带偏', score: 1 },
-                { label: 'C', text: '我大概能分清楚，但偶尔也会混淆', score: 2 }, { label: 'D', text: '我大部分能分清，知道什么是事实什么是感觉',
-                    score: 3 }, { label: 'E', text: '我每次都能分清楚，我很在意这个区别', score: 4 }] },
-            { dim: 'facts', layer: 'step1', purpose: '方法论忽视 —— 你是否关注数据背后的采集方法与样本？',
-                text: '看到一组数据，你会去想它的采集方法或者样本够不够有代表性吗？', opts: [{ label: 'A', text: '我不会想那么多，数据就是数据', score: 0 },
-                { label: 'B', text: '我很少会想这些，除非数据看起来很离谱', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会深究',
-                    score: 2 }, { label: 'D', text: '我经常会思考这些，数据的来源很重要', score: 3 },
-                { label: 'E', text: '我每次都会先问：这数据是怎么来的？', score: 4 }] },
-            { dim: 'facts', layer: 'step2', purpose: '先入为主 —— 你是否先有结论再寻找证据？',
-                text: '你是不是经常先有了一个想法，然后再去找证据来支持自己？', opts: [{ label: 'A', text: '我经常这样，我觉得先有想法很正常',
-                    score: 0 }, { label: 'B', text: '我有时候会这样，但也不是每次都这样', score: 1 },
-                { label: 'C', text: '我不太会这样，我会先看证据再下结论', score: 2 }, { label: 'D', text: '我很少这样，我会刻意提醒自己先看证据',
-                    score: 3 }, { label: 'E', text: '我完全不会这样，证据永远走在结论前面', score: 4 }] },
-            { dim: 'facts', layer: 'step2', purpose: '认知失调回避 —— 你是否下意识忽略与自身观点冲突的事实？',
-                text: '你会不会有意忽略那些跟你观点冲突的事实？', opts: [{ label: 'A', text: '我会，看到冲突的事实我就不舒服，会下意识忽略', score: 0 },
-                { label: 'B', text: '我有时候会，但事后可能会后悔', score: 1 }, { label: 'C', text: '我不太会，但有时候也会不自觉地回避',
-                    score: 2 }, { label: 'D', text: '我基本不会，我会正视冲突的事实', score: 3 },
-                { label: 'E', text: '我完全不会，我反而会特别关注那些冲突的事实', score: 4 }] },
-            { dim: 'facts', layer: 'step3', purpose: '证伪思维 —— 你是否刻意寻找反例来检验结论？',
-                text: '你会刻意找一些反例来检验自己的结论吗？', opts: [{ label: 'A', text: '我不会，我觉得我的结论已经很对了', score: 0 },
-                { label: 'B', text: '我很少这样做，除非有人提醒我', score: 1 }, { label: 'C', text: '我有时候会，想看看自己会不会被推翻',
-                    score: 2 }, { label: 'D', text: '在重大决策上，我会刻意找反例来验证；日常小事凭经验就行', score: 4 },
-                { label: 'E', text: '我每次都会刻意找反例，找不到反例我才放心', score: 3 }] },
-            { dim: 'facts', layer: 'step3', purpose: '行为内化 —— 你是否已将"先看证据"转化为稳定习惯？',
-                text: '在日常生活中，"先看证据再下结论"这件事，你的自动化程度如何？', opts: [{ label: 'A', text: '我完全没有这个意识，全凭感觉',
-                    score: 0 }, { label: 'B', text: '我有意识但经常忘记，想起来才做', score: 1 },
-                { label: 'C', text: '我大部分时候能想起来，但需要刻意提醒自己', score: 2 },
-                { label: 'D', text: '我已经形成了肌肉记忆，很自然地就会先看证据', score: 3 },
-                { label: 'E', text: '这已经成了我的本能，甚至能帮别人指出证据不足', score: 4 }] },
+            { dim: 'facts', layer: 'step1', purpose: 'Fact-feeling confusion — can you distinguish objective facts from subjective feelings?',
+                text: 'Can you clearly distinguish between "objective fact" and "your personal feeling"?', opts: [{ label: 'A', text: 'I can\'t tell them apart — feelings feel like facts to me', score: 0 },
+                { label: 'B', text: 'I can sometimes, but feelings often steer me off track', score: 1 },
+                { label: 'C', text: 'I mostly can, but occasionally confuse them', score: 2 }, { label: 'D', text: 'I can usually tell the difference between facts and feelings',
+                    score: 3 }, { label: 'E', text: 'I always can — I pay close attention to this distinction', score: 4 }] },
+            { dim: 'facts', layer: 'step1', purpose: 'Methodology neglect — do you consider how data was collected?',
+                text: 'When you see a statistic, do you think about how it was collected or whether the sample is representative?', opts: [{ label: 'A', text: 'I don\'t think about that — data is just data', score: 0 },
+                { label: 'B', text: 'I rarely think about it, unless the data looks absurd', score: 1 }, { label: 'C', text: 'I sometimes consider it, but don\'t dig deep',
+                    score: 2 }, { label: 'D', text: 'I often think about it — methodology matters', score: 3 },
+                { label: 'E', text: 'I always ask first: "How was this data gathered?"', score: 4 }] },
+            { dim: 'facts', layer: 'step2', purpose: 'Premature conclusion — do you form conclusions before seeking evidence?',
+                text: 'Do you often have a conclusion in mind and then look for evidence to support it?', opts: [{ label: 'A', text: 'Yes, I do this often — it feels natural', score: 0 },
+                { label: 'B', text: 'Sometimes, but not always', score: 1 },
+                { label: 'C', text: 'I don\'t do this often — I prefer to look at evidence first', score: 2 }, { label: 'D', text: 'I rarely do this — I deliberately check evidence first',
+                    score: 3 }, { label: 'E', text: 'I never do this — evidence always comes before conclusions', score: 4 }] },
+            { dim: 'facts', layer: 'step2', purpose: 'Cognitive dissonance avoidance — do you ignore facts that conflict with your views?',
+                text: 'Do you consciously ignore facts that contradict your existing beliefs?', opts: [{ label: 'A', text: 'Yes — conflicting facts make me uncomfortable, so I ignore them', score: 0 },
+                { label: 'B', text: 'Sometimes, but I often regret it afterward', score: 1 }, { label: 'C', text: 'I don\'t do this often, but I sometimes unconsciously avoid them',
+                    score: 2 }, { label: 'D', text: 'I rarely do this — I face conflicting facts head-on', score: 3 },
+                { label: 'E', text: 'I never do this — I actually pay extra attention to conflicting facts', score: 4 }] },
+            { dim: 'facts', layer: 'step3', purpose: 'Falsification mindset — do you deliberately seek counterexamples?',
+                text: 'Do you actively look for counterexamples to test your conclusions?', opts: [{ label: 'A', text: 'No — I\'m confident my conclusions are correct', score: 0 },
+                { label: 'B', text: 'Rarely — only if someone points something out', score: 1 }, { label: 'C', text: 'Sometimes — I\'m curious if my conclusion holds up',
+                    score: 2 }, { label: 'D', text: 'For major decisions, yes; for everyday matters, I rely on experience', score: 4 },
+                { label: 'E', text: 'Always — I don\'t feel comfortable until I\'ve tried to disprove it', score: 3 }] },
+            { dim: 'facts', layer: 'step3', purpose: 'Behavioral internalization — has "evidence first" become an automatic habit?',
+                text: 'In daily life, how automatic is your habit of "seeking evidence before forming a conclusion"?', opts: [{ label: 'A', text: 'I have no such awareness — I go by feeling',
+                    score: 0 }, { label: 'B', text: 'I\'m aware but often forget — I only do it when reminded', score: 1 },
+                { label: 'C', text: 'I remember most of the time, but it takes deliberate effort', score: 2 },
+                { label: 'D', text: 'It\'s become muscle memory — I naturally seek evidence first', score: 3 },
+                { label: 'E', text: 'It\'s second nature — I even help others notice when they lack evidence', score: 4 }] },
 
-            { dim: 'logic', layer: 'step1', purpose: '前提假设盲区 —— 你是否审视过结论赖以成立的前提条件？',
-                text: '你的结论要成立，得靠哪些前提假设？要是这些假设不成立，你的结论还站得住脚吗？', opts: [{ label: 'A', text: '我从来没想过这个问题，结论就是结论',
-                    score: 0 }, { label: 'B', text: '我很少会去想这些假设，我觉得不影响', score: 1 },
-                { label: 'C', text: '我有时候会想一想，但不会太深入', score: 2 }, { label: 'D', text: '我经常会想，而且我会去验证这些假设',
-                    score: 3 }, { label: 'E', text: '我每次都会先想清楚前提假设，不然不敢下结论', score: 4 }] },
-            { dim: 'logic', layer: 'step1', purpose: '逆向思维 —— 你是否尝试从相反角度推演逻辑？',
-                text: '你会试着从完全相反的角度去推一遍，看看能不能得出同样合理的逻辑吗？', opts: [{ label: 'A', text: '我不会，我觉得自己的角度就够了', score: 0 },
-                { label: 'B', text: '我很少这样，觉得有点浪费时间', score: 1 }, { label: 'C', text: '我有时候会试试，但推不下去就放弃了',
-                    score: 2 }, { label: 'D', text: '我经常会这样，我觉得这样才能全面', score: 3 },
-                { label: 'E', text: '我每次都会，我习惯从两边看问题', score: 4 }] },
-            { dim: 'logic', layer: 'step2', purpose: '从众偏误 —— 你是否因"大家都这么说"而放弃独立思考？',
-                text: '当"大家都这么说"的时候，你会不会就不太想自己去检验逻辑了？', opts: [{ label: 'A', text: '我会，大家都这么说，应该不会错', score: 0 },
-                { label: 'B', text: '我有时候会，觉得随大流比较省心', score: 1 }, { label: 'C',
-                    text: '我会看是什么事——小事随大流，重要的事自己过一遍逻辑', score: 4 }, { label: 'D', text: '我基本不会，我还是想自己过一遍逻辑',
-                    score: 2 }, { label: 'E', text: '我完全不会，大家都说的我更要自己验证', score: 3 }] },
-            { dim: 'logic', layer: 'step2', purpose: '愉悦谬误 —— 你是否因逻辑听起来舒适而放松挑剔？',
-                text: '你会不会因为一个逻辑听起来"让人舒服"就放松了对它的挑剔？', opts: [{ label: 'A', text: '我会，舒服的逻辑我倾向于相信', score: 0 },
-                { label: 'B', text: '我有时候会，但也会提醒自己不能太放松', score: 1 }, { label: 'C', text: '我不太会，舒服不一定就靠谱',
-                    score: 2 }, { label: 'D', text: '我基本不会，我会刻意警惕舒服的逻辑', score: 3 },
-                { label: 'E', text: '我完全不会，越舒服的逻辑我越要挑刺', score: 4 }] },
-            { dim: 'logic', layer: 'step3', purpose: '思维固化 —— 你是否愿意定期挑战自己的论证框架？',
-                text: '你愿意定期挑战自己熟悉的论证方式，换个全新的角度去重新想一遍吗？', opts: [{ label: 'A', text: '我不愿意，我觉得我现在的思考方式就够了',
-                    score: 0 }, { label: 'B', text: '我有点不愿意，感觉太费劲了', score: 1 },
-                { label: 'C', text: '我可能愿意试试，但不会经常做', score: 2 }, { label: 'D', text: '我挺愿意的，我觉得这能帮我突破',
-                    score: 3 }, { label: 'E', text: '我非常愿意，我经常这样做，我觉得特别有用', score: 4 }] },
-            { dim: 'logic', layer: 'step3', purpose: '谬误识别 —— 你是否主动学习并识别常见逻辑谬误？',
-                text: '你会刻意去学一些常见的逻辑错误，然后在生活中把它们认出来吗？', opts: [{ label: 'A', text: '我不会，我觉得学那些没什么用', score: 0 },
-                { label: 'B', text: '我可能偶尔会看一下，但不会特意记', score: 1 }, { label: 'C', text: '我有时候会关注，但不会认真去学',
-                    score: 2 }, { label: 'D', text: '我经常学，而且能在生活中认出不少', score: 3 },
-                { label: 'E', text: '我一直在学，而且已经成了我的习惯', score: 4 }] },
+            { dim: 'logic', layer: 'step1', purpose: 'Premise blindness — do you examine the assumptions behind your conclusions?',
+                text: 'Have you considered the assumptions required for your conclusion to hold — and what if they\'re false?', opts: [{ label: 'A', text: 'I\'ve never thought about that — a conclusion is a conclusion',
+                    score: 0 }, { label: 'B', text: 'I rarely think about assumptions — they don\'t seem to matter', score: 1 },
+                { label: 'C', text: 'I sometimes think about them, but not deeply', score: 2 }, { label: 'D', text: 'I often think about assumptions and try to verify them',
+                    score: 3 }, { label: 'E', text: 'I always clarify assumptions before reaching a conclusion', score: 4 }] },
+            { dim: 'logic', layer: 'step1', purpose: 'Reverse thinking — do you try reasoning from the opposite angle?',
+                text: 'Do you try to reason from the exact opposite perspective to see if it leads to a similarly coherent logic?', opts: [{ label: 'A', text: 'No — my own angle is enough', score: 0 },
+                { label: 'B', text: 'Rarely — it feels like a waste of time', score: 1 }, { label: 'C', text: 'Sometimes, but I give up if it gets difficult',
+                    score: 2 }, { label: 'D', text: 'Often — I think that\'s the only way to be comprehensive', score: 3 },
+                { label: 'E', text: 'Always — I\'m used to looking at issues from both sides', score: 4 }] },
+            { dim: 'logic', layer: 'step2', purpose: 'Conformity bias — do you let "everyone says so" replace independent reasoning?',
+                text: 'When "everyone says so," do you stop thinking through the logic yourself?', opts: [{ label: 'A', text: 'Yes — if everyone agrees, it must be right', score: 0 },
+                { label: 'B', text: 'Sometimes — it\'s easier to go with the flow', score: 1 }, { label: 'C',
+                    text: 'It depends — I go with the flow for minor things, but I reason through important matters myself', score: 4 }, { label: 'D', text: 'I rarely do — I still want to examine the logic myself',
+                    score: 2 }, { label: 'E', text: 'Never — when everyone agrees, I feel even more need to verify', score: 3 }] },
+            { dim: 'logic', layer: 'step2', purpose: 'Pleasure fallacy — do you relax scrutiny when logic feels comfortable?',
+                text: 'Do you become less critical of logic that feels "comfortable" to accept?', opts: [{ label: 'A', text: 'Yes — comfortable logic feels trustworthy', score: 0 },
+                { label: 'B', text: 'Sometimes — but I try to remind myself to stay alert', score: 1 }, { label: 'C', text: 'Not really — comfortable doesn\'t mean reliable',
+                    score: 2 }, { label: 'D', text: 'Rarely — I deliberately distrust comfortable logic', score: 3 },
+                { label: 'E', text: 'Never — the more comfortable it feels, the more I challenge it', score: 4 }] },
+            { dim: 'logic', layer: 'step3', purpose: 'Mental rigidity — are you willing to regularly challenge your own reasoning frameworks?',
+                text: 'Are you willing to regularly challenge your familiar ways of reasoning and approach problems from entirely new angles?', opts: [{ label: 'A', text: 'No — my current thinking style is sufficient',
+                    score: 0 }, { label: 'B', text: 'I\'m somewhat reluctant — it feels like too much effort', score: 1 },
+                { label: 'C', text: 'I might try, but I wouldn\'t do it often', score: 2 }, { label: 'D', text: 'I\'m willing — I think it helps me break through', score: 3 },
+                { label: 'E', text: 'Very willing — I do it regularly and find it extremely valuable', score: 4 }] },
+            { dim: 'logic', layer: 'step3', purpose: 'Fallacy recognition — do you actively learn to identify common logical fallacies?',
+                text: 'Do you deliberately learn about common logical fallacies and apply that knowledge in daily life?', opts: [{ label: 'A', text: 'No — I don\'t see the point', score: 0 },
+                { label: 'B', text: 'I might glance at them occasionally, but don\'t memorize', score: 1 }, { label: 'C', text: 'I sometimes pay attention, but don\'t study them seriously',
+                    score: 2 }, { label: 'D', text: 'I often learn about them and can spot quite a few in real life', score: 3 },
+                { label: 'E', text: 'I\'m always learning — it\'s become a habit', score: 4 }] },
 
-            { dim: 'interests', layer: 'step1', purpose: '视角盲区 —— 你是否留意到"谁的视角被忽略了"？',
-                text: '你会有意识地想"谁的视角被忽略了"或者"谁在背后推这个观点"吗？', opts: [{ label: 'A', text: '我不会想这些，我觉得那不重要', score: 0 },
-                { label: 'B', text: '我很少想，除非有人提醒我', score: 1 }, { label: 'C', text: '我有时候会想一下，但不会深入', score: 2 },
-                { label: 'D', text: '我经常会想，我觉得这很重要', score: 3 }, { label: 'E', text: '我每次都会想，这是我的习惯',
+            { dim: 'interests', layer: 'step1', purpose: 'Perspective blindness — do you notice whose perspective is being left out?',
+                text: 'Do you consciously consider "whose perspective is being ignored" or "who benefits from pushing this view"?', opts: [{ label: 'A', text: 'No — I don\'t think that matters', score: 0 },
+                { label: 'B', text: 'Rarely — only if someone points it out', score: 1 }, { label: 'C', text: 'I sometimes think about it, but not deeply', score: 2 },
+                { label: 'D', text: 'I often think about it — I believe it\'s important', score: 3 }, { label: 'E', text: 'I always think about it — it\'s a habit of mine',
                     score: 4 }] },
-            { dim: 'interests', layer: 'step1', purpose: '动机洞察 —— 你是否能看清对立立场背后的利益动机？',
-                text: '你能看清楚，那些跟你立场相反的人，他们能从这件事里得到什么吗？', opts: [{ label: 'A', text: '我看不出来，我不知道他们能得到什么',
-                    score: 0 }, { label: 'B', text: '我偶尔能看出来一点，但不太确定', score: 1 },
-                { label: 'C', text: '我有时候能看清楚，但需要仔细想', score: 2 }, { label: 'D', text: '我大部分能看清楚，我知道他们的动机',
-                    score: 3 }, { label: 'E', text: '我每次都能看清楚，我特别擅长这个', score: 4 }] },
-            { dim: 'interests', layer: 'step2', purpose: '承认错误 —— 你在多大程度上愿意承认自己错了？',
-                text: '你会在多大程度上承认自己错了？', opts: [{ label: 'A', text: '我完全不会承认，我没错', score: 0 },
-                { label: 'B', text: '我有时候会，但很不情愿', score: 1 }, { label: 'C', text: '我基本会承认，但需要证据确凿', score: 2 },
-                { label: 'D', text: '我经常会承认，我觉得错了就错了', score: 3 }, { label: 'E', text: '我每次都会立刻承认，我觉得没什么丢人的',
+            { dim: 'interests', layer: 'step1', purpose: 'Motivation insight — can you see the interests behind opposing positions?',
+                text: 'Can you clearly see what people who hold opposing views stand to gain?', opts: [{ label: 'A', text: 'I can\'t see it — I don\'t know what they gain', score: 0 },
+                { label: 'B', text: 'I can occasionally, but I\'m not sure', score: 1 },
+                { label: 'C', text: 'I can sometimes see it, but it takes effort', score: 2 }, { label: 'D', text: 'I can usually see it — I understand their motivations', score: 3 },
+                { label: 'E', text: 'I can always see it — I\'m particularly good at this', score: 4 }] },
+            { dim: 'interests', layer: 'step2', purpose: 'Admitting error — how willing are you to admit you were wrong?',
+                text: 'To what extent are you willing to admit you were wrong?', opts: [{ label: 'A', text: 'I never admit I\'m wrong — I\'m not wrong', score: 0 },
+                { label: 'B', text: 'I sometimes do, but very reluctantly', score: 1 }, { label: 'C', text: 'I mostly do, but only when evidence is overwhelming', score: 2 },
+                { label: 'D', text: 'I often admit it — wrong is wrong', score: 3 }, { label: 'E', text: 'I always admit it immediately — I don\'t see it as embarrassing',
                     score: 4 }] },
-            { dim: 'interests', layer: 'step2', purpose: '风险感知校准 —— 你能否在"过度乐观"与"过度焦虑"之间找到平衡？',
-                text: '你害怕事情本身的风险吗？', opts: [{ label: 'A', text: '我完全不害怕，我胆子大，风险根本拦不住我', score: 1 },
-                { label: 'B', text: '我不太害怕，我觉得自己大概率能应对', score: 2 }, { label: 'C', text: '我有点害怕，但我觉得这能让我更谨慎',
-                    score: 4 }, { label: 'D', text: '我比较害怕，有时候会睡不着，反复想', score: 2 },
-                { label: 'E', text: '我非常害怕，风险让我极度焦虑，想逃避', score: 0 }] },
-            { dim: 'interests', layer: 'step2', purpose: '自我形象解离 —— 你的判断是否被"我想成为谁"绑架了？',
-                text: '你的判断在多大程度上是为了维护你想成为的那种人的形象？', opts: [{ label: 'A', text: '我完全不会为了维护形象去改变判断，真实最重要',
-                    score: 4 }, { label: 'B', text: '我有时候会，但不会太刻意，基本还是尊重事实', score: 3 },
-                { label: 'C', text: '我会在意形象，但我不太清楚影响有多大', score: 2 }, { label: 'D', text: '我会，尤其是在一些特定场合，我会刻意调整',
-                    score: 1 }, { label: 'E', text: '我几乎每次都这样，我很清楚自己在维护什么人设', score: 0 }] },
-            { dim: 'interests', layer: 'step3', purpose: '利益冲突抉择 —— 当利益与真相冲突时你有明确底线吗？',
-                text: '当利益和真相撞在一起的时候，你的选择是什么？', opts: [{ label: 'A', text: '我从来没想过这个问题，到时候再说', score: 0 },
-                { label: 'B', text: '我大致想过，但没什么明确的底线', score: 1 }, { label: 'C', text: '我大概有一些模糊的原则，但不太清晰',
-                    score: 2 }, { label: 'D', text: '我有明确的底线，我知道自己会怎么选', score: 3 },
-                { label: 'E', text: '我不仅清楚自己的底线，还为此提前做过计划', score: 4 }] },
-            { dim: 'interests', layer: 'step3', purpose: '自我检视 —— 你是否主动反思利益是否扭曲了判断？',
-                text: '你会主动反思自己有没有因为利益而扭曲了判断吗？', opts: [{ label: 'A', text: '我不会，我相信自己不会被利益影响', score: 0 },
-                { label: 'B', text: '我很少反思，觉得自己应该没问题', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会刻意去深挖',
-                    score: 2 }, { label: 'D', text: '我经常会反思，我觉得人人都会被影响', score: 3 },
-                { label: 'E', text: '我每次都会反思，我特别警惕这一点', score: 4 }] },
+            { dim: 'interests', layer: 'step2', purpose: 'Risk perception calibration — can you balance over-optimism and over-anxiety?',
+                text: 'How afraid are you of the risks involved in things?', opts: [{ label: 'A', text: 'Not at all — I\'m bold and risks don\'t stop me', score: 1 },
+                { label: 'B', text: 'Not much — I think I can handle most situations', score: 2 }, { label: 'C', text: 'A little — but that helps me prepare more thoroughly',
+                    score: 4 }, { label: 'D', text: 'Quite a bit — it keeps me up at night, I overthink', score: 2 },
+                { label: 'E', text: 'Very much — risk makes me extremely anxious and I want to avoid it', score: 0 }] },
+            { dim: 'interests', layer: 'step2', purpose: 'Self-image dissociation — is your judgment held hostage by who you want to be seen as?',
+                text: 'To what extent do your judgments serve the image of the person you want to be?', opts: [{ label: 'A', text: 'Not at all — truth matters more than image',
+                    score: 4 }, { label: 'B', text: 'Sometimes, but not deliberately — I mostly follow the facts', score: 3 },
+                { label: 'C', text: 'I care about image, but I\'m not sure how much it affects me', score: 2 }, { label: 'D', text: 'I do — especially in certain settings, I adjust accordingly',
+                    score: 1 }, { label: 'E', text: 'Almost always — I\'m fully aware of the persona I\'m maintaining', score: 0 }] },
+            { dim: 'interests', layer: 'step3', purpose: 'Interest-conflict resolution — do you have a clear bottom line when interests conflict with truth?',
+                text: 'When interests and truth collide, what\'s your choice?', opts: [{ label: 'A', text: 'I\'ve never thought about it — I\'ll cross that bridge when I get there', score: 0 },
+                { label: 'B', text: 'I\'ve thought about it vaguely, but have no clear bottom line', score: 1 }, { label: 'C', text: 'I have some vague principles, but they\'re not clear',
+                    score: 2 }, { label: 'D', text: 'I have a clear bottom line — I know what I\'d choose', score: 3 },
+                { label: 'E', text: 'I not only have a clear bottom line, I\'ve planned for it in advance', score: 4 }] },
+            { dim: 'interests', layer: 'step3', purpose: 'Self-examination — do you actively reflect on whether interests have distorted your judgment?',
+                text: 'Do you actively reflect on whether your own interests have distorted your judgment?', opts: [{ label: 'A', text: 'No — I trust that I\'m unaffected by interests', score: 0 },
+                { label: 'B', text: 'I rarely reflect — I assume I\'m fine', score: 1 }, { label: 'C', text: 'I sometimes think about it, but don\'t dig deep',
+                    score: 2 }, { label: 'D', text: 'I often reflect — I believe everyone is affected', score: 3 },
+                { label: 'E', text: 'I always reflect — I\'m especially vigilant about this', score: 4 }] },
 
-            { dim: 'emotion', layer: 'step1', purpose: '情绪觉察 —— 做判断时你能察觉到情绪在影响你吗？',
-                text: '在做重要判断的时候，你的情绪（比如生气、兴奋、害怕）影响大不大？', opts: [{ label: 'A', text: '我完全不会注意到情绪的影响，我是理性的人',
-                    score: 0 }, { label: 'B', text: '我好像不太会留意到情绪在起作用', score: 1 },
-                { label: 'C', text: '我有时候能感觉到情绪在影响我', score: 2 }, { label: 'D', text: '我能清楚地感觉到情绪在影响我的判断',
-                    score: 3 }, { label: 'E', text: '情绪几乎每一次都在影响我，我都知道', score: 4 }] },
-            { dim: 'emotion', layer: 'step1', purpose: '不适与虚假 —— 你能区分"不舒服"和"是假的"吗？',
-                text: '你能分清楚"这个信息让我不舒服"和"这个信息是假的"之间的差别吗？', opts: [{ label: 'A', text: '我完全分不清楚，不舒服就是假的',
-                    score: 0 }, { label: 'B', text: '我有时候分不清，情绪容易干扰我', score: 1 },
-                { label: 'C', text: '我大概能分清楚，但偶尔也会混淆', score: 2 }, { label: 'D', text: '我大部分能分清，知道这两者的区别',
-                    score: 3 }, { label: 'E', text: '我每次都能分清楚，我特别在意这个区别', score: 4 }] },
-            { dim: 'emotion', layer: 'step2', purpose: '失败容忍度 —— 恐惧是否在剥夺你的行动力？',
-                text: '你害怕"事情搞砸了"吗？', opts: [{ label: 'A', text: '我完全不害怕，反正车到山前必有路', score: 1 },
-                { label: 'B', text: '我不太害怕，我觉得自己扛得住后果', score: 2 }, { label: 'C', text: '我有点害怕，但这会督促我准备得更充分',
-                    score: 4 }, { label: 'D', text: '我比较害怕，会让我很焦虑，影响发挥', score: 2 },
-                { label: 'E', text: '我非常害怕，我经常因为怕搞砸而不敢行动', score: 0 }] },
-            { dim: 'emotion', layer: 'step2', purpose: '认错羞耻 —— 你是否因害怕丢脸而拒绝承认看走眼？',
-                text: '你害怕"承认自己看走了眼"吗？', opts: [{ label: 'A', text: '我完全不害怕，错了就承认呗', score: 4 },
-                { label: 'B', text: '我不太害怕，我觉得这很正常', score: 3 }, { label: 'C', text: '我有点害怕，但也能接受', score: 2 },
-                { label: 'D', text: '我比较害怕，会觉得丢面子', score: 1 }, { label: 'E', text: '我非常害怕，我宁可别人说我固执也不愿意承认自己错了',
+            { dim: 'emotion', layer: 'step1', purpose: 'Emotional awareness — can you sense emotions influencing your judgments?',
+                text: 'When making important decisions, how much do your emotions (anger, excitement, fear) influence you?', opts: [{ label: 'A', text: 'I never notice emotional influence — I\'m a rational person',
+                    score: 0 }, { label: 'B', text: 'I don\'t usually notice emotions at play', score: 1 },
+                { label: 'C', text: 'I can sometimes feel emotions influencing me', score: 2 }, { label: 'D', text: 'I can clearly feel emotions affecting my judgment',
+                    score: 3 }, { label: 'E', text: 'Emotions affect me almost every time — I know it', score: 4 }] },
+            { dim: 'emotion', layer: 'step1', purpose: 'Discomfort vs. falsehood — can you distinguish "uncomfortable" from "untrue"?',
+                text: 'Can you tell the difference between "this information makes me uncomfortable" and "this information is false"?', opts: [{ label: 'A', text: 'I can\'t tell at all — uncomfortable means false',
+                    score: 0 }, { label: 'B', text: 'I sometimes confuse them — emotions get in the way', score: 1 },
+                { label: 'C', text: 'I mostly can, but occasionally confuse them', score: 2 }, { label: 'D', text: 'I can usually tell — I know the difference',
+                    score: 3 }, { label: 'E', text: 'I always can — I pay close attention to this distinction', score: 4 }] },
+            { dim: 'emotion', layer: 'step2', purpose: 'Failure tolerance — does fear of failure paralyze you?',
+                text: 'How afraid are you of "messing things up"?', opts: [{ label: 'A', text: 'Not at all — I\'ll cross that bridge when I come to it', score: 1 },
+                { label: 'B', text: 'Not much — I think I can handle the consequences', score: 2 }, { label: 'C', text: 'A little — but it pushes me to prepare better',
+                    score: 4 }, { label: 'D', text: 'Quite a bit — it makes me anxious and affects my performance', score: 2 },
+                { label: 'E', text: 'Very much — I often avoid acting for fear of failure', score: 0 }] },
+            { dim: 'emotion', layer: 'step2', purpose: 'Admission shame — do you avoid admitting you were fooled out of fear of embarrassment?',
+                text: 'How afraid are you of "admitting you were fooled"?', opts: [{ label: 'A', text: 'Not at all — if I\'m wrong, I admit it', score: 4 },
+                { label: 'B', text: 'Not much — I think it\'s normal', score: 3 }, { label: 'C', text: 'A little — but I can accept it', score: 2 },
+                { label: 'D', text: 'Quite a bit — it feels embarrassing', score: 1 }, { label: 'E', text: 'Very much — I\'d rather be seen as stubborn than admit I was wrong',
                     score: 0 }] },
-            { dim: 'emotion', layer: 'step3', purpose: '情绪调节 —— 情绪上头时你能主动停下来冷静吗？',
-                text: '情绪上头的时候，你会主动停下来冷静一下再做判断吗？', opts: [{ label: 'A', text: '我不会，我就是想马上做决定', score: 0 },
-                { label: 'B', text: '我很少会停下来，情绪来了就来了', score: 1 }, { label: 'C', text: '我有时候会停一下，但不太管用',
-                    score: 2 }, { label: 'D', text: '我经常会停下，让自己先冷静冷静', score: 3 },
-                { label: 'E', text: '我每次都会停下来，冷静后再决定', score: 4 }] },
-            { dim: 'emotion', layer: 'step3', purpose: '触发点管理 —— 你愿意记录情绪触发点并提前应对吗？',
-                text: '你愿意记下自己的情绪触发点，提前想好怎么应对吗？', opts: [{ label: 'A', text: '我不愿意，我觉得这没什么用', score: 0 },
-                { label: 'B', text: '我有点不愿意，感觉太麻烦了', score: 1 }, { label: 'C', text: '我可能会试试，但不知道能不能坚持',
-                    score: 2 }, { label: 'D', text: '我挺愿意的，我正在尝试这样做', score: 3 },
-                { label: 'E', text: '我非常愿意，我已经在做了，而且很有帮助', score: 4 }] },
+            { dim: 'emotion', layer: 'step3', purpose: 'Emotional regulation — can you pause and calm down when emotions run high?',
+                text: 'When emotions run high, do you actively pause and calm down before making a judgment?', opts: [{ label: 'A', text: 'No — I want to decide immediately', score: 0 },
+                { label: 'B', text: 'I rarely pause — emotions come and go', score: 1 }, { label: 'C', text: 'I sometimes pause, but it doesn\'t help much',
+                    score: 2 }, { label: 'D', text: 'I often pause to let myself calm down first', score: 3 },
+                { label: 'E', text: 'I always pause and calm down before deciding', score: 4 }] },
+            { dim: 'emotion', layer: 'step3', purpose: 'Trigger management — are you willing to document emotional triggers and plan responses?',
+                text: 'Are you willing to note your emotional triggers and plan how to handle them?', opts: [{ label: 'A', text: 'I\'m not willing — I don\'t think it\'s useful', score: 0 },
+                { label: 'B', text: 'I\'m somewhat reluctant — it seems like too much trouble', score: 1 }, { label: 'C', text: 'I might try, but I\'m not sure I\'ll stick with it',
+                    score: 2 }, { label: 'D', text: 'I\'m willing — I\'m already trying to do this', score: 3 },
+                { label: 'E', text: 'Very willing — I\'m already doing it and it helps', score: 4 }] },
 
-            { dim: 'cost', layer: 'step1', purpose: '最坏情况估算 —— 做决定前你会考虑最坏结果与概率吗？',
-                text: '做决定之前，你会不会去想"最坏能坏到哪一步"和它发生的概率？', opts: [{ label: 'A', text: '我完全不会想，想那么多干嘛', score: 0 },
-                { label: 'B', text: '我不太会想，感觉会越想越怕', score: 1 }, { label: 'C', text: '我有时候会想一下，但不会很仔细',
-                    score: 2 }, { label: 'D', text: '我经常会想，我觉得要考虑最坏情况', score: 3 },
-                { label: 'E', text: '我每次都会想，我会仔细计算概率', score: 4 }] },
-            { dim: 'cost', layer: 'step1', purpose: '对比权衡 —— 你是否对比过"信"与"不信"的后果？',
-                text: '你会同时把"相信"和"不相信"两种选择的后果都摆出来比一比吗？', opts: [{ label: 'A', text: '我完全不会，相信就相信了', score: 0 },
-                { label: 'B', text: '我很少权衡，觉得太累了', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会并列比较',
-                    score: 2 }, { label: 'D', text: '我经常会比一比，这样更清楚', score: 3 },
-                { label: 'E', text: '我每次都会仔细对比，这是我的决策习惯', score: 4 }] },
-            { dim: 'cost', layer: 'step2', purpose: '决策完美主义 —— 你是否在追求"绝对正确"中消耗了自己？',
-                text: '你害怕"做出错误选择"吗？', opts: [{ label: 'A', text: '我完全不害怕，选错了就改，没什么大不了的', score: 3 },
-                { label: 'B', text: '我不太害怕，我觉得没有完美的选择，选一个就往前走', score: 4 },
-                { label: 'C', text: '我有点害怕，但也不会太纠结，差不多就定了', score: 2 },
-                { label: 'D', text: '我比较害怕，我会反复想会不会选错，很耗精力', score: 1 },
-                { label: 'E', text: '我非常害怕，我经常因为怕选错而犹豫不决，迟迟无法行动', score: 0 }] },
-            { dim: 'cost', layer: 'step2', purpose: '承认失误 —— 你是否因害怕丢脸而拒绝承认选择错误？',
-                text: '你害怕"承认自己做出了错误选择"吗？', opts: [{ label: 'A', text: '我完全不害怕，错了就大方承认', score: 4 },
-                { label: 'B', text: '我不太害怕，我觉得承认错误没什么', score: 3 }, { label: 'C', text: '我有点害怕，会有点不好意思',
-                    score: 2 }, { label: 'D', text: '我比较害怕，感觉承认错了很丢脸', score: 1 },
-                { label: 'E', text: '我非常害怕，我宁可死扛也不愿承认自己选错了', score: 0 }] },
-            { dim: 'cost', layer: 'step2', purpose: '中立焦虑 —— 你是否因害怕错过而急于站队？',
-                text: '如果暂时不判断、保持中立，你会担心错过什么吗？', opts: [{ label: 'A', text: '我完全不担心，保持中立挺好的', score: 4 },
-                { label: 'B', text: '我不太担心，我觉得等等看也没关系', score: 3 }, { label: 'C', text: '我有点担心，怕错过了最佳时机',
-                    score: 2 }, { label: 'D', text: '我比较担心，我不太喜欢悬而未决', score: 1 },
-                { label: 'E', text: '我非常担心，我恨不得马上就做决定', score: 0 }] },
-            { dim: 'cost', layer: 'step3', purpose: '不确定性容忍 —— 你愿为真相承受"不随大流"的不确定感吗？',
-                text: '你愿意为了看清真相，去承受"不跟着大家走"带来的不确定感吗？', opts: [{ label: 'A', text: '我不愿意，不确定感太难受了', score: 0 },
-                { label: 'B', text: '我不太愿意，我觉得跟着大家更安全', score: 1 }, { label: 'C', text: '我可能会愿意，但要看情况',
-                    score: 2 }, { label: 'D', text: '我挺愿意的，真相比舒服更重要', score: 3 },
-                { label: 'E', text: '我非常愿意，我不怕不确定，我怕看不清真相', score: 4 }] },
-            { dim: 'cost', layer: 'step3', purpose: '决策框架 —— 你有系统性的决策框架来评估得失吗？',
-                text: '你会搭一个简单的决策框架，帮自己在下次做判断时系统评估得失吗？', opts: [{ label: 'A', text: '我不会，我觉得没必要', score: 0 },
-                { label: 'B', text: '我可能想过，但没真的去做', score: 1 }, { label: 'C', text: '我有时候会试着弄一个，但不太系统',
-                    score: 2 }, { label: 'D', text: '我正在建立自己的决策框架，已经有一些了', score: 3 },
-                { label: 'E', text: '我已经有了很完善的决策框架，一直在用', score: 4 }] }
+            { dim: 'cost', layer: 'step1', purpose: 'Worst-case estimation — do you consider the worst-case outcome and its probability?',
+                text: 'Before making a decision, do you think about "what\'s the worst that could happen" and how likely it is?', opts: [{ label: 'A', text: 'Not at all — why worry about that?', score: 0 },
+                { label: 'B', text: 'Not much — thinking about it makes me more anxious', score: 1 }, { label: 'C', text: 'I sometimes think about it, but not carefully',
+                    score: 2 }, { label: 'D', text: 'I often think about it — I believe in considering the worst case', score: 3 },
+                { label: 'E', text: 'I always think about it — I carefully estimate probabilities', score: 4 }] },
+            { dim: 'cost', layer: 'step1', purpose: 'Comparative tradeoff — do you weigh the consequences of "believe" vs. "not believe"?',
+                text: 'Do you lay out and compare the consequences of both "believing" and "not believing"?', opts: [{ label: 'A', text: 'Not at all — if I believe, I believe', score: 0 },
+                { label: 'B', text: 'Rarely — it feels too exhausting', score: 1 }, { label: 'C', text: 'I sometimes think about it, but don\'t compare side by side',
+                    score: 2 }, { label: 'D', text: 'I often compare — it gives me clarity', score: 3 },
+                { label: 'E', text: 'I always compare carefully — it\'s my decision habit', score: 4 }] },
+            { dim: 'cost', layer: 'step2', purpose: 'Decision perfectionism — do you exhaust yourself chasing "the perfect choice"?',
+                text: 'How afraid are you of "making the wrong choice"?', opts: [{ label: 'A', text: 'Not at all — I adjust if I\'m wrong, no big deal', score: 3 },
+                { label: 'B', text: 'Not much — no choice is perfect, I pick one and move forward', score: 4 },
+                { label: 'C', text: 'A little — but I don\'t obsess, I make a call and move on', score: 2 },
+                { label: 'D', text: 'Quite a bit — I second-guess myself, it drains energy', score: 1 },
+                { label: 'E', text: 'Very much — I often hesitate and delay action for fear of choosing wrong', score: 0 }] },
+            { dim: 'cost', layer: 'step2', purpose: 'Admitting error — are you afraid to admit you made a bad choice?',
+                text: 'How afraid are you of "admitting you made a poor decision"?', opts: [{ label: 'A', text: 'Not at all — if I\'m wrong, I admit it openly', score: 4 },
+                { label: 'B', text: 'Not much — admitting mistakes is fine', score: 3 }, { label: 'C', text: 'A little — it feels a bit awkward', score: 2 },
+                { label: 'D', text: 'Quite a bit — admitting I\'m wrong feels shameful', score: 1 },
+                { label: 'E', text: 'Very much — I\'d rather stick with my choice than admit it was wrong', score: 0 }] },
+            { dim: 'cost', layer: 'step2', purpose: 'Neutrality anxiety — do you fear missing out if you stay neutral?',
+                text: 'If you hold off on judgment and stay neutral, do you worry about missing something?', opts: [{ label: 'A', text: 'Not at all — staying neutral is fine', score: 4 },
+                { label: 'B', text: 'Not much — I think waiting is okay', score: 3 }, { label: 'C', text: 'A little — I fear missing the optimal timing',
+                    score: 2 }, { label: 'D', text: 'Quite a bit — I don\'t like being in limbo', score: 1 },
+                { label: 'E', text: 'Very much — I want to decide immediately', score: 0 }] },
+            { dim: 'cost', layer: 'step3', purpose: 'Uncertainty tolerance — are you willing to bear uncertainty for truth?',
+                text: 'Are you willing to bear the discomfort of "not following the crowd" for the sake of truth?', opts: [{ label: 'A', text: 'No — uncertainty is too uncomfortable', score: 0 },
+                { label: 'B', text: 'Not really — I feel safer going along', score: 1 }, { label: 'C', text: 'Maybe — it depends on the situation', score: 2 },
+                { label: 'D', text: 'I\'m willing — truth matters more than comfort', score: 3 },
+                { label: 'E', text: 'Very willing — I\'m not afraid of uncertainty, I\'m afraid of not seeing the truth', score: 4 }] },
+            { dim: 'cost', layer: 'step3', purpose: 'Decision framework — do you have a systematic framework for evaluating tradeoffs?',
+                text: 'Do you build a simple decision framework to systematically evaluate pros and cons for future judgments?', opts: [{ label: 'A', text: 'No — I don\'t see the need', score: 0 },
+                { label: 'B', text: 'I\'ve thought about it, but never done it', score: 1 }, { label: 'C', text: 'I sometimes try, but it\'s not systematic',
+                    score: 2 }, { label: 'D', text: 'I\'m building my own decision framework — I have some in place', score: 3 },
+                { label: 'E', text: 'I already have a robust decision framework and use it consistently', score: 4 }] }
         ];
 
         // ================================================================
-        // 状态管理
+        // State Management
         // ================================================================
         let state = { questions: [], answers: {}, shuffledIndices: [], currentStep: 0, isActive: false, timerStarted: false };
         const TOTAL = QUESTIONS_RAW.length;
         let historyRecords = [];
         let timerSeconds = 0,
             timerInterval = null;
-        // 全局缓存截图
         let _reportBlobCache = null;
         let _reportCanvasCache = null;
 
@@ -1587,11 +1586,11 @@
                             renderStep(); if (state.timerStarted) startTimer(); }
                         return;
                     }
-                    console.warn('状态数据不完整，已重置');
+                    console.warn('State data incomplete, resetting');
                 }
                 initQuestions();
             } catch (e) {
-                console.warn('状态数据损坏，已重置');
+                console.warn('State data corrupted, resetting');
                 initQuestions();
             }
         }
@@ -1643,14 +1642,13 @@
             document.getElementById('resultBox').classList.remove('show');
             document.getElementById('stepContainer').innerHTML = '';
             document.getElementById('startBtn').disabled = false;
-            document.getElementById('startBtn').textContent = '🚀 开始诊断';
+            document.getElementById('startBtn').textContent = '🚀 Start Diagnosis';
             document.getElementById('startArea').style.display = 'block';
             document.getElementById('progressFill').style.width = '0%';
             document.getElementById('answeredCount').textContent = '0';
-            document.getElementById('nextDimLabel').textContent = '事实依据';
+            document.getElementById('nextDimLabel').textContent = 'Factual Basis';
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            showToast('已重置，可以重新开始诊断');
-            // 清空缓存
+            showToast('Reset — ready to start a new diagnosis');
             _reportBlobCache = null;
             _reportCanvasCache = null;
         }
@@ -1662,7 +1660,7 @@
 
         function updateDimScanProgress(currentDim) {
             const dimIndex = DIM_ORDER.indexOf(currentDim);
-            let nextLabel = '全部完成 🎯';
+            let nextLabel = 'All Complete 🎯';
             if (dimIndex !== -1 && dimIndex + 1 < DIM_ORDER.length) {
                 const nextKey = DIM_ORDER[dimIndex + 1];
                 nextLabel = DIM_MAP[nextKey]?.label || nextKey;
@@ -1683,11 +1681,11 @@
                 document.getElementById('stepContainer').innerHTML = `
                 <div class="complete-msg">
                     <div class="icon">🎉</div>
-                    <div class="title">所有问题已回答完毕</div>
-                    <div class="sub">你已完成全部 ${total} 个问题的诊断，点击下方按钮生成报告。</div>
+                    <div class="title">All Questions Answered</div>
+                    <div class="sub">You\'ve completed all ${total} diagnostic questions — click below to generate your report.</div>
                     <div class="btn-group">
-                        <button class="btn-report" id="generateReportBtn">📋 生成诊断报告</button>
-                        <button class="btn-reset" id="resetFromCompleteBtn">↻ 重新开始</button>
+                        <button class="btn-report" id="generateReportBtn">📋 Generate Report</button>
+                        <button class="btn-reset" id="resetFromCompleteBtn">↻ Restart</button>
                     </div>
                 </div>
             `;
@@ -1716,8 +1714,8 @@
             let dimAnswered = 0;
             dimIndices.forEach(idx => { if (state.answers['q_' + idx]) dimAnswered++; });
 
-            const dim = DIM_MAP[q.dim] || { icon: '📌', label: '维度' };
-            const layer = LAYER_MAP[q.layer] || { label: '思考', sub: '追问', badge: 's1' };
+            const dim = DIM_MAP[q.dim] || { icon: '📌', label: 'Dimension' };
+            const layer = LAYER_MAP[q.layer] || { label: 'Think', sub: 'Inquire', badge: 's1' };
             const stepNum = step + 1,
                 ans = state.answers['q_' + realIdx];
             const rawOpts = q.options.map((opt, idx) => ({ ...opt, origIdx: idx }));
@@ -1738,7 +1736,7 @@
             for (let i = step - 1; i >= 0; i--) { const ridx = state.shuffledIndices[i]; if (state.answers['q_' + ridx]) { hasPrev =
                         true; break; } }
 
-            const purposeHtml = q.purpose ? `<div class="purpose-tag">探测偏误：${q.purpose}</div>` : '';
+            const purposeHtml = q.purpose ? `<div class="purpose-tag">Bias probe: ${q.purpose}</div>` : '';
             const dimProgressText = `（${dimAnswered}/${dimTotal}）`;
 
             document.getElementById('stepContainer').innerHTML = `
@@ -1755,8 +1753,8 @@
                     <div class="q-options">${optsHtml}</div>
                 </div>
                 <div class="step-footer">
-                    <div class="step-status ${ans?'done':'active'}">${ans?'✅ 已作答':'☑️ 请选择一个选项'}</div>
-                    <button class="btn-back" id="backBtn" ${!hasPrev?'disabled':''}>↩ 返回上一题</button>
+                    <div class="step-status ${ans?'done':'active'}">${ans?'✅ Answered':'☑️ Please select an option'}</div>
+                    <button class="btn-back" id="backBtn" ${!hasPrev?'disabled':''}>↩ Back</button>
                 </div>
             </div>
         `;
@@ -1782,7 +1780,7 @@
                     this.closest('label').classList.add('selected');
                     const status = document.querySelector('.step-status');
                     if (status) { status.className = 'step-status done';
-                        status.innerHTML = '✅ 已作答，自动进入下一题...'; }
+                        status.innerHTML = '✅ Answered — moving to next question...'; }
                     const doneNow = Object.keys(state.answers).length;
                     document.getElementById('progressFill').style.width = ((doneNow / total) * 100) + '%';
                     document.getElementById('answeredCount').textContent = doneNow;
@@ -1792,11 +1790,11 @@
             });
             if (ans) { const status = document.querySelector('.step-status'); if (status) { status.className =
                         'step-status done';
-                    status.innerHTML = '✅ 已作答'; } }
+                    status.innerHTML = '✅ Answered'; } }
         }
 
         // ================================================================
-        // 生成报告（核心修复：二维码直接转为 img）
+        // Generate Report
         // ================================================================
         function generateReport(saveToHistory = true, customAnswers = null) {
             const answers = customAnswers || state.answers;
@@ -1822,20 +1820,20 @@
             const totalPct = totalMax > 0 ? (totalEarned / totalMax) * 100 : 0;
             let level, levelLabel, levelDesc;
             if (totalPct >= 80) { level = 5;
-                levelLabel = '清醒的思考者';
-                levelDesc = '你的思维框架非常完整，具备系统性的批判性思维。你能够独立检验信息、深度追问自己的认知盲区，并将反思内化为行动习惯。'; } else if (totalPct >=
+                levelLabel = 'Clear Thinker';
+                levelDesc = 'Your thinking framework is remarkably complete, with systematic critical thinking. You independently verify information, deeply probe your cognitive blind spots, and internalize reflection into action.'; } else if (totalPct >=
                 60) { level = 4;
-                levelLabel = '独立的思考者';
-                levelDesc = '你有较强的独立思考能力，但在某些维度上仍有盲区。你已经有意识地检验信息和反思自己，但深度和系统性还可以进一步提升。'; } else if (totalPct >=
+                levelLabel = 'Independent Thinker';
+                levelDesc = 'You have strong independent thinking skills, but still have blind spots in certain dimensions. You consciously verify information and reflect on yourself, but depth and systemization can be further improved.'; } else if (totalPct >=
                 40) { level = 3;
-                levelLabel = '探索中的思考者';
-                levelDesc = '你具备基础的批判性思维意识，但深度和系统性不足。你有时候会怀疑信息，但缺乏一套完整的检验框架，容易被表面的逻辑带着走。'; } else if (totalPct >=
+                levelLabel = 'Exploring Thinker';
+                levelDesc = 'You have basic critical thinking awareness, but lack depth and systemization. You sometimes question information, but lack a complete verification framework and can be led by surface logic.'; } else if (totalPct >=
                 20) { level = 2;
-                levelLabel = '被引导的思考者';
-                levelDesc = '你容易被信息带节奏，缺乏主动检验和反思的习惯。你倾向于接受表面信息，很少追问"为什么"或"谁在背后推动"。需要从基础开始建立批判性思维框架。'; } else { level =
+                levelLabel = 'Guided Thinker';
+                levelDesc = 'You are easily led by information, lacking active verification and reflection habits. You tend to accept surface information, rarely asking "why" or "who benefits." Start building a critical thinking framework from the ground up.'; } else { level =
                     1;
-                levelLabel = '被动的接收者';
-                levelDesc = '你习惯性地接受信息，几乎没有反思和检验的意识。你容易被情绪驱动、被立场左右、被利益操控。建议从最基础的"信息源检验"开始重新建立思维习惯。'; }
+                levelLabel = 'Passive Receiver';
+                levelDesc = 'You habitually accept information with almost no reflection or verification. You are easily driven by emotion, swayed by positions, and manipulated by interests. Start with the most basic "source verification" to rebuild your thinking habits.'; }
 
             const dimResults = Object.keys(DIM_MAP).map(dimId => {
                 const data = dimScores[dimId] || { earned: 0, total: 0 };
@@ -1847,9 +1845,9 @@
                 const data = layerScores[key];
                 const pct = data.total > 0 ? (data.earned / data.total) * 100 : 0;
                 let statusText, cls;
-                if (pct >= 70) { statusText = '✅ 通过';
-                    cls = 'pass'; } else if (pct >= 45) { statusText = '⚠️ 部分通过';
-                    cls = 'warn'; } else { statusText = '❌ 未通过';
+                if (pct >= 70) { statusText = '✅ Pass';
+                    cls = 'pass'; } else if (pct >= 45) { statusText = '⚠️ Partial';
+                    cls = 'warn'; } else { statusText = '❌ Fail';
                     cls = 'fail'; }
                 return { key, label: LAYER_MAP[key].label, sub: LAYER_MAP[key].sub, pct, earned: data.earned,
                     total: data.total, statusText, cls };
@@ -1859,37 +1857,37 @@
             const weakestDim = dimResults.reduce((a, b) => a.pct < b.pct ? a : b);
             const weakestLayer = layerResults.reduce((a, b) => a.pct < b.pct ? a : b);
             const adviceText = (() => {
-                if (totalPct >= 80) return '你的思维框架已经相当成熟。继续保持，并重点关注"是否真的做到了"而不是"是否知道"。';
-                if (totalPct >= 60) return '你基础不错，但仍有盲区。建议从最弱的那一层（<strong>' + weakestLayer.label +
-                    '</strong>）开始集中突破。';
-                return '你的思维习惯还有较大提升空间。从最基础的"信息源检验"开始，重建"每一条信息都值得怀疑"的意识。';
+                if (totalPct >= 80) return 'Your thinking framework is already quite mature. Keep it up — and focus on "whether you really do it" rather than "whether you know it."';
+                if (totalPct >= 60) return 'You have a solid foundation, but there are still blind spots. Start by focusing on your weakest layer: <strong>' + weakestLayer.label +
+                    '</strong>.';
+                return 'Your thinking habits still have significant room for improvement. Start with the most basic "source verification" and rebuild the awareness that "every piece of information deserves scrutiny."';
             })();
 
             document.getElementById('resultBadges').innerHTML = `
-            <span class="badge-item ${totalPct>=60?'pass':totalPct>=40?'warn':'fail'}">成熟度：${Math.round(totalPct)}%</span>
-            <span class="badge-item ${totalPct>=60?'pass':'warn'}">等级：${levelLabel.slice(0,6)}</span>
+            <span class="badge-item ${totalPct>=60?'pass':totalPct>=40?'warn':'fail'}">Maturity: ${Math.round(totalPct)}%</span>
+            <span class="badge-item ${totalPct>=60?'pass':'warn'}">Level: ${levelLabel.slice(0,6)}</span>
         `;
             const body = document.getElementById('reportBody');
             const headerHtml = `
             <div class="result-card" style="border-bottom:1px solid #2a322a; padding-bottom:12px; margin-bottom:14px; text-align:center;">
                 <div style="font-size:13px; font-weight:600; letter-spacing:1.6px; color:#8a9a7e; text-transform:uppercase;">Cognitive Blind Spot Diagnostic Model</div>
-                <div style="font-size:20px; font-weight:700; color:#e2ead4;">一个让人彻底"清醒"的思维模型</div>
-                <div style="font-size:14px; color:#7a8a6e; margin-top:4px;">作者：杨晟琦 &nbsp; ORCID: 0009-0008-3755-8960</div>
-                <span style="display:inline-block; background:#2a322a; color:#e2ead4; font-size:14px; font-weight:500; padding:4px 18px; border-radius:30px; border:1px solid #3a4638; margin-top:6px;">思维盲区诊断</span>
+                <div style="font-size:20px; font-weight:700; color:#e2ead4;">A "Wake-Up Call" for Your Thinking</div>
+                <div style="font-size:14px; color:#7a8a6e; margin-top:4px;">Author: Yang Shengqi &nbsp; ORCID: 0009-0008-3755-8960</div>
+                <span style="display:inline-block; background:#2a322a; color:#e2ead4; font-size:14px; font-weight:500; padding:4px 18px; border-radius:30px; border:1px solid #3a4638; margin-top:6px;">Cognitive Blind Spot Diagnosis</span>
             </div>
         `;
             const summaryHtml = `
             <div class="result-card" style="margin-bottom:14px;">
-                <div class="card-title" style="font-size:17px;">📌 一句话读懂你的思维</div>
+                <div class="card-title" style="font-size:17px;">📌 Your Thinking in One Sentence</div>
                 <div class="card-content" style="font-size:16px; line-height:2;">
-                    <div><strong>思维成熟度：${Math.round(totalPct)}%</strong> —— 属于 <strong>"${levelLabel}"</strong></div>
+                    <div><strong>Thinking Maturity: ${Math.round(totalPct)}%</strong> — <strong>"${levelLabel}"</strong></div>
                     <div style="margin-top:6px;">
-                        <span style="color:#8aaa6a;">✅ 最强项：${strongestDim.label}（${Math.round(strongestDim.pct)}%）</span><br>
-                        <span style="color:#b05a4a;">⚠️ 待提升：${weakestDim.label}（${Math.round(weakestDim.pct)}%）</span><br>
-                        <span style="color:#b89a4a;">💡 优先突破：${weakestLayer.label}（${Math.round(weakestLayer.pct)}%）</span>
+                        <span style="color:#8aaa6a;">✅ Strongest: ${strongestDim.label}（${Math.round(strongestDim.pct)}%）</span><br>
+                        <span style="color:#b05a4a;">⚠️ To Improve: ${weakestDim.label}（${Math.round(weakestDim.pct)}%）</span><br>
+                        <span style="color:#b89a4a;">💡 Priority: ${weakestLayer.label}（${Math.round(weakestLayer.pct)}%）</span>
                     </div>
                     <div style="margin-top:8px; font-size:14px; color:#aaba8a; border-top:1px solid #2a322a; padding-top:6px;">
-                        💬 ${totalPct>=60?'你的思维框架比较扎实，继续优化薄弱环节即可。':'建议从最弱维度开始，每天刻意练习一项。'}
+                        💬 ${totalPct>=60?'Your thinking framework is solid — keep refining the weak spots.':'Start with your weakest dimension and practice one skill daily.'}
                     </div>
                 </div>
             </div>
@@ -1900,7 +1898,7 @@
                     <div class="layer-node ${r.cls}" style="flex:0 1 auto; min-width:100px;">
                         <div class="layer-node-icon">${i===0?'🛡️':i===1?'🧠':'🌱'}</div>
                         <div class="layer-node-label">${r.label}</div>
-                        <div class="layer-node-sub">${['辨别真伪','反思偏见','化为行动'][i]}</div>
+                        <div class="layer-node-sub">${['Distinguish Truth','Reflect on Bias','Turn into Action'][i]}</div>
                         <div class="layer-node-status ${r.cls}">${r.statusText}</div>
                         <div class="layer-node-score">${Math.round(r.pct)}% · ${r.earned}/${r.total}</div>
                     </div>
@@ -1911,7 +1909,7 @@
             const radarHtml = `<div class="radar-container"><canvas id="radarCanvas" width="400" height="400"></canvas></div>`;
             const dimProgressHtml = `
             <div class="dim-progress-card" style="text-align:left;">
-                <div class="card-title">📊 六维度细分进度</div>
+                <div class="card-title">📊 Six Dimensions Breakdown</div>
                 <div class="dim-progress-wrap">
                     ${dimResults.map(d=>`
                         <div class="dim-progress-item">
@@ -1938,56 +1936,55 @@
                     <div class="advice-main">${adviceText}</div>
                     <div class="advice-items" style="padding-left:0;">
                         <div class="advice-item" style="padding-left:0; list-style:none; border-bottom:1px solid #2a322a; padding-bottom:6px;">
-                            <strong>① 每日一练</strong> —— 选一条信息，问自己：<br>"来源可靠吗？有事实吗？逻辑通吗？" 记下答案。
+                            <strong>① Daily Practice</strong> — Pick one piece of information and ask:<br>"Reliable source? Facts? Sound logic?" Write it down.
                         </div>
                         <div class="advice-item" style="padding-left:0; list-style:none; border-bottom:1px solid #2a322a; padding-bottom:6px;">
-                            <strong>② 每周一挑</strong> —— 找一篇反方观点文章，<br>写下让你不舒服的三点，追问"是不是触及了我的盲区？"
+                            <strong>② Weekly Challenge</strong> — Read an opposing viewpoint article,<br>write down three things that made you uncomfortable — ask "Does this touch my blind spots?"
                         </div>
                         <div class="advice-item" style="padding-left:0; list-style:none;">
-                            <strong>③ 每月一测</strong> —— 重新做一次本诊断，<br>对比分数变化，紧盯最弱维度。
+                            <strong>③ Monthly Check</strong> — Retake this diagnosis,<br>compare scores, and focus on your weakest dimension.
                         </div>
                     </div>
-                    <div class="advice-hint" style="margin-top:12px;">💡 思维提升 = 持续的小练习 + 定期的自我检查</div>
+                    <div class="advice-hint" style="margin-top:12px;">💡 Thinking improvement = consistent small practices + regular self-checks</div>
                 </div>
             </div>
         `;
             const faqHtml = `
             <div class="dim-progress-card" style="background:#1a201a; border-color:#3a4638; margin-top:12px; padding-bottom:28px;">
-                <div class="card-title">❓ 什么是"思维盲区"？</div>
+                <div class="card-title">❓ What is a "Cognitive Blind Spot"?</div>
                 <div class="card-content" style="font-size:14px; line-height:2.2; padding-bottom:6px;">
-                    思维盲区是我们 <strong>自己意识不到的认知习惯</strong>，比如：<br>
-                    · 容易相信权威（信息源盲区）<br>
-                    · 先有结论再找证据（事实盲区）<br>
-                    · 被情绪左右而不自知（情绪盲区）<br>
-                    本工具帮你 <strong>量化</strong> 这些盲区，并给出提升路径。
+                    Cognitive blind spots are <strong>thinking habits we are unaware of</strong>, such as:<br>
+                    · Trusting authority too easily (Information Source blind spot)<br>
+                    · Forming conclusions before seeking evidence (Factual Basis blind spot)<br>
+                    · Being driven by emotions without knowing it (Emotional Influence blind spot)<br>
+                    This tool helps you <strong>quantify</strong> these blind spots and provides a path for improvement.
                 </div>
             </div>
         `;
             const threeCardsHtml = `
             <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; margin-bottom:14px;" class="three-cards">
                 <div class="result-card" style="flex:1; min-width:180px; padding:16px 18px; margin-bottom:0;">
-                    <h3 style="font-size:16px; font-weight:700; color:#e2ead4; margin-bottom:6px;">🌍 地球</h3>
-                    <p style="font-size:14px; color:#b6c0aa; line-height:1.8; margin:0;">这套诊断不依赖任何文化传统、不预设任何教育背景、不要求任何专业知识。</p>
+                    <h3 style="font-size:16px; font-weight:700; color:#e2ead4; margin-bottom:6px;">🌍 Planet</h3>
+                    <p style="font-size:14px; color:#b6c0aa; line-height:1.8; margin:0;">This diagnosis does not depend on any cultural tradition, educational background, or specialized knowledge.</p>
                 </div>
                 <div class="result-card" style="flex:1; min-width:180px; padding:16px 18px; margin-bottom:0;">
-                    <h3 style="font-size:16px; font-weight:700; color:#e2ead4; margin-bottom:6px;">🏛️ 国家</h3>
-                    <p style="font-size:14px; color:#b6c0aa; line-height:1.8; margin:0;">国家无法干预结果，因为答案只存在于个体内部，不经过任何中间机构。</p>
+                    <h3 style="font-size:16px; font-weight:700; color:#e2ead4; margin-bottom:6px;">🏛️ State</h3>
+                    <p style="font-size:14px; color:#b6c0aa; line-height:1.8; margin:0;">No state can influence the results — answers exist only within the individual and do not pass through any intermediary.</p>
                 </div>
                 <div class="result-card" style="flex:1; min-width:180px; padding:16px 18px; margin-bottom:0;">
-                    <h3 style="font-size:16px; font-weight:700; color:#e2ead4; margin-bottom:6px;">🧑 个人</h3>
-                    <p style="font-size:14px; color:#b6c0aa; line-height:1.8; margin:0;">一个普通人不需要任何前置培训，就能独立完成这份自我对话；他获得的是对自己思维结构的第一次看见。</p>
+                    <h3 style="font-size:16px; font-weight:700; color:#e2ead4; margin-bottom:6px;">🧑 Individual</h3>
+                    <p style="font-size:14px; color:#b6c0aa; line-height:1.8; margin:0;">An ordinary person needs no prior training to complete this self-dialogue; what they gain is the first glimpse of their own thinking structure.</p>
                 </div>
             </div>
         `;
             const footerHtml = `
             <div class="qr-wrapper" style="padding-bottom: 20px;">
                 <div class="qr-box" id="qrCodeContainer"><div id="qrCodeInReport" style="width:90px; height:90px; margin:auto;"></div></div>
-                <div class="qr-label">扫码访问 · 杨晟琦文明公理系统 · 独立思想锚点</div>
+                <div class="qr-label">Scan to visit · Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor</div>
                 <div class="qr-footer">
-                    思维盲区诊断模型 · 杨晟琦文明公理系统<br>
-                    杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年<br>
+                    Cognitive Blind Spot Diagnostic Model · Yang Shengqi's Axiomatic System of Civilization<br>
                     Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026<br>
-                    <span class="highlight">所有内容以 CC BY-ND 4.0 协议发布</span>
+                    <span class="highlight">All content released under CC BY-ND 4.0</span>
                 </div>
             </div>
         `;
@@ -1996,12 +1993,12 @@
                 ${headerHtml}
                 ${summaryHtml}
                 <div class="result-card">
-                    <div class="card-title">📊 三层能力诊断</div>
+                    <div class="card-title">📊 Three Layers Diagnostic</div>
                     <div class="card-content">${layerProgressHtml}</div>
                 </div>
                 <div class="result-card">
-                    <div class="card-title">📡 六维能力雷达</div>
-                    <div class="card-content">${radarHtml}<div style="font-size:12px;color:#5a6a4e;margin-top:8px;text-align:center;">* 各维度得分百分比，反映该维度的思维成熟度。</div></div>
+                    <div class="card-title">📡 Six-Dimensional Radar</div>
+                    <div class="card-content">${radarHtml}<div style="font-size:12px;color:#5a6a4e;margin-top:8px;text-align:center;">* Percentage scores reflect thinking maturity in each dimension.</div></div>
                 </div>
                 ${dimProgressHtml}
                 ${levelHtml}
@@ -2020,25 +2017,20 @@
                         dimResults); }, 100);
             });
 
-            // ================================================================
-            // ★★★ 核心修复：生成二维码后立即转为 img，避免火狐克隆丢失 ★★★
-            // ================================================================
             function generateQR() {
                 const qrContainer = document.getElementById('qrCodeInReport');
                 if (!qrContainer) return false;
                 qrContainer.innerHTML = '';
                 if (typeof QRCode !== 'undefined') {
                     try {
-                        // 生成 canvas
                         new QRCode(qrContainer, {
-                            text: 'https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/%E6%80%9D%E7%BB%B4%E7%9B%B2%E5%8C%BA%E8%AF%8A%E6%96%AD.html',
+                            text: 'https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/Cognitive-Blind-Spot-Diagnostic-Model.html',
                             width: 90,
                             height: 90,
                             colorDark: '#0b0e0b',
                             colorLight: '#ffffff',
                             correctLevel: QRCode.CorrectLevel.H
                         });
-                        // 立即将 canvas 转为 img
                         const canvas = qrContainer.querySelector('canvas');
                         if (canvas) {
                             const dataUrl = canvas.toDataURL('image/png');
@@ -2053,14 +2045,13 @@
                         }
                         return true;
                     } catch (e) {
-                        console.warn('QR生成失败:', e);
+                        console.warn('QR generation failed:', e);
                         return false;
                     }
                 }
                 return false;
             }
 
-            // 尝试生成
             let attempts = 0;
             const tryGenerateQR = () => {
                 if (generateQR()) return;
@@ -2069,7 +2060,7 @@
                 else {
                     const fb = document.getElementById('qrCodeInReport');
                     if (fb) {
-                        fb.textContent = '⚠️ 二维码加载失败';
+                        fb.textContent = '⚠️ QR failed to load';
                         fb.style.cssText += 'display:flex;align-items:center;justify-content:center;font-size:12px;color:#7a8a6e;';
                     }
                 }
@@ -2079,16 +2070,13 @@
             document.getElementById('resultBox').classList.add('show');
             document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            // ========== 预生成截图缓存（二维码已经是 img，克隆时自动保留） ==========
             requestAnimationFrame(() => {
                 setTimeout(() => {
                     const resultBodyEl = document.getElementById('reportBody');
                     if (!resultBodyEl) return;
 
-                    // 克隆报告内容
                     const clone = resultBodyEl.cloneNode(true);
 
-                    // 处理雷达图
                     const radarCanvasEl = document.getElementById('radarCanvas');
                     let radarImageData = null;
                     if (radarCanvasEl) {
@@ -2101,11 +2089,10 @@
                         img.style.width = '100%';
                         img.style.height = 'auto';
                         img.style.display = 'block';
-                        img.setAttribute('alt', '六维能力雷达图');
+                        img.setAttribute('alt', 'Six-Dimensional Radar');
                         cloneRadar.parentNode.replaceChild(img, cloneRadar);
                     }
 
-                    // 构造截图容器
                     const FIXED_WIDTH = 820;
                     const container = document.createElement('div');
                     container.className = 'screenshot-container';
@@ -2283,117 +2270,117 @@
         }
 
         // ================================================================
-        // 导出 PNG（使用缓存）
+        // Export PNG
         // ================================================================
         async function exportPngReport() {
             const btn = document.getElementById('copyImageBtn');
             if (btn.disabled) return;
             btn.disabled = true;
-            btn.innerHTML = '<span class="icon">⏳</span> 生成中...';
+            btn.innerHTML = '<span class="icon">⏳</span> Generating...';
 
             if (!_reportBlobCache) {
-                showToast('⚠️ 报告尚未生成或缓存未就绪，请先生成报告。', true);
+                showToast('⚠️ Report not yet generated or cache not ready — please generate the report first.', true);
                 btn.disabled = false;
-                btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
+                btn.innerHTML = '<span class="icon">🖼️</span> Export Report (PNG) <span class="badge">Screenshot</span>';
                 return;
             }
 
             try {
                 const blob = _reportBlobCache;
                 const link = document.createElement('a');
-                link.download = '思维诊断报告_' + new Date().toISOString().slice(0, 10) + '.png';
+                link.download = 'Cognitive_Diagnostic_Report_' + new Date().toISOString().slice(0, 10) + '.png';
                 link.href = URL.createObjectURL(blob);
                 link.click();
                 URL.revokeObjectURL(link.href);
-                showToast('✅ PNG 报告已下载！');
+                showToast('✅ PNG report downloaded!');
             } catch (err) {
-                console.error('导出失败:', err);
-                showToast('❌ 导出失败，请重试', true);
+                console.error('Export failed:', err);
+                showToast('❌ Export failed, please try again', true);
             }
 
             btn.disabled = false;
-            btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
+            btn.innerHTML = '<span class="icon">🖼️</span> Export Report (PNG) <span class="badge">Screenshot</span>';
         }
 
         // ================================================================
-        // 复制 PNG（使用缓存）
+        // Copy PNG
         // ================================================================
         async function sharePngReport() {
             const btn = document.getElementById('shareImageBtn');
             if (btn.disabled) return;
             btn.disabled = true;
-            btn.innerHTML = '<span class="icon">⏳</span> 准备中...';
-            showToast('⏳ 正在准备图片...');
+            btn.innerHTML = '<span class="icon">⏳</span> Preparing...';
+            showToast('⏳ Preparing image...');
 
             if (!_reportBlobCache) {
-                showToast('⚠️ 报告尚未生成或缓存未就绪，请先生成报告。', true);
+                showToast('⚠️ Report not yet generated or cache not ready — please generate the report first.', true);
                 btn.disabled = false;
-                btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                btn.innerHTML = '<span class="icon">📋</span> Copy Report (PNG) <span class="badge">Copy</span>';
                 return;
             }
 
             try {
                 const blob = _reportBlobCache;
-                const file = new File([blob], '思维诊断报告.png', { type: 'image/png' });
+                const file = new File([blob], 'Cognitive_Diagnostic_Report.png', { type: 'image/png' });
 
                 if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-                    await navigator.share({ title: '思维诊断报告', files: [file] });
-                    showToast('✅ 已分享，可选择保存到相册');
+                    await navigator.share({ title: 'Cognitive Diagnostic Report', files: [file] });
+                    showToast('✅ Shared — you can save to your photos');
                     btn.disabled = false;
-                    btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                    btn.innerHTML = '<span class="icon">📋</span> Copy Report (PNG) <span class="badge">Copy</span>';
                     return;
                 }
 
                 if (navigator.clipboard && window.ClipboardItem) {
                     const clipboardItem = new ClipboardItem({ 'image/png': blob });
                     await navigator.clipboard.write([clipboardItem]);
-                    showToast('✅ 图片已复制到剪贴板！可直接粘贴（Ctrl+V）');
+                    showToast('✅ Image copied to clipboard! Paste directly (Ctrl+V)');
                 } else {
                     const link = document.createElement('a');
-                    link.download = '思维诊断报告.png';
+                    link.download = 'Cognitive_Diagnostic_Report.png';
                     link.href = URL.createObjectURL(blob);
                     link.click();
                     URL.revokeObjectURL(link.href);
-                    showToast('✅ 复制失败，已转为下载');
+                    showToast('✅ Copy failed — download initiated');
                 }
             } catch (err) {
-                console.error('复制失败:', err);
+                console.error('Copy failed:', err);
                 if (_reportBlobCache) {
                     const link = document.createElement('a');
-                    link.download = '思维诊断报告.png';
+                    link.download = 'Cognitive_Diagnostic_Report.png';
                     link.href = URL.createObjectURL(_reportBlobCache);
                     link.click();
                     URL.revokeObjectURL(link.href);
-                    showToast('📥 复制失败，已转为下载（请使用“导出”按钮保存）', true);
+                    showToast('📥 Copy failed — download initiated (use "Export" to save)', true);
                 } else {
-                    showToast('❌ 复制失败，请尝试导出', true);
+                    showToast('❌ Copy failed, please try export', true);
                 }
             }
 
             btn.disabled = false;
-            btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+            btn.innerHTML = '<span class="icon">📋</span> Copy Report (PNG) <span class="badge">Copy</span>';
         }
 
         // ================================================================
-        // 历史记录与辅助
+        // History
         // ================================================================
         function renderHistory() {
             const list = document.getElementById('historyList'),
                 empty = document.getElementById('historyEmpty');
             if (historyRecords.length === 0) { list.innerHTML = '';
                 empty.style.display = 'block';
-                empty.textContent = '暂无历史记录'; return; }
+                empty.textContent = 'No history records'; return; }
             empty.style.display = 'none';
             list.innerHTML = historyRecords.map(rec => {
                 const label = rec.levelLabel || '⭐';
-                const date = new Date(rec.timestamp).toLocaleString('zh-CN');
+                const date = new Date(rec.timestamp).toLocaleString('en-US');
                 return `<div class="history-item" data-id="${rec.id}">
-                <span class="h-topic">思维诊断</span>
+                <span class="h-topic">Diagnosis</span>
                 <span class="h-meta">${date}</span>
                 <span class="h-level" style="color:${rec.totalPct>=80?'#8aaa6a':rec.totalPct>=60?'#bace9a':rec.totalPct>=40?'#b89a4a':'#b05a4a'};">${label}</span>
                 <div class="history-actions">
-                    <span class="history-view-btn">查看报告</span>
-                    <button class="history-del-btn" title="删除记录">✕</button>
+                    <span class="history-view-btn">View Report</span>
+                    <button class="history-del-btn" title="Delete record">✕</button>
                 </div>
             </div>`;
             }).join('');
@@ -2403,12 +2390,13 @@
                 const id = parseInt(item.dataset.id);
                 const viewReport = function() {
                     if (state.isActive && Object.keys(state.answers).length > 0) { if (!confirm(
-                            '查看历史报告将覆盖当前答题进度，确定继续吗？')) return; }
+                            'Viewing a historical report will overwrite your current progress — continue?'
+                            )) return; }
                     const rec = historyRecords.find(r => r.id === id);
                     if (rec && rec.answers && Object.keys(rec.answers).length > 0) { generateReport(false,
                             rec.answers);
-                        showToast('📋 已加载历史报告'); } else { showToast('⚠️ 该历史记录不包含答题数据，无法查看报告。',
-                        true); }
+                        showToast('📋 Historical report loaded'); } else { showToast('⚠️ This record contains no answer data — cannot view report.',
+                            true); }
                 };
                 item.addEventListener('click', function(e) { if (e.target.classList.contains(
                         'history-del-btn')) return;
@@ -2416,11 +2404,11 @@
                 if (viewBtn) { viewBtn.addEventListener('click', function(e) { e.stopPropagation();
                         viewReport(); }); }
                 if (delBtn) { delBtn.addEventListener('click', function(e) { e.stopPropagation(); if (confirm(
-                            '确定要删除这条历史记录吗？')) { historyRecords = historyRecords.filter(r => r.id !==
+                            'Delete this history record?')) { historyRecords = historyRecords.filter(r => r.id !==
                             id);
                         saveHistory();
                         renderHistory();
-                        showToast('已删除历史记录'); } }); }
+                        showToast('History record deleted'); } }); }
             });
         }
 
@@ -2435,7 +2423,7 @@
             toastTimer = setTimeout(() => { el.classList.remove('show'); }, 4000); }
 
         // ================================================================
-        // 初始化
+        // Initialization
         // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
             loadHistory();
