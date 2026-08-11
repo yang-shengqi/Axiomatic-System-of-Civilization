@@ -1321,7 +1321,6 @@
     </div>
 
     <div class="toast" id="toast"></div>
-
     <script>
         // ================================================================
         // 维度与层次映射
@@ -1342,7 +1341,7 @@
         const DIM_ORDER = ['source', 'facts', 'logic', 'interests', 'emotion', 'cost'];
 
         // ================================================================
-        // 38 道元认知题目（完整保留）
+        // 38 道元认知题目
         // ================================================================
         const QUESTIONS_RAW = [
             { dim: 'source', layer: 'step1', purpose: '源头质疑 —— 你是否习惯性接受信息而不查证？',
@@ -1554,6 +1553,9 @@
         let historyRecords = [];
         let timerSeconds = 0,
             timerInterval = null;
+        // 全局缓存截图
+        let _reportBlobCache = null;
+        let _reportCanvasCache = null;
 
         function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));
                 [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
@@ -1648,6 +1650,9 @@
             document.getElementById('nextDimLabel').textContent = '事实依据';
             window.scrollTo({ top: 0, behavior: 'smooth' });
             showToast('已重置，可以重新开始诊断');
+            // 清空缓存
+            _reportBlobCache = null;
+            _reportCanvasCache = null;
         }
 
         function showDiagnosis() { document.getElementById('startArea').style.display = 'none';
@@ -1791,7 +1796,7 @@
         }
 
         // ================================================================
-        // 生成报告
+        // 生成报告（核心修复：二维码直接转为 img）
         // ================================================================
         function generateReport(saveToHistory = true, customAnswers = null) {
             const answers = customAnswers || state.answers;
@@ -2015,27 +2020,191 @@
                         dimResults); }, 100);
             });
 
+            // ================================================================
+            // ★★★ 核心修复：生成二维码后立即转为 img，避免火狐克隆丢失 ★★★
+            // ================================================================
             function generateQR() {
                 const qrContainer = document.getElementById('qrCodeInReport');
-                if (qrContainer && typeof QRCode !== 'undefined') {
-                    try { new QRCode(qrContainer, { text: 'https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/%E6%80%9D%E7%BB%B4%E7%9B%B2%E5%8C%BA%E8%AF%8A%E6%96%AD.html',
-                            width: 90, height: 90, colorDark: '#0b0e0b', colorLight: '#ffffff',
-                            correctLevel: QRCode.CorrectLevel.H }); return true; } catch (e) {}
+                if (!qrContainer) return false;
+                qrContainer.innerHTML = '';
+                if (typeof QRCode !== 'undefined') {
+                    try {
+                        // 生成 canvas
+                        new QRCode(qrContainer, {
+                            text: 'https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/%E6%80%9D%E7%BB%B4%E7%9B%B2%E5%8C%BA%E8%AF%8A%E6%96%AD.html',
+                            width: 90,
+                            height: 90,
+                            colorDark: '#0b0e0b',
+                            colorLight: '#ffffff',
+                            correctLevel: QRCode.CorrectLevel.H
+                        });
+                        // 立即将 canvas 转为 img
+                        const canvas = qrContainer.querySelector('canvas');
+                        if (canvas) {
+                            const dataUrl = canvas.toDataURL('image/png');
+                            const img = document.createElement('img');
+                            img.src = dataUrl;
+                            img.style.width = '90px';
+                            img.style.height = '90px';
+                            img.style.display = 'block';
+                            img.setAttribute('alt', 'QR Code');
+                            qrContainer.innerHTML = '';
+                            qrContainer.appendChild(img);
+                        }
+                        return true;
+                    } catch (e) {
+                        console.warn('QR生成失败:', e);
+                        return false;
+                    }
                 }
                 return false;
             }
+
+            // 尝试生成
             let attempts = 0;
-            const tryGenerateQR = () => { if (generateQR()) return;
+            const tryGenerateQR = () => {
+                if (generateQR()) return;
                 attempts++;
-                if (attempts < 5) setTimeout(tryGenerateQR, 300);
-                else { const fb = document.getElementById('qrCodeInReport'); if (fb) { fb.textContent =
-                            '请刷新页面重试';
-                        fb.style.cssText +=
-                            'display:flex;align-items:center;justify-content:center;font-size:12px;color:#0b0e0b;'; } } };
-            setTimeout(tryGenerateQR, 200);
+                if (attempts < 5) setTimeout(tryGenerateQR, 500);
+                else {
+                    const fb = document.getElementById('qrCodeInReport');
+                    if (fb) {
+                        fb.textContent = '⚠️ 二维码加载失败';
+                        fb.style.cssText += 'display:flex;align-items:center;justify-content:center;font-size:12px;color:#7a8a6e;';
+                    }
+                }
+            };
+            setTimeout(tryGenerateQR, 300);
 
             document.getElementById('resultBox').classList.add('show');
             document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // ========== 预生成截图缓存（二维码已经是 img，克隆时自动保留） ==========
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    const resultBodyEl = document.getElementById('reportBody');
+                    if (!resultBodyEl) return;
+
+                    // 克隆报告内容
+                    const clone = resultBodyEl.cloneNode(true);
+
+                    // 处理雷达图
+                    const radarCanvasEl = document.getElementById('radarCanvas');
+                    let radarImageData = null;
+                    if (radarCanvasEl) {
+                        try { radarImageData = radarCanvasEl.toDataURL('image/png'); } catch (e) {}
+                    }
+                    const cloneRadar = clone.querySelector('#radarCanvas');
+                    if (cloneRadar && cloneRadar.parentNode && radarImageData) {
+                        const img = document.createElement('img');
+                        img.src = radarImageData;
+                        img.style.width = '100%';
+                        img.style.height = 'auto';
+                        img.style.display = 'block';
+                        img.setAttribute('alt', '六维能力雷达图');
+                        cloneRadar.parentNode.replaceChild(img, cloneRadar);
+                    }
+
+                    // 构造截图容器
+                    const FIXED_WIDTH = 820;
+                    const container = document.createElement('div');
+                    container.className = 'screenshot-container';
+                    container.style.cssText =
+                        `width:${FIXED_WIDTH}px;padding:40px 30px;background:#141814;box-sizing:border-box;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;color:#d0d6c8;line-height:1.7;overflow:visible;height:auto !important;min-height:100% !important;`;
+
+                    const innerClone = clone.querySelector('.report-inner');
+                    if (innerClone) {
+                        innerClone.style.margin = '0 auto';
+                        innerClone.style.width = '100%';
+                        innerClone.style.maxWidth = FIXED_WIDTH + 'px';
+                        innerClone.style.boxSizing = 'border-box';
+                        innerClone.style.overflow = 'visible';
+                        innerClone.style.height = 'auto';
+                    }
+
+                    clone.querySelectorAll(
+                        '.result-card, .dim-progress-card, .report-inner, .qr-wrapper, .radar-container, .layer-progress, .layer-node, .three-cards'
+                    ).forEach(el => {
+                        el.style.width = '100%';
+                        el.style.maxWidth = FIXED_WIDTH + 'px';
+                        el.style.margin = '0 auto';
+                        el.style.boxSizing = 'border-box';
+                        el.style.overflow = 'visible';
+                        el.style.height = 'auto';
+                        el.style.maxHeight = 'none';
+                    });
+
+                    const radarContainerClone = clone.querySelector('.radar-container');
+                    if (radarContainerClone) {
+                        radarContainerClone.style.maxWidth = '400px';
+                        radarContainerClone.style.margin = '0 auto';
+                    }
+
+                    const layerProgressClone = clone.querySelector('.layer-progress');
+                    if (layerProgressClone) {
+                        layerProgressClone.style.justifyContent = 'center';
+                        layerProgressClone.style.flexWrap = 'wrap';
+                    }
+
+                    clone.querySelectorAll('.three-cards .result-card').forEach(el => {
+                        el.style.flex = '1 1 180px';
+                        el.style.minWidth = '180px';
+                        el.style.marginBottom = '0';
+                    });
+
+                    container.appendChild(clone);
+
+                    const tempContainer = document.createElement('div');
+                    tempContainer.style.cssText =
+                        `position:absolute;left:-9999px;top:0;z-index:99999;width:${FIXED_WIDTH}px;overflow:visible;`;
+                    tempContainer.appendChild(container);
+                    document.body.appendChild(tempContainer);
+
+                    container.style.height = 'auto';
+                    container.style.minHeight = 'auto';
+
+                    const images = container.querySelectorAll('img');
+                    Promise.all([...images].map(img => {
+                        if (img.complete) return Promise.resolve();
+                        return new Promise(resolve => { img.onload = resolve; img.onerror = resolve; });
+                    })).then(() => {
+                        const realHeight = container.scrollHeight;
+                        const FINAL_BUFFER = 0.05;
+                        const finalHeight = Math.ceil(realHeight * (1 + FINAL_BUFFER)) + 20;
+                        container.style.height = finalHeight + 'px';
+                        container.style.minHeight = finalHeight + 'px';
+
+                        html2canvas(container, {
+                            scale: 2,
+                            backgroundColor: '#141814',
+                            allowTaint: false,
+                            useCORS: true,
+                            logging: false,
+                            width: FIXED_WIDTH,
+                            height: finalHeight,
+                            windowHeight: finalHeight,
+                            onclone: function(doc) {
+                                doc.querySelectorAll('*').forEach(el => {
+                                    el.style.overflow = 'visible';
+                                    el.style.maxHeight = 'none';
+                                });
+                                const cont = doc.querySelector('.screenshot-container');
+                                if (cont) cont.style.overflow = 'visible';
+                            }
+                        }).then(canvas => {
+                            canvas.toBlob(blob => {
+                                _reportBlobCache = blob;
+                                _reportCanvasCache = canvas;
+                            }, 'image/png');
+                            document.body.removeChild(tempContainer);
+                        }).catch(() => {
+                            document.body.removeChild(tempContainer);
+                        });
+                    }).catch(() => {
+                        document.body.removeChild(tempContainer);
+                    });
+                }, 500);
+            });
 
             if (saveToHistory) {
                 const record = { id: Date.now(), timestamp: new Date().toISOString(), totalEarned: Math.round(
@@ -2114,425 +2283,95 @@
         }
 
         // ================================================================
-        // 【最终稳定版】导出 PNG —— 电脑端紧凑 + 手机端截断自动重试
+        // 导出 PNG（使用缓存）
         // ================================================================
         async function exportPngReport() {
             const btn = document.getElementById('copyImageBtn');
             if (btn.disabled) return;
             btn.disabled = true;
-            btn.innerHTML = '<span class="icon">⏳</span> 生成截图中...';
-            showToast('⏳ 正在准备截图...');
+            btn.innerHTML = '<span class="icon">⏳</span> 生成中...';
 
-            const resultBody = document.getElementById('reportBody');
-            if (!resultBody || resultBody.children.length === 0) {
-                showToast('❌ 没有可截图的报告，请先生成报告。', true);
+            if (!_reportBlobCache) {
+                showToast('⚠️ 报告尚未生成或缓存未就绪，请先生成报告。', true);
                 btn.disabled = false;
                 btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
                 return;
             }
 
-            // 等待 QR 码
-            await new Promise(resolve => {
-                let attempts = 0;
-                const check = () => {
-                    const qr = document.getElementById('qrCodeInReport');
-                    if (qr && (qr.querySelector('canvas') || qr.querySelector('img') || qr.textContent.trim() !== '')) {
-                        resolve();
-                        return;
-                    }
-                    attempts++;
-                    if (attempts > 30) { resolve(); return; }
-                    setTimeout(check, 200);
-                };
-                check();
-            });
-
-            showToast('⏳ 正在渲染报告内容...');
-
-            // 克隆报告节点
-            const clone = resultBody.cloneNode(true);
-            const radarCanvas = document.getElementById('radarCanvas');
-            let radarImageData = null;
-            if (radarCanvas) try { radarImageData = radarCanvas.toDataURL('image/png'); } catch (e) {}
-            const cloneRadar = clone.querySelector('#radarCanvas');
-            if (cloneRadar && cloneRadar.parentNode && radarImageData) {
-                const img = document.createElement('img');
-                img.src = radarImageData;
-                img.style.width = '100%';
-                img.style.height = 'auto';
-                img.style.display = 'block';
-                img.setAttribute('alt', '六维能力雷达图');
-                cloneRadar.parentNode.replaceChild(img, cloneRadar);
-            }
-
-            const FIXED_WIDTH = 820;
-            const container = document.createElement('div');
-            container.className = 'screenshot-container';
-            container.style.cssText =
-                `width:${FIXED_WIDTH}px;padding:40px 30px;background:#141814;box-sizing:border-box;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;color:#d0d6c8;line-height:1.7;overflow:visible;height:auto !important;min-height:100% !important;`;
-
-            const inner = clone.querySelector('.report-inner');
-            if (inner) {
-                inner.style.margin = '0 auto';
-                inner.style.width = '100%';
-                inner.style.maxWidth = FIXED_WIDTH + 'px';
-                inner.style.boxSizing = 'border-box';
-                inner.style.overflow = 'visible';
-                inner.style.height = 'auto';
-            }
-
-            clone.querySelectorAll(
-                '.result-card, .dim-progress-card, .report-inner, .qr-wrapper, .radar-container, .layer-progress, .layer-node, .three-cards'
-            ).forEach(el => {
-                el.style.width = '100%';
-                el.style.maxWidth = FIXED_WIDTH + 'px';
-                el.style.margin = '0 auto';
-                el.style.boxSizing = 'border-box';
-                el.style.overflow = 'visible';
-                el.style.height = 'auto';
-                el.style.maxHeight = 'none';
-            });
-
-            const radarContainer = clone.querySelector('.radar-container');
-            if (radarContainer) {
-                radarContainer.style.maxWidth = '400px';
-                radarContainer.style.margin = '0 auto';
-            }
-
-            const layerProgress = clone.querySelector('.layer-progress');
-            if (layerProgress) {
-                layerProgress.style.justifyContent = 'center';
-                layerProgress.style.flexWrap = 'wrap';
-            }
-
-            clone.querySelectorAll('.three-cards .result-card').forEach(el => {
-                el.style.flex = '1 1 180px';
-                el.style.minWidth = '180px';
-                el.style.marginBottom = '0';
-            });
-
-            container.appendChild(clone);
-
-            const tempContainer = document.createElement('div');
-            tempContainer.style.cssText =
-                `position:absolute;left:-9999px;top:0;z-index:99999;width:${FIXED_WIDTH}px;overflow:visible;`;
-            tempContainer.appendChild(container);
-            document.body.appendChild(tempContainer);
-
-            // ---------- 电脑端紧凑，手机端兜底 ----------
-            container.style.height = 'auto';
-            container.style.minHeight = 'auto';
-            try { await document.fonts.ready; } catch (e) {}
-
-            const images = container.querySelectorAll('img');
-            await Promise.all([...images].map(img => {
-                if (img.complete) return Promise.resolve();
-                return new Promise(resolve => { img.onload = resolve; img.onerror = resolve; });
-            }));
-
-            // 获取真实内容高度
-            const realHeight = container.scrollHeight;
-
-            // ★★★ 核心修改：冗余降到 5%，额外只加 20px ★★★
-            const FINAL_BUFFER = 0.05;
-            const finalHeight = Math.ceil(realHeight * (1 + FINAL_BUFFER)) + 20;
-
-            container.style.height = finalHeight + 'px';
-            container.style.minHeight = finalHeight + 'px';
-
-            showToast('⏳ 正在生成图片...');
-
-            const scale = 2;
-
-            function doCapture(heightOverride) {
-                const useHeight = heightOverride || finalHeight;
-                if (heightOverride) {
-                    container.style.height = useHeight + 'px';
-                    container.style.minHeight = useHeight + 'px';
-                }
-                return html2canvas(container, {
-                    scale: scale,
-                    backgroundColor: '#141814',
-                    allowTaint: false,
-                    useCORS: true,
-                    logging: false,
-                    width: FIXED_WIDTH,
-                    height: useHeight,
-                    windowHeight: useHeight,
-                    onclone: function(doc) {
-                        const allEls = doc.querySelectorAll('*');
-                        allEls.forEach(el => {
-                            el.style.overflow = 'visible';
-                            el.style.maxHeight = 'none';
-                        });
-                        const cont = doc.querySelector('.screenshot-container');
-                        if (cont) {
-                            cont.style.overflow = 'visible';
-                        }
-                    }
-                });
-            }
-
             try {
-                let canvas = await doCapture(null);
-
-                // 截断检测（只在手机端可能触发）
-                const ctx = canvas.getContext('2d');
-                const bottomRow = ctx.getImageData(0, canvas.height - 10, canvas.width, 10);
-                let emptyPixels = 0;
-                for (let i = 0; i < bottomRow.data.length; i += 4) {
-                    if (bottomRow.data[i] < 20 && bottomRow.data[i+1] < 20 && bottomRow.data[i+2] < 20) emptyPixels++;
-                }
-                const emptyRatio = emptyPixels / (bottomRow.data.length / 4);
-                if (emptyRatio > 0.6) {
-                    // 手机端如果截断，用 1.3 倍高度重试（电脑端几乎不会触发）
-                    showToast('⏳ 检测到截断，自动重试（放大高度）...');
-                    const retryHeight = Math.ceil(finalHeight * 1.3);
-                    canvas = await doCapture(retryHeight);
-                }
-
-                document.body.removeChild(tempContainer);
+                const blob = _reportBlobCache;
                 const link = document.createElement('a');
                 link.download = '思维诊断报告_' + new Date().toISOString().slice(0, 10) + '.png';
-                link.href = canvas.toDataURL('image/png');
+                link.href = URL.createObjectURL(blob);
                 link.click();
+                URL.revokeObjectURL(link.href);
                 showToast('✅ PNG 报告已下载！');
-                btn.disabled = false;
-                btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
             } catch (err) {
-                document.body.removeChild(tempContainer);
-                console.error(err);
-                showToast('❌ 截图生成失败，请重试。', true);
-                btn.disabled = false;
-                btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
+                console.error('导出失败:', err);
+                showToast('❌ 导出失败，请重试', true);
             }
+
+            btn.disabled = false;
+            btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
         }
 
         // ================================================================
-        // 复制/分享 PNG —— 同样逻辑
+        // 复制 PNG（使用缓存）
         // ================================================================
         async function sharePngReport() {
             const btn = document.getElementById('shareImageBtn');
             if (btn.disabled) return;
             btn.disabled = true;
-            btn.innerHTML = '<span class="icon">⏳</span> 生成中...';
-            showToast('⏳ 正在准备分享截图...');
+            btn.innerHTML = '<span class="icon">⏳</span> 准备中...';
+            showToast('⏳ 正在准备图片...');
 
-            const resultBody = document.getElementById('reportBody');
-            if (!resultBody || resultBody.children.length === 0) {
-                showToast('❌ 没有可分享的报告，请先生成报告。', true);
+            if (!_reportBlobCache) {
+                showToast('⚠️ 报告尚未生成或缓存未就绪，请先生成报告。', true);
                 btn.disabled = false;
                 btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
                 return;
             }
 
-            await new Promise(resolve => {
-                let attempts = 0;
-                const check = () => {
-                    const qr = document.getElementById('qrCodeInReport');
-                    if (qr && (qr.querySelector('canvas') || qr.querySelector('img') || qr.textContent.trim() !== '')) {
-                        resolve();
-                        return;
-                    }
-                    attempts++;
-                    if (attempts > 30) { resolve(); return; }
-                    setTimeout(check, 200);
-                };
-                check();
-            });
-
-            showToast('⏳ 正在渲染报告内容...');
-
-            const clone = resultBody.cloneNode(true);
-            const radarCanvas = document.getElementById('radarCanvas');
-            let radarImageData = null;
-            if (radarCanvas) try { radarImageData = radarCanvas.toDataURL('image/png'); } catch (e) {}
-            const cloneRadar = clone.querySelector('#radarCanvas');
-            if (cloneRadar && cloneRadar.parentNode && radarImageData) {
-                const img = document.createElement('img');
-                img.src = radarImageData;
-                img.style.width = '100%';
-                img.style.height = 'auto';
-                img.style.display = 'block';
-                img.setAttribute('alt', '六维能力雷达图');
-                cloneRadar.parentNode.replaceChild(img, cloneRadar);
-            }
-
-            const FIXED_WIDTH = 820;
-            const container = document.createElement('div');
-            container.className = 'screenshot-container';
-            container.style.cssText =
-                `width:${FIXED_WIDTH}px;padding:40px 30px;background:#141814;box-sizing:border-box;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;color:#d0d6c8;line-height:1.7;overflow:visible;height:auto !important;min-height:100% !important;`;
-
-            const inner = clone.querySelector('.report-inner');
-            if (inner) {
-                inner.style.margin = '0 auto';
-                inner.style.width = '100%';
-                inner.style.maxWidth = FIXED_WIDTH + 'px';
-                inner.style.boxSizing = 'border-box';
-                inner.style.overflow = 'visible';
-                inner.style.height = 'auto';
-            }
-
-            clone.querySelectorAll(
-                '.result-card, .dim-progress-card, .report-inner, .qr-wrapper, .radar-container, .layer-progress, .layer-node, .three-cards'
-            ).forEach(el => {
-                el.style.width = '100%';
-                el.style.maxWidth = FIXED_WIDTH + 'px';
-                el.style.margin = '0 auto';
-                el.style.boxSizing = 'border-box';
-                el.style.overflow = 'visible';
-                el.style.height = 'auto';
-                el.style.maxHeight = 'none';
-            });
-
-            const radarContainer = clone.querySelector('.radar-container');
-            if (radarContainer) {
-                radarContainer.style.maxWidth = '400px';
-                radarContainer.style.margin = '0 auto';
-            }
-
-            const layerProgress = clone.querySelector('.layer-progress');
-            if (layerProgress) {
-                layerProgress.style.justifyContent = 'center';
-                layerProgress.style.flexWrap = 'wrap';
-            }
-
-            clone.querySelectorAll('.three-cards .result-card').forEach(el => {
-                el.style.flex = '1 1 180px';
-                el.style.minWidth = '180px';
-                el.style.marginBottom = '0';
-            });
-
-            container.appendChild(clone);
-
-            const tempContainer = document.createElement('div');
-            tempContainer.style.cssText =
-                `position:absolute;left:-9999px;top:0;z-index:99999;width:${FIXED_WIDTH}px;overflow:visible;`;
-            tempContainer.appendChild(container);
-            document.body.appendChild(tempContainer);
-
-            container.style.height = 'auto';
-            container.style.minHeight = 'auto';
-            try { await document.fonts.ready; } catch (e) {}
-
-            const images = container.querySelectorAll('img');
-            await Promise.all([...images].map(img => {
-                if (img.complete) return Promise.resolve();
-                return new Promise(resolve => { img.onload = resolve; img.onerror = resolve; });
-            }));
-
-            const realHeight = container.scrollHeight;
-            const FINAL_BUFFER = 0.05;
-            const finalHeight = Math.ceil(realHeight * (1 + FINAL_BUFFER)) + 20;
-            container.style.height = finalHeight + 'px';
-            container.style.minHeight = finalHeight + 'px';
-
-            showToast('⏳ 正在生成图片...');
-
-            const scale = 2;
-
-            function doCapture(heightOverride) {
-                const useHeight = heightOverride || finalHeight;
-                if (heightOverride) {
-                    container.style.height = useHeight + 'px';
-                    container.style.minHeight = useHeight + 'px';
-                }
-                return html2canvas(container, {
-                    scale: scale,
-                    backgroundColor: '#141814',
-                    allowTaint: false,
-                    useCORS: true,
-                    logging: false,
-                    width: FIXED_WIDTH,
-                    height: useHeight,
-                    windowHeight: useHeight,
-                    onclone: function(doc) {
-                        const allEls = doc.querySelectorAll('*');
-                        allEls.forEach(el => {
-                            el.style.overflow = 'visible';
-                            el.style.maxHeight = 'none';
-                        });
-                        const cont = doc.querySelector('.screenshot-container');
-                        if (cont) {
-                            cont.style.overflow = 'visible';
-                        }
-                    }
-                });
-            }
-
             try {
-                let canvas = await doCapture(null);
+                const blob = _reportBlobCache;
+                const file = new File([blob], '思维诊断报告.png', { type: 'image/png' });
 
-                const ctx = canvas.getContext('2d');
-                const bottomRow = ctx.getImageData(0, canvas.height - 10, canvas.width, 10);
-                let emptyPixels = 0;
-                for (let i = 0; i < bottomRow.data.length; i += 4) {
-                    if (bottomRow.data[i] < 20 && bottomRow.data[i+1] < 20 && bottomRow.data[i+2] < 20) emptyPixels++;
-                }
-                const emptyRatio = emptyPixels / (bottomRow.data.length / 4);
-                if (emptyRatio > 0.6) {
-                    showToast('⏳ 检测到截断，自动重试...');
-                    const retryHeight = Math.ceil(finalHeight * 1.3);
-                    canvas = await doCapture(retryHeight);
+                if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ title: '思维诊断报告', files: [file] });
+                    showToast('✅ 已分享，可选择保存到相册');
+                    btn.disabled = false;
+                    btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                    return;
                 }
 
-                document.body.removeChild(tempContainer);
-                canvas.toBlob(function(blob) {
-                    if (!blob) {
-                        showToast('❌ 图片生成失败', true);
-                        btn.disabled = false;
-                        btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
-                        return;
-                    }
-                    const file = new File([blob], '思维诊断报告.png', { type: 'image/png' });
-                    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-                        navigator.share({ title: '思维诊断报告', files: [file] })
-                            .then(() => { showToast('✅ 已分享，可选择保存到相册'); })
-                            .catch((err) => {
-                                if (err.name === 'AbortError') showToast('已取消分享');
-                                else showToast('⚠️ 分享失败，可点击"导出"下载', true);
-                            });
-                        btn.disabled = false;
-                        btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
-                        return;
-                    }
-                    if (navigator.clipboard && window.ClipboardItem) {
-                        const clipboardItem = new ClipboardItem({ 'image/png': blob });
-                        navigator.clipboard.write([clipboardItem])
-                            .then(() => {
-                                showToast('✅ 图片已复制到剪贴板！可直接粘贴（Ctrl+V）');
-                                btn.disabled = false;
-                                btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
-                            })
-                            .catch(() => {
-                                const link = document.createElement('a');
-                                link.download = '思维诊断报告.png';
-                                link.href = canvas.toDataURL('image/png');
-                                link.click();
-                                showToast('✅ 图片已下载（复制失败，已转为下载）');
-                                btn.disabled = false;
-                                btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
-                            });
-                    } else {
-                        const link = document.createElement('a');
-                        link.download = '思维诊断报告.png';
-                        link.href = canvas.toDataURL('image/png');
-                        link.click();
-                        const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
-                        if (isMobile) showToast('📱 复制到剪贴板失败，已转为下载。建议使用"导出"按钮保存图片。', true);
-                        else showToast('✅ 图片已下载');
-                        btn.disabled = false;
-                        btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
-                    }
-                }, 'image/png');
+                if (navigator.clipboard && window.ClipboardItem) {
+                    const clipboardItem = new ClipboardItem({ 'image/png': blob });
+                    await navigator.clipboard.write([clipboardItem]);
+                    showToast('✅ 图片已复制到剪贴板！可直接粘贴（Ctrl+V）');
+                } else {
+                    const link = document.createElement('a');
+                    link.download = '思维诊断报告.png';
+                    link.href = URL.createObjectURL(blob);
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                    showToast('✅ 复制失败，已转为下载');
+                }
             } catch (err) {
-                document.body.removeChild(tempContainer);
-                console.error(err);
-                showToast('❌ 生成失败，请重试', true);
-                btn.disabled = false;
-                btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                console.error('复制失败:', err);
+                if (_reportBlobCache) {
+                    const link = document.createElement('a');
+                    link.download = '思维诊断报告.png';
+                    link.href = URL.createObjectURL(_reportBlobCache);
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                    showToast('📥 复制失败，已转为下载（请使用“导出”按钮保存）', true);
+                } else {
+                    showToast('❌ 复制失败，请尝试导出', true);
+                }
             }
+
+            btn.disabled = false;
+            btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
         }
 
         // ================================================================
