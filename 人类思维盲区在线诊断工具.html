@@ -2047,7 +2047,7 @@
         }
 
         // ================================================================
-        // 生成报告（与原版一致，仅保留核心逻辑）
+        // 生成报告（与原版一致）
         // ================================================================
         function generateReport(saveToHistory = true, customAnswers = null) {
             const answers = customAnswers || state.answers;
@@ -2370,7 +2370,7 @@
         }
 
         // ================================================================
-        // 【终极修复】导出 PNG —— 自适应高度 + 重试 + 进度提示
+        // 终极修复：导出 PNG —— 统一自适应 + 重试 + 进度
         // ================================================================
         async function exportPngReport() {
             const btn = document.getElementById('copyImageBtn');
@@ -2387,7 +2387,7 @@
                 return;
             }
 
-            // 等待 QR 码渲染完成
+            // 等待 QR 码
             await new Promise(resolve => {
                 let attempts = 0;
                 const check = () => {
@@ -2475,7 +2475,7 @@
             tempContainer.appendChild(container);
             document.body.appendChild(tempContainer);
 
-            // ---------- 自适应高度 ----------
+            // ---- 统一自适应 ----
             container.style.height = 'auto';
             container.style.minHeight = 'auto';
             try { await document.fonts.ready; } catch (e) {}
@@ -2487,15 +2487,14 @@
             }));
 
             const realHeight = container.scrollHeight;
-            const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
-            const bufferRatio = isMobile ? 0.5 : 0.3;
-            const finalHeight = Math.ceil(realHeight * (1 + bufferRatio)) + 80;
+            const FINAL_BUFFER = 0.4; // 统一40%冗余
+            const finalHeight = Math.ceil(realHeight * (1 + FINAL_BUFFER)) + 100;
             container.style.height = finalHeight + 'px';
             container.style.minHeight = finalHeight + 'px';
 
             showToast('⏳ 正在生成高清图片...');
 
-            const scale = isMobile ? 1.2 : 2;
+            const scale = 2;
 
             function doCapture(heightOverride) {
                 const useHeight = heightOverride || finalHeight;
@@ -2528,7 +2527,7 @@
             try {
                 let canvas = await doCapture(null);
 
-                // 检测截断（最后10行纯黑比例）
+                // 截断检测
                 const ctx = canvas.getContext('2d');
                 const bottomRow = ctx.getImageData(0, canvas.height - 10, canvas.width, 10);
                 let emptyPixels = 0;
@@ -2538,7 +2537,7 @@
                 const emptyRatio = emptyPixels / (bottomRow.data.length / 4);
                 if (emptyRatio > 0.6) {
                     showToast('⏳ 检测到截断，自动重试（放大高度）...');
-                    const retryHeight = Math.ceil(finalHeight * 1.8);
+                    const retryHeight = Math.ceil(finalHeight * 2.0);
                     canvas = await doCapture(retryHeight);
                 }
 
@@ -2560,7 +2559,7 @@
         }
 
         // ================================================================
-        // 【终极修复】复制/分享 PNG —— 同样自适应 + 重试 + 进度
+        // 复制/分享 PNG —— 同样自适应 + 重试 + 进度
         // ================================================================
         async function sharePngReport() {
             const btn = document.getElementById('shareImageBtn');
@@ -2663,9 +2662,11 @@
             tempContainer.appendChild(container);
             document.body.appendChild(tempContainer);
 
+            // ---- 统一自适应 ----
             container.style.height = 'auto';
             container.style.minHeight = 'auto';
             try { await document.fonts.ready; } catch (e) {}
+
             const images = container.querySelectorAll('img');
             await Promise.all([...images].map(img => {
                 if (img.complete) return Promise.resolve();
@@ -2673,15 +2674,14 @@
             }));
 
             const realHeight = container.scrollHeight;
-            const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
-            const bufferRatio = isMobile ? 0.5 : 0.3;
-            const finalHeight = Math.ceil(realHeight * (1 + bufferRatio)) + 80;
+            const FINAL_BUFFER = 0.4;
+            const finalHeight = Math.ceil(realHeight * (1 + FINAL_BUFFER)) + 100;
             container.style.height = finalHeight + 'px';
             container.style.minHeight = finalHeight + 'px';
 
             showToast('⏳ 正在生成图片...');
 
-            const scale = isMobile ? 1.2 : 2;
+            const scale = 2;
 
             function doCapture(heightOverride) {
                 const useHeight = heightOverride || finalHeight;
@@ -2723,7 +2723,7 @@
                 const emptyRatio = emptyPixels / (bottomRow.data.length / 4);
                 if (emptyRatio > 0.6) {
                     showToast('⏳ 检测到截断，自动重试...');
-                    const retryHeight = Math.ceil(finalHeight * 1.8);
+                    const retryHeight = Math.ceil(finalHeight * 2.0);
                     canvas = await doCapture(retryHeight);
                 }
 
@@ -2843,7 +2843,7 @@
             void el.offsetWidth;
             el.classList.add('show');
             clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => { el.classList.remove('show'); }, 4000); } // 延长一点显示时间
+            toastTimer = setTimeout(() => { el.classList.remove('show'); }, 4000); }
 
         // ================================================================
         // 初始化
