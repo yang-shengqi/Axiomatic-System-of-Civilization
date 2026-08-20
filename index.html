@@ -8,6 +8,20 @@
     <title>杨晟琦文明公理系统首页 · 独立思想锚点</title>
     <link rel="stylesheet" href="common.css">
 </head>
+    <script>
+    (function() {
+        // 检测是否为手机/平板设备
+        function isMobile() {
+            return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+                || window.innerWidth <= 768;
+        }
+
+        // 如果当前不是 map.html，且设备是手机，则跳转
+        if (isMobile() && !window.location.pathname.includes('map.html')) {
+            window.location.href = 'map.html';
+        }
+    })();
+</script>
 <body>
     <div class="app">
 
