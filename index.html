@@ -3,1157 +3,661 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="杨晟琦文明公理系统：一套可检验的文明底层逻辑框架。包含思维盲区诊断工具、文明等级评分器、全球人类主权基金及善意后门。立即进入五层完整链路，用系统自身的工具检验系统。">
-    <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
+    <meta name="description" content="杨晟琦文明公理系统：一套自洽、可检验的文明底层逻辑框架，包含思维盲区诊断、文明等级评分、全球人类主权基金与善意后门。">
     <title>杨晟琦文明公理系统首页 · 独立思想锚点</title>
-    <style>
-        /* ===== 全局重置 & 字体 ===== */
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            background: #0b0e0c;
-            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
-            color: #d0d6c8;
-            line-height: 1.8;
-            padding: 28px 18px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: #131816;
-            padding: 48px 56px 40px;
-            border-radius: 24px;
-            border: 1px solid #2a322a;
-            box-shadow: 0 8px 60px rgba(0,0,0,0.7);
-        }
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            padding-bottom: 14px;
-            margin-bottom: 22px;
-            border-bottom: 1px solid #2a322a;
-            font-size: 14px;
-        }
-        .top-nav .back { color:#7a8a6e; text-decoration:none; border-bottom:1px dotted #4a5a3e; transition:color .2s,border-color .2s; }
-        .top-nav .back:hover { color:#aaba8a; border-bottom-color:#aaba8a; }
-        .top-nav .badge { color:#5a6a4e; font-size:13px; letter-spacing:1px; }
-        .brand {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #2a322a;
-        }
-        .brand-left { display:flex; flex-direction:column; gap:4px; }
-        .sub-brand { font-size:14px; font-weight:600; letter-spacing:1.4px; color:#8a9a7e; text-transform:uppercase; margin-bottom:2px; }
-        .title-row { display:flex; align-items:center; flex-wrap:wrap; gap:10px 18px; margin-top:2px; }
-        .title-row h1 { font-size:36px; font-weight:700; letter-spacing:.5px; color:#e2ead4; margin:0; line-height:1.25; display:inline; }
-        .title-row .tag { background:#2a322a; color:#e2ead4; font-size:14px; font-weight:500; padding:4px 18px; border-radius:30px; letter-spacing:.5px; white-space:nowrap; display:inline-block; border:1px solid #3a4638; }
-        .info-row { font-size:15px; color:#7a8a6e; margin-top:6px; display:flex; flex-wrap:wrap; gap:6px 24px; }
-        .info-row a { color:#aaba8a; text-decoration:none; border-bottom:1px dotted #4a5a3e; transition:border-color .2s; }
-        .info-row a:hover { border-bottom:1px solid #aaba8a; }
-        .brand-right { font-size:15px; color:#7a8a6e; text-align:right; align-self:flex-start; margin-top:4px; }
-        .en { font-size:.8em; color:#7a8a6e; font-weight:400; display:block; line-height:1.6; margin-top:2px; }
-        .en-inline { font-size:.8em; color:#7a8a6e; font-weight:400; }
-        .designer-note {
-            background: #1a201c;
-            padding: 22px 30px;
-            border-radius: 14px;
-            margin: 8px 0 28px 0;
-            border-left: 5px solid #8aaa6a;
-        }
-        .designer-note p { margin-bottom:4px; font-size:16px; line-height:1.8; color:#c6ceba; }
-        .designer-note .highlight { color:#e2ead4; font-weight:600; }
-        .designer-note .en { color:#7a8a6e; font-size:.85em; display:block; margin-top:2px; }
-        h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-top: 48px;
-            margin-bottom: 16px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #2a322a;
-            color: #e2ead4;
-            letter-spacing: .5px;
-        }
-        h2 .en-inline { font-size:.6em; font-weight:400; color:#7a8a6e; margin-left:12px; }
-        h3 { font-size:21px; font-weight:600; margin-top:32px; margin-bottom:14px; color:#d4dec4; }
-        h3 .en-inline { font-size:.6em; font-weight:400; color:#7a8a6e; margin-left:8px; }
-        p { margin-bottom:16px; color:#c6ceba; line-height:1.8; }
-        a { color:#aaba8a; text-decoration:none; border-bottom:1px dotted #4a5a3e; transition:border-color .15s,color .15s; }
-        a:hover { border-bottom:1px solid #aaba8a; color:#bace9a; }
-        .section-positioning {
-            background: #1a201c;
-            border-radius: 14px;
-            padding: 24px 30px 20px;
-            margin: 0 0 16px 0;
-            border: 1px solid #2a322a;
-        }
-        .section-positioning h3 { margin-top:0; margin-bottom:12px; color:#e2ead4; }
-        .section-positioning .positioning p { font-size:16px; line-height:1.9; margin-bottom:10px; color:#c6ceba; }
-        .section-positioning .positioning p:last-child { margin-bottom:0; }
-        .section-positioning .positioning strong { color:#bace9a; }
-        .section-features {
-            background: #1a201c;
-            border-radius: 14px;
-            padding: 24px 30px 20px;
-            margin: 0 0 28px 0;
-            border: 1px solid #2a322a;
-        }
-        .section-features h3 { margin-top:0; margin-bottom:14px; color:#e2ead4; }
-        .feature-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px 28px; margin-top:0; }
-        .feature-item { font-size:15px; line-height:1.7; color:#b6c0aa; padding-left:4px; }
-        .feature-item .num { font-weight:700; color:#e2ead4; margin-right:4px; }
-        .feature-item .en { font-size:.75em; color:#7a8a6e; }
-
-        /* ===== 五层卡片 ， 去掉整层点击感应 ===== */
-        .layer {
-            background: #1a201c;
-            border-radius: 16px;
-            padding: 32px 36px 28px;
-            margin-bottom: 32px;
-            border: 1px solid #2a322a;
-            border-left: 6px solid #8aaa6a;
-            transition: border-color 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: default;
-        }
-        .layer:hover {
-            border-color: #3a4a3a;
-        }
-        .layer::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(138,170,106,0.02), transparent 70%);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-        .layer:hover::after {
-            opacity: 1;
-        }
-        .layer .layer-num { font-size:15px; font-weight:600; color:#5a7a4a; letter-spacing:1.5px; margin-bottom:2px; }
-        .layer .layer-num .en-num { font-size:.65em; font-weight:400; color:#5a6a4e; margin-left:8px; letter-spacing:.5px; }
-        .layer .layer-name { font-size:26px; font-weight:600; color:#e2ead4; margin-bottom:6px; }
-        .layer .layer-name .en-inline { font-size:.55em; font-weight:400; color:#7a8a6e; margin-left:10px; }
-        .layer .layer-position {
-            font-size:15px;
-            color:#7a8a6e;
-            margin-bottom:14px;
-            padding:10px 16px;
-            background:#131816;
-            border-radius:8px;
-            border-left:3px solid #4a5a3e;
-            line-height:1.8;
-        }
-        .layer .layer-position .en { font-size:.85em; color:#5a6a4e; display:block; margin-top:2px; }
-        .layer .layer-desc { font-size:15px; color:#c6ceba; margin-bottom:18px; line-height:2.0; }
-        .layer .layer-desc p { margin-bottom:8px; }
-        .layer .layer-desc ul { padding-left:22px; margin-bottom:8px; }
-        .layer .layer-desc ul li { margin-bottom:4px; color:#b6c0aa; }
-        .layer .layer-desc strong { color:#d4dec4; }
-        .layer .logic-block {
-            background: #131816;
-            border-radius: 10px;
-            padding: 18px 22px 14px;
-            margin: 14px 0 18px 0;
-            border: 1px solid #242c22;
-        }
-        .layer .logic-block .logic-label { font-size:13px; font-weight:600; color:#7a8a6e; letter-spacing:2px; margin-bottom:12px; }
-        .layer .logic-block .logic-label .en-label { font-size:.7em; font-weight:400; color:#5a6a4e; margin-left:8px; letter-spacing:.5px; }
-        .layer .logic-block .logic-item { font-size:14px; color:#b6c0aa; line-height:1.9; padding:10px 0 12px 0; border-bottom:1px solid #1e241e; }
-        .layer .logic-block .logic-item:last-child { border-bottom:none; }
-        .layer .logic-block .logic-item .logic-num { display:inline; font-weight:700; color:#5a7a4a; font-size:14px; }
-        .layer .logic-block .logic-item .logic-title { display:inline; font-weight:600; color:#d4dec4; font-size:15px; margin-left:2px; }
-        .layer .logic-block .logic-item .logic-body { display:block; color:#b6c0aa; font-size:14px; margin-top:4px; line-height:1.9; }
-        .layer .logic-block .logic-item .logic-summary { display:block; color:#c6ceba; font-size:14px; font-weight:500; margin-top:4px; padding-left:12px; border-left:2px solid #4a5a3e; }
-        .layer .logic-block .logic-item .logic-en-body { display:block; font-size:.8em; color:#5a6a4e; line-height:1.7; margin-top:4px; }
-        .layer .logic-block .logic-item .logic-en-summary { display:block; font-size:.8em; color:#5a6a4e; line-height:1.7; margin-top:2px; }
-        .angle-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; margin:18px 0 20px 0; }
-        .angle-card {
-            background: #131816;
-            border-radius: 12px;
-            padding: 20px 22px 18px;
-            border: 1px solid #242c22;
-            border-top: 3px solid #5a7a4a;
-        }
-        .angle-card .angle-label { font-size:16px; font-weight:700; color:#bace9a; letter-spacing:1px; margin-bottom:6px; }
-        .angle-card .angle-label .en { font-size:.6em; font-weight:400; color:#5a6a4e; display:inline; margin-left:6px; }
-        .angle-card .angle-text { font-size:14px; color:#b6c0aa; line-height:1.8; }
-        .angle-card .angle-text .en { font-size:.85em; color:#6a7a5e; display:block; margin-top:3px; }
-
-        /* ============================================================ */
-        /* ===== 入口按钮 ， 仅按钮有感应 ===== */
-        /* ============================================================ */
-        .layer-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 6px;
-            padding: 10px 28px 10px 26px;
-            background: transparent;
-            border: 1.5px solid #3a4a3a;
-            border-radius: 40px;
-            font-size: 15px;
-            font-weight: 600;
-            color: #aaba8a;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            letter-spacing: 0.3px;
-            user-select: none;
-            box-shadow: 0 0 0 rgba(138,170,106,0);
-        }
-        .layer-cta .cta-text {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        /* 图片标签在按钮文字右上角 */
-        .hot-icon {
-            display: inline-block;
-            margin-left: 2px;
-            line-height: 1;
-            flex-shrink: 0;
-            position: relative;
-            top: -6px;
-        }
-        .hot-icon img {
-            height: 13px;
-            width: auto;
-            display: block;
-        }
-
-        .layer-cta .cta-arrow {
-            display: inline-block;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-size: 18px;
-            line-height: 1;
-            position: relative;
-            z-index: 2;
-        }
-        .layer-cta .cta-en {
-            display: block;
-            font-size: 10px;
-            font-weight: 400;
-            color: #5a6a4e;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 2;
-            transition: color 0.3s ease;
-        }
-        /* 光泽层 */
-        .layer-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 300%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(138,170,106,0.06), rgba(138,170,106,0.10), rgba(138,170,106,0.06), transparent);
-            transform: skewX(-25deg);
-            transition: left 0.7s ease;
-            z-index: 1;
-            pointer-events: none;
-        }
-        /* 悬停状态 ， 按钮感应强烈 */
-        .layer-cta:hover {
-            border-color: #8aaa6a;
-            color: #e2ead4;
-            background: rgba(138,170,106,0.06);
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 6px 30px rgba(138,170,106,0.12), 0 0 60px rgba(138,170,106,0.04);
-        }
-        .layer-cta:hover::before {
-            left: 100%;
-        }
-        .layer-cta:hover .cta-arrow {
-            transform: translateX(6px) scale(1.1);
-        }
-        .layer-cta:hover .cta-en {
-            color: #7a8a6e;
-        }
-        /* 点击状态 */
-        .layer-cta:active {
-            transform: scale(0.96) translateY(0px);
-            transition-duration: 0.08s;
-        }
-        /* 呼吸脉动 */
-        .layer-cta.pulse {
-            animation: ctaPulse 3s ease-in-out infinite;
-        }
-        @keyframes ctaPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(138,170,106,0); }
-            50% { box-shadow: 0 0 30px 4px rgba(138,170,106,0.06); }
-        }
-        /* 不同层的按钮边框色微调 */
-        .layer:nth-child(1) .layer-cta { border-color: #4a6a4a; }
-        .layer:nth-child(2) .layer-cta { border-color: #6a5a3a; }
-        .layer:nth-child(3) .layer-cta { border-color: #3a6a5a; }
-        .layer:nth-child(4) .layer-cta { border-color: #5a3a5a; }
-        .layer:nth-child(5) .layer-cta { border-color: #5a7a3a; }
-        .layer:nth-child(1) .layer-cta:hover { border-color: #8aaa6a; }
-        .layer:nth-child(2) .layer-cta:hover { border-color: #b89a4a; }
-        .layer:nth-child(3) .layer-cta:hover { border-color: #6a9a8a; }
-        .layer:nth-child(4) .layer-cta:hover { border-color: #8a6a8a; }
-        .layer:nth-child(5) .layer-cta:hover { border-color: #bace9a; }
-
-        .layer .layer-link-old { display:none; }
-
-        .layer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 18px 20px;
-            margin: 16px 0 8px 0;
-        }
-        .layer-card {
-            background: #1a201c;
-            border-radius: 14px;
-            padding: 18px 20px 16px;
-            border: 1px solid #2a322a;
-            border-top: 4px solid #8aaa6a;
-            transition: transform 0.15s ease, box-shadow 0.2s ease;
-        }
-        .layer-card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.3); }
-        .layer-card .layer-num { display:inline-block; background:#2a322a; color:#aaba8a; font-size:12px; font-weight:600; padding:0 14px; border-radius:30px; letter-spacing:.5px; margin-bottom:8px; }
-        .layer-card .layer-title { font-weight:700; font-size:17px; color:#e2ead4; margin-bottom:4px; }
-        .layer-card .layer-docs { font-size:14px; color:#b6c0aa; line-height:1.7; }
-        .layer-card .layer-docs a { border-bottom:1px dotted #4a5a3e; color:#b6c0aa; }
-        .layer-card .layer-docs a:hover { border-bottom:1px solid #aaba8a; color:#aaba8a; }
-        .layer-card .layer-func { font-size:14px; color:#7a8a6e; margin-top:8px; padding-top:8px; border-top:1px dashed #2a322a; }
-        .layer-card .layer-func .en { font-size:.8em; color:#5a6a4e; display:block; margin-top:2px; }
-        .formula-box {
-            background: #1a201c;
-            border-radius: 16px;
-            padding: 22px 30px;
-            margin: 14px 0 10px 0;
-            text-align: center;
-            font-size: 22px;
-            font-weight: 600;
-            letter-spacing: .5px;
-            border: 1px solid #2a322a;
-            color: #e2ead4;
-        }
-        .formula-box .small { font-size:16px; font-weight:400; color:#7a8a6e; display:block; margin-top:6px; }
-        .formula-box .formula-en { font-size:.6em; font-weight:400; color:#7a8a6e; display:block; margin-top:6px; }
-        .meta-badges { display:flex; flex-wrap:wrap; gap:12px 24px; margin:10px 0 14px 0; }
-        .meta-badge { background:#2a322a; padding:5px 22px; border-radius:30px; font-weight:500; font-size:15px; color:#aaba8a; border:1px solid #3a4638; }
-        .meta-badge .en-inline { color:#5a6a4e; font-size:.65em; font-weight:400; margin-left:4px; }
-        .mechanism-list { display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:14px; margin:10px 0 8px 0; }
-        .mechanism-item { background:#1a201c; padding:14px 18px; border-radius:10px; border-left:3px solid #8aaa6a; font-size:15px; color:#c6ceba; }
-        .mechanism-item strong { display:block; font-weight:700; margin-bottom:2px; color:#e2ead4; }
-        .mechanism-item .en { font-size:.75em; color:#7a8a6e; }
-        .link-group { margin:16px 0 10px 0; }
-        .link-group h4 { font-size:17px; font-weight:600; margin-top:20px; margin-bottom:8px; color:#d4dec4; }
-        .link-list { list-style:none; padding:0; }
-        .link-list li { padding:6px 0; border-bottom:1px solid #242c22; font-size:15px; color:#b6c0aa; }
-        .link-list li:last-child { border-bottom:none; }
-        .link-list .tag { display:inline-block; background:#2a322a; font-size:12px; padding:0 12px; border-radius:12px; margin-right:10px; color:#aaba8a; font-weight:500; }
-        .link-list a { color:#b6c0aa; }
-        .link-list a:hover { color:#aaba8a; border-bottom:1px solid #aaba8a; }
-        .bib-box {
-            background: #1a201c;
-            border-radius: 12px;
-            padding: 16px 20px;
-            border: 1px solid #2a322a;
-            margin: 12px 0;
-            position: relative;
-            overflow-x: auto;
-        }
-        .bib-box .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            background: #2a322a;
-            border: 1px solid #3a4638;
-            border-radius: 6px;
-            padding: 4px 14px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #aaba8a;
-            cursor: pointer;
-            transition: all 0.2s;
-            z-index: 2;
-            font-family: inherit;
-            line-height: 1.5;
-        }
-        .bib-box .copy-btn:hover { background:#3a4638; color:#e2ead4; border-color:#8aaa6a; }
-        .bib-box .copy-btn.copied { background:#2a5a3a; color:#e2ead4; border-color:#8aaa6a; }
-        .bib-content {
-            font-family: "SF Mono", "Menlo", "Consolas", monospace;
-            font-size: 13px;
-            white-space: pre-wrap;
-            word-break: break-all;
-            margin: 0;
-            padding: 0;
-            background: transparent;
-            border: none;
-            overflow-x: auto;
-            padding-right: 60px;
-            color: #b6c0aa;
-            line-height: 1.6;
-        }
-        .footer {
-            margin-top: 48px;
-            padding-top: 22px;
-            border-top: 2px solid #2a322a;
-            font-size: 14px;
-            color: #5a6a4e;
-            text-align: center;
-        }
-        .footer a { color:#7a8a6e; border-bottom:1px dotted #4a5a3e; }
-        .footer a:hover { border-bottom:1px solid #7a8a6e; color:#aaba8a; }
-        .footer .en { font-size:.85em; color:#7a8a6e; display:block; margin-top:2px; }
-
-        /* ===== 响应式 ===== */
-        @media (max-width:1024px) { .angle-grid { grid-template-columns:1fr 1fr 1fr; gap:14px; } }
-        @media (max-width:820px) { .angle-grid { grid-template-columns:1fr 1fr; } }
-        @media (max-width:768px) {
-            body { padding:14px 8px; }
-            .container { padding:22px 14px 24px; }
-            .title-row h1 { font-size:28px; }
-            .title-row .tag { font-size:12px; padding:2px 12px; }
-            .sub-brand { font-size:12px; }
-            .info-row { font-size:14px; flex-direction:column; gap:2px; }
-            .brand-right { text-align:left; width:100%; margin-top:6px; }
-            .formula-box { font-size:18px; padding:16px 14px; }
-            .formula-box .small { font-size:14px; }
-            .formula-box .formula-en { font-size:.6em; }
-            .layer-grid { grid-template-columns:1fr; }
-            .mechanism-list { grid-template-columns:1fr; }
-            .feature-grid { grid-template-columns:1fr; gap:8px; }
-            .designer-note { padding:16px 18px; }
-            .section-positioning, .section-features { padding:16px 18px; }
-            .feature-item { font-size:14px; }
-            .top-nav { font-size:13px; }
-            .top-nav .badge { font-size:12px; }
-            .bib-box .copy-btn { font-size:12px; padding:2px 10px; top:6px; right:8px; }
-            .bib-content { font-size:12px; padding-right:50px; }
-            h2 { font-size:24px; }
-            h3 { font-size:19px; }
-            .layer { padding:20px 16px; margin-bottom:24px; }
-            .layer .layer-name { font-size:20px; }
-            .layer .layer-position { font-size:14px; padding:8px 12px; }
-            .angle-card { padding:14px 16px; }
-            .angle-card .angle-text { font-size:13px; }
-            .layer .logic-block .logic-item { font-size:13px; }
-            .layer-cta { padding:8px 18px; font-size:14px; }
-            .layer-cta .cta-en { font-size:9px; }
-            .hot-icon img { height:15px; }
-            .hot-icon { top:-4px; }
-        }
-        @media (max-width:600px) { .angle-grid { grid-template-columns:1fr; } }
-        @media (max-width:480px) {
-            .container { padding:14px 10px 18px; }
-            .title-row h1 { font-size:22px; }
-            .title-row .tag { font-size:11px; padding:2px 10px; }
-            .formula-box { font-size:16px; padding:12px 10px; }
-            .formula-box .small { font-size:13px; }
-            .brand { flex-direction:column; gap:6px; }
-            .brand-right { text-align:left; }
-            .link-list li { font-size:14px; }
-            .bib-content { font-size:11px; padding-right:40px; }
-            .layer { padding:16px 12px; margin-bottom:18px; }
-            .layer .layer-name { font-size:18px; }
-            .layer .logic-block { padding:12px 14px; }
-            .layer .logic-block .logic-item { font-size:13px; padding:8px 0 10px 0; }
-            .angle-card { padding:12px 14px; }
-            .angle-card .angle-text { font-size:13px; }
-            .layer-cta { padding:6px 14px; font-size:13px; gap:6px; }
-            .layer-cta .cta-en { font-size:8px; }
-            .hot-icon img { height:13px; }
-            .hot-icon { top:-3px; }
-        }
-    </style>
+    <link rel="stylesheet" href="common.css">
 </head>
 <body>
+    <div class="app">
 
-<div class="container">
-
-    <!-- ===== 顶部导航条 ===== -->
-    <div class="top-nav">
-        <a href="./index.html" class="back">← 返回体系总入口</a>
-        <span class="badge">杨晟琦文明公理系统首页 · 独立思想锚点</span>
-    </div>
-
-    <!-- ===== 顶部品牌区 ===== -->
-    <div class="brand">
-        <div class="brand-left">
+        <!-- ===== 侧边栏 ===== -->
+        <aside class="sidebar" role="navigation" aria-label="目录导航">
             <div class="sub-brand">YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION</div>
-            <div class="title-row">
-                <h1>杨晟琦文明公理系统首页</h1>
-                <span class="tag">独立思想锚点</span>
-            </div>
-            <div class="info-row">
-                <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
-                <span>全球首发: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
-                <span>封装完成: 2026年7月</span>
-            </div>
-        </div>
-        <div class="brand-right"></div>
-    </div>
+            <div class="logo">杨晟琦<span>文明公理系统</span><span class="nav-copyright">©</span></div>
+            <nav aria-label="主导航">
+                <a href="./index.html" title="杨晟琦文明公理系统首页 · 独立思想锚点">首页 <span class="nav-en">HOME</span></a>
+                <a href="./blind-spot-diagnosis-cn.html" title="人类思维盲区在线诊断工具（中文版）">思维诊断：人类思维盲区诊断（中文）<span class="nav-en">BLIND SPOT DIAGNOSIS (CN)</span></a>
+                <a href="./blind-spot-diagnosis-en.html" title="Cognitive Blind Spot Diagnostic Tool（EN）">思维诊断：人类思维盲区诊断（英文）<span class="nav-en">BLIND SPOT DIAGNOSIS (EN)</span></a>
+                <a href="./pure-structure-edition.html" title="杨晟琦文明公理系统纯净结构版（中英文版）">快速阅读：文明公理系统纯净版 <span class="nav-en">PURE-STRUCTURE-EDITION</span></a>
+                <a href="./three-cornerstones.html" title="三大基石：一种文明系统的底层重构框架">元框架：三大基石 <span class="nav-en">META-FRAMEWORK · THREE CORNERSTONES</span></a>
+                <a href="./path-to-low-civilization.html" title="低级文明的完整路径图">诊断模型：低级文明路径图 <span class="nav-en">DIAGNOSTIC MODEL · PATH TO LOW-LEVEL CIVILIZATION</span></a>
+                <a href="./deterministic-social-system.html" title="确定性社会系统形成的必要条件与阻碍因素">条件分析：确定性社会形成条件因素 <span class="nav-en">DETERMINISTIC SOCIAL SYSTEM</span></a>
+                <a href="./justice-interest-rules-tension.html" title="正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析">张力分析：正义利益规则的错位 <span class="nav-en">JUSTICE, INTEREST &amp; RULES</span></a>
+                <a href="./non-deadlock-analysis.html" title="系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制">条件分析：非死锁的条件分析 <span class="nav-en">NON-DEADLOCK ANALYSIS</span></a>
+                <a href="./operational-manual.html" title="改变底层逻辑的方法论（非归因，可操作）">操作手册：改变底层逻辑的方法论 <span class="nav-en">OPERATIONAL MANUAL</span></a>
+                <a href="./earthly-perspective-validation.html" title="从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心">验证工具：从地球人类视野的推演 <span class="nav-en">VALIDATION TOOL</span></a>
+                <a href="./ghsf-cn.html" title="全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）">药方参考：全球人类主权基金 (中文版) <span class="nav-en">GHSF (CN)</span></a>
+                <a href="./ghsf-en.html" title="GHSF — A Blueprint for China & the Global Community（英文版）">药方参考：全球人类主权基金 (英文版) <span class="nav-en">GHSF (EN)</span></a>
+                <a href="./acceptance-report.html" title="文明公理宪法与全球人类主权基金的验收报告">验收报告：文明公理与基金验收报告 <span class="nav-en">ACCEPTANCE REPORT</span></a>
+                <a href="./civilization-level-manual.html" title="文明等级判断说明书">量化思路：文明等级判断说明书 <span class="nav-en">CIVILIZATION LEVEL MANUAL</span></a>
+                <a href="./civilization-level-scorer.html" title="杨晟琦文明公理系统之文明等级评分器（中英文版）">量化诊断：文明等级判断评分器 <span class="hot-icon"><img src="hot.gif" alt="hot"></span><span class="nav-en">CIVILIZATION LEVEL SCORER</span></a>
+            </nav>
+            <div class="version">所有内容以 CC BY-ND 4.0 协议发布 <span class="version-en">All content released under CC BY-ND 4.0</span></div>
+        </aside>
 
-    <!-- ===== 设计者自述 ===== -->
-    <div class="designer-note">
-        <p><span class="highlight">我叫杨晟琦，1980年出生于中国。</span></p>
-        <p>我是地球上第一位文明公理架构师。我用一把游标卡尺量出了文明的厚度，然后用一台引擎把裂缝堵上了。</p>
-        <span class="en">I am the world's first Architect of Civilizational Axioms. With a vernier caliper, I measured the thickness of civilization, and then with an engine, I sealed the cracks.</span>
-    </div>
+        <!-- ===== 主内容 ===== -->
+        <main class="main">
 
-    <!-- ===== 系统定位 ===== -->
-    <div class="section-positioning">
-        <h3>系统定位 <span class="en-inline">System Positioning</span></h3>
-        <div class="positioning">
-            <p><strong>杨晟琦文明公理系统</strong> 是一套自洽的、可检验的文明底层逻辑框架。<span class="en">Yang Shengqi's Axiomatic System of Civilization is a self-consistent, testable foundational framework for civilization at the logical level.</span></p>
-            <p>它从公理定义出发，经诊断模型、度量工具、过程监测、药方设计、操作手册到验证工具，构成完整闭环。<span class="en">It forms a complete closed loop, from axiomatic definitions through diagnostic models, measurement tools, process monitoring, prescription design, operational manuals, to validation instruments.</span></p>
-            <p>它不依附于任何国家、政权、资本或组织，不依赖任何外部条件。<span class="en">It is not affiliated with any state, regime, capital, or organization, and depends on no external conditions.</span></p>
-            <p>它的唯一前提是：系统愿意被对照检验。<span class="en">Its only premise: the system is willing to be examined against this benchmark.</span></p>
-        </div>
-    </div>
+            <!-- 顶栏 -->
+            <div class="top-nav">
+                <a href="./index.html">← 返回体系总入口</a>
+                <span class="badge">杨晟琦文明公理系统 · 独立思想锚点</span>
+            </div>
 
-    <!-- ===== 核心特点 ===== -->
-    <div class="section-features">
-        <h3>核心特点 <span class="en-inline">Core Features</span></h3>
-        <div class="feature-grid">
-            <div class="feature-item"><span class="num">1.</span> 三段式结构：方向 → 诊断 → 处方，逻辑不可拆分，缺一则系统失效。<span class="en">Three-stage structure: Direction → Diagnosis → Prescription. Indivisible logic; missing one breaks the system.</span></div>
-            <div class="feature-item"><span class="num">2.</span> 可计算函数：文明指数将“文明”从修辞转化为可测量的数学公式。<span class="en">Computable function: The Civilization Index transforms "civilization" from rhetoric into a measurable mathematical formula.</span></div>
-            <div class="feature-item"><span class="num">3.</span> 三条元法则：基石否决权、体感优先律、最短木桶律，封堵一切数据粉饰与选择性执行。<span class="en">Three meta-principles: Cornerstone Veto, Primacy of Lived Experience, Shortest Plank Rule — blocking all data manipulation and selective enforcement.</span></div>
-            <div class="feature-item"><span class="num">4.</span> 九式诊断路径：从结构性不公到结构性死亡，完整揭示系统如何走向崩溃。<span class="en">Nine-step diagnostic path: From structural injustice to structural death, fully revealing how a system collapses.</span></div>
-            <div class="feature-item"><span class="num">5.</span> 双重锁定：法律铁索 + 三重剥离 + 物理隔绝，使制度具有反脆弱性。<span class="en">Dual legal-physical lock: Legal Chains + Threefold Severance + Physical Isolation, rendering the institution anti-fragile.</span></div>
-            <div class="feature-item"><span class="num">6.</span> 非归责性操作手册：七条方法论不追究个人责任，只提供可执行的系统翻转路径。<span class="en">Non-attributional operations manual: Seven methodologies that do not blame individuals, only providing executable pathways to reverse the system.</span></div>
-            <div class="feature-item"><span class="num">7.</span> 独立验证机制：用系统自身的工具检验系统自身，完成完整闭环验收。<span class="en">Independent verification mechanism: Using the system's own tools to audit itself, completing a full closed-loop validation.</span></div>
-            <div class="feature-item"><span class="num">8.</span> 无条件启动：不依赖“好领导”或“足够资源”，只依赖系统愿意被对照检验。<span class="en">Unconditional activation: Does not depend on "good leadership" or "sufficient resources" — only on a willingness to be tested.</span></div>
-        </div>
-    </div>
+            <!-- 品牌区 -->
+            <div class="brand">
+                <div class="brand-left">
+                    <div class="sub-brand">YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION</div>
+                    <div class="title-row--inline">
+                        <h1>杨晟琦文明公理系统首页</h1>
+                        <span class="badge badge-dark">独立思想锚点</span>
+                    </div>
+                    <div class="info-row">
+                        <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
+                        <span>全球首发: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+                        <span>封装完成: 2026年7月</span>
+                    </div>
+                </div>
+            </div>
 
-    <!-- ============================================================ -->
-    <!-- ===== 五层完整链路 ===== -->
-    <!-- ============================================================ -->
-    <h2>五层完整链路 <span class="en-inline">Complete Chain</span></h2>
-    <p style="margin-bottom:22px; color:#7a8a6e; font-size:16px;">
-        五层递进。每一步都是下一步的前提。每一层从三个位置观察同一件事：地球、国家、个人。三个角度相互独立，合起来构成完整视图。
-        <span class="en" style="font-size:.85em;">Five layers, sequentially connected. Each step is the premise for the next. Each layer is observed from three positions: Earth, State, Individual. Three independent angles, together forming a complete view.</span>
-    </p>
+            <!-- 页面内容 -->
+            <div class="page-content">
 
-    <!-- ===== 第一层（NEW 图片） ===== -->
-    <div class="layer">
-        <div class="layer-num">第一层 <span class="en-num">Layer 1</span></div>
-        <div class="layer-name">人类思维盲区在线诊断工具<span class="en-inline">Human Cognitive Blind Spot Online Diagnostic Tool</span></div>
-        <div class="layer-position">
-            <strong>承上启下：</strong>这一层承接的是“读者的现有思维习惯”，为后续所有层铺设的是“读者的清醒度”。没有这一层，后续所有层都会被误读，公理变成口号，诊断变成攻击，药方变成煽动。
-            <span class="en">Transition: This layer receives the reader's existing thinking habits and lays the foundation of the reader's clarity for all subsequent layers.</span>
-        </div>
-        <div class="layer-desc">
-            <p><strong>38道元问题，分布在四个维度：</strong></p><p>逻辑自洽性（当证据与观点冲突时，人如何反应）；时间贴现与利益识别（人对长期后果的感知能力）；情绪与认知解耦（在情绪波动中能否区分事实与感受）；二阶心智（人对自身思维过程的觉察程度）。</p>
-            <p>该系统不评价你，不设标准答案，不设及格线。它只是把一面镜子放在你面前，让你第一次看见自己的思维习惯是如何形成的。</p>
-            <p style="font-size:14px; color:#7a8a6e;">38 meta-cognitive questions covering four dimensions: logical consistency, temporal discounting and interest recognition, emotional-cognitive decoupling, and second-order metacognition. The system does not judge you—no standard answers, no passing line. It simply places a mirror before you.</p>
-        </div>
-        <div class="logic-block">
-            <div class="logic-label">逻辑指引 <span class="en-label">Logic Guide</span></div>
-            <div class="logic-item">
-                <span class="logic-num">1.</span>
-                <span class="logic-title">一致性前提</span>
-                <span class="logic-body">这一层存在的唯一理由是：后续所有公理、公式、药方、后门，都建立在“读者具备基本的元认知能力”这一前提之上。</span>
-                <span class="logic-en-body">Premise consistency: All subsequent axioms, formulas, prescriptions, and back doors rest on the premise that the reader possesses basic metacognitive ability.</span>
-                <span class="logic-summary">即：如果你在回答这些问题时发现自己对某些维度缺乏清晰感知，你在后续阅读中需要更警觉，因为你更容易把公理读成口号，把诊断读成攻击。</span>
-                <span class="logic-en-summary">If you find yourself lacking clear perception in certain dimensions while answering these questions, you will need greater vigilance in subsequent reading.</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-num">2.</span>
-                <span class="logic-title">自我参照性</span>
-                <span class="logic-body">如果跳过这一层，读者带着“我的思维习惯不需要审视”的预设进入后续内容，他会本能地用旧框架去解释新系统。</span>
-                <span class="logic-en-body">Self-referentiality: If you skip this layer, you will instinctively interpret the new system through your old framework.</span>
-                <span class="logic-summary">即：这一层解决的不是“你够不够聪明”，而是“你够不够清醒”，清醒到知道自己的思维习惯会把什么内容扭曲。</span>
-                <span class="logic-en-summary">This layer is not about whether you are smart enough—it is about whether you are clear-headed enough to know what your thinking habits will distort.</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-num">3.</span>
-                <span class="logic-title">不可逆性</span>
-                <span class="logic-body">一旦完成这38个问题的自我对话，人获得的是对自身思维结构的觉察。这种觉察一旦获得就无法逆转。</span>
-                <span class="logic-en-body">Irreversibility: Once completed, the awareness of one's thinking structure cannot be reversed.</span>
-                <span class="logic-summary">即：这一层不是测试，是觉醒。测试有结束，觉醒没有。</span>
-                <span class="logic-en-summary">This is not a test—it is awakening. Tests end; awakening does not.</span>
-            </div>
-        </div>
-        <div class="angle-grid">
-            <div class="angle-card">
-                <div class="angle-label">地球 <span class="en">Earth</span></div>
-                <div class="angle-text">这套诊断不依赖任何文化传统、不预设任何教育背景、不要求任何专业知识。它在任何地方、对任何人都能生效。因为它只问一件事：你愿不愿意面对自己的思维习惯？<span class="en">This diagnosis depends on no cultural tradition, presumes no educational background, requires no expertise. It works anywhere, for anyone.</span></div>
-            </div>
-            <div class="angle-card">
-                <div class="angle-label">国家 <span class="en">State</span></div>
-                <div class="angle-text">这套工具直接面对个体，绕开了所有教育系统、话语系统、信息过滤系统。国家无法干预结果，因为答案只存在于个体内部，不经过任何中间机构。<span class="en">The tool engages directly with the individual, bypassing all educational and discursive systems. The state cannot interfere with the outcome.</span></div>
-            </div>
-            <div class="angle-card">
-                <div class="angle-label">个人 <span class="en">Individual</span></div>
-                <div class="angle-text">日常语言写成，不需要专业知识。一个普通人不需要任何前置培训，就能独立完成这份自我对话；他获得的是对自己思维结构的第一次看见。<span class="en">Written in everyday language, no expertise required. An ordinary person can complete this self-dialogue independently.</span></div>
-            </div>
-        </div>
-        <!-- 按钮：第一层用 new.gif -->
-        <a class="layer-cta pulse" href="./人类思维盲区在线诊断工具.html" target="_blank" rel="noopener noreferrer">
-            <span class="cta-text">
-                人类思维盲区在线诊断工具（中文版）
-                <span class="hot-icon"><img src="hot.gif" alt="hot"></span>
-            </span>
-            <span class="cta-en">点击查看</span>
-        </a>
-        <a class="layer-cta pulse" href="./Cognitive-Blind-Spot-Diagnostic-Model.html" target="_blank" rel="noopener noreferrer">
-            <span class="cta-text">
-                Cognitive Blind Spot Diagnostic Tool（EN）
-                <span class="hot-icon"><img src="hot.gif" alt="hot"></span>
-            </span>
-            <span class="cta-en">Click to View</span>
-        </a>
-    </div>
+                <!-- 设计者自述 -->
+                <div class="designer-note">
+                    <p><span class="highlight">我叫杨晟琦，1980年出生于中国。</span></p>
+                    <span class="en">My name is Yang Shengqi, and I was born in China in 1980.</span>
+                    <p>我是地球上第一位文明公理架构师。我用一把游标卡尺量出了文明的厚度，然后用一台引擎把裂缝堵上了。</p>
+                    <span class="en">I am the first architect of civilization's axioms on Earth. I measured the thickness of civilization with a vernier caliper, and then used an engine to seal the cracks.</span>
+                </div>
 
-    <!-- ===== 第二层（HOT 图片） ===== -->
-    <div class="layer">
-        <div class="layer-num">第二层 <span class="en-num">Layer 2</span></div>
-        <div class="layer-name">杨晟琦文明公理系统纯净结构版 <span class="en-inline">Yang Shengqi's Axiomatic System of Civilization — Pure Structure Edition</span></div>
-        <div class="layer-position">
-            <strong>承上启下：</strong><br>第一层让读者看见自己的思维结构，第二层在此基础上，给出一套“看见系统”的框架，它承接的是第一层已经清醒的读者，为第三层的量化打分提供坐标。
-            <span class="en">Transition: Layer 1 lets the reader see their own thinking structure. Layer 2 provides a framework for "seeing the system."</span>
-        </div>
-        <div class="layer-desc">
-            <p><strong>三大基石：</strong></p>
-            <p>自由是默认值：系统的起点不是“被允许做什么”，而是“没有被禁止的就是可做的”。<br>正义是底层压舱石：系统的合法性不取决于顶层的光鲜，而取决于底层是否被看见。<br>治理是搬开阻碍：系统的唯一任务不是“管住”，而是“搬开”。</p>
-            <p><strong>九步诊断路径：</strong></p>
-            <p>不公→锁死→错位→矛盾→收缩→失聪→逃逸→空心→死亡。<br>每一步是上一步的必然延续：不公持续存在，系统必然开始锁死；锁死持续，目标与手段必然脱节；脱节持续，各方利益必然撕裂；撕裂持续，系统必然关闭反馈通道；失聪持续，有价值的个体必然离开；逃逸持续，系统必然空心；空心持续，系统必然死亡。<br>九步路径同时是倒推的药方索引。</p>
-            <p><strong>自验收报告：</strong></p>
-            <p>系统用自身的度量工具检验自身，不依赖外部审计，不依赖第三方认证。内部一致即是有效。</p>
-            <p style="font-size:14px; color:#7a8a6e;">Three Cornerstones: Freedom is the default; justice is the ballast for the bottom; governance is removing obstacles. Nine-step Diagnostic Path: Injustice → Lockdown → Dislocation → Contradiction → Contraction → Deafness → Escape → Hollowing → Death.</p>
-        </div>
-        <div class="logic-block">
-            <div class="logic-label">逻辑指引 <span class="en-label">Logic Guide</span></div>
-            <div class="logic-item">
-                <span class="logic-num">1.</span>
-                <span class="logic-title">单向递进性</span>
-                <span class="logic-body">九步路径的每一步都是上一步的必然延续，不是“可能”而是“必然”。一旦进入某一步，就意味着前一步的修正窗口已经关闭。</span>
-                <span class="logic-en-body">One-way progression: Each step is the necessary continuation of the previous one.</span>
-                <span class="logic-summary">即：诊断的唯一任务是“找到当前在哪一步”，过去不可逆，未来可干预。</span>
-                <span class="logic-en-summary">The only task of diagnosis is to identify where the system currently stands—the past is irreversible, the future is intervenable.</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-num">2.</span>
-                <span class="logic-title">倒推可解性</span>
-                <span class="logic-body">每一步的解决方案都是上一环节的缺失。失聪的解在收缩，收缩的解在矛盾，矛盾的解在错位，错位的解在锁死，锁死的解在不公。</span>
-                <span class="logic-en-body">Reverse solvability: The solution to each step is the missing element of the previous link.</span>
-                <span class="logic-summary">即：知道在哪一步，就知道缺了什么；知道缺了什么，就知道要补什么。</span>
-                <span class="logic-en-summary">Knowing where you are tells you what is missing; knowing what is missing tells you what to replenish.</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-num">3.</span>
-                <span class="logic-title">自举验证</span>
-                <span class="logic-body">自验收报告不是“有人说它好”，是“它用自己的工具检验自己的推导”。</span>
-                <span class="logic-en-body">Self-bootstrapping validation: The acceptance report uses the system's own tools to audit its own derivation.</span>
-                <span class="logic-summary">即：不需要相信它，只需要检查它。</span>
-                <span class="logic-en-summary">You don't need to believe it—you only need to examine it.</span>
-            </div>
-        </div>
-        <div class="angle-grid">
-            <div class="angle-card">
-                <div class="angle-label">地球 <span class="en">Earth</span></div>
-                <div class="angle-text">三大基石是结构性前提，不依赖任何文化传统。<br>九步路径是任何缺乏干预的系统都会经历的自然演化。<br>地球不区分制度，只区分活着的系统和死去的系统。<span class="en">The three cornerstones are structural prerequisites, independent of cultural tradition. The nine-step path is the natural evolution of any system in the absence of intervention.</span></div>
-            </div>
-            <div class="angle-card">
-                <div class="angle-label">国家 <span class="en">State</span></div>
-                <div class="angle-text">九步路径提供了一套预警系统。<br>任何国家不需要公开承认自己走到了哪一步，它只需要对照路径，就能看到自己正在走向哪里。<span class="en">The nine-step path provides an early warning system. The state need not admit where it stands—only examine itself against the path.</span></div>
-            </div>
-            <div class="angle-card">
-                <div class="angle-label">个人 <span class="en">Individual</span></div>
-                <div class="angle-text">这是普通人第一次能用一套统一的、可辨认的语言来描述“这个系统怎么了？”<br>不是好与坏，是锁死、失聪、逃逸、空心。模糊的痛苦变成了精确的诊断。<span class="en">For the first time, ordinary people can describe "what is wrong" in a unified language—not good/bad, but locked, deaf, hollow.</span></div>
-            </div>
-        </div>
-        <!-- 按钮：第二层用 hot.gif -->
-        <a class="layer-cta pulse" href="./杨晟琦文明公理系统纯净结构版.html" target="_blank" rel="noopener noreferrer">
-            <span class="cta-text">
-                杨晟琦文明公理系统纯净结构版（中英文版）
-                <span class="hot-icon"><img src="hot.gif" alt="HOT"></span>
-            </span>
-            <span class="cta-en">Click to View</span>
-        </a>
-    </div>
+                <!-- ============================================================
+                系统定位
+                ============================================================ -->
+                <h2>系统定位 <span class="en-inline">System Positioning</span></h2>
+                <div class="layer">
+                    <div class="layer-num">系统定位 <span class="en-num">System Positioning</span></div>
+                    <div class="layer-desc">
+                        <p><strong>杨晟琦文明公理系统</strong> 是一套自洽的、可检验的文明底层逻辑框架。<span class="en">Yang Shengqi's Axiomatic System of Civilization is a self-consistent, testable foundational framework for civilization at the logical level.</span></p>
+                        <p>它从公理定义出发，经诊断模型、度量工具、过程监测、药方设计、操作手册到验证工具，构成完整闭环。<span class="en">It forms a complete closed loop, from axiomatic definitions through diagnostic models, measurement tools, process monitoring, prescription design, operational manuals, to validation instruments.</span></p>
+                        <p>它不依附于任何国家、政权、资本或组织，不依赖任何外部条件。<span class="en">It is not affiliated with any state, regime, capital, or organization, and depends on no external conditions.</span></p>
+                        <p>它的唯一前提是：系统愿意被对照检验。<span class="en">Its only premise: the system is willing to be examined against this benchmark.</span></p>
+                    </div>
+                </div>
 
-    <!-- ===== 第三层（HOT 图片） ===== -->
-    <div class="layer">
-        <div class="layer-num">第三层 <span class="en-num">Layer 3</span></div>
-        <div class="layer-name">杨晟琦文明公理系统之文明等级评分器 <span class="en-inline">Yang Shengqi's Axiomatic System of Civilization: Civilization Level Scoring Tool</span></div>
-        <div class="layer-position">
-            <strong>承上启下：</strong><br>第二层提供了定性框架。第三层在此框架上叠加了定量工具，把“健康/病态”的定性判断，转化为可操作、可比较的分数。它承接的是第二层的三大基石和九步路径，为第四层的药方提供依据。没有量化，诊断停留在“感觉”，药方开不出来。
-            <span class="en">Transition: Layer 2 provides a qualitative framework. Layer 3 adds a quantitative tool—transforming qualitative judgments into operational, comparable scores.</span>
-        </div>
-        <div class="layer-desc">
-            <p><strong>文明指数</strong> =（生存与劳动保障 + 劳动价值平等 + 收入分配公平 + 言论与精神自由）× 2.5。<br>四大要素拆分为18个子项，每个子项0-10分，每个分数对应一段具体描述，不是让读者“凭感觉给分”，是让读者对照自己的真实处境。</p>
-            <p><strong>三条元法则：</strong>基石否决权（原则不成立则量化无意义）；体感优先律（人的承受凌驾于纸面数据）；最短木桶律（单一维度的崩塌足以摧毁整个系统的文明等级）。</p>
-            <p><strong>司法验证折扣：</strong>三条硬条件作为折扣系数（0.8–1.0）作用于最终得分。司法不参与正向加分，只能被扣分。</p>
-            <p><strong>输出：</strong>文明指数（0-100分），对应低级（0-39）、中级（40-79）、高级（80-100），同时定位当前处于九步路径的哪一步。</p>
-            <p style="font-size:14px; color:#7a8a6e;">Civilization Index = (Survival & Labor Security + Equal Labor Value + Fair Income Distribution + Freedom of Speech & Spirit) × 2.5. Three meta-principles: Cornerstone Veto, Primacy of Lived Experience, Shortest Plank Rule. Judicial verification discount: 0.8–1.0.</p>
-        </div>
-        <div class="logic-block">
-            <div class="logic-label">逻辑指引 <span class="en-label">Logic Guide</span></div>
-            <div class="logic-item">
-                <span class="logic-num">1.</span>
-                <span class="logic-title">量化不等于客观化</span>
-                <span class="logic-body">0-10分不是物理测量，是个人判断的刻度化。它的价值不在于“精确”，在于“让不同的个体可以用同一套刻度表达自己的判断”。</span>
-                <span class="logic-en-body">Quantification is not objectivity. 0-10 is a scaled personal judgment. Its value lies in enabling different individuals to express their judgments on the same scale.</span>
-                <span class="logic-summary">即：量尺本身不是真理，但它让所有使用它的人说同一套语言。</span>
-                <span class="logic-en-summary">The ruler itself is not truth—but it lets everyone who uses it speak the same language.</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-num">2.</span>
-                <span class="logic-title">熔断优先于计算</span>
-                <span class="logic-body">三条元法则的存在意味着：在某些条件下，计算本身被中断。</span>
-                <span class="logic-en-body">Circuit-breakers precede calculation. The three meta-principles mean that under certain conditions, calculation itself is terminated.</span>
-                <span class="logic-summary">即：系统在计算之前就已经嵌入了价值判断，这些判断不是“加分项”，是“终止条件”。</span>
-                <span class="logic-en-summary">The system embeds value judgments before calculation—these are not bonus items, they are termination conditions.</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-num">3.</span>
-                <span class="logic-title">司法的不可加分性</span>
-                <span class="logic-body">司法不参与正向加分，只作折扣。</span>
-                <span class="logic-en-body">Non-additivity of justice: Justice does not add points—it can only discount.</span>
-                <span class="logic-summary">即：底线只能被检验，不能被炫耀。一个系统无法用“其他方面表现很好”来掩盖司法缺陷。</span>
-                <span class="logic-en-summary">A bottom line can only be examined—it cannot be flaunted. A system cannot use other strengths to cover judicial defects.</span>
-            </div>
-        </div>
-        <div class="angle-grid">
-            <div class="angle-card">
-                <div class="angle-label">地球 <span class="en">Earth</span></div>
-                <div class="angle-text">18个子项覆盖“活着→有尊严→有选择→自主”的完整路径。<br>这18个问题在任何有人类聚居的地方都有效，地球不区分国家和制度，只区分“人能不能活、活得好不好、有没有选择、能不能自主”。<span class="en">The 18 sub-items cover the full path from survival to autonomy. These questions are valid anywhere humans live.</span></div>
-            </div>
-            <div class="angle-card">
-                <div class="angle-label">国家 <span class="en">State</span></div>
-                <div class="angle-text">这套打分工具独立于国家统计数据运行。<br>它不依赖国家发布的任何数据，它依赖的是个体的真实感受。<br>当数据与体感冲突时，系统选择信任体感。<span class="en">The scoring tool operates independently of state data. When data conflicts with lived experience, the system chooses to trust lived experience.</span></div>
-            </div>
-            <div class="angle-card">
-                <div class="angle-label">个人 <span class="en">Individual</span></div>
-                <div class="angle-text">不需要专业知识，任何一个识字的人都能独立完成评分。<br>完成后获得两个清晰的输出：我的系统处于什么等级，以及正在走向九步路径的哪一步。<br>模糊的“不对劲”变成了可辨认的坐标。<span class="en">No expertise required. Anyone literate can complete the scoring independently. Two clear outputs: what level the system is at, and which step of the nine-step path it is heading toward.</span></div>
-            </div>
-        </div>
-        <!-- 按钮：第三层用 hot.gif -->
-        <a class="layer-cta pulse" href="./杨晟琦文明公理系统之文明等级评分器.html" target="_blank" rel="noopener noreferrer">
-            <span class="cta-text">
-                杨晟琦文明公理系统之文明等级评分器（中英文版）
-                <span class="hot-icon"><img src="hot.gif" alt="HOT"></span>
-            </span>
-            <span class="cta-en">Click to View</span>
-        </a>
-    </div>
+                <!-- ============================================================
+                核心特点
+                ============================================================ -->
+                <h2>核心特点 <span class="en-inline">Core Features</span></h2>
+                <div class="layer">
+                    <div class="layer-num">核心特点 <span class="en-num">Layer 1</span></div>
+                    <div class="layer-desc">
+                        <ul>
+                            <li><span class="num">1.</span> 三段式结构：方向 → 诊断 → 处方，逻辑不可拆分，缺一则系统失效。<span class="en">Three-stage structure: Direction → Diagnosis → Prescription. Indivisible logic; missing one breaks the system.</span></li>
+                            <li><span class="num">2.</span> 可计算函数：文明指数将"文明"从修辞转化为可测量的数学公式。<span class="en">Computable function: The Civilization Index transforms "civilization" from rhetoric into a measurable mathematical formula.</span></li>
+                            <li><span class="num">3.</span> 三条元法则：基石否决权、体感优先律、最短木桶律，封堵一切数据粉饰与选择性执行。<span class="en">Three meta-principles: Cornerstone Veto, Primacy of Lived Experience, Shortest Plank Rule — blocking all data manipulation and selective enforcement.</span></li>
+                            <li><span class="num">4.</span> 九式诊断路径：从结构性不公到结构性死亡，完整揭示系统如何走向崩溃。<span class="en">Nine-step diagnostic path: From structural injustice to structural death, fully revealing how a system collapses.</span></li>
+                            <li><span class="num">5.</span> 双重锁定：法律铁索 + 三重剥离 + 物理隔绝，使制度具有反脆弱性。<span class="en">Dual legal-physical lock: Legal Chains + Threefold Severance + Physical Isolation, rendering the institution anti-fragile.</span></li>
+                            <li><span class="num">6.</span> 非归责性操作手册：七条方法论不追究个人责任，只提供可执行的系统翻转路径。<span class="en">Non-attributional operations manual: Seven methodologies that do not blame individuals, only providing executable pathways to reverse the system.</span></li>
+                            <li><span class="num">7.</span> 独立验证机制：用系统自身的工具检验系统自身，完成完整闭环验收。<span class="en">Independent verification mechanism: Using the system's own tools to audit itself, completing a full closed-loop validation.</span></li>
+                            <li><span class="num">8.</span> 无条件启动：不依赖"好领导"或"足够资源"，只依赖系统愿意被对照检验。<span class="en">Unconditional activation: Does not depend on "good leadership" or "sufficient resources" — only on a willingness to be tested.</span></li>
+                        </ul>
+                    </div>
+                </div>
 
-    <!-- ===== 第四层（HOT 图片） ===== -->
-    <div class="layer">
-        <div class="layer-num">第四层 <span class="en-num">Layer 4</span></div>
-        <div class="layer-name">药方 <span class="en-inline">Prescription</span></div>
-        <div class="layer-position">
-            <strong>承上启下：</strong>前三层完成了“看清自己→看清系统→量化系统”。第四层回答的是：如果系统处于“锁死”或更糟的状态，怎么办？它承接的是第三层的诊断结果，为第五层的后门提供“需要过渡”的前提，没有药方，后门没有存在的必要。
-            <span class="en">Transition: Layers 1-3 complete "seeing self → seeing system → quantifying system." Layer 4 answers: what if the system is locked or worse?</span>
-        </div>
-        <div class="layer-desc">
-            <p><strong>全球人类主权基金：</strong></p>
-            <p>法律隔离（瑞士/新加坡托管，即使政变、战争、政权更迭，资产均不可触及）；技术隔离（智能合约部署，多方共识执行）；激励相容（只吸引不强制，接入没有门槛，拒绝没有惩罚）。</p>
-            <p><strong>七条操作手册：</strong></p>
-            <p>重定义系统的唯一目的、权力动态授权、责任归属逆转、裁判权与执行权永久物理隔离、信任作为核心指标、释放被锁死的大多数、制度化代际纠偏。</p>
-            <p><strong>核心原则：</strong></p>
-            <p>系统的强度不在于它能多紧地控制，而在于它能多深地信任。</p>
-            <p style="font-size:14px; color:#7a8a6e;">Global Human Sovereignty Fund: Legal isolation (Switzerland/Singapore custody), technical isolation (smart contracts), incentive compatibility (attract only, no coercion). Seven operational manuals.</p>
-        </div>
-        <div class="logic-block">
-            <div class="logic-label">逻辑指引 <span class="en-label">Logic Guide</span></div>
-            <div class="logic-item">
-                <span class="logic-num">1.</span>
-                <span class="logic-title">不修正旧系统，只建立平行结构</span>
-                <span class="logic-body">药方不试图“治愈”锁死的旧系统，也不等待旧系统“变好”。它在旧系统旁边重新建立一条不受其控制的新回路。</span>
-                <span class="logic-en-body">Do not fix the old system—only build a parallel structure.</span>
-                <span class="logic-summary">即：不推翻，不等待，只新建。</span>
-                <span class="logic-en-summary">Do not overthrow, do not wait—only build anew.</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-num">2.</span>
-                <span class="logic-title">隔离是前提，激励是后续</span>
-                <span class="logic-body">法律隔离先让资产在物理上无法被没收，技术隔离让规则在执行上无法被篡改，然后激励相容让旧系统的人在自己的利益计算中选择接入。</span>
-                <span class="logic-en-body">Isolation first, incentive second. Legal isolation protects assets; technical isolation protects rules; incentive compatibility makes entry advantageous.</span>
-                <span class="logic-summary">即：先确保不会被消灭，再确保有人愿意进来。</span>
-                <span class="logic-en-summary">First ensure it cannot be destroyed, then ensure people are willing to enter.</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-num">3.</span>
-                <span class="logic-title">七条手册的排列不是随机的</span>
-                <span class="logic-body">前三条重构权力的合法性来源，中间三条重构权力的运行方式，最后一条重构权力的代际传递。从合法性→运行机制→代际传承，形成完整闭环。</span>
-                <span class="logic-en-body">The seven manuals are not a random list. They form a complete closed loop: from legitimacy → operational mechanism → intergenerational transmission.</span>
-                <span class="logic-summary">即：这七条是一张施工图，从上到下，从根到枝。</span>
-                <span class="logic-en-summary">These seven are a construction blueprint—from top to bottom, from root to branch.</span>
-            </div>
-        </div>
-        <div class="angle-grid">
-            <div class="angle-card">
-                <div class="angle-label">地球 <span class="en">Earth</span></div>
-                <div class="angle-text">基金托管在瑞士和新加坡，不是选择“好国家”，是选择“物理和法律隔离”。<br>基金摆脱了“某国说了算”的依附关系，成为地球层面的独立节点。<span class="en">Custody in Switzerland and Singapore—not choosing "good states," but choosing physical and legal isolation. The fund becomes an independent node at the global level.</span></div>
-            </div>
-            <div class="angle-card">
-                <div class="angle-label">国家 <span class="en">State</span></div>
-                <div class="angle-text">基金不取代国家。它只在“锁死”状态下提供平行回路。<br>国家不需要改变，但被锁死的个体有了选择。<br>如果绝大多数个体选择接入，国家的合法性会自然空心化。<span class="en">The fund does not replace the state. It only provides a parallel circuit under "locked" conditions. The state need not change, but individuals gain a choice.</span></div>
-            </div>
-            <div class="angle-card">
-                <div class="angle-label">个人 <span class="en">Individual</span></div>
-                <div class="angle-text">药方不要求个人做任何“牺牲”，不需要上街抗议，不需要公开表态，不需要等待改变。<br>被卡住了，就直接接入新系统。<br>你不需要改变你的位置，只需要改变你的规则。<span class="en">No "sacrifice" required—no protests, no public statements, no waiting. If stuck, directly access the new system. You don't need to change your position—only your rules.</span></div>
-            </div>
-        </div>
-        <!-- 按钮：第四层用 hot.gif -->
-        <a class="layer-cta pulse" href="./全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）.html" target="_blank" rel="noopener noreferrer">
-            <span class="cta-text">
-                全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）
-                <span class="hot-icon"><img src="hot.gif" alt="HOT"></span>
-            </span>
-            <span class="cta-en">点此查看</span>
-        </a>
-        <a class="layer-cta pulse" href="./全球人类主权基金：重构中国与全球利益格局的制度构想（英文版）.html" target="_blank" rel="noopener noreferrer">
-            <span class="cta-text">
-                GHSF — A Blueprint for China & the Global Community （EN）
-                <span class="hot-icon"><img src="hot.gif" alt="HOT"></span>
-            </span>
-            <span class="cta-en">Click to View</span>
-        </a>
-    </div>
+                <!-- ============================================================
+                五层完整链路
+                ============================================================ -->
+                <h2>五层完整链路 <span class="en-inline">Complete Chain</span></h2>
+                <p class="layer-intro">
+                    五层递进。每一步都是下一步的前提。每一层从三个位置观察同一件事：地球、国家、个人。三个角度相互独立，合起来构成完整视图。
+                    <span class="en">Five layers, sequentially connected. Each step is the premise for the next. Each layer is observed from three positions: Earth, State, Individual. Three independent angles, together forming a complete view.</span>
+                </p>
 
-    <!-- ===== 第五层（无按钮） ===== -->
-    <div class="layer">
-        <div class="layer-num">第五层 <span class="en-num">Layer 5</span></div>
-        <div class="layer-name">两份善意的后门 <span class="en-inline">Two Goodwill Back Doors</span></div>
-        <div class="layer-position">
-            <strong>承上启下：</strong>药方提供了平行结构。但如果旧系统的人选择抵抗，平行结构会被干扰；如果新系统被神化，平行结构会变成新权威。第五层同时解决这两个问题，第一份后门让旧系统的人在利益计算中自愿走进来；第二份后门让设计者主动退场。没有这一层，前四层要么被旧系统绞杀，要么变成新系统。
-            <span class="en">Transition: Layer 4 provides a parallel structure. Layer 5 solves two problems simultaneously: the first back door lets old-system people voluntarily walk in through interest calculation; the second back door lets the designer withdraw.</span>
-        </div>
-        <div class="layer-desc">
-            <p>任何新制度都会面对同一个问题：旧系统里的人怎么办？清算他们？那是战争，战争结束的时候新制度已经沾满旧血，不比旧的更干净。不清算他们？旧行为会像病毒一样渗透进来，慢慢把新制度改造成旧制度的复制品。</p>
-            <p><strong>第一份后门（写给旧系统的人）：</strong></p>
-            <p>不换人，只换规则；不翻旧账，只锁未来。过去积累的，不动；过去犯的，不追究；过去依靠的灰色空间，保留一个安静过渡的窗口。不需要认罪，不需要退赃，不需要被羞辱，不需要离开现在的位置。只需要做一件事：从今天起，按新规则来。</p>
-            <p><strong>第二份后门（写给自己）：</strong></p>
-            <p>如果设计者站在门口，门就变成了“他的门”,一个通往需要感谢、需要承认、需要追随的新权威。设计者不站在门口，不宣称自己看到了门，不告诉任何人“你应该走进来”。把门修好，然后退开。</p>
-            <p><strong>两者缺一不可：</strong></p>
-            <p>法律铁索锁死未来，善意后门归零过去。没有法律铁索，后门是纵容；没有后门，法律铁索是宣战。</p>
-            <p style="font-size:14px; color:#7a8a6e;">First Back Door (for the old system): Change the rules, not the people; lock the future, not the past. Second Back Door (for the designer): Build the door, then step back. Neither can exist without the other.</p>
-        </div>
-        <div class="logic-block">
-            <div class="logic-label">逻辑指引 <span class="en-label">Logic Guide</span></div>
-            <div class="logic-item">
-                <span class="logic-num">1.</span>
-                <span class="logic-title">清算vs不清算的困境解法</span>
-                <span class="logic-body">第一份后门提供第三条路：过去归零，未来锁死，只要求从今天起按新规则来。</span>
-                <span class="logic-en-body">Solution to the liquidation dilemma: The first back door offers a third path—zero out the past, lock the future, only require playing by new rules from today onward.</span>
-                <span class="logic-summary">即：旧系统的人不需要变好，只需要在规则层面切换。这个切换是他们自己的利益计算推动的，不是被强迫的。</span>
-                <span class="logic-en-summary">Old-system people don't need to become good—they only need to switch at the rule level. This switch is driven by their own interest calculation, not by coercion.</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-num">2.</span>
-                <span class="logic-title">博弈论驱动的过渡</span>
-                <span class="logic-body">第一份后门的核心机制是“让旧系统的人在自己的利益计算中发现：走进来比抵抗更合算”。</span>
-                <span class="logic-en-body">Game-theory-driven transition: The core mechanism is making old-system people discover, through their own interest calculation, that walking through is more advantageous than resistance.</span>
-                <span class="logic-summary">即：不需要他们变好人，只需要他们算清楚账。系统不改造人性，只重新设计激励结构。</span>
-                <span class="logic-en-summary">The system does not reform human nature—it only restructures incentives.</span>
-            </div>
-            <div class="logic-item">
-                <span class="logic-num">3.</span>
-                <span class="logic-title">系统自毁机制</span>
-                <span class="logic-body">第二份后门让设计者主动退场。任何一个站在门口的人都会挡住一部分光。</span>
-                <span class="logic-en-body">System self-destruction mechanism: The second back door makes the designer actively withdraw.</span>
-                <span class="logic-summary">即：系统的最终状态是“设计者不在场时依然有效”。它唯一需要的不是设计者，是愿意走完整条路径的人。</span>
-                <span class="logic-en-summary">The system's final state is "still valid when the designer is absent."</span>
-            </div>
-        </div>
-        <div class="angle-grid">
-            <div class="angle-card">
-                <div class="angle-label">地球 <span class="en">Earth</span></div>
-                <div class="angle-text">任何系统更替都伴随冲突，这是地球几千年的历史规律。<br>这套系统提供了一种“不经过冲突”的过渡方案。设计者退场更是地球层面罕见的动作，系统完成后主动离开，不占据任何位置。<span class="en">Any system transition comes with conflict—this is a millennia-old pattern. This system provides a "transition without conflict." The designer's withdrawal is a rare move.</span></div>
-            </div>
-            <div class="angle-card">
-                <div class="angle-label">国家 <span class="en">State</span></div>
-                <div class="angle-text">第一份后门让旧系统的人体面走进新规则，国家无需经历暴力革命和权力真空。<br>第二份后门让新规则不依附于任何个人，国家无法通过逮捕设计者来摧毁系统，因为设计者已经不在门口了。<span class="en">The first back door lets old-system people walk into new rules with dignity. The second ensures the new rules do not depend on any individual.</span></div>
-            </div>
-            <div class="angle-card">
-                <div class="angle-label">个人 <span class="en">Individual</span></div>
-                <div class="angle-text">第一份后门让百姓不需要经历“清算”的混乱,旧系统的人安静地走进来，生活继续，不需要仇恨，不需要复仇。<br>第二份后门让百姓不需要寻找新的“救世主”，系统不是某人的，是所有人的。<span class="en">The first back door spares people from liquidation chaos. The second spares them from needing a new savior—the system belongs to no one.</span></div>
-            </div>
-        </div>
-        <div style="margin-top:6px; display:flex; flex-wrap:wrap; gap:12px 20px;">
-            <span style="color:#5a6a4e; font-size:14px;">第一份：过渡通道（暂不公开）</span>
-            <span style="color:#5a6a4e; font-size:14px;">第二份：设计者退场（暂不公开）</span>
-        </div>
-    </div>
+                <!-- ===== 第一层 ===== -->
+                <div class="layer">
+                    <div class="layer-num">第一层 <span class="en-num">Layer 1</span></div>
+                    <div class="layer-name">人类思维盲区在线诊断工具 <span class="en-inline">Human Cognitive Blind Spot Online Diagnostic Tool</span></div>
+                    <div class="layer-position">
+                        <strong>承上启下：</strong>这一层承接的是"读者的现有思维习惯"，为后续所有层铺设的是"读者的清醒度"。没有这一层，后续所有层都会被误读，公理变成口号，诊断变成攻击，药方变成煽动。
+                        <span class="en">Transition: This layer receives the reader's existing thinking habits and lays the foundation of the reader's clarity for all subsequent layers.</span>
+                    </div>
+                    <div class="layer-desc">
+                        <p><strong>38道元问题，分布在四个维度：</strong></p><p>逻辑自洽性（当证据与观点冲突时，人如何反应）；时间贴现与利益识别（人对长期后果的感知能力）；情绪与认知解耦（在情绪波动中能否区分事实与感受）；二阶心智（人对自身思维过程的觉察程度）。</p>
+                        <p>该系统不评价你，不设标准答案，不设及格线。它只是把一面镜子放在你面前，让你第一次看见自己的思维习惯是如何形成的。</p>
+                        <p class="desc-note">38 meta-cognitive questions covering four dimensions: logical consistency, temporal discounting and interest recognition, emotional-cognitive decoupling, and second-order metacognition. The system does not judge you—no standard answers, no passing line. It simply places a mirror before you.</p>
+                    </div>
+                    <div class="logic-block">
+                        <div class="logic-label"><strong>逻辑指引 </strong><span class="en-label">Logic Guide</span></div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">1、一致性前提</span>
+                            <span class="logic-body">这一层存在的唯一理由是：后续所有公理、公式、药方、后门，都建立在"读者具备基本的元认知能力"这一前提之上。</span>
+                            <span class="logic-en-body">Premise consistency: All subsequent axioms, formulas, prescriptions, and back doors rest on the premise that the reader possesses basic metacognitive ability.</span>
+                            <span class="logic-summary">即：如果你在回答这些问题时发现自己对某些维度缺乏清晰感知，你在后续阅读中需要更警觉，因为你更容易把公理读成口号，把诊断读成攻击。
+                            <span class="logic-en-summary">If you find yourself lacking clear perception in certain dimensions while answering these questions, you will need greater vigilance in subsequent reading.</span></span>
+                        </div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">2、自我参照性</span>
+                            <span class="logic-body">如果跳过这一层，读者带着"我的思维习惯不需要审视"的预设进入后续内容，他会本能地用旧框架去解释新系统。</span>
+                            <span class="logic-en-body">Self-referentiality: If you skip this layer, you will instinctively interpret the new system through your old framework.</span>
+                            <span class="logic-summary">即：这一层解决的不是"你够不够聪明"，而是"你够不够清醒"，清醒到知道自己的思维习惯会把什么内容扭曲。
+                            <span class="logic-en-summary">This layer is not about whether you are smart enough—it is about whether you are clear-headed enough to know what your thinking habits will distort.</span></span>
+                        </div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">3、不可逆性</span>
+                            <span class="logic-body">一旦完成这38个问题的自我对话，人获得的是对自身思维结构的觉察。这种觉察一旦获得就无法逆转。</span>
+                            <span class="logic-en-body">Irreversibility: Once completed, the awareness of one's thinking structure cannot be reversed.</span>
+                            <span class="logic-summary">即：这一层不是测试，是觉醒。测试有结束，觉醒没有。
+                            <span class="logic-en-summary">This is not a test—it is awakening. Tests end; awakening does not.</span></span>
+                        </div>
+                    </div>
+                    <div class="logic-block">
+                        <div class="logic-label"><strong>多维视野 </strong><span class="en-label">Multi-Dimensional Perspectives</span></div>
+                        <div class="angle-grid">
+                            <div class="angle-card">
+                                <div class="angle-label">地球 <span class="en">Earth</span></div>
+                                <div class="angle-text">这套诊断不依赖任何文化传统、不预设任何教育背景、不要求任何专业知识。它在任何地方、对任何人都能生效。因为它只问一件事：你愿不愿意面对自己的思维习惯？<span class="en">This diagnosis depends on no cultural tradition, presumes no educational background, requires no expertise. It works anywhere, for anyone.</span></div>
+                            </div>
+                            <div class="angle-card">
+                                <div class="angle-label">国家 <span class="en">State</span></div>
+                                <div class="angle-text">这套工具直接面对个体，绕开了所有教育系统、话语系统、信息过滤系统。国家无法干预结果，因为答案只存在于个体内部，不经过任何中间机构。<span class="en">The tool engages directly with the individual, bypassing all educational and discursive systems. The state cannot interfere with the outcome.</span></div>
+                            </div>
+                            <div class="angle-card">
+                                <div class="angle-label">个人 <span class="en">Individual</span></div>
+                                <div class="angle-text">日常语言写成，不需要专业知识。一个普通人不需要任何前置培训，就能独立完成这份自我对话；他获得的是对自己思维结构的第一次看见。<span class="en">Written in everyday language, no expertise required. An ordinary person can complete this self-dialogue independently.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="layer-cta pulse" href="./blind-spot-diagnosis-cn.html" rel="noopener noreferrer">
+                        <span class="cta-text">人类思维盲区在线诊断工具（中文版）<span class="hot-icon"><img src="hot.gif" alt="hot"></span></span>
+                        <span class="cta-en">点击查看</span>
+                    </a>
+                    <a class="layer-cta pulse" href="./blind-spot-diagnosis-en.html" rel="noopener noreferrer">
+                        <span class="cta-text">Cognitive Blind Spot Diagnostic Tool（EN）<span class="hot-icon"><img src="hot.gif" alt="hot"></span></span>
+                        <span class="cta-en">Click to View</span>
+                    </a>
+                </div>
 
-    <!-- ============================================================ -->
-    <!-- ===== 体系概述 ===== -->
-    <!-- ============================================================ -->
-    <h2 style="margin-top:48px;">体系概述 <span class="en-inline">System Overview</span></h2>
-    <p>本体系是一套从公理定义到验收报告的完整思想架构，由核心文档构成，分为多个逻辑层，每一层都不可省略，缺一则系统失效。<span class="en">This system is a complete intellectual architecture from axiomatic definition to acceptance report. Each layer is indispensable; missing any one renders the entire system invalid.</span></p>
+                <!-- ===== 第二层 ===== -->
+                <div class="layer">
+                    <div class="layer-num">第二层 <span class="en-num">Layer 2</span></div>
+                    <div class="layer-name">杨晟琦文明公理系统纯净结构版 <span class="en-inline">Yang Shengqi's Axiomatic System of Civilization — Pure Structure Edition</span></div>
+                    <div class="layer-position">
+                        <strong>承上启下：</strong><br>第一层让读者看见自己的思维结构，第二层在此基础上，给出一套"看见系统"的框架，它承接的是第一层已经清醒的读者，为第三层的量化打分提供坐标。
+                        <span class="en">Transition: Layer 1 lets the reader see their own thinking structure. Layer 2 provides a framework for "seeing the system."</span>
+                    </div>
+                    <div class="layer-desc">
+                        <p><strong>三大基石：</strong></p>
+                        <p>自由是默认值：系统的起点不是"被允许做什么"，而是"没有被禁止的就是可做的"。<br>正义是底层压舱石：系统的合法性不取决于顶层的光鲜，而取决于底层是否被看见。<br>治理是搬开阻碍：系统的唯一任务不是"管住"，而是"搬开"。</p>
+                        <p><strong>九步诊断路径：</strong></p>
+                        <p>不公→锁死→错位→矛盾→收缩→失聪→逃逸→空心→死亡。<br>每一步是上一步的必然延续：不公持续存在，系统必然开始锁死；锁死持续，目标与手段必然脱节；脱节持续，各方利益必然撕裂；撕裂持续，系统必然关闭反馈通道；失聪持续，有价值的个体必然离开；逃逸持续，系统必然空心；空心持续，系统必然死亡。<br>九步路径同时是倒推的药方索引。</p>
+                        <p><strong>自验收报告：</strong></p>
+                        <p>系统用自身的度量工具检验自身，不依赖外部审计，不依赖第三方认证。内部一致即是有效。</p>
+                        <p class="desc-note">Three Cornerstones: Freedom is the default; justice is the ballast for the bottom; governance is removing obstacles. Nine-step Diagnostic Path: Injustice → Lockdown → Dislocation → Contradiction → Contraction → Deafness → Escape → Hollowing → Death.</p>
+                    </div>
+                    <div class="logic-block">
+                        <div class="logic-label"><strong>逻辑指引 </strong><span class="en-label">Logic Guide</span></div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">1、单向递进性</span>
+                            <span class="logic-body">九步路径的每一步都是上一步的必然延续，不是"可能"而是"必然"。一旦进入某一步，就意味着前一步的修正窗口已经关闭。</span>
+                            <span class="logic-en-body">One-way progression: Each step is the necessary continuation of the previous one.</span>
+                            <span class="logic-summary">即：诊断的唯一任务是"找到当前在哪一步"，过去不可逆，未来可干预。
+                            <span class="logic-en-summary">The only task of diagnosis is to identify where the system currently stands—the past is irreversible, the future is intervenable.</span></span>
+                        </div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">2、倒推可解性</span>
+                            <span class="logic-body">每一步的解决方案都是上一环节的缺失。失聪的解在收缩，收缩的解在矛盾，矛盾的解在错位，错位的解在锁死，锁死的解在不公。</span>
+                            <span class="logic-en-body">Reverse solvability: The solution to each step is the missing element of the previous link.</span>
+                            <span class="logic-summary">即：知道在哪一步，就知道缺了什么；知道缺了什么，就知道要补什么。
+                            <span class="logic-en-summary">Knowing where you are tells you what is missing; knowing what is missing tells you what to replenish.</span></span>
+                        </div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">3、自举验证</span>
+                            <span class="logic-body">自验收报告不是"有人说它好"，是"它用自己的工具检验自己的推导"。
+                            <span class="logic-en-body">Self-bootstrapping validation: The acceptance report uses the system's own tools to audit its own derivation.</span></span>
+                            <span class="logic-summary">即：不需要相信它，只需要检查它。
+                            <span class="logic-en-summary">You don't need to believe it—you only need to examine it.</span></span>
+                        </div>
+                    </div>
+                    <div class="logic-block">
+                        <div class="logic-label"><strong>多维视野 </strong><span class="en-label">Multi-Dimensional Perspectives</span></div>
+                        <div class="angle-grid">
+                            <div class="angle-card">
+                                <div class="angle-label">地球 <span class="en">Earth</span></div>
+                                <div class="angle-text">三大基石是结构性前提，不依赖任何文化传统。<br>九步路径是任何缺乏干预的系统都会经历的自然演化。<br>地球不区分制度，只区分活着的系统和死去的系统。<span class="en">The three cornerstones are structural prerequisites, independent of cultural tradition. The nine-step path is the natural evolution of any system in the absence of intervention.</span></div>
+                            </div>
+                            <div class="angle-card">
+                                <div class="angle-label">国家 <span class="en">State</span></div>
+                                <div class="angle-text">九步路径提供了一套预警系统。<br>任何国家不需要公开承认自己走到了哪一步，它只需要对照路径，就能看到自己正在走向哪里。<span class="en">The nine-step path provides an early warning system. The state need not admit where it stands—only examine itself against the path.</span></div>
+                            </div>
+                            <div class="angle-card">
+                                <div class="angle-label">个人 <span class="en">Individual</span></div>
+                                <div class="angle-text">这是普通人第一次能用一套统一的、可辨认的语言来描述"这个系统怎么了？"<br>不是好与坏，是锁死、失聪、逃逸、空心。模糊的痛苦变成了精确的诊断。<span class="en">For the first time, ordinary people can describe "what is wrong" in a unified language—not good/bad, but locked, deaf, hollow.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="layer-cta pulse" href="./pure-structure-edition.html" rel="noopener noreferrer">
+                        <span class="cta-text">杨晟琦文明公理系统纯净结构版（中英文版）<span class="hot-icon"><img src="hot.gif" alt="HOT"></span></span>
+                        <span class="cta-en">Click to View</span>
+                    </a>
+                </div>
 
-    <h3>核心层 <span class="en-inline">Core Layers</span></h3>
-    <div class="layer-grid">
-        <div class="layer-card">
-            <span class="layer-num">元框架</span>
-            <div class="layer-title">三大基石 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Three Cornerstones</span></div>
-            <div class="layer-docs"><a href="./三大基石：一种文明系统的底层重构框架.html" target="_blank" rel="noopener noreferrer">《三大基石：一种文明系统的底层重构框架》</a></div>
-            <div class="layer-func">定义“什么是好系统” <span class="en">Defines "what is a good system"</span></div>
-        </div>
-        <div class="layer-card" style="border-top-color:#b89a4a;">
-            <span class="layer-num">诊断模型</span>
-            <div class="layer-title">三条路径 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Diagnostic Model</span></div>
-            <div class="layer-docs">
-                <a href="./低级文明的完整路径图.html" target="_blank" rel="noopener noreferrer">《低级文明的完整路径图》</a><br>
-                <a href="./确定性社会系统形成的必要条件与阻碍因素.html" target="_blank" rel="noopener noreferrer">《确定性社会系统形成的必要条件与阻碍因素》</a><br>
-                <a href="./正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析.html" target="_blank" rel="noopener noreferrer">《正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析》</a>
-            </div>
-            <div class="layer-func">揭示“坏系统如何死亡” <span class="en">Reveals "how a bad system dies"</span></div>
-        </div>
-        <div class="layer-card" style="border-top-color:#6a9a8a;">
-            <span class="layer-num">度量工具</span>
-            <div class="layer-title">文明等级判断说明书 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Measurement Tool</span></div>
-            <div class="layer-docs"><a href="./文明等级判断说明书.html" target="_blank" rel="noopener noreferrer">《文明等级判断说明书》</a></div>
-            <div class="layer-func">将文明从修辞转化为可计算函数 <span class="en">Transforms civilization from rhetoric into a computable function</span></div>
-        </div>
-        <div class="layer-card" style="border-top-color:#8a6a8a;">
-            <span class="layer-num">过程监测</span>
-            <div class="layer-title">非死锁的条件分析 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Process Monitoring</span></div>
-            <div class="layer-docs"><a href="./系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制.html" target="_blank" rel="noopener noreferrer">《系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制》</a></div>
-            <div class="layer-func">观察“系统正在哪一环” <span class="en">Observes "which stage the system is at"</span></div>
-        </div>
-        <div class="layer-card" style="border-top-color:#9a8a6a;">
-            <span class="layer-num">药方</span>
-            <div class="layer-title">全球人类主权基金 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Prescription</span></div>
-            <div class="layer-docs">
-                <a href="./全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）.html" target="_blank" rel="noopener noreferrer">《全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）》</a><br>
-                <a href="./全球人类主权基金：重构中国与全球利益格局的制度构想（英文版）.html" target="_blank" rel="noopener noreferrer">《全球人类主权基金：重构中国与全球利益格局的制度构想（英文版）》</a>
-            </div>
-            <div class="layer-func">提供解决方案 <span class="en">Provides solutions</span></div>
-        </div>
-        <div class="layer-card" style="border-top-color:#6a8a9a;">
-            <span class="layer-num">操作手册</span>
-            <div class="layer-title">改变底层逻辑的方法论 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Operations Manual</span></div>
-            <div class="layer-docs"><a href="./改变底层逻辑的方法论（非归因，可操作）.html" target="_blank" rel="noopener noreferrer">《改变底层逻辑的方法论（非归因，可操作）》</a></div>
-            <div class="layer-func">提供执行路径 <span class="en">Provides execution pathways</span></div>
-        </div>
-        <div class="layer-card" style="border-top-color:#7a9a8a;">
-            <span class="layer-num">验证工具</span>
-            <div class="layer-title">从地球人类视野的推演 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Validation Tool</span></div>
-            <div class="layer-docs"><a href="./从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心.html" target="_blank" rel="noopener noreferrer">《从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心》</a></div>
-            <div class="layer-func">论证“为什么必然赢” <span class="en">Demonstrates "why it must prevail"</span></div>
-        </div>
-        <div class="layer-card" style="border-top-color:#6a7a9a;">
-            <span class="layer-num">验收报告</span>
-            <div class="layer-title">文明公理宪法与全球人类主权基金的验收报告 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Acceptance Report</span></div>
-            <div class="layer-docs"><a href="./文明公理宪法与全球人类主权基金的验收报告.html" target="_blank" rel="noopener noreferrer">《文明公理宪法与全球人类主权基金的验收报告》</a></div>
-            <div class="layer-func">用自身工具检验自身 <span class="en">Uses its own tools to audit itself</span></div>
-        </div>
-        <div class="layer-card" style="border-top-color:#6a9a8a;">
-            <span class="layer-num">量化评分</span>
-            <div class="layer-title">文明等级评分器 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:6px;">Civilization Level Scoring Tool</span></div>
-            <div class="layer-docs"><a href="./杨晟琦文明公理系统之文明等级评分器.html" target="_blank" rel="noopener noreferrer">《杨晟琦文明公理系统之文明等级评分器》</a><span class="hot-icon"><img src="new.gif" alt="hot"></span></div>
-            <div class="layer-func">将文明等级转化为可量化、可比较的全球通用评分体系。 <span class="en">Translates civilization levels into a quantifiable, globally comparable scoring system.</span></div>
-        </div>
-    </div>
+                <!-- ===== 第三层 ===== -->
+                <div class="layer">
+                    <div class="layer-num">第三层 <span class="en-num">Layer 3</span></div>
+                    <div class="layer-name">杨晟琦文明公理系统之文明等级评分器 <span class="en-inline">Yang Shengqi's Axiomatic System of Civilization: Civilization Level Scoring Tool</span></div>
+                    <div class="layer-position">
+                        <strong>承上启下：</strong><br>第二层提供了定性框架。第三层在此框架上叠加了定量工具，把"健康/病态"的定性判断，转化为可操作、可比较的分数。它承接的是第二层的三大基石和九步路径，为第四层的药方提供依据。没有量化，诊断停留在"感觉"，药方开不出来。
+                        <span class="en">Transition: Layer 2 provides a qualitative framework. Layer 3 adds a quantitative tool—transforming qualitative judgments into operational, comparable scores.</span>
+                    </div>
+                    <div class="layer-desc">
+                        <p><strong>文明指数</strong> =（生存与劳动保障 + 劳动价值平等 + 收入分配公平 + 言论与精神自由）× 2.5。<br>四大要素拆分为18个子项，每个子项0-10分，每个分数对应一段具体描述，不是让读者"凭感觉给分"，是让读者对照自己的真实处境。</p>
+                        <p><strong>三条元法则：</strong>基石否决权（原则不成立则量化无意义）；体感优先律（人的承受凌驾于纸面数据）；最短木桶律（单一维度的崩塌足以摧毁整个系统的文明等级）。</p>
+                        <p><strong>司法验证折扣：</strong>三条硬条件作为折扣系数（0.8–1.0）作用于最终得分。司法不参与正向加分，只能被扣分。</p>
+                        <p><strong>输出：</strong>文明指数（0-100分），对应低级（0-39）、中级（40-79）、高级（80-100），同时定位当前处于九步路径的哪一步。</p>
+                        <p class="desc-note">Civilization Index = (Survival & Labor Security + Equal Labor Value + Fair Income Distribution + Freedom of Speech & Spirit) × 2.5. Three meta-principles: Cornerstone Veto, Primacy of Lived Experience, Shortest Plank Rule. Judicial verification discount: 0.8–1.0.</p>
+                    </div>
+                    <div class="logic-block">
+                        <div class="logic-label"><strong>逻辑指引 </strong><span class="en-label">Logic Guide</span></div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">1、量化不等于客观化</span>
+                            <span class="logic-body">0-10分不是物理测量，是个人判断的刻度化。它的价值不在于"精确"，在于"让不同的个体可以用同一套刻度表达自己的判断"。</span>
+                            <span class="logic-en-body">Quantification is not objectivity. 0-10 is a scaled personal judgment. Its value lies in enabling different individuals to express their judgments on the same scale.</span>
+                            <span class="logic-summary">即：量尺本身不是真理，但它让所有使用它的人说同一套语言。
+                            <span class="logic-en-summary">The ruler itself is not truth—but it lets everyone who uses it speak the same language.</span></span>
+                        </div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">2、熔断优先于计算</span>
+                            <span class="logic-body">三条元法则的存在意味着：在某些条件下，计算本身被中断。</span>
+                            <span class="logic-en-body">Circuit-breakers precede calculation. The three meta-principles mean that under certain conditions, calculation itself is terminated.</span>
+                            <span class="logic-summary">即：系统在计算之前就已经嵌入了价值判断，这些判断不是"加分项"，是"终止条件"。
+                            <span class="logic-en-summary">The system embeds value judgments before calculation—these are not bonus items, they are termination conditions.</span></span>
+                        </div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">3、司法的不可加分性</span>
+                            <span class="logic-body">司法不参与正向加分，只作折扣。</span>
+                            <span class="logic-en-body">Non-additivity of justice: Justice does not add points—it can only discount.</span>
+                            <span class="logic-summary">即：底线只能被检验，不能被炫耀。一个系统无法用"其他方面表现很好"来掩盖司法缺陷。
+                            <span class="logic-en-summary">A bottom line can only be examined—it cannot be flaunted. A system cannot use other strengths to cover judicial defects.</span></span>
+                        </div>
+                    </div>
+                    <div class="logic-block">
+                        <div class="logic-label"><strong>多维视野 </strong><span class="en-label">Multi-Dimensional Perspectives</span></div>
+                        <div class="angle-grid">
+                            <div class="angle-card">
+                                <div class="angle-label">地球 <span class="en">Earth</span></div>
+                                <div class="angle-text">18个子项覆盖"活着→有尊严→有选择→自主"的完整路径。<br>这18个问题在任何有人类聚居的地方都有效，地球不区分国家和制度，只区分"人能不能活、活得好不好、有没有选择、能不能自主"。<span class="en">The 18 sub-items cover the full path from survival to autonomy. These questions are valid anywhere humans live.</span></div>
+                            </div>
+                            <div class="angle-card">
+                                <div class="angle-label">国家 <span class="en">State</span></div>
+                                <div class="angle-text">这套打分工具独立于国家统计数据运行。<br>它不依赖国家发布的任何数据，它依赖的是个体的真实感受。<br>当数据与体感冲突时，系统选择信任体感。<span class="en">The scoring tool operates independently of state data. When data conflicts with lived experience, the system chooses to trust lived experience.</span></div>
+                            </div>
+                            <div class="angle-card">
+                                <div class="angle-label">个人 <span class="en">Individual</span></div>
+                                <div class="angle-text">不需要专业知识，任何一个识字的人都能独立完成评分。<br>完成后获得两个清晰的输出：我的系统处于什么等级，以及正在走向九步路径的哪一步。<br>模糊的"不对劲"变成了可辨认的坐标。<span class="en">No expertise required. Anyone literate can complete the scoring independently. Two clear outputs: what level the system is at, and which step of the nine-step path it is heading toward.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="layer-cta pulse" href="./civilization-level-scorer.html" rel="noopener noreferrer">
+                        <span class="cta-text">杨晟琦文明公理系统之文明等级评分器（中英文版）<span class="hot-icon"><img src="hot.gif" alt="HOT"></span></span>
+                        <span class="cta-en">Click to View</span>
+                    </a>
+                </div>
 
-    <!-- ============================================================ -->
-    <!-- ===== 核心公式 ===== -->
-    <!-- ============================================================ -->
-    <h3>核心公式 <span class="en-inline">Core Formula</span></h3>
-    <div class="formula-box">
-        文明指数 =（生存与劳动保障 + 劳动价值平等 + 收入分配公平 + 言论与精神自由）× 2.5
-        <span class="formula-en">Civilization Index = (Survival & Labor Security + Equal Labor Value + Fair Income Distribution + Freedom of Speech & Spirit) × 2.5</span>
-        <span class="small" style="margin-top:2px;">满分100分 · 四项要素等权重 | Maximum 100 points · Four equally weighted elements</span>
-    </div>
+                <!-- ===== 第四层 ===== -->
+                <div class="layer">
+                    <div class="layer-num">第四层 <span class="en-num">Layer 4</span></div>
+                    <div class="layer-name">药方 <span class="en-inline">Prescription</span></div>
+                    <div class="layer-position">
+                        <strong>承上启下：</strong>前三层完成了"看清自己→看清系统→量化系统"。第四层回答的是：如果系统处于"锁死"或更糟的状态，怎么办？它承接的是第三层的诊断结果，为第五层的后门提供"需要过渡"的前提，没有药方，后门没有存在的必要。
+                        <span class="en">Transition: Layers 1-3 complete "seeing self → seeing system → quantifying system." Layer 4 answers: what if the system is locked or worse?</span>
+                    </div>
+                    <div class="layer-desc">
+                        <p><strong>全球人类主权基金：</strong></p>
+                        <p>法律隔离（瑞士/新加坡托管，即使政变、战争、政权更迭，资产均不可触及）；技术隔离（智能合约部署，多方共识执行）；激励相容（只吸引不强制，接入没有门槛，拒绝没有惩罚）。</p>
+                        <p><strong>七条操作手册：</strong></p>
+                        <p>重定义系统的唯一目的、权力动态授权、责任归属逆转、裁判权与执行权永久物理隔离、信任作为核心指标、释放被锁死的大多数、制度化代际纠偏。</p>
+                        <p><strong>核心原则：</strong></p>
+                        <p>系统的强度不在于它能多紧地控制，而在于它能多深地信任。</p>
+                        <p class="desc-note">Global Human Sovereignty Fund: Legal isolation (Switzerland/Singapore custody), technical isolation (smart contracts), incentive compatibility (attract only, no coercion). Seven operational manuals.</p>
+                    </div>
+                    <div class="logic-block">
+                        <div class="logic-label"><strong>逻辑指引 </strong><span class="en-label">Logic Guide</span></div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">1、不修正旧系统，只建立平行结构</span>
+                            <span class="logic-body">药方不试图"治愈"锁死的旧系统，也不等待旧系统"变好"。它在旧系统旁边重新建立一条不受其控制的新回路。</span>
+                            <span class="logic-en-body">Do not fix the old system—only build a parallel structure.</span>
+                            <span class="logic-summary">即：不推翻，不等待，只新建。
+                            <span class="logic-en-summary">Do not overthrow, do not wait—only build anew.</span></span>
+                        </div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">2、隔离是前提，激励是后续</span>
+                            <span class="logic-body">法律隔离先让资产在物理上无法被没收，技术隔离让规则在执行上无法被篡改，然后激励相容让旧系统的人在自己的利益计算中选择接入。</span>
+                            <span class="logic-en-body">Isolation first, incentive second. Legal isolation protects assets; technical isolation protects rules; incentive compatibility makes entry advantageous.</span>
+                            <span class="logic-summary">即：先确保不会被消灭，再确保有人愿意进来。
+                            <span class="logic-en-summary">First ensure it cannot be destroyed, then ensure people are willing to enter.</span></span>
+                        </div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">3、七条手册的排列不是随机的</span>
+                            <span class="logic-body">前三条重构权力的合法性来源，中间三条重构权力的运行方式，最后一条重构权力的代际传递。从合法性→运行机制→代际传承，形成完整闭环。</span>
+                            <span class="logic-en-body">The seven manuals are not a random list. They form a complete closed loop: from legitimacy → operational mechanism → intergenerational transmission.</span>
+                            <span class="logic-summary">即：这七条是一张施工图，从上到下，从根到枝。
+                            <span class="logic-en-summary">These seven are a construction blueprint—from top to bottom, from root to branch.</span></span>
+                        </div>
+                    </div>
+                    <div class="logic-block">
+                        <div class="logic-label"><strong>多维视野 </strong><span class="en-label">Multi-Dimensional Perspectives</span></div>
+                        <div class="angle-grid">
+                            <div class="angle-card">
+                                <div class="angle-label">地球 <span class="en">Earth</span></div>
+                                <div class="angle-text">基金托管在瑞士和新加坡，不是选择"好国家"，是选择"物理和法律隔离"。<br>基金摆脱了"某国说了算"的依附关系，成为地球层面的独立节点。<span class="en">Custody in Switzerland and Singapore—not choosing "good states," but choosing physical and legal isolation. The fund becomes an independent node at the global level.</span></div>
+                            </div>
+                            <div class="angle-card">
+                                <div class="angle-label">国家 <span class="en">State</span></div>
+                                <div class="angle-text">基金不取代国家。它只在"锁死"状态下提供平行回路。<br>国家不需要改变，但被锁死的个体有了选择。<br>如果绝大多数个体选择接入，国家的合法性会自然空心化。<span class="en">The fund does not replace the state. It only provides a parallel circuit under "locked" conditions. The state need not change, but individuals gain a choice.</span></div>
+                            </div>
+                            <div class="angle-card">
+                                <div class="angle-label">个人 <span class="en">Individual</span></div>
+                                <div class="angle-text">药方不要求个人做任何"牺牲"，不需要上街抗议，不需要公开表态，不需要等待改变。<br>被卡住了，就直接接入新系统。<br>你不需要改变你的位置，只需要改变你的规则。<span class="en">No "sacrifice" required—no protests, no public statements, no waiting. If stuck, directly access the new system. You don't need to change your position—only your rules.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="layer-cta pulse" href="./ghsf-cn.html" rel="noopener noreferrer">
+                        <span class="cta-text">全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）<span class="hot-icon"><img src="hot.gif" alt="HOT"></span></span>
+                        <span class="cta-en">点此查看</span>
+                    </a>
+                    <a class="layer-cta pulse" href="./ghsf-en.html" rel="noopener noreferrer">
+                        <span class="cta-text">GHSF — A Blueprint for China & the Global Community （EN）<span class="hot-icon"><img src="hot.gif" alt="HOT"></span></span>
+                        <span class="cta-en">Click to View</span>
+                    </a>
+                </div>
 
-    <!-- ============================================================ -->
-    <!-- ===== 三大元法则 ===== -->
-    <!-- ============================================================ -->
-    <h3>三大元法则 <span class="en-inline">Three Meta‑Principles</span></h3>
-    <div class="meta-badges">
-        <span class="meta-badge">基石否决权 <span class="en-inline">Cornerstone Veto</span></span>
-        <span class="meta-badge">体感优先律 <span class="en-inline">Primacy of Lived Experience</span></span>
-        <span class="meta-badge">最短木桶律 <span class="en-inline">Shortest Plank Rule</span></span>
-    </div>
+                <!-- ===== 第五层 ===== -->
+                <div class="layer">
+                    <div class="layer-num">第五层 <span class="en-num">Layer 5</span></div>
+                    <div class="layer-name">两份善意的后门 <span class="en-inline">Two Goodwill Back Doors</span></div>
+                    <div class="layer-position">
+                        <strong>承上启下：</strong>药方提供了平行结构。但如果旧系统的人选择抵抗，平行结构会被干扰；如果新系统被神化，平行结构会变成新权威。第五层同时解决这两个问题，第一份后门让旧系统的人在利益计算中自愿走进来；第二份后门让设计者主动退场。没有这一层，前四层要么被旧系统绞杀，要么变成新系统。
+                        <span class="en">Transition: Layer 4 provides a parallel structure. Layer 5 solves two problems simultaneously: the first back door lets old-system people voluntarily walk in through interest calculation; the second back door lets the designer withdraw.</span>
+                    </div>
+                    <div class="layer-desc">
+                        <p>任何新制度都会面对同一个问题：旧系统里的人怎么办？清算他们？那是战争，战争结束的时候新制度已经沾满旧血，不比旧的更干净。不清算他们？旧行为会像病毒一样渗透进来，慢慢把新制度改造成旧制度的复制品。</p>
+                        <p><strong>第一份后门（写给旧系统的人）：</strong></p>
+                        <p>不换人，只换规则；不翻旧账，只锁未来。过去积累的，不动；过去犯的，不追究；过去依靠的灰色空间，保留一个安静过渡的窗口。不需要认罪，不需要退赃，不需要被羞辱，不需要离开现在的位置。只需要做一件事：从今天起，按新规则来。</p>
+                        <p><strong>第二份后门（写给自己）：</strong></p>
+                        <p>如果设计者站在门口，门就变成了"他的门",一个通往需要感谢、需要承认、需要追随的新权威。设计者不站在门口，不宣称自己看到了门，不告诉任何人"你应该走进来"。把门修好，然后退开。</p>
+                        <p><strong>两者缺一不可：</strong></p>
+                        <p>法律铁索锁死未来，善意后门归零过去。没有法律铁索，后门是纵容；没有后门，法律铁索是宣战。</p>
+                        <p class="desc-note">First Back Door (for the old system): Change the rules, not the people; lock the future, not the past. Second Back Door (for the designer): Build the door, then step back. Neither can exist without the other.</p>
+                    </div>
+                    <div class="logic-block">
+                        <div class="logic-label"><strong>逻辑指引 </strong><span class="en-label">Logic Guide</span></div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">1、清算vs不清算的困境解法</span>
+                            <span class="logic-body">第一份后门提供第三条路：过去归零，未来锁死，只要求从今天起按新规则来。</span>
+                            <span class="logic-en-body">Solution to the liquidation dilemma: The first back door offers a third path—zero out the past, lock the future, only require playing by new rules from today onward.</span>
+                            <span class="logic-summary">即：旧系统的人不需要变好，只需要在规则层面切换。这个切换是他们自己的利益计算推动的，不是被强迫的。
+                            <span class="logic-en-summary">Old-system people don't need to become good—they only need to switch at the rule level. This switch is driven by their own interest calculation, not by coercion.</span></span>
+                        </div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">2、博弈论驱动的过渡</span>
+                            <span class="logic-body">第一份后门的核心机制是"让旧系统的人在自己的利益计算中发现：走进来比抵抗更合算"。</span>
+                            <span class="logic-en-body">Game-theory-driven transition: The core mechanism is making old-system people discover, through their own interest calculation, that walking through is more advantageous than resistance.</span>
+                            <span class="logic-summary">即：不需要他们变好人，只需要他们算清楚账。系统不改造人性，只重新设计激励结构。
+                            <span class="logic-en-summary">The system does not reform human nature—it only restructures incentives.</span></span>
+                        </div>
+                        <div class="logic-item">
+                            <span class="logic-num"></span>
+                            <span class="logic-title">3、系统自毁机制</span>
+                            <span class="logic-body">第二份后门让设计者主动退场。任何一个站在门口的人都会挡住一部分光。</span>
+                            <span class="logic-en-body">System self-destruction mechanism: The second back door makes the designer actively withdraw.</span>
+                            <span class="logic-summary">即：系统的最终状态是"设计者不在场时依然有效"。它唯一需要的不是设计者，是愿意走完整条路径的人。
+                            <span class="logic-en-summary">The system's final state is "still valid when the designer is absent."</span></span>
+                        </div>
+                    </div>
+                    <div class="logic-block">
+                        <div class="logic-label"><strong>多维视野 </strong><span class="en-label">Multi-Dimensional Perspectives</span></div>
+                        <div class="angle-grid">
+                            <div class="angle-card">
+                                <div class="angle-label">地球 <span class="en">Earth</span></div>
+                                <div class="angle-text">任何系统更替都伴随冲突，这是地球几千年的历史规律。<br>这套系统提供了一种"不经过冲突"的过渡方案。设计者退场更是地球层面罕见的动作，系统完成后主动离开，不占据任何位置。<span class="en">Any system transition comes with conflict—this is a millennia-old pattern. This system provides a "transition without conflict." The designer's withdrawal is a rare move.</span></div>
+                            </div>
+                            <div class="angle-card">
+                                <div class="angle-label">国家 <span class="en">State</span></div>
+                                <div class="angle-text">第一份后门让旧系统的人体面走进新规则，国家无需经历暴力革命和权力真空。<br>第二份后门让新规则不依附于任何个人，国家无法通过逮捕设计者来摧毁系统，因为设计者已经不在门口了。<span class="en">The first back door lets old-system people walk into new rules with dignity. The second ensures the new rules do not depend on any individual.</span></div>
+                            </div>
+                            <div class="angle-card">
+                                <div class="angle-label">个人 <span class="en">Individual</span></div>
+                                <div class="angle-text">第一份后门让百姓不需要经历"清算"的混乱,旧系统的人安静地走进来，生活继续，不需要仇恨，不需要复仇。<br>第二份后门让百姓不需要寻找新的"救世主"，系统不是某人的，是所有人的。<span class="en">The first back door spares people from liquidation chaos. The second spares them from needing a new savior—the system belongs to no one.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="backdoor-meta">
+                        <span>第一份：过渡通道（暂不公开）</span>
+                        <span>第二份：设计者退场（暂不公开）</span>
+                    </div>
+                </div>
 
-    <!-- ============================================================ -->
-    <!-- ===== 核心机制 ===== -->
-    <!-- ============================================================ -->
-    <h3>核心机制 <span class="en-inline">Core Mechanisms</span></h3>
-    <div class="mechanism-list">
-        <div class="mechanism-item"><strong>法律铁索 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;">Legal Chains</span></strong>三条永久底线，任何政府不得抽离本金与收益<span class="en">Three permanent bottom lines; no government may withdraw principal or returns</span></div>
-        <div class="mechanism-item"><strong>三重剥离 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;">Threefold Severance</span></strong>财产权剥离至法人 · 人事权剥离于公职 · 受益权脱离政治权利<span class="en">Property rights severed to legal entities; personnel severed from public office; beneficiary rights severed from political rights</span></div>
-        <div class="mechanism-item"><strong>物理隔绝 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;">Physical Isolation</span></strong>资本 · 治理 · 分配三层次隔离，资产不受任何单一政权控制<span class="en">Three-tier isolation of capital, governance, and distribution; assets不受 any single regime's control</span></div>
-        <div class="mechanism-item"><strong>善意后门 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;">Goodwill Back Door</span></strong>不换人只换规则，不翻旧账只锁未来<span class="en">Change the rules, not the people; lock the future, not the past</span></div>
-    </div>
+                <!-- ============================================================
+                体系概述
+                ============================================================ -->
+                <h2 class="mt-4">体系概述 <span class="en-inline">System Overview</span></h2>
+                <p>本体系是一套从公理定义到验收报告的完整思想架构，由核心文档构成，分为多个逻辑层，每一层都不可省略，缺一则系统失效。<span class="en">This system is a complete intellectual architecture from axiomatic definition to acceptance report. Each layer is indispensable; missing any one renders the entire system invalid.</span></p>
 
-    <!-- ============================================================ -->
-    <!-- ===== 永久存档入口（已还原完整数据） ===== -->
-    <!-- ============================================================ -->
-    <h2>永久存档入口 <span class="en-inline">Permanent Archives</span></h2>
-    <p>本体系通过<strong>地理分散</strong>（瑞士、美国、全球区块链）、<strong>技术异构</strong>（学术存档、区块链、代码托管）和<strong>冗余备份</strong>，将文档固化于以下平台：<span class="en">This system secures its documents across the following platforms through <strong>geographic dispersion</strong> (Switzerland, United States, global blockchain), <strong>technological heterogeneity</strong> (academic archives, blockchain, code hosting), and <strong>redundant backup</strong>.</span></p>
+                <h3>核心层 <span class="en-inline">Core Layers</span></h3>
+                <div class="layer-grid">
+                    <div class="layer-card">
+                        <span class="layer-num">元框架</span>
+                        <div class="layer-title">三大基石 <span class="en-inline">Three Cornerstones</span></div>
+                        <div class="layer-docs"><a href="./three-cornerstones.html" rel="noopener noreferrer">《三大基石：一种文明系统的底层重构框架》</a></div>
+                        <div class="layer-func">定义"什么是好系统" <span class="en">Defines "what is a good system"</span></div>
+                    </div>
+                    <div class="layer-card border-gold-top">
+                        <span class="layer-num">诊断模型</span>
+                        <div class="layer-title">三条路径 <span class="en-inline">Diagnostic Model</span></div>
+                        <div class="layer-docs">
+                            <a href="./path-to-low-civilization.html" rel="noopener noreferrer">《低级文明的完整路径图》</a><br>
+                            <a href="./deterministic-social-system.html" rel="noopener noreferrer">《确定性社会系统形成的必要条件与阻碍因素》</a><br>
+                            <a href="./justice-interest-rules-tension.html" rel="noopener noreferrer">《正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析》</a>
+                        </div>
+                        <div class="layer-func">揭示"坏系统如何死亡" <span class="en">Reveals "how a bad system dies"</span></div>
+                    </div>
+                    <div class="layer-card border-teal-top">
+                        <span class="layer-num">度量工具</span>
+                        <div class="layer-title">文明等级判断说明书 <span class="en-inline">Measurement Tool</span></div>
+                        <div class="layer-docs"><a href="./civilization-level-manual.html" rel="noopener noreferrer">《文明等级判断说明书》</a></div>
+                        <div class="layer-func">将文明从修辞转化为可计算函数 <span class="en">Transforms civilization from rhetoric into a computable function</span></div>
+                    </div>
+                    <div class="layer-card border-purple-top">
+                        <span class="layer-num">过程监测</span>
+                        <div class="layer-title">非死锁的条件分析 <span class="en-inline">Process Monitoring</span></div>
+                        <div class="layer-docs"><a href="./non-deadlock-analysis.html" rel="noopener noreferrer">《系统"非死锁"的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制》</a></div>
+                        <div class="layer-func">观察"系统正在哪一环" <span class="en">Observes "which stage the system is at"</span></div>
+                    </div>
+                    <div class="layer-card border-gold-2-top">
+                        <span class="layer-num">药方</span>
+                        <div class="layer-title">全球人类主权基金 <span class="en-inline">Prescription</span></div>
+                        <div class="layer-docs">
+                            <a href="./ghsf-cn.html" rel="noopener noreferrer">《全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）》</a><br>
+                            <a href="./ghsf-en.html" rel="noopener noreferrer">《全球人类主权基金：重构中国与全球利益格局的制度构想（英文版）》</a>
+                        </div>
+                        <div class="layer-func">提供解决方案 <span class="en">Provides solutions</span></div>
+                    </div>
+                    <div class="layer-card border-blue-top">
+                        <span class="layer-num">操作手册</span>
+                        <div class="layer-title">改变底层逻辑的方法论 <span class="en-inline">Operations Manual</span></div>
+                        <div class="layer-docs"><a href="./operational-manual.html" rel="noopener noreferrer">《改变底层逻辑的方法论（非归因，可操作）》</a></div>
+                        <div class="layer-func">提供执行路径 <span class="en">Provides execution pathways</span></div>
+                    </div>
+                    <div class="layer-card border-green-top">
+                        <span class="layer-num">验证工具</span>
+                        <div class="layer-title">从地球人类视野的推演 <span class="en-inline">Validation Tool</span></div>
+                        <div class="layer-docs"><a href="./earthly-perspective-validation.html" rel="noopener noreferrer">《从地球人类视野的推演：为什么"换皮奴隶制"终将失效，而"真文明"必然成为引力中心》</a></div>
+                        <div class="layer-func">论证"为什么必然赢" <span class="en">Demonstrates "why it must prevail"</span></div>
+                    </div>
+                    <div class="layer-card border-teal-top">
+                        <span class="layer-num">验收报告</span>
+                        <div class="layer-title">文明公理宪法与全球人类主权基金的验收报告 <span class="en-inline">Acceptance Report</span></div>
+                        <div class="layer-docs"><a href="./acceptance-report.html" rel="noopener noreferrer">《文明公理宪法与全球人类主权基金的验收报告》</a></div>
+                        <div class="layer-func">用自身工具检验自身 <span class="en">Uses its own tools to audit itself</span></div>
+                    </div>
+                    <div class="layer-card border-teal-top">
+                        <span class="layer-num">量化评分</span>
+                        <div class="layer-title">文明等级评分器 <span class="en-inline">Civilization Level Scoring Tool</span></div>
+                        <div class="layer-docs"><a href="./civilization-level-scorer.html" rel="noopener noreferrer">《文明公理系统之文明等级评分器》</a><span class="hot-icon"><img src="new.gif" alt="hot"></span></div>
+                        <div class="layer-func">将文明等级转化为可量化、可比较的全球通用评分体系。 <span class="en">Translates civilization levels into a quantifiable, globally comparable scoring system.</span></div>
+                    </div>
+                </div>
 
-    <!-- 学术引用入口 -->
-    <div class="link-group">
-        <h4>📘 学术引用入口（推荐） <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:8px;">Academic References (Recommended)</span></h4>
-        <ul class="link-list">
-            <li><span class="tag">OSF</span> <a href="https://osf.io/vntzq/" target="_blank">https://osf.io/vntzq/</a> （主入口 · DOI: 10.17605/OSF.IO/VNTZQ）</li>
-            <li><span class="tag">哈佛 Dataverse</span> <a href="https://dataverse.harvard.edu/dataverse/yangshengqi" target="_blank">https://dataverse.harvard.edu/dataverse/yangshengqi</a> （DOI: 10.7910/DVN/VNQANE）</li>
-            <li><span class="tag">Zenodo（CERN）</span> 11篇独立DOI（详见下方清单）</li>
-        </ul>
-    </div>
+                <!-- 核心公式 -->
+                <h3>核心公式 <span class="en-inline">Core Formula</span></h3>
+                <div class="formula-box">
+                    文明指数 =（生存与劳动保障 + 劳动价值平等 + 收入分配公平 + 言论与精神自由）× 2.5
+                    <span class="formula-en">Civilization Index = (Survival & Labor Security + Equal Labor Value + Fair Income Distribution + Freedom of Speech & Spirit) × 2.5</span>
+                    <span class="small">满分100分 · 四项要素等权重 | Maximum 100 points · Four equally weighted elements</span>
+                </div>
 
-    <!-- Zenodo 单篇 DOI 索引 -->
-    <div class="link-group">
-        <h4>📄 Zenodo 单篇 DOI 索引 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:8px;">Zenodo Individual DOIs</span></h4>
-        <ul class="link-list">
-            <li><span class="tag">元框架</span> <a href="https://doi.org/10.5281/zenodo.21638008" target="_blank">10.5281/zenodo.21638008</a> —— 《三大基石：一种文明系统的底层重构框架》</li>
-            <li><span class="tag">诊断</span> <a href="https://doi.org/10.5281/zenodo.21637921" target="_blank">10.5281/zenodo.21637921</a> —— 《低级文明的完整路径图》</li>
-            <li><span class="tag">诊断</span> <a href="https://doi.org/10.5281/zenodo.21637993" target="_blank">10.5281/zenodo.21637993</a> —— 《确定性社会系统形成的必要条件与阻碍因素》</li>
-            <li><span class="tag">诊断</span> <a href="https://doi.org/10.5281/zenodo.21638069" target="_blank">10.5281/zenodo.21638069</a> —— 《正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析》</li>
-            <li><span class="tag">度量</span> <a href="https://doi.org/10.5281/zenodo.21634037" target="_blank">10.5281/zenodo.21634037</a> —— 《文明等级判断说明书》</li>
-            <li><span class="tag">监测</span> <a href="https://doi.org/10.5281/zenodo.21638046" target="_blank">10.5281/zenodo.21638046</a> —— 《系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制》</li>
-            <li><span class="tag">药方</span> <a href="https://doi.org/10.5281/zenodo.20117265" target="_blank">10.5281/zenodo.20117265</a> —— 《全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）》</li>
-            <li><span class="tag">药方</span> <a href="https://doi.org/10.5281/zenodo.20391068" target="_blank">10.5281/zenodo.20391068</a> —— 《全球人类主权基金：重构中国与全球利益格局的制度构想（英文版）》</li>
-            <li><span class="tag">操作</span> <a href="https://doi.org/10.5281/zenodo.21637960" target="_blank">10.5281/zenodo.21637960</a> —— 《改变底层逻辑的方法论（非归因，可操作）》</li>
-            <li><span class="tag">验证</span> <a href="https://doi.org/10.5281/zenodo.21637952" target="_blank">10.5281/zenodo.21637952</a> —— 《从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心》</li>
-            <li><span class="tag">验收</span> <a href="https://doi.org/10.5281/zenodo.21638100" target="_blank">10.5281/zenodo.21638100</a> —— 《文明公理宪法与全球人类主权基金的验收报告》</li>
-        </ul>
-    </div>
+                <!-- 三大元法则 -->
+                <h3>三大元法则 <span class="en-inline">Three Meta‑Principles</span></h3>
+                <div class="meta-badges">
+                    <span class="meta-badge">基石否决权 <span class="en-inline">Cornerstone Veto</span></span>
+                    <span class="meta-badge">体感优先律 <span class="en-inline">Primacy of Lived Experience</span></span>
+                    <span class="meta-badge">最短木桶律 <span class="en-inline">Shortest Plank Rule</span></span>
+                </div>
 
-    <!-- 区块链永久存储（ArDrive / Arweave） -->
-    <div class="link-group">
-        <h4>⛓️ 区块链永久存储（ArDrive / Arweave） <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:8px;">Blockchain Permanent Storage</span></h4>
-        <ul class="link-list">
-            <li><span class="tag">总览</span> <a href="https://app.ardrive.io/#/file/26aff7bf-266b-4579-8fb9-b1215181a3f0/view" target="_blank">《杨晟琦的文明操作系统 · 完整体系简介》</a></li>
-            <li><span class="tag">元框架</span> <a href="https://app.ardrive.io/#/file/5dd474b4-c270-4cce-beb7-aee547f7f988/view" target="_blank">《三大基石：一种文明系统的底层重构框架》</a></li>
-            <li><span class="tag">诊断</span> <a href="https://app.ardrive.io/#/file/bf01bfe1-b727-423e-8799-741ca4df49f0/view" target="_blank">《低级文明的完整路径图》</a></li>
-            <li><span class="tag">诊断</span> <a href="https://app.ardrive.io/#/file/b09ced2c-dd6a-491f-a802-be27c2e3a4d9/view" target="_blank">《确定性社会系统形成的必要条件与阻碍因素》</a></li>
-            <li><span class="tag">诊断</span> <a href="https://app.ardrive.io/#/file/e254d209-41ad-42bb-a7d2-8d3b2feae997/view" target="_blank">《正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析》</a></li>
-            <li><span class="tag">度量</span> <a href="https://app.ardrive.io/#/file/d18e66f0-7a6a-454e-b523-5564e8a1f8de/view" target="_blank">《文明等级判断说明书》</a></li>
-            <li><span class="tag">监测</span> <a href="https://app.ardrive.io/#/file/5cbd29b4-6fd3-46ad-9e4f-6e96354be3a1/view" target="_blank">《系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制》</a></li>
-            <li><span class="tag">药方</span> <a href="https://app.ardrive.io/#/file/87b3aa4e-06d4-451e-a950-307d46efcdc0/view" target="_blank">《全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）》001.zip</a></li>
-            <li><span class="tag">药方</span> <a href="https://app.ardrive.io/#/file/834538a7-5c81-49a2-aeae-6512d154f2d8/view" target="_blank">《全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）》002.zip</a></li>
-            <li><span class="tag">操作</span> <a href="https://app.ardrive.io/#/file/f6a75dc4-295e-4416-8b06-bdf79665872a/view" target="_blank">《改变底层逻辑的方法论（非归因，可操作）》</a></li>
-            <li><span class="tag">验证</span> <a href="https://app.ardrive.io/#/file/48197477-a9d5-4706-b64c-9f6ae142fa1c/view" target="_blank">《从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心》</a></li>
-            <li><span class="tag">验收</span> <a href="https://app.ardrive.io/#/file/301afc45-24b6-40fb-9c68-9c902d6a397d/view" target="_blank">《文明公理宪法与全球人类主权基金的验收报告》</a></li>
-            <li><span class="tag">总报告</span> <a href="https://app.ardrive.io/#/file/506cecbb-3c6d-44e9-a2a8-6b0397bb0521/view" target="_blank">《文明操作系统：完整思想体系与全球分发总报告》</a></li>
-            <li><span class="tag">对话</span> <a href="https://app.ardrive.io/#/file/a9957fc9-bb98-4bd2-a911-cfafacb6dc2b/view" target="_blank">《杨晟琦本人匿名和中国AI的全对话》8:12 2026/8/11</a></li>
-        </ul>
-    </div>
+                <!-- 核心机制 -->
+                <h3>核心机制 <span class="en-inline">Core Mechanisms</span></h3>
+                <div class="mechanism-list">
+                    <div class="mechanism-item"><strong>法律铁索 <span class="en-inline">Legal Chains</span></strong>三条永久底线，任何政府不得抽离本金与收益<span class="en">Three permanent bottom lines; no government may withdraw principal or returns</span></div>
+                    <div class="mechanism-item"><strong>三重剥离 <span class="en-inline">Threefold Severance</span></strong>财产权剥离至法人 · 人事权剥离于公职 · 受益权脱离政治权利<span class="en">Property rights severed to legal entities; personnel severed from public office; beneficiary rights severed from political rights</span></div>
+                    <div class="mechanism-item"><strong>物理隔绝 <span class="en-inline">Physical Isolation</span></strong>资本 · 治理 · 分配三层次隔离，资产不受任何单一政权控制<span class="en">Three-tier isolation of capital, governance, and distribution; assets不受 any single regime's control</span></div>
+                    <div class="mechanism-item"><strong>善意后门 <span class="en-inline">Goodwill Back Door</span></strong>不换人只换规则，不翻旧账只锁未来<span class="en">Change the rules, not the people; lock the future, not the past</span></div>
+                </div>
 
-    <!-- 其他公开入口 -->
-    <div class="link-group">
-        <h4>🌐 其他公开入口 <span class="en-inline" style="font-size:.7em;font-weight:400;color:#7a8a6e;margin-left:8px;">Other Public Access Points</span></h4>
-        <ul class="link-list">
-            <li><span class="tag">WordPress</span> <a href="https://uncienine.wordpress.com/" target="_blank">https://uncienine.wordpress.com/</a> </li>
-            <li><span class="tag">GitHub</span> <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization" target="_blank">https://yang-shengqi.github.io/Axiomatic-System-of-Civilization</a></li>
-            <li><span class="tag">Gitee</span> <a href="https://gitee.com/hermo1980/global-human-sovereign-fund" target="_blank">https://gitee.com/hermo1980/global-human-sovereign-fund</a> </li>
-            <li><span class="tag">Academia.edu</span> <a href="https://independent.academia.edu/shengqiyang" target="_blank">https://independent.academia.edu/shengqiyang</a> </li>
-        </ul>
-    </div>
+                <!-- ============================================================
+                永久存档入口
+                ============================================================ -->
+                <h2>永久存档入口 <span class="en-inline">Permanent Archives</span></h2>
+                <p>本体系通过<strong>地理分散</strong>（瑞士、美国、全球区块链）、<strong>技术异构</strong>（学术存档、区块链、代码托管）和<strong>冗余备份</strong>，将文档固化于以下平台：<span class="en">This system secures its documents across the following platforms through <strong>geographic dispersion</strong> (Switzerland, United States, global blockchain), <strong>technological heterogeneity</strong> (academic archives, blockchain, code hosting), and <strong>redundant backup</strong>.</span></p>
 
-    <!-- ============================================================ -->
-    <!-- ===== 学术引用格式 ===== -->
-    <!-- ============================================================ -->
-    <h2>学术引用格式 <span class="en-inline">Citation Format</span></h2>
+                <div class="link-group">
+                    <h4>📘 学术引用入口（推荐） <span class="en-inline">Academic References (Recommended)</span></h4>
+                    <ul class="link-list">
+                        <li><span class="tag">OSF</span> <a href="https://osf.io/vntzq/" target="_blank">https://osf.io/vntzq/</a> （主入口 · DOI: 10.17605/OSF.IO/VNTZQ）</li>
+                        <li><span class="tag">哈佛 Dataverse</span> <a href="https://dataverse.harvard.edu/dataverse/yangshengqi" target="_blank">https://dataverse.harvard.edu/dataverse/yangshengqi</a> （DOI: 10.7910/DVN/VNQANE）</li>
+                        <li><span class="tag">Zenodo（CERN）</span> 11篇独立DOI（详见下方清单）</li>
+                    </ul>
+                </div>
 
-    <h3>OSF 主入口（推荐）</h3>
-    <div class="bib-box" id="bib-osf">
-        <button class="copy-btn" onclick="copyBib('bib-osf')">复制</button>
-        <pre class="bib-content">@misc{https://doi.org/10.17605/osf.io/vntzq,
-  doi = {10.17605/OSF.IO/VNTZQ},
-  url = {https://osf.io/vntzq/},
-  author = {Yang, Shengqi},
-  keywords = {Social Sciences, Civilizational System, Institutional Design, Public Wealth, Rule of Law},
-  title = {Yang Shengqi's Civilizational System — Complete Framework},
-  publisher = {OSF Registries},
-  year = {2026},
-  copyright = {Creative Commons Zero v1.0 Universal}
+                <div class="link-group">
+                    <h4>📄 Zenodo 单篇 DOI 索引 <span class="en-inline">Zenodo Individual DOIs</span></h4>
+                    <ul class="link-list">
+                        <li><span class="tag">元框架</span> <a href="https://doi.org/10.5281/zenodo.21638008" target="_blank">10.5281/zenodo.21638008</a> —— 《三大基石：一种文明系统的底层重构框架》</li>
+                        <li><span class="tag">诊断</span> <a href="https://doi.org/10.5281/zenodo.21637921" target="_blank">10.5281/zenodo.21637921</a> —— 《低级文明的完整路径图》</li>
+                        <li><span class="tag">诊断</span> <a href="https://doi.org/10.5281/zenodo.21637993" target="_blank">10.5281/zenodo.21637993</a> —— 《确定性社会系统形成的必要条件与阻碍因素》</li>
+                        <li><span class="tag">诊断</span> <a href="https://doi.org/10.5281/zenodo.21638069" target="_blank">10.5281/zenodo.21638069</a> —— 《正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析》</li>
+                        <li><span class="tag">度量</span> <a href="https://doi.org/10.5281/zenodo.21634037" target="_blank">10.5281/zenodo.21634037</a> —— 《文明等级判断说明书》</li>
+                        <li><span class="tag">监测</span> <a href="https://doi.org/10.5281/zenodo.21638046" target="_blank">10.5281/zenodo.21638046</a> —— 《系统"非死锁"的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制》</li>
+                        <li><span class="tag">药方</span> <a href="https://doi.org/10.5281/zenodo.20117265" target="_blank">10.5281/zenodo.20117265</a> —— 《全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）》</li>
+                        <li><span class="tag">药方</span> <a href="https://doi.org/10.5281/zenodo.20391068" target="_blank">10.5281/zenodo.20391068</a> —— 《全球人类主权基金：重构中国与全球利益格局的制度构想（英文版）》</li>
+                        <li><span class="tag">操作</span> <a href="https://doi.org/10.5281/zenodo.21637960" target="_blank">10.5281/zenodo.21637960</a> —— 《改变底层逻辑的方法论（非归因，可操作）》</li>
+                        <li><span class="tag">验证</span> <a href="https://doi.org/10.5281/zenodo.21637952" target="_blank">10.5281/zenodo.21637952</a> —— 《从地球人类视野的推演：为什么"换皮奴隶制"终将失效，而"真文明"必然成为引力中心》</li>
+                        <li><span class="tag">验收</span> <a href="https://doi.org/10.5281/zenodo.21638100" target="_blank">10.5281/zenodo.21638100</a> —— 《文明公理宪法与全球人类主权基金的验收报告》</li>
+                    </ul>
+                </div>
+
+                <div class="link-group">
+                    <h4>⛓️ 区块链永久存储（ArDrive / Arweave） <span class="en-inline">Blockchain Permanent Storage</span></h4>
+                    <ul class="link-list">
+                        <li><span class="tag">总览</span> <a href="https://app.ardrive.io/#/file/26aff7bf-266b-4579-8fb9-b1215181a3f0/view" target="_blank">《杨晟琦的文明操作系统 · 完整体系简介》</a></li>
+                        <li><span class="tag">元框架</span> <a href="https://app.ardrive.io/#/file/5dd474b4-c270-4cce-beb7-aee547f7f988/view" target="_blank">《三大基石：一种文明系统的底层重构框架》</a></li>
+                        <li><span class="tag">诊断</span> <a href="https://app.ardrive.io/#/file/bf01bfe1-b727-423e-8799-741ca4df49f0/view" target="_blank">《低级文明的完整路径图》</a></li>
+                        <li><span class="tag">诊断</span> <a href="https://app.ardrive.io/#/file/b09ced2c-dd6a-491f-a802-be27c2e3a4d9/view" target="_blank">《确定性社会系统形成的必要条件与阻碍因素》</a></li>
+                        <li><span class="tag">诊断</span> <a href="https://app.ardrive.io/#/file/e254d209-41ad-42bb-a7d2-8d3b2feae997/view" target="_blank">《正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析》</a></li>
+                        <li><span class="tag">度量</span> <a href="https://app.ardrive.io/#/file/d18e66f0-7a6a-454e-b523-5564e8a1f8de/view" target="_blank">《文明等级判断说明书》</a></li>
+                        <li><span class="tag">监测</span> <a href="https://app.ardrive.io/#/file/5cbd29b4-6fd3-46ad-9e4f-6e96354be3a1/view" target="_blank">《系统"非死锁"的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制》</a></li>
+                        <li><span class="tag">药方</span> <a href="https://app.ardrive.io/#/file/87b3aa4e-06d4-451e-a950-307d46efcdc0/view" target="_blank">《全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）》001.zip</a></li>
+                        <li><span class="tag">药方</span> <a href="https://app.ardrive.io/#/file/834538a7-5c81-49a2-aeae-6512d154f2d8/view" target="_blank">《全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）》002.zip</a></li>
+                        <li><span class="tag">操作</span> <a href="https://app.ardrive.io/#/file/f6a75dc4-295e-4416-8b06-bdf79665872a/view" target="_blank">《改变底层逻辑的方法论（非归因，可操作）》</a></li>
+                        <li><span class="tag">验证</span> <a href="https://app.ardrive.io/#/file/48197477-a9d5-4706-b64c-9f6ae142fa1c/view" target="_blank">《从地球人类视野的推演：为什么"换皮奴隶制"终将失效，而"真文明"必然成为引力中心》</a></li>
+                        <li><span class="tag">验收</span> <a href="https://app.ardrive.io/#/file/301afc45-24b6-40fb-9c68-9c902d6a397d/view" target="_blank">《文明公理宪法与全球人类主权基金的验收报告》</a></li>
+                        <li><span class="tag">总报告</span> <a href="https://app.ardrive.io/#/file/506cecbb-3c6d-44e9-a2a8-6b0397bb0521/view" target="_blank">《文明操作系统：完整思想体系与全球分发总报告》</a></li>
+                        <li><span class="tag">对话</span> <a href="https://app.ardrive.io/#/file/a9957fc9-bb98-4bd2-a911-cfafacb6dc2b/view" target="_blank">《杨晟琦本人匿名和中国AI的全对话》8:12 2026/8/11</a></li>
+                    </ul>
+                </div>
+
+                <div class="link-group">
+                    <h4>🌐 其他公开入口 <span class="en-inline">Other Public Access Points</span></h4>
+                    <ul class="link-list">
+                        <li><span class="tag">WordPress</span> <a href="https://uncienine.wordpress.com/" target="_blank">https://uncienine.wordpress.com/</a> </li>
+                        <li><span class="tag">GitHub</span> <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization" target="_blank">https://yang-shengqi.github.io/Axiomatic-System-of-Civilization</a></li>
+                        <li><span class="tag">Gitee</span> <a href="https://gitee.com/hermo1980/global-human-sovereign-fund" target="_blank">https://gitee.com/hermo1980/global-human-sovereign-fund</a> </li>
+                        <li><span class="tag">Academia.edu</span> <a href="https://independent.academia.edu/shengqiyang" target="_blank">https://independent.academia.edu/shengqiyang</a> </li>
+                    </ul>
+                </div>
+
+                <!-- ============================================================
+                学术引用格式
+                ============================================================ -->
+                <h2>学术引用格式 <span class="en-inline">Citation Format</span></h2>
+
+                <h3>OSF 主入口（推荐）</h3>
+                <div class="bib-box" id="bib-osf">
+                    <button class="copy-btn" onclick="copyBib('bib-osf')">复制</button>
+                    <pre class="bib-content">@misc{https://doi.org/10.17605/osf.io/vntzq,
+doi = {10.17605/OSF.IO/VNTZQ},
+url = {https://osf.io/vntzq/},
+author = {Yang, Shengqi},
+keywords = {Social Sciences, Civilizational System, Institutional Design, Public Wealth, Rule of Law},
+title = {Yang Shengqi's Civilizational System — Complete Framework},
+publisher = {OSF Registries},
+year = {2026},
+copyright = {Creative Commons Zero v1.0 Universal}
 }</pre>
-    </div>
+                </div>
 
-    <h3>哈佛 Dataverse</h3>
-    <div class="bib-box" id="bib-harvard">
-        <button class="copy-btn" onclick="copyBib('bib-harvard')">复制</button>
-        <pre class="bib-content">@misc{https://doi.org/10.7910/dvn/vnqane,
-  doi = {10.7910/DVN/VNQANE},
-  url = {https://dataverse.harvard.edu/dataverse/yangshengqi},
-  author = {Yang, Shengqi},
-  keywords = {Social Sciences, Civilizational System, Institutional Design, Public Wealth, Rule of Law},
-  title = {Yang Shengqi's Civilizational System — Complete Framework Overview},
-  publisher = {Harvard Dataverse},
-  year = {2026},
-  copyright = {Creative Commons Zero v1.0 Universal}
+                <h3>哈佛 Dataverse</h3>
+                <div class="bib-box" id="bib-harvard">
+                    <button class="copy-btn" onclick="copyBib('bib-harvard')">复制</button>
+                    <pre class="bib-content">@misc{https://doi.org/10.7910/dvn/vnqane,
+doi = {10.7910/DVN/VNQANE},
+url = {https://dataverse.harvard.edu/dataverse/yangshengqi},
+author = {Yang, Shengqi},
+keywords = {Social Sciences, Civilizational System, Institutional Design, Public Wealth, Rule of Law},
+title = {Yang Shengqi's Civilizational System — Complete Framework Overview},
+publisher = {Harvard Dataverse},
+year = {2026},
+copyright = {Creative Commons Zero v1.0 Universal}
 }</pre>
+                </div>
+
+            </div><!-- /page-content -->
+
+            <!-- 页脚 -->
+            <div class="footer">
+                杨晟琦文明公理系统 · 独立思想锚点 · 封装完成: 2026年7月
+                <span class="en">Yang Shengqi Civilizational Axiomatic System · Independent Thought Anchor · Encapsulation Completed: July 2026</span>
+                <span class="footer-license">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+                <span class="en">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank">CC BY-ND 4.0</a></span>
+            </div>
+
+        </main>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- ===== 页脚 ===== -->
-    <!-- ============================================================ -->
-    <div class="footer">
-        杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年 · 本页为公开索引入口
-        <span class="en">Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026 · This page is a public index entry</span>
-        <span style="display:block; margin-top:4px;">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
-        <span class="en" style="display:block; font-size:.85em; color:#7a8a6e;">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" style="color:#7a8a6e; border-bottom:1px dotted #4a5a3e;">CC BY-ND 4.0</a></span>
-    </div>
-
-</div>
-
-<script>
-    function copyBib(boxId) {
-        const box = document.getElementById(boxId);
-        const content = box.querySelector('.bib-content');
-        if (!content) return;
-        const text = content.textContent;
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(() => {
-                showCopied(box);
-            }).catch(() => {
-                fallbackCopy(text, box);
-            });
-        } else {
-            fallbackCopy(text, box);
-        }
-    }
-
-    function fallbackCopy(text, box) {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        textarea.style.left = '-9999px';
-        document.body.appendChild(textarea);
-        textarea.select();
-        try {
-            document.execCommand('copy');
-            showCopied(box);
-        } catch (e) {
-            alert('复制失败，请手动复制');
-        }
-        document.body.removeChild(textarea);
-    }
-
-    function showCopied(box) {
-        const btn = box.querySelector('.copy-btn');
-        if (!btn) return;
-        const original = btn.textContent;
-        btn.textContent = '✅ 已复制';
-        btn.classList.add('copied');
-        setTimeout(() => {
-            btn.textContent = original;
-            btn.classList.remove('copied');
-        }, 2000);
-    }
-</script>
-
+    <script src="common.js"></script>
 </body>
 </html>
