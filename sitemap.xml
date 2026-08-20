@@ -1,129 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- 01. 杨晟琦文明公理系统首页独立思想锚点（首页） -->
   <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/index.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- 02. 人类思维盲区在线诊断工具（中文版） -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/人类思维盲区在线诊断工具.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/blind-spot-diagnosis-cn.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- 03. 人类思维盲区在线诊断工具（英文版） -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/Cognitive-Blind-Spot-Diagnostic-Model.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/blind-spot-diagnosis-en.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- 04. 杨晟琦文明公理系统纯净结构版 -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/杨晟琦文明公理系统纯净结构版.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/pure-structure-edition.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 05. 杨晟琦文明公理系统之文明等级评分器 -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/杨晟琦文明公理系统之文明等级评分器.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/civilization-level-scorer.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 06. 全球人类主权基金：重构中国与全球利益格局的制度构想（中文版） -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/ghsf-cn.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 07. 全球人类主权基金：重构中国与全球利益格局的制度构想（英文版） -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/全球人类主权基金：重构中国与全球利益格局的制度构想（英文版）.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/ghsf-en.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 08. 三大基石：一种文明系统的底层重构框架 -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/三大基石：一种文明系统的底层重构框架.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/three-cornerstones.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 09. 低级文明的完整路径图 -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/低级文明的完整路径图.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/path-to-low-civilization.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 10. 确定性社会系统形成的必要条件与阻碍因素 -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/确定性社会系统形成的必要条件与阻碍因素.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/deterministic-social-system.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 11. 正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析 -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/justice-interest-rules-tension.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 12. 文明等级判断说明书 -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/文明等级判断说明书.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/civilization-level-manual.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 13. 系统"非死锁"的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制 -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/系统"非死锁"的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/non-deadlock-analysis.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 14. 改变底层逻辑的方法论（非归因，可操作） -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/改变底层逻辑的方法论（非归因，可操作）.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/operational-manual.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 15. 从地球人类视野的推演：为什么"换皮奴隶制"终将失效，而"真文明"必然成为引力中心 -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/从地球人类视野的推演：为什么"换皮奴隶制"终将失效，而"真文明"必然成为引力中心.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/earthly-perspective-validation.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- 16. 文明公理宪法与全球人类主权基金的验收报告 -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/文明公理宪法与全球人类主权基金的验收报告.html</loc>
-    <lastmod>2026-08-11</lastmod>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/acceptance-report.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
