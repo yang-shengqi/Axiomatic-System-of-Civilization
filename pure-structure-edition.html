@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>杨晟琦文明公理系统 · 完整体系纯净版</title>
+    <link rel="stylesheet" href="common.css" />
+    <style>
+        /* 强制所有英文不加粗 */
+        .en, .en-inline, .formula-en, .en-num, .en-label, .en-summary, .en-body {
+            font-weight: 400 !important;
+        }
+        /* 表格内英文换行 + 不加粗 */
+        .table-wrap td .en-inline,
+        .table-wrap th .en-inline {
+            display: block !important;
+            font-weight: 400 !important;
+        }
+        /* 列表中的英文换行 */
+        .layer-desc ul li .en,
+        .layer-desc ol li .en {
+            display: block;
+            font-weight: 400;
+        }
+        /* 高亮框内英文换行 */
+        .highlight-box .en {
+            display: block;
+            font-weight: 400;
+        }
+        /* 表格垂直居中 */
+        .table-wrap td,
+        .table-wrap th {
+            vertical-align: middle;
+        }
+        /* 标题英文跟随同行但也不加粗 */
+        h2 .en-inline,
+        h3 .en-inline,
+        h4 .en-inline {
+            font-weight: 400 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+
+        <!-- ===== 侧边栏 ===== -->
+        <aside class="sidebar" role="navigation" aria-label="目录导航">
+            <div class="sub-brand">YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION</div>
+            <div class="logo">杨晟琦<span>文明公理系统</span><span class="nav-copyright">©</span></div>
+            <nav aria-label="主导航">
+                <a href="./index.html">首页 <span class="nav-en">HOME</span></a>
+                <a href="./blind-spot-diagnosis-cn.html">思维诊断：人类思维盲区诊断（中文）<span class="nav-en">BLIND SPOT DIAGNOSIS (CN)</span></a>
+                <a href="./blind-spot-diagnosis-en.html">思维诊断：人类思维盲区诊断（英文）<span class="nav-en">BLIND SPOT DIAGNOSIS (EN)</span></a>
+                <a href="./pure-structure-edition.html">快速阅读：文明公理系统纯净版 <span class="nav-en">PURE-STRUCTURE-EDITION</span></a>
+                <a href="./three-cornerstones.html">元框架：三大基石 <span class="nav-en">META-FRAMEWORK · THREE CORNERSTONES</span></a>
+                <a href="./path-to-low-civilization.html">诊断模型：低级文明路径图 <span class="nav-en">DIAGNOSTIC MODEL · PATH TO LOW-LEVEL CIVILIZATION</span></a>
+                <a href="./deterministic-social-system.html">条件分析：确定性社会形成条件因素 <span class="nav-en">DETERMINISTIC SOCIAL SYSTEM</span></a>
+                <a href="./justice-interest-rules-tension.html">张力分析：正义利益规则的错位 <span class="nav-en">JUSTICE, INTEREST &amp; RULES</span></a>
+                <a href="./non-deadlock-analysis.html">条件分析：非死锁的条件分析 <span class="nav-en">NON-DEADLOCK ANALYSIS</span></a>
+                <a href="./operational-manual.html">操作手册：改变底层逻辑的方法论 <span class="nav-en">OPERATIONAL MANUAL</span></a>
+                <a href="./earthly-perspective-validation.html">验证工具：从地球人类视野的推演 <span class="nav-en">VALIDATION TOOL</span></a>
+                <a href="./ghsf-cn.html">药方参考：全球人类主权基金 (中文版) <span class="nav-en">GHSF (CN)</span></a>
+                <a href="./ghsf-en.html">药方参考：全球人类主权基金 (英文版) <span class="nav-en">GHSF (EN)</span></a>
+                <a href="./acceptance-report.html">验收报告：文明公理与基金验收报告 <span class="nav-en">ACCEPTANCE REPORT</span></a>
+                <a href="./civilization-level-manual.html">量化思路：文明等级判断说明书 <span class="nav-en">CIVILIZATION LEVEL MANUAL</span></a>
+                <a href="./civilization-level-scorer.html">量化诊断：文明等级判断评分器 <span class="hot-icon"><img src="hot.gif" alt="hot" /></span><span class="nav-en">CIVILIZATION LEVEL SCORER</span></a>
+            </nav>
+            <div class="version">所有内容以 CC BY-ND 4.0 协议发布 <span class="version-en">All content released under CC BY-ND 4.0</span></div>
+        </aside>
+
+        <!-- ===== 主内容 ===== -->
+        <main class="main">
+
+            <!-- 顶栏 -->
+            <div class="top-nav">
+                <a href="./index.html" class="back">← 返回体系总入口</a>
+                <span class="badge">杨晟琦文明公理系统 · 完整体系纯净版</span>
+            </div>
+
+            <!-- 品牌区 -->
+            <div class="brand">
+                <div class="brand-left">
+                    <div class="sub-brand">YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION</div>
+                    <div class="title-row--inline">
+                        <h1>杨晟琦文明公理系统 · 完整体系纯净版</h1>
+                        <span class="badge badge-dark">独立思想锚点</span>
+                    </div>
+                    <div class="info-row">
+                        <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
+                        <span>全球首发: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+                        <span>封装完成: 2026年7月</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-content">
+
+                <!-- ===== 设计者自述 ===== -->
+                <div class="designer-note">
+                    <p><span class="highlight">我叫杨晟琦，1980年出生于中国。</span></p>
+                    <span class="en">My name is Yang Shengqi, and I was born in China in 1980.</span>
+                    <p>我是地球上第一位文明公理架构师。我用一把游标卡尺量出了文明的厚度，然后用一台引擎把裂缝堵上了。</p>
+                    <span class="en">I am the world's first Architect of Civilizational Axioms. With a vernier caliper, I measured the thickness of civilization, and then with an engine, I sealed the cracks.</span>
+                </div>
+
+                <!-- ===== 系统定位 ===== -->
+                <h2>一、系统定位 <span class="en-inline">System Positioning</span></h2>
+                <div class="layer">
+                    <div class="layer-num">系统定位 <span class="en-num">System Positioning</span></div>
+                    <div class="layer-desc">
+                        <p><strong>杨晟琦文明公理系统</strong> 是一套自洽的、可检验的文明底层逻辑框架。</p>
+                        <span class="en">Yang Shengqi's Axiomatic System of Civilization is a self-consistent, testable foundational framework for civilization at the logical level.</span>
+                        <p>它从公理定义出发，经诊断模型、度量工具、过程监测、药方设计、操作手册到验证工具，构成完整闭环。</p>
+                        <span class="en">It forms a complete closed loop, from axiomatic definitions through diagnostic models, measurement tools, process monitoring, prescription design, operational manuals, to validation instruments.</span>
+                        <p>它不依附于任何国家、政权、资本或组织，不依赖任何外部条件。</p>
+                        <span class="en">It is not affiliated with any state, regime, capital, or organization, and depends on no external conditions.</span>
+                        <p>它的唯一前提是：系统愿意被对照检验。</p>
+                        <span class="en">Its only premise: the system is willing to be examined against this benchmark.</span>
+                    </div>
+                </div>
+
+                <!-- ===== 核心特点 ===== -->
+                <h2>二、核心特点 <span class="en-inline">Core Features</span></h2>
+                <div class="layer">
+                    <div class="layer-num">核心特点 <span class="en-num">Core Features</span></div>
+                    <div class="layer-desc">
+                        <ul>
+                            <li><span class="num">1.</span> 三段式结构：方向 → 诊断 → 处方，逻辑不可拆分，缺一则系统失效。<span class="en">Three-stage structure: Direction → Diagnosis → Prescription. Indivisible logic; missing one breaks the system.</span></li>
+                            <li><span class="num">2.</span> 可计算函数：文明指数将"文明"从修辞转化为可测量的数学公式。<span class="en">Computable function: The Civilization Index transforms "civilization" from rhetoric into a measurable mathematical formula.</span></li>
+                            <li><span class="num">3.</span> 三条元法则：基石否决权、体感优先律、最短木桶律——封堵一切数据粉饰与选择性执行。<span class="en">Three meta-principles: Cornerstone Veto, Primacy of Lived Experience, Shortest Plank Rule — blocking all data manipulation and selective enforcement.</span></li>
+                            <li><span class="num">4.</span> 九式诊断路径：从结构性不公到结构性死亡，完整揭示系统如何走向崩溃。<span class="en">Nine-step diagnostic path: From structural injustice to structural death, fully revealing how a system collapses.</span></li>
+                            <li><span class="num">5.</span> 双重锁定：法律铁索 + 三重剥离 + 物理隔绝，使制度具有反脆弱性。<span class="en">Dual legal-physical lock: Legal Chains + Threefold Severance + Physical Isolation, rendering the institution anti-fragile.</span></li>
+                            <li><span class="num">6.</span> 非归责性操作手册：七条方法论不追究个人责任，只提供可执行的系统翻转路径。<span class="en">Non-attributional operations manual: Seven methodologies that do not blame individuals, only providing executable pathways to reverse the system.</span></li>
+                            <li><span class="num">7.</span> 独立验证机制：用系统自身的工具检验系统自身，完成完整闭环验收。<span class="en">Independent verification mechanism: Using the system's own tools to audit itself, completing a full closed-loop validation.</span></li>
+                            <li><span class="num">8.</span> 无条件启动：不依赖"好领导"或"足够资源"，只依赖系统愿意被对照检验。<span class="en">Unconditional activation: Does not depend on "good leadership" or "sufficient resources" — only on a willingness to be tested.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ===== 三大基石 ===== -->
+                <h2>三、元框架：三大基石 <span class="en-inline">Meta‑Framework: The Three Cornerstones</span></h2>
+
+                <!-- 基石一 -->
+                <h3>基石一：文明的基石 <span class="en-inline">Cornerstone I: The Foundation of Civilization</span></h3>
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <p style="font-size:17px; color:#e2ead4; font-weight:600;">自由是文明的前提，规则是自由的边界，而规则的唯一合法性来自公平、公正、公开。</p>
+                        <span class="en" style="font-size:0.8em; display:block; margin-bottom:12px;">Freedom is the prerequisite of civilization; rules are the boundaries of freedom; and the sole legitimacy of rules comes from fairness, justice, and openness.</span>
+                        <ul>
+                            <li><strong>自由：</strong> 不是系统的"赐予"，而是系统的"默认值"。文明不以秩序为起点，而以个体可以选择、可以行动、可以追求自己定义的生活为起点。<span class="en">Freedom is not a "grant" from the system, but the system's "default value." Civilization does not begin with order; it begins with individuals who can choose, can act, and can pursue lives defined by themselves.</span></li>
+                            <li><strong>规则：</strong> 自由不等于无序。规则是自由的边界，但这个边界只能由公平、公正、公开的规则来划定。<span class="en">Freedom does not mean disorder. Rules are the boundaries of freedom, but those boundaries can only be drawn by rules that are fair, just, and open.</span></li>
+                            <li><strong>公平：</strong> 规则适用不因人而异，权重对等，不受身份、资源、位置影响。<span class="en">Fairness: rules apply uniformly, with equal weight, unaffected by identity, resources, or position.</span></li>
+                            <li><strong>公正：</strong> 规则执行不偏不倚，程序本身具备不被利益扭曲的结构设计。<span class="en">Justice: rules are enforced impartially, and the procedures themselves are structurally designed to resist distortion by interests.</span></li>
+                            <li><strong>公开：</strong> 规则的制定、执行、解释全程可追溯、可查询、可争议。没有公开，公平与公正无从验证。<span class="en">Openness: the formulation, enforcement, and interpretation of rules are fully traceable, queryable, and contestable. Without openness, fairness and justice cannot be verified.</span></li>
+                        </ul>
+                        <div class="highlight-box">
+                            <p><strong>实质：</strong> 只有经得起所有人审视的规则，才有资格约束所有人的自由。</p>
+                            <span class="en"><strong>Essence:</strong> Only rules that withstand the scrutiny of all are qualified to constrain the freedom of all.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 基石二 -->
+                <h3>基石二：社会的基石 <span class="en-inline">Cornerstone II: The Foundation of Society</span></h3>
+                <div class="layer border-left-gold">
+                    <div class="layer-desc">
+                        <p style="font-size:17px; color:#e2ead4; font-weight:600;">正义是底层百姓唯一的压舱石，利益是得利者唯一的压舱石。当两者碰撞时，底层只能依靠直觉报警，而得利者懂得用规则免责。</p>
+                        <span class="en" style="font-size:0.8em; display:block; margin-bottom:12px;">Justice is the only ballast for ordinary people; interests are the only ballast for the advantaged. When they collide, ordinary people can only rely on intuitive alarms, while the advantaged know how to use rules to immunize themselves.</span>
+                        <ul>
+                            <li>底层百姓没有资源精通复杂的规则，没有时间走冗长的程序，没有能力博弈法律解释。他们唯一拥有的，是基于生存经验的"公平直觉"——朴素，但往往比任何程序更早触达真相。<span class="en">Ordinary people lack the resources to master complex rules, the time to follow lengthy procedures, and the ability to engage in legal interpretation games. Their only asset is a "fairness intuition" rooted in lived survival experience—simple, yet often arriving at the truth earlier than any procedure.</span></li>
+                            <li>得利者相反：他们拥有资源理解规则、利用规则、乃至塑造规则。在规则博弈中，他们天然占据优势。<span class="en">The advantaged, by contrast, possess the resources to understand rules, exploit rules, and even shape rules. In rule‑based contests, they naturally hold the upper hand.</span></li>
+                            <li>当"直觉"与"规则"冲突时，如果系统默认"谁懂规则谁有理"，社会就不再是公平的竞技场，而是规则的拍卖行。<span class="en">When "intuition" conflicts with "rules," and if the system defaults to "whoever knows the rules is right," society ceases to be a fair arena and becomes an auction house for rules.</span></li>
+                            <li>系统必须默认"直觉"是合法的输入信号，而非需要被规则压制的不稳定因素。<span class="en">The system must default to treating "intuition" as a legitimate input signal, rather than as an instability to be suppressed by rules.</span></li>
+                        </ul>
+                        <div class="highlight-box">
+                            <p><strong>实质：</strong> 系统须永远保持一种警觉——当直觉与规则冲突时，先倾听直觉背后的信号，而非用"程序合规"宣判直觉无效。</p>
+                            <span class="en"><strong>Essence:</strong> The system must always remain vigilant—when intuition conflicts with rules, it should first listen to the signals behind intuition, rather than invalidating intuition by declaring "procedural compliance."</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 基石三 -->
+                <h3>基石三：治理的基石 <span class="en-inline">Cornerstone III: The Foundation of Governance</span></h3>
+                <div class="layer border-left-teal">
+                    <div class="layer-desc">
+                        <p style="font-size:17px; color:#e2ead4; font-weight:600;">三个硬条件，一条不可退。</p>
+                        <span class="en" style="font-size:0.8em; display:block; margin-bottom:12px;">Three hard conditions, one non‑negotiable.</span>
+                        <ul>
+                            <li><strong>一、</strong> 判决书未出，任何公民和财产受完全保护，不可被提前处置。执行权只能暂停争议标的物，不能触碰个体本身；调查可调用信息副本，不可触碰本体权益；任何"提前处置"在判决前均属非法。<span class="en"><strong>1.</strong> Before a verdict is rendered, every citizen and their property are fully protected and may not be pre‑disposed. Enforcement power may only freeze the subject matter in dispute, not touch the individual themselves; investigations may use copies of information but not encroach upon substantive rights; any "pre‑disposal" before a verdict is illegal.</span></li>
+                            <li><strong>二、</strong> 司法系统的拖延、错误、不可追溯——所有系统性代价，由系统自身承担，不转嫁给个体。须设立"系统滞纳金"与"终局熔断"机制。<span class="en"><strong>2.</strong> Delays, errors, and non‑traceability in the judicial system—all systemic costs shall be borne by the system itself and not shifted onto individuals. Mechanisms of "system penalty charges" and "final circuit breaker" must be established.</span></li>
+                            <li><strong>三、</strong> 任何个体的"不公感知"，皆为合法的系统输入信号，系统必须响应，不得以任何程序借口拒绝受理或压制表达。<span class="en"><strong>3.</strong> Any individual's "perception of injustice" is a legitimate input signal to the system. The system must respond and may not refuse to accept it or suppress the expression under any procedural pretext.</span></li>
+                        </ul>
+                        <div class="highlight-box">
+                            <p><strong>实质：</strong> 权力可以被行使，但必须在每一个普通人的注视下行使。</p>
+                            <span class="en"><strong>Essence:</strong> Power may be exercised, but only under the watchful eyes of every ordinary person.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 三大基石逻辑关系 -->
+                <h3>三大基石的逻辑关系 <span class="en-inline">The Logical Relationship of the Three Cornerstones</span></h3>
+                <div class="layer border-left-gold-light">
+                    <div class="layer-desc">
+                        <p>文明的基石说："往这里走。"</p>
+                        <span class="en">The Foundation of Civilization says: "Go this way."</span>
+                        <p>社会的基石说："为什么走不动。"</p>
+                        <span class="en">The Foundation of Society says: "Why can't we move?"</span>
+                        <p>治理的基石说："怎么把卡住的东西搬开。"</p>
+                        <span class="en">The Foundation of Governance says: "How to remove what is stuck."</span>
+                        <div class="table-wrap" style="margin-top:16px;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>基石 <span class="en-inline" style="font-weight:400;">Cornerstone</span></th>
+                                        <th>定位 <span class="en-inline" style="font-weight:400;">Role</span></th>
+                                        <th>核心功能 <span class="en-inline" style="font-weight:400;">Core Function</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>文明基石 <span class="en-inline" style="font-weight:400;">Foundation of Civilization</span></td>
+                                        <td>定方向 <span class="en-inline" style="font-weight:400;">Direction‑setting</span></td>
+                                        <td>规定"好系统"的评判标准 <span class="en-inline" style="font-weight:400;">Defines the criteria for a "good system"</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>社会基石 <span class="en-inline" style="font-weight:400;">Foundation of Society</span></td>
+                                        <td>诊断 <span class="en-inline" style="font-weight:400;">Diagnosis</span></td>
+                                        <td>揭示"坏系统"的核心矛盾 <span class="en-inline" style="font-weight:400;">Reveals the core contradictions of a "bad system"</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>治理基石 <span class="en-inline" style="font-weight:400;">Foundation of Governance</span></td>
+                                        <td>处方 <span class="en-inline" style="font-weight:400;">Prescription</span></td>
+                                        <td>给出"从坏到好"的硬性操作方案 <span class="en-inline" style="font-weight:400;">Provides hard operational measures for moving "from bad to good"</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== 度量工具 ===== -->
+                <h2>四、度量工具：文明等级判断 <span class="en-inline">Measurement: Civilization Level Assessment</span></h2>
+                <div class="layer border-left-gold-light">
+                    <div class="layer-desc">
+                        <p>《文明等级判断说明书》</p>
+                        <span class="en">Civilization Level Assessment Manual</span>
+                        <p>首次将"文明"从修辞转化为可计算函数。</p>
+                        <span class="en">The first to transform "civilization" from rhetoric into a computable function.</span>
+                    </div>
+                </div>
+
+                <h3>核心公式 <span class="en-inline">Core Formula</span></h3>
+                <div class="formula-box">
+                    文明指数 =（生存与劳动保障 + 劳动价值平等 + 收入分配公平 + 言论与精神自由）× 2.5
+                    <span class="formula-en">Civilization Index = (Survival &amp; Labor Security + Equal Labor Value + Fair Income Distribution + Freedom of Speech &amp; Spirit) × 2.5</span>
+                    <span class="small">满分100分 · 四项要素等权重 | Maximum 100 points · Four equally weighted elements</span>
+                </div>
+
+                <h3>三条元法则 <span class="en-inline">Three Meta‑Principles</span></h3>
+                <div class="meta-badges">
+                    <span class="meta-badge">基石否决权 <span class="en-inline">Cornerstone Veto</span></span>
+                    <span class="meta-badge">体感优先律 <span class="en-inline">Primacy of Lived Experience</span></span>
+                    <span class="meta-badge">最短木桶律 <span class="en-inline">Shortest Plank Rule</span></span>
+                </div>
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <ul>
+                            <li><strong>基石否决权：</strong> 三大基石缺一则直接判为低级文明，永无通融。<span class="en"><strong>Cornerstone Veto:</strong> If any of the three cornerstones is missing, the society is judged Low‑Level Civilization, with no exception whatsoever.</span></li>
+                            <li><strong>体感优先律：</strong> 当宏观统计数据与弱势群体的实际生存体感发生冲突时，本指数以体感为真理。<span class="en"><strong>Primacy of Lived Experience:</strong> When macroeconomic statistics conflict with the actual lived experience of vulnerable groups, this index takes lived experience as truth.</span></li>
+                            <li><strong>最短木桶律：</strong> 四大要素中任意一项≤2分，总分自动锁死低级文明。其他三项表现再优异不可拉升、不可弥补。<span class="en"><strong>Shortest Plank Rule:</strong> If any of the four core elements scores 2 or below, the total score is automatically locked at Low‑Level Civilization. No matter how outstanding the other three elements perform, they cannot elevate or compensate.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 文明等级判定表格 -->
+                <h3>文明等级判定 <span class="en-inline">Civilization Level Determination</span></h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>总分区间 <span class="en-inline" style="font-weight:400;">Score Range</span></th>
+                                <th>文明等级 <span class="en-inline" style="font-weight:400;">Level</span></th>
+                                <th>核心特征 <span class="en-inline" style="font-weight:400;">Core Characteristics</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0‑39</td>
+                                <td>低级文明 <span class="en-inline" style="font-weight:400;">Low‑Level</span></td>
+                                <td>基石缺失或要素严重不足；个体处于丛林或准丛林状态 <span class="en-inline" style="font-weight:400;">Cornerstones missing or elements severely deficient; individuals in a state of jungle or quasi‑jungle</span></td>
+                            </tr>
+                            <tr>
+                                <td>40‑79</td>
+                                <td>中级文明 <span class="en-inline" style="font-weight:400;">Medium‑Level</span></td>
+                                <td>基石已立；要素基本达标；平等与自由初步实现 <span class="en-inline" style="font-weight:400;">Cornerstones established; elements basically up to standard; equality and freedom initially realized</span></td>
+                            </tr>
+                            <tr>
+                                <td>80‑100</td>
+                                <td>高级文明 <span class="en-inline" style="font-weight:400;">High‑Level</span></td>
+                                <td>基石稳固；要素优秀；创造性自由绽放 <span class="en-inline" style="font-weight:400;">Cornerstones solid; elements excellent; creative freedom flourishes</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ===== 诊断工具 ===== -->
+                <h2>五、诊断工具：坏系统为什么死 <span class="en-inline">Diagnostic Tools: Why Bad Systems Die</span></h2>
+                <h3>九步路径图 <span class="en-inline">The Nine‑Step Path Map</span></h3>
+                <div class="layer border-left-gold-light">
+                    <div class="layer-desc">
+                        <p>《低级文明的完整路径图》</p>
+                        <span class="en">The Complete Path of a Low‑Level Civilization</span>
+                        <div class="highlight-box" style="border-left-color: #8aaa6a;">
+                            <p style="font-size:17px; color:#e2ead4; text-align:center;"><strong>结构性不公 → 结构性锁死 → 结构性错位 → 结构性矛盾 → 结构性收缩 → 结构性失聪 → 结构性逃逸 → 结构性空心 → 结构性死亡</strong></p>
+                            <span class="en" style="text-align:center; font-size:0.8em;"><strong>Structural Injustice → Structural Lock‑in → Structural Misalignment → Structural Contradiction → Structural Contraction → Structural Deafness → Structural Escape → Structural Hollowing → Structural Death</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 九步路径表格 -->
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>环节 <span class="en-inline" style="font-weight:400;">Stage</span></th>
+                                <th>本质 <span class="en-inline" style="font-weight:400;">Essence</span></th>
+                                <th>产生的风险 <span class="en-inline" style="font-weight:400;">Risk Generated</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>结构性不公 <span class="en-inline" style="font-weight:400;">Structural Injustice</span></td><td>资源与权力分配的制度性倾斜 <span class="en-inline" style="font-weight:400;">Institutional tilt in resource and power distribution</span></td><td>社会层面的爆发风险 <span class="en-inline" style="font-weight:400;">Risk of social eruption</span></td></tr>
+                            <tr><td>结构性锁死 <span class="en-inline" style="font-weight:400;">Structural Lock‑in</span></td><td>不公被制度固化，无法通过常规渠道修正 <span class="en-inline" style="font-weight:400;">Injustice solidified by institutions, beyond conventional correction</span></td><td>系统脆化的硬着陆风险 <span class="en-inline" style="font-weight:400;">Hard‑landing risk of systemic brittleness</span></td></tr>
+                            <tr><td>结构性错位 <span class="en-inline" style="font-weight:400;">Structural Misalignment</span></td><td>系统对自身问题的认知偏离现实 <span class="en-inline" style="font-weight:400;">System's perception of its own problems deviates from reality</span></td><td>决策失误风险 <span class="en-inline" style="font-weight:400;">Risk of decision‑making errors</span></td></tr>
+                            <tr><td>结构性矛盾 <span class="en-inline" style="font-weight:400;">Structural Contradiction</span></td><td>个体理性与系统理性的对冲 <span class="en-inline" style="font-weight:400;">Hedging between individual rationality and systemic rationality</span></td><td>集体行动失灵风险 <span class="en-inline" style="font-weight:400;">Risk of collective action failure</span></td></tr>
+                            <tr><td>结构性收缩 <span class="en-inline" style="font-weight:400;">Structural Contraction</span></td><td>为维持控制而收紧空间，压制反馈 <span class="en-inline" style="font-weight:400;">Tightening space to maintain control, suppressing feedback</span></td><td>内部压力无处释放的失控风险 <span class="en-inline" style="font-weight:400;">Risk of losing control when internal pressure has no outlet</span></td></tr>
+                            <tr><td>结构性失聪 <span class="en-inline" style="font-weight:400;">Structural Deafness</span></td><td>系统拒绝接收负面信号，只听到想听的 <span class="en-inline" style="font-weight:400;">System refuses negative signals, hears only what it wants</span></td><td>问题积累到临界点才被发现的失效风险 <span class="en-inline" style="font-weight:400;">Failure risk where problems are detected only after reaching a critical point</span></td></tr>
+                            <tr><td>结构性逃逸 <span class="en-inline" style="font-weight:400;">Structural Escape</span></td><td>有能力的个体和资本用脚投票 <span class="en-inline" style="font-weight:400;">Capable individuals and capital vote with their feet</span></td><td>系统加速空心化的自我消耗风险 <span class="en-inline" style="font-weight:400;">Self‑depleting risk of accelerated systemic hollowing</span></td></tr>
+                            <tr><td>结构性空心 <span class="en-inline" style="font-weight:400;">Structural Hollowing</span></td><td>壳在运行而实质已无 <span class="en-inline" style="font-weight:400;">Shell still runs but substance is gone</span></td><td>全面崩盘风险 <span class="en-inline" style="font-weight:400;">Risk of total collapse</span></td></tr>
+                            <tr><td>结构性死亡 <span class="en-inline" style="font-weight:400;">Structural Death</span></td><td>系统丧失自我修复能力 <span class="en-inline" style="font-weight:400;">System loses capacity for self‑repair</span></td><td>最终风险本身 <span class="en-inline" style="font-weight:400;">The ultimate risk itself</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 好系统的存活条件 -->
+                <h3>好系统的存活条件 <span class="en-inline">Survival Conditions of a Good System</span></h3>
+                <div class="layer border-left-gold-light">
+                    <div class="layer-desc">
+                        <p>《确定性社会系统形成的必要条件与阻碍因素》</p>
+                        <span class="en">Necessary Conditions and Obstacles for the Formation of a Determinate Social System</span>
+                    </div>
+                </div>
+
+                <h4>三个必要条件 <span class="en-inline">Three Necessary Conditions</span></h4>
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <ul>
+                            <li><strong>规则的不可协商性成为普遍预期：</strong> 执行层面长期、无例外地按规则行事，任何破例都会重置积累进程。<span class="en"><strong>The non‑negotiability of rules becomes a general expectation:</strong> At the enforcement level, rules are followed consistently and without exception over the long term; any exception resets the accumulation process.</span></li>
+                            <li><strong>社会信任存量跨越临界点：</strong> 系统须单方面撤除部分监控，主动承担被辜负的风险以释放信任信号。<span class="en"><strong>The stock of social trust crosses a critical threshold:</strong> The system must unilaterally remove certain monitoring and proactively bear the risk of being betrayed to release trust signals.</span></li>
+                            <li><strong>个体安全感从私人网络转向公共系统：</strong> 养老、医疗、司法等公共系统输出必须足够稳定可靠，且需持续数十年证明。<span class="en"><strong>Individual security shifts from private networks to public systems:</strong> The outputs of public systems must be sufficiently stable and reliable, and this reliability must be demonstrated continuously over decades.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>两个阻碍因素 <span class="en-inline">Two Obstacles</span></h4>
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <ul>
+                            <li><strong>超大规模治理复杂度：</strong> 人口与地理差异导致海量例外情境，基层必须赋予裁量权，从而在事实上破坏规则的不可协商性。<span class="en"><strong>Mega‑scale governance complexity:</strong> Population and geographic diversity generate a massive number of exceptional situations; grassroots levels must be granted discretion, which in practice undermines the non‑negotiability of rules.</span></li>
+                            <li><strong>博弈文化的历史惯性：</strong> 长期关系型资源分配机制塑造了"找规则不如找人"的理性策略。<span class="en"><strong>The historical inertia of bargaining/relational culture:</strong> Long‑term relationship‑based resource allocation mechanisms have shaped the rational strategy that "finding the right person is more effective than finding the right rule."</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ===== 过程监测 ===== -->
+                <h2>六、过程监测：系统"非死锁"的条件 <span class="en-inline">Process Monitoring: Conditions for System "Non‑Deadlock"</span></h2>
+                <div class="layer border-left-gold-light">
+                    <div class="layer-desc">
+                        <p>《系统"非死锁"的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制》</p>
+                        <span class="en">Conditional Analysis of System "Non‑Deadlock": How External Correction Can Be Transformed into Institutionally Endogenous Correction Mechanisms</span>
+                    </div>
+                </div>
+                <h3>外部冲击的类型与效果边界 <span class="en-inline">Types and Effect Boundaries of External Shocks</span></h3>
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <ul>
+                            <li><strong>危机型冲击</strong>（经济崩溃、公共安全事件）：短期震动大，但易被系统消化为"应急修复"而非"结构性改变"。<span class="en"><strong>Crisis‑type shocks:</strong> High short‑term impact, but easily absorbed by the system as "emergency repairs" rather than "structural change."</span></li>
+                            <li><strong>舆论型冲击</strong>（公共讨论、信息扩散）：能形成压力，但受限于信息通道的可控性，易消散。<span class="en"><strong>Public opinion‑type shocks:</strong> Can generate pressure, but are constrained by the controllability of information channels and tend to dissipate.</span></li>
+                            <li><strong>代际型冲击</strong>（价值观更替、新生代进入体系）：缓慢但深层，可能改变"博弈文化"的激励机制，但需要数十年沉淀。<span class="en"><strong>Generational‑type shocks:</strong> Slow but deep, potentially altering the incentive structure of "bargaining culture," yet requiring decades of sedimentation.</span></li>
+                        </ul>
+                        <div class="highlight-box">
+                            <p><strong>核心判断：</strong> 外部冲击要触发结构改变，必须满足两个条件之一——冲击强度超过系统吸纳阈值，或冲击重复频率打破系统遗忘周期。</p>
+                            <span class="en"><strong>Core Judgment:</strong> For external shocks to trigger structural change, one of two conditions must be met—either the intensity of the shock exceeds the system's absorption threshold, or its repetition frequency breaks the system's forgetting cycle.</span>
+                        </div>
+                    </div>
+                </div>
+                <h3>四个可观察变量 <span class="en-inline">Four Observable Variables</span></h3>
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <ul>
+                            <li><strong>裁量权空间的代际变化：</strong> 基层执行者的行为模式是否在代际更替中出现"规则偏好"高于"关系偏好"。<span class="en"><strong>Generational change in discretionary space:</strong> Whether the behavioral patterns of grassroots enforcers show, across generational succession, a preference for "rules" over "relationships."</span></li>
+                            <li><strong>公共系统安全感的实际分布变化：</strong> 养老、医疗、司法等领域的"私人网络依赖度"是否在代际间自然衰减。<span class="en"><strong>Changes in the actual distribution of public system security:</strong> Whether the "reliance on private networks" in pensions, healthcare, judiciary, and other domains naturally declines across generations.</span></li>
+                            <li><strong>社会信任的局部先导实验：</strong> 某些地区、某些领域是否出现"系统单边撤除监控"且未被滥用的自发现象。<span class="en"><strong>Localized pilot experiments in social trust:</strong> Whether spontaneous phenomena of "unilateral removal of monitoring by the system" without widespread abuse emerge in certain regions or domains.</span></li>
+                            <li><strong>利益结构的再分配压力：</strong> 当"得利者"内部也因规则免责而产生摩擦时，系统自我维护的惯性是否出现裂缝。<span class="en"><strong>Redistributive pressure on interest structures:</strong> When friction arises within the "advantaged" group itself due to rule‑based immunity, whether cracks appear in the system's self‑maintenance inertia.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ===== 操作手册：七条方法论 ===== -->
+                <h2>七、操作手册：改变底层逻辑的七条方法论 <span class="en-inline">Operations Manual: Seven Methodologies</span></h2>
+                <div class="layer border-left-gold-light">
+                    <div class="layer-desc">
+                        <p>《改变底层逻辑的方法论（非归因，可操作）》</p>
+                        <span class="en">Methodology for Changing Underlying Logic (Non‑Attributional and Actionable)</span>
+                    </div>
+                </div>
+
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <p><strong>方法论</strong> <span class="en-inline" style="font-weight:400;">Methodology</span></p>
+                        <ol style="list-style-type:decimal; padding-left:1.5em;">
+                            <li>重定义系统的唯一目的 <span class="en">Redefine the sole purpose of the system</span></li>
+                            <li>权力的动态授权 <span class="en">Dynamic authorization of power</span></li>
+                            <li>责任归属逆转 <span class="en">Reversal of liability attribution</span></li>
+                            <li>裁判权与执行权永久物理隔离 <span class="en">Permanent physical separation of adjudicative and enforcement powers</span></li>
+                            <li>将"信任"作为系统的核心指标 <span class="en">Make "trust" the system's core metric</span></li>
+                            <li>释放被锁死的大多数 <span class="en">Unlock the locked‑out majority</span></li>
+                            <li>制度化的"代际纠偏" <span class="en">Institutionalized "intergenerational correction"</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="layer border-left-gold-light">
+                    <div class="highlight-box" style="border-left-color: #8aaa6a;">
+                        <p><strong>核心原则：</strong> 系统的强度不在于它能多紧地控制，而在于它能多深地信任。当系统把"控制"让位于"信任"时，所有被锁死的人都会从"潜在的破坏者"转变为"自发建设者"。</p>
+                        <span class="en"><strong>Core Principle:</strong> The strength of a system lies not in how tightly it can control, but in how deeply it can trust. When the system yields "control" to "trust," all those who were locked out transform from "potential disruptors" into "spontaneous builders."</span>
+                    </div>
+                </div>
+
+                <!-- ===== 验证工具 ===== -->
+                <h2>八、验证工具：文明流向的力学推演 <span class="en-inline">Validation Tool: The Mechanics of Civilizational Flow</span></h2>
+                <div class="layer border-left-gold-light">
+                    <div class="layer-desc">
+                        <p>《从地球人类视野的推演：为什么"换皮奴隶制"终将失效，而"真文明"必然成为引力中心》</p>
+                        <span class="en">A Deduction from the Perspective of Earthly Humanity: Why "Rebranded Slavery" Will Ultimately Fail, and Why "Genuine Civilization" Must Become the Center of Gravity</span>
+                    </div>
+                </div>
+                <h3>三项刚性需求理论 <span class="en-inline">Three Rigid Demands Theory</span></h3>
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <p>个体的迁移决策（无论是物理移民还是资本流动）始终围绕三个底层变量：</p>
+                        <span class="en">Individual migration decisions—whether physical emigration or capital flows—consistently revolve around three underlying variables:</span>
+                        <ul>
+                            <li><strong>风险溢价：</strong> 财产和人身安全被随机剥夺的概率是多少？<span class="en"><strong>Risk premium:</strong> What is the probability that my property and personal security will be arbitrarily deprived?</span></li>
+                            <li><strong>时间折现率：</strong> 今天的努力，在30年后还能不能兑现成可支配的权利？<span class="en"><strong>Time discount rate:</strong> Will my efforts today still be redeemable as disposable rights 30 years from now?</span></li>
+                            <li><strong>后代机会集：</strong> 孩子未来面临的选择空间是扩大还是收窄？<span class="en"><strong>Opportunity set for descendants:</strong> Will my children's future choice space expand or contract?</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <h3>安全底线覆盖后的人类行为变化 <span class="en-inline">Changes in Human Behavior After the Safety Floor Is Secured</span></h3>
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <ul>
+                            <li><strong>注意力带宽释放：</strong> 从"防御性计算"转向"探索性尝试"。<span class="en"><strong>Attention bandwidth released:</strong> From "defensive calculation" to "exploratory experimentation."</span></li>
+                            <li><strong>决策时间线拉长：</strong> 安全底线覆盖下限后，长期决策的心理账户变得充裕。<span class="en"><strong>Decision‑making time horizon extended:</strong> Once the safety floor covers the lower bound, the mental account for long‑term decisions becomes abundant.</span></li>
+                            <li><strong>风险定义重构：</strong> 坠落不再是永久性的，"向上跳跃"成为理性新选项。<span class="en"><strong>Risk redefined:</strong> Falling is no longer permanent; "leaping upward" becomes the new rational option.</span></li>
+                        </ul>
+                        <div class="highlight-box" style="border-left-color: #bace9a;">
+                            <p><strong>结论：</strong> 人力与资本自动向低费市场流动，此为经济学第一定理。</p>
+                            <span class="en"><strong>Conclusion:</strong> Human and financial capital automatically flow to low‑friction markets—this is the first theorem of economics.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== 文化≠文明 ===== -->
+                <h2>九、文化≠文明 <span class="en-inline">Culture ≠ Civilization</span></h2>
+                <div class="layer border-left-teal">
+                    <div class="layer-desc">
+                        <p>文化没有消失，是因为科技的进步，存储的方式多样化了，不代表它就是文明。种子没有消失，是因为人类的文明，是核心底层逻辑要素，不代表它能被掠夺。</p>
+                        <span class="en">Culture has not disappeared because of technological progress; the diversification of storage methods does not mean it is civilization. Seeds have not disappeared because of human civilization—they are core underlying logical elements, not something that can be plundered.</span>
+                        <div class="highlight-box" style="border-left-color: #8aaa6a; margin-top:12px;">
+                            <p><strong>文化是内容，文明是框架。科技存储了文化，不等于文明进步。</strong></p>
+                            <span class="en"><strong>Culture is content; civilization is framework. Technological storage of culture does not equal civilizational progress.</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== 全球人类主权基金 ===== -->
+                <h2>十、全球人类主权基金：制度核心 <span class="en-inline">Global Human Sovereign Fund: Core Institution</span></h2>
+
+                <h3>核心洞见：财富本不稀缺 <span class="en-inline">Core Insight: Wealth Is Not Intrinsically Scarce</span></h3>
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <p>人类社会一切冲突的底层假设，是"生存资源天然稀缺，所以必须争夺"。但这个假设本身需要被审视。</p>
+                        <span class="en">The underlying assumption of all human conflicts is that "survival resources are naturally scarce, so they must be fought over." But this assumption itself needs to be examined.</span>
+                        <p>一个现代国家积累的公共财富——包括但不限于：土地增值收益、自然资源租金、货币发行盈余、国有企业利润、行政垄断行业的超额回报、频谱与牌照拍卖收入——其总量早已远超保障全体国民基本生存所需的水平。</p>
+                        <span class="en">The public wealth accumulated by a modern state—including but not limited to land value appreciation, natural resource rents, seigniorage, state‑owned enterprise profits, excess returns from administrative monopolies, and spectrum/license auction revenues—has already far exceeded the level needed to guarantee the basic survival of all its citizens.</span>
+                        <p>真正的匮乏不是总量不足，而是这些公共财富的归属权，在制度设计之初就被极少数人所垄断。</p>
+                        <span class="en">The real scarcity is not insufficient total amount, but that the ownership of these public assets was monopolized by a tiny minority at the very inception of the institutional design.</span>
+                        <p>本方案的核心洞见是：如果在源头将这部分本应属于全体国民的公共财富，通过不可逆的制度设计归还给所有人，稀缺的幻象就会从根上消解。</p>
+                        <span class="en">The core insight of this proposal is: if this public wealth—which by right belongs to all citizens—is returned to everyone at the source through irreversible institutional design, the illusion of scarcity will dissolve at its root.</span>
+                    </div>
+                </div>
+
+                <h3>方案定义 <span class="en-inline">Proposal Definition</span></h3>
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <p><strong>全球人类主权基金</strong>，其最终形态为地球人类基本生存底线信托。</p>
+                        <span class="en"><strong>Global Human Sovereign Fund</strong>, in its ultimate form, is a trust for the basic survival floor of all Earth's humanity.</span>
+                        <p>它不属于任何国家、任何机构、任何特定群体。它只属于每一个具体的、不可替代的、享有平等受益权的生命体。</p>
+                        <span class="en">It belongs to no state, no institution, no particular group. It belongs only to every concrete, irreplaceable living being with equal beneficiary rights.</span>
+                        <p>在操作层面，它是一个以各国行政垄断行业超额利润及公共积累为初始资本来源、以单独立法为法律保障、以完整剥离和物理隔绝为治理原则、以初始资金永恒锁定为安全底线、以全球多元资产配置为增值手段、以开放分级账户体系为受益结构的永久性制度安排。</p>
+                        <span class="en">Operationally, it is a perpetual institutional arrangement that uses excess profits from state‑administered monopolies and public accumulations as its initial capital source, secured by separate legislation, governed by complete severance and physical isolation, anchored by perpetual locking of initial capital, enhanced through globally diversified asset allocation, and structured as an open tiered account system for beneficiaries.</span>
+                    </div>
+                </div>
+
+                <h3>三大制度原则 <span class="en-inline">Three Institutional Principles</span></h3>
+                <div class="layer border-left-gold">
+                    <div class="layer-desc">
+                        <p><strong>一、单独立法（宪法性法律）</strong></p>
+                        <span class="en"><strong>1. Separate Legislation (Constitutional Law)</strong></span>
+                        <p>基金必须以宪法性法律的地位设立，其法律位阶高于所有普通法律。任何与基金基本法相抵触的法律条款均自动无效。基金基本法的修改须经立法机构三分之二以上多数通过，并附带全民公决的最终确认。</p>
+                        <span class="en">The fund must be established by constitutional‑level law, with legal precedence over all ordinary laws. Any legal provision in conflict with the fund's basic law is automatically null. Amendments to the basic law require a two‑thirds supermajority in the legislature, plus final confirmation through a popular referendum.</span>
+                        <p><strong>二、完整剥离（三重剥离）</strong></p>
+                        <span class="en"><strong>2. Complete Severance (Threefold Severance)</strong></span>
+                        <ul>
+                            <li><strong>财产权的完整剥离：</strong> 划入基金的资产，其所有权在法律上完全转移至基金法人名下，原所有者不再保留任何追索权。<span class="en"><strong>Severance of property rights:</strong> The ownership of assets transferred to the fund is legally and completely vested in the fund's legal entity; the original owner retains no recourse rights.</span></li>
+                            <li><strong>人事权的完整剥离：</strong> 基金最高决策机构成员不得由在职或离任的创始国公职人员担任或提名。<span class="en"><strong>Severance of personnel rights:</strong> Members of the fund's highest decision‑making body shall not be or be nominated by current or former public officials of the founding state.</span></li>
+                            <li><strong>受益权的完整剥离并固化：</strong> 受益人范围及规则写入基金基本法正文，任何受益人不得因政治立场、宗教信仰、刑事犯罪而被剥夺受益权。<span class="en"><strong>Severance and entrenchment of beneficiary rights:</strong> The scope of beneficiaries and distribution rules are inscribed in the fund's basic law; no beneficiary may be deprived of their rights due to political stance, religious belief, or criminal conviction.</span></li>
+                        </ul>
+                        <p><strong>三、物理隔绝（三层次）</strong></p>
+                        <span class="en"><strong>3. Physical Isolation (Three Tiers)</strong></span>
+                        <ul>
+                            <li><strong>资本与母体的物理隔绝：</strong> 基金法定注册地选择法治高度成熟的国际金融中心；全部资产由全球顶级独立托管银行分散托管。<span class="en"><strong>Isolation of capital from the originating body:</strong> The fund is legally domiciled in an international financial centre with a mature rule‑of‑law system; all assets are custodied with globally top‑tier independent banks in diversified locations.</span></li>
+                            <li><strong>治理与权力的物理隔绝：</strong> 基金不受创始国任何机构或个人的指令约束；投资决策、调仓计划等内部信息不必向创始国政府汇报。<span class="en"><strong>Isolation of governance from power:</strong> The fund is not subject to any instructions from any institution or individual of the founding state; internal information such as investment decisions and rebalancing plans need not be reported to the founding government.</span></li>
+                            <li><strong>分配与身份的物理隔绝：</strong> 受益权分配不经过任何行政中间环节；分红通过区块链直达受益人数字账户。<span class="en"><strong>Isolation of distribution from identity:</strong> Beneficiary distributions bypass any administrative intermediaries; dividends are delivered directly to beneficiaries' digital accounts via blockchain.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ===== 十一条不可逾越的限制（表格） ===== -->
+                <h3>十一条不可逾越的限制 <span class="en-inline">Eleven Inviolable Restrictions</span></h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:8%;">序号 <span class="en-inline" style="font-weight:400;">No.</span></th>
+                                <th style="width:42%;">限制 <span class="en-inline" style="font-weight:400;">Restriction</span></th>
+                                <th style="width:50%;">说明 <span class="en-inline" style="font-weight:400;">Description</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>分级锁定，不可提前提取本金 <span class="en-inline" style="font-weight:400;">Tiered Lock-in, No Early Withdrawal of Principal</span></td>
+                                <td>个人级账户锁定至60周岁；机构级账户锁定期不低于20年；国家级账户可自选永久锁定或≥10年锁定期。<span class="en-inline" style="font-weight:400;">Personal accounts locked until age 60; institutional accounts locked for at least 20 years; state accounts may choose perpetual lock-in or a lock-in period ≥10 years.</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>不可修改核心条款 <span class="en-inline" style="font-weight:400;">Core Clauses Unamendable</span></td>
+                                <td>初始资金类型的永续锁定、受益人资格的不可剥夺性、治理的独立性。<span class="en-inline" style="font-weight:400;">Perpetual lock-in of initial capital type, inalienability of beneficiary status, independence of governance.</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>不可单方退出 <span class="en-inline" style="font-weight:400;">No Unilateral Withdrawal</span></td>
+                                <td>注入行为不可逆。<span class="en-inline" style="font-weight:400;">The act of injection is irreversible.</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>不可干预投资 <span class="en-inline" style="font-weight:400;">No Interference in Investment</span></td>
+                                <td>投资决策的唯一准则是经风险调整后的长期回报最大化。<span class="en-inline" style="font-weight:400;">The sole criterion for investment decisions is maximization of risk-adjusted long-term returns.</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>不可截留分配 <span class="en-inline" style="font-weight:400;">No Interception of Distributions</span></td>
+                                <td>分红通过区块链直达受益人数字账户。<span class="en-inline" style="font-weight:400;">Dividends are delivered directly to beneficiaries' digital accounts via blockchain.</span></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>不可剥夺受益权 <span class="en-inline" style="font-weight:400;">No Deprivation of Beneficiary Rights</span></td>
+                                <td>受益权与政治权利和人身自由完全分离。<span class="en-inline" style="font-weight:400;">Beneficiary rights are completely separated from political rights and personal freedom.</span></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>不可转让受益权 <span class="en-inline" style="font-weight:400;">No Transfer of Beneficiary Rights</span></td>
+                                <td>不在二级市场转让、抵押、质押或交易。<span class="en-inline" style="font-weight:400;">Not transferable, mortgageable, pledgeable, or tradable on secondary markets.</span></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>不可胁迫流转 <span class="en-inline" style="font-weight:400;">No Coerced Transfer</span></td>
+                                <td>任何胁迫行为一经查实，相关受益权终止。<span class="en-inline" style="font-weight:400;">Any proven coercion results in termination of the relevant beneficiary rights.</span></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>不可豁免制裁合规 <span class="en-inline" style="font-weight:400;">No Waiver of Sanctions Compliance</span></td>
+                                <td>仅遵守联合国安理会制裁决议，不接受单边制裁。<span class="en-inline" style="font-weight:400;">Only UN Security Council sanctions are followed; unilateral sanctions are not accepted.</span></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>不可关闭通道 <span class="en-inline" style="font-weight:400;">No Closure of Access</span></td>
+                                <td>无论多少个国家消亡，分配系统继续运行。<span class="en-inline" style="font-weight:400;">Regardless of how many states perish, the distribution system continues to operate.</span></td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>不可解散（除非全民公决） <span class="en-inline" style="font-weight:400;">No Dissolution (Except by Referendum)</span></td>
+                                <td>解散须经全民公决绝对多数通过，剩余资产按比例分配给全体受益人。<span class="en-inline" style="font-weight:400;">Dissolution requires an absolute majority in a popular referendum, with remaining assets distributed proportionally to all beneficiaries.</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ===== 分级账户体系 ===== -->
+                <h3>分级账户体系 <span class="en-inline">Tiered Account System</span></h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>账户类型 <span class="en-inline" style="font-weight:400;">Account Type</span></th>
+                                <th>锁定规则 <span class="en-inline" style="font-weight:400;">Lock‑in Rule</span></th>
+                                <th>收益归属 <span class="en-inline" style="font-weight:400;">Beneficiary</span></th>
+                                <th>典型用途 <span class="en-inline" style="font-weight:400;">Typical Use</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>国民基金类型 <span class="en-inline" style="font-weight:400;">National Fund</span></td>
+                                <td>永久锁定（国家自愿选择） <span class="en-inline" style="font-weight:400;">Perpetual (state‑voluntary)</span></td>
+                                <td>全体国民（按人头发放） <span class="en-inline" style="font-weight:400;">All citizens (per capita)</span></td>
+                                <td>全民基本生存底线保障 <span class="en-inline" style="font-weight:400;">Basic survival floor</span></td>
+                            </tr>
+                            <tr>
+                                <td>国家级投资账户 <span class="en-inline" style="font-weight:400;">State Investment Account</span></td>
+                                <td>可配置锁定期（≥10年） <span class="en-inline" style="font-weight:400;">Configurable (≥10y)</span></td>
+                                <td>国家财政 <span class="en-inline" style="font-weight:400;">State treasury</span></td>
+                                <td>国家主权投资、平准基金 <span class="en-inline" style="font-weight:400;">Sovereign investment, stabilization fund</span></td>
+                            </tr>
+                            <tr>
+                                <td>社保账户 <span class="en-inline" style="font-weight:400;">Social Security Account</span></td>
+                                <td>永久锁定 <span class="en-inline" style="font-weight:400;">Perpetual</span></td>
+                                <td>社保基金 <span class="en-inline" style="font-weight:400;">Social security fund</span></td>
+                                <td>养老、医疗等社保支出 <span class="en-inline" style="font-weight:400;">Pensions, healthcare</span></td>
+                            </tr>
+                            <tr>
+                                <td>机构账户 <span class="en-inline" style="font-weight:400;">Institutional Account</span></td>
+                                <td>可配置锁定期（建议≥5年） <span class="en-inline" style="font-weight:400;">Configurable (≥5y)</span></td>
+                                <td>机构本身 <span class="en-inline" style="font-weight:400;">Institution itself</span></td>
+                                <td>企业/机构长期投资 <span class="en-inline" style="font-weight:400;">Long‑term investment</span></td>
+                            </tr>
+                            <tr>
+                                <td>个人账户 <span class="en-inline" style="font-weight:400;">Individual Account</span></td>
+                                <td>可配置锁定期（至多至60周岁） <span class="en-inline" style="font-weight:400;">Configurable (up to age 60)</span></td>
+                                <td>个人 <span class="en-inline" style="font-weight:400;">Individual</span></td>
+                                <td>个人养老储备 <span class="en-inline" style="font-weight:400;">Personal pension reserve</span></td>
+                            </tr>
+                            <tr>
+                                <td>家族账户 <span class="en-inline" style="font-weight:400;">Family Account</span></td>
+                                <td>可配置锁定期（可选永久） <span class="en-inline" style="font-weight:400;">Configurable (perpetual optional)</span></td>
+                                <td>家族内部 <span class="en-inline" style="font-weight:400;">Family</span></td>
+                                <td>家族互助、教育、传承 <span class="en-inline" style="font-weight:400;">Mutual aid, education, legacy</span></td>
+                            </tr>
+                            <tr>
+                                <td>地方政府账户 <span class="en-inline" style="font-weight:400;">Local Government Account</span></td>
+                                <td>可配置锁定期（≥5年） <span class="en-inline" style="font-weight:400;">Configurable (≥5y)</span></td>
+                                <td>地方财政 <span class="en-inline" style="font-weight:400;">Local treasury</span></td>
+                                <td>地方公共支出 <span class="en-inline" style="font-weight:400;">Local public expenditure</span></td>
+                            </tr>
+                            <tr>
+                                <td>慈善账户 <span class="en-inline" style="font-weight:400;">Charity Account</span></td>
+                                <td>可配置锁定期（建议≥10年） <span class="en-inline" style="font-weight:400;">Configurable (≥10y)</span></td>
+                                <td>慈善组织 <span class="en-inline" style="font-weight:400;">Charitable organization</span></td>
+                                <td>公益事业 <span class="en-inline" style="font-weight:400;">Public welfare</span></td>
+                            </tr>
+                            <tr>
+                                <td>国际组织账户 <span class="en-inline" style="font-weight:400;">International Organization Account</span></td>
+                                <td>可配置锁定期 <span class="en-inline" style="font-weight:400;">Configurable</span></td>
+                                <td>国际组织 <span class="en-inline" style="font-weight:400;">International organization</span></td>
+                                <td>全球公共品融资 <span class="en-inline" style="font-weight:400;">Global public goods financing</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ===== 十一道防火墙（表格） ===== -->
+                <h3>十一道防火墙 <span class="en-inline">Eleven Firewalls</span></h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:8%;">序号 <span class="en-inline" style="font-weight:400;">No.</span></th>
+                                <th style="width:42%;">防火墙 <span class="en-inline" style="font-weight:400;">Firewall</span></th>
+                                <th style="width:50%;">说明 <span class="en-inline" style="font-weight:400;">Description</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>矩阵式独立账户体系 <span class="en-inline" style="font-weight:400;">Matrix-style independent account system</span></td>
+                                <td>每一类资产、每一个市场、每一种货币注册为独立法律实体。<span class="en-inline" style="font-weight:400;">Each asset class, market, and currency is registered as a separate legal entity.</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>强制对冲配置 <span class="en-inline" style="font-weight:400;">Mandatory hedging</span></td>
+                                <td>任何账户组必须配置对冲头寸，实现风险中性。<span class="en-inline" style="font-weight:400;">Every account group must maintain hedging positions to achieve risk neutrality.</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>业绩达标十年递延发放 <span class="en-inline" style="font-weight:400;">Ten-year deferred compensation</span></td>
+                                <td>操盘手薪酬与长期业绩挂钩。<span class="en-inline" style="font-weight:400;">Fund managers' pay is tied to long-term performance.</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>一篮子货币比例配比 <span class="en-inline" style="font-weight:400;">Currency basket weighting</span></td>
+                                <td>锚定BIS、IMF、CLS、SWIFT全球数据。<span class="en-inline" style="font-weight:400;">Anchored to global data from BIS, IMF, CLS, and SWIFT.</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>大类资产比例配比 <span class="en-inline" style="font-weight:400;">Asset class allocation</span></td>
+                                <td>股票60%-70%、债券20%-30%、现金1%-5%、对冲工具5%-10%。<span class="en-inline" style="font-weight:400;">Equities 60-70%, bonds 20-30%, cash 1-5%, hedging instruments 5-10%.</span></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>法定费率上限 <span class="en-inline" style="font-weight:400;">Statutory fee cap</span></td>
+                                <td>总管理费率年化1%以内。<span class="en-inline" style="font-weight:400;">Total management fee ≤1% annually.</span></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>单一国家市场权重约束 <span class="en-inline" style="font-weight:400;">Single-country market weight cap</span></td>
+                                <td>任一国家持仓不超过基金净值20%。<span class="en-inline" style="font-weight:400;">No single country's holdings exceed 20% of net asset value.</span></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>投资标的硬性约束 <span class="en-inline" style="font-weight:400;">Investment eligibility constraints</span></td>
+                                <td>债券评级不低于A级；股票须满足高股息/高成长/高流通三选一。<span class="en-inline" style="font-weight:400;">Bonds rated at least A; equities must meet one of: high dividend, high growth, or high liquidity.</span></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>5%个股天赋仓位 <span class="en-inline" style="font-weight:400;">5% discretionary allocation</span></td>
+                                <td>豁免第八道限制，用于投资高潜力标的。<span class="en-inline" style="font-weight:400;">Exempt from constraint 8, for high-potential investments.</span></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>对冲账户与股票账户强制分离 <span class="en-inline" style="font-weight:400;">Mandatory separation of hedge and equity accounts</span></td>
+                                <td>物理隔离、法律独立。<span class="en-inline" style="font-weight:400;">Physically and legally independent.</span></td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>黄金与比特币配置约束 <span class="en-inline" style="font-weight:400;">Gold and bitcoin allocation cap</span></td>
+                                <td>仅限对冲账户和商品账户，合计不超过总资产2%。<span class="en-inline" style="font-weight:400;">Only within hedge and commodity accounts, combined ≤2% of total assets.</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ===== 制度的历史定位 ===== -->
+                <h3>制度的历史定位 <span class="en-inline">Historical Positioning of the System</span></h3>
+                <div class="layer border-left-gold-light">
+                    <div class="layer-desc">
+                        <p>本方案不属于"从下往上要"（革命、罢工、征税），也不属于"从上往下给"（福利、慈善、公益）。</p>
+                        <span class="en">This proposal is neither "demanding from below" (revolution, strikes, taxation) nor "giving from above" (welfare, charity, philanthropy).</span>
+                        <p>它是一个绝对权力框架内的绝对权力自我否定机制——用法律和物理手段锁死权力染指公共财富的所有路径。</p>
+                        <span class="en">It is a self‑negation mechanism of absolute power within an absolute power framework—using legal and physical means to seal all paths through which power might encroach upon public wealth.</span>
+                    </div>
+                </div>
+
+                <!-- ===== 完整体系架构总览 ===== -->
+                <h2>十一、完整体系架构总览 <span class="en-inline">Complete System Architecture Overview</span></h2>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>层次 <span class="en-inline" style="font-weight:400;">Layer</span></th>
+                                <th>功能 <span class="en-inline" style="font-weight:400;">Function</span></th>
+                                <th>核心组件 <span class="en-inline" style="font-weight:400;">Core Components</span></th>
+                                <th>来源 <span class="en-inline" style="font-weight:400;">Source</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>第一层</strong><br />元框架 <span class="en-inline" style="font-weight:400;">Meta‑Framework</span></td>
+                                <td>定义"什么是好系统" <span class="en-inline" style="font-weight:400;">Defines "what is a good system"</span></td>
+                                <td>三大基石、三条元法则 <span class="en-inline" style="font-weight:400;">Three Cornerstones, Three Meta‑Principles</span></td>
+                                <td>《三大基石》<span class="en-inline" style="font-weight:400;">Three Cornerstones</span><br />《文明等级判断说明书》<span class="en-inline" style="font-weight:400;">Civilization Level Assessment Manual</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>第二层</strong><br />诊断工具 <span class="en-inline" style="font-weight:400;">Diagnostic Tools</span></td>
+                                <td>识别"坏系统如何死亡" <span class="en-inline" style="font-weight:400;">Identifies "how a bad system dies"</span></td>
+                                <td>九式路径图、三条件+两阻碍、直觉报警vs规则免责 <span class="en-inline" style="font-weight:400;">Nine‑Step Path, Three Conditions+Two Obstacles, Intuitive Alarms vs Rule Immunity</span></td>
+                                <td>《低级文明的完整路径图》<span class="en-inline" style="font-weight:400;">The Complete Path of a Low‑Level Civilization</span><br />《确定性社会系统形成的必要条件与阻碍因素》<span class="en-inline" style="font-weight:400;">Necessary Conditions and Obstacles for the Formation of a Determinate Social System</span><br />《正义、利益与规则的错位》<span class="en-inline" style="font-weight:400;">The Misalignment of Justice, Interests, and Rules</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>第三层</strong><br />度量工具 <span class="en-inline" style="font-weight:400;">Measurement Tools</span></td>
+                                <td>计算"文明等级" <span class="en-inline" style="font-weight:400;">Calculates "civilization level"</span></td>
+                                <td>文明指数公式、评分标尺、等级判定、极端规则 <span class="en-inline" style="font-weight:400;">Civilization Index formula, scoring scale, level determination, extreme rules</span></td>
+                                <td>《文明等级判断说明书》<span class="en-inline" style="font-weight:400;">Civilization Level Assessment Manual</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>第四层</strong><br />过程监测 <span class="en-inline" style="font-weight:400;">Process Monitoring</span></td>
+                                <td>观察"系统正在哪一环" <span class="en-inline" style="font-weight:400;">Observes "which stage the system is at"</span></td>
+                                <td>外部冲击类型、转化条件、四个可观察变量 <span class="en-inline" style="font-weight:400;">External shock types, transformation conditions, four observable variables</span></td>
+                                <td>《系统"非死锁"的条件分析》<span class="en-inline" style="font-weight:400;">Conditional Analysis of System "Non‑Deadlock"</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>第五层</strong><br />药方与操作手册 <span class="en-inline" style="font-weight:400;">Prescription &amp; Operations Manual</span></td>
+                                <td>提供"解决方案" <span class="en-inline" style="font-weight:400;">Provides solutions</span></td>
+                                <td>全民基金、七条方法论 <span class="en-inline" style="font-weight:400;">Universal Sovereign Fund, Seven Methodologies</span></td>
+                                <td>《地球的文明之书》<span class="en-inline" style="font-weight:400;">The Book of Earth's Civilization</span><br />《改变底层逻辑的方法论》<span class="en-inline" style="font-weight:400;">Methodology for Changing Underlying Logic</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>第六层</strong><br />验证工具 <span class="en-inline" style="font-weight:400;">Validation Tools</span></td>
+                                <td>论证"方案为什么有效" <span class="en-inline" style="font-weight:400;">Demonstrates "why it must prevail"</span></td>
+                                <td>文明流向力学推演、安全底线行为学效应、实证验证 <span class="en-inline" style="font-weight:400;">Mechanics of civilizational flow, behavioral effects of safety floor, empirical validation</span></td>
+                                <td>《从地球人类视野的推演》<span class="en-inline" style="font-weight:400;">A Deduction from the Perspective of Earthly Humanity</span><br />《第五篇评论区》<span class="en-inline" style="font-weight:400;">Comments Section of Article V</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ===== 验收结论 ===== -->
+                <h2>十二、验收结论 <span class="en-inline">Inspection Conclusion</span></h2>
+                <div class="layer border-left-gold-light">
+                    <div class="layer-desc">
+                        <p>该体系已完成从公理定义→诊断模型→度量工具→过程监测→药方设计→操作手册→学术与经济验证→物理封装→全球分发的全链条闭环。</p>
+                        <span class="en">This system has completed the full‑chain closed loop from Axiom Definition → Diagnostic Models → Measurement Tools → Process Monitoring → Prescription Design → Operations Manual → Academic and Economic Validation → Physical Encapsulation → Global Distribution.</span>
+                        <div class="table-wrap" style="margin-top:12px;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>评估维度 <span class="en-inline" style="font-weight:400;">Dimension</span></th>
+                                        <th>结论 <span class="en-inline" style="font-weight:400;">Conclusion</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>公理起点的不可再生性 <span class="en-inline" style="font-weight:400;">Non‑reproducibility of axiomatic starting point</span></td><td>✅ 通过 <span class="en-inline" style="font-weight:400;">PASSED</span></td></tr>
+                                    <tr><td>诊断模型的完整性 <span class="en-inline" style="font-weight:400;">Completeness of diagnostic model</span></td><td>✅ 通过 <span class="en-inline" style="font-weight:400;">PASSED</span></td></tr>
+                                    <tr><td>度量工具的自洽性 <span class="en-inline" style="font-weight:400;">Self‑consistency of measurement tools</span></td><td>✅ 通过 <span class="en-inline" style="font-weight:400;">PASSED</span></td></tr>
+                                    <tr><td>过程监测工具的实操性 <span class="en-inline" style="font-weight:400;">Practicality of process monitoring tools</span></td><td>✅ 通过 <span class="en-inline" style="font-weight:400;">PASSED</span></td></tr>
+                                    <tr><td>药方的物理与法律可行性 <span class="en-inline" style="font-weight:400;">Physical and legal feasibility of prescription</span></td><td>✅ 通过 <span class="en-inline" style="font-weight:400;">PASSED</span></td></tr>
+                                    <tr><td>操作手册的系统性 <span class="en-inline" style="font-weight:400;">Systematic nature of operations manual</span></td><td>✅ 通过 <span class="en-inline" style="font-weight:400;">PASSED</span></td></tr>
+                                    <tr><td>经济与行为学验证的严谨性 <span class="en-inline" style="font-weight:400;">Rigor of economic and behavioral validation</span></td><td>✅ 通过 <span class="en-inline" style="font-weight:400;">PASSED</span></td></tr>
+                                    <tr><td>概念边界的清晰度 <span class="en-inline" style="font-weight:400;">Clarity of conceptual boundaries</span></td><td>✅ 通过 <span class="en-inline" style="font-weight:400;">PASSED</span></td></tr>
+                                    <tr><td>自发免疫机制 <span class="en-inline" style="font-weight:400;">Auto‑immune mechanism</span></td><td>✅ 通过 <span class="en-inline" style="font-weight:400;">PASSED</span></td></tr>
+                                    <tr><td>执行分发的完整性与冗余性 <span class="en-inline" style="font-weight:400;">Completeness and redundancy of distribution</span></td><td>✅ 通过 <span class="en-inline" style="font-weight:400;">PASSED</span></td></tr>
+                                    <tr><td>用自身模型检验自身的逻辑一致性 <span class="en-inline" style="font-weight:400;">Logical consistency of self‑audit</span></td><td>✅ 通过 <span class="en-inline" style="font-weight:400;">PASSED</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="highlight-box" style="border-left-color: #8aaa6a; margin-top:16px;">
+                            <p><strong>最终结论：</strong>该体系已在逻辑层面完成全部封装，物理层面完成多元冗余备份，机构层面完成跨国递交。已具备可启动的全部条件。</p>
+                            <span class="en"><strong>Final Conclusion:</strong> The system has completed full logical encapsulation, multiple redundant physical backups, and cross‑border institutional submissions. All conditions for activation are met.</span>
+                            <p>它不依赖任何外部条件。它只依赖一个条件：有人看懂它。</p>
+                            <span class="en">It depends on no external conditions. It depends only on one condition: that someone understands it.</span>
+                            <p style="margin-top:8px;"><strong>它已存在于：</strong></p>
+                            <span class="en"><strong>It already exists at:</strong></span>
+                            <ul style="margin-top:4px;">
+                                <li>CERN（Zenodo）——人类最大的学术基础设施 <span class="en-inline" style="font-weight:400;">— Humanity's largest academic infrastructure</span></li>
+                                <li>GitHub / Gitee ——全球与中国的代码托管平台 <span class="en-inline" style="font-weight:400;">— Global and Chinese code hosting platforms</span></li>
+                                <li>ArDrive ——区块链永久存储网络 <span class="en-inline" style="font-weight:400;">— Blockchain permanent storage network</span></li>
+                                <li>Figshare ——学术存档平台 <span class="en-inline" style="font-weight:400;">— Academic archiving platform</span></li>
+                                <li>中、新、港三地的政府与智库机构 <span class="en-inline" style="font-weight:400;">— Government and think tank institutions across China, Singapore, and Hong Kong</span></li>
+                                <li>19项全球奖项的申请通道 <span class="en-inline" style="font-weight:400;">— Application channels for 19 global awards</span></li>
+                            </ul>
+                            <p style="margin-top:8px;"><strong>它不会消失。它只会被启动，或者等待。</strong></p>
+                            <span class="en"><strong>It will not disappear. It will either be activated, or it will wait.</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== 页脚 ===== -->
+                <div class="footer">
+                    杨晟琦文明公理系统 · 独立思想锚点 · 封装完成: 2026年7月
+                    <span class="en">Yang Shengqi Civilizational Axiomatic System · Independent Thought Anchor · Encapsulation Completed: July 2026</span>
+                    <span class="footer-license">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+                    <span class="en">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank">CC BY-ND 4.0</a></span>
+                </div>
+
+            </div><!-- /page-content -->
+        </main>
+    </div>
+
+    <script src="common.js"></script>
+</body>
+</html>

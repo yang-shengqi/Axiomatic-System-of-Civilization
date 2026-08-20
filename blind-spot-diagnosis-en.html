@@ -1,0 +1,2758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Cognitive Blind Spot Diagnostic Tool (English Version) · Yang Shengqi's Axiomatic System of Civilization" />
+    <title>Cognitive Blind Spot Diagnostic Tool · Yang Shengqi's Axiomatic System of Civilization</title>
+    <link rel="stylesheet" href="common.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        /* ===== Page-specific styles ===== */
+       .container {
+           padding: 0;                    /* 移除多余内边距 */
+           background: transparent;       /* 可选：透明背景，让主背景透出 */
+           border: none;
+           box-shadow: none;
+       }
+        .result-box {
+            background: #131816;
+            border-radius: 14px;
+            border: 1px solid #2a322a;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            margin-top: 28px;
+        }
+
+        /* ===== Intro box ===== */
+        .intro-box {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            margin-bottom: 28px;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--color-primary);
+        }
+        .intro-box .intro-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-h1);
+            margin-bottom: 8px;
+        }
+        .intro-box .intro-desc {
+            font-size: 15px;
+            color: var(--text-body);
+            line-height: 2;
+        }
+        .intro-box .intro-desc strong {
+            color: var(--text-h3);
+        }
+        .intro-box .intro-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+        .intro-box .intro-features span {
+            font-size: 14px;
+            color: var(--link-color);
+        }
+        .intro-box .intro-features .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            margin-right: 6px;
+        }
+
+        /* ===== Start button ===== */
+        .start-area {
+            text-align: center;
+            padding: 20px 0 10px;
+        }
+        .start-area .btn-start {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 16px 60px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--link-color);
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-card);
+        }
+        .start-area .btn-start:hover {
+            border-color: var(--color-primary);
+            color: var(--text-h1);
+            background: var(--color-primary-dim);
+            box-shadow: var(--shadow-card-hover);
+            transform: scale(1.02);
+        }
+        .start-area .btn-start:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .start-area .start-hint {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 14px;
+        }
+
+        /* ===== Diagnosis area ===== */
+        .diagnosis-active {
+            display: none;
+        }
+        .diagnosis-active.visible {
+            display: block;
+        }
+
+        /* ===== Timer & progress ===== */
+        .time-estimate {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 10px 18px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .time-estimate .time-num {
+            color: var(--link-color);
+            font-weight: 600;
+        }
+        .time-estimate .timer {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .progress-bar {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 8px 16px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+        }
+        .progress-bar .total-progress {
+            font-size: 14px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .progress-bar .total-progress strong {
+            color: var(--link-color);
+        }
+        .progress-bar .progress-track {
+            flex: 1;
+            min-width: 60px;
+            height: 4px;
+            background: var(--border-color);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+        .progress-bar .progress-track .fill {
+            height: 100%;
+            background: var(--color-primary);
+            border-radius: var(--radius-sm);
+            transition: width 0.5s ease;
+            width: 0;
+        }
+        .progress-bar .next-dim-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .progress-bar .next-dim-name {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        /* ===== Step card ===== */
+        .step-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 24px 28px 28px;
+            margin-bottom: 12px;
+            transition: var(--transition-base);
+        }
+        .step-card:hover {
+            border-color: var(--border-light);
+        }
+        .step-card .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .step-card .step-header .step-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-h3);
+        }
+        .step-card .step-header .step-title .dim {
+            color: var(--link-color);
+        }
+        .step-card .step-header .step-title .dim-progress {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 15px;
+        }
+        .step-card .step-header .step-title .sep {
+            color: var(--text-muted);
+            font-weight: 300;
+            margin: 0 4px;
+        }
+        .step-card .step-header .step-title .layer-name {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 15px;
+        }
+        .step-card .step-header .step-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 3px 16px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-light);
+        }
+        .step-card .step-header .step-badge.s1 {
+            color: var(--link-color);
+            background: rgba(138, 170, 106, 0.08);
+            border-color: var(--color-primary-dim);
+        }
+        .step-card .step-header .step-badge.s2 {
+            color: var(--color-gold);
+            background: rgba(212, 168, 67, 0.08);
+            border-color: var(--color-gold-dim);
+        }
+        .step-card .step-header .step-badge.s3 {
+            color: var(--text-h3);
+            background: var(--bg-hover);
+            border-color: var(--border-light);
+        }
+        .step-card .step-header .step-badge .sub {
+            font-weight: 400;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .purpose-tag {
+            font-size: 14px;
+            color: var(--text-muted);
+            background: transparent;
+            padding: 4px 0 8px 0;
+            margin-bottom: 6px;
+            border-left: none;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .purpose-tag strong {
+            font-weight: normal;
+            color: var(--text-secondary);
+        }
+
+        .step-card .question-block .q-text {
+            font-size: 16px;
+            color: var(--text-h3);
+            margin-bottom: 14px;
+            padding-left: 4px;
+            line-height: 1.7;
+        }
+        .step-card .question-block .q-text .q-num {
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        .step-card .question-block .q-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-left: 4px;
+        }
+        .step-card .question-block .q-options label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 14px;
+            color: var(--text-body);
+            background: var(--bg-body);
+        }
+        .step-card .question-block .q-options label:hover {
+            border-color: var(--border-light);
+            color: var(--text-h3);
+        }
+        .step-card .question-block .q-options label .option-label {
+            font-weight: 700;
+            color: var(--text-secondary);
+            min-width: 28px;
+            flex-shrink: 0;
+        }
+        .step-card .question-block .q-options label input[type="radio"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--border-light);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            flex-shrink: 0;
+        }
+        .step-card .question-block .q-options label input[type="radio"]:checked {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            box-shadow: inset 0 0 0 3px var(--bg-body);
+        }
+        .step-card .question-block .q-options label.selected {
+            border-color: var(--color-primary);
+            background: var(--color-primary-dim);
+            color: var(--text-h1);
+        }
+        .step-card .question-block .q-options label.selected input[type="radio"] {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            box-shadow: inset 0 0 0 3px var(--bg-body);
+        }
+
+        .step-card .step-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4px;
+        }
+        .step-card .step-status {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+        .step-card .step-status.active {
+            color: var(--link-color);
+        }
+        .step-card .step-status.done {
+            color: var(--color-success);
+        }
+        .step-card .btn-back {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 6px 18px;
+            font-size: 13px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-fast);
+            white-space: nowrap;
+        }
+        .step-card .btn-back:hover {
+            border-color: var(--border-light);
+            color: var(--text-secondary);
+        }
+        .step-card .btn-back:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* ===== Completion message ===== */
+        .complete-msg {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--color-primary-dim);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--color-primary);
+        }
+        .complete-msg .icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+        .complete-msg .title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-h1);
+            margin-bottom: 6px;
+        }
+        .complete-msg .sub {
+            font-size: 15px;
+            color: var(--text-body);
+            margin-bottom: 16px;
+        }
+        .complete-msg .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .complete-msg .btn-group .btn-report {
+            padding: 12px 36px;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-base);
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+            color: var(--link-color);
+        }
+        .complete-msg .btn-group .btn-report:hover {
+            border-color: var(--color-primary);
+            color: var(--text-h1);
+            background: var(--color-primary-dim);
+            box-shadow: var(--shadow-card-hover);
+        }
+        .complete-msg .btn-group .btn-reset {
+            padding: 12px 36px;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-base);
+            background: transparent;
+            color: var(--text-muted);
+            border-color: var(--border-color);
+        }
+        .complete-msg .btn-group .btn-reset:hover {
+            border-color: var(--border-light);
+            color: var(--text-secondary);
+            background: var(--bg-card);
+        }
+
+        /* ===== Result area ===== */
+        .result-box {
+            background: transparent;
+            padding: 0;
+            margin-top: 28px;
+            display: none;
+        }
+        .result-box.show {
+            display: block;
+        }
+        .result-box .result-header {
+            background: #131816;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            padding: 20px 28px;
+            border: 1px solid var(--border-color);
+            border-bottom: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+        }
+        .result-box .result-header .result-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-h1);
+        }
+        .result-box .result-header .result-title .q {
+            color: var(--link-color);
+            font-weight: 400;
+        }
+        .result-box .result-header .result-badge {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .result-box .result-header .badge-item {
+            font-size: 13px;
+            padding: 4px 16px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+        .badge-item.pass {
+            color: var(--color-success);
+            border-color: var(--color-success);
+            background: rgba(106, 170, 106, 0.08);
+        }
+        .badge-item.fail {
+            color: var(--color-danger);
+            border-color: var(--color-danger);
+            background: rgba(212, 122, 106, 0.08);
+        }
+        .badge-item.warn {
+            color: var(--color-gold);
+            border-color: var(--color-gold);
+            background: rgba(212, 168, 67, 0.08);
+        }
+
+        .result-box .result-body {
+            padding: 0;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .result-box .result-body .report-inner {
+            max-width: 820px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .result-box .result-body .result-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 14px;
+            width: 100%;
+            transition: var(--transition-base);
+        }
+        .result-box .result-body .result-card:hover {
+            border-color: var(--border-light);
+        }
+        .result-box .result-body .result-card .card-title {
+            font-weight: 700;
+            color: var(--text-h3);
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+        .result-box .result-body .result-card .card-content {
+            font-size: 14px;
+            color: var(--text-body);
+            line-height: 1.9;
+        }
+
+        /* ===== Dimension progress ===== */
+        .dim-progress-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .dim-progress-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .dim-progress-item .dim-label {
+            width: 70px;
+            font-size: 13px;
+            color: var(--link-color);
+            flex-shrink: 0;
+        }
+        .dim-progress-item .dim-track {
+            flex: 1;
+            height: 6px;
+            background: var(--border-color);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+        .dim-progress-item .dim-track .dim-fill {
+            height: 100%;
+            border-radius: var(--radius-sm);
+            transition: width 0.6s ease;
+            background: var(--color-primary);
+        }
+        .dim-progress-item .dim-pct {
+            width: 40px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .dim-progress-item .dim-score {
+            width: 60px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .dim-progress-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px 18px;
+            margin-bottom: 14px;
+            width: 100%;
+            transition: var(--transition-base);
+        }
+        .dim-progress-card:hover {
+            border-color: var(--border-light);
+        }
+        .dim-progress-card .card-title {
+            font-weight: 700;
+            color: var(--text-h3);
+            font-size: 16px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+        }
+
+        /* ===== Level badge ===== */
+        .level-light {
+            text-align: center;
+            padding: 8px 0 6px 0;
+        }
+        .level-light .level-badge {
+            display: inline-block;
+            background: var(--color-primary-dim);
+            border: 2px solid var(--color-primary);
+            border-radius: var(--radius-full);
+            padding: 6px 28px;
+            margin-bottom: 10px;
+        }
+        .level-light .level-stars {
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: var(--color-gold);
+        }
+        .level-light .level-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-h1);
+            margin-left: 6px;
+        }
+        .level-light .level-desc {
+            font-size: 15px;
+            color: var(--link-color);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 6px auto 0 auto;
+            padding: 0 8px;
+        }
+
+        /* ===== Advice area ===== */
+        .advice-light {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .advice-light .advice-main {
+            font-size: 15px;
+            color: var(--text-h3);
+            line-height: 1.8;
+            text-align: left;
+        }
+        .advice-light .advice-main strong {
+            color: var(--link-color);
+        }
+        .advice-light .advice-items {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-left: 4px;
+        }
+        .advice-light .advice-item {
+            font-size: 14px;
+            color: var(--text-body);
+            line-height: 1.8;
+            padding-left: 20px;
+            position: relative;
+        }
+        .advice-light .advice-item::before {
+            content: "·";
+            color: var(--color-primary);
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+        }
+        .advice-light .advice-hint {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+            padding-top: 6px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4px;
+        }
+
+        /* ===== Three-layer capability nodes ===== */
+        .layer-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 0;
+            flex-wrap: wrap;
+        }
+        .layer-node {
+            flex: 0 1 auto;
+            min-width: 100px;
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            background: var(--bg-body);
+            transition: var(--transition-base);
+        }
+        .layer-node.pass {
+            border-color: var(--color-success);
+            background: rgba(106, 170, 106, 0.06);
+        }
+        .layer-node.warn {
+            border-color: var(--color-gold);
+            background: rgba(212, 168, 67, 0.06);
+        }
+        .layer-node.fail {
+            border-color: var(--color-danger);
+            background: rgba(212, 122, 106, 0.06);
+        }
+        .layer-node .layer-node-icon {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+        .layer-node .layer-node-label {
+            font-weight: 700;
+            color: var(--text-h3);
+            font-size: 15px;
+        }
+        .layer-node .layer-node-sub {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        .layer-node .layer-node-status {
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .layer-node .layer-node-status.pass {
+            color: var(--color-success);
+        }
+        .layer-node .layer-node-status.warn {
+            color: var(--color-gold);
+        }
+        .layer-node .layer-node-status.fail {
+            color: var(--color-danger);
+        }
+        .layer-node .layer-node-score {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .layer-arrow {
+            font-size: 22px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            padding: 0 2px;
+        }
+
+        /* ===== Radar ===== */
+        .radar-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .radar-container canvas,
+        .radar-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== QR ===== */
+        .qr-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+            width: 100%;
+            padding-bottom: 20px;
+        }
+        .qr-wrapper .qr-box {
+            background: #fff;
+            padding: 6px;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+            width: 102px;
+            height: 102px;
+            text-align: center;
+            line-height: 102px;
+        }
+        .qr-wrapper .qr-box canvas,
+        .qr-wrapper .qr-box img {
+            width: 90px !important;
+            height: 90px !important;
+            display: block;
+            margin: auto;
+        }
+        .qr-wrapper .qr-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+        }
+        .qr-wrapper .qr-footer {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            text-align: center;
+            line-height: 1.8;
+            padding: 0 10px;
+        }
+        .qr-wrapper .qr-footer .highlight {
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+
+        /* ===== Result footer ===== */
+        .result-box .result-footer {
+            background: var(--bg-container);
+            padding: 16px 28px;
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+        .copy-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-copy {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 20px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-base);
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+            color: var(--link-color);
+            white-space: nowrap;
+        }
+        .btn-copy:hover {
+            border-color: var(--color-primary);
+            color: var(--text-h1);
+            background: var(--color-primary-dim);
+        }
+        .btn-copy:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .btn-copy .icon {
+            font-size: 16px;
+        }
+        .btn-copy .badge {
+            font-size: 10px;
+            font-weight: 600;
+            background: var(--color-primary-dim);
+            padding: 1px 8px;
+            border-radius: var(--radius-full);
+            color: var(--color-primary);
+            margin-left: 2px;
+            border: 1px solid var(--color-primary-dim);
+        }
+
+        .result-bottom-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .result-bottom-actions .btn-reset,
+        .result-bottom-actions .btn-close {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 8px 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-fast);
+        }
+        .result-bottom-actions .btn-reset:hover,
+        .result-bottom-actions .btn-close:hover {
+            border-color: var(--border-light);
+            color: var(--text-secondary);
+            background: var(--bg-card);
+        }
+
+        /* ===== History ===== */
+        .history-area {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+        }
+        .history-area .history-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--link-color);
+            margin-bottom: 12px;
+        }
+        .history-area .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .history-area .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            background: var(--bg-body);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            font-size: 13px;
+            color: var(--text-body);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            width: 100%;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .history-area .history-item:hover {
+            border-color: var(--border-light);
+            background: var(--bg-card);
+        }
+        .history-area .history-item .h-topic {
+            font-weight: 500;
+            color: var(--text-h3);
+            flex: 1;
+            min-width: 80px;
+        }
+        .history-area .history-item .h-meta {
+            color: var(--text-secondary);
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .history-area .history-item .h-level {
+            font-weight: 600;
+            padding: 1px 12px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .history-area .history-item .history-actions {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .history-area .history-item .history-view-btn {
+            border: 1px solid var(--border-light);
+            padding: 2px 14px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            color: var(--link-color);
+            background: var(--bg-card);
+            transition: var(--transition-fast);
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .history-area .history-item .history-view-btn:hover {
+            border-color: var(--color-primary);
+            color: var(--text-h1);
+            background: var(--color-primary-dim);
+        }
+        .history-area .history-item .history-del-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0 4px;
+            transition: var(--transition-fast);
+            line-height: 1;
+        }
+        .history-area .history-item .history-del-btn:hover {
+            color: var(--color-danger);
+        }
+        .history-empty {
+            color: var(--text-muted);
+            font-size: 14px;
+            padding: 12px 0;
+        }
+
+        /* ===== Toast ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--bg-card);
+            color: var(--text-h3);
+            padding: 12px 28px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-primary);
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: var(--shadow-modal);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 9999;
+            pointer-events: none;
+            max-width: 90%;
+            text-align: center;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast.error {
+            border-color: var(--color-danger);
+            background: rgba(212, 122, 106, 0.08);
+            color: var(--color-danger);
+        }
+
+        /* ===== Intro modal ===== */
+        #introModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(6px);
+        }
+        #introModal .modal-box {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 40px 44px;
+            max-width: 560px;
+            width: 90%;
+            border: 1px solid var(--color-primary);
+            text-align: center;
+            box-shadow: var(--shadow-modal);
+        }
+        #introModal .modal-box .modal-icon {
+            font-size: 52px;
+            margin-bottom: 12px;
+        }
+        #introModal .modal-box h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-h1);
+            margin-bottom: 12px;
+        }
+        #introModal .modal-box p {
+            font-size: 16px;
+            color: var(--text-body);
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+        #introModal .modal-box p strong.highlight {
+            color: var(--link-color);
+        }
+        #introModal .modal-box p strong.warn {
+            color: var(--color-gold);
+        }
+        #introModal .modal-box .countdown-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+        #introModal .modal-box .countdown-number {
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--link-color);
+            margin-top: 4px;
+        }
+
+        /* ===== Three cards (report) ===== */
+        .three-cards .result-card {
+            flex: 1;
+            min-width: 180px;
+            padding: 16px 18px;
+            margin-bottom: 0;
+        }
+        .three-cards .result-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-h1);
+            margin-bottom: 6px;
+        }
+        .three-cards .result-card p {
+            font-size: 14px;
+            color: var(--text-body);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* ===== Screenshot container ===== */
+        .screenshot-container {
+            overflow: visible !important;
+            height: auto !important;
+            min-height: 100% !important;
+        }
+        .screenshot-container * {
+            overflow: visible !important;
+            max-height: none !important;
+        }
+        .screenshot-container .result-card,
+        .screenshot-container .dim-progress-card,
+        .screenshot-container .qr-wrapper,
+        .screenshot-container .report-inner {
+            overflow: visible !important;
+            max-height: none !important;
+        }
+        .screenshot-container .layer-progress {
+            flex-wrap: wrap !important;
+        }
+        .screenshot-container .layer-node {
+            flex: 0 1 auto !important;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 820px) {
+            .app {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+                max-height: none;
+                padding: 16px 20px;
+            }
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px 6px;
+            }
+            .sidebar nav a {
+                padding: 4px 12px;
+                font-size: 13px;
+                border-left: none;
+                border-bottom: 2px solid transparent;
+                border-radius: var(--radius-sm);
+                background: transparent;
+            }
+            .sidebar nav a:hover,
+            .sidebar nav a.active {
+                background: var(--bg-card);
+                color: var(--text-h1);
+                border-left: none;
+                border-bottom-color: var(--color-primary);
+            }
+            .sidebar .version {
+                display: none;
+            }
+            .container {
+                padding: 24px 20px 28px;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px 12px 18px;
+                border-radius: var(--radius-md);
+            }
+            .title-row h1 {
+                font-size: 24px;
+            }
+            .title-row .tag {
+                font-size: 11px;
+                padding: 2px 12px;
+            }
+            .brand {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .intro-box {
+                padding: 16px 18px;
+            }
+            .intro-box .intro-title {
+                font-size: 18px;
+            }
+            .intro-box .intro-desc {
+                font-size: 14px;
+            }
+            .start-area .btn-start {
+                padding: 14px 40px;
+                font-size: 18px;
+            }
+            .step-card {
+                padding: 16px 16px 20px;
+            }
+            .step-card .question-block .q-text {
+                font-size: 15px;
+            }
+            .step-card .question-block .q-options label {
+                padding: 8px 12px;
+                font-size: 13px;
+                flex-wrap: wrap;
+            }
+            .step-card .step-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .step-card .btn-back {
+                text-align: center;
+            }
+            .result-box .result-header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 16px 18px;
+            }
+            .result-box .result-body .result-card {
+                padding: 18px 16px;
+            }
+            .result-box .result-footer {
+                padding: 14px 16px;
+            }
+            .copy-actions {
+                justify-content: center;
+            }
+            .result-bottom-actions {
+                justify-content: center;
+            }
+            .progress-bar {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 8px 12px;
+                gap: 6px 8px;
+            }
+            .progress-bar .total-progress {
+                font-size: 13px;
+            }
+            .progress-bar .next-dim-label {
+                font-size: 13px;
+            }
+            .progress-bar .progress-track {
+                min-width: 40px;
+                flex: 0 1 60px;
+            }
+            .complete-msg {
+                padding: 20px 16px;
+            }
+            .complete-msg .title {
+                font-size: 19px;
+            }
+            .complete-msg .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .time-estimate {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .history-area .history-item {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .history-area .history-item .h-topic {
+                width: 100%;
+            }
+            .layer-progress {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .layer-arrow {
+                transform: rotate(90deg);
+                font-size: 18px;
+            }
+            .layer-node {
+                width: 100%;
+                min-width: auto;
+            }
+            .dim-progress-item .dim-label {
+                width: 55px;
+                font-size: 12px;
+            }
+            .dim-progress-item .dim-pct {
+                width: 35px;
+                font-size: 12px;
+            }
+            .dim-progress-item .dim-score {
+                width: 50px;
+                font-size: 11px;
+            }
+            .dim-progress-card {
+                padding: 16px 16px 14px;
+            }
+            .history-area .history-item .history-actions {
+                margin-left: auto;
+            }
+            .level-light .level-desc {
+                font-size: 14px;
+                padding: 0 4px;
+            }
+            .level-light .level-badge {
+                padding: 4px 18px;
+            }
+            .advice-light .advice-main {
+                font-size: 14px;
+            }
+            .advice-light .advice-item {
+                font-size: 13px;
+            }
+            .qr-wrapper .qr-box {
+                width: 80px;
+                height: 80px;
+                line-height: 80px;
+            }
+            .qr-wrapper .qr-box canvas,
+            .qr-wrapper .qr-box img {
+                width: 72px !important;
+                height: 72px !important;
+            }
+            #introModal .modal-box {
+                padding: 28px 20px;
+            }
+            #introModal .modal-box h2 {
+                font-size: 22px;
+            }
+            #introModal .modal-box p {
+                font-size: 15px;
+            }
+            .three-cards {
+                flex-direction: column;
+            }
+            .three-cards .result-card {
+                min-width: auto;
+            }
+        }
+
+        /* ===== Print styles ===== */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+                color: #000;
+            }
+            .app {
+                display: block;
+            }
+            .sidebar {
+                display: none !important;
+            }
+            .container {
+                max-width: 100%;
+                background: #fff;
+                padding: 40px 44px 34px !important;
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .top-nav,
+            .start-area,
+            .diagnosis-active,
+            .result-footer,
+            .footer,
+            .history-area,
+            .btn-copy,
+            .btn-close,
+            .btn-report,
+            .btn-back,
+            .copy-actions,
+            .result-bottom-actions,
+            #introModal {
+                display: none !important;
+            }
+            .result-box {
+                display: block !important;
+                margin-top: 0;
+            }
+            .result-box .result-header {
+                background: #f0f0f0;
+                border-color: #ccc;
+                color: #000;
+                border-radius: 8px 8px 0 0;
+                padding: 16px 24px;
+            }
+            .result-box .result-body .result-card {
+                background: #fafafa;
+                border-color: #ddd;
+                color: #000;
+                page-break-inside: avoid;
+                margin-bottom: 12px;
+                border-radius: 8px;
+                padding: 18px 22px;
+            }
+            .result-box .result-body .result-card .card-title {
+                color: #222;
+                border-bottom-color: #ccc;
+            }
+            .result-box .result-body .result-card .card-content {
+                color: #222;
+            }
+            .level-light .level-desc {
+                color: #444 !important;
+            }
+            .level-light .level-badge {
+                border-color: #4a7a4a !important;
+                background: #e8f0e8 !important;
+            }
+            .level-light .level-label {
+                color: #222 !important;
+            }
+            .level-light .level-stars {
+                color: #b89a4a !important;
+            }
+            .advice-light .advice-main {
+                color: #222 !important;
+            }
+            .advice-light .advice-item {
+                color: #333 !important;
+            }
+            .advice-light .advice-hint {
+                color: #666 !important;
+                border-color: #ccc !important;
+            }
+            .radar-container canvas,
+            .radar-container img {
+                border: 1px solid #ccc;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            .history-area {
+                display: none !important;
+            }
+            .layer-node {
+                background: #f5f5f5 !important;
+                border-color: #ccc !important;
+            }
+            .layer-node.pass {
+                border-color: #4a7a4a !important;
+                background: #e8f0e8 !important;
+            }
+            .layer-node.warn {
+                border-color: #b89a4a !important;
+                background: #f5f0e0 !important;
+            }
+            .layer-node.fail {
+                border-color: #b05a4a !important;
+                background: #f0e8e0 !important;
+            }
+            .layer-node .layer-node-label {
+                color: #222 !important;
+            }
+            .layer-node .layer-node-sub {
+                color: #666 !important;
+            }
+            .layer-arrow {
+                color: #999 !important;
+            }
+            .dim-progress-item .dim-track .dim-fill {
+                background: #4a7a4a !important;
+            }
+            .dim-progress-card {
+                background: #f5f5f5 !important;
+                border-color: #ddd !important;
+            }
+            .qr-wrapper .qr-footer {
+                color: #666 !important;
+            }
+            .qr-wrapper .qr-label {
+                color: #666 !important;
+            }
+            .qr-wrapper .qr-box {
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+
+        <!-- ===== 侧边栏 ===== -->
+        <aside class="sidebar" role="navigation" aria-label="目录导航">
+            <div class="sub-brand">YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION</div>
+            <div class="logo">杨晟琦<span>文明公理系统</span><span class="nav-copyright">©</span></div>
+            <nav aria-label="主导航">
+                <a href="./index.html" title="杨晟琦文明公理系统首页 · 独立思想锚点">首页 <span class="nav-en">HOME</span></a>
+                <a href="./blind-spot-diagnosis-cn.html" title="人类思维盲区在线诊断工具（中文版）">思维诊断：人类思维盲区诊断（中文）<span class="nav-en">BLIND SPOT DIAGNOSIS (CN)</span></a>
+                <a href="./blind-spot-diagnosis-en.html" title="Cognitive Blind Spot Diagnostic Tool（EN）">思维诊断：人类思维盲区诊断（英文）<span class="nav-en">BLIND SPOT DIAGNOSIS (EN)</span></a>
+                <a href="./pure-structure-edition.html" title="杨晟琦文明公理系统纯净结构版（中英文版）">快速阅读：文明公理系统纯净版 <span class="nav-en">PURE-STRUCTURE-EDITION</span></a>
+                <a href="./three-cornerstones.html" title="三大基石：一种文明系统的底层重构框架">元框架：三大基石 <span class="nav-en">META-FRAMEWORK · THREE CORNERSTONES</span></a>
+                <a href="./path-to-low-civilization.html" title="低级文明的完整路径图">诊断模型：低级文明路径图 <span class="nav-en">DIAGNOSTIC MODEL · PATH TO LOW-LEVEL CIVILIZATION</span></a>
+                <a href="./deterministic-social-system.html" title="确定性社会系统形成的必要条件与阻碍因素">条件分析：确定性社会形成条件因素 <span class="nav-en">DETERMINISTIC SOCIAL SYSTEM</span></a>
+                <a href="./justice-interest-rules-tension.html" title="正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析">张力分析：正义利益规则的错位 <span class="nav-en">JUSTICE, INTEREST &amp; RULES</span></a>
+                <a href="./non-deadlock-analysis.html" title="系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制">条件分析：非死锁的条件分析 <span class="nav-en">NON-DEADLOCK ANALYSIS</span></a>
+                <a href="./operational-manual.html" title="改变底层逻辑的方法论（非归因，可操作）">操作手册：改变底层逻辑的方法论 <span class="nav-en">OPERATIONAL MANUAL</span></a>
+                <a href="./earthly-perspective-validation.html" title="从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心">验证工具：从地球人类视野的推演 <span class="nav-en">VALIDATION TOOL</span></a>
+                <a href="./ghsf-cn.html" title="全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）">药方参考：全球人类主权基金 (中文版) <span class="nav-en">GHSF (CN)</span></a>
+                <a href="./ghsf-en.html" title="GHSF — A Blueprint for China & the Global Community（英文版）">药方参考：全球人类主权基金 (英文版) <span class="nav-en">GHSF (EN)</span></a>
+                <a href="./acceptance-report.html" title="文明公理宪法与全球人类主权基金的验收报告">验收报告：文明公理与基金验收报告 <span class="nav-en">ACCEPTANCE REPORT</span></a>
+                <a href="./civilization-level-manual.html" title="文明等级判断说明书">量化思路：文明等级判断说明书 <span class="nav-en">CIVILIZATION LEVEL MANUAL</span></a>
+                <a href="./civilization-level-scorer.html" title="杨晟琦文明公理系统之文明等级评分器（中英文版）">量化诊断：文明等级判断评分器 <span class="hot-icon"><img src="hot.gif" alt="hot"></span><span class="nav-en">CIVILIZATION LEVEL SCORER</span></a>
+            </nav>
+            <div class="version">所有内容以 CC BY-ND 4.0 协议发布 <span class="version-en">All content released under CC BY-ND 4.0</span></div>
+        </aside>
+
+        <!-- ===== Main content ===== -->
+        <main class="main">
+
+            <!-- Top bar -->
+            <div class="top-nav">
+                <a href="./index.html" class="back">← Back to System Entry</a>
+                <span class="badge">Anchor of Independent Thought</span>
+            </div>
+
+            <!-- Brand area -->
+            <div class="brand">
+                <div class="brand-left">
+                    <div class="sub-brand">Human Cognitive Blind Spot Online Diagnostic Tool</div>
+                    <div class="title-row--inline">
+                        <h1>Human Cognitive Blind Spot Online Diagnostic Tool</h1>
+                        <span class="badge badge-dark">Self-Diagnosis</span>
+                    </div>
+                    <div class="info-row">
+                        <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
+                        <span>First published: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+                        <span>Encapsulated: July 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Tool container ===== -->
+            <div class="container" id="app">
+                <!-- Intro box -->
+                <div class="intro-box">
+                    <div class="intro-title">Do You Truly Understand Your Own Thinking?</div>
+                    <div class="intro-desc">
+                        This tool uses <strong>38 meta-cognitive questions about "how you think"</strong> to deeply scan your thinking habits.<br />
+                        It does not depend on any external topic—it only examines your underlying capacities for <strong>information processing, logical reasoning, emotional regulation, and interest awareness</strong>.
+                    </div>
+                    <div class="intro-features">
+                        <span><span class="dot"></span> Anti-manipulation — test your defense against external information</span>
+                        <span><span class="dot"></span> Awakening — interrogate your internal cognitive biases</span>
+                        <span><span class="dot"></span> Internalization — assess whether you can turn reflection into action</span>
+                        <span><span class="dot"></span> This tool uses a 6-dimension × 3-layer cross-validation matrix</span>
+                    </div>
+                </div>
+
+                <!-- Start area -->
+                <div class="start-area" id="startArea">
+                    <button class="btn-start" id="startBtn">Start Diagnosis</button>
+                    <div class="start-hint">Click to begin. The diagnosis takes approximately 10 minutes. The more honest your answers, the more accurate your results.</div>
+                </div>
+
+                <!-- Diagnosis area -->
+                <div class="diagnosis-active" id="diagnosisArea">
+                    <div class="time-estimate">
+                        <span>Estimated time: ~10–12 minutes, elapsed: <span id="timerDisplay">⏱️ 00:00</span></span>
+                    </div>
+                    <div class="progress-bar">
+                        <span class="total-progress">Answered <strong id="answeredCount">0</strong> / <span id="totalCount">38</span> questions</span>
+                        <div class="progress-track"><div class="fill" id="progressFill" style="width:0%;"></div></div>
+                        <span class="next-dim-label">Next dimension: <span class="next-dim-name" id="nextDimLabel">Factual Basis</span></span>
+                    </div>
+                    <div id="stepContainer"></div>
+                </div>
+
+                <!-- Result area -->
+                <div class="result-box" id="resultBox">
+                    <div class="result-header">
+                        <div class="result-title">📋 Diagnosis Report: <span class="q">Your Thinking Patterns</span></div>
+                        <div class="result-badge" id="resultBadges"></div>
+                    </div>
+                    <div class="result-body" id="reportBody"></div>
+                    <div class="result-footer">
+                        <div class="copy-actions">
+                            <button class="btn-copy" id="copyImageBtn"><span class="icon">🖼️</span> Export Report (PNG) <span class="badge">Screenshot</span></button>
+                            <button class="btn-copy" id="shareImageBtn"><span class="icon">📋</span> Copy Report (PNG) <span class="badge">Copy</span></button>
+                        </div>
+                        <div class="result-bottom-actions">
+                            <button class="btn-reset" id="resetFromResultBtn">↻ Restart</button>
+                            <button class="btn-close" id="closeResultBtn">Close Report</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History -->
+                <div class="history-area" id="historyArea">
+                    <div class="history-title">📜 Diagnosis History</div>
+                    <div class="history-list" id="historyList"></div>
+                    <div class="history-empty" id="historyEmpty" style="display:none;">No history records</div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                杨晟琦文明公理系统 · 独立思想锚点 · 封装完成: 2026年7月
+                <span class="en">Yang Shengqi Civilizational Axiomatic System · Independent Thought Anchor · Encapsulation Completed: July 2026</span>
+                <span class="footer-license">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+                <span class="en">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank">CC BY-ND 4.0</a></span>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ===== Intro modal ===== -->
+    <div id="introModal">
+        <div class="modal-box">
+            <div class="modal-icon">🧠</div>
+            <h2>Diagnosis Starting</h2>
+            <p>
+                This tool uses a <strong class="highlight">6-dimension × 3-layer cross-validation matrix</strong>.<br>
+                You may notice <strong class="warn">similarities</strong> between questions — this is the core of the reliability design,<br>
+                designed to filter random responses and ensure your report is <strong class="highlight">academically precise</strong>.
+            </p>
+            <div class="countdown-label">⏳ Auto-starting in 3 seconds...</div>
+            <div class="countdown-number" id="introCountdown">3</div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ===== JS (full logic, only display text translated) ===== -->
+    <script>
+        // ================================================================
+        // Dimension & layer mapping
+        // ================================================================
+        const DIM_MAP = {
+            source: { icon: '🔍', label: 'Information Source' },
+            facts: { icon: '📊', label: 'Factual Basis' },
+            logic: { icon: '🧠', label: 'Logical Reasoning' },
+            interests: { icon: '💰', label: 'Interest Awareness' },
+            emotion: { icon: '❤️', label: 'Emotional Influence' },
+            cost: { icon: '⏳', label: 'Cost Trade-off' }
+        };
+        const LAYER_MAP = {
+            step1: { label: 'Anti-manipulation', sub: 'External Check', badge: 's1' },
+            step2: { label: 'Awakening', sub: 'Internal Interrogation', badge: 's2' },
+            step3: { label: 'Internalization', sub: 'Mindset Update', badge: 's3' }
+        };
+        const DIM_ORDER = ['source', 'facts', 'logic', 'interests', 'emotion', 'cost'];
+
+        // ================================================================
+        // 38 meta-cognitive questions (English translation)
+        // ================================================================
+        const QUESTIONS_RAW = [
+            { dim: 'source', layer: 'step1', purpose: 'Source questioning — do you habitually accept information without verification?',
+                text: 'When you encounter a piece of information, do you actively check its original source?', opts: [{ label: 'A', text: 'I never check — I just trust it', score: 0 },
+                { label: 'B', text: 'I rarely check, unless the information seems highly suspicious', score: 1 },
+                { label: 'C', text: 'I sometimes check, but not every time', score: 2 },
+                { label: 'D', text: 'I carefully check important or suspicious information, but trust common sense for everyday matters', score: 4 },
+                { label: 'E', text: 'I always check — I cannot trust anything without verification', score: 3 }] },
+            { dim: 'source', layer: 'step1', purpose: 'Authority bias — do you trust content based on the speaker\'s identity?',
+                text: 'When judging the credibility of information, do you trust the person speaking more, or the content itself?', opts: [{ label: 'A', text: 'I trust the person — if an authority says it, I believe it',
+                    score: 0 }, { label: 'B', text: 'I tend to consider the person, but also look at the content', score: 1 },
+                { label: 'C', text: 'I look at both, but I don\'t have a clear preference', score: 2 }, { label: 'D', text: 'I value the content more — who says it matters less',
+                    score: 3 }, { label: 'E', text: 'I only trust the content itself, regardless of who says it', score: 4 }] },
+            { dim: 'source', layer: 'step2', purpose: 'Confirmation bias — do you only doubt information that contradicts your expectations?',
+                text: 'Do you refrain from questioning the source of information simply because it aligns with your existing views?', opts: [{ label: 'A', text: 'I often do this — if it fits my views, I accept it',
+                    score: 0 }, { label: 'B', text: 'I sometimes do this, but I also remind myself to stay skeptical', score: 1 },
+                { label: 'C', text: 'I rarely do this — I maintain a degree of skepticism', score: 2 }, { label: 'D', text: 'I almost never do this — I deliberately challenge what I agree with',
+                    score: 3 }, { label: 'E', text: 'I never do this — the more I agree, the more I scrutinize', score: 4 }] },
+            { dim: 'source', layer: 'step2', purpose: 'Source aversion — do you reject information based on source preference?',
+                text: 'If the same information comes from a media outlet you typically dislike, are you less likely to trust it?', opts: [{ label: 'A', text: 'Yes — I distrust it as soon as I see the source',
+                    score: 0 }, { label: 'B', text: 'I may be somewhat skeptical, but I don\'t completely dismiss it', score: 1 },
+                { label: 'C', text: 'I don\'t let the source dictate my judgment, unless it has a track record of unreliability', score: 2 },
+                { label: 'D', text: 'I generally don\'t — I judge based on the content itself', score: 3 }, { label: 'E', text: 'I completely ignore the source — it doesn\'t matter to me',
+                    score: 4 }] },
+            { dim: 'source', layer: 'step3', purpose: 'Systematic skepticism — do you consciously build and update a list of trusted sources?',
+                text: 'Do you actively maintain a list of sources you consider trustworthy, and update it regularly?', opts: [{ label: 'A', text: 'No — I don\'t think it\'s necessary', score: 0 },
+                { label: 'B', text: 'I occasionally think about it, but I don\'t actually maintain a list', score: 1 }, { label: 'C', text: 'I have a rough mental list, but I don\'t formalize it',
+                    score: 2 }, { label: 'D', text: 'I maintain a mental list and update it from time to time', score: 3 },
+                { label: 'E', text: 'I carefully maintain and regularly update a formal list', score: 4 }] },
+            { dim: 'source', layer: 'step3', purpose: 'Echo chamber — do you actively seek opposing viewpoints to test completeness?',
+                text: 'Do you actively seek out voices that disagree with you, to check whether your information sources are comprehensive?', opts: [{ label: 'A', text: 'No — I only want to see views I agree with',
+                    score: 0 }, { label: 'B', text: 'I rarely do this, unless someone else mentions it', score: 1 },
+                { label: 'C', text: 'I sometimes do this, just to see what the other side says', score: 2 }, { label: 'D', text: 'I often do this — I believe it\'s necessary for a complete picture',
+                    score: 3 }, { label: 'E', text: 'I always do this — I consider it essential', score: 4 }] },
+
+            { dim: 'facts', layer: 'step1', purpose: 'Fact-feeling confusion — can you distinguish objective facts from subjective feelings?',
+                text: 'Can you clearly distinguish between "objective facts" and "your own feelings"?', opts: [{ label: 'A', text: 'I cannot distinguish — I take my feelings as facts', score: 0 },
+                { label: 'B', text: 'I sometimes can, but often get led astray by my feelings', score: 1 },
+                { label: 'C', text: 'I can roughly distinguish, but occasionally confuse them', score: 2 }, { label: 'D', text: 'I can mostly distinguish — I know the difference between fact and feeling',
+                    score: 3 }, { label: 'E', text: 'I always distinguish — I pay close attention to this distinction', score: 4 }] },
+            { dim: 'facts', layer: 'step1', purpose: 'Methodology neglect — do you pay attention to data collection methods and sample representativeness?',
+                text: 'When you see a set of data, do you consider its collection method or whether the sample is representative?', opts: [{ label: 'A', text: 'I don\'t think about it — data is just data', score: 0 },
+                { label: 'B', text: 'I rarely think about it, unless the data looks absurd', score: 1 }, { label: 'C', text: 'I sometimes think about it, but don\'t dig deep',
+                    score: 2 }, { label: 'D', text: 'I often consider these aspects — the source of data matters', score: 3 },
+                { label: 'E', text: 'I always ask: how was this data collected?', score: 4 }] },
+            { dim: 'facts', layer: 'step2', purpose: 'Preconception — do you form a conclusion first and then seek evidence?',
+                text: 'Do you often have an idea first and then look for evidence to support it?', opts: [{ label: 'A', text: 'I often do this — I think it\'s normal to have a prior stance',
+                    score: 0 }, { label: 'B', text: 'I sometimes do this, but not always', score: 1 },
+                { label: 'C', text: 'I rarely do this — I look at the evidence before drawing conclusions', score: 2 }, { label: 'D', text: 'I seldom do this — I consciously force myself to examine evidence first',
+                    score: 3 }, { label: 'E', text: 'I never do this — evidence always comes before conclusions', score: 4 }] },
+            { dim: 'facts', layer: 'step2', purpose: 'Cognitive dissonance avoidance — do you subconsciously ignore facts that conflict with your views?',
+                text: 'Do you intentionally ignore facts that contradict your own views?', opts: [{ label: 'A', text: 'I do — conflicting facts make me uncomfortable, so I subconsciously ignore them', score: 0 },
+                { label: 'B', text: 'I sometimes do, but I may regret it later', score: 1 }, { label: 'C', text: 'I rarely do, but sometimes I unconsciously avoid them',
+                    score: 2 }, { label: 'D', text: 'I almost never do — I confront conflicting facts', score: 3 },
+                { label: 'E', text: 'I never do — I actually pay extra attention to conflicting facts', score: 4 }] },
+            { dim: 'facts', layer: 'step3', purpose: 'Falsification thinking — do you deliberately seek counterexamples to test your conclusions?',
+                text: 'Do you deliberately look for counterexamples to challenge your own conclusions?', opts: [{ label: 'A', text: 'No — I think my conclusions are already correct', score: 0 },
+                { label: 'B', text: 'I rarely do, unless someone reminds me', score: 1 }, { label: 'C', text: 'I sometimes do, to see if I can be proven wrong',
+                    score: 2 }, { label: 'D', text: 'For major decisions, I deliberately seek counterexamples; for everyday matters, I rely on experience', score: 4 },
+                { label: 'E', text: 'I always deliberately seek counterexamples — I only feel confident when I can\'t find any', score: 3 }] },
+            { dim: 'facts', layer: 'step3', purpose: 'Behavioral internalization — have you turned "evidence-first" into a stable habit?',
+                text: 'In daily life, how automatic is "looking at evidence before drawing conclusions" for you?', opts: [{ label: 'A', text: 'I have no awareness of this — I rely entirely on feelings',
+                    score: 0 }, { label: 'B', text: 'I am aware but often forget — I only do it when I remember', score: 1 },
+                { label: 'C', text: 'I remember most of the time, but need to consciously remind myself', score: 2 },
+                { label: 'D', text: 'It has become muscle memory — I naturally look at evidence first', score: 3 },
+                { label: 'E', text: 'It has become instinct — I can even help others identify insufficient evidence', score: 4 }] },
+
+            { dim: 'logic', layer: 'step1', purpose: 'Assumption blind spot — do you examine the premises on which your conclusions rest?',
+                text: 'What assumptions must hold for your conclusion to be valid? If those assumptions fail, does your conclusion still hold?', opts: [{ label: 'A', text: 'I\'ve never thought about this — a conclusion is just a conclusion',
+                    score: 0 }, { label: 'B', text: 'I rarely think about these assumptions — I don\'t think they matter', score: 1 },
+                { label: 'C', text: 'I sometimes consider them, but I don\'t go deep', score: 2 }, { label: 'D', text: 'I often consider and verify these assumptions',
+                    score: 3 }, { label: 'E', text: 'I always clarify the assumptions first — I dare not conclude otherwise', score: 4 }] },
+            { dim: 'logic', layer: 'step1', purpose: 'Reverse thinking — do you attempt to reason from the opposite perspective?',
+                text: 'Do you try to reason from the exact opposite angle, to see if you can arrive at an equally plausible logic?', opts: [{ label: 'A', text: 'No — I think my perspective is enough', score: 0 },
+                { label: 'B', text: 'I rarely do — it feels like a waste of time', score: 1 }, { label: 'C', text: 'I sometimes try, but give up if I can\'t push through',
+                    score: 2 }, { label: 'D', text: 'I often do this — I believe it\'s the only way to be comprehensive', score: 3 },
+                { label: 'E', text: 'I always do — I\'m used to seeing issues from both sides', score: 4 }] },
+            { dim: 'logic', layer: 'step2', purpose: 'Conformity bias — do you abandon independent thinking because "everyone says so"?',
+                text: 'When "everyone says so," do you refrain from examining the logic yourself?', opts: [{ label: 'A', text: 'Yes — if everyone says so, it must be right', score: 0 },
+                { label: 'B', text: 'I sometimes do — it feels easier to go with the flow', score: 1 }, { label: 'C',
+                    text: 'It depends — for small matters I follow the crowd, for important ones I check the logic myself', score: 4 }, { label: 'D', text: 'I almost never do — I still want to examine the logic',
+                    score: 2 }, { label: 'E', text: 'I never do — the more everyone says it, the more I need to verify', score: 3 }] },
+            { dim: 'logic', layer: 'step2', purpose: 'Pleasure fallacy — do you relax scrutiny because a logic feels "comfortable"?',
+                text: 'Do you become less critical of a logic simply because it feels "comfortable" to accept?', opts: [{ label: 'A', text: 'Yes — I tend to believe comfortable logic', score: 0 },
+                { label: 'B', text: 'I sometimes do, but I also remind myself not to relax', score: 1 }, { label: 'C', text: 'I rarely do — comfortable does not mean reliable',
+                    score: 2 }, { label: 'D', text: 'I almost never do — I deliberately watch out for comfortable logic', score: 3 },
+                { label: 'E', text: 'I never do — the more comfortable the logic, the more I scrutinize it', score: 4 }] },
+            { dim: 'logic', layer: 'step3', purpose: 'Mental rigidity — are you willing to regularly challenge your own reasoning frameworks?',
+                text: 'Are you willing to periodically challenge your familiar ways of reasoning, and reframe from an entirely new angle?', opts: [{ label: 'A', text: 'No — I think my current way of thinking is sufficient',
+                    score: 0 }, { label: 'B', text: 'I\'m somewhat reluctant — it feels like too much effort', score: 1 },
+                { label: 'C', text: 'I might be willing to try, but I wouldn\'t do it often', score: 2 }, { label: 'D', text: 'I am willing — I think it helps me break through', score: 3 },
+                { label: 'E', text: 'I am very willing — I do it often and find it extremely useful', score: 4 }] },
+            { dim: 'logic', layer: 'step3', purpose: 'Fallacy recognition — do you actively learn and identify common logical fallacies?',
+                text: 'Do you deliberately study common logical errors and try to identify them in real life?', opts: [{ label: 'A', text: 'No — I don\'t think it\'s useful', score: 0 },
+                { label: 'B', text: 'I might glance at them occasionally, but I don\'t actively memorize', score: 1 }, { label: 'C', text: 'I sometimes pay attention, but don\'t study them seriously',
+                    score: 2 }, { label: 'D', text: 'I often study them and can recognize many in real life', score: 3 },
+                { label: 'E', text: 'I keep learning them — it\'s become a habit for me', score: 4 }] },
+
+            { dim: 'interests', layer: 'step1', purpose: 'Perspective blind spot — do you notice "whose perspective has been excluded"?',
+                text: 'Do you consciously think about "whose perspective is missing" or "who is pushing this viewpoint from behind"?', opts: [{ label: 'A', text: 'I don\'t think about these things — they don\'t matter', score: 0 },
+                { label: 'B', text: 'I rarely think about it, unless someone points it out', score: 1 }, { label: 'C', text: 'I sometimes think about it, but don\'t go deep', score: 2 },
+                { label: 'D', text: 'I often think about it — I believe it\'s important', score: 3 }, { label: 'E', text: 'I always think about it — it\'s a habit of mine',
+                    score: 4 }] },
+            { dim: 'interests', layer: 'step1', purpose: 'Motivation insight — can you see the underlying interests behind opposing positions?',
+                text: 'Can you see what those who hold opposing positions stand to gain from the issue?', opts: [{ label: 'A', text: 'I cannot see it — I don\'t know what they get', score: 0 },
+                { label: 'B', text: 'I can occasionally see it, but I\'m not sure', score: 1 },
+                { label: 'C', text: 'I can sometimes see it clearly, but it takes effort', score: 2 }, { label: 'D', text: 'I can mostly see it — I understand their motivations',
+                    score: 3 }, { label: 'E', text: 'I always see it clearly — I\'m particularly good at this', score: 4 }] },
+            { dim: 'interests', layer: 'step2', purpose: 'Admitting error — to what extent are you willing to admit you are wrong?',
+                text: 'To what extent are you willing to admit that you are wrong?', opts: [{ label: 'A', text: 'I never admit it — I\'m not wrong', score: 0 },
+                { label: 'B', text: 'I sometimes do, but reluctantly', score: 1 }, { label: 'C', text: 'I generally admit it, but only when evidence is conclusive', score: 2 },
+                { label: 'D', text: 'I often admit it — I think it\'s fine to be wrong', score: 3 }, { label: 'E', text: 'I always admit it immediately — I don\'t think it\'s embarrassing',
+                    score: 4 }] },
+            { dim: 'interests', layer: 'step2', purpose: 'Risk perception calibration — can you find a balance between over-optimism and over-anxiety?',
+                text: 'How afraid are you of the risks inherent in things?', opts: [{ label: 'A', text: 'Not afraid at all — I\'m bold, and risk cannot stop me', score: 1 },
+                { label: 'B', text: 'Not very afraid — I think I can handle most situations', score: 2 }, { label: 'C', text: 'I am somewhat afraid, but it makes me more cautious',
+                    score: 4 }, { label: 'D', text: 'I am quite afraid — it sometimes keeps me up at night, overthinking', score: 2 },
+                { label: 'E', text: 'I am extremely afraid — risk makes me so anxious I want to avoid it', score: 0 }] },
+            { dim: 'interests', layer: 'step2', purpose: 'Self-image dissociation — is your judgment hijacked by "who you want to be"?',
+                text: 'To what extent is your judgment shaped by the image you want to maintain of yourself?', opts: [{ label: 'A', text: 'I never change my judgment for self-image — truth comes first',
+                    score: 4 }, { label: 'B', text: 'I sometimes do, but not too deliberately — I mostly respect the facts', score: 3 },
+                { label: 'C', text: 'I care about image, but I\'m not sure how much it influences me', score: 2 }, { label: 'D', text: 'I do — especially in certain contexts, I adjust deliberately',
+                    score: 1 }, { label: 'E', text: 'I almost always do — I\'m fully aware of the persona I\'m maintaining', score: 0 }] },
+            { dim: 'interests', layer: 'step3', purpose: 'Interest-conflict resolution — do you have a clear bottom line when interests conflict with truth?',
+                text: 'When interests and truth collide, what do you choose?', opts: [{ label: 'A', text: 'I\'ve never thought about this — I\'ll decide when it happens', score: 0 },
+                { label: 'B', text: 'I\'ve thought about it broadly, but I don\'t have a clear bottom line', score: 1 }, { label: 'C', text: 'I have some vague principles, but they aren\'t clear',
+                    score: 2 }, { label: 'D', text: 'I have a clear bottom line — I know how I will choose', score: 3 },
+                { label: 'E', text: 'I not only have a clear bottom line, but I\'ve also planned ahead for it', score: 4 }] },
+            { dim: 'interests', layer: 'step3', purpose: 'Self-audit — do you actively reflect on whether interests have distorted your judgment?',
+                text: 'Do you actively reflect on whether your judgment has been distorted by your own interests?', opts: [{ label: 'A', text: 'No — I trust that I am immune to interest bias', score: 0 },
+                { label: 'B', text: 'I rarely reflect — I assume I\'m fine', score: 1 }, { label: 'C', text: 'I sometimes think about it, but don\'t deliberately dig',
+                    score: 2 }, { label: 'D', text: 'I often reflect — I believe everyone is susceptible', score: 3 },
+                { label: 'E', text: 'I always reflect — I am particularly vigilant about this', score: 4 }] },
+
+            { dim: 'emotion', layer: 'step1', purpose: 'Emotional awareness — can you detect when emotions are influencing your judgment?',
+                text: 'When making important judgments, how much do your emotions (like anger, excitement, or fear) affect you?', opts: [{ label: 'A', text: 'I don\'t notice emotional influence at all — I am rational',
+                    score: 0 }, { label: 'B', text: 'I don\'t seem to notice emotions playing a role', score: 1 },
+                { label: 'C', text: 'I sometimes sense emotions affecting me', score: 2 }, { label: 'D', text: 'I can clearly feel emotions influencing my judgment',
+                    score: 3 }, { label: 'E', text: 'Emotions affect me almost every time — and I am aware of it', score: 4 }] },
+            { dim: 'emotion', layer: 'step1', purpose: 'Discomfort vs falsehood — can you distinguish between "uncomfortable" and "untrue"?',
+                text: 'Can you distinguish between "this information makes me uncomfortable" and "this information is false"?', opts: [{ label: 'A', text: 'I cannot distinguish — discomfort means false', score: 0 },
+                { label: 'B', text: 'I sometimes cannot distinguish — emotions easily interfere', score: 1 },
+                { label: 'C', text: 'I can roughly distinguish, but occasionally confuse them', score: 2 }, { label: 'D', text: 'I can mostly distinguish — I know the difference',
+                    score: 3 }, { label: 'E', text: 'I always distinguish — I pay special attention to this difference', score: 4 }] },
+            { dim: 'emotion', layer: 'step2', purpose: 'Failure tolerance — is fear depriving you of action?',
+                text: 'Are you afraid of "messing things up"?', opts: [{ label: 'A', text: 'Not at all — things will work out somehow', score: 1 },
+                { label: 'B', text: 'Not very afraid — I think I can handle the consequences', score: 2 }, { label: 'C', text: 'I am somewhat afraid, but it motivates me to prepare better',
+                    score: 4 }, { label: 'D', text: 'I am quite afraid — it makes me anxious and hurts my performance', score: 2 },
+                { label: 'E', text: 'I am extremely afraid — I often avoid action because I fear failure', score: 0 }] },
+            { dim: 'emotion', layer: 'step2', purpose: 'Admission shame — do you refuse to admit misjudgment out of fear of embarrassment?',
+                text: 'Are you afraid of "admitting you were wrong"?', opts: [{ label: 'A', text: 'Not at all — I admit it when I\'m wrong', score: 4 },
+                { label: 'B', text: 'Not very afraid — I think it\'s normal', score: 3 }, { label: 'C', text: 'I am somewhat afraid, but I can accept it', score: 2 },
+                { label: 'D', text: 'I am quite afraid — it feels embarrassing', score: 1 }, { label: 'E', text: 'I am extremely afraid — I\'d rather be seen as stubborn than admit I was wrong',
+                    score: 0 }] },
+            { dim: 'emotion', layer: 'step3', purpose: 'Emotional regulation — can you actively pause and cool down when emotions are running high?',
+                text: 'When you are emotionally charged, do you actively pause and calm down before making a judgment?', opts: [{ label: 'A', text: 'No — I just want to decide immediately', score: 0 },
+                { label: 'B', text: 'I rarely pause — emotions come and go', score: 1 }, { label: 'C', text: 'I sometimes pause, but it doesn\'t help much',
+                    score: 2 }, { label: 'D', text: 'I often pause — I make myself calm down first', score: 3 },
+                { label: 'E', text: 'I always pause — I decide only after I\'ve calmed down', score: 4 }] },
+            { dim: 'emotion', layer: 'step3', purpose: 'Trigger management — are you willing to record your emotional triggers and plan responses?',
+                text: 'Are you willing to record your emotional triggers and plan ahead for how to handle them?', opts: [{ label: 'A', text: 'No — I don\'t think it\'s useful', score: 0 },
+                { label: 'B', text: 'I\'m somewhat unwilling — it feels like too much trouble', score: 1 }, { label: 'C', text: 'I might try, but I\'m not sure I can stick with it',
+                    score: 2 }, { label: 'D', text: 'I am willing — I am trying to do this', score: 3 },
+                { label: 'E', text: 'I am very willing — I\'ve already been doing it, and it helps a lot', score: 4 }] },
+
+            { dim: 'cost', layer: 'step1', purpose: 'Worst-case estimation — do you consider the worst possible outcome and its probability before deciding?',
+                text: 'Before making a decision, do you think about "how bad could it get" and the probability of that happening?', opts: [{ label: 'A', text: 'I never think about it — why overthink?', score: 0 },
+                { label: 'B', text: 'I rarely think about it — it makes me more anxious', score: 1 }, { label: 'C', text: 'I sometimes think about it, but not very carefully',
+                    score: 2 }, { label: 'D', text: 'I often think about it — I believe I need to consider the worst case', score: 3 },
+                { label: 'E', text: 'I always think about it — I carefully calculate probabilities', score: 4 }] },
+            { dim: 'cost', layer: 'step1', purpose: 'Comparative trade-off — do you compare the consequences of "believing" vs "not believing"?',
+                text: 'Do you lay out and compare the consequences of both "believing" and "not believing"?', opts: [{ label: 'A', text: 'No — if I believe it, I believe it', score: 0 },
+                { label: 'B', text: 'I rarely weigh trade-offs — it feels exhausting', score: 1 }, { label: 'C', text: 'I sometimes think about it, but don\'t compare side by side',
+                    score: 2 }, { label: 'D', text: 'I often compare — it gives me more clarity', score: 3 },
+                { label: 'E', text: 'I always carefully compare — it\'s my decision-making habit', score: 4 }] },
+            { dim: 'cost', layer: 'step2', purpose: 'Decision perfectionism — are you exhausting yourself in pursuit of "absolute correctness"?',
+                text: 'Are you afraid of "making the wrong choice"?', opts: [{ label: 'A', text: 'Not at all — if I choose wrong, I change course, no big deal', score: 3 },
+                { label: 'B', text: 'Not very afraid — there\'s no perfect choice, just pick one and move forward', score: 4 },
+                { label: 'C', text: 'I am somewhat afraid, but I don\'t overthink it — I just decide and move on', score: 2 },
+                { label: 'D', text: 'I am quite afraid — I keep going back and forth, which drains my energy', score: 1 },
+                { label: 'E', text: 'I am extremely afraid — I often hesitate and cannot act because I fear making the wrong choice', score: 0 }] },
+            { dim: 'cost', layer: 'step2', purpose: 'Admitting mistakes — do you refuse to admit a bad choice out of fear of embarrassment?',
+                text: 'Are you afraid of "admitting you made a bad choice"?', opts: [{ label: 'A', text: 'Not at all — I admit it openly when I\'m wrong', score: 4 },
+                { label: 'B', text: 'Not very afraid — I think admitting mistakes is fine', score: 3 }, { label: 'C', text: 'I am somewhat afraid — it feels a bit awkward',
+                    score: 2 }, { label: 'D', text: 'I am quite afraid — it feels humiliating to admit I was wrong', score: 1 },
+                { label: 'E', text: 'I am extremely afraid — I\'d rather stick to my decision than admit it was wrong', score: 0 }] },
+            { dim: 'cost', layer: 'step2', purpose: 'Neutrality anxiety — are you afraid of missing out if you don\'t take a stance immediately?',
+                text: 'If you hold off on judging and stay neutral, do you worry about missing something?', opts: [{ label: 'A', text: 'I don\'t worry at all — staying neutral is fine', score: 4 },
+                { label: 'B', text: 'I don\'t worry much — I think it\'s okay to wait and see', score: 3 }, { label: 'C', text: 'I worry a little — I fear missing the best timing',
+                    score: 2 }, { label: 'D', text: 'I worry quite a bit — I don\'t like being undecided', score: 1 },
+                { label: 'E', text: 'I worry a lot — I want to make a decision immediately', score: 0 }] },
+            { dim: 'cost', layer: 'step3', purpose: 'Uncertainty tolerance — are you willing to endure the uncertainty of "not following the crowd" for the sake of truth?',
+                text: 'Are you willing to endure the discomfort of "not following the crowd" in order to see the truth clearly?', opts: [{ label: 'A', text: 'No — uncertainty is too uncomfortable', score: 0 },
+                { label: 'B', text: 'Not really — I feel safer following the crowd', score: 1 }, { label: 'C', text: 'I might be willing, depending on the situation',
+                    score: 2 }, { label: 'D', text: 'I am willing — truth is more important than comfort', score: 3 },
+                { label: 'E', text: 'I am very willing — I fear unclear truth more than uncertainty', score: 4 }] },
+            { dim: 'cost', layer: 'step3', purpose: 'Decision framework — do you have a systematic framework for evaluating trade-offs?',
+                text: 'Do you use a simple decision framework to systematically evaluate pros and cons in future decisions?', opts: [{ label: 'A', text: 'No — I don\'t think it\'s necessary', score: 0 },
+                { label: 'B', text: 'I might have thought about it, but never actually did it', score: 1 }, { label: 'C', text: 'I sometimes try to build one, but it\'s not systematic',
+                    score: 2 }, { label: 'D', text: 'I am building my own decision framework — I already have some elements', score: 3 },
+                { label: 'E', text: 'I already have a well-developed decision framework that I consistently use', score: 4 }] }
+        ];
+
+        // ================================================================
+        // State management (identical logic, only display text changed)
+        // ================================================================
+        let state = { questions: [], answers: {}, shuffledIndices: [], currentStep: 0, isActive: false, timerStarted: false };
+        const TOTAL = QUESTIONS_RAW.length;
+        let historyRecords = [];
+        let timerSeconds = 0,
+            timerInterval = null;
+        let _reportBlobCache = null;
+        let _reportCanvasCache = null;
+
+        function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+
+        function loadHistory() { try { const raw = localStorage.getItem('cqd_pure_history'); if (raw) historyRecords = JSON
+                    .parse(raw); } catch (e) { historyRecords = []; } }
+
+        function saveHistory() { try { localStorage.setItem('cqd_pure_history', JSON.stringify(historyRecords)); } catch (e) {} }
+
+        function saveState() { try { localStorage.setItem('cqd_pure_state', JSON.stringify({ questions: state.questions,
+                    answers: state.answers, shuffledIndices: state.shuffledIndices, currentStep: state.currentStep,
+                    isActive: state.isActive, timerSeconds, timerStarted: state.timerStarted })); } catch (e) {} }
+
+        function loadState() {
+            try {
+                const raw = localStorage.getItem('cqd_pure_state');
+                if (raw) {
+                    const data = JSON.parse(raw);
+                    state.questions = data.questions || [];
+                    state.answers = data.answers || {};
+                    state.shuffledIndices = data.shuffledIndices || [];
+                    state.currentStep = data.currentStep || 0;
+                    state.isActive = data.isActive || false;
+                    timerSeconds = data.timerSeconds || 0;
+                    state.timerStarted = data.timerStarted || false;
+                    if (state.questions.length === TOTAL && state.shuffledIndices.length === TOTAL && state.shuffledIndices
+                        .every(i => typeof i === 'number' && i >= 0 && i < TOTAL)) {
+                        if (state.isActive) { showDiagnosis();
+                            renderStep(); if (state.timerStarted) startTimer(); }
+                        return;
+                    }
+                    console.warn('State data incomplete, reset');
+                }
+                initQuestions();
+            } catch (e) {
+                console.warn('State data corrupted, reset');
+                initQuestions();
+            }
+        }
+
+        function initQuestions() {
+            state.questions = QUESTIONS_RAW.map(q => ({ dim: q.dim, layer: q.layer, purpose: q.purpose, text: q.text,
+                options: q.opts.map(o => ({ ...o })) }));
+            state.shuffledIndices = Array.from({ length: TOTAL }, (_, i) => i);
+            shuffleArray(state.shuffledIndices);
+            state.answers = {};
+            state.currentStep = 0;
+            state.isActive = false;
+            state.timerStarted = false;
+            timerSeconds = 0;
+            if (timerInterval) { clearInterval(timerInterval);
+                timerInterval = null; }
+            updateTimerDisplay();
+            saveState();
+        }
+
+        function startTimer() { if (timerInterval) return;
+            state.timerStarted = true;
+            timerInterval = setInterval(() => { timerSeconds++;
+                updateTimerDisplay(); }, 1000);
+            saveState(); }
+
+        function stopTimer() { if (timerInterval) { clearInterval(timerInterval);
+                timerInterval = null; }
+            state.timerStarted = false;
+            saveState(); }
+
+        function updateTimerDisplay() { const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+            const s = String(timerSeconds % 60).padStart(2, '0');
+            document.getElementById('timerDisplay').textContent = '⏱️ ' + m + ':' + s; }
+
+        function resetTimer() { stopTimer();
+            timerSeconds = 0;
+            state.timerStarted = false;
+            updateTimerDisplay();
+            saveState(); }
+
+        function fullReset() {
+            stopTimer();
+            resetTimer();
+            initQuestions();
+            state.isActive = false;
+            saveState();
+            document.getElementById('diagnosisArea').classList.remove('visible');
+            document.getElementById('resultBox').classList.remove('show');
+            document.getElementById('stepContainer').innerHTML = '';
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('startBtn').textContent = '🚀 Start Diagnosis';
+            document.getElementById('startArea').style.display = 'block';
+            document.getElementById('progressFill').style.width = '0%';
+            document.getElementById('answeredCount').textContent = '0';
+            document.getElementById('nextDimLabel').textContent = 'Factual Basis';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showToast('Reset — you can restart the diagnosis');
+            _reportBlobCache = null;
+            _reportCanvasCache = null;
+        }
+
+        function showDiagnosis() { document.getElementById('startArea').style.display = 'none';
+            document.getElementById('diagnosisArea').classList.add('visible');
+            document.getElementById('totalCount').textContent = TOTAL;
+            renderStep(); }
+
+        function updateDimScanProgress(currentDim) {
+            const dimIndex = DIM_ORDER.indexOf(currentDim);
+            let nextLabel = 'All complete 🎯';
+            if (dimIndex !== -1 && dimIndex + 1 < DIM_ORDER.length) {
+                const nextKey = DIM_ORDER[dimIndex + 1];
+                nextLabel = DIM_MAP[nextKey]?.label || nextKey;
+            }
+            document.getElementById('nextDimLabel').textContent = nextLabel;
+        }
+
+        function renderStep() {
+            const total = TOTAL,
+                done = Object.keys(state.answers).length,
+                pct = (done / total) * 100;
+            document.getElementById('progressFill').style.width = pct + '%';
+            document.getElementById('answeredCount').textContent = done;
+            document.getElementById('totalCount').textContent = total;
+
+            if (done === total) {
+                stopTimer();
+                document.getElementById('stepContainer').innerHTML = `
+                <div class="complete-msg">
+                    <div class="icon">🎉</div>
+                    <div class="title">All Questions Answered!</div>
+                    <div class="sub">You have completed all ${total} diagnostic questions. Click below to generate your report.</div>
+                    <div class="btn-group">
+                        <button class="btn-report" id="generateReportBtn">📋 Generate Report</button>
+                        <button class="btn-reset" id="resetFromCompleteBtn">↻ Restart</button>
+                    </div>
+                </div>
+            `;
+                document.getElementById('generateReportBtn')?.addEventListener('click', function() { generateReport(true); }, { once: true });
+                document.getElementById('resetFromCompleteBtn')?.addEventListener('click', function() { fullReset(); }, { once: true });
+                if (state.questions.length > 0) {
+                    const lastDim = state.questions[state.shuffledIndices[state.shuffledIndices.length - 1]]?.dim ||
+                        'source';
+                    updateDimScanProgress(lastDim);
+                }
+                return;
+            }
+
+            let step = 0;
+            for (let i = 0; i < total; i++) { const ridx = state.shuffledIndices[i]; if (!state.answers['q_' + ridx]) { step =
+                        i; break; } }
+            if (step >= total) { renderStep(); return; }
+            const realIdx = state.shuffledIndices[step],
+                q = state.questions[realIdx];
+            if (!q) { renderStep(); return; }
+
+            updateDimScanProgress(q.dim);
+
+            const dimIndices = state.shuffledIndices.filter(idx => state.questions[idx].dim === q.dim);
+            const dimTotal = dimIndices.length;
+            let dimAnswered = 0;
+            dimIndices.forEach(idx => { if (state.answers['q_' + idx]) dimAnswered++; });
+
+            const dim = DIM_MAP[q.dim] || { icon: '📌', label: 'Dimension' };
+            const layer = LAYER_MAP[q.layer] || { label: 'Think', sub: 'Inquiry', badge: 's1' };
+            const stepNum = step + 1,
+                ans = state.answers['q_' + realIdx];
+            const rawOpts = q.options.map((opt, idx) => ({ ...opt, origIdx: idx }));
+            const shuffledOpts = shuffleArray([...rawOpts]);
+            shuffledOpts.forEach((opt, idx) => { opt.label = String.fromCharCode(65 + idx); });
+
+            let optsHtml = '';
+            shuffledOpts.forEach((opt, idx) => { const isSelected = ans && ans.origIdx === opt.origIdx;
+                optsHtml += `
+            <label class="${isSelected?'selected':''}">
+                <input type="radio" name="q_${step}" value="${idx}" data-origidx="${opt.origIdx}" ${isSelected?'checked':''}>
+                <span class="option-label">${opt.label}</span>
+                <span>${opt.text}</span>
+            </label>
+            `; });
+
+            let hasPrev = false;
+            for (let i = step - 1; i >= 0; i--) { const ridx = state.shuffledIndices[i]; if (state.answers['q_' + ridx]) { hasPrev =
+                        true; break; } }
+
+            const purposeHtml = q.purpose ? `<div class="purpose-tag">Bias detected: ${q.purpose}</div>` : '';
+            const dimProgressText = `(${dimAnswered}/${dimTotal})`;
+
+            document.getElementById('stepContainer').innerHTML = `
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="dim">${dim.icon} ${dim.label} <span class="dim-progress">${dimProgressText}</span></span>
+                    </div>
+                    <div class="step-badge ${layer.badge}">${layer.label} <span class="sub">· ${layer.sub}</span> <span style="margin-left:8px;font-weight:400;color:var(--text-muted);">${stepNum} / ${total}</span></div>
+                </div>
+                <div class="question-block">
+                    ${purposeHtml}
+                    <div class="q-text"><span class="q-num">Q${stepNum}.</span> ${q.text}</div>
+                    <div class="q-options">${optsHtml}</div>
+                </div>
+                <div class="step-footer">
+                    <div class="step-status ${ans?'done':'active'}">${ans?'✅ Answered':'☑️ Please select an option'}</div>
+                    <button class="btn-back" id="backBtn" ${!hasPrev?'disabled':''}>↩ Back</button>
+                </div>
+            </div>
+        `;
+
+            document.getElementById('backBtn')?.addEventListener('click', function() {
+                for (let i = step - 1; i >= 0; i--) { const ridx = state.shuffledIndices[i]; if (state.answers['q_' +
+                        ridx]) { delete state.answers['q_' + ridx];
+                        saveState();
+                        renderStep(); return; } }
+            });
+
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (!this.checked) return;
+                    const idx = parseInt(this.value),
+                        origIdx = parseInt(this.dataset.origidx);
+                    const selectedOpt = shuffledOpts.find(o => o.origIdx === origIdx);
+                    if (!selectedOpt) return;
+                    state.answers['q_' + realIdx] = { origIdx: origIdx, score: selectedOpt.score };
+                    saveState();
+                    const labels = this.closest('.q-options').querySelectorAll('label');
+                    labels.forEach(l => l.classList.remove('selected'));
+                    this.closest('label').classList.add('selected');
+                    const status = document.querySelector('.step-status');
+                    if (status) { status.className = 'step-status done';
+                        status.innerHTML = '✅ Answered, auto-advancing...'; }
+                    const doneNow = Object.keys(state.answers).length;
+                    document.getElementById('progressFill').style.width = ((doneNow / total) * 100) + '%';
+                    document.getElementById('answeredCount').textContent = doneNow;
+                    updateDimScanProgress(q.dim);
+                    setTimeout(() => { renderStep(); }, 350);
+                });
+            });
+            if (ans) { const status = document.querySelector('.step-status'); if (status) { status.className =
+                        'step-status done';
+                    status.innerHTML = '✅ Answered'; } }
+        }
+
+        function generateReport(saveToHistory = true, customAnswers = null) {
+            const answers = customAnswers || state.answers;
+            let totalEarned = 0,
+                totalMax = TOTAL * 4;
+            const dimScores = {},
+                layerScores = { step1: { earned: 0, total: 0 }, step2: { earned: 0, total: 0 }, step3: { earned: 0,
+                        total: 0 } };
+            state.shuffledIndices.forEach(realIdx => {
+                const q = state.questions[realIdx];
+                if (!q) return;
+                const ans = answers['q_' + realIdx];
+                const score = ans ? ans.score : 0;
+                totalEarned += score;
+                const dim = q.dim,
+                    layer = q.layer;
+                if (!dimScores[dim]) dimScores[dim] = { earned: 0, total: 0 };
+                dimScores[dim].earned += score;
+                dimScores[dim].total += 4;
+                if (layerScores[layer]) { layerScores[layer].earned += score;
+                    layerScores[layer].total += 4; }
+            });
+            const totalPct = totalMax > 0 ? (totalEarned / totalMax) * 100 : 0;
+            let level, levelLabel, levelDesc;
+            if (totalPct >= 80) { level = 5;
+                levelLabel = 'Clear Thinker';
+                levelDesc = 'Your thinking framework is highly complete, with systematic critical thinking skills. You can independently verify information, deeply interrogate your own cognitive blind spots, and internalize reflection into action habits.'; } else if (totalPct >=
+                60) { level = 4;
+                levelLabel = 'Independent Thinker';
+                levelDesc = 'You have strong independent thinking abilities, but there are still blind spots in certain dimensions. You consciously verify information and reflect on yourself, but depth and systematicity can be further improved.'; } else if (totalPct >=
+                40) { level = 3;
+                levelLabel = 'Exploring Thinker';
+                levelDesc = 'You have foundational critical thinking awareness, but depth and systematicity are insufficient. You sometimes question information, but lack a complete verification framework, making you susceptible to surface-level logic.'; } else if (totalPct >=
+                20) { level = 2;
+                levelLabel = 'Guided Thinker';
+                levelDesc = 'You are easily led by information, lacking active verification and reflection habits. You tend to accept surface-level information and rarely ask "why" or "who is behind this." You need to build a critical thinking framework from the ground up.'; } else { level =
+                    1;
+                levelLabel = 'Passive Receiver';
+                levelDesc = 'You habitually accept information with almost no awareness of reflection or verification. You are easily driven by emotions, positions, and interests. Start from the most basic "source verification" to rebuild your thinking habits.'; }
+
+            const dimResults = Object.keys(DIM_MAP).map(dimId => {
+                const data = dimScores[dimId] || { earned: 0, total: 0 };
+                const pct = data.total > 0 ? (data.earned / data.total) * 100 : 0;
+                return { id: dimId, icon: DIM_MAP[dimId].icon, label: DIM_MAP[dimId].label, pct, earned: data
+                        .earned, total: data.total };
+            });
+            const layerResults = ['step1', 'step2', 'step3'].map(key => {
+                const data = layerScores[key];
+                const pct = data.total > 0 ? (data.earned / data.total) * 100 : 0;
+                let statusText, cls;
+                if (pct >= 70) { statusText = '✅ Passed';
+                    cls = 'pass'; } else if (pct >= 45) { statusText = '⚠️ Partial';
+                    cls = 'warn'; } else { statusText = '❌ Not Passed';
+                    cls = 'fail'; }
+                return { key, label: LAYER_MAP[key].label, sub: LAYER_MAP[key].sub, pct, earned: data.earned,
+                    total: data.total, statusText, cls };
+            });
+
+            const strongestDim = dimResults.reduce((a, b) => a.pct > b.pct ? a : b);
+            const weakestDim = dimResults.reduce((a, b) => a.pct < b.pct ? a : b);
+            const weakestLayer = layerResults.reduce((a, b) => a.pct < b.pct ? a : b);
+            const adviceText = (() => {
+                if (totalPct >= 80) return 'Your thinking framework is already quite mature. Continue to focus on "whether you actually do it" rather than "whether you know it."';
+                if (totalPct >= 60) return 'You have a solid foundation, but still have blind spots. Focus on breaking through the weakest layer (<strong>' + weakestLayer.label +
+                    '</strong>).';
+                return 'There is significant room for improvement in your thinking habits. Start with the most basic "source verification" and rebuild the awareness that "every piece of information deserves to be questioned."';
+            })();
+
+            document.getElementById('resultBadges').innerHTML = `
+            <span class="badge-item ${totalPct>=60?'pass':totalPct>=40?'warn':'fail'}">Maturity: ${Math.round(totalPct)}%</span>
+            <span class="badge-item ${totalPct>=60?'pass':'warn'}">Level: ${levelLabel.slice(0,6)}</span>
+        `;
+            const body = document.getElementById('reportBody');
+            const headerHtml = `
+            <div class="result-card" style="border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:14px; text-align:center;">
+                <div style="font-size:13px; font-weight:600; letter-spacing:1.6px; color:var(--text-secondary); text-transform:uppercase;">Cognitive Blind Spot Diagnostic Model</div>
+                <div style="font-size:20px; font-weight:700; color:var(--text-h1);">A Thinking Model That Truly "Awakens" You</div>
+                <div style="font-size:14px; color:var(--text-secondary); margin-top:4px;">Author: Yang Shengqi &nbsp; ORCID: 0009-0008-3755-8960</div>
+                <span style="display:inline-block; background:var(--bg-card); color:var(--text-h1); font-size:14px; font-weight:500; padding:4px 18px; border-radius:var(--radius-full); border:1px solid var(--border-light); margin-top:6px;">Cognitive Blind Spot Diagnosis</span>
+            </div>
+        `;
+            const summaryHtml = `
+            <div class="result-card" style="margin-bottom:14px;">
+                <div class="card-title" style="font-size:17px;">📌 One Sentence That Summarizes Your Thinking</div>
+                <div class="card-content" style="font-size:16px; line-height:2;">
+                    <div><strong>Maturity: ${Math.round(totalPct)}%</strong> — You are a <strong>"${levelLabel}"</strong></div>
+                    <div style="margin-top:6px;">
+                        <span style="color:var(--color-success);">✅ Strongest: ${strongestDim.label} (${Math.round(strongestDim.pct)}%)</span><br>
+                        <span style="color:var(--color-danger);">⚠️ To improve: ${weakestDim.label} (${Math.round(weakestDim.pct)}%)</span><br>
+                        <span style="color:var(--color-gold);">💡 Priority breakthrough: ${weakestLayer.label} (${Math.round(weakestLayer.pct)}%)</span>
+                    </div>
+                    <div style="margin-top:8px; font-size:14px; color:var(--link-color); border-top:1px solid var(--border-color); padding-top:6px;">
+                        💬 ${totalPct>=60?'Your thinking framework is solid. Continue optimizing the weak spots.':'Start from the weakest dimension and practice one item deliberately every day.'}
+                    </div>
+                </div>
+            </div>
+        `;
+            const layerProgressHtml = `
+            <div class="layer-progress" style="justify-content:center;">
+                ${layerResults.map((r,i)=>`
+                    <div class="layer-node ${r.cls}" style="flex:0 1 auto; min-width:100px;">
+                        <div class="layer-node-icon">${i===0?'🛡️':i===1?'🧠':'🌱'}</div>
+                        <div class="layer-node-label">${r.label}</div>
+                        <div class="layer-node-sub">${['Distinguish Truth','Reflect Bias','Turn Into Action'][i]}</div>
+                        <div class="layer-node-status ${r.cls}">${r.statusText}</div>
+                        <div class="layer-node-score">${Math.round(r.pct)}% · ${r.earned}/${r.total}</div>
+                    </div>
+                    ${i<2?'<div class="layer-arrow" style="flex-shrink:0;">→</div>':''}
+                `).join('')}
+            </div>
+        `;
+            const radarHtml = `<div class="radar-container"><canvas id="radarCanvas" width="400" height="400"></canvas></div>`;
+            const dimProgressHtml = `
+            <div class="dim-progress-card" style="text-align:left;">
+                <div class="card-title">📊 Six-Dimension Breakdown</div>
+                <div class="dim-progress-wrap">
+                    ${dimResults.map(d=>`
+                        <div class="dim-progress-item">
+                            <span class="dim-label">${d.label}</span>
+                            <div class="dim-track"><div class="dim-fill" style="width:${Math.round(d.pct)}%;"></div></div>
+                            <span class="dim-pct">${Math.round(d.pct)}%</span>
+                            <span class="dim-score">${d.earned}/${d.total}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+            const levelHtml = `
+            <div class="dim-progress-card">
+                <div class="level-light">
+                    <div class="level-badge"><span class="level-stars">${'⭐'.repeat(level)}</span><span class="level-label">${levelLabel}</span></div>
+                    <div class="level-desc">${levelDesc}</div>
+                </div>
+            </div>
+        `;
+            const adviceHtml = `
+            <div class="dim-progress-card">
+                <div class="advice-light">
+                    <div class="advice-main">${adviceText}</div>
+                    <div class="advice-items" style="padding-left:0;">
+                        <div class="advice-item" style="padding-left:0; list-style:none; border-bottom:1px solid var(--border-color); padding-bottom:6px;">
+                            <strong>① Daily Practice</strong> — Pick one piece of information and ask yourself:<br>"Is the source reliable? Is there evidence? Is the logic sound?" Write down the answers.
+                        </div>
+                        <div class="advice-item" style="padding-left:0; list-style:none; border-bottom:1px solid var(--border-color); padding-bottom:6px;">
+                            <strong>② Weekly Challenge</strong> — Find an opposing viewpoint article,<br>write down three points that make you uncomfortable, and ask "Is this touching my blind spot?"
+                        </div>
+                        <div class="advice-item" style="padding-left:0; list-style:none;">
+                            <strong>③ Monthly Retest</strong> — Take this diagnosis again,<br>compare your score changes, and focus on your weakest dimension.
+                        </div>
+                    </div>
+                    <div class="advice-hint" style="margin-top:12px;">💡 Thinking improvement = consistent small practices + regular self-checks</div>
+                </div>
+            </div>
+        `;
+            const faqHtml = `
+            <div class="dim-progress-card" style="background:var(--bg-body); border-color:var(--border-light); margin-top:12px; padding-bottom:28px;">
+                <div class="card-title">❓ What Is a "Cognitive Blind Spot"?</div>
+                <div class="card-content" style="font-size:14px; line-height:2.2; padding-bottom:6px;">
+                    A cognitive blind spot is a <strong>thinking habit that you are not aware of</strong>, such as:<br>
+                    · Easily trusting authority (information source blind spot)<br>
+                    · Forming a conclusion first and then seeking evidence (factual blind spot)<br>
+                    · Being influenced by emotions without realizing it (emotional blind spot)<br>
+                    This tool helps you <strong>quantify</strong> these blind spots and provides a path for improvement.
+                </div>
+            </div>
+        `;
+            const threeCardsHtml = `
+            <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; margin-bottom:14px;" class="three-cards">
+                <div class="result-card" style="flex:1; min-width:180px; padding:16px 18px; margin-bottom:0;">
+                    <h3>🌍 Earth</h3>
+                    <p>This diagnosis does not depend on any cultural tradition, presumes no educational background, and requires no specialized knowledge.</p>
+                </div>
+                <div class="result-card" style="flex:1; min-width:180px; padding:16px 18px; margin-bottom:0;">
+                    <h3>🏛️ State</h3>
+                    <p>The state cannot interfere with the results, as the answers exist only within the individual and do not pass through any intermediary institution.</p>
+                </div>
+                <div class="result-card" style="flex:1; min-width:180px; padding:16px 18px; margin-bottom:0;">
+                    <h3>🧑 Individual</h3>
+                    <p>An ordinary person can complete this self-dialogue independently without any prior training; what they gain is the first glimpse of their own thinking structure.</p>
+                </div>
+            </div>
+        `;
+            const footerHtml = `
+            <div class="qr-wrapper" style="padding-bottom: 20px;">
+                <div class="qr-box" id="qrCodeContainer"><div id="qrCodeInReport" style="width:90px; height:90px; margin:auto;"></div></div>
+                <div class="qr-label">Scan to visit · Yang Shengqi's Axiomatic System of Civilization · Independent Thought Anchor</div>
+                <div class="qr-footer">
+                    Cognitive Blind Spot Diagnostic Model · Yang Shengqi's Axiomatic System of Civilization<br>
+                    Yang Shengqi's Axiomatic System of Civilization · Independent Thought Anchor · First published in 2026<br>
+                    <span class="highlight">All content released under CC BY-ND 4.0</span>
+                </div>
+            </div>
+        `;
+            const innerHtml = `
+            <div class="report-inner" style="max-width:820px; margin:0 auto;">
+                ${headerHtml}
+                ${summaryHtml}
+                <div class="result-card">
+                    <div class="card-title">📊 Three-Layer Capability Assessment</div>
+                    <div class="card-content">${layerProgressHtml}</div>
+                </div>
+                <div class="result-card">
+                    <div class="card-title">📡 Six-Dimension Radar</div>
+                    <div class="card-content">${radarHtml}<div style="font-size:12px;color:var(--text-muted);margin-top:8px;text-align:center;">* Percentage scores represent maturity in each dimension.</div></div>
+                </div>
+                ${dimProgressHtml}
+                ${levelHtml}
+                ${adviceHtml}
+                ${faqHtml}
+                ${threeCardsHtml}
+                ${footerHtml}
+            </div>
+        `;
+            body.innerHTML = innerHtml;
+
+            requestAnimationFrame(() => {
+                const canvas = document.getElementById('radarCanvas');
+                if (canvas) drawRadar(dimResults);
+                else setTimeout(() => { const c2 = document.getElementById('radarCanvas'); if (c2) drawRadar(
+                        dimResults); }, 100);
+            });
+
+            function generateQR() {
+                const qrContainer = document.getElementById('qrCodeInReport');
+                if (!qrContainer) return false;
+                qrContainer.innerHTML = '';
+                if (typeof QRCode !== 'undefined') {
+                    try {
+                        new QRCode(qrContainer, {
+                            text: 'https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/%E6%80%9D%E7%BB%B4%E7%9B%B2%E5%8C%BA%E8%AF%8A%E6%96%AD.html',
+                            width: 90,
+                            height: 90,
+                            colorDark: '#0b0e0b',
+                            colorLight: '#ffffff',
+                            correctLevel: QRCode.CorrectLevel.H
+                        });
+                        const canvas = qrContainer.querySelector('canvas');
+                        if (canvas) {
+                            const dataUrl = canvas.toDataURL('image/png');
+                            const img = document.createElement('img');
+                            img.src = dataUrl;
+                            img.style.width = '90px';
+                            img.style.height = '90px';
+                            img.style.display = 'block';
+                            img.setAttribute('alt', 'QR Code');
+                            qrContainer.innerHTML = '';
+                            qrContainer.appendChild(img);
+                        }
+                        return true;
+                    } catch (e) {
+                        console.warn('QR generation failed:', e);
+                        return false;
+                    }
+                }
+                return false;
+            }
+
+            let attempts = 0;
+            const tryGenerateQR = () => {
+                if (generateQR()) return;
+                attempts++;
+                if (attempts < 5) setTimeout(tryGenerateQR, 500);
+                else {
+                    const fb = document.getElementById('qrCodeInReport');
+                    if (fb) {
+                        fb.textContent = '⚠️ QR Code loading failed';
+                        fb.style.cssText += 'display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted);';
+                    }
+                }
+            };
+            setTimeout(tryGenerateQR, 300);
+
+            document.getElementById('resultBox').classList.add('show');
+            document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    const resultBodyEl = document.getElementById('reportBody');
+                    if (!resultBodyEl) return;
+                    const clone = resultBodyEl.cloneNode(true);
+                    const radarCanvasEl = document.getElementById('radarCanvas');
+                    let radarImageData = null;
+                    if (radarCanvasEl) {
+                        try { radarImageData = radarCanvasEl.toDataURL('image/png'); } catch (e) {}
+                    }
+                    const cloneRadar = clone.querySelector('#radarCanvas');
+                    if (cloneRadar && cloneRadar.parentNode && radarImageData) {
+                        const img = document.createElement('img');
+                        img.src = radarImageData;
+                        img.style.width = '100%';
+                        img.style.height = 'auto';
+                        img.style.display = 'block';
+                        img.setAttribute('alt', 'Six-Dimension Radar Chart');
+                        cloneRadar.parentNode.replaceChild(img, cloneRadar);
+                    }
+                    const FIXED_WIDTH = 820;
+                    const container = document.createElement('div');
+                    container.className = 'screenshot-container';
+                    container.style.cssText =
+                        `width:${FIXED_WIDTH}px;padding:40px 30px;background:var(--bg-container);box-sizing:border-box;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;color:var(--text-body);line-height:1.7;overflow:visible;height:auto !important;min-height:100% !important;`;
+                    const innerClone = clone.querySelector('.report-inner');
+                    if (innerClone) {
+                        innerClone.style.margin = '0 auto';
+                        innerClone.style.width = '100%';
+                        innerClone.style.maxWidth = FIXED_WIDTH + 'px';
+                        innerClone.style.boxSizing = 'border-box';
+                        innerClone.style.overflow = 'visible';
+                        innerClone.style.height = 'auto';
+                    }
+                    clone.querySelectorAll(
+                        '.result-card, .dim-progress-card, .report-inner, .qr-wrapper, .radar-container, .layer-progress, .layer-node, .three-cards'
+                    ).forEach(el => {
+                        el.style.width = '100%';
+                        el.style.maxWidth = FIXED_WIDTH + 'px';
+                        el.style.margin = '0 auto';
+                        el.style.boxSizing = 'border-box';
+                        el.style.overflow = 'visible';
+                        el.style.height = 'auto';
+                        el.style.maxHeight = 'none';
+                    });
+                    const radarContainerClone = clone.querySelector('.radar-container');
+                    if (radarContainerClone) {
+                        radarContainerClone.style.maxWidth = '400px';
+                        radarContainerClone.style.margin = '0 auto';
+                    }
+                    const layerProgressClone = clone.querySelector('.layer-progress');
+                    if (layerProgressClone) {
+                        layerProgressClone.style.justifyContent = 'center';
+                        layerProgressClone.style.flexWrap = 'wrap';
+                    }
+                    clone.querySelectorAll('.three-cards .result-card').forEach(el => {
+                        el.style.flex = '1 1 180px';
+                        el.style.minWidth = '180px';
+                        el.style.marginBottom = '0';
+                    });
+                    container.appendChild(clone);
+                    const tempContainer = document.createElement('div');
+                    tempContainer.style.cssText =
+                        `position:absolute;left:-9999px;top:0;z-index:99999;width:${FIXED_WIDTH}px;overflow:visible;`;
+                    tempContainer.appendChild(container);
+                    document.body.appendChild(tempContainer);
+                    container.style.height = 'auto';
+                    container.style.minHeight = 'auto';
+                    const images = container.querySelectorAll('img');
+                    Promise.all([...images].map(img => {
+                        if (img.complete) return Promise.resolve();
+                        return new Promise(resolve => { img.onload = resolve; img.onerror = resolve; });
+                    })).then(() => {
+                        const realHeight = container.scrollHeight;
+                        const FINAL_BUFFER = 0.05;
+                        const finalHeight = Math.ceil(realHeight * (1 + FINAL_BUFFER)) + 20;
+                        container.style.height = finalHeight + 'px';
+                        container.style.minHeight = finalHeight + 'px';
+                        html2canvas(container, {
+                            scale: 2,
+                            backgroundColor: getComputedStyle(document.documentElement).getPropertyValue(
+                                '--bg-container').trim() || '#141814',
+                            allowTaint: false,
+                            useCORS: true,
+                            logging: false,
+                            width: FIXED_WIDTH,
+                            height: finalHeight,
+                            windowHeight: finalHeight,
+                            onclone: function(doc) {
+                                doc.querySelectorAll('*').forEach(el => {
+                                    el.style.overflow = 'visible';
+                                    el.style.maxHeight = 'none';
+                                });
+                                const cont = doc.querySelector('.screenshot-container');
+                                if (cont) cont.style.overflow = 'visible';
+                            }
+                        }).then(canvas => {
+                            canvas.toBlob(blob => {
+                                _reportBlobCache = blob;
+                                _reportCanvasCache = canvas;
+                            }, 'image/png');
+                            document.body.removeChild(tempContainer);
+                        }).catch(() => {
+                            document.body.removeChild(tempContainer);
+                        });
+                    }).catch(() => {
+                        document.body.removeChild(tempContainer);
+                    });
+                }, 500);
+            });
+
+            if (saveToHistory) {
+                const record = { id: Date.now(), timestamp: new Date().toISOString(), totalEarned: Math.round(
+                        totalEarned), totalMax, totalPct: Math.round(totalPct), level, levelLabel,
+                    answers: JSON.parse(JSON.stringify(answers)) };
+                historyRecords.unshift(record);
+                if (historyRecords.length > 50) historyRecords = historyRecords.slice(0, 50);
+                saveHistory();
+                renderHistory();
+            }
+        }
+
+        function drawRadar(dimResults) {
+            const canvas = document.getElementById('radarCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width,
+                h = canvas.height,
+                cx = w / 2,
+                cy = h / 2;
+            const radius = Math.min(w, h) * 0.38;
+            const dims = dimResults.length,
+                angleStep = (Math.PI * 2) / dims;
+            ctx.clearRect(0, 0, w, h);
+            for (let lv = 1; lv <= 5; lv++) {
+                const r = (radius / 5) * lv;
+                ctx.beginPath();
+                for (let i = 0; i < dims; i++) {
+                    const angle = -Math.PI / 2 + i * angleStep;
+                    const x = cx + r * Math.cos(angle),
+                        y = cy + r * Math.sin(angle);
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.closePath();
+                ctx.strokeStyle = '#2a322a';
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+            }
+            for (let i = 0; i < dims; i++) {
+                const angle = -Math.PI / 2 + i * angleStep;
+                ctx.beginPath();
+                ctx.moveTo(cx, cy);
+                ctx.lineTo(cx + radius * Math.cos(angle), cy + radius * Math.sin(angle));
+                ctx.strokeStyle = '#2a322a';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+                const labelR = radius + 28;
+                const lx = cx + labelR * Math.cos(angle),
+                    ly = cy + labelR * Math.sin(angle);
+                ctx.fillStyle = '#aaba8a';
+                ctx.font = '12px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(dimResults[i].label, lx, ly);
+            }
+            const dataPcts = dimResults.map(d => d.pct / 100);
+            ctx.beginPath();
+            for (let i = 0; i < dims; i++) {
+                const val = Math.min(dataPcts[i], 1);
+                const r = radius * val;
+                const angle = -Math.PI / 2 + i * angleStep;
+                const x = cx + r * Math.cos(angle),
+                    y = cy + r * Math.sin(angle);
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.fillStyle = 'rgba(138,170,106,0.35)';
+            ctx.fill();
+            ctx.strokeStyle = '#8aaa6a';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+            for (let i = 0; i < dims; i++) {
+                const val = Math.min(dataPcts[i], 1);
+                const r = radius * val;
+                const angle = -Math.PI / 2 + i * angleStep;
+                const x = cx + r * Math.cos(angle),
+                    y = cy + r * Math.sin(angle);
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, 2 * Math.PI);
+                ctx.fillStyle = '#aaba8a';
+                ctx.fill();
+                ctx.strokeStyle = '#0b0e0b';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+        }
+
+        async function exportPngReport() {
+            const btn = document.getElementById('copyImageBtn');
+            if (btn.disabled) return;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="icon">⏳</span> Generating...';
+            if (!_reportBlobCache) {
+                showToast('⚠️ Report not yet generated or cache not ready. Please generate the report first.', true);
+                btn.disabled = false;
+                btn.innerHTML = '<span class="icon">🖼️</span> Export Report (PNG) <span class="badge">Screenshot</span>';
+                return;
+            }
+            try {
+                const blob = _reportBlobCache;
+                const link = document.createElement('a');
+                link.download = 'Cognitive_Blind_Spot_Report_' + new Date().toISOString().slice(0, 10) + '.png';
+                link.href = URL.createObjectURL(blob);
+                link.click();
+                URL.revokeObjectURL(link.href);
+                showToast('✅ PNG report downloaded!');
+            } catch (err) {
+                console.error('Export failed:', err);
+                showToast('❌ Export failed, please retry', true);
+            }
+            btn.disabled = false;
+            btn.innerHTML = '<span class="icon">🖼️</span> Export Report (PNG) <span class="badge">Screenshot</span>';
+        }
+
+        async function sharePngReport() {
+            const btn = document.getElementById('shareImageBtn');
+            if (btn.disabled) return;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="icon">⏳</span> Preparing...';
+            showToast('⏳ Preparing image...');
+            if (!_reportBlobCache) {
+                showToast('⚠️ Report not yet generated or cache not ready. Please generate the report first.', true);
+                btn.disabled = false;
+                btn.innerHTML = '<span class="icon">📋</span> Copy Report (PNG) <span class="badge">Copy</span>';
+                return;
+            }
+            try {
+                const blob = _reportBlobCache;
+                const file = new File([blob], 'Cognitive_Blind_Spot_Report.png', { type: 'image/png' });
+                if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ title: 'Cognitive Blind Spot Report', files: [file] });
+                    showToast('✅ Shared successfully!');
+                    btn.disabled = false;
+                    btn.innerHTML = '<span class="icon">📋</span> Copy Report (PNG) <span class="badge">Copy</span>';
+                    return;
+                }
+                if (navigator.clipboard && window.ClipboardItem) {
+                    const clipboardItem = new ClipboardItem({ 'image/png': blob });
+                    await navigator.clipboard.write([clipboardItem]);
+                    showToast('✅ Image copied to clipboard! You can paste it (Ctrl+V)');
+                } else {
+                    const link = document.createElement('a');
+                    link.download = 'Cognitive_Blind_Spot_Report.png';
+                    link.href = URL.createObjectURL(blob);
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                    showToast('✅ Copy failed, download initiated instead');
+                }
+            } catch (err) {
+                console.error('Copy failed:', err);
+                if (_reportBlobCache) {
+                    const link = document.createElement('a');
+                    link.download = 'Cognitive_Blind_Spot_Report.png';
+                    link.href = URL.createObjectURL(_reportBlobCache);
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                    showToast('📥 Copy failed, download initiated (use "Export" button to save)', true);
+                } else {
+                    showToast('❌ Copy failed, please try exporting', true);
+                }
+            }
+            btn.disabled = false;
+            btn.innerHTML = '<span class="icon">📋</span> Copy Report (PNG) <span class="badge">Copy</span>';
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('historyList'),
+                empty = document.getElementById('historyEmpty');
+            if (historyRecords.length === 0) { list.innerHTML = '';
+                empty.style.display = 'block';
+                empty.textContent = 'No history records'; return; }
+            empty.style.display = 'none';
+            list.innerHTML = historyRecords.map(rec => {
+                const label = rec.levelLabel || '⭐';
+                const date = new Date(rec.timestamp).toLocaleString('zh-CN');
+                return `<div class="history-item" data-id="${rec.id}">
+                <span class="h-topic">Diagnosis</span>
+                <span class="h-meta">${date}</span>
+                <span class="h-level" style="color:${rec.totalPct>=80?'var(--color-success)':rec.totalPct>=60?'var(--link-color)':rec.totalPct>=40?'var(--color-gold)':'var(--color-danger)'};">${label}</span>
+                <div class="history-actions">
+                    <span class="history-view-btn">View</span>
+                    <button class="history-del-btn" title="Delete">✕</button>
+                </div>
+            </div>`;
+            }).join('');
+            list.querySelectorAll('.history-item').forEach(item => {
+                const viewBtn = item.querySelector('.history-view-btn'),
+                    delBtn = item.querySelector('.history-del-btn');
+                const id = parseInt(item.dataset.id);
+                const viewReport = function() {
+                    if (state.isActive && Object.keys(state.answers).length > 0) { if (!confirm(
+                            'Viewing history will overwrite current progress. Continue?')) return; }
+                    const rec = historyRecords.find(r => r.id === id);
+                    if (rec && rec.answers && Object.keys(rec.answers).length > 0) { generateReport(false,
+                            rec.answers);
+                        showToast('📋 History report loaded'); } else { showToast('⚠️ This record has no answer data.',
+                        true); }
+                };
+                item.addEventListener('click', function(e) { if (e.target.classList.contains(
+                        'history-del-btn')) return;
+                    viewReport(); });
+                if (viewBtn) { viewBtn.addEventListener('click', function(e) { e.stopPropagation();
+                        viewReport(); }); }
+                if (delBtn) { delBtn.addEventListener('click', function(e) { e.stopPropagation(); if (confirm(
+                            'Delete this record?')) { historyRecords = historyRecords.filter(r => r.id !==
+                            id);
+                        saveHistory();
+                        renderHistory();
+                        showToast('Record deleted'); } }); }
+            });
+        }
+
+        let toastTimer = null;
+
+        function showToast(message, isError) { const el = document.getElementById('toast');
+            el.textContent = message;
+            el.className = 'toast' + (isError ? ' error' : '');
+            void el.offsetWidth;
+            el.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => { el.classList.remove('show'); }, 4000); }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadHistory();
+            loadState();
+            renderHistory();
+            if (state.isActive && state.questions.length === TOTAL) { showDiagnosis(); if (state.timerStarted)
+                    startTimer(); }
+
+            document.getElementById('startBtn').addEventListener('click', function() {
+                if (state.isActive) { showDiagnosis(); return; }
+                const modal = document.getElementById('introModal');
+                const countdownEl = document.getElementById('introCountdown');
+                countdownEl.textContent = '3';
+                modal.style.display = 'flex';
+                let countdown = 3;
+                const timer = setInterval(() => {
+                    countdown--;
+                    countdownEl.textContent = countdown;
+                    if (countdown <= 0) {
+                        clearInterval(timer);
+                        modal.style.display = 'none';
+                        initQuestions();
+                        state.isActive = true;
+                        timerSeconds = 0;
+                        state.timerStarted = true;
+                        updateTimerDisplay();
+                        startTimer();
+                        saveState();
+                        showDiagnosis();
+                        document.getElementById('resultBox').classList.remove('show');
+                    }
+                }, 1000);
+            });
+
+            document.getElementById('resetFromResultBtn')?.addEventListener('click', function() { fullReset(); });
+            document.getElementById('closeResultBtn').addEventListener('click', function() { document.getElementById(
+                    'resultBox').classList.remove('show'); });
+            document.getElementById('copyImageBtn').addEventListener('click', exportPngReport);
+            document.getElementById('shareImageBtn').addEventListener('click', sharePngReport);
+        });
+    </script>
+</body>
+</html>

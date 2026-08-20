@@ -1,0 +1,2760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="人类思维盲区在线诊断工具（中文版）  · 杨晟琦文明公理系统" />
+    <title>人类思维盲区在线诊断工具（中文版） · 杨晟琦文明公理系统</title>
+    <link rel="stylesheet" href="common.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        /* ===== 页面特定样式（完全使用 VI 令牌） ===== */
+       .container {
+           padding: 0;                    /* 移除多余内边距 */
+           background: transparent;       /* 可选：透明背景，让主背景透出 */
+           border: none;
+           box-shadow: none;
+       }
+       .result-box {
+           background: #131816;
+           border-radius: 14px;
+           border: 1px solid #2a322a;
+           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+           overflow: hidden;
+           margin-top: 28px;
+       }
+        /* 侧边栏与主内容之间由 .app 控制，此处不重复 */
+
+        /* ===== 介绍框 ===== */
+        .intro-box {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            margin-bottom: 28px;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--color-primary);
+        }
+        .intro-box .intro-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-h1);
+            margin-bottom: 8px;
+        }
+        .intro-box .intro-desc {
+            font-size: 15px;
+            color: var(--text-body);
+            line-height: 2;
+        }
+        .intro-box .intro-desc strong {
+            color: var(--text-h3);
+        }
+        .intro-box .intro-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+        .intro-box .intro-features span {
+            font-size: 14px;
+            color: var(--link-color);
+        }
+        .intro-box .intro-features .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            margin-right: 6px;
+        }
+
+        /* ===== 开始按钮 ===== */
+        .start-area {
+            text-align: center;
+            padding: 20px 0 10px;
+        }
+        .start-area .btn-start {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 16px 60px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--link-color);
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-card);
+        }
+        .start-area .btn-start:hover {
+            border-color: var(--color-primary);
+            color: var(--text-h1);
+            background: var(--color-primary-dim);
+            box-shadow: var(--shadow-card-hover);
+            transform: scale(1.02);
+        }
+        .start-area .btn-start:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .start-area .start-hint {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 14px;
+        }
+
+        /* ===== 诊断区域 ===== */
+        .diagnosis-active {
+            display: none;
+        }
+        .diagnosis-active.visible {
+            display: block;
+        }
+
+        /* ===== 时间 & 进度条 ===== */
+        .time-estimate {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 10px 18px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .time-estimate .time-num {
+            color: var(--link-color);
+            font-weight: 600;
+        }
+        .time-estimate .timer {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .progress-bar {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 8px 16px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+        }
+        .progress-bar .total-progress {
+            font-size: 14px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .progress-bar .total-progress strong {
+            color: var(--link-color);
+        }
+        .progress-bar .progress-track {
+            flex: 1;
+            min-width: 60px;
+            height: 4px;
+            background: var(--border-color);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+        .progress-bar .progress-track .fill {
+            height: 100%;
+            background: var(--color-primary);
+            border-radius: var(--radius-sm);
+            transition: width 0.5s ease;
+            width: 0;
+        }
+        .progress-bar .next-dim-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .progress-bar .next-dim-name {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        /* ===== 步进卡片 ===== */
+        .step-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 24px 28px 28px;
+            margin-bottom: 12px;
+            transition: var(--transition-base);
+        }
+        .step-card:hover {
+            border-color: var(--border-light);
+        }
+        .step-card .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .step-card .step-header .step-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-h3);
+        }
+        .step-card .step-header .step-title .dim {
+            color: var(--link-color);
+        }
+        .step-card .step-header .step-title .dim-progress {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 15px;
+        }
+        .step-card .step-header .step-title .sep {
+            color: var(--text-muted);
+            font-weight: 300;
+            margin: 0 4px;
+        }
+        .step-card .step-header .step-title .layer-name {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 15px;
+        }
+        .step-card .step-header .step-badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 3px 16px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-light);
+        }
+        .step-card .step-header .step-badge.s1 {
+            color: var(--link-color);
+            background: rgba(138, 170, 106, 0.08);
+            border-color: var(--color-primary-dim);
+        }
+        .step-card .step-header .step-badge.s2 {
+            color: var(--color-gold);
+            background: rgba(212, 168, 67, 0.08);
+            border-color: var(--color-gold-dim);
+        }
+        .step-card .step-header .step-badge.s3 {
+            color: var(--text-h3);
+            background: var(--bg-hover);
+            border-color: var(--border-light);
+        }
+        .step-card .step-header .step-badge .sub {
+            font-weight: 400;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .purpose-tag {
+            font-size: 14px;
+            color: var(--text-muted);
+            background: transparent;
+            padding: 4px 0 8px 0;
+            margin-bottom: 6px;
+            border-left: none;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .purpose-tag strong {
+            font-weight: normal;
+            color: var(--text-secondary);
+        }
+
+        .step-card .question-block .q-text {
+            font-size: 16px;
+            color: var(--text-h3);
+            margin-bottom: 14px;
+            padding-left: 4px;
+            line-height: 1.7;
+        }
+        .step-card .question-block .q-text .q-num {
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        .step-card .question-block .q-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-left: 4px;
+        }
+        .step-card .question-block .q-options label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 14px;
+            color: var(--text-body);
+            background: var(--bg-body);
+        }
+        .step-card .question-block .q-options label:hover {
+            border-color: var(--border-light);
+            color: var(--text-h3);
+        }
+        .step-card .question-block .q-options label .option-label {
+            font-weight: 700;
+            color: var(--text-secondary);
+            min-width: 28px;
+            flex-shrink: 0;
+        }
+        .step-card .question-block .q-options label input[type="radio"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--border-light);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            flex-shrink: 0;
+        }
+        .step-card .question-block .q-options label input[type="radio"]:checked {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            box-shadow: inset 0 0 0 3px var(--bg-body);
+        }
+        .step-card .question-block .q-options label.selected {
+            border-color: var(--color-primary);
+            background: var(--color-primary-dim);
+            color: var(--text-h1);
+        }
+        .step-card .question-block .q-options label.selected input[type="radio"] {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            box-shadow: inset 0 0 0 3px var(--bg-body);
+        }
+
+        .step-card .step-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4px;
+        }
+        .step-card .step-status {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+        .step-card .step-status.active {
+            color: var(--link-color);
+        }
+        .step-card .step-status.done {
+            color: var(--color-success);
+        }
+        .step-card .btn-back {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 6px 18px;
+            font-size: 13px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-fast);
+            white-space: nowrap;
+        }
+        .step-card .btn-back:hover {
+            border-color: var(--border-light);
+            color: var(--text-secondary);
+        }
+        .step-card .btn-back:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* ===== 完成消息 ===== */
+        .complete-msg {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--color-primary-dim);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--color-primary);
+        }
+        .complete-msg .icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+        .complete-msg .title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-h1);
+            margin-bottom: 6px;
+        }
+        .complete-msg .sub {
+            font-size: 15px;
+            color: var(--text-body);
+            margin-bottom: 16px;
+        }
+        .complete-msg .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .complete-msg .btn-group .btn-report {
+            padding: 12px 36px;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-base);
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+            color: var(--link-color);
+        }
+        .complete-msg .btn-group .btn-report:hover {
+            border-color: var(--color-primary);
+            color: var(--text-h1);
+            background: var(--color-primary-dim);
+            box-shadow: var(--shadow-card-hover);
+        }
+        .complete-msg .btn-group .btn-reset {
+            padding: 12px 36px;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-base);
+            background: transparent;
+            color: var(--text-muted);
+            border-color: var(--border-color);
+        }
+        .complete-msg .btn-group .btn-reset:hover {
+            border-color: var(--border-light);
+            color: var(--text-secondary);
+            background: var(--bg-card);
+        }
+
+        /* ===== 结果区域 ===== */
+        .result-box {
+            background: transparent;
+            padding: 0;
+            margin-top: 28px;
+            display: none;
+        }
+        .result-box.show {
+            display: block;
+        }
+        .result-box .result-header {
+            background: #131816;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            padding: 20px 28px;
+            border: 1px solid var(--border-color);
+            border-bottom: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+        }
+        .result-box .result-header .result-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-h1);
+        }
+        .result-box .result-header .result-title .q {
+            color: var(--link-color);
+            font-weight: 400;
+        }
+        .result-box .result-header .result-badge {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .result-box .result-header .badge-item {
+            font-size: 13px;
+            padding: 4px 16px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+        .badge-item.pass {
+            color: var(--color-success);
+            border-color: var(--color-success);
+            background: rgba(106, 170, 106, 0.08);
+        }
+        .badge-item.fail {
+            color: var(--color-danger);
+            border-color: var(--color-danger);
+            background: rgba(212, 122, 106, 0.08);
+        }
+        .badge-item.warn {
+            color: var(--color-gold);
+            border-color: var(--color-gold);
+            background: rgba(212, 168, 67, 0.08);
+        }
+
+        .result-box .result-body {
+            padding: 0;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .result-box .result-body .report-inner {
+            max-width: 820px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .result-box .result-body .result-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 14px;
+            width: 100%;
+            transition: var(--transition-base);
+        }
+        .result-box .result-body .result-card:hover {
+            border-color: var(--border-light);
+        }
+        .result-box .result-body .result-card .card-title {
+            font-weight: 700;
+            color: var(--text-h3);
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+        .result-box .result-body .result-card .card-content {
+            font-size: 14px;
+            color: var(--text-body);
+            line-height: 1.9;
+        }
+
+        /* ===== 维度进度 ===== */
+        .dim-progress-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .dim-progress-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .dim-progress-item .dim-label {
+            width: 70px;
+            font-size: 13px;
+            color: var(--link-color);
+            flex-shrink: 0;
+        }
+        .dim-progress-item .dim-track {
+            flex: 1;
+            height: 6px;
+            background: var(--border-color);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+        .dim-progress-item .dim-track .dim-fill {
+            height: 100%;
+            border-radius: var(--radius-sm);
+            transition: width 0.6s ease;
+            background: var(--color-primary);
+        }
+        .dim-progress-item .dim-pct {
+            width: 40px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .dim-progress-item .dim-score {
+            width: 60px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .dim-progress-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px 18px;
+            margin-bottom: 14px;
+            width: 100%;
+            transition: var(--transition-base);
+        }
+        .dim-progress-card:hover {
+            border-color: var(--border-light);
+        }
+        .dim-progress-card .card-title {
+            font-weight: 700;
+            color: var(--text-h3);
+            font-size: 16px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+        }
+
+        /* ===== 等级徽章 ===== */
+        .level-light {
+            text-align: center;
+            padding: 8px 0 6px 0;
+        }
+        .level-light .level-badge {
+            display: inline-block;
+            background: var(--color-primary-dim);
+            border: 2px solid var(--color-primary);
+            border-radius: var(--radius-full);
+            padding: 6px 28px;
+            margin-bottom: 10px;
+        }
+        .level-light .level-stars {
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: var(--color-gold);
+        }
+        .level-light .level-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-h1);
+            margin-left: 6px;
+        }
+        .level-light .level-desc {
+            font-size: 15px;
+            color: var(--link-color);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 6px auto 0 auto;
+            padding: 0 8px;
+        }
+
+        /* ===== 建议区域 ===== */
+        .advice-light {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .advice-light .advice-main {
+            font-size: 15px;
+            color: var(--text-h3);
+            line-height: 1.8;
+            text-align: left;
+        }
+        .advice-light .advice-main strong {
+            color: var(--link-color);
+        }
+        .advice-light .advice-items {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-left: 4px;
+        }
+        .advice-light .advice-item {
+            font-size: 14px;
+            color: var(--text-body);
+            line-height: 1.8;
+            padding-left: 20px;
+            position: relative;
+        }
+        .advice-light .advice-item::before {
+            content: "·";
+            color: var(--color-primary);
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+        }
+        .advice-light .advice-hint {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+            padding-top: 6px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4px;
+        }
+
+        /* ===== 三层能力节点 ===== */
+        .layer-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 0;
+            flex-wrap: wrap;
+        }
+        .layer-node {
+            flex: 0 1 auto;
+            min-width: 100px;
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            background: var(--bg-body);
+            transition: var(--transition-base);
+        }
+        .layer-node.pass {
+            border-color: var(--color-success);
+            background: rgba(106, 170, 106, 0.06);
+        }
+        .layer-node.warn {
+            border-color: var(--color-gold);
+            background: rgba(212, 168, 67, 0.06);
+        }
+        .layer-node.fail {
+            border-color: var(--color-danger);
+            background: rgba(212, 122, 106, 0.06);
+        }
+        .layer-node .layer-node-icon {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+        .layer-node .layer-node-label {
+            font-weight: 700;
+            color: var(--text-h3);
+            font-size: 15px;
+        }
+        .layer-node .layer-node-sub {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        .layer-node .layer-node-status {
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .layer-node .layer-node-status.pass {
+            color: var(--color-success);
+        }
+        .layer-node .layer-node-status.warn {
+            color: var(--color-gold);
+        }
+        .layer-node .layer-node-status.fail {
+            color: var(--color-danger);
+        }
+        .layer-node .layer-node-score {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .layer-arrow {
+            font-size: 22px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            padding: 0 2px;
+        }
+
+        /* ===== 雷达图 ===== */
+        .radar-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .radar-container canvas,
+        .radar-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== QR码 ===== */
+        .qr-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+            width: 100%;
+            padding-bottom: 20px;
+        }
+        .qr-wrapper .qr-box {
+            background: #fff;
+            padding: 6px;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+            width: 102px;
+            height: 102px;
+            text-align: center;
+            line-height: 102px;
+        }
+        .qr-wrapper .qr-box canvas,
+        .qr-wrapper .qr-box img {
+            width: 90px !important;
+            height: 90px !important;
+            display: block;
+            margin: auto;
+        }
+        .qr-wrapper .qr-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+        }
+        .qr-wrapper .qr-footer {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            text-align: center;
+            line-height: 1.8;
+            padding: 0 10px;
+        }
+        .qr-wrapper .qr-footer .highlight {
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+
+        /* ===== 结果底部 ===== */
+        .result-box .result-footer {
+            background: var(--bg-container);
+            padding: 16px 28px;
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+        .copy-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-copy {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 20px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-base);
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+            color: var(--link-color);
+            white-space: nowrap;
+        }
+        .btn-copy:hover {
+            border-color: var(--color-primary);
+            color: var(--text-h1);
+            background: var(--color-primary-dim);
+        }
+        .btn-copy:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .btn-copy .icon {
+            font-size: 16px;
+        }
+        .btn-copy .badge {
+            font-size: 10px;
+            font-weight: 600;
+            background: var(--color-primary-dim);
+            padding: 1px 8px;
+            border-radius: var(--radius-full);
+            color: var(--color-primary);
+            margin-left: 2px;
+            border: 1px solid var(--color-primary-dim);
+        }
+
+        .result-bottom-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .result-bottom-actions .btn-reset,
+        .result-bottom-actions .btn-close {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 8px 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition-fast);
+        }
+        .result-bottom-actions .btn-reset:hover,
+        .result-bottom-actions .btn-close:hover {
+            border-color: var(--border-light);
+            color: var(--text-secondary);
+            background: var(--bg-card);
+        }
+
+        /* ===== 历史记录 ===== */
+        .history-area {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+        }
+        .history-area .history-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--link-color);
+            margin-bottom: 12px;
+        }
+        .history-area .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .history-area .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            background: var(--bg-body);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            font-size: 13px;
+            color: var(--text-body);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            width: 100%;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .history-area .history-item:hover {
+            border-color: var(--border-light);
+            background: var(--bg-card);
+        }
+        .history-area .history-item .h-topic {
+            font-weight: 500;
+            color: var(--text-h3);
+            flex: 1;
+            min-width: 80px;
+        }
+        .history-area .history-item .h-meta {
+            color: var(--text-secondary);
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .history-area .history-item .h-level {
+            font-weight: 600;
+            padding: 1px 12px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .history-area .history-item .history-actions {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .history-area .history-item .history-view-btn {
+            border: 1px solid var(--border-light);
+            padding: 2px 14px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            color: var(--link-color);
+            background: var(--bg-card);
+            transition: var(--transition-fast);
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .history-area .history-item .history-view-btn:hover {
+            border-color: var(--color-primary);
+            color: var(--text-h1);
+            background: var(--color-primary-dim);
+        }
+        .history-area .history-item .history-del-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0 4px;
+            transition: var(--transition-fast);
+            line-height: 1;
+        }
+        .history-area .history-item .history-del-btn:hover {
+            color: var(--color-danger);
+        }
+        .history-empty {
+            color: var(--text-muted);
+            font-size: 14px;
+            padding: 12px 0;
+        }
+
+        /* ===== Toast ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--bg-card);
+            color: var(--text-h3);
+            padding: 12px 28px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-primary);
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: var(--shadow-modal);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 9999;
+            pointer-events: none;
+            max-width: 90%;
+            text-align: center;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast.error {
+            border-color: var(--color-danger);
+            background: rgba(212, 122, 106, 0.08);
+            color: var(--color-danger);
+        }
+
+        /* ===== 引导弹窗 ===== */
+        #introModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(6px);
+        }
+        #introModal .modal-box {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 40px 44px;
+            max-width: 560px;
+            width: 90%;
+            border: 1px solid var(--color-primary);
+            text-align: center;
+            box-shadow: var(--shadow-modal);
+        }
+        #introModal .modal-box .modal-icon {
+            font-size: 52px;
+            margin-bottom: 12px;
+        }
+        #introModal .modal-box h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-h1);
+            margin-bottom: 12px;
+        }
+        #introModal .modal-box p {
+            font-size: 16px;
+            color: var(--text-body);
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+        #introModal .modal-box p strong.highlight {
+            color: var(--link-color);
+        }
+        #introModal .modal-box p strong.warn {
+            color: var(--color-gold);
+        }
+        #introModal .modal-box .countdown-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+        #introModal .modal-box .countdown-number {
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--link-color);
+            margin-top: 4px;
+        }
+
+        /* ===== 三栏卡片（报告内） ===== */
+        .three-cards .result-card {
+            flex: 1;
+            min-width: 180px;
+            padding: 16px 18px;
+            margin-bottom: 0;
+        }
+        .three-cards .result-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-h1);
+            margin-bottom: 6px;
+        }
+        .three-cards .result-card p {
+            font-size: 14px;
+            color: var(--text-body);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* ===== 截图容器 ===== */
+        .screenshot-container {
+            overflow: visible !important;
+            height: auto !important;
+            min-height: 100% !important;
+        }
+        .screenshot-container * {
+            overflow: visible !important;
+            max-height: none !important;
+        }
+        .screenshot-container .result-card,
+        .screenshot-container .dim-progress-card,
+        .screenshot-container .qr-wrapper,
+        .screenshot-container .report-inner {
+            overflow: visible !important;
+            max-height: none !important;
+        }
+        .screenshot-container .layer-progress {
+            flex-wrap: wrap !important;
+        }
+        .screenshot-container .layer-node {
+            flex: 0 1 auto !important;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 820px) {
+            .app {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+                max-height: none;
+                padding: 16px 20px;
+            }
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px 6px;
+            }
+            .sidebar nav a {
+                padding: 4px 12px;
+                font-size: 13px;
+                border-left: none;
+                border-bottom: 2px solid transparent;
+                border-radius: var(--radius-sm);
+                background: transparent;
+            }
+            .sidebar nav a:hover,
+            .sidebar nav a.active {
+                background: var(--bg-card);
+                color: var(--text-h1);
+                border-left: none;
+                border-bottom-color: var(--color-primary);
+            }
+            .sidebar .version {
+                display: none;
+            }
+            .container {
+                padding: 24px 20px 28px;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px 12px 18px;
+                border-radius: var(--radius-md);
+            }
+            .title-row h1 {
+                font-size: 24px;
+            }
+            .title-row .tag {
+                font-size: 11px;
+                padding: 2px 12px;
+            }
+            .brand {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .intro-box {
+                padding: 16px 18px;
+            }
+            .intro-box .intro-title {
+                font-size: 18px;
+            }
+            .intro-box .intro-desc {
+                font-size: 14px;
+            }
+            .start-area .btn-start {
+                padding: 14px 40px;
+                font-size: 18px;
+            }
+            .step-card {
+                padding: 16px 16px 20px;
+            }
+            .step-card .question-block .q-text {
+                font-size: 15px;
+            }
+            .step-card .question-block .q-options label {
+                padding: 8px 12px;
+                font-size: 13px;
+                flex-wrap: wrap;
+            }
+            .step-card .step-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .step-card .btn-back {
+                text-align: center;
+            }
+            .result-box .result-header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 16px 18px;
+            }
+            .result-box .result-body .result-card {
+                padding: 18px 16px;
+            }
+            .result-box .result-footer {
+                padding: 14px 16px;
+            }
+            .copy-actions {
+                justify-content: center;
+            }
+            .result-bottom-actions {
+                justify-content: center;
+            }
+            .progress-bar {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 8px 12px;
+                gap: 6px 8px;
+            }
+            .progress-bar .total-progress {
+                font-size: 13px;
+            }
+            .progress-bar .next-dim-label {
+                font-size: 13px;
+            }
+            .progress-bar .progress-track {
+                min-width: 40px;
+                flex: 0 1 60px;
+            }
+            .complete-msg {
+                padding: 20px 16px;
+            }
+            .complete-msg .title {
+                font-size: 19px;
+            }
+            .complete-msg .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .time-estimate {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .history-area .history-item {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .history-area .history-item .h-topic {
+                width: 100%;
+            }
+            .layer-progress {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .layer-arrow {
+                transform: rotate(90deg);
+                font-size: 18px;
+            }
+            .layer-node {
+                width: 100%;
+                min-width: auto;
+            }
+            .dim-progress-item .dim-label {
+                width: 55px;
+                font-size: 12px;
+            }
+            .dim-progress-item .dim-pct {
+                width: 35px;
+                font-size: 12px;
+            }
+            .dim-progress-item .dim-score {
+                width: 50px;
+                font-size: 11px;
+            }
+            .dim-progress-card {
+                padding: 16px 16px 14px;
+            }
+            .history-area .history-item .history-actions {
+                margin-left: auto;
+            }
+            .level-light .level-desc {
+                font-size: 14px;
+                padding: 0 4px;
+            }
+            .level-light .level-badge {
+                padding: 4px 18px;
+            }
+            .advice-light .advice-main {
+                font-size: 14px;
+            }
+            .advice-light .advice-item {
+                font-size: 13px;
+            }
+            .qr-wrapper .qr-box {
+                width: 80px;
+                height: 80px;
+                line-height: 80px;
+            }
+            .qr-wrapper .qr-box canvas,
+            .qr-wrapper .qr-box img {
+                width: 72px !important;
+                height: 72px !important;
+            }
+            #introModal .modal-box {
+                padding: 28px 20px;
+            }
+            #introModal .modal-box h2 {
+                font-size: 22px;
+            }
+            #introModal .modal-box p {
+                font-size: 15px;
+            }
+            .three-cards {
+                flex-direction: column;
+            }
+            .three-cards .result-card {
+                min-width: auto;
+            }
+        }
+
+        /* ===== 打印样式 ===== */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+                color: #000;
+            }
+            .app {
+                display: block;
+            }
+            .sidebar {
+                display: none !important;
+            }
+            .container {
+                max-width: 100%;
+                background: #fff;
+                padding: 40px 44px 34px !important;
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .top-nav,
+            .start-area,
+            .diagnosis-active,
+            .result-footer,
+            .footer,
+            .history-area,
+            .btn-copy,
+            .btn-close,
+            .btn-report,
+            .btn-back,
+            .copy-actions,
+            .result-bottom-actions,
+            #introModal {
+                display: none !important;
+            }
+            .result-box {
+                display: block !important;
+                margin-top: 0;
+            }
+            .result-box .result-header {
+                background: #f0f0f0;
+                border-color: #ccc;
+                color: #000;
+                border-radius: 8px 8px 0 0;
+                padding: 16px 24px;
+            }
+            .result-box .result-body .result-card {
+                background: #fafafa;
+                border-color: #ddd;
+                color: #000;
+                page-break-inside: avoid;
+                margin-bottom: 12px;
+                border-radius: 8px;
+                padding: 18px 22px;
+            }
+            .result-box .result-body .result-card .card-title {
+                color: #222;
+                border-bottom-color: #ccc;
+            }
+            .result-box .result-body .result-card .card-content {
+                color: #222;
+            }
+            .level-light .level-desc {
+                color: #444 !important;
+            }
+            .level-light .level-badge {
+                border-color: #4a7a4a !important;
+                background: #e8f0e8 !important;
+            }
+            .level-light .level-label {
+                color: #222 !important;
+            }
+            .level-light .level-stars {
+                color: #b89a4a !important;
+            }
+            .advice-light .advice-main {
+                color: #222 !important;
+            }
+            .advice-light .advice-item {
+                color: #333 !important;
+            }
+            .advice-light .advice-hint {
+                color: #666 !important;
+                border-color: #ccc !important;
+            }
+            .radar-container canvas,
+            .radar-container img {
+                border: 1px solid #ccc;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            .history-area {
+                display: none !important;
+            }
+            .layer-node {
+                background: #f5f5f5 !important;
+                border-color: #ccc !important;
+            }
+            .layer-node.pass {
+                border-color: #4a7a4a !important;
+                background: #e8f0e8 !important;
+            }
+            .layer-node.warn {
+                border-color: #b89a4a !important;
+                background: #f5f0e0 !important;
+            }
+            .layer-node.fail {
+                border-color: #b05a4a !important;
+                background: #f0e8e0 !important;
+            }
+            .layer-node .layer-node-label {
+                color: #222 !important;
+            }
+            .layer-node .layer-node-sub {
+                color: #666 !important;
+            }
+            .layer-arrow {
+                color: #999 !important;
+            }
+            .dim-progress-item .dim-track .dim-fill {
+                background: #4a7a4a !important;
+            }
+            .dim-progress-card {
+                background: #f5f5f5 !important;
+                border-color: #ddd !important;
+            }
+            .qr-wrapper .qr-footer {
+                color: #666 !important;
+            }
+            .qr-wrapper .qr-label {
+                color: #666 !important;
+            }
+            .qr-wrapper .qr-box {
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+
+        <!-- ===== 侧边栏 ===== -->
+        <aside class="sidebar" role="navigation" aria-label="目录导航">
+            <div class="sub-brand">YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION</div>
+            <div class="logo">杨晟琦<span>文明公理系统</span><span class="nav-copyright">©</span></div>
+            <nav aria-label="主导航">
+                <a href="./index.html" title="杨晟琦文明公理系统首页 · 独立思想锚点">首页 <span class="nav-en">HOME</span></a>
+                <a href="./blind-spot-diagnosis-cn.html" title="人类思维盲区在线诊断工具（中文版）">思维诊断：人类思维盲区诊断（中文）<span class="nav-en">BLIND SPOT DIAGNOSIS (CN)</span></a>
+                <a href="./blind-spot-diagnosis-en.html" title="Cognitive Blind Spot Diagnostic Tool（EN）">思维诊断：人类思维盲区诊断（英文）<span class="nav-en">BLIND SPOT DIAGNOSIS (EN)</span></a>
+                <a href="./pure-structure-edition.html" title="杨晟琦文明公理系统纯净结构版（中英文版）">快速阅读：文明公理系统纯净版 <span class="nav-en">PURE-STRUCTURE-EDITION</span></a>
+                <a href="./three-cornerstones.html" title="三大基石：一种文明系统的底层重构框架">元框架：三大基石 <span class="nav-en">META-FRAMEWORK · THREE CORNERSTONES</span></a>
+                <a href="./path-to-low-civilization.html" title="低级文明的完整路径图">诊断模型：低级文明路径图 <span class="nav-en">DIAGNOSTIC MODEL · PATH TO LOW-LEVEL CIVILIZATION</span></a>
+                <a href="./deterministic-social-system.html" title="确定性社会系统形成的必要条件与阻碍因素">条件分析：确定性社会形成条件因素 <span class="nav-en">DETERMINISTIC SOCIAL SYSTEM</span></a>
+                <a href="./justice-interest-rules-tension.html" title="正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析">张力分析：正义利益规则的错位 <span class="nav-en">JUSTICE, INTEREST &amp; RULES</span></a>
+                <a href="./non-deadlock-analysis.html" title="系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制">条件分析：非死锁的条件分析 <span class="nav-en">NON-DEADLOCK ANALYSIS</span></a>
+                <a href="./operational-manual.html" title="改变底层逻辑的方法论（非归因，可操作）">操作手册：改变底层逻辑的方法论 <span class="nav-en">OPERATIONAL MANUAL</span></a>
+                <a href="./earthly-perspective-validation.html" title="从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心">验证工具：从地球人类视野的推演 <span class="nav-en">VALIDATION TOOL</span></a>
+                <a href="./ghsf-cn.html" title="全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）">药方参考：全球人类主权基金 (中文版) <span class="nav-en">GHSF (CN)</span></a>
+                <a href="./ghsf-en.html" title="GHSF — A Blueprint for China & the Global Community（英文版）">药方参考：全球人类主权基金 (英文版) <span class="nav-en">GHSF (EN)</span></a>
+                <a href="./acceptance-report.html" title="文明公理宪法与全球人类主权基金的验收报告">验收报告：文明公理与基金验收报告 <span class="nav-en">ACCEPTANCE REPORT</span></a>
+                <a href="./civilization-level-manual.html" title="文明等级判断说明书">量化思路：文明等级判断说明书 <span class="nav-en">CIVILIZATION LEVEL MANUAL</span></a>
+                <a href="./civilization-level-scorer.html" title="杨晟琦文明公理系统之文明等级评分器（中英文版）">量化诊断：文明等级判断评分器 <span class="hot-icon"><img src="hot.gif" alt="hot"></span><span class="nav-en">CIVILIZATION LEVEL SCORER</span></a>
+            </nav>
+            <div class="version">所有内容以 CC BY-ND 4.0 协议发布 <span class="version-en">All content released under CC BY-ND 4.0</span></div>
+        </aside>
+
+        <!-- ===== 主内容 ===== -->
+        <main class="main">
+
+            <!-- 顶栏 -->
+            <div class="top-nav">
+                <a href="./index.html" class="back">← 返回体系总入口</a>
+                <span class="badge">杨晟琦文明公理系统 · 独立思想锚点</span>
+            </div>
+
+            <!-- 品牌区 -->
+            <div class="brand">
+                <div class="brand-left">
+                    <div class="sub-brand">COGNITIVE BLIND SPOT DIAGNOSTIC TOOL</div>
+                    <div class="title-row--inline">
+                        <h1>人类思维盲区在线诊断工具（中文版） </h1>
+                        <span class="badge badge-dark">思维诊断</span>
+                    </div>
+                    <div class="info-row">
+                        <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
+                        <span>全球首发: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+                        <span>封装完成: 2026年7月</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 工具容器 ===== -->
+            <div class="container" id="app">
+                <!-- 介绍框 -->
+                <div class="intro-box">
+                    <div class="intro-title">你真的了解自己的思维方式吗？</div>
+                    <div class="intro-desc">
+                        这套工具通过 <strong>38 个关于"你如何思考"的元认知问题</strong>，帮你深度扫描自己的思维习惯。<br />
+                        它不依赖任何外部话题，只审视你自身的 <strong>信息处理、逻辑推理、情绪管理、利益觉察</strong> 等底层能力。
+                    </div>
+                    <div class="intro-features">
+                        <span><span class="dot"></span> 防忽悠 · 检验你对外部信息的防御能力</span>
+                        <span><span class="dot"></span> 觉醒 · 追问你的内部认知偏见</span>
+                        <span><span class="dot"></span> 内化 · 评估你能否将反思转化为行动</span>
+                        <span><span class="dot"></span> 本工具采用6维度 × 3层次交叉验证矩阵诊断</span>
+                    </div>
+                </div>
+
+                <!-- 开始区 -->
+                <div class="start-area" id="startArea">
+                    <button class="btn-start" id="startBtn">点此开始诊断</button>
+                    <div class="start-hint">点开始诊断开始，全程约 10 分钟。回答越真实，结果越准确。</div>
+                </div>
+
+                <!-- 诊断区 -->
+                <div class="diagnosis-active" id="diagnosisArea">
+                    <div class="time-estimate">
+                        <span>预估答题时间：约 10 ~ 12 分钟，当前已用：<span id="timerDisplay">⏱️ 00:00</span> 分钟。</span>
+                    </div>
+                    <div class="progress-bar">
+                        <span class="total-progress">已作答 <strong id="answeredCount">0</strong> / <span id="totalCount">38</span> 题</span>
+                        <div class="progress-track"><div class="fill" id="progressFill" style="width:0%;"></div></div>
+                        <span class="next-dim-label">下一维度：<span class="next-dim-name" id="nextDimLabel">事实依据</span></span>
+                    </div>
+                    <div id="stepContainer"></div>
+                </div>
+
+                <!-- 结果区 -->
+                <div class="result-box" id="resultBox">
+                    <div class="result-header">
+                        <div class="result-title">📋 诊断报告：<span class="q">你的思维模式</span></div>
+                        <div class="result-badge" id="resultBadges"></div>
+                    </div>
+                    <div class="result-body" id="reportBody"></div>
+                    <div class="result-footer">
+                        <div class="copy-actions">
+                            <button class="btn-copy" id="copyImageBtn"><span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span></button>
+                            <button class="btn-copy" id="shareImageBtn"><span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span></button>
+                        </div>
+                        <div class="result-bottom-actions">
+                            <button class="btn-reset" id="resetFromResultBtn">↻ 重新开始</button>
+                            <button class="btn-close" id="closeResultBtn">关闭报告</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 历史记录 -->
+                <div class="history-area" id="historyArea">
+                    <div class="history-title">📜 诊断历史</div>
+                    <div class="history-list" id="historyList"></div>
+                    <div class="history-empty" id="historyEmpty" style="display:none;">暂无历史记录</div>
+                </div>
+            </div>
+
+            <!-- 页脚 -->
+            <div class="footer">
+                杨晟琦文明公理系统 · 独立思想锚点 · 封装完成: 2026年7月
+                <span class="en">Yang Shengqi Civilizational Axiomatic System · Independent Thought Anchor · Encapsulation Completed: July 2026</span>
+                <span class="footer-license">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+                <span class="en">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank">CC BY-ND 4.0</a></span>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ===== 引导弹窗 ===== -->
+    <div id="introModal">
+        <div class="modal-box">
+            <div class="modal-icon">🧠</div>
+            <h2>诊断即将开始</h2>
+            <p>
+                本工具采用 <strong class="highlight">6维度 × 3层次 交叉验证矩阵</strong>。<br>
+                您可能会感受到题目之间的 <strong class="warn">相似性</strong>，这正是信度设计的核心 ——<br>
+                旨在过滤随机作答，确保您的报告具备 <strong class="highlight">学术级精准度</strong>。
+            </p>
+            <div class="countdown-label">⏳ 3 秒后自动进入...</div>
+            <div class="countdown-number" id="introCountdown">3</div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ===== JS（原封不动，仅保留全部逻辑） ===== -->
+    <script>
+        // ================================================================
+        // 维度与层次映射
+        // ================================================================
+        const DIM_MAP = {
+            source: { icon: '🔍', label: '信息源' },
+            facts: { icon: '📊', label: '事实依据' },
+            logic: { icon: '🧠', label: '推理逻辑' },
+            interests: { icon: '💰', label: '利益关联' },
+            emotion: { icon: '❤️', label: '情绪影响' },
+            cost: { icon: '⏳', label: '代价权衡' }
+        };
+        const LAYER_MAP = {
+            step1: { label: '防忽悠', sub: '外部检验', badge: 's1' },
+            step2: { label: '觉醒', sub: '内部追问', badge: 's2' },
+            step3: { label: '内化', sub: '心智更新', badge: 's3' }
+        };
+        const DIM_ORDER = ['source', 'facts', 'logic', 'interests', 'emotion', 'cost'];
+
+        // ================================================================
+        // 38 道元认知题目
+        // ================================================================
+        const QUESTIONS_RAW = [
+            { dim: 'source', layer: 'step1', purpose: '源头质疑 —— 你是否习惯性接受信息而不查证？',
+                text: '面对一个信息，你会主动去查它的原始出处吗？', opts: [{ label: 'A', text: '我完全不会去查，信就信了', score: 0 },
+                { label: 'B', text: '我一般不太会去查，除非这个信息让我觉得非常可疑', score: 1 },
+                { label: 'C', text: '我有时候会去查一下，但也不是每次都查', score: 2 },
+                { label: 'D', text: '重要的、可疑的信息我会认真查，日常信息我信任常识', score: 4 },
+                { label: 'E', text: '我每次都会去查，不查我不放心', score: 3 }] },
+            { dim: 'source', layer: 'step1', purpose: '权威偏误 —— 你是否因发言者身份而轻信内容？',
+                text: '你判断一个信息可不可信，是更相信说话的人，还是更相信内容本身？', opts: [{ label: 'A', text: '我更相信说话的人，权威说了我就信',
+                    score: 0 }, { label: 'B', text: '我有点倾向于看人，但也会看内容', score: 1 },
+                { label: 'C', text: '我两边都会看，但说不上更信哪个', score: 2 }, { label: 'D', text: '我更看重内容本身，是谁说的没那么重要',
+                    score: 3 }, { label: 'E', text: '我只相信内容本身，不管是谁说的', score: 4 }] },
+            { dim: 'source', layer: 'step2', purpose: '确认偏误 —— 你是否只愿怀疑不符合预期的信息？',
+                text: '你会因为"这个信息刚好符合你的想法"就不去怀疑它的来源吗？', opts: [{ label: 'A', text: '我经常这样，符合我心意的我就信了',
+                    score: 0 }, { label: 'B', text: '我有时候会，但也会提醒自己要保持怀疑', score: 1 },
+                { label: 'C', text: '我不太会这样，还是会保持一点怀疑', score: 2 }, { label: 'D', text: '我基本不会，我会刻意反着去怀疑',
+                    score: 3 }, { label: 'E', text: '我完全不会，越符合我心意的我越要查清楚', score: 4 }] },
+            { dim: 'source', layer: 'step2', purpose: '来源厌恶 —— 你是否因信息源偏好而否定信息？',
+                text: '如果同一个信息来自你平时不太喜欢的媒体，你会不会就不太信了？', opts: [{ label: 'A', text: '我会，看到是这个媒体我就不太信了',
+                    score: 0 }, { label: 'B', text: '我可能有点怀疑，但不会完全否定', score: 1 },
+                { label: 'C', text: '我不太会因为媒体而改变判断，除非有前科', score: 2 },
+                { label: 'D', text: '我基本不会，我会看内容本身来定', score: 3 }, { label: 'E', text: '我完全不会，媒体是谁我不太在意',
+                    score: 4 }] },
+            { dim: 'source', layer: 'step3', purpose: '系统性怀疑 —— 你是否有意识构建并更新可信来源清单？',
+                text: '你会不会主动建立一套"我觉得可信的来源"清单，然后经常更新？', opts: [{ label: 'A', text: '我不会，我觉得没这个必要', score: 0 },
+                { label: 'B', text: '我偶尔会想想，但不会真的列出来', score: 1 }, { label: 'C', text: '我大概心里有数，但不会正式整理',
+                    score: 2 }, { label: 'D', text: '我会在脑子里有一份清单，也会不定期更新', score: 3 },
+                { label: 'E', text: '我会很认真地建立一份清单，并且定期更新', score: 4 }] },
+            { dim: 'source', layer: 'step3', purpose: '回声室效应 —— 你是否主动寻找对立观点以检验全面性？',
+                text: '你会主动去找一些跟你观点不一样的声音，来检验自己的信息来源够不够全面吗？', opts: [{ label: 'A', text: '我不会，我只想看我认同的观点',
+                    score: 0 }, { label: 'B', text: '我很少这样，除非有人提到我才去看', score: 1 },
+                { label: 'C', text: '我有时候会，想看看对方说什么', score: 2 }, { label: 'D', text: '我经常会，我觉得这样才能全面',
+                    score: 3 }, { label: 'E', text: '我每次都会，我觉得这是必须的', score: 4 }] },
+
+            { dim: 'facts', layer: 'step1', purpose: '事实-感觉混淆 —— 你是否能区分客观事实与主观感受？',
+                text: '你能分清楚"客观事实"和"自己的感觉"之间的区别吗？', opts: [{ label: 'A', text: '我完全分不清，我觉得感觉就是事实', score: 0 },
+                { label: 'B', text: '我有时候能分清楚，但容易被感觉带偏', score: 1 },
+                { label: 'C', text: '我大概能分清楚，但偶尔也会混淆', score: 2 }, { label: 'D', text: '我大部分能分清，知道什么是事实什么是感觉',
+                    score: 3 }, { label: 'E', text: '我每次都能分清楚，我很在意这个区别', score: 4 }] },
+            { dim: 'facts', layer: 'step1', purpose: '方法论忽视 —— 你是否关注数据背后的采集方法与样本？',
+                text: '看到一组数据，你会去想它的采集方法或者样本够不够有代表性吗？', opts: [{ label: 'A', text: '我不会想那么多，数据就是数据', score: 0 },
+                { label: 'B', text: '我很少会想这些，除非数据看起来很离谱', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会深究',
+                    score: 2 }, { label: 'D', text: '我经常会思考这些，数据的来源很重要', score: 3 },
+                { label: 'E', text: '我每次都会先问：这数据是怎么来的？', score: 4 }] },
+            { dim: 'facts', layer: 'step2', purpose: '先入为主 —— 你是否先有结论再寻找证据？',
+                text: '你是不是经常先有了一个想法，然后再去找证据来支持自己？', opts: [{ label: 'A', text: '我经常这样，我觉得先有想法很正常',
+                    score: 0 }, { label: 'B', text: '我有时候会这样，但也不是每次都这样', score: 1 },
+                { label: 'C', text: '我不太会这样，我会先看证据再下结论', score: 2 }, { label: 'D', text: '我很少这样，我会刻意提醒自己先看证据',
+                    score: 3 }, { label: 'E', text: '我完全不会这样，证据永远走在结论前面', score: 4 }] },
+            { dim: 'facts', layer: 'step2', purpose: '认知失调回避 —— 你是否下意识忽略与自身观点冲突的事实？',
+                text: '你会不会有意忽略那些跟你观点冲突的事实？', opts: [{ label: 'A', text: '我会，看到冲突的事实我就不舒服，会下意识忽略', score: 0 },
+                { label: 'B', text: '我有时候会，但事后可能会后悔', score: 1 }, { label: 'C', text: '我不太会，但有时候也会不自觉地回避',
+                    score: 2 }, { label: 'D', text: '我基本不会，我会正视冲突的事实', score: 3 },
+                { label: 'E', text: '我完全不会，我反而会特别关注那些冲突的事实', score: 4 }] },
+            { dim: 'facts', layer: 'step3', purpose: '证伪思维 —— 你是否刻意寻找反例来检验结论？',
+                text: '你会刻意找一些反例来检验自己的结论吗？', opts: [{ label: 'A', text: '我不会，我觉得我的结论已经很对了', score: 0 },
+                { label: 'B', text: '我很少这样做，除非有人提醒我', score: 1 }, { label: 'C', text: '我有时候会，想看看自己会不会被推翻',
+                    score: 2 }, { label: 'D', text: '在重大决策上，我会刻意找反例来验证；日常小事凭经验就行', score: 4 },
+                { label: 'E', text: '我每次都会刻意找反例，找不到反例我才放心', score: 3 }] },
+            { dim: 'facts', layer: 'step3', purpose: '行为内化 —— 你是否已将"先看证据"转化为稳定习惯？',
+                text: '在日常生活中，"先看证据再下结论"这件事，你的自动化程度如何？', opts: [{ label: 'A', text: '我完全没有这个意识，全凭感觉',
+                    score: 0 }, { label: 'B', text: '我有意识但经常忘记，想起来才做', score: 1 },
+                { label: 'C', text: '我大部分时候能想起来，但需要刻意提醒自己', score: 2 },
+                { label: 'D', text: '我已经形成了肌肉记忆，很自然地就会先看证据', score: 3 },
+                { label: 'E', text: '这已经成了我的本能，甚至能帮别人指出证据不足', score: 4 }] },
+
+            { dim: 'logic', layer: 'step1', purpose: '前提假设盲区 —— 你是否审视过结论赖以成立的前提条件？',
+                text: '你的结论要成立，得靠哪些前提假设？要是这些假设不成立，你的结论还站得住脚吗？', opts: [{ label: 'A', text: '我从来没想过这个问题，结论就是结论',
+                    score: 0 }, { label: 'B', text: '我很少会去想这些假设，我觉得不影响', score: 1 },
+                { label: 'C', text: '我有时候会想一想，但不会太深入', score: 2 }, { label: 'D', text: '我经常会想，而且我会去验证这些假设',
+                    score: 3 }, { label: 'E', text: '我每次都会先想清楚前提假设，不然不敢下结论', score: 4 }] },
+            { dim: 'logic', layer: 'step1', purpose: '逆向思维 —— 你是否尝试从相反角度推演逻辑？',
+                text: '你会试着从完全相反的角度去推一遍，看看能不能得出同样合理的逻辑吗？', opts: [{ label: 'A', text: '我不会，我觉得自己的角度就够了', score: 0 },
+                { label: 'B', text: '我很少这样，觉得有点浪费时间', score: 1 }, { label: 'C', text: '我有时候会试试，但推不下去就放弃了',
+                    score: 2 }, { label: 'D', text: '我经常会这样，我觉得这样才能全面', score: 3 },
+                { label: 'E', text: '我每次都会，我习惯从两边看问题', score: 4 }] },
+            { dim: 'logic', layer: 'step2', purpose: '从众偏误 —— 你是否因"大家都这么说"而放弃独立思考？',
+                text: '当"大家都这么说"的时候，你会不会就不太想自己去检验逻辑了？', opts: [{ label: 'A', text: '我会，大家都这么说，应该不会错', score: 0 },
+                { label: 'B', text: '我有时候会，觉得随大流比较省心', score: 1 }, { label: 'C',
+                    text: '我会看是什么事——小事随大流，重要的事自己过一遍逻辑', score: 4 }, { label: 'D', text: '我基本不会，我还是想自己过一遍逻辑',
+                    score: 2 }, { label: 'E', text: '我完全不会，大家都说的我更要自己验证', score: 3 }] },
+            { dim: 'logic', layer: 'step2', purpose: '愉悦谬误 —— 你是否因逻辑听起来舒适而放松挑剔？',
+                text: '你会不会因为一个逻辑听起来"让人舒服"就放松了对它的挑剔？', opts: [{ label: 'A', text: '我会，舒服的逻辑我倾向于相信', score: 0 },
+                { label: 'B', text: '我有时候会，但也会提醒自己不能太放松', score: 1 }, { label: 'C', text: '我不太会，舒服不一定就靠谱',
+                    score: 2 }, { label: 'D', text: '我基本不会，我会刻意警惕舒服的逻辑', score: 3 },
+                { label: 'E', text: '我完全不会，越舒服的逻辑我越要挑刺', score: 4 }] },
+            { dim: 'logic', layer: 'step3', purpose: '思维固化 —— 你是否愿意定期挑战自己的论证框架？',
+                text: '你愿意定期挑战自己熟悉的论证方式，换个全新的角度去重新想一遍吗？', opts: [{ label: 'A', text: '我不愿意，我觉得我现在的思考方式就够了',
+                    score: 0 }, { label: 'B', text: '我有点不愿意，感觉太费劲了', score: 1 },
+                { label: 'C', text: '我可能愿意试试，但不会经常做', score: 2 }, { label: 'D', text: '我挺愿意的，我觉得这能帮我突破',
+                    score: 3 }, { label: 'E', text: '我非常愿意，我经常这样做，我觉得特别有用', score: 4 }] },
+            { dim: 'logic', layer: 'step3', purpose: '谬误识别 —— 你是否主动学习并识别常见逻辑谬误？',
+                text: '你会刻意去学一些常见的逻辑错误，然后在生活中把它们认出来吗？', opts: [{ label: 'A', text: '我不会，我觉得学那些没什么用', score: 0 },
+                { label: 'B', text: '我可能偶尔会看一下，但不会特意记', score: 1 }, { label: 'C', text: '我有时候会关注，但不会认真去学',
+                    score: 2 }, { label: 'D', text: '我经常学，而且能在生活中认出不少', score: 3 },
+                { label: 'E', text: '我一直在学，而且已经成了我的习惯', score: 4 }] },
+
+            { dim: 'interests', layer: 'step1', purpose: '视角盲区 —— 你是否留意到"谁的视角被忽略了"？',
+                text: '你会有意识地想"谁的视角被忽略了"或者"谁在背后推这个观点"吗？', opts: [{ label: 'A', text: '我不会想这些，我觉得那不重要', score: 0 },
+                { label: 'B', text: '我很少想，除非有人提醒我', score: 1 }, { label: 'C', text: '我有时候会想一下，但不会深入', score: 2 },
+                { label: 'D', text: '我经常会想，我觉得这很重要', score: 3 }, { label: 'E', text: '我每次都会想，这是我的习惯',
+                    score: 4 }] },
+            { dim: 'interests', layer: 'step1', purpose: '动机洞察 —— 你是否能看清对立立场背后的利益动机？',
+                text: '你能看清楚，那些跟你立场相反的人，他们能从这件事里得到什么吗？', opts: [{ label: 'A', text: '我看不出来，我不知道他们能得到什么',
+                    score: 0 }, { label: 'B', text: '我偶尔能看出来一点，但不太确定', score: 1 },
+                { label: 'C', text: '我有时候能看清楚，但需要仔细想', score: 2 }, { label: 'D', text: '我大部分能看清楚，我知道他们的动机',
+                    score: 3 }, { label: 'E', text: '我每次都能看清楚，我特别擅长这个', score: 4 }] },
+            { dim: 'interests', layer: 'step2', purpose: '承认错误 —— 你在多大程度上愿意承认自己错了？',
+                text: '你会在多大程度上承认自己错了？', opts: [{ label: 'A', text: '我完全不会承认，我没错', score: 0 },
+                { label: 'B', text: '我有时候会，但很不情愿', score: 1 }, { label: 'C', text: '我基本会承认，但需要证据确凿', score: 2 },
+                { label: 'D', text: '我经常会承认，我觉得错了就错了', score: 3 }, { label: 'E', text: '我每次都会立刻承认，我觉得没什么丢人的',
+                    score: 4 }] },
+            { dim: 'interests', layer: 'step2', purpose: '风险感知校准 —— 你能否在"过度乐观"与"过度焦虑"之间找到平衡？',
+                text: '你害怕事情本身的风险吗？', opts: [{ label: 'A', text: '我完全不害怕，我胆子大，风险根本拦不住我', score: 1 },
+                { label: 'B', text: '我不太害怕，我觉得自己大概率能应对', score: 2 }, { label: 'C', text: '我有点害怕，但我觉得这能让我更谨慎',
+                    score: 4 }, { label: 'D', text: '我比较害怕，有时候会睡不着，反复想', score: 2 },
+                { label: 'E', text: '我非常害怕，风险让我极度焦虑，想逃避', score: 0 }] },
+            { dim: 'interests', layer: 'step2', purpose: '自我形象解离 —— 你的判断是否被"我想成为谁"绑架了？',
+                text: '你的判断在多大程度上是为了维护你想成为的那种人的形象？', opts: [{ label: 'A', text: '我完全不会为了维护形象去改变判断，真实最重要',
+                    score: 4 }, { label: 'B', text: '我有时候会，但不会太刻意，基本还是尊重事实', score: 3 },
+                { label: 'C', text: '我会在意形象，但我不太清楚影响有多大', score: 2 }, { label: 'D', text: '我会，尤其是在一些特定场合，我会刻意调整',
+                    score: 1 }, { label: 'E', text: '我几乎每次都这样，我很清楚自己在维护什么人设', score: 0 }] },
+            { dim: 'interests', layer: 'step3', purpose: '利益冲突抉择 —— 当利益与真相冲突时你有明确底线吗？',
+                text: '当利益和真相撞在一起的时候，你的选择是什么？', opts: [{ label: 'A', text: '我从来没想过这个问题，到时候再说', score: 0 },
+                { label: 'B', text: '我大致想过，但没什么明确的底线', score: 1 }, { label: 'C', text: '我大概有一些模糊的原则，但不太清晰',
+                    score: 2 }, { label: 'D', text: '我有明确的底线，我知道自己会怎么选', score: 3 },
+                { label: 'E', text: '我不仅清楚自己的底线，还为此提前做过计划', score: 4 }] },
+            { dim: 'interests', layer: 'step3', purpose: '自我检视 —— 你是否主动反思利益是否扭曲了判断？',
+                text: '你会主动反思自己有没有因为利益而扭曲了判断吗？', opts: [{ label: 'A', text: '我不会，我相信自己不会被利益影响', score: 0 },
+                { label: 'B', text: '我很少反思，觉得自己应该没问题', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会刻意去深挖',
+                    score: 2 }, { label: 'D', text: '我经常会反思，我觉得人人都会被影响', score: 3 },
+                { label: 'E', text: '我每次都会反思，我特别警惕这一点', score: 4 }] },
+
+            { dim: 'emotion', layer: 'step1', purpose: '情绪觉察 —— 做判断时你能察觉到情绪在影响你吗？',
+                text: '在做重要判断的时候，你的情绪（比如生气、兴奋、害怕）影响大不大？', opts: [{ label: 'A', text: '我完全不会注意到情绪的影响，我是理性的人',
+                    score: 0 }, { label: 'B', text: '我好像不太会留意到情绪在起作用', score: 1 },
+                { label: 'C', text: '我有时候能感觉到情绪在影响我', score: 2 }, { label: 'D', text: '我能清楚地感觉到情绪在影响我的判断',
+                    score: 3 }, { label: 'E', text: '情绪几乎每一次都在影响我，我都知道', score: 4 }] },
+            { dim: 'emotion', layer: 'step1', purpose: '不适与虚假 —— 你能区分"不舒服"和"是假的"吗？',
+                text: '你能分清楚"这个信息让我不舒服"和"这个信息是假的"之间的差别吗？', opts: [{ label: 'A', text: '我完全分不清楚，不舒服就是假的',
+                    score: 0 }, { label: 'B', text: '我有时候分不清，情绪容易干扰我', score: 1 },
+                { label: 'C', text: '我大概能分清楚，但偶尔也会混淆', score: 2 }, { label: 'D', text: '我大部分能分清，知道这两者的区别',
+                    score: 3 }, { label: 'E', text: '我每次都能分清楚，我特别在意这个区别', score: 4 }] },
+            { dim: 'emotion', layer: 'step2', purpose: '失败容忍度 —— 恐惧是否在剥夺你的行动力？',
+                text: '你害怕"事情搞砸了"吗？', opts: [{ label: 'A', text: '我完全不害怕，反正车到山前必有路', score: 1 },
+                { label: 'B', text: '我不太害怕，我觉得自己扛得住后果', score: 2 }, { label: 'C', text: '我有点害怕，但这会督促我准备得更充分',
+                    score: 4 }, { label: 'D', text: '我比较害怕，会让我很焦虑，影响发挥', score: 2 },
+                { label: 'E', text: '我非常害怕，我经常因为怕搞砸而不敢行动', score: 0 }] },
+            { dim: 'emotion', layer: 'step2', purpose: '认错羞耻 —— 你是否因害怕丢脸而拒绝承认看走眼？',
+                text: '你害怕"承认自己看走了眼"吗？', opts: [{ label: 'A', text: '我完全不害怕，错了就承认呗', score: 4 },
+                { label: 'B', text: '我不太害怕，我觉得这很正常', score: 3 }, { label: 'C', text: '我有点害怕，但也能接受', score: 2 },
+                { label: 'D', text: '我比较害怕，会觉得丢面子', score: 1 }, { label: 'E', text: '我非常害怕，我宁可别人说我固执也不愿意承认自己错了',
+                    score: 0 }] },
+            { dim: 'emotion', layer: 'step3', purpose: '情绪调节 —— 情绪上头时你能主动停下来冷静吗？',
+                text: '情绪上头的时候，你会主动停下来冷静一下再做判断吗？', opts: [{ label: 'A', text: '我不会，我就是想马上做决定', score: 0 },
+                { label: 'B', text: '我很少会停下来，情绪来了就来了', score: 1 }, { label: 'C', text: '我有时候会停一下，但不太管用',
+                    score: 2 }, { label: 'D', text: '我经常会停下，让自己先冷静冷静', score: 3 },
+                { label: 'E', text: '我每次都会停下来，冷静后再决定', score: 4 }] },
+            { dim: 'emotion', layer: 'step3', purpose: '触发点管理 —— 你愿意记录情绪触发点并提前应对吗？',
+                text: '你愿意记下自己的情绪触发点，提前想好怎么应对吗？', opts: [{ label: 'A', text: '我不愿意，我觉得这没什么用', score: 0 },
+                { label: 'B', text: '我有点不愿意，感觉太麻烦了', score: 1 }, { label: 'C', text: '我可能会试试，但不知道能不能坚持',
+                    score: 2 }, { label: 'D', text: '我挺愿意的，我正在尝试这样做', score: 3 },
+                { label: 'E', text: '我非常愿意，我已经在做了，而且很有帮助', score: 4 }] },
+
+            { dim: 'cost', layer: 'step1', purpose: '最坏情况估算 —— 做决定前你会考虑最坏结果与概率吗？',
+                text: '做决定之前，你会不会去想"最坏能坏到哪一步"和它发生的概率？', opts: [{ label: 'A', text: '我完全不会想，想那么多干嘛', score: 0 },
+                { label: 'B', text: '我不太会想，感觉会越想越怕', score: 1 }, { label: 'C', text: '我有时候会想一下，但不会很仔细',
+                    score: 2 }, { label: 'D', text: '我经常会想，我觉得要考虑最坏情况', score: 3 },
+                { label: 'E', text: '我每次都会想，我会仔细计算概率', score: 4 }] },
+            { dim: 'cost', layer: 'step1', purpose: '对比权衡 —— 你是否对比过"信"与"不信"的后果？',
+                text: '你会同时把"相信"和"不相信"两种选择的后果都摆出来比一比吗？', opts: [{ label: 'A', text: '我完全不会，相信就相信了', score: 0 },
+                { label: 'B', text: '我很少权衡，觉得太累了', score: 1 }, { label: 'C', text: '我有时候会想一想，但不会并列比较',
+                    score: 2 }, { label: 'D', text: '我经常会比一比，这样更清楚', score: 3 },
+                { label: 'E', text: '我每次都会仔细对比，这是我的决策习惯', score: 4 }] },
+            { dim: 'cost', layer: 'step2', purpose: '决策完美主义 —— 你是否在追求"绝对正确"中消耗了自己？',
+                text: '你害怕"做出错误选择"吗？', opts: [{ label: 'A', text: '我完全不害怕，选错了就改，没什么大不了的', score: 3 },
+                { label: 'B', text: '我不太害怕，我觉得没有完美的选择，选一个就往前走', score: 4 },
+                { label: 'C', text: '我有点害怕，但也不会太纠结，差不多就定了', score: 2 },
+                { label: 'D', text: '我比较害怕，我会反复想会不会选错，很耗精力', score: 1 },
+                { label: 'E', text: '我非常害怕，我经常因为怕选错而犹豫不决，迟迟无法行动', score: 0 }] },
+            { dim: 'cost', layer: 'step2', purpose: '承认失误 —— 你是否因害怕丢脸而拒绝承认选择错误？',
+                text: '你害怕"承认自己做出了错误选择"吗？', opts: [{ label: 'A', text: '我完全不害怕，错了就大方承认', score: 4 },
+                { label: 'B', text: '我不太害怕，我觉得承认错误没什么', score: 3 }, { label: 'C', text: '我有点害怕，会有点不好意思',
+                    score: 2 }, { label: 'D', text: '我比较害怕，感觉承认错了很丢脸', score: 1 },
+                { label: 'E', text: '我非常害怕，我宁可死扛也不愿承认自己选错了', score: 0 }] },
+            { dim: 'cost', layer: 'step2', purpose: '中立焦虑 —— 你是否因害怕错过而急于站队？',
+                text: '如果暂时不判断、保持中立，你会担心错过什么吗？', opts: [{ label: 'A', text: '我完全不担心，保持中立挺好的', score: 4 },
+                { label: 'B', text: '我不太担心，我觉得等等看也没关系', score: 3 }, { label: 'C', text: '我有点担心，怕错过了最佳时机',
+                    score: 2 }, { label: 'D', text: '我比较担心，我不太喜欢悬而未决', score: 1 },
+                { label: 'E', text: '我非常担心，我恨不得马上就做决定', score: 0 }] },
+            { dim: 'cost', layer: 'step3', purpose: '不确定性容忍 —— 你愿为真相承受"不随大流"的不确定感吗？',
+                text: '你愿意为了看清真相，去承受"不跟着大家走"带来的不确定感吗？', opts: [{ label: 'A', text: '我不愿意，不确定感太难受了', score: 0 },
+                { label: 'B', text: '我不太愿意，我觉得跟着大家更安全', score: 1 }, { label: 'C', text: '我可能会愿意，但要看情况',
+                    score: 2 }, { label: 'D', text: '我挺愿意的，真相比舒服更重要', score: 3 },
+                { label: 'E', text: '我非常愿意，我不怕不确定，我怕看不清真相', score: 4 }] },
+            { dim: 'cost', layer: 'step3', purpose: '决策框架 —— 你有系统性的决策框架来评估得失吗？',
+                text: '你会搭一个简单的决策框架，帮自己在下次做判断时系统评估得失吗？', opts: [{ label: 'A', text: '我不会，我觉得没必要', score: 0 },
+                { label: 'B', text: '我可能想过，但没真的去做', score: 1 }, { label: 'C', text: '我有时候会试着弄一个，但不太系统',
+                    score: 2 }, { label: 'D', text: '我正在建立自己的决策框架，已经有一些了', score: 3 },
+                { label: 'E', text: '我已经有了很完善的决策框架，一直在用', score: 4 }] }
+        ];
+
+        // ================================================================
+        // 状态管理
+        // ================================================================
+        let state = { questions: [], answers: {}, shuffledIndices: [], currentStep: 0, isActive: false, timerStarted: false };
+        const TOTAL = QUESTIONS_RAW.length;
+        let historyRecords = [];
+        let timerSeconds = 0,
+            timerInterval = null;
+        let _reportBlobCache = null;
+        let _reportCanvasCache = null;
+
+        function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+
+        function loadHistory() { try { const raw = localStorage.getItem('cqd_pure_history'); if (raw) historyRecords = JSON
+                    .parse(raw); } catch (e) { historyRecords = []; } }
+
+        function saveHistory() { try { localStorage.setItem('cqd_pure_history', JSON.stringify(historyRecords)); } catch (e) {} }
+
+        function saveState() { try { localStorage.setItem('cqd_pure_state', JSON.stringify({ questions: state.questions,
+                    answers: state.answers, shuffledIndices: state.shuffledIndices, currentStep: state.currentStep,
+                    isActive: state.isActive, timerSeconds, timerStarted: state.timerStarted })); } catch (e) {} }
+
+        function loadState() {
+            try {
+                const raw = localStorage.getItem('cqd_pure_state');
+                if (raw) {
+                    const data = JSON.parse(raw);
+                    state.questions = data.questions || [];
+                    state.answers = data.answers || {};
+                    state.shuffledIndices = data.shuffledIndices || [];
+                    state.currentStep = data.currentStep || 0;
+                    state.isActive = data.isActive || false;
+                    timerSeconds = data.timerSeconds || 0;
+                    state.timerStarted = data.timerStarted || false;
+                    if (state.questions.length === TOTAL && state.shuffledIndices.length === TOTAL && state.shuffledIndices
+                        .every(i => typeof i === 'number' && i >= 0 && i < TOTAL)) {
+                        if (state.isActive) { showDiagnosis();
+                            renderStep(); if (state.timerStarted) startTimer(); }
+                        return;
+                    }
+                    console.warn('状态数据不完整，已重置');
+                }
+                initQuestions();
+            } catch (e) {
+                console.warn('状态数据损坏，已重置');
+                initQuestions();
+            }
+        }
+
+        function initQuestions() {
+            state.questions = QUESTIONS_RAW.map(q => ({ dim: q.dim, layer: q.layer, purpose: q.purpose, text: q.text,
+                options: q.opts.map(o => ({ ...o })) }));
+            state.shuffledIndices = Array.from({ length: TOTAL }, (_, i) => i);
+            shuffleArray(state.shuffledIndices);
+            state.answers = {};
+            state.currentStep = 0;
+            state.isActive = false;
+            state.timerStarted = false;
+            timerSeconds = 0;
+            if (timerInterval) { clearInterval(timerInterval);
+                timerInterval = null; }
+            updateTimerDisplay();
+            saveState();
+        }
+
+        function startTimer() { if (timerInterval) return;
+            state.timerStarted = true;
+            timerInterval = setInterval(() => { timerSeconds++;
+                updateTimerDisplay(); }, 1000);
+            saveState(); }
+
+        function stopTimer() { if (timerInterval) { clearInterval(timerInterval);
+                timerInterval = null; }
+            state.timerStarted = false;
+            saveState(); }
+
+        function updateTimerDisplay() { const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+            const s = String(timerSeconds % 60).padStart(2, '0');
+            document.getElementById('timerDisplay').textContent = '⏱️ ' + m + ':' + s; }
+
+        function resetTimer() { stopTimer();
+            timerSeconds = 0;
+            state.timerStarted = false;
+            updateTimerDisplay();
+            saveState(); }
+
+        function fullReset() {
+            stopTimer();
+            resetTimer();
+            initQuestions();
+            state.isActive = false;
+            saveState();
+            document.getElementById('diagnosisArea').classList.remove('visible');
+            document.getElementById('resultBox').classList.remove('show');
+            document.getElementById('stepContainer').innerHTML = '';
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('startBtn').textContent = '🚀 开始诊断';
+            document.getElementById('startArea').style.display = 'block';
+            document.getElementById('progressFill').style.width = '0%';
+            document.getElementById('answeredCount').textContent = '0';
+            document.getElementById('nextDimLabel').textContent = '事实依据';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showToast('已重置，可以重新开始诊断');
+            _reportBlobCache = null;
+            _reportCanvasCache = null;
+        }
+
+        function showDiagnosis() { document.getElementById('startArea').style.display = 'none';
+            document.getElementById('diagnosisArea').classList.add('visible');
+            document.getElementById('totalCount').textContent = TOTAL;
+            renderStep(); }
+
+        function updateDimScanProgress(currentDim) {
+            const dimIndex = DIM_ORDER.indexOf(currentDim);
+            let nextLabel = '全部完成 🎯';
+            if (dimIndex !== -1 && dimIndex + 1 < DIM_ORDER.length) {
+                const nextKey = DIM_ORDER[dimIndex + 1];
+                nextLabel = DIM_MAP[nextKey]?.label || nextKey;
+            }
+            document.getElementById('nextDimLabel').textContent = nextLabel;
+        }
+
+        function renderStep() {
+            const total = TOTAL,
+                done = Object.keys(state.answers).length,
+                pct = (done / total) * 100;
+            document.getElementById('progressFill').style.width = pct + '%';
+            document.getElementById('answeredCount').textContent = done;
+            document.getElementById('totalCount').textContent = total;
+
+            if (done === total) {
+                stopTimer();
+                document.getElementById('stepContainer').innerHTML = `
+                <div class="complete-msg">
+                    <div class="icon">🎉</div>
+                    <div class="title">所有问题已回答完毕</div>
+                    <div class="sub">你已完成全部 ${total} 个问题的诊断，点击下方按钮生成报告。</div>
+                    <div class="btn-group">
+                        <button class="btn-report" id="generateReportBtn">📋 生成诊断报告</button>
+                        <button class="btn-reset" id="resetFromCompleteBtn">↻ 重新开始</button>
+                    </div>
+                </div>
+            `;
+                document.getElementById('generateReportBtn')?.addEventListener('click', function() { generateReport(true); }, { once: true });
+                document.getElementById('resetFromCompleteBtn')?.addEventListener('click', function() { fullReset(); }, { once: true });
+                if (state.questions.length > 0) {
+                    const lastDim = state.questions[state.shuffledIndices[state.shuffledIndices.length - 1]]?.dim ||
+                        'source';
+                    updateDimScanProgress(lastDim);
+                }
+                return;
+            }
+
+            let step = 0;
+            for (let i = 0; i < total; i++) { const ridx = state.shuffledIndices[i]; if (!state.answers['q_' + ridx]) { step =
+                        i; break; } }
+            if (step >= total) { renderStep(); return; }
+            const realIdx = state.shuffledIndices[step],
+                q = state.questions[realIdx];
+            if (!q) { renderStep(); return; }
+
+            updateDimScanProgress(q.dim);
+
+            const dimIndices = state.shuffledIndices.filter(idx => state.questions[idx].dim === q.dim);
+            const dimTotal = dimIndices.length;
+            let dimAnswered = 0;
+            dimIndices.forEach(idx => { if (state.answers['q_' + idx]) dimAnswered++; });
+
+            const dim = DIM_MAP[q.dim] || { icon: '📌', label: '维度' };
+            const layer = LAYER_MAP[q.layer] || { label: '思考', sub: '追问', badge: 's1' };
+            const stepNum = step + 1,
+                ans = state.answers['q_' + realIdx];
+            const rawOpts = q.options.map((opt, idx) => ({ ...opt, origIdx: idx }));
+            const shuffledOpts = shuffleArray([...rawOpts]);
+            shuffledOpts.forEach((opt, idx) => { opt.label = String.fromCharCode(65 + idx); });
+
+            let optsHtml = '';
+            shuffledOpts.forEach((opt, idx) => { const isSelected = ans && ans.origIdx === opt.origIdx;
+                optsHtml += `
+            <label class="${isSelected?'selected':''}">
+                <input type="radio" name="q_${step}" value="${idx}" data-origidx="${opt.origIdx}" ${isSelected?'checked':''}>
+                <span class="option-label">${opt.label}</span>
+                <span>${opt.text}</span>
+            </label>
+            `; });
+
+            let hasPrev = false;
+            for (let i = step - 1; i >= 0; i--) { const ridx = state.shuffledIndices[i]; if (state.answers['q_' + ridx]) { hasPrev =
+                        true; break; } }
+
+            const purposeHtml = q.purpose ? `<div class="purpose-tag">探测偏误：${q.purpose}</div>` : '';
+            const dimProgressText = `（${dimAnswered}/${dimTotal}）`;
+
+            document.getElementById('stepContainer').innerHTML = `
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-title">
+                        <span class="dim">${dim.icon} ${dim.label} <span class="dim-progress">${dimProgressText}</span></span>
+                    </div>
+                    <div class="step-badge ${layer.badge}">${layer.label} <span class="sub">· ${layer.sub}</span> <span style="margin-left:8px;font-weight:400;color:var(--text-muted);">${stepNum} / ${total}</span></div>
+                </div>
+                <div class="question-block">
+                    ${purposeHtml}
+                    <div class="q-text"><span class="q-num">Q${stepNum}.</span> ${q.text}</div>
+                    <div class="q-options">${optsHtml}</div>
+                </div>
+                <div class="step-footer">
+                    <div class="step-status ${ans?'done':'active'}">${ans?'✅ 已作答':'☑️ 请选择一个选项'}</div>
+                    <button class="btn-back" id="backBtn" ${!hasPrev?'disabled':''}>↩ 返回上一题</button>
+                </div>
+            </div>
+        `;
+
+            document.getElementById('backBtn')?.addEventListener('click', function() {
+                for (let i = step - 1; i >= 0; i--) { const ridx = state.shuffledIndices[i]; if (state.answers['q_' +
+                        ridx]) { delete state.answers['q_' + ridx];
+                        saveState();
+                        renderStep(); return; } }
+            });
+
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (!this.checked) return;
+                    const idx = parseInt(this.value),
+                        origIdx = parseInt(this.dataset.origidx);
+                    const selectedOpt = shuffledOpts.find(o => o.origIdx === origIdx);
+                    if (!selectedOpt) return;
+                    state.answers['q_' + realIdx] = { origIdx: origIdx, score: selectedOpt.score };
+                    saveState();
+                    const labels = this.closest('.q-options').querySelectorAll('label');
+                    labels.forEach(l => l.classList.remove('selected'));
+                    this.closest('label').classList.add('selected');
+                    const status = document.querySelector('.step-status');
+                    if (status) { status.className = 'step-status done';
+                        status.innerHTML = '✅ 已作答，自动进入下一题...'; }
+                    const doneNow = Object.keys(state.answers).length;
+                    document.getElementById('progressFill').style.width = ((doneNow / total) * 100) + '%';
+                    document.getElementById('answeredCount').textContent = doneNow;
+                    updateDimScanProgress(q.dim);
+                    setTimeout(() => { renderStep(); }, 350);
+                });
+            });
+            if (ans) { const status = document.querySelector('.step-status'); if (status) { status.className =
+                        'step-status done';
+                    status.innerHTML = '✅ 已作答'; } }
+        }
+
+        function generateReport(saveToHistory = true, customAnswers = null) {
+            const answers = customAnswers || state.answers;
+            let totalEarned = 0,
+                totalMax = TOTAL * 4;
+            const dimScores = {},
+                layerScores = { step1: { earned: 0, total: 0 }, step2: { earned: 0, total: 0 }, step3: { earned: 0,
+                        total: 0 } };
+            state.shuffledIndices.forEach(realIdx => {
+                const q = state.questions[realIdx];
+                if (!q) return;
+                const ans = answers['q_' + realIdx];
+                const score = ans ? ans.score : 0;
+                totalEarned += score;
+                const dim = q.dim,
+                    layer = q.layer;
+                if (!dimScores[dim]) dimScores[dim] = { earned: 0, total: 0 };
+                dimScores[dim].earned += score;
+                dimScores[dim].total += 4;
+                if (layerScores[layer]) { layerScores[layer].earned += score;
+                    layerScores[layer].total += 4; }
+            });
+            const totalPct = totalMax > 0 ? (totalEarned / totalMax) * 100 : 0;
+            let level, levelLabel, levelDesc;
+            if (totalPct >= 80) { level = 5;
+                levelLabel = '清醒的思考者';
+                levelDesc = '你的思维框架非常完整，具备系统性的批判性思维。你能够独立检验信息、深度追问自己的认知盲区，并将反思内化为行动习惯。'; } else if (totalPct >=
+                60) { level = 4;
+                levelLabel = '独立的思考者';
+                levelDesc = '你有较强的独立思考能力，但在某些维度上仍有盲区。你已经有意识地检验信息和反思自己，但深度和系统性还可以进一步提升。'; } else if (totalPct >=
+                40) { level = 3;
+                levelLabel = '探索中的思考者';
+                levelDesc = '你具备基础的批判性思维意识，但深度和系统性不足。你有时候会怀疑信息，但缺乏一套完整的检验框架，容易被表面的逻辑带着走。'; } else if (totalPct >=
+                20) { level = 2;
+                levelLabel = '被引导的思考者';
+                levelDesc = '你容易被信息带节奏，缺乏主动检验和反思的习惯。你倾向于接受表面信息，很少追问"为什么"或"谁在背后推动"。需要从基础开始建立批判性思维框架。'; } else { level =
+                    1;
+                levelLabel = '被动的接收者';
+                levelDesc = '你习惯性地接受信息，几乎没有反思和检验的意识。你容易被情绪驱动、被立场左右、被利益操控。建议从最基础的"信息源检验"开始重新建立思维习惯。'; }
+
+            const dimResults = Object.keys(DIM_MAP).map(dimId => {
+                const data = dimScores[dimId] || { earned: 0, total: 0 };
+                const pct = data.total > 0 ? (data.earned / data.total) * 100 : 0;
+                return { id: dimId, icon: DIM_MAP[dimId].icon, label: DIM_MAP[dimId].label, pct, earned: data
+                        .earned, total: data.total };
+            });
+            const layerResults = ['step1', 'step2', 'step3'].map(key => {
+                const data = layerScores[key];
+                const pct = data.total > 0 ? (data.earned / data.total) * 100 : 0;
+                let statusText, cls;
+                if (pct >= 70) { statusText = '✅ 通过';
+                    cls = 'pass'; } else if (pct >= 45) { statusText = '⚠️ 部分通过';
+                    cls = 'warn'; } else { statusText = '❌ 未通过';
+                    cls = 'fail'; }
+                return { key, label: LAYER_MAP[key].label, sub: LAYER_MAP[key].sub, pct, earned: data.earned,
+                    total: data.total, statusText, cls };
+            });
+
+            const strongestDim = dimResults.reduce((a, b) => a.pct > b.pct ? a : b);
+            const weakestDim = dimResults.reduce((a, b) => a.pct < b.pct ? a : b);
+            const weakestLayer = layerResults.reduce((a, b) => a.pct < b.pct ? a : b);
+            const adviceText = (() => {
+                if (totalPct >= 80) return '你的思维框架已经相当成熟。继续保持，并重点关注"是否真的做到了"而不是"是否知道"。';
+                if (totalPct >= 60) return '你基础不错，但仍有盲区。建议从最弱的那一层（<strong>' + weakestLayer.label +
+                    '</strong>）开始集中突破。';
+                return '你的思维习惯还有较大提升空间。从最基础的"信息源检验"开始，重建"每一条信息都值得怀疑"的意识。';
+            })();
+
+            document.getElementById('resultBadges').innerHTML = `
+            <span class="badge-item ${totalPct>=60?'pass':totalPct>=40?'warn':'fail'}">成熟度：${Math.round(totalPct)}%</span>
+            <span class="badge-item ${totalPct>=60?'pass':'warn'}">等级：${levelLabel.slice(0,6)}</span>
+        `;
+            const body = document.getElementById('reportBody');
+            const headerHtml = `
+            <div class="result-card" style="border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:14px; text-align:center;">
+                <div style="font-size:13px; font-weight:600; letter-spacing:1.6px; color:var(--text-secondary); text-transform:uppercase;">Cognitive Blind Spot Diagnostic Model</div>
+                <div style="font-size:20px; font-weight:700; color:var(--text-h1);">一个让人彻底"清醒"的思维模型</div>
+                <div style="font-size:14px; color:var(--text-secondary); margin-top:4px;">作者：杨晟琦 &nbsp; ORCID: 0009-0008-3755-8960</div>
+                <span style="display:inline-block; background:var(--bg-card); color:var(--text-h1); font-size:14px; font-weight:500; padding:4px 18px; border-radius:var(--radius-full); border:1px solid var(--border-light); margin-top:6px;">思维盲区诊断</span>
+            </div>
+        `;
+            const summaryHtml = `
+            <div class="result-card" style="margin-bottom:14px;">
+                <div class="card-title" style="font-size:17px;">📌 一句话读懂你的思维</div>
+                <div class="card-content" style="font-size:16px; line-height:2;">
+                    <div><strong>思维成熟度：${Math.round(totalPct)}%</strong> —— 属于 <strong>"${levelLabel}"</strong></div>
+                    <div style="margin-top:6px;">
+                        <span style="color:var(--color-success);">✅ 最强项：${strongestDim.label}（${Math.round(strongestDim.pct)}%）</span><br>
+                        <span style="color:var(--color-danger);">⚠️ 待提升：${weakestDim.label}（${Math.round(weakestDim.pct)}%）</span><br>
+                        <span style="color:var(--color-gold);">💡 优先突破：${weakestLayer.label}（${Math.round(weakestLayer.pct)}%）</span>
+                    </div>
+                    <div style="margin-top:8px; font-size:14px; color:var(--link-color); border-top:1px solid var(--border-color); padding-top:6px;">
+                        💬 ${totalPct>=60?'你的思维框架比较扎实，继续优化薄弱环节即可。':'建议从最弱维度开始，每天刻意练习一项。'}
+                    </div>
+                </div>
+            </div>
+        `;
+            const layerProgressHtml = `
+            <div class="layer-progress" style="justify-content:center;">
+                ${layerResults.map((r,i)=>`
+                    <div class="layer-node ${r.cls}" style="flex:0 1 auto; min-width:100px;">
+                        <div class="layer-node-icon">${i===0?'🛡️':i===1?'🧠':'🌱'}</div>
+                        <div class="layer-node-label">${r.label}</div>
+                        <div class="layer-node-sub">${['辨别真伪','反思偏见','化为行动'][i]}</div>
+                        <div class="layer-node-status ${r.cls}">${r.statusText}</div>
+                        <div class="layer-node-score">${Math.round(r.pct)}% · ${r.earned}/${r.total}</div>
+                    </div>
+                    ${i<2?'<div class="layer-arrow" style="flex-shrink:0;">→</div>':''}
+                `).join('')}
+            </div>
+        `;
+            const radarHtml = `<div class="radar-container"><canvas id="radarCanvas" width="400" height="400"></canvas></div>`;
+            const dimProgressHtml = `
+            <div class="dim-progress-card" style="text-align:left;">
+                <div class="card-title">📊 六维度细分进度</div>
+                <div class="dim-progress-wrap">
+                    ${dimResults.map(d=>`
+                        <div class="dim-progress-item">
+                            <span class="dim-label">${d.label}</span>
+                            <div class="dim-track"><div class="dim-fill" style="width:${Math.round(d.pct)}%;"></div></div>
+                            <span class="dim-pct">${Math.round(d.pct)}%</span>
+                            <span class="dim-score">${d.earned}/${d.total}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+            const levelHtml = `
+            <div class="dim-progress-card">
+                <div class="level-light">
+                    <div class="level-badge"><span class="level-stars">${'⭐'.repeat(level)}</span><span class="level-label">${levelLabel}</span></div>
+                    <div class="level-desc">${levelDesc}</div>
+                </div>
+            </div>
+        `;
+            const adviceHtml = `
+            <div class="dim-progress-card">
+                <div class="advice-light">
+                    <div class="advice-main">${adviceText}</div>
+                    <div class="advice-items" style="padding-left:0;">
+                        <div class="advice-item" style="padding-left:0; list-style:none; border-bottom:1px solid var(--border-color); padding-bottom:6px;">
+                            <strong>① 每日一练</strong> —— 选一条信息，问自己：<br>"来源可靠吗？有事实吗？逻辑通吗？" 记下答案。
+                        </div>
+                        <div class="advice-item" style="padding-left:0; list-style:none; border-bottom:1px solid var(--border-color); padding-bottom:6px;">
+                            <strong>② 每周一挑</strong> —— 找一篇反方观点文章，<br>写下让你不舒服的三点，追问"是不是触及了我的盲区？"
+                        </div>
+                        <div class="advice-item" style="padding-left:0; list-style:none;">
+                            <strong>③ 每月一测</strong> —— 重新做一次本诊断，<br>对比分数变化，紧盯最弱维度。
+                        </div>
+                    </div>
+                    <div class="advice-hint" style="margin-top:12px;">💡 思维提升 = 持续的小练习 + 定期的自我检查</div>
+                </div>
+            </div>
+        `;
+            const faqHtml = `
+            <div class="dim-progress-card" style="background:var(--bg-body); border-color:var(--border-light); margin-top:12px; padding-bottom:28px;">
+                <div class="card-title">❓ 什么是"思维盲区"？</div>
+                <div class="card-content" style="font-size:14px; line-height:2.2; padding-bottom:6px;">
+                    思维盲区是我们 <strong>自己意识不到的认知习惯</strong>，比如：<br>
+                    · 容易相信权威（信息源盲区）<br>
+                    · 先有结论再找证据（事实盲区）<br>
+                    · 被情绪左右而不自知（情绪盲区）<br>
+                    本工具帮你 <strong>量化</strong> 这些盲区，并给出提升路径。
+                </div>
+            </div>
+        `;
+            const threeCardsHtml = `
+            <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; margin-bottom:14px;" class="three-cards">
+                <div class="result-card" style="flex:1; min-width:180px; padding:16px 18px; margin-bottom:0;">
+                    <h3>🌍 地球</h3>
+                    <p>这套诊断不依赖任何文化传统、不预设任何教育背景、不要求任何专业知识。</p>
+                </div>
+                <div class="result-card" style="flex:1; min-width:180px; padding:16px 18px; margin-bottom:0;">
+                    <h3>🏛️ 国家</h3>
+                    <p>国家无法干预结果，因为答案只存在于个体内部，不经过任何中间机构。</p>
+                </div>
+                <div class="result-card" style="flex:1; min-width:180px; padding:16px 18px; margin-bottom:0;">
+                    <h3>🧑 个人</h3>
+                    <p>一个普通人不需要任何前置培训，就能独立完成这份自我对话；他获得的是对自己思维结构的第一次看见。</p>
+                </div>
+            </div>
+        `;
+            const footerHtml = `
+            <div class="qr-wrapper" style="padding-bottom: 20px;">
+                <div class="qr-box" id="qrCodeContainer"><div id="qrCodeInReport" style="width:90px; height:90px; margin:auto;"></div></div>
+                <div class="qr-label">扫码访问 · 杨晟琦文明公理系统 · 独立思想锚点</div>
+                <div class="qr-footer">
+                    思维盲区诊断模型 · 杨晟琦文明公理系统<br>
+                    杨晟琦文明公理系统 · 独立思想锚点 · 首发于2026年<br>
+                    Yang Shengqi's Axiomatic System of Civilization · Independent Intellectual Anchor · First published in 2026<br>
+                    <span class="highlight">所有内容以 CC BY-ND 4.0 协议发布</span>
+                </div>
+            </div>
+        `;
+            const innerHtml = `
+            <div class="report-inner" style="max-width:820px; margin:0 auto;">
+                ${headerHtml}
+                ${summaryHtml}
+                <div class="result-card">
+                    <div class="card-title">📊 三层能力诊断</div>
+                    <div class="card-content">${layerProgressHtml}</div>
+                </div>
+                <div class="result-card">
+                    <div class="card-title">📡 六维能力雷达</div>
+                    <div class="card-content">${radarHtml}<div style="font-size:12px;color:var(--text-muted);margin-top:8px;text-align:center;">* 各维度得分百分比，反映该维度的思维成熟度。</div></div>
+                </div>
+                ${dimProgressHtml}
+                ${levelHtml}
+                ${adviceHtml}
+                ${faqHtml}
+                ${threeCardsHtml}
+                ${footerHtml}
+            </div>
+        `;
+            body.innerHTML = innerHtml;
+
+            requestAnimationFrame(() => {
+                const canvas = document.getElementById('radarCanvas');
+                if (canvas) drawRadar(dimResults);
+                else setTimeout(() => { const c2 = document.getElementById('radarCanvas'); if (c2) drawRadar(
+                        dimResults); }, 100);
+            });
+
+            function generateQR() {
+                const qrContainer = document.getElementById('qrCodeInReport');
+                if (!qrContainer) return false;
+                qrContainer.innerHTML = '';
+                if (typeof QRCode !== 'undefined') {
+                    try {
+                        new QRCode(qrContainer, {
+                            text: 'https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/%E6%80%9D%E7%BB%B4%E7%9B%B2%E5%8C%BA%E8%AF%8A%E6%96%AD.html',
+                            width: 90,
+                            height: 90,
+                            colorDark: '#0b0e0b',
+                            colorLight: '#ffffff',
+                            correctLevel: QRCode.CorrectLevel.H
+                        });
+                        const canvas = qrContainer.querySelector('canvas');
+                        if (canvas) {
+                            const dataUrl = canvas.toDataURL('image/png');
+                            const img = document.createElement('img');
+                            img.src = dataUrl;
+                            img.style.width = '90px';
+                            img.style.height = '90px';
+                            img.style.display = 'block';
+                            img.setAttribute('alt', 'QR Code');
+                            qrContainer.innerHTML = '';
+                            qrContainer.appendChild(img);
+                        }
+                        return true;
+                    } catch (e) {
+                        console.warn('QR生成失败:', e);
+                        return false;
+                    }
+                }
+                return false;
+            }
+
+            let attempts = 0;
+            const tryGenerateQR = () => {
+                if (generateQR()) return;
+                attempts++;
+                if (attempts < 5) setTimeout(tryGenerateQR, 500);
+                else {
+                    const fb = document.getElementById('qrCodeInReport');
+                    if (fb) {
+                        fb.textContent = '⚠️ 二维码加载失败';
+                        fb.style.cssText += 'display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted);';
+                    }
+                }
+            };
+            setTimeout(tryGenerateQR, 300);
+
+            document.getElementById('resultBox').classList.add('show');
+            document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    const resultBodyEl = document.getElementById('reportBody');
+                    if (!resultBodyEl) return;
+                    const clone = resultBodyEl.cloneNode(true);
+                    const radarCanvasEl = document.getElementById('radarCanvas');
+                    let radarImageData = null;
+                    if (radarCanvasEl) {
+                        try { radarImageData = radarCanvasEl.toDataURL('image/png'); } catch (e) {}
+                    }
+                    const cloneRadar = clone.querySelector('#radarCanvas');
+                    if (cloneRadar && cloneRadar.parentNode && radarImageData) {
+                        const img = document.createElement('img');
+                        img.src = radarImageData;
+                        img.style.width = '100%';
+                        img.style.height = 'auto';
+                        img.style.display = 'block';
+                        img.setAttribute('alt', '六维能力雷达图');
+                        cloneRadar.parentNode.replaceChild(img, cloneRadar);
+                    }
+                    const FIXED_WIDTH = 820;
+                    const container = document.createElement('div');
+                    container.className = 'screenshot-container';
+                    container.style.cssText =
+                        `width:${FIXED_WIDTH}px;padding:40px 30px;background:var(--bg-container);box-sizing:border-box;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;color:var(--text-body);line-height:1.7;overflow:visible;height:auto !important;min-height:100% !important;`;
+                    const innerClone = clone.querySelector('.report-inner');
+                    if (innerClone) {
+                        innerClone.style.margin = '0 auto';
+                        innerClone.style.width = '100%';
+                        innerClone.style.maxWidth = FIXED_WIDTH + 'px';
+                        innerClone.style.boxSizing = 'border-box';
+                        innerClone.style.overflow = 'visible';
+                        innerClone.style.height = 'auto';
+                    }
+                    clone.querySelectorAll(
+                        '.result-card, .dim-progress-card, .report-inner, .qr-wrapper, .radar-container, .layer-progress, .layer-node, .three-cards'
+                    ).forEach(el => {
+                        el.style.width = '100%';
+                        el.style.maxWidth = FIXED_WIDTH + 'px';
+                        el.style.margin = '0 auto';
+                        el.style.boxSizing = 'border-box';
+                        el.style.overflow = 'visible';
+                        el.style.height = 'auto';
+                        el.style.maxHeight = 'none';
+                    });
+                    const radarContainerClone = clone.querySelector('.radar-container');
+                    if (radarContainerClone) {
+                        radarContainerClone.style.maxWidth = '400px';
+                        radarContainerClone.style.margin = '0 auto';
+                    }
+                    const layerProgressClone = clone.querySelector('.layer-progress');
+                    if (layerProgressClone) {
+                        layerProgressClone.style.justifyContent = 'center';
+                        layerProgressClone.style.flexWrap = 'wrap';
+                    }
+                    clone.querySelectorAll('.three-cards .result-card').forEach(el => {
+                        el.style.flex = '1 1 180px';
+                        el.style.minWidth = '180px';
+                        el.style.marginBottom = '0';
+                    });
+                    container.appendChild(clone);
+                    const tempContainer = document.createElement('div');
+                    tempContainer.style.cssText =
+                        `position:absolute;left:-9999px;top:0;z-index:99999;width:${FIXED_WIDTH}px;overflow:visible;`;
+                    tempContainer.appendChild(container);
+                    document.body.appendChild(tempContainer);
+                    container.style.height = 'auto';
+                    container.style.minHeight = 'auto';
+                    const images = container.querySelectorAll('img');
+                    Promise.all([...images].map(img => {
+                        if (img.complete) return Promise.resolve();
+                        return new Promise(resolve => { img.onload = resolve; img.onerror = resolve; });
+                    })).then(() => {
+                        const realHeight = container.scrollHeight;
+                        const FINAL_BUFFER = 0.05;
+                        const finalHeight = Math.ceil(realHeight * (1 + FINAL_BUFFER)) + 20;
+                        container.style.height = finalHeight + 'px';
+                        container.style.minHeight = finalHeight + 'px';
+                        html2canvas(container, {
+                            scale: 2,
+                            backgroundColor: getComputedStyle(document.documentElement).getPropertyValue(
+                                '--bg-container').trim() || '#141814',
+                            allowTaint: false,
+                            useCORS: true,
+                            logging: false,
+                            width: FIXED_WIDTH,
+                            height: finalHeight,
+                            windowHeight: finalHeight,
+                            onclone: function(doc) {
+                                doc.querySelectorAll('*').forEach(el => {
+                                    el.style.overflow = 'visible';
+                                    el.style.maxHeight = 'none';
+                                });
+                                const cont = doc.querySelector('.screenshot-container');
+                                if (cont) cont.style.overflow = 'visible';
+                            }
+                        }).then(canvas => {
+                            canvas.toBlob(blob => {
+                                _reportBlobCache = blob;
+                                _reportCanvasCache = canvas;
+                            }, 'image/png');
+                            document.body.removeChild(tempContainer);
+                        }).catch(() => {
+                            document.body.removeChild(tempContainer);
+                        });
+                    }).catch(() => {
+                        document.body.removeChild(tempContainer);
+                    });
+                }, 500);
+            });
+
+            if (saveToHistory) {
+                const record = { id: Date.now(), timestamp: new Date().toISOString(), totalEarned: Math.round(
+                        totalEarned), totalMax, totalPct: Math.round(totalPct), level, levelLabel,
+                    answers: JSON.parse(JSON.stringify(answers)) };
+                historyRecords.unshift(record);
+                if (historyRecords.length > 50) historyRecords = historyRecords.slice(0, 50);
+                saveHistory();
+                renderHistory();
+            }
+        }
+
+function drawRadar(dimResults) {
+    const canvas = document.getElementById('radarCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width,
+        h = canvas.height,
+        cx = w / 2,
+        cy = h / 2;
+    const radius = Math.min(w, h) * 0.38;
+    const dims = dimResults.length,
+        angleStep = (Math.PI * 2) / dims;
+    ctx.clearRect(0, 0, w, h);
+    for (let lv = 1; lv <= 5; lv++) {
+        const r = (radius / 5) * lv;
+        ctx.beginPath();
+        for (let i = 0; i < dims; i++) {
+            const angle = -Math.PI / 2 + i * angleStep;
+            const x = cx + r * Math.cos(angle),
+                y = cy + r * Math.sin(angle);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.strokeStyle = '#2a322a';
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+    }
+    for (let i = 0; i < dims; i++) {
+        const angle = -Math.PI / 2 + i * angleStep;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + radius * Math.cos(angle), cy + radius * Math.sin(angle));
+        ctx.strokeStyle = '#2a322a';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        const labelR = radius + 28;
+        const lx = cx + labelR * Math.cos(angle),
+            ly = cy + labelR * Math.sin(angle);
+        ctx.fillStyle = '#aaba8a';
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(dimResults[i].label, lx, ly);
+    }
+    const dataPcts = dimResults.map(d => d.pct / 100);
+    ctx.beginPath();
+    for (let i = 0; i < dims; i++) {
+        const val = Math.min(dataPcts[i], 1);
+        const r = radius * val;
+        const angle = -Math.PI / 2 + i * angleStep;
+        const x = cx + r * Math.cos(angle),
+            y = cy + r * Math.sin(angle);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(138,170,106,0.35)';
+    ctx.fill();
+    ctx.strokeStyle = '#8aaa6a';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+    for (let i = 0; i < dims; i++) {
+        const val = Math.min(dataPcts[i], 1);
+        const r = radius * val;
+        const angle = -Math.PI / 2 + i * angleStep;
+        const x = cx + r * Math.cos(angle),
+            y = cy + r * Math.sin(angle);
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, 2 * Math.PI);
+        ctx.fillStyle = '#aaba8a';
+        ctx.fill();
+        ctx.strokeStyle = '#0b0e0b';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+    }
+}
+
+        async function exportPngReport() {
+            const btn = document.getElementById('copyImageBtn');
+            if (btn.disabled) return;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="icon">⏳</span> 生成中...';
+            if (!_reportBlobCache) {
+                showToast('⚠️ 报告尚未生成或缓存未就绪，请先生成报告。', true);
+                btn.disabled = false;
+                btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
+                return;
+            }
+            try {
+                const blob = _reportBlobCache;
+                const link = document.createElement('a');
+                link.download = '思维诊断报告_' + new Date().toISOString().slice(0, 10) + '.png';
+                link.href = URL.createObjectURL(blob);
+                link.click();
+                URL.revokeObjectURL(link.href);
+                showToast('✅ PNG 报告已下载！');
+            } catch (err) {
+                console.error('导出失败:', err);
+                showToast('❌ 导出失败，请重试', true);
+            }
+            btn.disabled = false;
+            btn.innerHTML = '<span class="icon">🖼️</span> 导出诊断报告（PNG） <span class="badge">截图</span>';
+        }
+
+        async function sharePngReport() {
+            const btn = document.getElementById('shareImageBtn');
+            if (btn.disabled) return;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="icon">⏳</span> 准备中...';
+            showToast('⏳ 正在准备图片...');
+            if (!_reportBlobCache) {
+                showToast('⚠️ 报告尚未生成或缓存未就绪，请先生成报告。', true);
+                btn.disabled = false;
+                btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                return;
+            }
+            try {
+                const blob = _reportBlobCache;
+                const file = new File([blob], '思维诊断报告.png', { type: 'image/png' });
+                if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ title: '思维诊断报告', files: [file] });
+                    showToast('✅ 已分享，可选择保存到相册');
+                    btn.disabled = false;
+                    btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+                    return;
+                }
+                if (navigator.clipboard && window.ClipboardItem) {
+                    const clipboardItem = new ClipboardItem({ 'image/png': blob });
+                    await navigator.clipboard.write([clipboardItem]);
+                    showToast('✅ 图片已复制到剪贴板！可直接粘贴（Ctrl+V）');
+                } else {
+                    const link = document.createElement('a');
+                    link.download = '思维诊断报告.png';
+                    link.href = URL.createObjectURL(blob);
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                    showToast('✅ 复制失败，已转为下载');
+                }
+            } catch (err) {
+                console.error('复制失败:', err);
+                if (_reportBlobCache) {
+                    const link = document.createElement('a');
+                    link.download = '思维诊断报告.png';
+                    link.href = URL.createObjectURL(_reportBlobCache);
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                    showToast('📥 复制失败，已转为下载（请使用“导出”按钮保存）', true);
+                } else {
+                    showToast('❌ 复制失败，请尝试导出', true);
+                }
+            }
+            btn.disabled = false;
+            btn.innerHTML = '<span class="icon">📋</span> 复制诊断报告（PNG） <span class="badge">复制</span>';
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('historyList'),
+                empty = document.getElementById('historyEmpty');
+            if (historyRecords.length === 0) { list.innerHTML = '';
+                empty.style.display = 'block';
+                empty.textContent = '暂无历史记录'; return; }
+            empty.style.display = 'none';
+            list.innerHTML = historyRecords.map(rec => {
+                const label = rec.levelLabel || '⭐';
+                const date = new Date(rec.timestamp).toLocaleString('zh-CN');
+                return `<div class="history-item" data-id="${rec.id}">
+                <span class="h-topic">思维诊断</span>
+                <span class="h-meta">${date}</span>
+                <span class="h-level" style="color:${rec.totalPct>=80?'var(--color-success)':rec.totalPct>=60?'var(--link-color)':rec.totalPct>=40?'var(--color-gold)':'var(--color-danger)'};">${label}</span>
+                <div class="history-actions">
+                    <span class="history-view-btn">查看报告</span>
+                    <button class="history-del-btn" title="删除记录">✕</button>
+                </div>
+            </div>`;
+            }).join('');
+            list.querySelectorAll('.history-item').forEach(item => {
+                const viewBtn = item.querySelector('.history-view-btn'),
+                    delBtn = item.querySelector('.history-del-btn');
+                const id = parseInt(item.dataset.id);
+                const viewReport = function() {
+                    if (state.isActive && Object.keys(state.answers).length > 0) { if (!confirm(
+                            '查看历史报告将覆盖当前答题进度，确定继续吗？')) return; }
+                    const rec = historyRecords.find(r => r.id === id);
+                    if (rec && rec.answers && Object.keys(rec.answers).length > 0) { generateReport(false,
+                            rec.answers);
+                        showToast('📋 已加载历史报告'); } else { showToast('⚠️ 该历史记录不包含答题数据，无法查看报告。',
+                        true); }
+                };
+                item.addEventListener('click', function(e) { if (e.target.classList.contains(
+                        'history-del-btn')) return;
+                    viewReport(); });
+                if (viewBtn) { viewBtn.addEventListener('click', function(e) { e.stopPropagation();
+                        viewReport(); }); }
+                if (delBtn) { delBtn.addEventListener('click', function(e) { e.stopPropagation(); if (confirm(
+                            '确定要删除这条历史记录吗？')) { historyRecords = historyRecords.filter(r => r.id !==
+                            id);
+                        saveHistory();
+                        renderHistory();
+                        showToast('已删除历史记录'); } }); }
+            });
+        }
+
+        let toastTimer = null;
+
+        function showToast(message, isError) { const el = document.getElementById('toast');
+            el.textContent = message;
+            el.className = 'toast' + (isError ? ' error' : '');
+            void el.offsetWidth;
+            el.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => { el.classList.remove('show'); }, 4000); }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadHistory();
+            loadState();
+            renderHistory();
+            if (state.isActive && state.questions.length === TOTAL) { showDiagnosis(); if (state.timerStarted)
+                    startTimer(); }
+
+            document.getElementById('startBtn').addEventListener('click', function() {
+                if (state.isActive) { showDiagnosis(); return; }
+                const modal = document.getElementById('introModal');
+                const countdownEl = document.getElementById('introCountdown');
+                countdownEl.textContent = '3';
+                modal.style.display = 'flex';
+                let countdown = 3;
+                const timer = setInterval(() => {
+                    countdown--;
+                    countdownEl.textContent = countdown;
+                    if (countdown <= 0) {
+                        clearInterval(timer);
+                        modal.style.display = 'none';
+                        initQuestions();
+                        state.isActive = true;
+                        timerSeconds = 0;
+                        state.timerStarted = true;
+                        updateTimerDisplay();
+                        startTimer();
+                        saveState();
+                        showDiagnosis();
+                        document.getElementById('resultBox').classList.remove('show');
+                    }
+                }, 1000);
+            });
+
+            document.getElementById('resetFromResultBtn')?.addEventListener('click', function() { fullReset(); });
+            document.getElementById('closeResultBtn').addEventListener('click', function() { document.getElementById(
+                    'resultBox').classList.remove('show'); });
+            document.getElementById('copyImageBtn').addEventListener('click', exportPngReport);
+            document.getElementById('shareImageBtn').addEventListener('click', sharePngReport);
+        });
+    </script>
+</body>
+</html>

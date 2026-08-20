@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="文明等级判断说明书 · 杨晟琦文明公理系统">
+    <title>文明等级判断说明书</title>
+    <link rel="stylesheet" href="common.css">
+    <style>
+        /* 评分标尺表格内垂直居中 */
+        .scale-table td {
+            vertical-align: middle;
+        }
+        .scale-table .score-cell {
+            text-align: center;
+            font-weight: 700;
+            color: var(--text-h1);
+            white-space: nowrap;
+        }
+        /* 汇总卡和WJP记录表内联表单样式 */
+        .summary-table td:first-child,
+        .wjp-table td:first-child {
+            font-weight: 500;
+            color: var(--text-h3);
+        }
+        .summary-table .check-cell {
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        .summary-table .score-input {
+            text-align: center;
+            color: var(--text-h1);
+            font-weight: 600;
+        }
+        .summary-table .final-row {
+            border-top: 2px solid var(--color-primary);
+            font-weight: 700;
+            color: var(--text-h1);
+        }
+        .summary-table .final-row td {
+            padding-top: 12px;
+        }
+        .wjp-table .year-cell {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        .empty-cell {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .scale-table {
+                font-size: 12px;
+            }
+            .scale-table td,
+            .scale-table th {
+                padding: 6px 8px;
+            }
+        }
+        @media (max-width: 600px) {
+            .scale-table td,
+            .scale-table th {
+                padding: 4px 6px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+
+        <!-- ===== 侧边栏 ===== -->
+        <aside class="sidebar" role="navigation" aria-label="目录导航">
+            <div class="sub-brand">YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION</div>
+            <div class="logo">杨晟琦<span>文明公理系统</span><span class="nav-copyright">©</span></div>
+            <nav aria-label="主导航">
+                <a href="./index.html" title="杨晟琦文明公理系统首页 · 独立思想锚点">首页 <span class="nav-en">HOME</span></a>
+                <a href="./blind-spot-diagnosis-cn.html" title="人类思维盲区在线诊断工具（中文版）">思维诊断：人类思维盲区诊断（中文）<span class="nav-en">BLIND SPOT DIAGNOSIS (CN)</span></a>
+                <a href="./blind-spot-diagnosis-en.html" title="Cognitive Blind Spot Diagnostic Tool（EN）">思维诊断：人类思维盲区诊断（英文）<span class="nav-en">BLIND SPOT DIAGNOSIS (EN)</span></a>
+                <a href="./pure-structure-edition.html" title="杨晟琦文明公理系统纯净结构版（中英文版）">快速阅读：文明公理系统纯净版 <span class="nav-en">PURE-STRUCTURE-EDITION</span></a>
+                <a href="./three-cornerstones.html" title="三大基石：一种文明系统的底层重构框架">元框架：三大基石 <span class="nav-en">META-FRAMEWORK · THREE CORNERSTONES</span></a>
+                <a href="./path-to-low-civilization.html" title="低级文明的完整路径图">诊断模型：低级文明路径图 <span class="nav-en">DIAGNOSTIC MODEL · PATH TO LOW-LEVEL CIVILIZATION</span></a>
+                <a href="./deterministic-social-system.html" title="确定性社会系统形成的必要条件与阻碍因素">条件分析：确定性社会形成条件因素 <span class="nav-en">DETERMINISTIC SOCIAL SYSTEM</span></a>
+                <a href="./justice-interest-rules-tension.html" title="正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析">张力分析：正义利益规则的错位 <span class="nav-en">JUSTICE, INTEREST &amp; RULES</span></a>
+                <a href="./non-deadlock-analysis.html" title="系统“非死锁”的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制">条件分析：非死锁的条件分析 <span class="nav-en">NON-DEADLOCK ANALYSIS</span></a>
+                <a href="./operational-manual.html" title="改变底层逻辑的方法论（非归因，可操作）">操作手册：改变底层逻辑的方法论 <span class="nav-en">OPERATIONAL MANUAL</span></a>
+                <a href="./earthly-perspective-validation.html" title="从地球人类视野的推演：为什么“换皮奴隶制”终将失效，而“真文明”必然成为引力中心">验证工具：从地球人类视野的推演 <span class="nav-en">VALIDATION TOOL</span></a>
+                <a href="./ghsf-cn.html" title="全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）">药方参考：全球人类主权基金 (中文版) <span class="nav-en">GHSF (CN)</span></a>
+                <a href="./ghsf-en.html" title="GHSF — A Blueprint for China & the Global Community（英文版）">药方参考：全球人类主权基金 (英文版) <span class="nav-en">GHSF (EN)</span></a>
+                <a href="./acceptance-report.html" title="文明公理宪法与全球人类主权基金的验收报告">验收报告：文明公理与基金验收报告 <span class="nav-en">ACCEPTANCE REPORT</span></a>
+                <a href="./civilization-level-manual.html" title="文明等级判断说明书">量化思路：文明等级判断说明书 <span class="nav-en">CIVILIZATION LEVEL MANUAL</span></a>
+                <a href="./civilization-level-scorer.html" title="杨晟琦文明公理系统之文明等级评分器（中英文版）">量化诊断：文明等级判断评分器 <span class="hot-icon"><img src="hot.gif" alt="hot"></span><span class="nav-en">CIVILIZATION LEVEL SCORER</span></a>
+            </nav>
+            <div class="version">所有内容以 CC BY-ND 4.0 协议发布 <span class="version-en">All content released under CC BY-ND 4.0</span></div>
+        </aside>
+
+        <!-- ===== 主内容 ===== -->
+        <main class="main">
+
+            <!-- 顶栏 -->
+            <div class="top-nav">
+                <a href="./index.html" class="back">← 返回体系总入口</a>
+                <span class="badge">杨晟琦文明公理系统 · 独立思想锚点</span>
+            </div>
+
+            <!-- 品牌区 -->
+            <div class="brand">
+                <div class="brand-left">
+                    <div class="sub-brand">CIVILIZATION LEVEL ASSESSMENT MANUAL</div>
+                    <div class="title-row--inline">
+                        <h1>文明等级判断说明书</h1>
+                        <span class="badge badge-dark">量化思路</span>
+                    </div>
+                    <div class="info-row">
+                        <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
+                        <span>全球首发: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+                        <span>封装完成: 2026年7月</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 页面内容 ===== -->
+            <div class="page-content">
+
+                <!-- ============================================================
+                完整概叙
+                ============================================================ -->
+                <h2>完整概叙 <span class="en-inline">Overview</span></h2>
+                <div class="designer-note">
+                    <p>在此宣言之前，人类对“文明”的讨论，全数停留在修辞、信仰、口号与相对主义泥潭之中。<span class="en">Prior to this declaration, all human discourse on "civilization" remained mired in rhetoric, faith, slogans, and relativism.</span></p>
+                    <p>历史学家说文明是遗迹，政治家说文明是GDP，哲学家说文明是道德。<span class="en">Historians said civilization was ruins; politicians said it was GDP; philosophers said it was morality.</span></p>
+                    <p>但没有人能给出一个可测量、可验证、可复现的文明定义。<span class="en">But no one could provide a measurable, verifiable, and replicable definition of civilization.</span></p>
+                    <p>这意味着，在漫长的数千年里，“文明”一直是权力的注脚，而非众生的尺度。<span class="en">This meant that for thousands of years, "civilization" had always been a footnote to power, never a yardstick for all people.</span></p>
+                    <p><strong>2026年7月19日，这一状态被终结。</strong><span class="en"><strong>On July 19, 2026, this state was ended.</strong></span></p>
+                    <p>由杨晟琦设立的《文明等级判断说明书》，完成了人类历史上第一次对“文明”的数学建模。文明从此不再是形容词，而是一个可计算函数：<span class="en">The <em>Civilization Level Assessment Manual</em>, established by Yang Shengqi, completed the first mathematical modeling of "civilization" in human history. Civilization is no longer an adjective, but a computable function:</span></p>
+                    <p><strong>文明指数 = （生存与劳动保障 + 劳动价值平等 + 收入分配公平 + 言论与精神自由）× 2.5</strong><span class="en"><strong>Civilization Index = (Survival &amp; Labor Security + Equal Labor Value + Fair Income Distribution + Freedom of Speech &amp; Spirit) × 2.5</strong></span></p>
+                    <p>这是人类文明测量史上的第一把游标卡尺。<span class="en">This is the first vernier caliper in the history of human civilization measurement.</span></p>
+                </div>
+
+                <!-- ============================================================
+                三项不可动摇的元法则
+                ============================================================ -->
+                <h2>三项不可动摇的元法则 <span class="en-inline">Three Unshakable Meta‑Principles</span></h2>
+
+                <div class="layer border-left-primary">
+                    <div class="layer-num">第一法则：基石否决权 <span class="en-num">Principle One: Cornerstone Veto</span></div>
+                    <div class="layer-desc">
+                        <p>文明不以繁荣为前提，而以自由为根基；自由不以放纵为形态，而以规则为边界；规则不以强者为意志，而以三公为准绳。三块基石，缺一不可。缺一则判低级，永无通融。<span class="en">Civilization is not premised on prosperity, but rooted in freedom; freedom does not take the form of indulgence, but is bounded by rules; rules are not dictated by the will of the powerful, but are guided by the Three Principles—fairness, justice, and openness. Not one of the three cornerstones can be missing. If any is absent, the society is judged as Low‑Level Civilization, with no exception whatsoever.</span></p>
+                        <p>这是人类第一次在文明定义中植入硬性伦理学底线。<span class="en">This is the first time in human history that a hard ethical bottom line has been embedded in the definition of civilization.</span></p>
+                    </div>
+                </div>
+
+                <div class="layer border-left-gold">
+                    <div class="layer-num">第二法则：体感优先律 <span class="en-num">Principle Two: Primacy of Lived Experience</span></div>
+                    <div class="layer-desc">
+                        <p>当宏观统计数据（GDP、平均收入、官方失业率）与弱势群体的实际生存体感发生冲突时，本指数以体感为真理。<span class="en">When macroeconomic statistics (GDP, average income, official unemployment rate) conflict with the actual lived experience of vulnerable groups, this index takes lived experience as truth.</span></p>
+                        <p>这是人类第一次在社会科学量化工具中，将“人的承受”凌驾于“纸面的粉饰”之上。<span class="en">This is the first time in a social science quantitative tool that "human endurance" has been placed above "paper gloss."</span></p>
+                    </div>
+                </div>
+
+                <div class="layer border-left-teal">
+                    <div class="layer-num">第三法则：最短木桶律 <span class="en-num">Principle Three: Shortest Plank Rule</span></div>
+                    <div class="layer-desc">
+                        <p>四大要素中任意一项低于或等于2分，总分自动锁死低级文明。其他三项表现再优异，不可拉升、不可弥补。<span class="en">If any of the four core elements scores 2 or below, the total score is automatically locked at Low‑Level Civilization. No matter how outstanding the other three elements perform, they cannot elevate or compensate.</span></p>
+                        <p>这是人类第一次在文明评估中承认：系统性压迫可以瞬间摧毁文明的全部优越性。<span class="en">This is the first time in civilization assessment that it has been acknowledged: systemic oppression can instantly destroy all of a civilization's claimed superiority.</span></p>
+                    </div>
+                </div>
+
+                <!-- ============================================================
+                这份指数的历史定位
+                ============================================================ -->
+                <h2>这份指数的历史定位 <span class="en-inline">The Historical Positioning of This Index</span></h2>
+
+                <div class="layer border-left-purple">
+                    <div class="layer-desc">
+                        <p>它与GDP无关，与军事实力无关，与领土大小无关。它只关切三件事：<span class="en">It has nothing to do with GDP, military power, or territorial size. It concerns only three things:</span></p>
+                        <ul>
+                            <li><strong>一、个体是否免于生存恐惧；</strong><br><span class="en"><strong>1. Whether individuals are free from existential fear;</strong></span></li>
+                            <li><strong>二、个体是否免于身份屈辱；</strong><br><span class="en"><strong>2. Whether individuals are free from identity humiliation;</strong></span></li>
+                            <li><strong>三、个体是否免于沉默锁。</strong><br><span class="en"><strong>3. Whether individuals are free from the lock of silence.</strong></span></li>
+                        </ul>
+                        <p>凡以此标准丈量的社会，无论自诩何种制度、何种文化、何种历史，皆将暴露其真实底色。高级文明不是自封的，是算出来的；低级文明不是污名，是数据反映的残酷真相。<span class="en">Any society measured by this standard—regardless of its claimed system, culture, or history—will have its true colors exposed. High‑Level Civilization is not self‑proclaimed; it is calculated. Low‑Level Civilization is not a stigma; it is the harsh truth reflected by data.</span></p>
+                    </div>
+                </div>
+
+                <!-- ============================================================
+                本指数的开放性
+                ============================================================ -->
+                <h2>本指数的开放性 <span class="en-inline">The Openness of This Index</span></h2>
+
+                <div class="layer border-left-gold-light">
+                    <div class="layer-desc">
+                        <p>本标准仰赖WJP法治指数提供的法治量化数据作为基准参照。<span class="en">This standard relies on the rule‑of‑law quantitative data provided by the WJP Rule of Law Index as its benchmark reference.</span></p>
+                        <p>WJP提供了可验证的“外部尺子”，本指数在尺子之上附加了“体感修正”和“底线锁死”，使冰冷的数据具备了体温与良知。<span class="en">The WJP provides a verifiable "external ruler." This index adds "lived‑experience correction" and "bottom‑line lock" on top of that ruler, endowing cold data with warmth and conscience.</span></p>
+                        <p>本指数欢迎全人类任何组织、任何研究者使用、复验、挑战。<span class="en">This index welcomes any organization or researcher in all of humanity to use, replicate, and challenge it.</span></p>
+                        <p>但它拒绝被修改的，是上述三条元法则，因为那是文明的底线，而非谈判的筹码。<span class="en">But what it refuses to have modified are the above three meta‑principles—because they are the bottom line of civilization, not bargaining chips.</span></p>
+                    </div>
+                </div>
+
+                <!-- ============================================================
+                最终宣告
+                ============================================================ -->
+                <h2>最终宣告 <span class="en-inline">Final Declaration</span></h2>
+
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <p>在2026年7月19日这一日，人类多了一把尺子。<span class="en">On this day, July 19, 2026, humanity gained one more ruler.</span></p>
+                        <p>这把尺子量度的不再是土地与黄金，而是每个个体真实承受的自由、平等与尊严。<span class="en">This ruler no longer measures land and gold, but the freedom, equality, and dignity that every individual truly endures.</span></p>
+                        <p><strong>这是量化文明的第一天。</strong><span class="en"><strong>This is the first day of quantified civilization.</strong></span></p>
+                        <p>版本：1.1（完善版） · 时间：2026年7月19日 · 设计人：杨晟琦<br><span class="en">Version: 1.1 (Refined Edition) · Date: July 19, 2026 · Designer: Yang Shengqi</span></p>
+                        <p>制定依据：三块基石 + 四大要素 + WJP八因素<br><span class="en">Based on: Three Cornerstones + Four Core Elements + WJP Eight Factors</span></p>
+                        <p>适用范围：所有人类社会形态<br><span class="en">Scope of Application: All forms of human society</span></p>
+                    </div>
+                </div>
+
+                <!-- ============================================================
+                前言
+                ============================================================ -->
+                <h2>前言 <span class="en-inline">Preface</span></h2>
+
+                <div class="layer border-left-gold">
+                    <div class="layer-desc">
+                        <p>本标准基于以下基本认知：<span class="en">This standard is based on the following fundamental understandings:</span></p>
+                        <ul>
+                            <li>文明不是声称的，是可测量的<br><span class="en">Civilization is not what is claimed; it is measurable.</span></li>
+                            <li>文明不是宏大的叙事，是每一个个体实际承受的体验<br><span class="en">Civilization is not grand narrative; it is the actual experience borne by every individual.</span></li>
+                            <li>文明不是旗帜和口号，是生存、平等、公平、自由的集合<br><span class="en">Civilization is not flags and slogans; it is the convergence of survival, equality, fairness, and freedom.</span></li>
+                        </ul>
+                        <p>本标准以三块基石为根本前提，以四大要素为核心内容，以WJP法治指数八因素为客观数据参照，通过量化评分，将文明划分为低级、中级、高级三个等级。<span class="en">This standard takes the Three Cornerstones as its fundamental premise, the Four Core Elements as its core content, and the WJP Rule of Law Index Eight Factors as its objective data reference. Through quantitative scoring, it classifies civilizations into three levels: Low, Medium, and High.</span></p>
+                    </div>
+                </div>
+
+                <!-- ============================================================
+                第一部分：三块基石
+                ============================================================ -->
+                <h2>第一部分：三块基石（前提条件） <span class="en-inline">Part I: The Three Cornerstones (Prerequisite Conditions)</span></h2>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>基石编号 <span class="en">Cornerstone No.</span></th><th>基石内容 <span class="en">Cornerstone Content</span></th><th>含义 <span class="en">Meaning</span></th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>基石一</td>
+                                <td>文明以自由为根基<br><span class="en">Civilization is rooted in freedom</span></td>
+                                <td>个体拥有自主选择的权利，不被工具化<br><span class="en">Individuals possess the right to autonomous choice and are not instrumentalized</span></td>
+                            </tr>
+                            <tr>
+                                <td>基石二</td>
+                                <td>自由以规则为边界<br><span class="en">Freedom is bounded by rules</span></td>
+                                <td>自由的行使以法律和制度为界，避免无序与暴力<br><span class="en">The exercise of freedom is delimited by law and institutions, preventing disorder and violence</span></td>
+                            </tr>
+                            <tr>
+                                <td>基石三</td>
+                                <td>规则以公平、公正、公开为准绳<br><span class="en">Rules are guided by fairness, justice, and openness</span></td>
+                                <td>规则面前人人平等，制定透明，执行无偏<br><span class="en">All are equal before rules; formulation is transparent; enforcement is impartial</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <p><strong>判定规则：</strong>三块基石中任何一块未建立，该社会直接判为低级文明，不再进入后续评分。<br><span class="en"><strong>Judgment Rule:</strong> If any one of the Three Cornerstones is not established, the society is directly judged as Low‑Level Civilization and does not proceed to subsequent scoring.</span></p>
+                    </div>
+                </div>
+
+                <!-- ============================================================
+                第二部分：四大要素
+                ============================================================ -->
+                <h2>第二部分：四大要素（核心评分项） <span class="en-inline">Part II: The Four Core Elements (Core Scoring Items)</span></h2>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>要素编号 <span class="en">Element No.</span></th><th>要素名称 <span class="en">Element Name</span></th><th>定义 <span class="en">Definition</span></th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>要素一</td>
+                                <td>生存与劳动保障<br><span class="en">Survival &amp; Labor Security</span></td>
+                                <td>个体是否免于饥饿、疾病、失业性绝境；劳动权利是否受法律与实际保护<br><span class="en">Whether individuals are free from hunger, disease, and unemployment‑induced destitution; whether labor rights are protected by law and in practice</span></td>
+                            </tr>
+                            <tr>
+                                <td>要素二</td>
+                                <td>劳动价值平等<br><span class="en">Equal Labor Value</span></td>
+                                <td>职业是否有贵贱之分；个体是否因出身、性别、种姓等先天因素而遭受职业限制<br><span class="en">Whether occupations are ranked as noble or base; whether individuals face occupational restrictions due to birth, gender, caste, or other innate factors</span></td>
+                            </tr>
+                            <tr>
+                                <td>要素三</td>
+                                <td>收入分配公平<br><span class="en">Fair Income Distribution</span></td>
+                                <td>贫富差距是否可控；底层是否享有基本尊严；劳动所得是否被权力或资本截留<br><span class="en">Whether the wealth gap is controllable; whether the bottom tier enjoys basic dignity; whether labor income is intercepted by power or capital</span></td>
+                            </tr>
+                            <tr>
+                                <td>要素四</td>
+                                <td>言论与精神自由<br><span class="en">Freedom of Speech &amp; Spirit</span></td>
+                                <td>批评权是否受法律保护；艺术、学术、媒体是否拥有独立探索的空间<br><span class="en">Whether the right to criticize is legally protected; whether art, academia, and media have space for independent exploration</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ============================================================
+                第三部分：WJP八因素
+                ============================================================ -->
+                <h2>第三部分：WJP八因素（客观数据参照） <span class="en-inline">Part III: The WJP Eight Factors (Objective Data Reference)</span></h2>
+
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <p>WJP（世界正义工程）法治指数提供全球公认的法治量化数据，得分范围 0~1。<span class="en">The WJP (World Justice Project) Rule of Law Index provides globally recognized quantitative rule‑of‑law data, with scores ranging from 0 to 1.</span></p>
+                    </div>
+                </div>
+
+                <h3>3.1 WJP八因素与四大要素的对应关系 <span class="en-inline">3.1 Correspondence Between the WJP Eight Factors and the Four Core Elements</span></h3>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>WJP编号 <span class="en">WJP No.</span></th><th>WJP因素名称 <span class="en">WJP Factor Name</span></th><th>对应你的要素 <span class="en">Corresponding Element</span></th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>F1</td><td>约束政府权力<br><span class="en">Constraints on Government Powers</span></td><td>一（对应基石一：自由）<br><span class="en">I (Corresponds to Cornerstone I: Freedom)</span></td></tr>
+                            <tr><td>F2</td><td>消除腐败<br><span class="en">Absence of Corruption</span></td><td>要素三：收入分配公平<br><span class="en">Element III: Fair Income Distribution</span></td></tr>
+                            <tr><td>F3</td><td>开放政府<br><span class="en">Open Government</span></td><td>要素四：言论与精神自由<br><span class="en">Element IV: Freedom of Speech &amp; Spirit</span></td></tr>
+                            <tr><td>F4</td><td>基本权利<br><span class="en">Fundamental Rights</span></td><td>要素二：劳动价值平等<br><span class="en">Element II: Equal Labor Value</span></td></tr>
+                            <tr><td>F5</td><td>秩序与安全<br><span class="en">Order &amp; Security</span></td><td>要素一：生存与劳动保障<br><span class="en">Element I: Survival &amp; Labor Security</span></td></tr>
+                            <tr><td>F6</td><td>监管执法<br><span class="en">Regulatory Enforcement</span></td><td>要素一：生存与劳动保障<br><span class="en">Element I: Survival &amp; Labor Security</span></td></tr>
+                            <tr><td>F7</td><td>民事司法<br><span class="en">Civil Justice</span></td><td>一（对应基石二：规则）<br><span class="en">I (Corresponds to Cornerstone II: Rules)</span></td></tr>
+                            <tr><td>F8</td><td>刑事司法<br><span class="en">Criminal Justice</span></td><td>一（对应基石二：规则）<br><span class="en">I (Corresponds to Cornerstone II: Rules)</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>3.2 操作规则 <span class="en-inline">3.2 Operational Rules</span></h3>
+
+                <div class="layer border-left-gold">
+                    <div class="layer-desc">
+                        <p>将对应WJP因素得分 × 10，作为该要素的基准分。<span class="en">Multiply the corresponding WJP factor score by 10 to obtain the baseline score for that element.</span></p>
+                        <p>评分者在基准分基础上，根据该社会实际执行情况（如弱势群体实际体感、区域差异、执行偏差），进行 ±2 分的调整。调整须在评分备注中注明理由。若无调整，则基准分即为该要素得分。<span class="en">On the basis of the baseline score, the scorer may make adjustments of ±2 points according to the actual implementation conditions of the society (e.g., actual lived experience of vulnerable groups, regional disparities, enforcement deviations). Adjustments must be justified in the scoring remarks. If no adjustment is made, the baseline score is the element score.</span></p>
+                        <div class="highlight-box" style="margin-top:12px;">
+                            <p><strong>示例：</strong><br>某国WJP的F5（秩序与安全）= 0.68，F6（监管执法）= 0.52<br>要素一基准分 = (0.68 + 0.52) / 2 × 10 = 6.0<br>评分者根据该国弱势群体实际体感（如非正规经济从业者无社保），将得分调整为5.0，备注中注明依据。若评分者认为WJP数据与实际体感一致，则保持6.0，无需调整。<br><span class="en"><strong>Example:</strong><br>Country A's WJP F5 (Order &amp; Security) = 0.68, F6 (Regulatory Enforcement) = 0.52<br>Element I baseline score = (0.68 + 0.52) / 2 × 10 = 6.0<br>The scorer, based on the actual lived experience of vulnerable groups in that country (e.g., informal economy workers without social security), adjusts the score to 5.0, with justification noted in the remarks. If the scorer believes the WJP data is consistent with actual lived experience, the score remains 6.0 without adjustment.</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================
+                第四部分：四大要素量化评分标尺
+                ============================================================ -->
+                <h2>第四部分：四大要素量化评分标尺 <span class="en-inline">Part IV: Quantitative Scoring Scale for the Four Core Elements</span></h2>
+
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <p>每要素独立评分，最小单位0.5分，范围 0~10 分。<span class="en">Each element is scored independently, with a minimum unit of 0.5 points, ranging from 0 to 10.</span></p>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="scale-table">
+                        <thead>
+                            <tr>
+                                <th style="width:8%;">分值 <span class="en">Score</span></th>
+                                <th style="width:23%;">生存与劳动保障 <span class="en">Survival &amp; Labor Security</span></th>
+                                <th style="width:23%;">劳动价值平等 <span class="en">Equal Labor Value</span></th>
+                                <th style="width:23%;">收入分配公平 <span class="en">Fair Income Distribution</span></th>
+                                <th style="width:23%;">言论与精神自由 <span class="en">Freedom of Speech &amp; Spirit</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="score-cell">0‑2</td>
+                                <td>无劳动立法；无任何形式社会保障；失业后无任何救济渠道<br><span class="en">No labor legislation; no form of social security; no relief channels after unemployment</span></td>
+                                <td>法定等级制（种姓/贵族/奴隶）仍在运行；人格权不平等<br><span class="en">Legal hierarchy (caste/aristocracy/slavery) still in operation; unequal personal rights</span></td>
+                                <td>极少数人掌握绝大部分财富；底层长期赤贫<br><span class="en">An extremely small minority controls the vast majority of wealth; the bottom tier lives in chronic poverty</span></td>
+                                <td>一切批评被定罪；思想犯罪化；艺术与学术完全服务于宣传<br><span class="en">All criticism criminalized; thought criminalized; art and academia entirely subservient to propaganda</span></td>
+                            </tr>
+                            <tr>
+                                <td class="score-cell">3‑4</td>
+                                <td>有劳动立法但无有效执行；社保覆盖率&lt;30%；保障水平低于当地最低生活标准<br><span class="en">Labor legislation exists but is not effectively enforced; social security coverage &lt;30%; security level below local subsistence standards</span></td>
+                                <td>法律上废除等级，但实际职业壁垒森严；上升通道被特定群体垄断<br><span class="en">Legal hierarchy abolished, but actual occupational barriers remain rigid; upward channels monopolized by specific groups</span></td>
+                                <td>基尼系数&gt;0.45；贫富差距持续扩大；底层无上升通道<br><span class="en">Gini coefficient &gt;0.45; wealth gap continuously widening; the bottom tier has no upward path</span></td>
+                                <td>允许技术性讨论；政治与社会批评被严酷压制；自我审查普遍<br><span class="en">Technical discussion permitted; political and social criticism severely suppressed; self‑censorship widespread</span></td>
+                            </tr>
+                            <tr>
+                                <td class="score-cell">5‑6</td>
+                                <td>社保覆盖率≥50%但保障水平仅够维持基本生存；失业救济存在但金额不足以保证基本营养<br><span class="en">Social security coverage ≥50% but only sufficient for basic survival; unemployment relief exists but insufficient for basic nutrition</span></td>
+                                <td>同工同酬有法律规定；但高权力/高收入职业仍被特定出身者垄断<br><span class="en">Equal pay for equal work is legally stipulated, but high‑power/high‑income occupations are still monopolized by those of specific birth</span></td>
+                                <td>基尼系数0.35‑0.45；有二次分配机制但效果有限<br><span class="en">Gini coefficient 0.35‑0.45; redistribution mechanisms exist but with limited effect</span></td>
+                                <td>言论有法律保障但实际受行政压力、媒体管控或暴力威胁<br><span class="en">Speech is legally protected but subject to administrative pressure, media control, or violent threats in practice</span></td>
+                            </tr>
+                            <tr>
+                                <td class="score-cell">7‑8</td>
+                                <td>全民医保基本实现；失业救济有效覆盖；劳动法被严格执行；工伤有充分赔偿<br><span class="en">Universal healthcare basically achieved; unemployment relief effectively covers; labor law strictly enforced; work‑related injuries fully compensated</span></td>
+                                <td>职业选择基本不受出身限制；收入差距在合理范围；劳动者受普遍尊重<br><span class="en">Occupational choice basically unrestricted by birth; income gap within reasonable range; workers generally respected</span></td>
+                                <td>基尼系数0.25‑0.35；中产占多数；底层享有基本物质尊严<br><span class="en">Gini coefficient 0.25‑0.35; middle class constitutes the majority; the bottom tier enjoys basic material dignity</span></td>
+                                <td>批评权有法律保障且实际有效；媒体能独立报道；学术有自由空间<br><span class="en">Right to criticize legally protected and effective in practice; media can report independently; academia enjoys free space</span></td>
+                            </tr>
+                            <tr>
+                                <td class="score-cell">9‑10</td>
+                                <td>保障体系完备；无任何个体因非自愿原因陷入生存危机；劳动权利神圣不可侵犯<br><span class="en">Security system comprehensive; no individual falls into existential crisis due to involuntary reasons; labor rights are sacred and inviolable</span></td>
+                                <td>劳动彻底去等级化；职业完全基于个人兴趣与能力；所有人格权绝对平等<br><span class="en">Labor is completely de‑hierarchized; occupations are based entirely on personal interest and ability; all personal rights are absolutely equal</span></td>
+                                <td>基尼系数&lt;0.25；财富分配机制确保全社会成员共享发展成果<br><span class="en">Gini coefficient &lt;0.25; wealth distribution mechanisms ensure all members of society share in developmental outcomes</span></td>
+                                <td>言论与精神自由完全实现；艺术、学术、媒体独立探索成为常态<br><span class="en">Freedom of speech and spirit fully realized; art, academia, and media independent exploration becomes the norm</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ============================================================
+                第五部分：评分公式
+                ============================================================ -->
+                <h2>第五部分：评分公式 <span class="en-inline">Part V: Scoring Formula</span></h2>
+
+                <div class="formula-box" style="margin-bottom:0;">
+                    <strong>文明总分 = （要素一得分 + 要素二得分 + 要素三得分 + 要素四得分）× 2.5</strong>
+                    <span class="formula-en"><strong>Civilization Total Score = (Element I Score + Element II Score + Element III Score + Element IV Score) × 2.5</strong></span>
+                    <span class="small">满分：100分。四项要素等权重，各占25分。<br><span class="en">Maximum score: 100 points. All four elements are equally weighted, each accounting for 25 points.</span></span>
+                </div>
+
+                <!-- ============================================================
+                第六部分：文明等级判定
+                ============================================================ -->
+                <h2>第六部分：文明等级判定 <span class="en-inline">Part VI: Civilization Level Determination</span></h2>
+
+                <h3>6.1 等级对照表 <span class="en-inline">6.1 Level Reference Table</span></h3>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>总分区间 <span class="en">Total Score Range</span></th><th>文明等级 <span class="en">Civilization Level</span></th><th>核心特征 <span class="en">Core Characteristics</span></th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0‑39</td>
+                                <td>低级文明<br><span class="en">Low‑Level Civilization</span></td>
+                                <td>基石缺失或要素严重不足；个体处于丛林或准丛林状态<br><span class="en">Cornerstones missing or elements severely deficient; individuals in a state of jungle or quasi‑jungle</span></td>
+                            </tr>
+                            <tr>
+                                <td>40‑79</td>
+                                <td>中级文明<br><span class="en">Medium‑Level Civilization</span></td>
+                                <td>基石已立；要素基本达标；平等与自由初步实现<br><span class="en">Cornerstones established; elements basically up to standard; equality and freedom initially realized</span></td>
+                            </tr>
+                            <tr>
+                                <td>80‑100</td>
+                                <td>高级文明<br><span class="en">High‑Level Civilization</span></td>
+                                <td>基石稳固；要素优秀；创造性自由绽放<br><span class="en">Cornerstones solid; elements excellent; creative freedom flourishes</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>6.2 极端情况判定规则 <span class="en-inline">6.2 Extreme Case Judgment Rules</span></h3>
+
+                <div class="layer border-left-primary">
+                    <div class="layer-num">规则一：单项拖累规则 <span class="en-num">Rule 1: Single‑Item Drag Rule</span></div>
+                    <div class="layer-desc">
+                        <p>若四大要素中任意一项 ≤ 2 分，则总分锁定为不超过39分，自动归入低级文明。其他三项得分再高，不可拉升总等级。<span class="en">If any of the four core elements scores ≤ 2 points, the total score is locked at no more than 39 points, automatically placing it in Low‑Level Civilization. No matter how high the other three elements score, they cannot elevate the overall level.</span></p>
+                        <p><strong>原理：</strong> 文明的等级由最短板决定。一项要素崩溃，即整体失效。<br><span class="en"><strong>Rationale:</strong> The level of a civilization is determined by its shortest plank. The collapse of any single element constitutes total systemic failure.</span></p>
+                    </div>
+                </div>
+
+                <div class="layer border-left-gold">
+                    <div class="layer-num">规则二：体感修正规则 <span class="en-num">Rule 2: Lived‑Experience Correction Rule</span></div>
+                    <div class="layer-desc">
+                        <p>若WJP数据或官方统计数据，与独立调查报告（如国际劳工组织、无国界记者组织、世界银行实地调查等）之间存在显著矛盾，评分以弱势群体实际体感为准。<span class="en">If WJP data or official statistics significantly contradict independent investigation reports (e.g., from the ILO, Reporters Without Borders, World Bank field surveys, etc.), the score shall prioritize the actual lived experience of vulnerable groups.</span></p>
+                        <p>评分者在评分备注中须注明：<span class="en">The scorer must note in the scoring remarks:</span></p>
+                        <ul>
+                            <li>数据来源的差异<br><span class="en">The discrepancies between data sources</span></li>
+                            <li>以体感为准的依据<br><span class="en">The rationale for prioritizing lived experience</span></li>
+                            <li>调整后的得分<br><span class="en">The adjusted score</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="layer border-left-teal">
+                    <div class="layer-num">规则三：动态复评规则 <span class="en-num">Rule 3: Dynamic Re‑evaluation Rule</span></div>
+                    <div class="layer-desc">
+                        <p>评分有效期为WJP数据发布年度。次年WJP更新后，应使用新数据重新评估，不得沿用旧分。<span class="en">The validity of the score is limited to the year of the WJP data release. After the WJP updates its data the following year, the assessment must be re‑conducted using the new data; previous scores may not be carried over.</span></p>
+                    </div>
+                </div>
+
+                <h3>6.3 最终等级决定流程 <span class="en-inline">6.3 Final Level Determination Process</span></h3>
+
+                <div class="layer border-left-purple">
+                    <div class="layer-desc">
+                        <ol>
+                            <li><strong>第一步：</strong> 检查三块基石是否全部建立。若有缺失 → 直接判为低级文明，不再计算分数。<br><span class="en"><strong>Step 1:</strong> Check whether all Three Cornerstones are established. If any are missing → directly judge as Low‑Level Civilization; do not calculate scores.</span></li>
+                            <li><strong>第二步：</strong> 按公式计算文明总分。<br><span class="en"><strong>Step 2:</strong> Calculate the Civilization Total Score according to the formula.</span></li>
+                            <li><strong>第三步：</strong> 检查是否触发“单项拖累规则”（任一要素 ≤ 2）→ 若触发，锁定为低级文明。<br><span class="en"><strong>Step 3:</strong> Check whether the Single‑Item Drag Rule is triggered (any element ≤ 2) → if triggered, lock as Low‑Level Civilization.</span></li>
+                            <li><strong>第四步：</strong> 根据总分查表，得出得分对应等级。<br><span class="en"><strong>Step 4:</strong> Look up the total score in the reference table to obtain the score‑corresponding level.</span></li>
+                            <li><strong>第五步：</strong> 取“得分对应等级”与“基石/极端情况判定等级”中的<strong>较低者</strong>，作为最终等级。<br><span class="en"><strong>Step 5:</strong> Take the <strong>lower</strong> of the "score‑corresponding level" and the "cornerstone/extreme‑case determined level" as the final level.</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- ============================================================
+                第七部分：评分汇总卡
+                ============================================================ -->
+                <h2>第七部分：评分汇总卡 <span class="en-inline">Part VII: Scoring Summary Card</span></h2>
+
+                <div class="table-wrap">
+                    <table class="summary-table">
+                        <thead>
+                            <tr><th style="width:55%;">检查项目 <span class="en">Check Item</span></th><th style="width:45%;">选项/得分 <span class="en">Option/Score</span></th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>基石一：自由是否建立<br><span class="en">Cornerstone I: Is freedom established?</span></td><td class="check-cell">□ 是 □ 否<br><span class="en">□ Yes □ No</span></td></tr>
+                            <tr><td>基石二：规则是否建立<br><span class="en">Cornerstone II: Are rules established?</span></td><td class="check-cell">□ 是 □ 否<br><span class="en">□ Yes □ No</span></td></tr>
+                            <tr><td>基石三：三公是否建立<br><span class="en">Cornerstone III: Are the Three Principles established?</span></td><td class="check-cell">□ 是 □ 否<br><span class="en">□ Yes □ No</span></td></tr>
+                            <tr><td>基石判定结果<br><span class="en">Cornerstone Judgment Result</span></td><td class="check-cell">□ 齐全 □ 缺失 → 若缺失，直接低级文明<br><span class="en">□ Complete □ Missing → If missing, directly Low‑Level</span></td></tr>
+                            <tr><td>要素一：生存与劳动保障<br><span class="en">Element I: Survival &amp; Labor Security</span></td><td class="score-input">(0‑10)</td></tr>
+                            <tr><td>要素二：劳动价值平等<br><span class="en">Element II: Equal Labor Value</span></td><td class="score-input">(0‑10)</td></tr>
+                            <tr><td>要素三：收入分配公平<br><span class="en">Element III: Fair Income Distribution</span></td><td class="score-input">(0‑10)</td></tr>
+                            <tr><td>要素四：言论与精神自由<br><span class="en">Element IV: Freedom of Speech &amp; Spirit</span></td><td class="score-input">(0‑10)</td></tr>
+                            <tr><td>四项合计<br><span class="en">Four‑Element Total</span></td><td class="score-input">---</td></tr>
+                            <tr><td>文明总分（合计×2.5）<br><span class="en">Civilization Total Score (Subtotal × 2.5)</span></td><td class="score-input">(0‑100)</td></tr>
+                            <tr><td>得分对应等级<br><span class="en">Score‑Corresponding Level</span></td><td class="check-cell">□ 低级（0‑39） □ 中级（40‑79） □ 高级（80‑100）<br><span class="en">□ Low (0‑39) □ Medium (40‑79) □ High (80‑100)</span></td></tr>
+                            <tr><td>单项拖累检查（任一要素≤2）<br><span class="en">Single‑Item Drag Check (Any element ≤ 2)</span></td><td class="check-cell">□ 是 □ 否 → 若是，锁定低级<br><span class="en">□ Yes □ No → If Yes, lock as Low</span></td></tr>
+                            <tr class="final-row"><td><strong>最终文明等级（取最低）<br><span class="en">Final Civilization Level (Take the lowest)</span></strong></td><td class="score-input"><strong>□ 低级 □ 中级 □ 高级<br><span class="en">□ Low □ Medium □ High</span></strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ============================================================
+                第八部分：WJP数据记录表
+                ============================================================ -->
+                <h2>第八部分：WJP数据记录表 <span class="en-inline">Part VIII: WJP Data Recording Table</span></h2>
+
+                <div class="table-wrap">
+                    <table class="wjp-table">
+                        <thead>
+                            <tr><th style="width:45%;">WJP因素 <span class="en">WJP Factor</span></th><th style="width:30%;">得分 (0‑1) <span class="en">Score (0‑1)</span></th><th style="width:25%;">来源年份 <span class="en">Source Year</span></th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>F1 约束政府权力<br><span class="en">F1 Constraints on Government Powers</span></td><td class="empty-cell">______</td><td class="empty-cell">______</td></tr>
+                            <tr><td>F2 消除腐败<br><span class="en">F2 Absence of Corruption</span></td><td class="empty-cell">______</td><td class="empty-cell">______</td></tr>
+                            <tr><td>F3 开放政府<br><span class="en">F3 Open Government</span></td><td class="empty-cell">______</td><td class="empty-cell">______</td></tr>
+                            <tr><td>F4 基本权利<br><span class="en">F4 Fundamental Rights</span></td><td class="empty-cell">______</td><td class="empty-cell">______</td></tr>
+                            <tr><td>F5 秩序与安全<br><span class="en">F5 Order &amp; Security</span></td><td class="empty-cell">______</td><td class="empty-cell">______</td></tr>
+                            <tr><td>F6 监管执法<br><span class="en">F6 Regulatory Enforcement</span></td><td class="empty-cell">______</td><td class="empty-cell">______</td></tr>
+                            <tr><td>F7 民事司法<br><span class="en">F7 Civil Justice</span></td><td class="empty-cell">______</td><td class="empty-cell">______</td></tr>
+                            <tr><td>F8 刑事司法<br><span class="en">F8 Criminal Justice</span></td><td class="empty-cell">______</td><td class="empty-cell">______</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ============================================================
+                第九部分：使用说明
+                ============================================================ -->
+                <h2>第九部分：使用说明 <span class="en-inline">Part IX: Instructions for Use</span></h2>
+
+                <div class="layer border-left-primary">
+                    <div class="layer-desc">
+                        <ol>
+                            <li><strong>评分依据：</strong> 各要素评分应基于可验证的事实（法律条文、执行数据、国际报告、学术研究、亲历者实证），而非宣传或主观臆断。<br><span class="en"><strong>Basis for Scoring:</strong> Each element score should be based on verifiable facts (legal provisions, enforcement data, international reports, academic research, testimonies of firsthand witnesses), not propaganda or subjective speculation.</span></li>
+                            <li><strong>体感优先原则：</strong> 当宏观统计数据与弱势群体的实际体验存在显著矛盾时，评分应向弱势群体体感倾斜（参见第六部分规则二）。<br><span class="en"><strong>Primacy of Lived Experience:</strong> When macroeconomic statistics significantly contradict the actual experience of vulnerable groups, the score should favor the lived experience of vulnerable groups (see Part VI, Rule 2).</span></li>
+                            <li><strong>WJP数据使用：</strong> WJP得分作为要素评分的基准分，评分者在此基础上进行 ±2 的调整（参见第三部分操作规则）。<br><span class="en"><strong>Use of WJP Data:</strong> WJP scores serve as the baseline for element scoring, upon which the scorer may make adjustments of ±2 points (see Part III Operational Rules).</span></li>
+                            <li><strong>动态更新：</strong> 文明等级不是一成不变的，建议随WJP年度更新定期重新评估。<br><span class="en"><strong>Dynamic Updates:</strong> Civilization levels are not static. Regular re‑assessment is recommended upon each annual WJP update.</span></li>
+                            <li><strong>适用范围：</strong> 本标准适用于对人类社会的任何组织形态进行文明程度分析，不预设任何制度优越性。<br><span class="en"><strong>Scope of Application:</strong> This standard applies to the analysis of civilization levels in any form of human social organization, and presumes no inherent superiority of any system.</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- ============================================================
+                第十部分：评论区
+                ============================================================ -->
+                <h2>第十部分：uncienine.wordpress.com 评论区 <span class="en-inline">Part X: Comments Section</span></h2>
+
+                <div class="layer border-left-gold-light">
+                    <div class="layer-desc">
+                        <p>文化没有消失，是因为科技的进步，存储的方式多样化了，不代表它就是文明。种子没有消失，是因为人类的文明，是核心底层逻辑要素，不代表它能被掠夺。<span class="en">Culture has not disappeared because of technological progress; the diversification of storage methods does not mean it is civilization. Seeds have not disappeared because of human civilization—they are core underlying logical elements, not something that can be plundered.</span></p>
+                    </div>
+                </div>
+
+            </div><!-- /page-content -->
+
+            <!-- ===== 页脚 ===== -->
+            <div class="footer">
+                杨晟琦文明公理系统 · 独立思想锚点 · 封装完成: 2026年7月
+                <span class="en">Yang Shengqi Civilizational Axiomatic System · Independent Thought Anchor · Encapsulation Completed: July 2026</span>
+                <span class="footer-license">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+                <span class="en">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank">CC BY-ND 4.0</a></span>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="common.js"></script>
+</body>
+</html>
