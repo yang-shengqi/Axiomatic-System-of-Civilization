@@ -7,19 +7,22 @@
     <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
     <title>杨晟琦文明公理系统首页 · 独立思想锚点</title>
     <link rel="stylesheet" href="common.css">
-    <script>
-    (function() {
-        // 检测是否为手机/平板设备
-        function isMobile() {
-            return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
-                || window.innerWidth <= 768;
-        }
+<script>
+(function() {
+    // 检测是否为手机/平板设备
+    function isMobile() {
+        return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+               window.innerWidth <= 768;
+    }
 
-        // 如果当前不是 map.html，且设备是手机，则跳转
-        if (isMobile() && !window.location.pathname.includes('map.html')) {
-            window.location.href = 'map.html';
-        }
-    })();
+    // 检测是否强制桌面版（URL 参数 ?desktop=1）
+    var forceDesktop = window.location.search.indexOf('desktop=1') !== -1;
+
+    // 如果当前不是 map.html，且设备是手机，且没有强制桌面版，则跳转
+    if (isMobile() && !forceDesktop && !window.location.pathname.includes('map.html')) {
+        window.location.href = 'map.html';
+    }
+})();
 </script>
 </head>
 <body>
