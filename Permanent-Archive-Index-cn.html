@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="杨晟琦文明公理系统完整体系介绍与永久存档索引。含十一篇核心文档、七层逻辑框架、区块链+学术多重备份。">
+    <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
+    <title>杨晟琦文明公理系统 · 完整体系与永久存档索引</title>
+    <style>
+        /* ============================================================
+           深色主题（与首页 common.css 保持一致）
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-body: #0b0e0c;
+            --bg-container: #131816;
+            --bg-card: #1a201c;
+            --bg-elevated: #242c26;
+            --text-h1: #e2ead4;
+            --text-h2: #dce6ce;
+            --text-h3: #d4dec4;
+            --text-body: #c6ceba;
+            --text-secondary: #9aaa8e;
+            --text-muted: #6a7a5e;
+            --color-primary: #8aaa6a;
+            --color-primary-hover: #9bbb7a;
+            --color-gold: #d4a843;
+            --color-teal: #3cb9a5;
+            --color-purple: #8b5cf6;
+            --border-color: #2a322a;
+            --border-light: #3a4638;
+            --link-color: #aaba8a;
+            --link-hover: #bace9a;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --radius-full: 9999px;
+            --font-chinese: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+            --font-english: "Inter", "SF Pro Display", "Helvetica Neue", system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--bg-body);
+            font-family: var(--font-chinese);
+            color: var(--text-body);
+            line-height: 1.7;
+            padding: 28px 18px;
+        }
+
+        .container {
+            max-width: 1220px;
+            margin: 0 auto;
+            background: var(--bg-container);
+            padding: 44px 52px 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        /* ===== 品牌区（首页样式） ===== */
+        .brand {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .brand-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sub-brand {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            color: #8a9a7e;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .title-row--inline {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px 18px;
+            margin-top: 2px;
+        }
+
+        .title-row--inline h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            color: var(--text-h1);
+            margin: 0;
+            line-height: 1.25;
+            display: inline;
+            border: none;
+            padding: 0;
+        }
+
+        .badge-dark {
+            background: #2a322a;
+            color: var(--text-h1);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 4px 18px;
+            border-radius: 30px;
+            letter-spacing: .5px;
+            white-space: nowrap;
+            display: inline-block;
+            border: 1px solid #3a4638;
+        }
+
+        .info-row {
+            font-size: 15px;
+            color: #7a8a6e;
+            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 24px;
+        }
+
+        .info-row a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px dotted #4a5a3e;
+            transition: border-color 0.2s;
+        }
+
+        .info-row a:hover {
+            border-bottom: 1px solid var(--link-hover);
+        }
+
+        /* ===== 正文排版 ===== */
+        h2 {
+            font-size: 1.5rem;
+            color: var(--text-h1);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.4rem;
+            margin-top: 2.6rem;
+            margin-bottom: 1.2rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            color: var(--text-h3);
+            margin-top: 1.6rem;
+            margin-bottom: 0.4rem;
+        }
+
+        p {
+            color: var(--text-body);
+            margin-bottom: 1rem;
+            line-height: 1.9;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+        }
+
+        /* ===== 步骤标签 ===== */
+        .step-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 16px 4px 10px;
+            border-radius: 30px;
+            background: rgba(138, 170, 106, 0.12);
+            color: var(--color-primary);
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid rgba(138, 170, 106, 0.20);
+            transition: 0.25s ease;
+            cursor: default;
+            margin-bottom: 14px;
+            font-family: var(--font-chinese);
+        }
+
+        .step-tag .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: var(--bg-body);
+            font-size: 11px;
+            font-weight: 700;
+            font-family: var(--font-english);
+            flex-shrink: 0;
+        }
+
+        .step-tag .en {
+            font-family: var(--font-english);
+            font-weight: 400;
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== 卡片式表格（无左侧高亮色条） ===== */
+        .layer-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            padding: 30px 24px 18px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .layer-card:hover {
+            border-color: var(--border-light);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.30);
+        }
+
+        .layer-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .layer-table tr {
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.15s ease;
+        }
+
+        .layer-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .layer-table tr:hover {
+            background: rgba(138, 170, 106, 0.04);
+        }
+
+        .layer-table td {
+            padding: 10px 4px;
+            vertical-align: middle;
+            line-height: 1.6;
+        }
+
+        .layer-table .doc-title {
+            font-size: 14px;
+            font-weight: 450;
+            color: var(--text-h3);
+            letter-spacing: 0.02em;
+            padding-right: 16px;
+            width: 55%;
+        }
+
+        .layer-table .doc-links {
+            text-align: right;
+            white-space: nowrap;
+            width: 45%;
+        }
+
+        .layer-table .doc-links .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 12px 2px 8px;
+            font-size: 12px;
+            font-weight: 500;
+            font-family: var(--font-chinese);
+            border-radius: 30px;
+            border: 1.2px solid var(--border-light);
+            background: transparent;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            line-height: 1.6;
+            letter-spacing: 0.02em;
+            margin-left: 4px;
+        }
+
+        .layer-table .doc-links .btn-link:hover {
+            transform: translateY(-1px);
+            background: rgba(138, 170, 106, 0.06);
+        }
+
+        .layer-table .doc-links .btn-link:active {
+            transform: scale(0.96);
+        }
+
+        .layer-table .doc-links .btn-link .icon {
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        .layer-table .doc-links .btn-link .label {
+            font-size: 11px;
+        }
+
+        .layer-table .doc-links .btn-link.online {
+            border-color: rgba(138, 170, 106, 0.25);
+            color: var(--color-primary);
+        }
+        .layer-table .doc-links .btn-link.online:hover {
+            border-color: var(--color-primary);
+            background: rgba(138, 170, 106, 0.10);
+            color: var(--color-primary-hover);
+        }
+
+        .layer-table .doc-links .btn-link.ardrive {
+            border-color: rgba(212, 168, 67, 0.25);
+            color: var(--color-gold);
+        }
+        .layer-table .doc-links .btn-link.ardrive:hover {
+            border-color: var(--color-gold);
+            background: rgba(212, 168, 67, 0.10);
+            color: #e0c060;
+        }
+
+        .layer-table .doc-links .btn-link.doi {
+            border-color: rgba(139, 92, 246, 0.25);
+            color: var(--color-purple);
+        }
+        .layer-table .doc-links .btn-link.doi:hover {
+            border-color: var(--color-purple);
+            background: rgba(139, 92, 246, 0.10);
+            color: #a07af0;
+        }
+
+        /* ===== 存档平台 卡片式表格 ===== */
+        .archive-grid-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 20px;
+            padding: 4px 0;
+        }
+
+        .archive-grid-card .archive-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 6px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: background 0.15s ease;
+        }
+
+        .archive-grid-card .archive-item:last-child {
+            border-bottom: none;
+        }
+
+        .archive-grid-card .archive-item:hover {
+            background: rgba(138, 170, 106, 0.04);
+        }
+
+        .archive-grid-card .archive-item .icon {
+            font-size: 14px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .archive-grid-card .archive-item a {
+            color: var(--text-secondary);
+            border-bottom: 1px dotted var(--text-muted);
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .archive-grid-card .archive-item a:hover {
+            color: var(--link-hover);
+            border-bottom: 1px solid var(--link-hover);
+        }
+
+        .archive-grid-card .archive-item .tag {
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: var(--bg-container);
+            padding: 0 8px;
+            border-radius: 30px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        /* ===== 摘要卡片 ===== */
+        .abstract-box {
+            background: var(--bg-card);
+            border-left: 6px solid var(--color-primary);
+            padding: 1.4rem 1.8rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .abstract-box strong {
+            color: var(--text-h1);
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.8rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .meta-card {
+            background: var(--bg-container);
+            padding: 1.8rem 1.2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            border-bottom: 4px solid var(--color-primary);
+        }
+
+        .meta-card .title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-h1);
+        }
+
+        .meta-card .desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== 公式 ===== */
+        .formula-box {
+            background: var(--bg-card);
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-h1);
+            margin-bottom: 0.6rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .formula-box .highlight {
+            color: var(--color-primary);
+        }
+
+        .formula-box .muted {
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        /* ===== 面世实时计时器（字体与正文一致） ===== */
+        .days-counter {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            padding: 0.4rem 0 1.2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+            font-feature-settings: "tnum";
+        }
+
+        .days-counter .number {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            font-family: var(--font-english);
+        }
+
+        .days-counter .label {
+            color: var(--text-muted);
+        }
+
+        .days-counter .time-unit {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+
+        .days-counter .time-unit .num {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            font-family: var(--font-english);
+        }
+
+        .days-counter .time-unit .lbl {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 0.75rem;
+            margin-right: 2px;
+        }
+
+        /* ===== 版权区 ===== */
+        .footer-block {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .footer-block a {
+            color: var(--link-color);
+            border-bottom: 1px dotted var(--text-muted);
+        }
+
+        .footer-block a:hover {
+            border-bottom: 1px solid var(--link-hover);
+        }
+
+        .citation-box {
+            background: var(--bg-card);
+            padding: 1.2rem 1.8rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .citation-box code {
+            background: var(--bg-container);
+            padding: 0.1rem 0.5rem;
+            border-radius: 6px;
+            color: var(--text-h3);
+            font-size: 0.85rem;
+        }
+
+        /* ===== 页脚（首页样式） ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 22px;
+            border-top: 2px solid var(--border-color);
+            font-size: 14px;
+            color: #5a6a4e;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #7a8a6e;
+            border-bottom: 1px dotted #4a5a3e;
+        }
+
+        .footer a:hover {
+            border-bottom: 1px solid #7a8a6e;
+            color: var(--link-hover);
+        }
+
+        .footer .en {
+            font-size: .85em;
+            color: #7a8a6e;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .footer .footer-license {
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 820px) {
+            .container {
+                padding: 1.8rem 1.2rem;
+            }
+
+            .title-row--inline h1 {
+                font-size: 28px;
+            }
+
+            .brand {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .sub-brand {
+                font-size: 12px;
+            }
+
+            .info-row {
+                font-size: 14px;
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .layer-card {
+                padding: 16px 16px 14px;
+            }
+
+            .layer-table td {
+                display: block;
+                padding: 6px 0;
+                width: 100% !important;
+                text-align: left !important;
+            }
+
+            .layer-table .doc-title {
+                width: 100%;
+                font-size: 13px;
+                padding-right: 0;
+            }
+
+            .layer-table .doc-links {
+                width: 100%;
+                text-align: left;
+                white-space: normal;
+                padding-top: 2px;
+                padding-bottom: 6px;
+            }
+
+            .layer-table .doc-links .btn-link {
+                font-size: 11px;
+                padding: 1px 10px 1px 6px;
+                margin-left: 0;
+                margin-right: 4px;
+            }
+
+            .layer-table tr {
+                display: block;
+                border-bottom: 1px solid var(--border-color);
+                padding: 6px 0;
+            }
+
+            .layer-table tr:last-child {
+                border-bottom: none;
+            }
+
+            .step-tag {
+                font-size: 13px;
+                padding: 3px 12px 3px 8px;
+                margin-bottom: 10px;
+            }
+
+            .archive-grid-card {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+
+            .archive-grid-card .archive-item {
+                padding: 6px 4px;
+                font-size: 13px;
+            }
+
+            .meta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .days-counter {
+                font-size: 0.85rem;
+            }
+            .days-counter .number {
+                font-size: 0.85rem;
+            }
+            .days-counter .time-unit {
+                font-size: 0.85rem;
+            }
+            .days-counter .time-unit .num {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.8rem 0.4rem;
+            }
+
+            .container {
+                padding: 1rem 0.8rem;
+                border-radius: 12px;
+            }
+
+            .title-row--inline h1 {
+                font-size: 22px;
+            }
+
+            .title-row--inline .badge-dark {
+                font-size: 11px;
+                padding: 2px 12px;
+            }
+
+            .layer-card {
+                padding: 12px 12px 10px;
+                border-radius: 8px;
+            }
+
+            .layer-table .doc-title {
+                font-size: 12px;
+            }
+
+            .layer-table .doc-links .btn-link {
+                font-size: 10px;
+                padding: 1px 8px 1px 5px;
+            }
+
+            .layer-table .doc-links .btn-link .icon {
+                font-size: 10px;
+            }
+            .layer-table .doc-links .btn-link .label {
+                font-size: 9px;
+            }
+
+            .step-tag {
+                font-size: 12px;
+                padding: 2px 10px 2px 6px;
+            }
+            .step-tag .num {
+                width: 16px;
+                height: 16px;
+                font-size: 9px;
+            }
+            .step-tag .en {
+                font-size: 10px;
+            }
+
+            .archive-grid-card .archive-item {
+                font-size: 12px;
+                padding: 5px 2px;
+            }
+            .archive-grid-card .archive-item .tag {
+                font-size: 9px;
+                padding: 0 6px;
+            }
+
+            .formula-box {
+                font-size: 1rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .sub-brand {
+                font-size: 11px;
+            }
+
+            .days-counter {
+                font-size: 0.75rem;
+            }
+            .days-counter .number {
+                font-size: 0.75rem;
+            }
+            .days-counter .time-unit {
+                font-size: 0.75rem;
+            }
+            .days-counter .time-unit .num {
+                font-size: 0.75rem;
+            }
+            .days-counter .time-unit .lbl {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* ===== 打印样式 ===== */
+        @media print {
+            body {
+                background: white;
+                padding: 0.5in;
+            }
+            .container {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                background: white;
+            }
+            .layer-card {
+                border: 1px solid #ddd !important;
+                background: #f9f9f9 !important;
+                break-inside: avoid;
+            }
+            a {
+                border-bottom: none !important;
+                color: #1e1e1e !important;
+            }
+            .step-tag {
+                background: #f4f1ed;
+            }
+            body,
+            p,
+            h1,
+            h2,
+            h3,
+            .doc-title {
+                color: #1e1e1e !important;
+            }
+            .sub-brand,
+            .info-row,
+            .footer {
+                color: #333 !important;
+            }
+            .btn-link {
+                border-color: #999 !important;
+                color: #333 !important;
+                background: #f4f4f4 !important;
+            }
+            .layer-table tr {
+                border-bottom-color: #ddd !important;
+            }
+            .archive-grid-card .archive-item {
+                border-bottom-color: #ddd !important;
+            }
+            .brand {
+                border-bottom-color: #ddd !important;
+            }
+            .footer {
+                border-top-color: #ddd !important;
+            }
+            .days-counter {
+                border-bottom-color: #ddd !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ============================================================
+        品牌区（首页样式）
+        ============================================================ -->
+        <div class="brand">
+            <div class="brand-left">
+                <div class="sub-brand">YANG SHENGQI'S AXIOMATIC SYSTEM OF CIVILIZATION</div>
+                <div class="title-row--inline">
+                    <h1>杨晟琦文明公理系统 · 完整体系与永久存档索引</h1>
+                    <span class="badge-dark">独立思想锚点</span>
+                </div>
+                <div class="info-row">
+                    <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
+                    <span>网站首页: <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization" target="_blank">Axiomatic System of Civilization</a></span>
+                    <span>博客首页: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+        摘要
+        ============================================================ -->
+        <div class="abstract-box">
+
+            <!-- ===== 面世实时计时器（字体与正文一致） ===== -->
+            <div class="days-counter">
+                <span class="label">本系统于2026年5月8日发布，至今已历时 </span>
+                <span class="number" id="daysCount">--</span><span class="label"> 天</span>
+                <span class="time-unit">
+                    <span class="num" id="hoursCount">00</span><span class="lbl"> 小时</span>
+                    <span class="num" id="minutesCount">00</span><span class="lbl"> 分钟</span>
+                    <span class="num" id="secondsCount">00</span><span class="lbl"> 秒。</span>
+                </span>
+            </div>
+
+            <p style="margin-bottom:0.5rem;">本系统由独立学者杨晟琦构建，旨在为文明状态提供一套从公理定义到诊断、度量、监测、药方、操作手册直至验证工具的完整闭环框架。<br>系统包含十一篇核心文档，分为七个逻辑层（元框架 → 诊断 → 度量 → 监测 → 药方 → 操作手册 → 验证工具），并确立三条元法则：</p>
+            <div class="meta-grid">
+                <div class="meta-card">
+                    <div class="title">基石否决权</div>
+                    <div class="desc">底线不可妥协，任何违背文明底线的制度不得被采纳。</div>
+                </div>
+                <div class="meta-card">
+                    <div class="title">体感优先律</div>
+                    <div class="desc">民众的实际感受优于抽象统计数据，数据可以粉饰，但人的体感不会说谎。</div>
+                </div>
+                <div class="meta-card">
+                    <div class="title">最短木桶律</div>
+                    <div class="desc">最弱势群体的处境决定整体下限，文明的真实水平由"最短的那块板"丈量。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 公式 ===== -->
+        <div class="formula-box">
+            <span class="highlight">文明指数</span> =（生存与劳动保障 + 劳动价值平等 + 收入分配公平 + 言论与精神自由）<span class="muted"> × </span><span class="highlight">2.5</span>
+        </div>
+
+
+        <!-- ============================================================
+        一、核心文档列表
+        ============================================================ -->
+        <h2>核心文档列表</h2>
+        <p style="color:var(--text-secondary);font-size:0.92rem;margin-bottom:1.2rem;">共十一篇，按逻辑层排列，每篇附三种访问路径（在线访问 / ArDrive / DOI）</p>
+
+        <!-- 元框架层 -->
+        <div class="layer-card layer-meta">
+            <div class="step-tag"><span class="num">1</span> 元框架层 <span class="en">Meta‑Framework</span></div>
+            <table class="layer-table">
+                <tr>
+                    <td class="doc-title">《三大基石：一种文明系统的底层重构框架》</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/three-cornerstones.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                        <a href="https://app.ardrive.io/#/file/5dd474b4-c270-4cce-beb7-aee547f7f988/view" target="_blank" class="btn-link ardrive"><span class="icon">⛓️</span><span class="label">ArDrive</span></a>
+                        <a href="https://zenodo.org/records/21638008" target="_blank" class="btn-link doi"><span class="icon">📄</span><span class="label">DOI</span></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 诊断层 -->
+        <div class="layer-card layer-diagnosis">
+            <div class="step-tag"><span class="num">2</span> 诊断层 <span class="en">Diagnosis</span></div>
+            <table class="layer-table">
+                <tr>
+                    <td class="doc-title">《低级文明的完整路径图》</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/path-to-low-civilization.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                        <a href="https://app.ardrive.io/#/file/bf01bfe1-b727-423e-8799-741ca4df49f0/view" target="_blank" class="btn-link ardrive"><span class="icon">⛓️</span><span class="label">ArDrive</span></a>
+                        <a href="https://zenodo.org/records/21637921" target="_blank" class="btn-link doi"><span class="icon">📄</span><span class="label">DOI</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="doc-title">《确定性社会系统形成的必要条件与阻碍因素》</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/deterministic-social-system.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                        <a href="https://app.ardrive.io/#/file/b09ced2c-dd6a-491f-a802-be27c2e3a4d9/view" target="_blank" class="btn-link ardrive"><span class="icon">⛓️</span><span class="label">ArDrive</span></a>
+                        <a href="https://zenodo.org/records/21637993" target="_blank" class="btn-link doi"><span class="icon">📄</span><span class="label">DOI</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="doc-title">《正义、利益与规则的错位：系统自我维护与外部纠偏的张力分析》</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/justice-interest-rules-tension.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                        <a href="https://app.ardrive.io/#/file/e254d209-41ad-42bb-a7d2-8d3b2feae997/view" target="_blank" class="btn-link ardrive"><span class="icon">⛓️</span><span class="label">ArDrive</span></a>
+                        <a href="https://zenodo.org/records/21638069" target="_blank" class="btn-link doi"><span class="icon">📄</span><span class="label">DOI</span></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 度量层 -->
+        <div class="layer-card layer-measurement">
+            <div class="step-tag"><span class="num">3</span> 度量层 <span class="en">Measurement</span></div>
+            <table class="layer-table">
+                <tr>
+                    <td class="doc-title">《文明等级判断说明书》</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/civilization-level-manual.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                        <a href="https://app.ardrive.io/#/file/d18e66f0-7a6a-454e-b523-5564e8a1f8de/view" target="_blank" class="btn-link ardrive"><span class="icon">⛓️</span><span class="label">ArDrive</span></a>
+                        <a href="https://zenodo.org/records/21634037" target="_blank" class="btn-link doi"><span class="icon">📄</span><span class="label">DOI</span></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 监测层 -->
+        <div class="layer-card layer-monitoring">
+            <div class="step-tag"><span class="num">4</span> 监测层 <span class="en">Monitoring</span></div>
+            <table class="layer-table">
+                <tr>
+                    <td class="doc-title">《系统"非死锁"的条件分析：外部纠偏如何可能转化为制度内生的纠偏机制》</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/non-deadlock-analysis.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                        <a href="https://app.ardrive.io/#/file/5cbd29b4-6fd3-46ad-9e4f-6e96354be3a1/view" target="_blank" class="btn-link ardrive"><span class="icon">⛓️</span><span class="label">ArDrive</span></a>
+                        <a href="https://zenodo.org/records/21638046" target="_blank" class="btn-link doi"><span class="icon">📄</span><span class="label">DOI</span></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 药方层 -->
+        <div class="layer-card layer-prescription">
+            <div class="step-tag"><span class="num">5</span> 药方层 <span class="en">Prescription</span></div>
+            <table class="layer-table">
+                <tr>
+                    <td class="doc-title">《全球人类主权基金：重构中国与全球利益格局的制度构想（中文版）》</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/ghsf-cn.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                        <a href="https://app.ardrive.io/#/file/87b3aa4e-06d4-451e-a950-307d46efcdc0/view" target="_blank" class="btn-link ardrive"><span class="icon">⛓️</span><span class="label">ArDrive .001</span></a>
+                        <a href="https://app.ardrive.io/#/file/834538a7-5c81-49a2-aeae-6512d154f2d8/view" target="_blank" class="btn-link ardrive"><span class="icon">⛓️</span><span class="label">ArDrive .002</span></a>
+                        <a href="https://zenodo.org/records/20117265" target="_blank" class="btn-link doi"><span class="icon">📄</span><span class="label">DOI</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="doc-title">《全球人类主权基金：重构中国与全球利益格局的制度构想（英文版）》</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/ghsf-en.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                        <a href="https://zenodo.org/records/20391068" target="_blank" class="btn-link doi"><span class="icon">📄</span><span class="label">DOI</span></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 操作层 -->
+        <div class="layer-card layer-operations">
+            <div class="step-tag"><span class="num">6</span> 操作层 <span class="en">Operations</span></div>
+            <table class="layer-table">
+                <tr>
+                    <td class="doc-title">《改变底层逻辑的方法论（非归因，可操作）》</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/operational-manual.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                        <a href="https://app.ardrive.io/#/file/f6a75dc4-295e-4416-8b06-bdf79665872a/view" target="_blank" class="btn-link ardrive"><span class="icon">⛓️</span><span class="label">ArDrive</span></a>
+                        <a href="https://zenodo.org/records/21637960" target="_blank" class="btn-link doi"><span class="icon">📄</span><span class="label">DOI</span></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 验证层 -->
+        <div class="layer-card layer-validation">
+            <div class="step-tag"><span class="num">7</span> 验证层 <span class="en">Validation</span></div>
+            <table class="layer-table">
+                <tr>
+                    <td class="doc-title">《从地球人类视野的推演：为什么"换皮奴隶制"终将失效，而"真文明"必然成为引力中心》</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/earthly-perspective-validation.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                        <a href="https://app.ardrive.io/#/file/48197477-a9d5-4706-b64c-9f6ae142fa1c/view" target="_blank" class="btn-link ardrive"><span class="icon">⛓️</span><span class="label">ArDrive</span></a>
+                        <a href="https://zenodo.org/records/21637952" target="_blank" class="btn-link doi"><span class="icon">📄</span><span class="label">DOI</span></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 验收层 -->
+        <div class="layer-card layer-acceptance">
+            <div class="step-tag"><span class="num">8</span> 验收层 <span class="en">Acceptance</span></div>
+            <table class="layer-table">
+                <tr>
+                    <td class="doc-title">《文明公理宪法与全球人类主权基金的验收报告》</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/acceptance-report.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                        <a href="https://app.ardrive.io/#/file/301afc45-24b6-40fb-9c68-9c902d6a397d/view" target="_blank" class="btn-link ardrive"><span class="icon">⛓️</span><span class="label">ArDrive</span></a>
+                        <a href="https://zenodo.org/records/21638100" target="_blank" class="btn-link doi"><span class="icon">📄</span><span class="label">DOI</span></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ===== 附加在线访问阅读 ===== -->
+        <h2 style="margin-top:2.2rem;">附加在线访问阅读</h2>
+        <div class="layer-card">
+            <table class="layer-table">
+                <tr>
+                    <td class="doc-title">《杨晟琦文明公理系统》（快速阅读 · 纯净版）</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/pure-structure-edition.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线访问</span></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ============================================================
+        交互诊断工具
+        ============================================================ -->
+        <h2 style="margin-top:2.2rem;">交互诊断工具</h2>
+        <div class="layer-card layer-tools">
+            <table class="layer-table">
+                <tr>
+                    <td class="doc-title">《人类思维盲区在线诊断卡》（中文版）</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/blind-spot-diagnosis-cn.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线诊断</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="doc-title">《人类思维盲区在线诊断卡》 （英文版）</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/blind-spot-diagnosis-en.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线诊断</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="doc-title">《文明等级在线评分器》 （双语版）</td>
+                    <td class="doc-links">
+                        <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/civilization-level-scorer.html" target="_blank" class="btn-link online"><span class="icon">🌐</span><span class="label">在线诊断</span></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ============================================================
+        二、永久存档平台
+        ============================================================ -->
+        <h2 style="margin-top:2.6rem;">永久存档平台</h2>
+        <div class="layer-card layer-archive">
+            <div class="archive-grid-card">
+                <div class="archive-item"><span class="icon">📘</span> <a href="https://osf.io/vntzq/" target="_blank">OSF（开放科学框架）</a> <span class="tag">主入口</span></div>
+                <div class="archive-item"><span class="icon">🏛️</span> <a href="https://dataverse.harvard.edu/dataverse/yangshengqi" target="_blank">哈佛 Dataverse</a> <span class="tag">学术镜像</span></div>
+                <div class="archive-item"><span class="icon">🔗</span> <a href="https://doi.org/10.17605/OSF.IO/VNTZQ" target="_blank">OSF DOI</a> <span class="tag">10.17605/OSF.IO/VNTZQ</span></div>
+                <div class="archive-item"><span class="icon">🔗</span> <a href="https://doi.org/10.7910/DVN/VNQANE" target="_blank">Harvard DOI</a> <span class="tag">10.7910/DVN/VNQANE</span></div>
+                <div class="archive-item"><span class="icon">⛓️</span> <a href="https://app.ardrive.io/#/drives/68c66379-57a2-463b-be75-60bdfe4f1d79" target="_blank">ArDrive / Arweave（整站备份总入口）</a> <span class="tag">区块链</span></div>
+                <div class="archive-item"><span class="icon">📝</span> <a href="https://uncienine.wordpress.com/" target="_blank">WordPress（首发时间戳锚点）</a> <span class="tag">时间戳</span></div>
+                <div class="archive-item"><span class="icon">🐙</span> <a href="https://yang-shengqi.github.io/Axiomatic-System-of-Civilization" target="_blank">GitHub Pages（主站）</a> <span class="tag">主站</span></div>
+                <div class="archive-item"><span class="icon">🇨🇳</span> <a href="https://gitee.com/hermo1980/axiomatic-system-of-civilization" target="_blank">Gitee（中国镜像）</a> <span class="tag">镜像</span></div>
+                <div class="archive-item"><span class="icon">🎓</span> <a href="https://independent.academia.edu/shengqiyang" target="_blank">Academia.edu</a> <span class="tag">学术社交</span></div>
+                <div class="archive-item"><span class="icon">📄</span>Zenodo（CERN）独立 DOI 见上文各文档列表。 <span class="tag">DOI</span></div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+        页脚（首页样式）
+        ============================================================ -->
+        <div class="footer">
+            杨晟琦文明公理系统 · 独立思想锚点 · 封装完成: 2026年7月
+            <span class="en">Yang Shengqi Civilizational Axiomatic System · Independent Thought Anchor · Encapsulation Completed: July 2026</span>
+            <span class="footer-license">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
+            <span class="en">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank">CC BY-ND 4.0</a></span>
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+    JavaScript：自 2026 年 5 月 8 日面世实时计时器
+    ============================================================ -->
+    <script>
+        (function() {
+            const birthDate = new Date(2026, 4, 8); // 2026年5月8日
+
+            function updateCounter() {
+                const now = new Date();
+                let diff = now.getTime() - birthDate.getTime();
+                if (diff < 0) diff = 0;
+
+                const totalSeconds = Math.floor(diff / 1000);
+                const days = Math.floor(totalSeconds / 86400);
+                const hours = Math.floor((totalSeconds % 86400) / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+
+                document.getElementById('daysCount').textContent = days.toLocaleString();
+                document.getElementById('hoursCount').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutesCount').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('secondsCount').textContent = String(seconds).padStart(2, '0');
+            }
+
+            updateCounter();
+            setInterval(updateCounter, 1000);
+        })();
+    </script>
+
+</body>
+</html>
