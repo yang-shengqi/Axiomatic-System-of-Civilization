@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 首页 -->
   <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/index.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- ⭐ 新增：永久存档索引（入口级页面） -->
+  <url>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/Permanent-Archive-Index-cn.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/Permanent-Archive-Index-en.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 交互工具（高优先级） -->
   <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/blind-spot-diagnosis-cn.html</loc>
     <lastmod>2026-08-18</lastmod>
@@ -19,35 +36,30 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/pure-structure-edition.html</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/civilization-level-scorer.html</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 快速阅读 / 附加入口 -->
   <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/ghsf-cn.html</loc>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/pure-structure-edition.html</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/ghsf-en.html</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
+  <!-- 十一篇核心文档（按逻辑层排列） -->
+  <!-- 元框架层 -->
   <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/three-cornerstones.html</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 诊断层 -->
   <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/path-to-low-civilization.html</loc>
     <lastmod>2026-08-18</lastmod>
@@ -66,30 +78,54 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 度量层 -->
   <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/civilization-level-manual.html</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 监测层 -->
   <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/non-deadlock-analysis.html</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 药方层 -->
+  <url>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/ghsf-cn.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/ghsf-en.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 操作层 -->
   <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/operational-manual.html</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 验证层 -->
   <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/earthly-perspective-validation.html</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 验收层 -->
   <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/acceptance-report.html</loc>
     <lastmod>2026-08-18</lastmod>
