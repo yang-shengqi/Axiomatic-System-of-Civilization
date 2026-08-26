@@ -3,27 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="杨晟琦文明公理系统：一套可检验的文明底层逻辑框架。包含思维盲区诊断工具、文明等级评分器、全球人类主权基金及善意后门。立即进入五层完整链路，用系统自身的工具检验系统。">
-    <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
+    <meta name="description" content="杨晟琦文明公理系统：一套自洽、可检验的文明底层逻辑框架，包含思维盲区诊断、文明等级评分、全球人类主权基金与善意后门。">
     <title>杨晟琦文明公理系统首页 · 独立思想锚点</title>
     <link rel="stylesheet" href="common.css">
-<script>
-(function() {
-    // 检测是否为手机/平板设备
-    function isMobile() {
-        return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-               window.innerWidth <= 768;
-    }
-
-    // 检测是否强制桌面版（URL 参数 ?desktop=1）
-    var forceDesktop = window.location.search.indexOf('desktop=1') !== -1;
-
-    // 如果当前不是 map.html，且设备是手机，且没有强制桌面版，则跳转
-    if (isMobile() && !forceDesktop && !window.location.pathname.includes('map.html')) {
-        window.location.href = 'map.html';
-    }
-})();
-</script>
 </head>
 <body>
     <div class="app">
@@ -58,8 +40,14 @@
 
             <!-- 顶栏 -->
             <div class="top-nav">
-                <a href="https://app.ardrive.io/#/drives/68c66379-57a2-463b-be75-60bdfe4f1d79" target="_blank">ArDrive backed up on Aug 21 2026</a>
-                <span class="badge">杨晟琦文明公理系统 · 独立思想锚点</span>
+                <a href="https://app.ardrive.io/#/drives/68c66379-57a2-463b-be75-60bdfe4f1d79">ArDrive backed up on Aug 21 2026</a>
+                <span class="badge" id="liveCounter">
+                    <span class="counter-label">本系统已运行 </span>
+                    <span id="daysCount">--</span><span class="counter-unit"> 天 </span>
+                    <span id="hoursCount">00</span><span class="counter-unit">:</span>
+                    <span id="minutesCount">00</span><span class="counter-unit">:</span>
+                    <span id="secondsCount">00</span>
+                </span>
             </div>
 
             <!-- 品牌区 -->
@@ -73,7 +61,7 @@
                     <div class="info-row">
                         <span>ORCID: <a href="https://orcid.org/0009-0008-3755-8960" target="_blank">0009-0008-3755-8960</a></span>
                         <span>全球首发: <a href="https://uncienine.wordpress.com/" target="_blank">uncienine.wordpress.com</a></span>
-                        <span>封装完成: 2026年7月</span>
+                        <span>封装完成: 2026年7月 </span>
                     </div>
                 </div>
             </div>
@@ -667,7 +655,7 @@ copyright = {Creative Commons Zero v1.0 Universal}
 
             <!-- 页脚 -->
             <div class="footer">
-                杨晟琦文明公理系统 · 独立思想锚点 · 封装完成: 2026年7月
+                杨晟琦文明公理系统 · 独立思想锚点 · 封装完成: 2026年7月 
                 <span class="en">Yang Shengqi Civilizational Axiomatic System · Independent Thought Anchor · Encapsulation Completed: July 2026</span>
                 <span class="footer-license">所有内容以 <a href="https://creativecommons.org/licenses/by-nd/4.0/deed.zh" target="_blank">CC BY-ND 4.0</a> 协议发布</span>
                 <span class="en">All content released under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank">CC BY-ND 4.0</a></span>
@@ -677,5 +665,30 @@ copyright = {Creative Commons Zero v1.0 Universal}
     </div>
 
     <script src="common.js"></script>
+<script>
+(function() {
+    const birthDate = new Date(2026, 4, 8); // 2026年5月8日
+
+    function updateCounter() {
+        const now = new Date();
+        let diff = now.getTime() - birthDate.getTime();
+        if (diff < 0) diff = 0;
+
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = String(Math.floor((totalSeconds % 86400) / 3600)).padStart(2, '0');
+        const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+        const seconds = String(totalSeconds % 60).padStart(2, '0');
+
+        document.getElementById('daysCount').textContent = days;
+        document.getElementById('hoursCount').textContent = hours;
+        document.getElementById('minutesCount').textContent = minutes;
+        document.getElementById('secondsCount').textContent = seconds;
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000);
+})();
+</script>
 </body>
 </html>
