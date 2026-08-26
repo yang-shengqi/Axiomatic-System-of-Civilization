@@ -485,7 +485,13 @@
     <!-- ===== 顶部导航条 ===== -->
     <div class="top-nav">
         <a href="./index.html" class="back">← 返回体系总入口</a>
-        <span class="badge">杨晟琦文明公理系统首页 · 独立思想锚点</span>
+        <span class="badge" id="liveCounter">
+            <span class="counter-label">本系统已运行 </span>
+            <span id="daysCount">--</span><span class="counter-unit"> 天 </span>
+            <span id="hoursCount">00</span><span class="counter-unit">:</span>
+            <span id="minutesCount">00</span><span class="counter-unit">:</span>
+            <span id="secondsCount">00</span>
+        </span>
     </div>
 
     <!-- ===== 顶部品牌区 ===== -->
@@ -1154,6 +1160,30 @@
         }, 2000);
     }
 </script>
+<script>
+(function() {
+    const birthDate = new Date(2026, 4, 8); // 2026年5月8日
 
+    function updateCounter() {
+        const now = new Date();
+        let diff = now.getTime() - birthDate.getTime();
+        if (diff < 0) diff = 0;
+
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = String(Math.floor((totalSeconds % 86400) / 3600)).padStart(2, '0');
+        const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+        const seconds = String(totalSeconds % 60).padStart(2, '0');
+
+        document.getElementById('daysCount').textContent = days;
+        document.getElementById('hoursCount').textContent = hours;
+        document.getElementById('minutesCount').textContent = minutes;
+        document.getElementById('secondsCount').textContent = seconds;
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000);
+})();
+</script>
 </body>
 </html>
