@@ -215,7 +215,7 @@
 
             // ========== 优化1: 带超时的 fetch ==========
             function fetchWithTimeout(url, timeout) {
-                timeout = timeout || 10000; // 默认10秒
+                timeout = timeout || 10000;
                 return new Promise(function(resolve, reject) {
                     var controller = new AbortController();
                     var signal = controller.signal;
@@ -242,7 +242,6 @@
                     var raw = localStorage.getItem(CACHE_KEY);
                     if (raw) {
                         var parsed = JSON.parse(raw);
-                        // 简单校验
                         if (parsed && parsed.features && parsed.features.length > 100) {
                             return parsed;
                         }
@@ -298,7 +297,6 @@
                     .then(function(res) { if(!res.ok) throw new Error('HTTP '+res.status); return res.json(); })
                     .then(function(data) {
                         if(!data.features || !data.features.length) throw new Error('数据为空');
-                        // 存入缓存
                         saveCachedData(data);
                         loadingTip.style.display = 'none';
                         worldData = data;
@@ -400,6 +398,50 @@
                 if(center) {
                     myChart.setOption({ series:[{center:center, zoom:4}] });
                 }
+            }
+
+            // ============================================================
+            // 通用数据加载函数（导入和自动加载共用）
+            // ============================================================
+            function loadWJPData(parsedArray, sourceLabel) {
+                if (!parsedArray || parsedArray.length === 0) return false;
+                
+                // 按综合得分降序排列，计算排名
+                parsedArray.sort(function(a, b) { return b.rank - a.rank; });
+                var rank = 0, prevScore = null;
+                parsedArray.forEach(function(item, index) {
+                    if (item.rank !== prevScore) {
+                        rank = index + 1;
+                        prevScore = item.rank;
+                    }
+                    item.rankNumber = rank;
+                });
+                
+                // 填充 wjpData
+                wjpData = {};
+                parsedArray.forEach(function(item) {
+                    var key = item.country.toLowerCase().trim();
+                    wjpData[key] = {
+                        rankNumber: item.rankNumber,
+                        score: item.rank,
+                        dims: item.dims || {}
+                    };
+                    if (key === "united states") {
+                        wjpData["usa"] = wjpData[key];
+                        wjpData["us"] = wjpData[key];
+                        wjpData["america"] = wjpData[key];
+                    }
+                    if (key === "united kingdom") wjpData["uk"] = wjpData[key];
+                    if (key === "united arab emirates") wjpData["uae"] = wjpData[key];
+                });
+                
+                var statusEl = document.getElementById('data-status');
+                if (statusEl) {
+                    statusEl.textContent = '✅ ' + sourceLabel + ' (' + parsedArray.length + ' 个国家)';
+                    statusEl.className = 'loaded';
+                }
+                console.log('✅ ' + sourceLabel + ' 成功，共 ' + parsedArray.length + ' 个国家');
+                return true;
             }
 
             // ========== 初始化地图 ==========
@@ -560,7 +602,7 @@
                         if(e.key==='Enter') { doSearch(); e.preventDefault(); }
                     });
 
-                    // ----- 导入数据 -----
+                    // ----- 导入数据（核心功能）-----
                     var importBtn = document.getElementById('import-btn');
                     var fileInput = document.getElementById('file-input');
                     var dataStatus = document.getElementById('data-status');
@@ -586,7 +628,7 @@
                                 var dimKeys = headers.filter(function(h){ return h!=='Country' && h!=='Rank'; });
                                 if(dimKeys.length===0) { alert('请至少添加一个维度列（如 Factor1, Factor2...）'); dataStatus.textContent='缺少维度'; return; }
 
-                                var allCountries = [];
+                                var parsed = [];
                                 data.forEach(function(row) {
                                     var country = row['Country'];
                                     if(!country) return;
@@ -597,33 +639,14 @@
                                         var val = parseFloat(row[key]);
                                         dims[key] = isNaN(val) ? null : val;
                                     });
-                                    allCountries.push({ country:country.toLowerCase().trim(), score:score, dims:dims });
+                                    parsed.push({ country: country, rank: score, dims: dims });
                                 });
-                                if(allCountries.length===0) { alert('未解析到有效数据，请检查 CSV 格式。'); dataStatus.textContent='导入失败'; return; }
+                                if(parsed.length===0) { alert('未解析到有效数据，请检查 CSV 格式。'); dataStatus.textContent='导入失败'; return; }
 
-                                allCountries.sort(function(a,b){ return b.score-a.score; });
-                                var rank=0, prevScore=null;
-                                allCountries.forEach(function(item,index) {
-                                    if(item.score!==prevScore) { rank=index+1; prevScore=item.score; }
-                                    item.rankNumber=rank;
-                                });
-
-                                wjpData = {};
-                                allCountries.forEach(function(item) {
-                                    wjpData[item.country] = { rankNumber:item.rankNumber, score:item.score, dims:item.dims };
-                                    if(item.country==="united states") {
-                                        wjpData["usa"] = wjpData[item.country];
-                                        wjpData["us"] = wjpData[item.country];
-                                        wjpData["america"] = wjpData[item.country];
-                                    }
-                                    if(item.country==="united kingdom") wjpData["uk"] = wjpData[item.country];
-                                    if(item.country==="united arab emirates") wjpData["uae"] = wjpData[item.country];
-                                });
-
-                                dataStatus.textContent = '✅ 已导入 ('+allCountries.length+' 个国家)';
-                                dataStatus.className = 'loaded';
+                                // 使用通用加载函数
+                                loadWJPData(parsed, '用户导入数据');
                                 fileInput.value = '';
-                                alert('数据导入成功！点击国家即可查看 WJP 数值。');
+                                alert('✅ 数据导入成功！共 ' + parsed.length + ' 个国家。');
                             },
                             error:function(err) {
                                 alert('解析 CSV 失败：'+err.message);
@@ -664,7 +687,56 @@
                         }
                     });
 
-                    console.log('✅ 地图初始化完成，新加坡已添加，浮窗位置已修复');
+                    console.log('✅ 地图初始化完成');
+
+                    // ============================================================
+                    // 自动加载根目录的 CSV（唯一新增的功能）
+                    // ============================================================
+                    function autoLoadCSV() {
+                        var csvUrl = 'WJP-Rule-of-Law-Index-Map.csv';
+                        fetch(csvUrl)
+                            .then(function(res) {
+                                if (!res.ok) throw new Error('HTTP ' + res.status);
+                                return res.text();
+                            })
+                            .then(function(csvText) {
+                                Papa.parse(csvText, {
+                                    header: true,
+                                    skipEmptyLines: true,
+                                    complete: function(results) {
+                                        var data = results.data;
+                                        if (!data || data.length === 0) return;
+                                        var headers = results.meta.fields;
+                                        if (!headers.includes('Country') || !headers.includes('Rank')) return;
+                                        var dimKeys = headers.filter(function(h) {
+                                            return h !== 'Country' && h !== 'Rank';
+                                        });
+                                        var parsed = [];
+                                        data.forEach(function(row) {
+                                            var country = row['Country'];
+                                            if (!country || country === 'Country') return;
+                                            var score = parseFloat(row['Rank']);
+                                            if (isNaN(score)) return;
+                                            var dims = {};
+                                            dimKeys.forEach(function(key) {
+                                                var val = parseFloat(row[key]);
+                                                dims[key] = isNaN(val) ? null : val;
+                                            });
+                                            parsed.push({ country: country, rank: score, dims: dims });
+                                        });
+                                        if (parsed.length === 0) return;
+                                        loadWJPData(parsed, '已加载 CSV');
+                                    }
+                                });
+                            })
+                            .catch(function(err) {
+                                console.warn('⚠️ 自动加载 CSV 失败，请点击导入按钮上传数据:', err);
+                            });
+                    }
+
+                    // 延迟 500ms 自动加载，确保地图已完全渲染
+                    setTimeout(autoLoadCSV, 500);
+
                 } catch(err) {
                     console.error('初始化地图出错:', err);
                     loadingTip.style.display = 'none';
@@ -677,12 +749,9 @@
             if (cached) {
                 console.log('✅ 从本地缓存加载地图数据');
                 worldData = cached;
-                // 确保地图容器已被渲染，直接初始化
-                // 但要等 DOM 完全就绪，且 echarts 已加载
                 if (typeof echarts !== 'undefined') {
                     initMap();
                 } else {
-                    // 极少数情况 echarts 未就绪，稍等片刻
                     var checkEcharts = setInterval(function() {
                         if (typeof echarts !== 'undefined') {
                             clearInterval(checkEcharts);
