@@ -207,9 +207,12 @@
             // ========== 地图加载 ==========
             // 使用在线数据源（已内嵌新加坡）
             var MIRRORS = [
-                'world.geojson',   // 本地文件（如果有）
+                'world.geojson',
                 'https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/DATA/world.geojson',
-                'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson'
+                'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson',
+                'https://cdn.jsdelivr.net/npm/world-geojson@3.4.0/countries.geojson',
+                'https://raw.githubusercontent.com/georgique/world-geojson/develop/countries.geojson',
+                'https://cdn.jsdelivr.net/gh/georgique/world-geojson@develop/countries.geojson'
             ];
             var myChart = null, worldData = null, countryCenter = {}, mapNames = [];
 
