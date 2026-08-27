@@ -99,7 +99,7 @@
         <div class="control-row">
             <button id="import-btn">📁 导入 WJP 数据</button>
             <input type="file" id="file-input" accept=".csv" style="display:none;">
-            <span id="data-status">未导入</span>
+            <span id="data-status">未导入csv数据库</span>
         </div>
     </div>
     <div id="search-result"></div>
@@ -665,6 +665,80 @@
                     });
 
                     console.log('✅ 地图初始化完成，新加坡已添加，浮窗位置已修复');
+
+                    // ========== 自动加载 CSV（独立运行，不影响任何原有功能）==========
+                    setTimeout(function() {
+                        fetch('WJP-Rule-of-Law-Index-Map.csv')
+                            .then(function(res) {
+                                if (!res.ok) throw Error();
+                                return res.text();
+                            })
+                            .then(function(csv) {
+                                Papa.parse(csv, {
+                                    header: true,
+                                    skipEmptyLines: true,
+                                    complete: function(r) {
+                                        var d = r.data,
+                                            parsed = [],
+                                            headers = r.meta.fields;
+                                        if (!d || !headers || !headers.includes('Country')) return;
+                                        var dimKeys = headers.filter(function(h) {
+                                            return h !== 'Country' && h !== 'Rank';
+                                        });
+                                        for (var i = 0; i < d.length; i++) {
+                                            var row = d[i],
+                                                c = row['Country'];
+                                            if (!c || c === 'Country') continue;
+                                            var s = parseFloat(row['Rank']);
+                                            if (isNaN(s)) continue;
+                                            var dim = {};
+                                            for (var j = 0; j < dimKeys.length; j++) {
+                                                var v = parseFloat(row[dimKeys[j]]);
+                                                dim[dimKeys[j]] = isNaN(v) ? null : v;
+                                            }
+                                            parsed.push({ country: c, rank: s, dims: dim });
+                                        }
+                                        if (!parsed.length) return;
+                                        // 计算排名
+                                        parsed.sort(function(a, b) { return b.rank - a.rank; });
+                                        var rk = 0,
+                                            ps = null;
+                                        for (var i = 0; i < parsed.length; i++) {
+                                            if (parsed[i].rank !== ps) {
+                                                rk = i + 1;
+                                                ps = parsed[i].rank;
+                                            }
+                                            parsed[i].rankNumber = rk;
+                                        }
+                                        // 填充到 wjpData
+                                        for (var i = 0; i < parsed.length; i++) {
+                                            var key = parsed[i].country.toLowerCase().trim();
+                                            wjpData[key] = {
+                                                rankNumber: parsed[i].rankNumber,
+                                                score: parsed[i].rank,
+                                                dims: parsed[i].dims
+                                            };
+                                            if (key === 'united states') {
+                                                wjpData['usa'] = wjpData[key];
+                                                wjpData['us'] = wjpData[key];
+                                                wjpData['america'] = wjpData[key];
+                                            }
+                                            if (key === 'united kingdom') wjpData['uk'] = wjpData[key];
+                                            if (key === 'united arab emirates') wjpData['uae'] = wjpData[key];
+                                        }
+                                        var st = document.getElementById('data-status');
+                                        if (st) {
+                                            st.textContent = '✅ 已加载 CSV (' + parsed.length + ' 个国家)';
+                                            st.className = 'loaded';
+                                        }
+                                        console.log('✅ 自动加载 CSV 成功，共 ' + parsed.length + ' 个国家');
+                                    }
+                                });
+                            })
+                            .catch(function() {
+                                console.warn('⚠️ 自动加载 CSV 失败，请手动导入');
+                            });
+                    }, 500);
                 } catch(err) {
                     console.error('初始化地图出错:', err);
                     loadingTip.style.display = 'none';
