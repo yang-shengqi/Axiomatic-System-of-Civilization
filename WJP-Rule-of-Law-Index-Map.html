@@ -9,6 +9,12 @@
         * { margin:0; padding:0; }
         body, html { width:100%; height:100%; background:#f0f2f5; font-family: 'Microsoft YaHei', sans-serif; }
         #map { width:100%; height:calc(100% - 100px); margin-top:100px; }
+        #loading-tip {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 50; color: #666; font-size: 16px; background: rgba(255,255,255,0.8);
+            padding: 12px 24px; border-radius: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            pointer-events: none; display: none;
+        }
         #title-area {
             position: absolute; top:60px; left:50%; transform:translateX(-50%); z-index:100;
             text-align:center; pointer-events:none; user-select:none; max-width:90%; line-height:1.4;
@@ -20,15 +26,16 @@
             background:rgba(255,255,255,0.95); border-radius:16px; padding:14px 20px 16px 20px;
             box-shadow:0 4px 20px rgba(0,0,0,0.12); backdrop-filter:blur(4px);
             border:1px solid rgba(255,255,255,0.5); display:flex; flex-direction:column;
-            align-items:center; gap:10px; min-width:320px; max-width:90%; pointer-events:auto;
+            align-items:center; gap:10px; width:95%; max-width:500px; box-sizing:border-box;
+            pointer-events:auto;
         }
         .search-row { display:flex; align-items:center; width:100%; gap:8px; }
         #search-input { flex:1; border:none; border-bottom:1px solid #ccc; outline:none; padding:6px 8px; font-size:15px; background:transparent; color:#333; min-width:0; transition:border-color 0.2s; }
         #search-input:focus { border-bottom-color:#4a8bc2; }
         #search-input::placeholder { color:#aaa; }
-        #search-btn { background:#4a8bc2; color:#fff; border:none; border-radius:20px; padding:6px 18px; font-size:14px; cursor:pointer; white-space:nowrap; }
+        #search-btn { background:#4a8bc2; color:#fff; border:none; border-radius:20px; padding:6px 18px; font-size:14px; cursor:pointer; white-space:nowrap; flex-shrink:0; }
         #search-btn:hover { background:#2c6fa8; }
-        #search-clear { background:transparent; border:none; color:#999; font-size:18px; cursor:pointer; padding:0 6px; display:none; }
+        #search-clear { background:transparent; border:none; color:#999; font-size:18px; cursor:pointer; padding:0 6px; display:none; flex-shrink:0; }
         #search-clear:hover { color:#555; }
         .control-row { display:flex; align-items:center; width:100%; justify-content:center; gap:12px; flex-wrap:wrap; }
         #import-btn { background:#4a8bc2; color:#fff; border:none; border-radius:20px; padding:6px 20px; font-size:14px; cursor:pointer; }
@@ -68,10 +75,10 @@
             #title-area { top:12px; }
             #title-area h1 { font-size:18px; }
             #title-area .sub { font-size:12px; }
-            #top-controls { top:70px; min-width:unset; width:90%; padding:10px 14px 12px 14px; }
+            #top-controls { top:70px; padding:10px 14px 12px 14px; width:92%; }
             #search-input { font-size:14px; }
             #search-result { bottom:70px; font-size:13px; padding:6px 16px; white-space:normal; }
-            #info-panel { max-width:200px; padding:12px 16px; }
+            #info-panel { max-width:260px; padding:12px 16px; }
             #footer .zh { font-size:12px; }
             #footer .en { font-size:10px; }
             .control-row { gap:6px; }
@@ -79,7 +86,9 @@
     </style>
 </head>
 <body>
-    <div id="map"></div>
+    <div id="map">
+        <div id="loading-tip">⏳ 正在加载地图数据...</div>
+    </div>
     <div id="title-area"><h1>🌍 世界正义工程（World Justice Project）法治指数地图</h1><div class="sub">有效的法治是和平、机会和公平社区的基石，跨学科合作是推动法治的最有效方式。</div></div>
     <div id="top-controls">
         <div class="search-row">
@@ -204,14 +213,60 @@
                 return null;
             }
 
+            // ========== 优化1: 带超时的 fetch ==========
+            function fetchWithTimeout(url, timeout) {
+                timeout = timeout || 10000; // 默认10秒
+                return new Promise(function(resolve, reject) {
+                    var controller = new AbortController();
+                    var signal = controller.signal;
+                    var timeoutId = setTimeout(function() {
+                        controller.abort();
+                        reject(new Error('请求超时 (' + timeout + 'ms)'));
+                    }, timeout);
+                    fetch(url, { signal: signal })
+                        .then(function(res) {
+                            clearTimeout(timeoutId);
+                            resolve(res);
+                        })
+                        .catch(function(err) {
+                            clearTimeout(timeoutId);
+                            reject(err);
+                        });
+                });
+            }
+
+            // ========== 优化2: localStorage 缓存 ==========
+            var CACHE_KEY = 'world_geojson_cache_v1';
+            function getCachedData() {
+                try {
+                    var raw = localStorage.getItem(CACHE_KEY);
+                    if (raw) {
+                        var parsed = JSON.parse(raw);
+                        // 简单校验
+                        if (parsed && parsed.features && parsed.features.length > 100) {
+                            return parsed;
+                        }
+                    }
+                } catch(e) { /* 忽略 */ }
+                return null;
+            }
+            function saveCachedData(data) {
+                try {
+                    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+                } catch(e) { /* 储存失败（可能超配额）则静默忽略 */ }
+            }
+
             // ========== 地图加载 ==========
-            // 使用在线数据源（已内嵌新加坡）
             var MIRRORS = [
-                'world.geojson',   // 本地文件（如果有）
+                'world.geojson',
                 'https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/DATA/world.geojson',
-                'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson'
+                'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson',
+                'https://cdn.jsdelivr.net/npm/world-geojson@3.4.0/countries.geojson',
+                'https://raw.githubusercontent.com/georgique/world-geojson/develop/countries.geojson',
+                'https://cdn.jsdelivr.net/gh/georgique/world-geojson@develop/countries.geojson'
             ];
             var myChart = null, worldData = null, countryCenter = {}, mapNames = [];
+            var loadingTip = document.getElementById('loading-tip');
 
             function calcCenter(feature) {
                 var geom = feature.geometry;
@@ -231,19 +286,26 @@
 
             function tryLoadMirror(index) {
                 if(index>=MIRRORS.length) {
+                    loadingTip.style.display = 'none';
                     document.getElementById('map').innerHTML = '<div style="text-align:center;padding-top:100px;color:#999;">❌ 地图数据加载失败，请检查网络连接。</div>';
                     return;
                 }
                 var url = MIRRORS[index];
-                fetch(url)
-                    .then(res => { if(!res.ok) throw new Error('HTTP '+res.status); return res.json(); })
-                    .then(data => {
+                loadingTip.textContent = '⏳ 正在加载地图数据 (尝试 ' + (index+1) + '/' + MIRRORS.length + ')...';
+                loadingTip.style.display = 'block';
+
+                fetchWithTimeout(url, 10000)
+                    .then(function(res) { if(!res.ok) throw new Error('HTTP '+res.status); return res.json(); })
+                    .then(function(data) {
+                        if(!data.features || !data.features.length) throw new Error('数据为空');
+                        // 存入缓存
+                        saveCachedData(data);
+                        loadingTip.style.display = 'none';
                         worldData = data;
-                        if(!worldData.features || !worldData.features.length) throw new Error('数据为空');
                         initMap();
                     })
-                    .catch(err => {
-                        console.warn('加载失败，尝试下一个镜像', err);
+                    .catch(function(err) {
+                        console.warn('加载失败，尝试下一个镜像:', err);
                         tryLoadMirror(index+1);
                     });
             }
@@ -571,18 +633,15 @@
                     });
 
                     // ============================================================
-                    // ⭐ 修复浮窗位置：在 map 容器上记录鼠标位置，点击时使用
+                    // 浮窗定位（鼠标/触摸跟踪）
                     // ============================================================
                     var lastMouseX = window.innerWidth / 2;
                     var lastMouseY = window.innerHeight / 2;
 
-                    // 监听地图容器上的鼠标移动，记录最新坐标
                     document.getElementById('map').addEventListener('mousemove', function(e) {
                         lastMouseX = e.clientX;
                         lastMouseY = e.clientY;
                     });
-
-                    // 也监听触摸事件（手机端）
                     document.getElementById('map').addEventListener('touchmove', function(e) {
                         var touch = e.touches[0];
                         if (touch) {
@@ -591,14 +650,12 @@
                         }
                     }, { passive: true });
 
-                    // 点击地图显示浮窗，使用记录的鼠标位置
                     myChart.on('click', function(params) {
                         var name = params.name;
                         if (!name) return;
                         showCountryInfo(name, lastMouseX, lastMouseY);
                     });
 
-                    // 点击空白区域关闭浮窗
                     myChart.getZr().on('click', function(e) {
                         var target = e.target;
                         if (target && target.parent && target.parent.__ecComponentInfo) return;
@@ -610,12 +667,33 @@
                     console.log('✅ 地图初始化完成，新加坡已添加，浮窗位置已修复');
                 } catch(err) {
                     console.error('初始化地图出错:', err);
+                    loadingTip.style.display = 'none';
                     document.getElementById('map').innerHTML = '<div style="text-align:center;padding-top:100px;color:#d9534f;">❌ 地图初始化失败，请检查控制台错误信息。</div>';
                 }
             }
 
-            // 开始加载
-            tryLoadMirror(0);
+            // ========== 启动：优先读缓存，若没有则走网络镜像 ==========
+            var cached = getCachedData();
+            if (cached) {
+                console.log('✅ 从本地缓存加载地图数据');
+                worldData = cached;
+                // 确保地图容器已被渲染，直接初始化
+                // 但要等 DOM 完全就绪，且 echarts 已加载
+                if (typeof echarts !== 'undefined') {
+                    initMap();
+                } else {
+                    // 极少数情况 echarts 未就绪，稍等片刻
+                    var checkEcharts = setInterval(function() {
+                        if (typeof echarts !== 'undefined') {
+                            clearInterval(checkEcharts);
+                            initMap();
+                        }
+                    }, 100);
+                }
+            } else {
+                console.log('🔄 未找到缓存，开始从网络加载...');
+                tryLoadMirror(0);
+            }
         })();
     </script>
 </body>
