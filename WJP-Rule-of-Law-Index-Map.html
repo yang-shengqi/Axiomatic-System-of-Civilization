@@ -2,8 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="🌍 世界正义工程（World Justice Project）法治指数地图。有效的法治是和平、机会和公平社区的基石，跨学科合作是推动法治的最有效方式">
-    <script async src="https://019fdc74-a00d-7cd2-8a0a-f934636d71de.spst2.com/ustat.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>🌍 世界正义工程（World Justice Project）法治指数地图</title>
     <style>
         * { margin:0; padding:0; }
@@ -90,7 +89,7 @@
         <div class="control-row">
             <button id="import-btn">📁 导入 WJP 数据</button>
             <input type="file" id="file-input" accept=".csv" style="display:none;">
-            <span id="data-status">未导入</span>
+            <span id="data-status">未导入 csv 数据</span>
         </div>
     </div>
     <div id="search-result"></div>
@@ -207,12 +206,9 @@
             // ========== 地图加载 ==========
             // 使用在线数据源（已内嵌新加坡）
             var MIRRORS = [
-                'world.geojson',
+                'world.geojson',   // 本地文件（如果有）
                 'https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/DATA/world.geojson',
-                'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson',
-                'https://cdn.jsdelivr.net/npm/world-geojson@3.4.0/countries.geojson',
-                'https://raw.githubusercontent.com/georgique/world-geojson/develop/countries.geojson',
-                'https://cdn.jsdelivr.net/gh/georgique/world-geojson@develop/countries.geojson'
+                'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson'
             ];
             var myChart = null, worldData = null, countryCenter = {}, mapNames = [];
 
@@ -573,20 +569,52 @@
                         });
                     });
 
-                    // ----- 点击地图显示浮窗 -----
-                    myChart.on('click', function(params) {
-                        var name = params.name;
-                        if(!name) return;
-                        var event = params.event.event;
-                        showCountryInfo(name, event.clientX, event.clientY);
-                    });
-                    myChart.getZr().on('click', function(e) {
-                        var target = e.target;
-                        if(target && target.parent && target.parent.__ecComponentInfo) return;
-                        if(panel && panel.style.display!=='none') panel.style.display='none';
+                    // ============================================================
+                    // 浮窗定位（鼠标/触摸跟踪）- 修复手机端问题
+                    // ============================================================
+                    var lastMouseX = window.innerWidth / 2;
+                    var lastMouseY = window.innerHeight / 2;
+
+                    // 鼠标移动跟踪（PC）
+                    document.getElementById('map').addEventListener('mousemove', function(e) {
+                        lastMouseX = e.clientX;
+                        lastMouseY = e.clientY;
                     });
 
-                    console.log('✅ 地图初始化完成，新加坡已添加');
+                    // 触摸移动跟踪（手机）
+                    document.getElementById('map').addEventListener('touchmove', function(e) {
+                        var touch = e.touches[0];
+                        if (touch) {
+                            lastMouseX = touch.clientX;
+                            lastMouseY = touch.clientY;
+                        }
+                    }, { passive: true });
+
+                    // 触摸开始也跟踪（点按瞬间）
+                    document.getElementById('map').addEventListener('touchstart', function(e) {
+                        var touch = e.touches[0];
+                        if (touch) {
+                            lastMouseX = touch.clientX;
+                            lastMouseY = touch.clientY;
+                        }
+                    }, { passive: true });
+
+                    myChart.on('click', function(params) {
+                        var name = params.name;
+                        if (!name) return;
+                        // 使用跟踪到的最后坐标（支持手机）
+                        showCountryInfo(name, lastMouseX, lastMouseY);
+                    });
+
+                    myChart.getZr().on('click', function(e) {
+                        var target = e.target;
+                        if (target && target.parent && target.parent.__ecComponentInfo) return;
+                        if (panel && panel.style.display !== 'none') {
+                            panel.style.display = 'none';
+                        }
+                    });
+
+                    console.log('✅ 地图初始化完成，新加坡已添加，手机浮窗已修复');
                 } catch(err) {
                     console.error('初始化地图出错:', err);
                     document.getElementById('map').innerHTML = '<div style="text-align:center;padding-top:100px;color:#d9534f;">❌ 地图初始化失败，请检查控制台错误信息。</div>';
