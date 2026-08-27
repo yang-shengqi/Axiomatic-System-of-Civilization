@@ -568,20 +568,44 @@
                         });
                     });
 
-                    // ----- 点击地图显示浮窗 -----
-                    myChart.on('click', function(params) {
-                        var name = params.name;
-                        if(!name) return;
-                        var event = params.event.event;
-                        showCountryInfo(name, event.clientX, event.clientY);
-                    });
-                    myChart.getZr().on('click', function(e) {
-                        var target = e.target;
-                        if(target && target.parent && target.parent.__ecComponentInfo) return;
-                        if(panel && panel.style.display!=='none') panel.style.display='none';
+                    // ============================================================
+                    // ⭐ 修复浮窗位置：在 map 容器上记录鼠标位置，点击时使用
+                    // ============================================================
+                    var lastMouseX = window.innerWidth / 2;
+                    var lastMouseY = window.innerHeight / 2;
+
+                    // 监听地图容器上的鼠标移动，记录最新坐标
+                    document.getElementById('map').addEventListener('mousemove', function(e) {
+                        lastMouseX = e.clientX;
+                        lastMouseY = e.clientY;
                     });
 
-                    console.log('✅ 地图初始化完成，新加坡已添加');
+                    // 也监听触摸事件（手机端）
+                    document.getElementById('map').addEventListener('touchmove', function(e) {
+                        var touch = e.touches[0];
+                        if (touch) {
+                            lastMouseX = touch.clientX;
+                            lastMouseY = touch.clientY;
+                        }
+                    }, { passive: true });
+
+                    // 点击地图显示浮窗，使用记录的鼠标位置
+                    myChart.on('click', function(params) {
+                        var name = params.name;
+                        if (!name) return;
+                        showCountryInfo(name, lastMouseX, lastMouseY);
+                    });
+
+                    // 点击空白区域关闭浮窗
+                    myChart.getZr().on('click', function(e) {
+                        var target = e.target;
+                        if (target && target.parent && target.parent.__ecComponentInfo) return;
+                        if (panel && panel.style.display !== 'none') {
+                            panel.style.display = 'none';
+                        }
+                    });
+
+                    console.log('✅ 地图初始化完成，新加坡已添加，浮窗位置已修复');
                 } catch(err) {
                     console.error('初始化地图出错:', err);
                     document.getElementById('map').innerHTML = '<div style="text-align:center;padding-top:100px;color:#d9534f;">❌ 地图初始化失败，请检查控制台错误信息。</div>';
