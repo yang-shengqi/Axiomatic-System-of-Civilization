@@ -8,7 +8,14 @@
     <priority>1.0</priority>
   </url>
 
+
   <!-- ⭐ 新增：永久存档索引（入口级页面） -->
+  <url>
+    <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/WJP-Rule-of-Law-Index-Map.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
   <url>
     <loc>https://yang-shengqi.github.io/Axiomatic-System-of-Civilization/Permanent-Archive-Index-cn.html</loc>
     <lastmod>2026-08-26</lastmod>
